@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_14_142646) do
+ActiveRecord::Schema.define(version: 2019_10_14_220416) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(version: 2019_10_14_142646) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "ekid_id"
+    t.string "stat"
   end
 
   create_table "classrooms", force: :cascade do |t|
@@ -278,6 +279,7 @@ ActiveRecord::Schema.define(version: 2019_10_14_142646) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "ekid_id"
+    t.string "stat"
   end
 
   create_table "otkids", force: :cascade do |t|
@@ -463,6 +465,7 @@ ActiveRecord::Schema.define(version: 2019_10_14_142646) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "ekid_id"
+    t.string "stat"
   end
 
   create_table "ptns_mmbs", force: :cascade do |t|
@@ -551,6 +554,7 @@ ActiveRecord::Schema.define(version: 2019_10_14_142646) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "ekid_id"
+    t.string "stat"
   end
 
   create_table "taska_admins", force: :cascade do |t|
@@ -675,6 +679,7 @@ ActiveRecord::Schema.define(version: 2019_10_14_142646) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
+    t.string "tp"
     t.index ["email"], name: "index_teachers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_teachers_on_reset_password_token", unique: true
     t.index ["username"], name: "index_teachers_on_username", unique: true
