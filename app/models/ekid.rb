@@ -5,5 +5,7 @@ class Ekid < ApplicationRecord
 	has_one :pte
 	has_one :ste
 	has_one :ate
+	has_one :chkl
+	has_one :rflt
 	belongs_to :sce, optional: true
 end

@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  gmtr: MyText
+  fmtr: MyText
+  adbh: MyText
+  splg: MyText
+  cogn: MyText
+  audl: MyText
+  prvb: MyText
+  rcel: MyText
+  rslc: MyString
+
+two:
+  gmtr: MyText
+  fmtr: MyText
+  adbh: MyText
+  splg: MyText
+  cogn: MyText
+  audl: MyText
+  prvb: MyText
+  rcel: MyText
+  rslc: MyString

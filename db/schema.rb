@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_14_220416) do
+ActiveRecord::Schema.define(version: 2019_10_14_224620) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,6 +91,21 @@ ActiveRecord::Schema.define(version: 2019_10_14_220416) do
     t.datetime "updated_at", null: false
     t.integer "ekid_id"
     t.string "stat"
+  end
+
+  create_table "chkls", force: :cascade do |t|
+    t.text "gmtr"
+    t.text "fmtr"
+    t.text "adbh"
+    t.text "splg"
+    t.text "cogn"
+    t.text "audl"
+    t.text "prvb"
+    t.text "rcel"
+    t.string "rslc"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "ekid_id"
   end
 
   create_table "classrooms", force: :cascade do |t|
@@ -513,6 +528,18 @@ ActiveRecord::Schema.define(version: 2019_10_14_220416) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "rflts", force: :cascade do |t|
+    t.text "rfpl"
+    t.text "ota"
+    t.text "sta"
+    t.text "ata"
+    t.text "pta"
+    t.string "ovc"
+    t.integer "ekid_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "sces", force: :cascade do |t|
     t.string "name"
     t.datetime "date"
@@ -544,6 +571,15 @@ ActiveRecord::Schema.define(version: 2019_10_14_220416) do
     t.string "reflt"
     t.string "otnt"
     t.integer "ekid_id"
+    t.string "diag"
+    t.string "summ"
+    t.string "assr"
+    t.string "obs"
+    t.string "refc"
+    t.string "frmo"
+    t.string "scp"
+    t.string "cmt"
+    t.string "ovc"
   end
 
   create_table "stes", force: :cascade do |t|

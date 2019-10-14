@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rfpl: MyText
+  ota: MyText
+  sta: MyText
+  ata: MyText
+  pta: MyText
+  ovc: MyString
+  ekid_id: 1
+
+two:
+  rfpl: MyText
+  ota: MyText
+  sta: MyText
+  ata: MyText
+  pta: MyText
+  ovc: MyString
+  ekid_id: 1
