@@ -4,19 +4,27 @@ class TeachersController < ApplicationController
 
 
 	def index
-		#render action: "index", layout: "dsb-teacher-main"
-		if params[:college_id].present? && params[:course_id].present?
-			teacher_college = TeacherCollege.create(teacher_id: @teacher.id, college_id: params[:college_id])
-			teacher_course = TeacherCourse.create(teacher_id: @teacher.id, course_id: params[:course_id])
+		if @teacher.loc.blank? || @teacher.tp.blank?
+			redirect_to root_path
 		end
-		if @teacher.tchdetail.present?
-			#redirect_to teacher_college_path(@teacher)
-			redirect_to teacher_taska_path(@teacher)
-		else
-			redirect_to new_tchdetail_path(teacher_id: @teacher.id)
-		end
-
+		@sce = Sce.find($scses[@teacher.loc])
+		@ekids = @sce.ekids
 	end
+
+	# def index_old
+	# 	#render action: "index", layout: "dsb-teacher-main"
+	# 	if params[:college_id].present? && params[:course_id].present?
+	# 		teacher_college = TeacherCollege.create(teacher_id: @teacher.id, college_id: params[:college_id])
+	# 		teacher_course = TeacherCourse.create(teacher_id: @teacher.id, course_id: params[:course_id])
+	# 	end
+	# 	if @teacher.tchdetail.present?
+	# 		#redirect_to teacher_college_path(@teacher)
+	# 		redirect_to teacher_taska_path(@teacher)
+	# 	else
+	# 		redirect_to new_tchdetail_path(teacher_id: @teacher.id)
+	# 	end
+
+	# end
 
 	
 

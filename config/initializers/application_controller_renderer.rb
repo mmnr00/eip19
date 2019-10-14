@@ -7,6 +7,7 @@
 #   )
 # end
 
+$scses = {"sha" => 9, "srd" => 5}
 $admloc = {1=>["srd","sha"],2=>"sha",3=>"srd"}
 
 $statekid = {"NEW" => "PERMOHONAN DITERIMA",
