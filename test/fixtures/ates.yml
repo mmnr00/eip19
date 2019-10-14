@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  hr: MyString
+  tin: MyString
+  ear: MyString
+  resp: MyString
+  ovc: MyString
+
+two:
+  hr: MyString
+  tin: MyString
+  ear: MyString
+  resp: MyString
+  ovc: MyString

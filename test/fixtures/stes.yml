@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pre: MyString
+  rec: MyString
+  expr: MyString
+  ovc: MyString
+
+two:
+  pre: MyString
+  rec: MyString
+  expr: MyString
+  ovc: MyString

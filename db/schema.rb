@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_10_015355) do
+ActiveRecord::Schema.define(version: 2019_10_14_142646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,6 +79,17 @@ ActiveRecord::Schema.define(version: 2019_08_10_015355) do
     t.datetime "updated_at", null: false
     t.string "kind"
     t.float "tot"
+  end
+
+  create_table "ates", force: :cascade do |t|
+    t.string "hr"
+    t.string "tin"
+    t.string "ear"
+    t.string "resp"
+    t.string "ovc"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "ekid_id"
   end
 
   create_table "classrooms", force: :cascade do |t|
@@ -257,6 +268,18 @@ ActiveRecord::Schema.define(version: 2019_08_10_015355) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "otes", force: :cascade do |t|
+    t.string "sens"
+    t.string "beob"
+    t.string "cog"
+    t.string "gmtr"
+    t.string "fmtr"
+    t.string "ovc"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "ekid_id"
+  end
+
   create_table "otkids", force: :cascade do |t|
     t.integer "kid_id"
     t.integer "payment_id"
@@ -432,6 +455,16 @@ ActiveRecord::Schema.define(version: 2019_08_10_015355) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "ptes", force: :cascade do |t|
+    t.string "gmtr"
+    t.string "mov"
+    t.string "endr"
+    t.string "ovc"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "ekid_id"
+  end
+
   create_table "ptns_mmbs", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -507,6 +540,16 @@ ActiveRecord::Schema.define(version: 2019_08_10_015355) do
     t.string "adap"
     t.string "reflt"
     t.string "otnt"
+    t.integer "ekid_id"
+  end
+
+  create_table "stes", force: :cascade do |t|
+    t.string "pre"
+    t.string "rec"
+    t.string "expr"
+    t.string "ovc"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "ekid_id"
   end
 

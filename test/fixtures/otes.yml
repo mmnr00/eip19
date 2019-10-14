@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sens: MyString
+  beob: MyString
+  cog: MyString
+  gmtr: MyString
+  fmtr: MyString
+  ovc: MyString
+
+two:
+  sens: MyString
+  beob: MyString
+  cog: MyString
+  gmtr: MyString
+  fmtr: MyString
+  ovc: MyString
