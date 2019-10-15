@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   #~~STE
   get '/new_ste', to: 'stes#new_ste'
   get '/edit_ste', to: 'stes#edit_ste'
+  post '/upd_ste', to: 'stes#upd_ste'
 
   #~~PROGE
   get '/progeindex', to: 'proges#index'

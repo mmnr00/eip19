@@ -1,2 +1,26 @@
-<%= @ste.id %>
-<%= @chkl.id %>
+<h4>SPEECH THERAPY ASSESSMENT FOR</h4> 
+<h3><%= @ste.ekid.name.upcase %></h3>
+<br>
+<div class='row'>
+  <div class='col-12'>
+    <%= form_for(:ste,:url => {:controller => "stes", :action => "upd_ste"}, :html => {multipart: true, class: "form-horizontal", role: "form"}) do |f| %>
+
+      <div class='row'>
+        <div class='col-4 bg-white'>
+          
+            <%= render 'chkls/formchkl', f: f%>
+        </div>
+        <div class='col-8'>
+          <div style="background-color:#ffb2b2"><h5 align="center">REPORT</h5></div>
+          
+          SINI BORANG STE
+        </div>
+      </div>
+
+      <br>
+
+      <%= f.submit :"UPDATE", class: 'btn btn-success btn-m btn-block'%>
+
+    <% end %>
+  </div>
+</div>

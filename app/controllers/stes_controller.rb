@@ -20,7 +20,9 @@ class StesController < ApplicationController
 	def edit_ste
 		@ste = Ste.find(params[:ass])
 		@chkl = Chkl.find(params[:chkl])
+	end
 
+	def upd_ste
 	end
 
 	private

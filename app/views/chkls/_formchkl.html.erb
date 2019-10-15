@@ -1,0 +1,185 @@
+<div style="background-color:#ccccff"><h5 align="center">CHECKLIST</h5></div>
+<div id="tabs" class="project-tab bg-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <nav>
+          <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link <%= "#{params[:tb1_a]}" %>" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="<%= "#{params[:tb1_ar]}" %>">
+              GROSS MOTOR
+            </a>
+            <a class="nav-item nav-link <%= "#{params[:tb2_a]}" %>" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="<%= "#{params[:tb2_ar]}" %>">
+              FINE MOTOR
+            </a>
+            <a class="nav-item nav-link <%= "#{params[:tb3_a]}" %>" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="<%= "#{params[:tb3_ar]}" %>">
+              ADL & BEHAVIOUR
+            </a>
+            <a class="nav-item nav-link <%= "#{params[:tb4_a]}" %>" id="nav-contact1-tab" data-toggle="tab" href="#nav-contact1" role="tab" aria-controls="nav-contact1" aria-selected="<%= "#{params[:tb4_ar]}" %>">
+              SPEECH AND LANGUAGE
+            </a>
+            <a class="nav-item nav-link <%= "#{params[:tb5_a]}" %>" id="nav-contact2-tab" data-toggle="tab" href="#nav-contact2" role="tab" aria-controls="nav-contact2" aria-selected="<%= "#{params[:tb5_ar]}" %>">
+              COGNITIVE
+            </a>
+            <a class="nav-item nav-link <%= "#{params[:tb6_a]}" %>" id="nav-contact3-tab" data-toggle="tab" href="#nav-contact3" role="tab" aria-controls="nav-contact3" aria-selected="<%= "#{params[:tb6_ar]}" %>">
+              AUDIOLOGIST
+            </a>
+            <a class="nav-item nav-link <%= "#{params[:tb7_a]}" %>" id="nav-contact4-tab" data-toggle="tab" href="#nav-contact4" role="tab" aria-controls="nav-contact4" aria-selected="<%= "#{params[:tb7_ar]}" %>">
+              LANGUAGE SKILLS
+            </a>
+          </div>
+        </nav>
+
+        <!-- START CONTENT -->
+        <div class="tab-content" id="nav-tabContent">
+
+          <!-- GROSS MOTOR -->
+          <div class="tab-pane fade <%= "#{params[:tb1_d]}" %>" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"><br>
+
+            <%= f.fields_for :gmtr do |h| %>
+              <% @chkl.gmtr.keys[0..8].each do |ent| %>
+                <div class="form-group"> <!-- name -->
+                  <div class="row">
+                    <div class="control-label col-sm-8">
+                      <strong><%= ent %></strong>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-8 col-12">
+                      <%= h.select :"#{ent}", options_for_select(["YES", 
+                                                                  "NO"], 
+                                                                  selected: @chkl.gmtr[ent]), 
+                            {include_blank: "PLEASE SELECT"} %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+            <%= f.fields_for :gmtr do |h| %>
+              <div class="form-group"> <!-- name -->
+                <div class="row">
+                  <div class="control-label col-sm-8">
+                    <strong>BALANCE EACH FOOT</strong>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-8 col-12">
+                    <%= h.select :"BALANCE EACH FOOT", options_for_select(["3 Sec", 
+                                                                "4 Sec",
+                                                                "More"], 
+                                                                selected: @chkl.gmtr["BALANCE EACH FOOT"]), 
+                          {include_blank: "PLEASE SELECT"}, {required: true} %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+            <%= f.fields_for :gmtr do |h| %>
+              <% @chkl.gmtr.keys[10..14].each do |ent| %>
+                <div class="form-group"> <!-- name -->
+                  <div class="row">
+                    <div class="control-label col-sm-8">
+                      <strong><%= ent %></strong>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-8 col-12">
+                      <%= h.select :"#{ent}", options_for_select(["YES", 
+                                                                  "NO"], 
+                                                                  selected: @chkl.gmtr[ent]), 
+                            {include_blank: "PLEASE SELECT"} %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+            <%= f.fields_for :gmtr do |h| %>
+              <div class="form-group"> <!-- name -->
+                <div class="row">
+                  <div class="control-label col-sm-8">
+                    <strong>RANGE OF MOTION</strong>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-8 col-12">
+                    <%= h.select :"RANGE OF MOTION", options_for_select(["Passive", 
+                                                                "Active Assisted",
+                                                                "Active"], 
+                                                                selected: @chkl.gmtr["RANGE OF MOTION"]), 
+                          {include_blank: "PLEASE SELECT"} %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+            <%= f.fields_for :gmtr do |h| %>
+              <div class="form-group"> <!-- name -->
+                <div class="row">
+                  <div class="control-label col-sm-8">
+                    <strong>MUSCLE STRENGTH</strong>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-8 col-12">
+                    <%= h.select :"MUSCLE STRENGTH", options_for_select(["Isometric", 
+                                                                "Isotonic",
+                                                                "Isokinetic"], 
+                                                                selected: @chkl.gmtr["MUSCLE STRENGTH"]), 
+                          {include_blank: "PLEASE SELECT"}%>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+            <%= f.fields_for :gmtr do |h| %>
+              <div class="form-group"> <!-- name -->
+                <div class="row">
+                  <div class="control-label col-sm-8">
+                    <strong>MUSCLE TONE</strong>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-8 col-12">
+                    <%= h.select :"MUSCLE TONE", options_for_select(["Decrease", 
+                                                                "Increase"], 
+                                                                selected: @chkl.gmtr["MUSCLE TONE"]), 
+                          {include_blank: "PLEASE SELECT"} %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+
+          </div>
+
+
+          <!-- FINE MOTOR -->
+          <div class="tab-pane fade <%= "#{params[:tb2_d]}" %>" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"><br>
+            FINE MOTOR
+          </div>
+          <!-- ADL & BEHAVIOUR -->
+          <div class="tab-pane fade <%= "#{params[:tb3_d]}" %>" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"><br>
+            ADL & BEHAVIOUR
+          </div>
+          <!-- SPEECH AND LANGUAGE -->
+          <div class="tab-pane fade <%= "#{params[:tb4_d]}" %>" id="nav-contact1" role="tabpanel" aria-labelledby="nav-contact1-tab">
+            SPEECH AND LANGUAGE
+          </div>
+          <!-- COGNITIVE -->
+          <div class="tab-pane fade <%= "#{params[:tb5_d]}" %>" id="nav-contact2" role="tabpanel" aria-labelledby="nav-contact2-tab">
+            COGNITIVE
+          </div>
+          <!-- AUDIOLOGIST -->
+          <div class="tab-pane fade <%= "#{params[:tb6_d]}" %>" id="nav-contact3" role="tabpanel" aria-labelledby="nav-contact3-tab">
+            AUDIOLOGIST
+          </div>
+          <!-- LANGUAGE SKILLS -->
+          <div class="tab-pane fade <%= "#{params[:tb7_d]}" %>" id="nav-contact4" role="tabpanel" aria-labelledby="nav-contact4-tab">
+            LANGUAGE SKILLS
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+    
