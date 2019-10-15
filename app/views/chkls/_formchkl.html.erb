@@ -1,4 +1,4 @@
-<div style="background-color:#ccccff"><h5 align="center">CHECKLIST</h5></div>
+<div style="background-color:#ccccff"><h4 align="center">CHECKLIST</h4></div>
 <div id="tabs" class="project-tab bg-white">
   <div class="container">
     <div class="row">
@@ -29,13 +29,15 @@
           </div>
         </nav>
 
+        <%= g.hidden_field :chkl_id, value: @chkl.id %>
+
         <!-- START CONTENT -->
         <div class="tab-content" id="nav-tabContent">
 
           <!-- GROSS MOTOR -->
           <div class="tab-pane fade <%= "#{params[:tb1_d]}" %>" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"><br>
 
-            <%= f.fields_for :gmtr do |h| %>
+            <%= g.fields_for :gmtr do |h| %>
               <% @chkl.gmtr.keys[0..8].each do |ent| %>
                 <div class="form-group"> <!-- name -->
                   <div class="row">
@@ -54,7 +56,7 @@
                 </div>
               <% end %>
             <% end %>
-            <%= f.fields_for :gmtr do |h| %>
+            <%= g.fields_for :gmtr do |h| %>
               <div class="form-group"> <!-- name -->
                 <div class="row">
                   <div class="control-label col-sm-8">
@@ -67,12 +69,12 @@
                                                                 "4 Sec",
                                                                 "More"], 
                                                                 selected: @chkl.gmtr["BALANCE EACH FOOT"]), 
-                          {include_blank: "PLEASE SELECT"}, {required: true} %>
+                          {include_blank: "PLEASE SELECT"} %>
                   </div>
                 </div>
               </div>
             <% end %>
-            <%= f.fields_for :gmtr do |h| %>
+            <%= g.fields_for :gmtr do |h| %>
               <% @chkl.gmtr.keys[10..14].each do |ent| %>
                 <div class="form-group"> <!-- name -->
                   <div class="row">
@@ -91,7 +93,7 @@
                 </div>
               <% end %>
             <% end %>
-            <%= f.fields_for :gmtr do |h| %>
+            <%= g.fields_for :gmtr do |h| %>
               <div class="form-group"> <!-- name -->
                 <div class="row">
                   <div class="control-label col-sm-8">
@@ -109,7 +111,7 @@
                 </div>
               </div>
             <% end %>
-            <%= f.fields_for :gmtr do |h| %>
+            <%= g.fields_for :gmtr do |h| %>
               <div class="form-group"> <!-- name -->
                 <div class="row">
                   <div class="control-label col-sm-8">
@@ -127,7 +129,7 @@
                 </div>
               </div>
             <% end %>
-            <%= f.fields_for :gmtr do |h| %>
+            <%= g.fields_for :gmtr do |h| %>
               <div class="form-group"> <!-- name -->
                 <div class="row">
                   <div class="control-label col-sm-8">
@@ -144,21 +146,398 @@
                 </div>
               </div>
             <% end %>
+            <%= g.fields_for :gmtr do |h| %>
+              <div class="form-group"> <!-- name -->
+                <div class="row">
+                  <div class="control-label col-sm-8">
+                    <strong>DEVELOPMENT AGE</strong>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-8 col-12">
+                    <%= h.number_field :"DEVELOPMENT AGE", value: @chkl.gmtr["DEVELOPMENT AGE"] %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
 
           </div>
-
 
           <!-- FINE MOTOR -->
           <div class="tab-pane fade <%= "#{params[:tb2_d]}" %>" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"><br>
-            FINE MOTOR
+
+            <%= g.fields_for :fmtr do |h| %>
+              <% @chkl.fmtr.keys[0..2].each do |ent| %>
+                <div class="form-group"> <!-- name -->
+                  <div class="row">
+                    <div class="control-label col-sm-8">
+                      <strong><%= ent %></strong>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-8 col-12">
+                      <%= h.select :"#{ent}", options_for_select(["YES", 
+                                                                  "NO"], 
+                                                                  selected: @chkl.fmtr[ent]), 
+                            {include_blank: "PLEASE SELECT"} %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+            <%= g.fields_for :fmtr do |h| %>
+              <div class="form-group"> <!-- name -->
+                <div class="row">
+                  <div class="control-label col-sm-8">
+                    <strong>STACK BLOCKS</strong>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-8 col-12">
+                    <%= h.select :"STACK BLOCKS", options_for_select(["2", 
+                                                                "4",
+                                                                "6",
+                                                                "More"], 
+                                                                selected: @chkl.fmtr["STACK BLOCKS"]), 
+                          {include_blank: "PLEASE SELECT"} %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+            <%= g.fields_for :fmtr do |h| %>
+              <% @chkl.fmtr.keys[4..5].each do |ent| %>
+                <div class="form-group"> <!-- name -->
+                  <div class="row">
+                    <div class="control-label col-sm-8">
+                      <strong><%= ent %></strong>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-8 col-12">
+                      <%= h.select :"#{ent}", options_for_select(["YES", 
+                                                                  "NO"], 
+                                                                  selected: @chkl.fmtr[ent]), 
+                            {include_blank: "PLEASE SELECT"} %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+            <%= g.fields_for :fmtr do |h| %>
+              <div class="form-group"> <!-- name -->
+                <div class="row">
+                  <div class="control-label col-sm-8">
+                    <strong>HAND DOMINANCE</strong>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-8 col-12">
+                    <%= h.select :"HAND DOMINANCE", options_for_select(["RIGHT",
+                                                                "LEFT"], 
+                                                                selected: @chkl.fmtr["HAND DOMINANCE"]), 
+                          {include_blank: "PLEASE SELECT"} %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+            <%= g.fields_for :fmtr do |h| %>
+              <div class="form-group"> <!-- name -->
+                <div class="row">
+                  <div class="control-label col-sm-8">
+                    <strong>PENCIL GRIP</strong>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-8 col-12">
+                    <%= h.select :"PENCIL GRIP", options_for_select(["YES",
+                                                                "NO"], 
+                                                                selected: @chkl.fmtr["PENCIL GRIP"]), 
+                          {include_blank: "PLEASE SELECT"} %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+            <%= g.fields_for :fmtr do |h| %>
+              <div class="form-group"> <!-- name -->
+                <div class="row">
+                  <div class="control-label col-sm-8">
+                    <strong>COPYING 'O' 'SQUARE' /' '\' '-'</strong>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-8 col-12">
+                    <%= h.select :"COPYING", options_for_select(["YES",
+                                                                "NO"], 
+                                                                selected: @chkl.fmtr["COPYING"]), 
+                          {include_blank: "PLEASE SELECT"} %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+            <%= g.fields_for :fmtr do |h| %>
+              <% @chkl.fmtr.keys[9..10].each do |ent| %>
+                <div class="form-group"> <!-- name -->
+                  <div class="row">
+                    <div class="control-label col-sm-8">
+                      <strong><%= ent %></strong>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-8 col-12">
+                      <%= h.select :"#{ent}", options_for_select(["YES", 
+                                                                  "NO"], 
+                                                                  selected: @chkl.fmtr[ent]), 
+                            {include_blank: "PLEASE SELECT"} %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+            <%= g.fields_for :fmtr do |h| %>
+              <% @chkl.fmtr.keys[11..12].each do |ent| %>
+                <div class="form-group"> <!-- name -->
+                  <div class="row">
+                    <div class="control-label col-sm-8">
+                      <strong><%= ent %></strong>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-8 col-12">
+                      <%= h.select :"#{ent}", options_for_select(["1",
+                                                                  "2",
+                                                                  "3", 
+                                                                  "MORE"], 
+                                                                  selected: @chkl.fmtr[ent]), 
+                            {include_blank: "PLEASE SELECT"} %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+            <%= g.fields_for :fmtr do |h| %>
+              <div class="form-group"> <!-- name -->
+                <div class="row">
+                  <div class="control-label col-sm-8">
+                    <strong>CUT PAPER INTO:</strong>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-8 col-12">
+                    <%= h.select :"CUT PAPER INTO:", options_for_select(["1",
+                                                                "2",
+                                                                "3 places"], 
+                                                                selected: @chkl.fmtr["CUT PAPER INTO:"]), 
+                          {include_blank: "PLEASE SELECT"} %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+            <%= g.fields_for :fmtr do |h| %>
+              <div class="form-group"> <!-- name -->
+                <div class="row">
+                  <div class="control-label col-sm-8">
+                    <strong>DEVELOPMENT AGE</strong>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-8 col-12">
+                    <%= h.number_field :"DEVELOPMENT AGE", value: @chkl.fmtr["DEVELOPMENT AGE"] %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+
           </div>
           <!-- ADL & BEHAVIOUR -->
           <div class="tab-pane fade <%= "#{params[:tb3_d]}" %>" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"><br>
-            ADL & BEHAVIOUR
+            
+            <%= g.fields_for :adbh do |h| %>
+              <div style="background-color:#cce5cc"><h5 align="center">ADL</h5></div>
+              <% @chkl.adbh.keys[0..4].each do |ent| %>
+                <div class="form-group"> <!-- name -->
+                  <div class="row">
+                    <div class="control-label col-sm-8">
+                      <strong><%= ent %></strong>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-8 col-12">
+                      <%= h.select :"#{ent}", options_for_select(["YES", 
+                                                                  "NO"], 
+                                                                  selected: @chkl.adbh[ent]), 
+                            {include_blank: "PLEASE SELECT"} %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+
+            <%= g.fields_for :adbh do |h| %>
+              <div style="background-color:#cce5cc"><h5 align="center">BEHAVIOUR</h5></div>
+              <% @chkl.adbh.keys[5..13].each do |ent| %>
+                <div class="form-group"> <!-- name -->
+                  <div class="row">
+                    <div class="control-label col-sm-8">
+                      <strong><%= ent %></strong>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-8 col-12">
+                      <%= h.select :"#{ent}", options_for_select(["YES", 
+                                                                  "NO"], 
+                                                                  selected: @chkl.adbh[ent]), 
+                            {include_blank: "PLEASE SELECT"} %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+            <%= g.fields_for :adbh do |h| %>
+              <div class="form-group"> <!-- name -->
+                <div class="row">
+                  <div class="control-label col-sm-8">
+                    <strong>DEVELOPMENT AGE</strong>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-8 col-12">
+                    <%= h.number_field :"DEVELOPMENT AGE", value: @chkl.adbh["DEVELOPMENT AGE"] %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+
           </div>
           <!-- SPEECH AND LANGUAGE -->
           <div class="tab-pane fade <%= "#{params[:tb4_d]}" %>" id="nav-contact1" role="tabpanel" aria-labelledby="nav-contact1-tab">
-            SPEECH AND LANGUAGE
+            
+            <%= g.fields_for :splg do |h| %>
+              <% @chkl.splg.keys[0..1].each do |ent| %>
+                <div class="form-group"> <!-- name -->
+                  <div class="row">
+                    <div class="control-label col-sm-8">
+                      <strong><%= ent %></strong>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-8 col-12">
+                      <%= h.text_field :"#{ent}", value: @chkl.splg[ent]  %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+            <%= g.fields_for :splg do |h| %>
+              <div style="background-color:#cce5cc"><h5 align="center">PREVERBAL SKILLS</h5></div>
+              <% @chkl.splg.keys[2..7].each do |ent| %>
+                <div class="form-group"> <!-- name -->
+                  <div class="row">
+                    <div class="control-label col-sm-8">
+                      <strong><%= ent %></strong>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-8 col-12">
+                      <%= h.select :"#{ent}", options_for_select(["YES", 
+                                                                  "NO"], 
+                                                                  selected: @chkl.splg[ent]), 
+                            {include_blank: "PLEASE SELECT"} %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+            <%= g.fields_for :splg do |h| %>
+              <div style="background-color:#cce5cc"><h5 align="center">RECEPTIVE SKILLS</h5></div>
+              <% @chkl.splg.keys[8..9].each do |ent| %>
+                <div class="form-group"> <!-- name -->
+                  <div class="row">
+                    <div class="control-label col-sm-8">
+                      <strong><%= ent %></strong>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-8 col-12">
+                      <%= h.select :"#{ent}", options_for_select(["YES", 
+                                                                  "NO"], 
+                                                                  selected: @chkl.splg[ent]), 
+                            {include_blank: "PLEASE SELECT"} %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+            <%= g.fields_for :splg do |h| %>
+              <h6><u>-RECEPTIVE SKILLS-</u></h6>
+              <% @chkl.splg.keys[10..11].each do |ent| %>
+                <div class="form-group"> <!-- name -->
+                  <div class="row">
+                    <div class="control-label col-sm-8">
+                      <strong><%= ent %></strong>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-8 col-12">
+                      <%= h.text_field :"#{ent}", value: @chkl.splg[ent] %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+            <%= g.fields_for :splg do |h| %>
+              <% @chkl.splg.keys[11..15].each do |ent| %>
+                <div class="form-group"> <!-- name -->
+                  <div class="row">
+                    <div class="control-label col-sm-8">
+                      <strong><%= ent %></strong>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-8 col-12">
+                      <%= h.select :"#{ent}", options_for_select(["YES", 
+                                                                  "NO"], 
+                                                                  selected: @chkl.splg[ent]), 
+                            {include_blank: "PLEASE SELECT"} %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+            <%= g.fields_for :splg do |h| %>
+              <div style="background-color:#cce5cc"><h5 align="center">EXPRESSIVE SKILLS</h5></div>
+              <% @chkl.splg.keys[16..20].each do |ent| %>
+                <div class="form-group"> <!-- name -->
+                  <div class="row">
+                    <div class="control-label col-sm-8">
+                      <strong><%= ent %></strong>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-8 col-12">
+                      <%= h.select :"#{ent}", options_for_select(["YES", 
+                                                                  "NO"], 
+                                                                  selected: @chkl.splg[ent]), 
+                            {include_blank: "PLEASE SELECT"} %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+            <%= g.fields_for :splg do |h| %>
+              <div class="form-group"> <!-- name -->
+                <div class="row">
+                  <div class="control-label col-sm-8">
+                    <strong>DEVELOPMENT AGE</strong>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-8 col-12">
+                    <%= h.number_field :"DEVELOPMENT AGE", value: @chkl.splg["DEVELOPMENT AGE"] %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+
           </div>
           <!-- COGNITIVE -->
           <div class="tab-pane fade <%= "#{params[:tb5_d]}" %>" id="nav-contact2" role="tabpanel" aria-labelledby="nav-contact2-tab">

@@ -7,11 +7,14 @@
 
       <div class='row'>
         <div class='col-4 bg-white'>
-          
-            <%= render 'chkls/formchkl', f: f%>
+            
+            <%= f.fields_for :chkl do |g| %>
+              <%= render 'chkls/formchkl', g: g%>
+            <% end %>
+
         </div>
         <div class='col-8'>
-          <div style="background-color:#ffb2b2"><h5 align="center">REPORT</h5></div>
+          <div style="background-color:#ffb2b2"><h4 align="center">REPORT</h4></div>
           
           SINI BORANG STE
         </div>

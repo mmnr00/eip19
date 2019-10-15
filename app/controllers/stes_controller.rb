@@ -23,9 +23,30 @@ class StesController < ApplicationController
 	end
 
 	def upd_ste
+		par = params[:ste]
+		parc = par[:chkl]
+		@chkl = form_chkl(par[:chkl])
 	end
 
 	private
+
+	def form_chkl(par)
+		@chkl = Chkl.find(par[:chkl_id])
+		par[:gmtr].each do |k,v|
+			@chkl.gmtr[k] = v
+		end
+		par[:fmtr].each do |k,v|
+			@chkl.fmtr[k] = v
+		end
+		par[:adbh].each do |k,v|
+			@chkl.adbh[k] = v
+		end
+		par[:splg].each do |k,v|
+			@chkl.splg[k] = v
+		end
+		@chkl.save
+		return @chkl
+	end
 
 	def crt_chkl(id)
 		@chkl = Chkl.create(
@@ -85,7 +106,7 @@ class StesController < ApplicationController
 						"TURN TAKING"=>"",
 						"SHARING"=>"",
 						"IMITATION (PHYSICAL/VERBAL)"=>"",
-						"MATCHING SKILLS(0-0,0-P,P-P"=>"",
+						"MATCHING SKILLS(0-0,0-P,P-P)"=>"",
 						"SITUATIONAL UNDERSTANDING"=>"",
 						"OBJECT IDENTIFICATON"=>"",
 						"NOUN"=>"",
