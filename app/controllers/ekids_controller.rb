@@ -2,6 +2,16 @@ class EkidsController < ApplicationController
 	before_action :authenticate_admin!, only: [:index]
 	before_action :set_all
 
+	def ekass
+		tp = params[:tp]
+		@ekid = Ekid.find(params[:id])
+		if tp == "st"
+			redirect_to edit_ste_path(ass: @ekid.ste.id, chkl: @ekid.chkl.id)
+		elsif tp == "ot"
+			redirect_to root_path(ass: 5, chkl: @ekid.chkl.id)
+		end
+	end
+
 	def ekidsms
 		@ekids = Ekid.where(id: params[:ekidid])
 		@ekids.each do |ek|

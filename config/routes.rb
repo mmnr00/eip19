@@ -32,6 +32,10 @@ Rails.application.routes.draw do
   #~~PAGES
   get '/eipblank', to: 'pages#eipblank'
 
+  #~~STE
+  get '/new_ste', to: 'stes#new_ste'
+  get '/edit_ste', to: 'stes#edit_ste'
+
   #~~PROGE
   get '/progeindex', to: 'proges#index'
   get '/schperse', to: 'proges#schperse'
@@ -69,6 +73,7 @@ Rails.application.routes.draw do
   get '/ekidlistxls', to: 'ekids#ekidlistxls'
   get '/ekidchg', to: 'ekids#ekidchg'
   get '/ekidsms', to: 'ekids#ekidsms'
+  get '/ekass', to: 'ekids#ekass'
   
 
   #~~PKID
