@@ -1,31 +1,14 @@
-class StesController < ApplicationController
+class OtesController < ApplicationController
 	before_action :set_all
 
-	def new_ste
-		@ek = Ekid.find(params[:id])
-		if @ek.chkl.present?
-			@chkl = @ek.chkl
-		else
-			@chkl = crt_chkl(params[:id])#Chkl.create(ekid_id: params[:id])
-		end
-
-		if params[:tp] == "st"
-			@ste = Ste.create(ekid_id: params[:id], stat: false)
-			redirect_to edit_ste_path(ass: @ste.id, chkl: @chkl.id)
-		elsif params[:tp] == "ot"
-			@ote = Ote.create(ekid_id: params[:id], stat: false)
-			redirect_to edit_ote_path(ass: @ote.id, chkl: @chkl.id)
-		end
-	end
-
-	def edit_ste
-		@ste = Ste.find(params[:ass])
+	def edit_ote
+		@ote = Ote.find(params[:ass])
 		@chkl = Chkl.find(params[:chkl])
 	end
 
-	def upd_ste
-		par = params[:ste]
-		@ste = form_ste(par)
+	def upd_ote
+		par = params[:ote]
+		@ote = form_ote(par)
 		@chkl = form_chkl(par[:chkl])
 		flash[:success] = "SUCCESSFULLY UPDATED FOR #{@chkl.ekid.name}"
 		redirect_to teacher_index_path
@@ -33,15 +16,17 @@ class StesController < ApplicationController
 
 	private
 
-	def form_ste(par)
-		@ste = Ste.find(par[:ste_id])
-		@ste.stat = true
-		@ste.pre = par[:pre]
-		@ste.rec = par[:rec]
-		@ste.expr = par[:expr]
-		@ste.ovc = par[:ovc]
-		@ste.save
-		return @ste
+	def form_ote(par)
+		@ote = Ote.find(par[:ote_id])
+		@ote.stat = true
+		@ote.sens = par[:sens]
+		@ote.beob = par[:beob]
+		@ote.cog = par[:cog]
+		@ote.gmtr= par[:gmtr]
+		@ote.fmtr = par[:fmtr]
+		@ote.ovc = par[:ovc]
+		@ote.save
+		return @ote
 	end
 
 	def form_chkl(par)

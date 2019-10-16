@@ -1,0 +1,90 @@
+<div class='col-lg-8'>
+<div style="background-color:#ffb2b2"><h4 align="center">OCCUPATIONAL THERAPIST REPORT</h4></div>
+
+<%= f.hidden_field :ote_id, value: @ote.id %>
+
+<div class="form-group"> 
+  <div class="row">
+    <div class="control-label col-sm-12">
+      <strong>SENSORY</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-12">
+      <%= f.text_area :sens, class: "form-control", placeholder: "", autofocus: true, required: true, value: @ote.sens %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group"> 
+  <div class="row">
+    <div class="control-label col-sm-12">
+      <strong>BEHAVIOURAL OBSERVATION</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-12">
+      <%= f.text_area :beob, class: "form-control", placeholder: "", autofocus: true, required: true, value: @ote.beob %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group"> 
+  <div class="row">
+    <div class="control-label col-sm-12">
+      <strong>COGNITIVE</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-12">
+      <%= f.text_area :cog, class: "form-control", placeholder: "", autofocus: true, required: true, value: @ote.cog %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group"> 
+  <div class="row">
+    <div class="control-label col-sm-12">
+      <strong>GROSS MOTOR SKILLS</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-12">
+      <%= f.text_area :gmtr, class: "form-control", placeholder: "", autofocus: true, required: true, value: @ote.gmtr %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group"> 
+  <div class="row">
+    <div class="control-label col-sm-12">
+      <strong>FINE MOTOR SKILLS</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-12">
+      <%= f.text_area :fmtr, class: "form-control", placeholder: "", autofocus: true, required: true, value: @ote.fmtr %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group"> 
+  <div class="row">
+    <div class="control-label col-sm-12">
+      <strong>OVERALL COMMENTS</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-12">
+      <%= f.text_area :ovc, class: "form-control", placeholder: "", autofocus: true, required: true, value: @ote.ovc %>
+    </div>
+  </div>
+</div>
+
+<!-- FROM FRONT -->
+
+</div>
+</div>
+
+<br>
+

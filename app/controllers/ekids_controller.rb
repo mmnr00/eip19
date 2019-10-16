@@ -8,7 +8,7 @@ class EkidsController < ApplicationController
 		if tp == "st"
 			redirect_to edit_ste_path(ass: @ekid.ste.id, chkl: @ekid.chkl.id)
 		elsif tp == "ot"
-			redirect_to root_path(ass: 5, chkl: @ekid.chkl.id)
+			redirect_to edit_ote_path(ass: @ekid.ote.id, chkl: @ekid.chkl.id)
 		end
 	end
 
