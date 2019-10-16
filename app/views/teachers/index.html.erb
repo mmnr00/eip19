@@ -6,6 +6,8 @@
     actn = "OCCUPATIONAL THERAPIST ASSESSMENT"
   elsif tp == "pt"
     actn = "PHYSIO THERAPIST ASSESSMENT"
+  elsif tp == "at"
+    actn = "AUDIOLOGIST ASSESSMENT"
   else
     actn = "MUS"
   end
@@ -38,6 +40,8 @@
             gtf = sc.ote.present?
           elsif tp == "pt"
             gtf = sc.pte.present?
+          elsif tp == "at"
+            gtf = sc.ate.present?
           else
             actn = "MUS"
           end

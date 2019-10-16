@@ -11,6 +11,8 @@ class EkidsController < ApplicationController
 			redirect_to edit_ote_path(ass: @ekid.ote.id, chkl: @ekid.chkl.id)
 		elsif tp == "pt"
 			redirect_to edit_pte_path(ass: @ekid.pte.id, chkl: @ekid.chkl.id)
+		elsif tp == "at"
+			redirect_to edit_ate_path(ass: @ekid.ate.id, chkl: @ekid.chkl.id)
 		end
 	end
 

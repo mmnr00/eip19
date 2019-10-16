@@ -1,0 +1,78 @@
+<div class='col-lg-8'>
+<div style="background-color:#ffb2b2"><h4 align="center">AUDIOLOGIST REPORT</h4></div>
+
+<%= f.hidden_field :ate_id, value: @ate.id %>
+
+<div class="form-group"> 
+  <div class="row">
+    <div class="control-label col-sm-12">
+      <strong>HEARING</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-12">
+      <%= f.text_area :hr, class: "form-control", placeholder: "", autofocus: true, required: true, value: @ate.hr %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group"> 
+  <div class="row">
+    <div class="control-label col-sm-12">
+      <strong>TINNITUS</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-12">
+      <%= f.text_area :tin, class: "form-control", placeholder: "", autofocus: true, required: true, value: @ate.tin %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group"> 
+  <div class="row">
+    <div class="control-label col-sm-12">
+      <strong>EAR PAIN/DISCHARGE</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-12">
+      <%= f.text_area :ear, class: "form-control", placeholder: "", autofocus: true, required: true, value: @ate.ear %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group"> 
+  <div class="row">
+    <div class="control-label col-sm-12">
+      <strong>RESPOND TO SOUND</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-12">
+      <%= f.text_area :resp, class: "form-control", placeholder: "", autofocus: true, required: true, value: @ate.resp %>
+    </div>
+  </div>
+</div>
+
+
+<div class="form-group"> 
+  <div class="row">
+    <div class="control-label col-sm-12">
+      <strong>OVERALL COMMENTS</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-12">
+      <%= f.text_area :ovc, class: "form-control", placeholder: "", autofocus: true, required: true, value: @ate.ovc %>
+    </div>
+  </div>
+</div>
+
+<!-- FROM FRONT -->
+
+</div>
+</div>
+
+<br>
+

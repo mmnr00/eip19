@@ -1,0 +1,16 @@
+<h4>AUDIOLOGIST ASSESSMENT FOR</h4> 
+<h3><%= @ate.ekid.name.upcase %></h3>
+<br>
+<div class='col-12'>
+  <%= form_for(:ate,:url => {:controller => "ates", :action => "upd_ate"}, :html => {multipart: true, class: "form-horizontal", role: "form"}) do |f| %>
+
+    <%= f.fields_for :chkl do |g| %>
+      <%= render 'chkls/formchkl', g: g%>
+    <% end %>
+
+    <%= render 'ates/form_ate', f: f%>
+    
+    <%= f.submit :"UPDATE", class: 'btn btn-success btn-m btn-block'%>
+
+  <% end %>
+</div>
