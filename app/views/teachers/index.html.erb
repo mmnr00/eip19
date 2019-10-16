@@ -1,9 +1,11 @@
 <%
   tp=@teacher.tp
   if tp == "st"
-    actn = "SPEECH THERAPY ASSESSMENT"
+    actn = "SPEECH THERAPIST ASSESSMENT"
   elsif tp == "ot"
-    actn = "OCCUPATIONAL THERAPY ASSESSMENT"
+    actn = "OCCUPATIONAL THERAPIST ASSESSMENT"
+  elsif tp == "pt"
+    actn = "PHYSIO THERAPIST ASSESSMENT"
   else
     actn = "MUS"
   end
@@ -34,6 +36,8 @@
             gtf = sc.ste.present?
           elsif tp == "ot"
             gtf = sc.ote.present?
+          elsif tp == "pt"
+            gtf = sc.pte.present?
           else
             actn = "MUS"
           end

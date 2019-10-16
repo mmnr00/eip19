@@ -41,6 +41,10 @@ Rails.application.routes.draw do
   get '/edit_ote', to: 'otes#edit_ote'
   post '/upd_ote', to: 'otes#upd_ote'
 
+  #~~PTE
+  get '/edit_pte', to: 'ptes#edit_pte'
+  post '/upd_pte', to: 'ptes#upd_pte'
+
   #~~PROGE
   get '/progeindex', to: 'proges#index'
   get '/schperse', to: 'proges#schperse'

@@ -1,0 +1,16 @@
+<h4>PHYSIO THERAPIST ASSESSMENT FOR</h4> 
+<h3><%= @pte.ekid.name.upcase %></h3>
+<br>
+<div class='col-12'>
+  <%= form_for(:pte,:url => {:controller => "ptes", :action => "upd_pte"}, :html => {multipart: true, class: "form-horizontal", role: "form"}) do |f| %>
+
+    <%= f.fields_for :chkl do |g| %>
+      <%= render 'chkls/formchkl', g: g%>
+    <% end %>
+
+    <%= render 'ptes/form_pte', f: f%>
+    
+    <%= f.submit :"UPDATE", class: 'btn btn-success btn-m btn-block'%>
+
+  <% end %>
+</div>
