@@ -24,10 +24,22 @@ class StesController < ApplicationController
 
 	def upd_ste
 		par = params[:ste]
+		@ste = form_ste(par)
 		@chkl = form_chkl(par[:chkl])
 	end
 
 	private
+
+	def form_ste(par)
+		@ste = Ste.find(par[:ste_id])
+		@ste.stat = true
+		@ste.pre = par[:pre]
+		@ste.rec = par[:rec]
+		@ste.expr = par[:expr]
+		@ste.ovc = par[:ovc]
+		@ste.save
+		return @ste
+	end
 
 	def form_chkl(par)
 		@chkl = Chkl.find(par[:chkl_id])

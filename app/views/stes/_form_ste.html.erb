@@ -1,0 +1,64 @@
+<div class='col-lg-8'>
+<div style="background-color:#ffb2b2"><h4 align="center">SPEECH THERAPY REPORT</h4></div>
+
+<%= f.hidden_field :ste_id, value: @ste.id %>
+
+<div class="form-group"> 
+  <div class="row">
+    <div class="control-label col-sm-12">
+      <strong>PREVERBAL SKILLS</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-12">
+      <%= f.text_area :pre, class: "form-control", placeholder: "", autofocus: true, required: true, value: @ste.pre %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group"> 
+  <div class="row">
+    <div class="control-label col-sm-12">
+      <strong>RECEPTIVE LANGUAGE SKILLS</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-12">
+      <%= f.text_area :rec, class: "form-control", placeholder: "", autofocus: true, required: true, value: @ste.rec %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group"> 
+  <div class="row">
+    <div class="control-label col-sm-12">
+      <strong>EXPRESSIVE LANGUAGE SKILLS</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-12">
+      <%= f.text_area :expr, class: "form-control", placeholder: "", autofocus: true, required: true, value: @ste.expr %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group"> 
+  <div class="row">
+    <div class="control-label col-sm-12">
+      <strong>OVERALL COMMENTS</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-12">
+      <%= f.text_area :ovc, class: "form-control", placeholder: "", autofocus: true, required: true, value: @ste.ovc %>
+    </div>
+  </div>
+</div>
+
+<!-- FROM FRONT -->
+
+</div>
+</div>
+
+<br>
+
