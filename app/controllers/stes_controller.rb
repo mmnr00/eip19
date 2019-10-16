@@ -50,12 +50,12 @@ class StesController < ApplicationController
 		par[:audl].each do |k,v|
 			@chkl.audl[k] = v
 		end
-		# par[:prvb].each do |k,v|
-		# 	@chkl.prvb[k] = v
-		# end
-		# par[:rcel].each do |k,v|
-		# 	@chkl.rcel[k] = v
-		# end
+		par[:prvb].each do |k,v|
+			@chkl.prvb[k] = v
+		end
+		par[:rcel].each do |k,v|
+			@chkl.rcel[k] = v
+		end
 		@chkl.save
 		return @chkl
 	end
@@ -163,16 +163,11 @@ class StesController < ApplicationController
 						prvb: {"EYE CONTACT"=>"",
 						"ATTENTION SPAN"=>"",
 						"REQUESTING SKILL"=>"",
+						"TURN TAKING"=>"",
 						"O-O"=>"",
 						"O-P"=>"",
-						"P-P"=>"",
-						"TURN TAKING"=>""},
-						rcel: {""=>"",
-						""=>"",
-						""=>"",
-						""=>"",
-						""=>"",
-						""=>"",
+						"P-P"=>""},
+						rcel: {"NOUN"=>"",
 						"EAT"=>"",
 						"DRINK"=>"",
 						"WASH HAND"=>"",
@@ -198,10 +193,7 @@ class StesController < ApplicationController
 						"1 STEP 2 ICWS"=>"",
 						"1 STEP 3 ICWS"=>"",
 						"1 STEP 4 ICWS"=>"",
-						""=>"",
-						""=>"",
-						""=>"",
-						""=>""},
+						"fcmd"=>""},
 						rslc: "",
 						ekid_id: params[:id])
 		return @chkl

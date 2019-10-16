@@ -723,7 +723,174 @@
           </div>
           <!-- LANGUAGE SKILLS -->
           <div class="tab-pane fade <%= "#{params[:tb7_d]}" %>" id="nav-contact4" role="tabpanel" aria-labelledby="nav-contact4-tab">
-            LANGUAGE SKILLS
+            
+            <%= g.fields_for :prvb do |h| %>
+              <div style="background-color:#cce5cc"><h5 align="center">PREVERBAL SKILLS</h5></div>
+              <% @chkl.prvb.keys[0..3].each do |ent| %>
+                <div class="form-group"> <!-- name -->
+                  <div class="row">
+                    <div class="control-label col-sm-8">
+                      <strong><%= ent %></strong>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-8 col-12">
+                      <%= h.text_field :"#{ent}", value: @chkl.prvb[ent] %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+            <%= g.fields_for :prvb do |h| %>
+              <h6><u>-MATCHING-</u></h6>
+              <% @chkl.prvb.keys[4..6].each do |ent| %>
+                <div class="form-group"> <!-- name -->
+                  <div class="row">
+                    <div class="control-label col-sm-8">
+                      <strong><%= ent %></strong>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-8 col-12">
+                      <%= h.text_field :"#{ent}", value: @chkl.prvb[ent] %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+            <%= g.fields_for :rcel do |h| %>
+              <div style="background-color:#cce5cc"><h5 align="center">RECEPTIVE AND EXPRESSIVE LANGUAGE SKILLS</h5></div>
+              <h6><u>-IDENTIFY/PRODUCE NOUN-</u></h6>
+                <div class="form-group"> <!-- name -->
+                  <div class="row">
+                    <div class="control-label col-12">
+                      <strong>IDENTIFY->PRODUCE</strong>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-8 col-12">
+                      <%= h.text_area :"NOUN", value: @chkl.rcel["NOUN"] %>
+                    </div>
+                  </div>
+                </div>
+            <% end %>
+            <%= g.fields_for :rcel do |h| %>
+              <h6><u>-IDENTIFY/PRODUCE VERB-</u></h6>
+              <% @chkl.rcel.keys[1..5].each do |ent| %>
+                <div class="form-group"> <!-- name -->
+                  <div class="row">
+                    <div class="control-label col-sm-8">
+                      <strong><%= ent %></strong>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-8 col-12">
+                      <%= h.text_field :"#{ent}", value: @chkl.rcel[ent] %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+            <%= g.fields_for :rcel do |h| %>
+              <h6><u>-IDENTIFY/PRODUCE BODY PARTS-</u></h6>
+              <% @chkl.rcel.keys[6..12].each do |ent| %>
+                <div class="form-group"> <!-- name -->
+                  <div class="row">
+                    <div class="control-label col-sm-8">
+                      <strong><%= ent %></strong>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-8 col-12">
+                      <%= h.text_field :"#{ent}", value: @chkl.rcel[ent] %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+            <%= g.fields_for :rcel do |h| %>
+              <h6><u>-IDENTIFY/PRODUCE COLOUR-</u></h6>
+              <% @chkl.rcel.keys[13..17].each do |ent| %>
+                <div class="form-group"> <!-- name -->
+                  <div class="row">
+                    <div class="control-label col-sm-8">
+                      <strong><%= ent %></strong>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-8 col-12">
+                      <%= h.text_field :"#{ent}", value: @chkl.rcel[ent] %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+            <%= g.fields_for :rcel do |h| %>
+              <h6><u>-IDENTIFY/PRODUCE SIZE CONCEPT-</u></h6>
+              <% @chkl.rcel.keys[18..19].each do |ent| %>
+                <div class="form-group"> <!-- name -->
+                  <div class="row">
+                    <div class="control-label col-sm-8">
+                      <strong><%= ent %></strong>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-8 col-12">
+                      <%= h.text_field :"#{ent}", value: @chkl.rcel[ent] %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+            <%= g.fields_for :rcel do |h| %>
+              <h6><u>-IDENTIFY/PRODUCE PREPOSITION CONCEPT-</u></h6>
+              <% @chkl.rcel.keys[20..21].each do |ent| %>
+                <div class="form-group"> <!-- name -->
+                  <div class="row">
+                    <div class="control-label col-sm-8">
+                      <strong><%= ent %></strong>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-8 col-12">
+                      <%= h.text_field :"#{ent}", value: @chkl.rcel[ent] %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+            <%= g.fields_for :rcel do |h| %>
+              <h6><u>-FOLLOW COMMAND-</u></h6>
+              <% @chkl.rcel.keys[22..25].each do |ent| %>
+                <div class="form-group"> <!-- name -->
+                  <div class="row">
+                    <div class="control-label col-sm-8">
+                      <strong><%= ent %></strong>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-8 col-12">
+                      <%= h.text_field :"#{ent}", value: @chkl.rcel[ent] %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+            <%= g.fields_for :rcel do |h| %>
+              <div class="form-group"> <!-- name -->
+                <div class="row">
+                  <div class="control-label col-sm-8">
+                    <strong></strong>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-8 col-12">
+                    <%= h.text_area :"fcmd", value: @chkl.rcel["fcmd"] %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+
           </div>
 
         </div>
