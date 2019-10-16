@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_16_125251) do
+ActiveRecord::Schema.define(version: 2019_10_16_212216) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -582,6 +582,7 @@ ActiveRecord::Schema.define(version: 2019_10_16_125251) do
     t.string "scp"
     t.string "cmt"
     t.string "ovc"
+    t.boolean "stat"
   end
 
   create_table "stes", force: :cascade do |t|

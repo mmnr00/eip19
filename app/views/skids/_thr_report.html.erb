@@ -1,0 +1,66 @@
+<div id="tabs" class="project-tab bg-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <nav>
+          <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link <%= "#{params[:tb1_a]}" %>" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="<%= "#{params[:tb1_ar]}" %>">
+              OT
+            </a>
+            <a class="nav-item nav-link <%= "#{params[:tb2_a]}" %>" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="<%= "#{params[:tb2_ar]}" %>">
+              PT
+            </a>
+            <a class="nav-item nav-link <%= "#{params[:tb3_a]}" %>" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="<%= "#{params[:tb3_ar]}" %>">
+              AUDIO
+            </a>
+            <a class="nav-item nav-link <%= "#{params[:tb4_a]}" %>" id="nav-contact1-tab" data-toggle="tab" href="#nav-contact1" role="tab" aria-controls="nav-contact1" aria-selected="<%= "#{params[:tb4_ar]}" %>">
+              ST
+            </a>
+            <a class="nav-item nav-link <%= "#{params[:tb5_a]}" %>" id="nav-contact2-tab" data-toggle="tab" href="#nav-contact2" role="tab" aria-controls="nav-contact2" aria-selected="<%= "#{params[:tb5_ar]}" %>">
+              CHECKLIST
+            </a>
+          </div>
+        </nav>
+
+        <!-- START CONTENT -->
+        <div class="tab-content" id="nav-tabContent">
+
+          <!-- OT -->
+          <div class="tab-pane fade <%= "#{params[:tb1_d]}" %>" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"><br>
+            <% if @ekid.ote.present? %>
+              <%= render 'skids/oterep' %>
+            <% else %>
+              NO RECORD
+            <% end %>
+          </div>
+
+          <!-- PT -->
+          <div class="tab-pane fade <%= "#{params[:tb2_d]}" %>" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"><br>
+            <%= @pte %>
+          </div>
+
+          <!-- AUDIO -->
+          <div class="tab-pane fade <%= "#{params[:tb3_d]}" %>" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"><br>
+            <%= @ate %>
+          </div>
+
+          <!-- ST -->
+          <div class="tab-pane fade <%= "#{params[:tb4_d]}" %>" id="nav-contact1" role="tabpanel" aria-labelledby="nav-contact1-tab"><br>
+            <%= @ste %>
+          </div>
+
+          <!-- CHK -->
+          <div class="tab-pane fade <%= "#{params[:tb5_d]}" %>" id="nav-contact2" role="tabpanel" aria-labelledby="nav-contact2-tab"><br>
+            <% if @ekid.chkl.present? %>
+              <%= render 'skids/chklrep' %>
+            <% else %>
+              NO RECORD
+            <% end %>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,17 @@
-<h4>NEW SCREENING DATA FOR <b><%= @ekid.name.upcase %></b></h4><br>
+<h4>NEW SCREENING DATA FOR</h4>
+<div style="background-color:#cce5cc"><h3 align="center"><%= @ekid.name.upcase %></h3></div>
 
-<%= render 'skids/form' %>
+<div class="row">
+  <div class="col-6 bg-white">
+    <div style="background-color:#b2b2ff"><h5 align="center">THERAPISTS REPORT</h5></div>
+    <%= render 'skids/thr_report' %>
+  </div>
+  <div class="col-6">
+    <div style="background-color:#ffcccc"><h5 align="center">SCREENING REPORT</h5></div>
+    <%= render 'skids/form' %>
+  </div>
+</div>
+
+
+
 

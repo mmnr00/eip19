@@ -2,8 +2,19 @@ class SkidsController < ApplicationController
 	before_action :set_all
 
 	def new
-		@skid = Skid.new
+		#@skid = Skid.new
 		@ekid = Ekid.find(params[:ekid])
+		if @ekid.skid.present?
+			@skid=@ekid.skid
+		else
+			@skid = Skid.create(ekid_id: @ekid.id, stat: false)
+		end
+		
+		@ate = @ekid.ate
+		@pte = @ekid.pte
+		@ste = @ekid.ste
+		@ote = @ekid.ote
+		@chkl = @ekid.chkl
 	end
 
 	def create
@@ -20,6 +31,11 @@ class SkidsController < ApplicationController
 	def edit
 		@skid = Skid.find(params[:id])
 		@ekid = Ekid.find(params[:ekid])
+		@ate = @ekid.ate
+		@pte = @ekid.pte
+		@ste = @ekid.ste
+		@ote = @ekid.ote
+		@chkl = @ekid.chkl
 	end
 
 	def update
