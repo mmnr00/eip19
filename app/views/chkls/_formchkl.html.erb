@@ -541,11 +541,185 @@
           </div>
           <!-- COGNITIVE -->
           <div class="tab-pane fade <%= "#{params[:tb5_d]}" %>" id="nav-contact2" role="tabpanel" aria-labelledby="nav-contact2-tab">
-            COGNITIVE
+            
+            <%= g.fields_for :cogn do |h| %>
+              <% @chkl.cogn.keys[0..12].each do |ent| %>
+                <div class="form-group"> <!-- name -->
+                  <div class="row">
+                    <div class="control-label col-sm-8">
+                      <strong><%= ent %></strong>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-8 col-12">
+                      <%= h.text_field :"#{ent}", value: @chkl.cogn[ent]%>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+            <%= g.fields_for :cogn do |h| %>
+              <div style="background-color:#cce5cc"><h5 align="center">SIZE CONCEPT</h5></div>
+              <% @chkl.cogn.keys[13..15].each do |ent| %>
+                <div class="form-group"> <!-- name -->
+                  <div class="row">
+                    <div class="control-label col-sm-8">
+                      <strong><%= ent %></strong>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-8 col-12">
+                      <%= h.select :"#{ent}", options_for_select(["YES", 
+                                                                  "NO"], 
+                                                                  selected: @chkl.cogn[ent]), 
+                            {include_blank: "PLEASE SELECT"} %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+            <%= g.fields_for :cogn do |h| %>
+              <div class="form-group"> <!-- name -->
+                <div class="row">
+                  <div class="control-label col-sm-8">
+                    <strong>DEVELOPMENT AGE</strong>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-8 col-12">
+                    <%= h.number_field :"DEVELOPMENT AGE", value: @chkl.cogn["DEVELOPMENT AGE"] %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+
           </div>
           <!-- AUDIOLOGIST -->
           <div class="tab-pane fade <%= "#{params[:tb6_d]}" %>" id="nav-contact3" role="tabpanel" aria-labelledby="nav-contact3-tab">
-            AUDIOLOGIST
+
+            <%= g.fields_for :audl do |h| %>
+              <div style="background-color:#cce5cc"><h5 align="center">HEARING LOSS</h5></div>
+              <div class="form-group"> <!-- name -->
+                <div class="row">
+                  <div class="control-label col-sm-8">
+                    <strong>OCCURENCE</strong>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-8 col-12">
+                    <%= h.select :"HEARING LOSS", options_for_select(["YES",
+                                                                "NO"], 
+                                                                selected: @chkl.audl["HEARING LOSS"]), 
+                          {include_blank: "PLEASE SELECT"} %>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group"> <!-- name -->
+                <div class="row">
+                  <div class="control-label col-sm-8">
+                    <strong>LEFT/RIGHT</strong>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-8 col-12">
+                    <%= h.select :"LEFT/RIGHT", options_for_select(["LEFT",
+                                                                "RIGHT",
+                                                                "BOTH"], 
+                                                                selected: @chkl.audl["LEFT/RIGHT"]), 
+                          {include_blank: "PLEASE SELECT"} %>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group"> <!-- name -->
+                <div class="row">
+                  <div class="control-label col-sm-8">
+                    <strong>SINCE WHEN:</strong>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-8 col-12">
+                    <%= h.text_field :"SINCE WHEN:", value: @chkl.audl["SINCE WHEN:"] %>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group"> <!-- name -->
+                <div class="row">
+                  <div class="control-label col-sm-8">
+                    <strong>PROGRESS</strong>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-8 col-12">
+                    <%= h.select :"PROGRESS", options_for_select(["REMAIN",
+                                                                "WORST",
+                                                                "BETTER"], 
+                                                                selected: @chkl.audl["PROGRESS"]), 
+                          {include_blank: "PLEASE SELECT"} %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+            <%= g.fields_for :audl do |h| %>
+              <% @chkl.audl.keys[4..6].each do |ent| %>
+                <div class="form-group"> <!-- name -->
+                  <div class="row">
+                    <div class="control-label col-sm-8">
+                      <strong><%= ent %></strong>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-8 col-12">
+                      <%= h.text_field :"#{ent}", value: @chkl.audl[ent]%>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+            <%= g.fields_for :audl do |h| %>
+              <div class="form-group"> <!-- name -->
+                <div class="row">
+                  <div class="control-label col-sm-8">
+                    <strong>DIFFICULT SITUATION TO HEAR</strong>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-8 col-12">
+                    <%= h.text_field :"DIFFICULT SITUATION TO HEAR", value: @chkl.audl["DIFFICULT SITUATION TO HEAR"] %>
+                    <i>(noisy/quiet/tv/kindergarden/etc)</i>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+            <%= g.fields_for :audl do |h| %>
+              <div class="form-group"> <!-- name -->
+                <div class="row">
+                  <div class="control-label col-sm-8">
+                    <strong>REACTION TO LOUD SOUND</strong>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-8 col-12">
+                    <%= h.text_field :"REACTION TO LOUD SOUND", value: @chkl.audl["REACTION TO LOUD SOUND"] %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+
+            <%= g.fields_for :audl do |h| %>
+              <div class="form-group"> <!-- name -->
+                <div class="row">
+                  <div class="control-label col-sm-8">
+                    <strong>DEVELOPMENT AGE</strong>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-8 col-12">
+                    <%= h.number_field :"DEVELOPMENT AGE", value: @chkl.audl["DEVELOPMENT AGE"] %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+
           </div>
           <!-- LANGUAGE SKILLS -->
           <div class="tab-pane fade <%= "#{params[:tb7_d]}" %>" id="nav-contact4" role="tabpanel" aria-labelledby="nav-contact4-tab">

@@ -44,6 +44,18 @@ class StesController < ApplicationController
 		par[:splg].each do |k,v|
 			@chkl.splg[k] = v
 		end
+		par[:cogn].each do |k,v|
+			@chkl.cogn[k] = v
+		end
+		par[:audl].each do |k,v|
+			@chkl.audl[k] = v
+		end
+		# par[:prvb].each do |k,v|
+		# 	@chkl.prvb[k] = v
+		# end
+		# par[:rcel].each do |k,v|
+		# 	@chkl.rcel[k] = v
+		# end
 		@chkl.save
 		return @chkl
 	end
@@ -141,7 +153,7 @@ class StesController < ApplicationController
 						audl: {"HEARING LOSS"=>"",
 						"LEFT/RIGHT"=>"",
 						"SINCE WHEN:"=>"",
-						"PROGRESS (REMAIN/WORST/BETTER)"=>"",
+						"PROGRESS"=>"",
 						"EAR PAIN"=>"",
 						"EAR DISCHARGE"=>"",
 						"PREVIOUS ENT/HEARING ASSESSMENT"=>"",
