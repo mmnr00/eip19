@@ -37,6 +37,7 @@ class SkidsController < ApplicationController
 
 	def set_all
 		@admin = current_admin
+		@owner = current_owner
 	end
 
 	def skid_params

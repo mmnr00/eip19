@@ -3,10 +3,8 @@ class OwnersController < ApplicationController
 	before_action :set_owner
 
 	def index
-		render action: "index", layout: "dsb-owner-college"
-		#render action: "index", layout: "eip"
-
-
+		@sce = Sce.find($scses[@owner.loc])
+		@ekids = @sce.ekids
 	end
 	
 
