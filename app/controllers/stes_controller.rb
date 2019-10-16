@@ -10,10 +10,10 @@ class StesController < ApplicationController
 		end
 
 		if params[:tp] == "st"
-			@ste = Ste.create(ekid_id: params[:id], stat: "nw")
+			@ste = Ste.create(ekid_id: params[:id], stat: false)
 			redirect_to edit_ste_path(ass: @ste.id, chkl: @chkl.id)
 		elsif params[:tp] == "ot"
-			@ote = Ote.create(ekid_id: params[:id], stat: "nw")
+			@ote = Ote.create(ekid_id: params[:id], stat: false)
 		end
 	end
 
@@ -24,7 +24,6 @@ class StesController < ApplicationController
 
 	def upd_ste
 		par = params[:ste]
-		parc = par[:chkl]
 		@chkl = form_chkl(par[:chkl])
 	end
 
