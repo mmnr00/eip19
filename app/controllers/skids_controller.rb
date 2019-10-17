@@ -66,6 +66,15 @@ class SkidsController < ApplicationController
 																:adap,
 																:reflt,
 																:otnt,
+																:diag,
+																:summ,
+																:assr,
+																:obs,
+																:refc,
+																:frmo,
+																:scp,
+																:cmt,
+																:ovc,
 																:ekid_id)
 	end
 

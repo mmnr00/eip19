@@ -1,7 +1,6 @@
-
-
 <%= form_for(@skid, :html => {multipart: true, class: "form-horizontal", role: "form"}) do |f| %>
 
+  <h4><u>SCREENING DETAILS</u></h4>
   <div class="form-group"> 
     <div class="row">
       <div class="control-label col-sm-8">
@@ -32,7 +31,7 @@
     </div>
   </div>
 
-  <h5>Type of Delays</h5>
+  <h5><u>TYPE OF DELAYS</u></h5>
 
   <div class="form-group"> 
     <div class="row">
@@ -130,21 +129,122 @@
     </div>
   </div>
 
+  <h4><u>DIAGNOSIS DETAILS</u></h4><br>
+
   <div class="form-group"> 
-    <div class="row">
-      <div class="control-label col-sm-8">
-        <strong>NOTE</strong>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-8 col-12">
-        <%= f.text_area :otnt, class: "form-control", placeholder: "Optional", autofocus: true %>
-      </div>
+  <div class="row">
+    <div class="control-label col-sm-12">
+      <strong>DIAGNOSIS</strong>
     </div>
   </div>
+  <div class="row">
+    <div class="col-sm-12 col-12">
+      <%= f.text_area :diag, class: "form-control", placeholder: "", autofocus: true, value: @skid.diag %>
+    </div>
+  </div><br>
+
+  <div class="form-group"> 
+  <div class="row">
+    <div class="control-label col-sm-12">
+      <strong>SUMMARY</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-12">
+      <%= f.text_area :summ, class: "form-control", placeholder: "", autofocus: true, value: @skid.summ %>
+    </div>
+  </div><br>
+
+  <div class="form-group"> 
+  <div class="row">
+    <div class="control-label col-sm-12">
+      <strong>ASSESSMENT RESULT: LEARNING/DEVELOPMENT/SCHEDULE OF GROWING SKILLS</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-12">
+      <%= f.text_area :assr, class: "form-control", placeholder: "", autofocus: true, value: @skid.assr %>
+    </div>
+  </div><br>
+
+  <div class="form-group"> 
+  <div class="row">
+    <div class="control-label col-sm-12">
+      <strong>OBSERVATION OF BEHAVIOUR/ OTHER OUTSTANDING ISSUES:</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-12">
+      <%= f.text_area :obs, class: "form-control", placeholder: "", autofocus: true, value: @skid.obs %>
+    </div>
+  </div><br>
+
+  <h4><u>PLAN/RECOMMENDATION</u></h4><br>
+
+  <div class="form-group"> 
+  <div class="row">
+    <div class="control-label col-sm-12">
+      <strong>REFERRAL FOR THERAPY: SPEECH, PHYSIOTHERAPY, OCCUPATIONAL THERAPY, EIP CENTER</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-12">
+      <%= f.text_area :refc, class: "form-control", placeholder: "", autofocus: true, value: @skid.refc %>
+    </div>
+  </div><br>
+
+  <div class="form-group"> 
+  <div class="row">
+    <div class="control-label col-sm-12">
+      <strong>OKU FORM(JKM) REGISTRATION</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-12">
+      <%= f.text_area :frmo, class: "form-control", placeholder: "", autofocus: true, value: @skid.frmo %>
+    </div>
+  </div><br>
+
+  <div class="form-group"> 
+  <div class="row">
+    <div class="control-label col-sm-12">
+      <strong>SCHOOL PLACEMENT</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-12">
+      <%= f.text_area :scp, class: "form-control", placeholder: "", autofocus: true, value: @skid.scp %>
+    </div>
+  </div><br>
+
+  <div class="form-group"> 
+  <div class="row">
+    <div class="control-label col-sm-12">
+      <strong>OTHER RECOMMENDATIONS</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-12">
+      <%= f.text_area :cmt, class: "form-control", placeholder: "", autofocus: true, value: @skid.cmt %>
+    </div>
+  </div><br>
+
+  <div class="form-group"> 
+  <div class="row">
+    <div class="control-label col-sm-12">
+      <strong>OVERALL COMMENT</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-12">
+      <%= f.text_area :ovc, class: "form-control", placeholder: "", autofocus: true, value: @skid.ovc %>
+    </div>
+  </div><br>
 
   <%= f.hidden_field :ekid_id, value: @ekid.id %>
+  <%= f.hidden_field :stat, value: true %>
 
+<br>
   <!-- SUBMIT BUTTON -->
   <div class="form-group">
     <div class="row">
