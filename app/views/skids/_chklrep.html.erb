@@ -165,10 +165,16 @@
           <b>AUDIOLOGIST</b>
         </td>
       </tr>
-      <tr>
-        <td>OVERALL</td>
-        <td><%= @ote.ovc %></td>
-      </tr>
+      <% @chkl.audl.each do |k,v| %>
+        <tr>
+          <% if k == "DIFFICULT SITUATION TO HEAR" %>
+            <td><%= "#{k} (noisy/quiet/tv/kindergarden/etc)" %></td>
+          <% else %>
+            <td><%= k %></td>
+          <% end %>
+          <td><%= v %></td>
+        </tr>
+      <% end %>
 
       <!-- PREVERBAL SKILLS -->
       <tr>
@@ -176,10 +182,23 @@
           <b>PREVERBAL SKILLS</b>
         </td>
       </tr>
+      <% @chkl.prvb.keys[0..3].each do |k| %>
+        <tr>
+          <td><%= k %></td>
+          <td><%= @chkl.prvb[k] %></td>
+        </tr>
+      <% end %>
       <tr>
-        <td>OVERALL</td>
-        <td><%= @ote.ovc %></td>
+        <td style="text-align:center; font-size:15px" colspan="2">
+          <u>MATCHING</u>
+        </td>
       </tr>
+      <% @chkl.prvb.keys[4..100].each do |k| %>
+        <tr>
+          <td><%= k %></td>
+          <td><%= @chkl.prvb[k] %></td>
+        </tr>
+      <% end %>
 
       <!-- RECEPTIVE & EXPRESSIVE LANGUAGE SKILLS -->
       <tr>
@@ -188,10 +207,83 @@
         </td>
       </tr>
       <tr>
-        <td>OVERALL</td>
-        <td><%= @ote.ovc %></td>
+        <td>IDENTIFY/PRODUCE NOUN</td>
+        <td><%= @chkl.rcel["NOUN"] %></td>
       </tr>
+      <tr>
+        <td style="text-align:center; font-size:15px" colspan="2">
+          <u>IDENTIFY/PRODUCE VERB</u>
+        </td>
+      </tr>
+      <% @chkl.rcel.keys[1..5].each do |k| %>
+        <tr>
+          <td><%= k %></td>
+          <td><%= @chkl.rcel[k] %></td>
+        </tr>
+      <% end %>
+      <tr>
+        <td style="text-align:center; font-size:15px" colspan="2">
+          <u>IDENTIFY/PRODUCE BODY PARTS</u>
+        </td>
+      </tr>
+      <% @chkl.rcel.keys[6..12].each do |k| %>
+        <tr>
+          <td><%= k %></td>
+          <td><%= @chkl.rcel[k] %></td>
+        </tr>
+      <% end %>
+      <tr>
+        <td style="text-align:center; font-size:15px" colspan="2">
+          <u>IDENTIFY/PRODUCE COLOUR</u>
+        </td>
+      </tr>
+      <% @chkl.rcel.keys[13..17].each do |k| %>
+        <tr>
+          <td><%= k %></td>
+          <td><%= @chkl.rcel[k] %></td>
+        </tr>
+      <% end %>
+      <tr>
+        <td style="text-align:center; font-size:15px" colspan="2">
+          <u>IDENTIFY/PRODUCE SIZE CONCEPT</u>
+        </td>
+      </tr>
+      <% @chkl.rcel.keys[18..19].each do |k| %>
+        <tr>
+          <td><%= k %></td>
+          <td><%= @chkl.rcel[k] %></td>
+        </tr>
+      <% end %>
+      <tr>
+        <td style="text-align:center; font-size:15px" colspan="2">
+          <u>IDENTIFY/PRODUCE PREPOSITION CONCEPT</u>
+        </td>
+      </tr>
+      <% @chkl.rcel.keys[20..21].each do |k| %>
+        <tr>
+          <td><%= k %></td>
+          <td><%= @chkl.rcel[k] %></td>
+        </tr>
+      <% end %>
+      <tr>
+        <td style="text-align:center; font-size:15px" colspan="2">
+          <u>FOLLOW COMMAND</u>
+        </td>
+      </tr>
+      <% @chkl.rcel.keys[22..25].each do |k| %>
+        <tr>
+          <td><%= k %></td>
+          <td><%= @chkl.rcel[k] %></td>
+        </tr>
+      <% end %>
+      <tr>
+          <td>ADDTIONAL FOLLOW COMMAND</td>
+          <td><%= @chkl.rcel["fcmd"] %></td>
+        </tr>
 
     </tbody>
   </table>
+  <!-- <b>RESULT/COMMENT</b><br>
+  <%= @chkl.rslc %> -->
+
 </div>

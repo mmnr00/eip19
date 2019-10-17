@@ -36,17 +36,29 @@
 
           <!-- PT -->
           <div class="tab-pane fade <%= "#{params[:tb2_d]}" %>" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"><br>
-            <%= @pte %>
+            <% if @ekid.pte.present? %>
+              <%= render 'skids/pterep' %>
+            <% else %>
+              NO RECORD
+            <% end %>
           </div>
 
           <!-- AUDIO -->
           <div class="tab-pane fade <%= "#{params[:tb3_d]}" %>" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"><br>
-            <%= @ate %>
+            <% if @ekid.ate.present? %>
+              <%= render 'skids/aterep' %>
+            <% else %>
+              NO RECORD
+            <% end %>
           </div>
 
           <!-- ST -->
           <div class="tab-pane fade <%= "#{params[:tb4_d]}" %>" id="nav-contact1" role="tabpanel" aria-labelledby="nav-contact1-tab"><br>
-            <%= @ste %>
+            <% if @ekid.ste.present? %>
+              <%= render 'skids/sterep' %>
+            <% else %>
+              NO RECORD
+            <% end %>
           </div>
 
           <!-- CHK -->
