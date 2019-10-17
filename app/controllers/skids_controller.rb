@@ -17,16 +17,21 @@ class SkidsController < ApplicationController
 		@chkl = @ekid.chkl
 	end
 
-	def create
-		@skid = Skid.new(skid_params)
-		@ekid = @skid.ekid
-		if @skid.save
-			flash[:success] = "Screening Data Created"
-		else
-			flash[:danger] = "Creation Failed. Please try again"
-		end
-		redirect_to sce_path(@ekid.sce)
-	end
+	# def create (dah x masuk sebab dah ada)
+	# 	@skid = Skid.new(skid_params)
+	# 	@ekid = @skid.ekid
+	# 	if @skid.save
+	# 		flash[:success] = "Screening Data Created"
+	# 		if @skid.reflt == "Yes"
+	# 		else
+	# 			redirect_to owner_index_path
+	# 		end
+	# 	else
+	# 		flash[:danger] = "Creation Failed. Please try again"
+	# 		redirect_to root_path
+	# 		#redirect_to sce_path(@ekid.sce)
+	# 	end		
+	# end
 
 	def edit
 		@skid = Skid.find(params[:id])
@@ -42,11 +47,20 @@ class SkidsController < ApplicationController
 		@skid = Skid.find(params[:id])
 		@ekid = @skid.ekid
 		if @skid.update(skid_params)
-			flash[:success] = "Screening Data Edited"
+			flash[:notice] = "Screening Report Updated"
+			if @skid.reflt == "Yes"
+				if @ekid.rflt.present?
+					redirect_to edit_rflt_path(id: @ekid.rflt.id, ekid: @ekid.id, rflt: 1)
+				else
+					redirect_to new_rflt_path(ekid: @ekid.id, rflt: 1)
+				end 
+			else
+				redirect_to owner_index_path
+			end
 		else
 			flash[:danger] = "Edit Failed. Please try again"
 		end
-		redirect_to sce_path(@ekid.sce)
+		#redirect_to sce_path(@ekid.sce)
 	end
 
 	private 
@@ -75,6 +89,7 @@ class SkidsController < ApplicationController
 																:scp,
 																:cmt,
 																:ovc,
+																:stat,
 																:ekid_id)
 	end
 

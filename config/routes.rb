@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resources :pkids, only:[:new,:show,:create, :destroy, :edit]
   resources :sces, only:[:new,:show,:create, :destroy, :update, :edit]
   resources :skids, only:[:new,:create, :destroy, :update, :edit]
+  resources :rflts, only:[:new,:create, :destroy, :update, :edit]
   #resources :teachers, only:[:show]
   #resources :taska_teachers, only:[:create,:destroy]
   devise_for :parents
@@ -46,6 +47,10 @@ Rails.application.routes.draw do
   post '/upd_pte', to: 'ptes#upd_pte'
 
   #~~ATE
+  get '/edit_ate', to: 'ates#edit_ate'
+  post '/upd_ate', to: 'ates#upd_ate'
+
+  #~~RFLT
   get '/edit_ate', to: 'ates#edit_ate'
   post '/upd_ate', to: 'ates#upd_ate'
 

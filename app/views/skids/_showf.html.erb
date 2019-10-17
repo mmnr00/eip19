@@ -1,0 +1,145 @@
+<h1 align="center">LOGO</h1>
+<p style="background-color:#edd4d4" align="center">Tingkat 24, Bangunan Darul Ehsan, Jalan Indah, Seksyen 14,
+40000 Shah Alam, Selangor<br>
+Tel : 03 5513 8898 Fax : 03 5523 6466</p>
+<p>DATE: <b><%= @skid.updated_at.strftime('%d-%^b-%Y')%></b></p>
+<h5>
+  Screening Report for <u><%= @ekid.name %></u>
+  (DOB: <u><%= @ekid.dob.strftime('%d-%b-%y')%></u>)
+  <% if @ekid.gdr == "Perempuan"
+      gdr = "Female"
+    else
+      gdr = "Male"
+    end
+  %>
+  (Gender: <u><%= gdr %></u>)
+</h5>
+<hr>
+
+<a style="font-size:17px">DIAGNOSED WITH DELAY?</a>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered" width="100%" cellspacing="0">
+    <tbody>
+      <tr>
+        <td style="background-color:white"><%= "#{@skid.dely}, #{@skid.delydesc}" %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<a style="font-size:17px">TYPE OF DELAY(S)</a>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered" width="100%" cellspacing="0">
+    <tbody>
+      <tr>
+        <td>PHYSICAL</td>
+        <td><%= @skid.phy %></td>
+      </tr>
+      <tr>
+        <td>COGNITIVE</td>
+        <td><%= @skid.cog %></td>
+      </tr>
+      <tr>
+        <td>COMMUNICATION</td>
+        <td><%= @skid.comm %></td>
+      </tr>
+      <tr>
+        <td>SOCIAL/EMOTION</td>
+        <td><%= @skid.soc %></td>
+      </tr>
+      <tr>
+        <td>SELF ADAPTATION</td>
+        <td><%= @skid.adap %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<a style="font-size:17px">RECEIVED REFER LETTER?</a>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered" width="100%" cellspacing="0">
+    <tbody>
+      <tr>
+        <td style="background-color:white"><%= @skid.reflt %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<a style="font-size:17px">DIAGNOSIS</a>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered" width="100%" cellspacing="0">
+    <tbody>
+      <tr>
+        <td style="background-color:white"><%= @skid.diag %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<a style="font-size:17px">SUMMARY</a>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered" width="100%" cellspacing="0">
+    <tbody>
+      <tr>
+        <td style="background-color:white"><%= @skid.summ %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<a style="font-size:17px">ASSESSMENT RESULT: LEARNING/DEVELOPMENT/SCHEDULE OF GROWING SKILLS:</a>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered" width="100%" cellspacing="0">
+    <tbody>
+      <tr>
+        <td style="background-color:white"><%= @skid.assr %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<a style="font-size:17px">OBSERVATION OF BEHAVIOUR/ OTHER OUTSTANDING ISSUES:</a>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered" width="100%" cellspacing="0">
+    <tbody>
+      <tr>
+        <td style="background-color:white"><%= @skid.obs %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<a style="font-size:17px">PLAN/RECOMMENDATION</a>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered" width="100%" cellspacing="0">
+    <tr>
+      <td>REFERRAL FOR THERAPY: SPEECH, PHYSIOTHERAPY, OCCUPATIONAL THERAPY, EIP CENTER</td>
+      <td><%= @skid.refc %></td>
+    </tr>
+    <tr>
+      <td>OKU FORM(JKM) REGISTRATION</td>
+      <td><%= @skid.frmo %></td>
+    </tr>
+    <tr>
+      <td>SCHOOL PLACEMENT</td>
+      <td><%= @skid.scp %></td>
+    </tr>
+    <tr>
+      <td>OTHER RECOMMENDATIONS</td>
+      <td><%= @skid.cmt %></td>
+    </tr>
+  </table>
+</div>
+
+<a style="font-size:17px">OVERALL COMMENT</a>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered" width="100%" cellspacing="0">
+    <tbody>
+      <tr>
+        <td style="background-color:white"><%= @skid.ovc %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

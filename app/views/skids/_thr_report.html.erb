@@ -19,6 +19,11 @@
             <a class="nav-item nav-link <%= "#{params[:tb5_a]}" %>" id="nav-contact2-tab" data-toggle="tab" href="#nav-contact2" role="tab" aria-controls="nav-contact2" aria-selected="<%= "#{params[:tb5_ar]}" %>">
               CHECKLIST
             </a>
+            <% if params[:rflt].present? %>
+            <a class="nav-item nav-link <%= "#{params[:tb6_a]}" %>" id="nav-contact3-tab" data-toggle="tab" href="#nav-contact3" role="tab" aria-controls="nav-contact3" aria-selected="<%= "#{params[:tb6_ar]}" %>">
+              SCREENING REPORT
+            </a>
+            <% end %>
           </div>
         </nav>
 
@@ -69,6 +74,20 @@
               NO RECORD
             <% end %>
           </div>
+
+          <% if params[:rflt].present? %>
+          <!-- SKID -->
+          <div class="tab-pane fade <%= "#{params[:tb6_d]}" %>" id="nav-contact3" role="tabpanel" aria-labelledby="nav-contact3-tab">
+            <% if @ekid.skid.present? %>
+              <%= render 'skids/showf' %>
+              <%= link_to "EDIT", edit_skid_path(id: @skid.id, ekid: @skid.ekid.id), class: "btn btn-sm btn-warning active" %>
+            <% else %>
+              NO RECORD
+            <% end %>
+          </div>
+          <% end %>
+
+
 
         </div>
 
