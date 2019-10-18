@@ -44,6 +44,27 @@
 
 <%= form_for(@rflt, :html => {multipart: true, class: "form-horizontal", role: "form"}) do |f| %>
 
+  <div style="background-color:#e5ffff"><h6 align="center">Recommended Referral</h6></div>
+
+  <%= f.check_box :rped, checked: @rflt.rped %>&nbsp<b>Paedratician</b><br>
+  <%= f.check_box :rcp, checked: @rflt.rcp %>&nbsp<b>Clinical Psychologist</b><br>
+  <%= f.check_box :rntn, checked: @rflt.rntn %>&nbsp<b>Nutritionist</b><br>
+  <%= f.check_box :rent, checked: @rflt.rent %>&nbsp<b>ENT Specialist</b><br>
+  <%= f.check_box :roph, checked: @rflt.roph %>&nbsp<b>Ophthalmologist</b><br>
+  <%= f.check_box :rot, checked: @rflt.rot %>&nbsp<b>Occupational Therapist</b><br>
+  <%= f.check_box :rst, checked: @rflt.rst %>&nbsp<b>Speech Pathology Therapist</b><br><br>
+  <div class="form-group"> 
+  <div class="row">
+    <div class="control-label col-sm-12">
+      <strong>Others</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-12">
+      <%= f.text_area :roth, class: "form-control", placeholder: "", autofocus: true, value: @rflt.roth %>
+    </div>
+  </div>
+  <br>
   <!-- OT -->
   <div style="background-color:#e5ffff"><h6 align="center">Occupational Therapy Assessment Results:</h6></div>
   <div class="form-group"> 

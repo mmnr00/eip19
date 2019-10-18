@@ -38,7 +38,7 @@ class RfltsController < ApplicationController
 		@rflt = Rflt.find(params[:id])
 		if @rflt.update(rflt_params)
 			flash[:success] = "Refer letter successfully updated"
-			#redirect_to owner_index_path
+			redirect_to owner_index_path
 		else
 			flash[:danger] = "Unsuccessful. Please try again"
 		end
