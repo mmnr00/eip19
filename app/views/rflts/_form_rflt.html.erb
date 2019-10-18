@@ -1,1 +1,255 @@
-FORM RFLT
+<%
+  if @rflt.id.present?
+    # OT
+    osensf = @rflt.osens
+    obeobf = @rflt.obeob
+    ocogf = @rflt.ocog
+    ogmtrf = @rflt.ogmtr
+    ofmtrf = @rflt.ofmtr
+    # ST
+    spref = @rflt.spre
+    srecf = @rflt.srec
+    sexprf = @rflt.sexpr
+    # AT
+    ahrf = @rflt.ahr
+    atinf = @rflt.atin
+    aearf = @rflt.aear
+    arespf = @rflt.aresp
+    # PT
+    pgmtrf = @rflt.pgmtr
+    pmovf = @rflt.pmov
+    pendrf = @rflt.pendr
+  else
+    # OT
+    osensf = @ote.sens
+    obeobf = @ote.beob
+    ocogf = @ote.cog
+    ogmtrf = @ote.gmtr
+    ofmtrf = @ote.fmtr
+    # ST
+    spref = @ste.pre
+    srecf = @ste.rec
+    sexprf = @ste.expr
+    # AT
+    ahrf = @ate.hr
+    atinf = @ate.tin
+    aearf = @ate.ear
+    arespf = @ate.resp
+    # PT
+    pgmtrf = @pte.gmtr
+    pmovf = @pte.mov
+    pendrf = @pte.endr
+  end
+%>
+
+<%= form_for(@rflt, :html => {multipart: true, class: "form-horizontal", role: "form"}) do |f| %>
+
+  <!-- OT -->
+  <div style="background-color:#e5ffff"><h6 align="center">Occupational Therapy Assessment Results:</h6></div>
+  <div class="form-group"> 
+  <div class="row">
+    <div class="control-label col-sm-12">
+      <strong>Sensory</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-12">
+      <%= f.text_area :osens, class: "form-control", placeholder: "", autofocus: true, value: osensf %>
+    </div>
+  </div><br>
+  <div class="form-group"> 
+  <div class="row">
+    <div class="control-label col-sm-12">
+      <strong>Behavorial Observation</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-12">
+      <%= f.text_area :obeob, class: "form-control", placeholder: "", autofocus: true, value: obeobf %>
+    </div>
+  </div><br>
+  <div class="form-group"> 
+  <div class="row">
+    <div class="control-label col-sm-12">
+      <strong>Cognitive</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-12">
+      <%= f.text_area :ocog, class: "form-control", placeholder: "", autofocus: true, value: ocogf %>
+    </div>
+  </div><br>
+  <div class="form-group"> 
+  <div class="row">
+    <div class="control-label col-sm-12">
+      <strong>Gross Motor Skills</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-12">
+      <%= f.text_area :ogmtr, class: "form-control", placeholder: "", autofocus: true, value: ogmtrf %>
+    </div>
+  </div><br>
+  <div class="form-group"> 
+  <div class="row">
+    <div class="control-label col-sm-12">
+      <strong>Fine Motor Skills</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-12">
+      <%= f.text_area :ofmtr, class: "form-control", placeholder: "", autofocus: true, value: ofmtrf %>
+    </div>
+  </div><br>
+
+  <!-- ST -->
+  <div style="background-color:#e5ffff"><h6 align="center">Speech Therapy Assessment Results:</h6></div>
+  <div class="form-group"> 
+  <div class="row">
+    <div class="control-label col-sm-12">
+      <strong>Preverbal Skills</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-12">
+      <%= f.text_area :spre, class: "form-control", placeholder: "", autofocus: true, value: spref %>
+    </div>
+  </div><br>
+  <div class="form-group"> 
+  <div class="row">
+    <div class="control-label col-sm-12">
+      <strong>Receptive Language Skills</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-12">
+      <%= f.text_area :srec, class: "form-control", placeholder: "", autofocus: true, value: srecf %>
+    </div>
+  </div><br>
+  <div class="form-group"> 
+  <div class="row">
+    <div class="control-label col-sm-12">
+      <strong>Expressive Language Skills</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-12">
+      <%= f.text_area :sexpr, class: "form-control", placeholder: "", autofocus: true, value: sexprf %>
+    </div>
+  </div><br>
+
+  <!-- AT -->
+  <div style="background-color:#e5ffff"><h6 align="center">Audiology Assessment Results:</h6></div>
+  <div class="form-group"> 
+  <div class="row">
+    <div class="control-label col-sm-12">
+      <strong>Hearing</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-12">
+      <%= f.text_area :ahr, class: "form-control", placeholder: "", autofocus: true, value: ahrf %>
+    </div>
+  </div><br>
+  <div class="form-group"> 
+  <div class="row">
+    <div class="control-label col-sm-12">
+      <strong>Tinnitus</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-12">
+      <%= f.text_area :atin, class: "form-control", placeholder: "", autofocus: true, value: atinf %>
+    </div>
+  </div><br>
+  <div class="form-group"> 
+  <div class="row">
+    <div class="control-label col-sm-12">
+      <strong>Ear Pain/Discharge</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-12">
+      <%= f.text_area :aear, class: "form-control", placeholder: "", autofocus: true, value: aearf %>
+    </div>
+  </div><br>
+  <div class="form-group"> 
+  <div class="row">
+    <div class="control-label col-sm-12">
+      <strong>Response To Sound</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-12">
+      <%= f.text_area :aresp, class: "form-control", placeholder: "", autofocus: true, value: arespf %>
+    </div>
+  </div><br>
+
+  
+  <!-- PT -->
+  <div style="background-color:#e5ffff"><h6 align="center">Physiotherapy Assessment Results:</h6></div>
+  <div class="form-group"> 
+  <div class="row">
+    <div class="control-label col-sm-12">
+      <strong>Gross Motor</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-12">
+      <%= f.text_area :pgmtr, class: "form-control", placeholder: "", autofocus: true, value: pgmtrf %>
+    </div>
+  </div><br>
+  <div class="form-group"> 
+  <div class="row">
+    <div class="control-label col-sm-12">
+      <strong>Movement</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-12">
+      <%= f.text_area :pmov, class: "form-control", placeholder: "", autofocus: true, value: pmovf %>
+    </div>
+  </div><br>
+  <div class="form-group"> 
+  <div class="row">
+    <div class="control-label col-sm-12">
+      <strong>Endurance</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-12">
+      <%= f.text_area :pendr, class: "form-control", placeholder: "", autofocus: true, value: pendrf %>
+    </div>
+  </div><br>
+
+  <!-- OVC -->
+  <div style="background-color:#e5ffff"><h6 align="center">Overall Comments</h6></div>
+  <div class="form-group"> 
+  <div class="row">
+    <div class="control-label col-sm-12">
+      <strong></strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-12">
+      <%= f.text_area :ovc, class: "form-control", placeholder: "", autofocus: true, value: @rflt.ovc %>
+    </div>
+  </div><br>
+
+
+  <%= f.hidden_field :ekid_id, value: @ekid.id %>
+
+  <div class="form-group">
+    <div class="row">
+      <div class="col-sm-12 col-12">
+        <%= f.submit :"SUBMIT",  class: 'btn btn-primary btn-lg btn-block' %>
+      </div>
+    </div>
+  </div>
+
+<% end %>
+
+
+
+
+

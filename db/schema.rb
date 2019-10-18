@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_16_212216) do
+ActiveRecord::Schema.define(version: 2019_10_17_223740) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -531,15 +531,33 @@ ActiveRecord::Schema.define(version: 2019_10_16_212216) do
   end
 
   create_table "rflts", force: :cascade do |t|
-    t.text "rfpl"
-    t.text "ota"
-    t.text "sta"
-    t.text "ata"
-    t.text "pta"
     t.string "ovc"
     t.integer "ekid_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "rped"
+    t.boolean "rcp"
+    t.boolean "rntn"
+    t.boolean "rent"
+    t.boolean "roph"
+    t.boolean "rot"
+    t.boolean "rst"
+    t.string "roth"
+    t.string "osens"
+    t.string "obeob"
+    t.string "ocog"
+    t.string "ogmtr"
+    t.string "ofmtr"
+    t.string "pgmtr"
+    t.string "pmov"
+    t.string "pendr"
+    t.string "spre"
+    t.string "srec"
+    t.string "sexpr"
+    t.string "ahr"
+    t.string "atin"
+    t.string "aear"
+    t.string "aresp"
   end
 
   create_table "sces", force: :cascade do |t|
