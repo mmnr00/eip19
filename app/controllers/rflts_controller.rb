@@ -1,6 +1,11 @@
 class RfltsController < ApplicationController
 	before_action :set_all
 
+	def show
+		@rflt = Rflt.find(params[:id])
+		@ekid = @rflt.ekid
+	end
+
 	def new
 		@rflt = Rflt.new
 		@ekid = Ekid.find(params[:ekid])

@@ -13,6 +13,7 @@
         <th style="background-color:#d8b2d8">PARENTS INFO</th>
         <th style="background-color:#d8b2d8">SESSION INFO</th>
         <th style="background-color:#d8b2d8">SCREENING REPORT</th>
+        <th style="background-color:#d8b2d8">REFER LETTER</th>
       </tr>
     </thead>
 
@@ -70,6 +71,11 @@
               <%= link_to "EDIT", edit_skid_path(id: sc.skid.id, ekid: sc.id), class: "btn btn-sm btn-primary" %>
             <% else %>
               <%= link_to "CREATE", new_skid_path(ekid: sc.id), class: "btn btn-sm btn-warning" %>
+            <% end %>
+          </td>
+          <td>
+            <% if sc.rflt.present? %>
+              <%= link_to "VIEW", rflt_path(sc.rflt.id), class: "btn btn-sm btn-success" %>
             <% end %>
           </td>
         </tr>

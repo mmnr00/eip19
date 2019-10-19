@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   resources :pkids, only:[:new,:show,:create, :destroy, :edit]
   resources :sces, only:[:new,:show,:create, :destroy, :update, :edit]
   resources :skids, only:[:new,:create, :destroy, :update, :edit]
-  resources :rflts, only:[:new,:create, :destroy, :update, :edit]
+  resources :rflts, only:[:show,:new,:create, :destroy, :update, :edit]
   #resources :teachers, only:[:show]
   #resources :taska_teachers, only:[:create,:destroy]
   devise_for :parents

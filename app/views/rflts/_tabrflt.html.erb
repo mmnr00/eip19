@@ -1,0 +1,153 @@
+<div class="col-sm-12 bg-white">
+  <h1 align="center">LOGO</h1>
+  <p style="background-color:#edd4d4" align="center">Tingkat 24, Bangunan Darul Ehsan, Jalan Indah, Seksyen 14,
+  40000 Shah Alam, Selangor<br>
+  Tel : 03 5513 8898 Fax : 03 5523 6466</p>
+  <p>DATE: <b><%= @rflt.updated_at.strftime('%d-%^b-%Y')%></b></p>
+
+
+  <h4 align="center">Refer Letter for <u><%= @ekid.name %></u> (DOB: <u><%= @ekid.dob.strftime('%d-%b-%Y') %></u>)</h4><br>
+
+  <a style="font-size:17px">Dear Colleagues:</a> <br><br>
+  <a style="font-size:17px">We are referring <strong><u><%= @ekid.name %></u></strong> for the care below:</a> <br>
+
+  <a style="font-size:17px"></a>
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered" width="100%" cellspacing="0">
+      <tbody>
+        <tr>
+          <td style="background-color:#f2f2f2">
+            <%= "Paedratician," unless !@rflt.rped %>
+            <%= "Clinical Psychologist," unless !@rflt.rcp %>
+            <%= "Nutritionist," unless !@rflt.rntn %>
+            <%= "ENT Specialist," unless !@rflt.rent %>
+            <%= "Ophthalmologist," unless !@rflt.roph %>
+            <%= "Occupational Therapist," unless !@rflt.rot %>
+            <%= "Speech Pathology Therapist," unless !@rflt.rst %>
+            <%= @rflt.roth %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <a style="font-size:17px"><strong>Occupational Therapy Assessment Results:</strong></a>
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered" width="100%" cellspacing="0">
+      <tbody>
+        <tr>
+          <td style="background-color:#b2b2ff">Areas</td>
+          <td style="background-color:#b2b2ff">Comments</td>
+        </tr>
+        <tr>
+          <td>Sensory</td>
+          <td><%= @rflt.osens %></td>
+        </tr>
+        <tr>
+          <td>Behavorial Observation</td>
+          <td><%= @rflt.obeob %></td>
+        </tr>
+        <tr>
+          <td>Cognitive</td>
+          <td><%= @rflt.ocog %></td>
+        </tr>
+        <tr>
+          <td>Gross Motor Skills</td>
+          <td><%= @rflt.ogmtr %></td>
+        </tr>
+        <tr>
+          <td>Fine Motor Skills</td>
+          <td><%= @rflt.ofmtr %></td>
+        </tr> 
+      </tbody>
+    </table>
+  </div>
+
+  <a style="font-size:17px"><strong>Speech Therapy Assessment Results:</strong></a>
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered" width="100%" cellspacing="0">
+      <tbody>
+        <tr>
+          <td style="background-color:#b2b2ff">Areas</td>
+          <td style="background-color:#b2b2ff">Comments</td>
+        </tr>
+        <tr>
+          <td>Preverbal Skills</td>
+          <td><%= @rflt.spre %></td>
+        </tr>
+        <tr>
+          <td>Receptive Language Skills</td>
+          <td><%= @rflt.srec %></td>
+        </tr>
+        <tr>
+          <td>Expressive Language Skills</td>
+          <td><%= @rflt.sexpr %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <a style="font-size:17px"><strong>Audiology Assessment Results:</strong></a>
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered" width="100%" cellspacing="0">
+      <tbody>
+        <tr>
+          <td style="background-color:#b2b2ff">Areas</td>
+          <td style="background-color:#b2b2ff">Comments</td>
+        </tr>
+        <tr>
+          <td>Hearing</td>
+          <td><%= @rflt.ahr %></td>
+        </tr>
+        <tr>
+          <td>Tinnitus</td>
+          <td><%= @rflt.atin %></td>
+        </tr>
+        <tr>
+          <td>Ear Pain/Discharge</td>
+          <td><%= @rflt.aear %></td>
+        </tr>
+        <tr>
+          <td>Response To Sound</td>
+          <td><%= @rflt.aresp %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <a style="font-size:17px"><strong>Physiotherapy Assessment Results:</strong></a>
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered" width="100%" cellspacing="0">
+      <tbody>
+        <tr>
+          <td style="background-color:#b2b2ff">Areas</td>
+          <td style="background-color:#b2b2ff">Comments</td>
+        </tr>
+        <tr>
+          <td>Gross Motor</td>
+          <td><%= @rflt.pgmtr %></td>
+        </tr>
+        <tr>
+          <td>Movement</td>
+          <td><%= @rflt.pmov %></td>
+        </tr>
+        <tr>
+          <td>Endurance</td>
+          <td><%= @rflt.pendr %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <a style="font-size:20px"><strong>OVERALL COMMENT</strong></a>
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered" width="100%" cellspacing="0">
+      <tbody>
+        <tr>
+          <td style="background-color:#f2f2f2"><%= @rflt.ovc %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
