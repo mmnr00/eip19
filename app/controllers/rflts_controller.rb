@@ -1,9 +1,28 @@
 class RfltsController < ApplicationController
 	before_action :set_all
 
+	def rflt_pdf
+		@rflt = Rflt.find(params[:id])
+		@ekid = @rflt.ekid
+		respond_to do |format|
+	 		format.html
+	 		format.pdf do
+		   render pdf: "[Refer Letter] #{@ekid.name}",
+		   template: "rflts/_tabrflt.html.erb",
+		   #disposition: "attachment",
+		   #save_to_file: Rails.root.join('pdfs', "#{filename}.pdf"),
+       #save_only: true, 
+		   #page_size: "A6",
+		   orientation: "portrait",
+		   layout: 'pdf.html.erb'
+			end
+		end
+	end
+
 	def show
 		@rflt = Rflt.find(params[:id])
 		@ekid = @rflt.ekid
+		
 	end
 
 	def new

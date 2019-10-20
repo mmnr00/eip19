@@ -1,3 +1,4 @@
 
 <%= render 'rflts/tabrflt' %>
 <%= link_to "EDIT", edit_rflt_path(id: @rflt.id, ekid: @rflt.ekid.id, rflt: 1), class: "btn btn-sm btn-success btn-block" %>
+<%= link_to "DOWNLOAD", rflt_pdf_path(id: @rflt.id, format: :pdf), class: "btn btn-sm btn-info btn-block" %>
