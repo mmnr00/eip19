@@ -1,7 +1,7 @@
 class PersesController < ApplicationController
 
 	def index
-		@perses_index = Perse.all
+		@perses = Perse.all
 		render action: "index", layout: "eipblank"
 	end
 
@@ -18,7 +18,7 @@ class PersesController < ApplicationController
 	def create
 		@perse = Perse.new(perse_params)
 		if @perse.save 
-			redirect_to perseindex_path
+			#redirect_to perseindex_path
 		else
 			render @perse.errors.full_messages
 			render :new

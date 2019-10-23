@@ -37,6 +37,10 @@ gem 'axlsx_rails'
 gem 'twilio-ruby'
 gem 'sendgrid-ruby'
 
+gem 'pusher'
+gem 'figaro'
+
+
 
 # Use SCSS for stylesheets
 #gem 'sass-rails', '~> 3.2.6'

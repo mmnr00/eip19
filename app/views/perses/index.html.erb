@@ -2,18 +2,25 @@
   PersEs Index
   <%= link_to "NEW", new_perse_path, class: 'btn btn-sm btn-success active' %>
 </h1>
-
 <br>
 
-<% @perses_index.each do |prs| %>
-  
-  <%= prs.name %><br>
-  <%= prs.ic %><br>
-  <%= prs.ph %><br>
+<table id='proge-table' class="table table-hover">
+  <thead  class="thead-light">
+    <tr>
+      <th>Name</th>
+      <th>IC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @perses.each do |prs| %>
+      <tr>
+        <td><%= prs.name %></td>
+        <td><%= prs.ic %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-  <%= link_to "VIEW", perse_path(prs), class: 'btn btn-sm btn-success active' %>
-  <%= link_to "EDIT", edit_perse_path(prs), class: 'btn btn-sm btn-success active' %>
-  <%= link_to "DELETE", "#", class: 'btn btn-sm btn-success active' %>
-  <hr>
+<script language="javascript" type="text/javascript">setTimeout("location.reload();",2000);</script>"
 
-<% end %>
+
