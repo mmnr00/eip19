@@ -112,7 +112,18 @@
     <tbody>
       <% Sce.where(loc: $admloc[@admin.id]).order('date DESC').each do |sc| %>
         <tr>
-          <td><%= sc.name %></td>
+          <td>
+            <%= sc.name %>
+            <%= link_to "ACTIVE", "#", class: "btn btn-sm btn-success active" unless !sc.curr %>
+            <% if @admin.id == 1 %>
+              <% if sc.curr %>
+                <%= link_to "REMOVE", setsce_path(id: sc, curr: false), class: "btn btn-sm btn-danger" %>
+              <% else %>
+                <%= link_to "MAKE ACTIVE", setsce_path(id: sc, curr: true), class: "btn btn-sm btn-info" %>
+              <% end %> 
+            <% end %>   
+
+          </td>
           <td><%= sc.date.strftime('%d-%^b-%y') %></td>
           <td><%= sc.venue %></td>
           <td><%= sc.ekids.count %></td>

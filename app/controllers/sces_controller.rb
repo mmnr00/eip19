@@ -2,6 +2,20 @@ class ScesController < ApplicationController
 	before_action :set_sce, except: [:new,:create,:scexls]
 	before_action :set_all
 
+	def setsce
+		if params[:curr] == "true"
+			if Sce.where(loc: @sce.loc, curr: true).present?
+				flash[:danger] = "You have other active programme"
+			else
+				@sce.curr = true
+			end
+		elsif params[:curr] == "false"
+			@sce.curr = false
+		end
+		@sce.save
+		redirect_to admin_index_path
+	end
+
 	def scexls
 		@admin = current_admin
 		@sce = Sce.where(id: params[:id])
