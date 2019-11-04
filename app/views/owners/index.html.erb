@@ -1,85 +1,92 @@
-<h2><%= @sce.name %></h2>
-<h5><%= @sce.date.strftime('%d-%^b-%y') %></h5>
-<h5><%= @sce.venue %></h5>
+<% if @sce.present? %>
 
-<h5>NO OF CHILDRENS :  <%= @ekids.count %></h5>
-<div class="table-responsive">
-  <table class="table table-striped table-bordered" width="100%" cellspacing="0">
+  <h2><%= @sce.name %></h2>
+  <h5><%= @sce.date.strftime('%d-%^b-%y') %></h5>
+  <h5><%= @sce.venue %></h5>
 
-    <thead>
-      <tr>
-        <th style="background-color:#d8b2d8">ID</th>
-        <th style="background-color:#d8b2d8">NAME</th>
-        <th style="background-color:#d8b2d8">PARENTS INFO</th>
-        <th style="background-color:#d8b2d8">SESSION INFO</th>
-        <th style="background-color:#d8b2d8">SCREENING REPORT</th>
-        <th style="background-color:#d8b2d8">REFER LETTER</th>
-      </tr>
-    </thead>
+  <h5>NO OF CHILDRENS :  <%= @ekids.count %></h5>
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered" width="100%" cellspacing="0">
 
-    <tbody>
-      <% @ekids.order('name ASC').each do |sc| %>
+      <thead>
         <tr>
-          <td><%= sc.id %></td>
-          <td><%= link_to "#{sc.name} (#{sc.ic})", ekidconf_path(id: sc.id), class: "btn btn-sm btn-info", target: "_blank" %></td>
-          <td>
-            <%= "#{sc.fname} (#{sc.fph})" %><br><br>
-            <%= "#{sc.mname} (#{sc.mmph})" %>
-          </td>
-          <td>
-            <%
-              clo = "danger"
-              clp = "danger" 
-              cls = "danger" 
-              cla = "danger"
-              if sc.ote.present?
-                if sc.ote.stat
-                  clo = "success"
-                elsif !sc.ote.stat
-                  clo = "warning"
-                end
-              end
-              if sc.pte.present?
-                if sc.pte.stat
-                  clp = "success"
-                elsif !sc.pte.stat
-                  clp = "warning"
-                end
-              end
-              if sc.ste.present?
-                if sc.ste.stat
-                  cls = "success"
-                elsif !sc.ste.stat
-                  cls = "warning"
-                end
-              end
-              if sc.ate.present?
-                if sc.ate.stat
-                  cla = "success"
-                elsif !sc.ate.stat
-                  cla = "warning"
-                end
-              end
-            %>
-            <%= link_to "OT", "#", class: "btn btn-sm btn-#{clo} active" %><br><br>
-            <%= link_to "PT", "#", class: "btn btn-sm btn-#{clp} active" %><br><br>
-            <%= link_to "ST", "#", class: "btn btn-sm btn-#{cls} active" %><br><br>
-            <%= link_to "AUDIO", "#", class: "btn btn-sm btn-#{cla} active" %><br>
-          </td>
-          <td>
-            <% if sc.skid.present? %>
-              <%= link_to "EDIT", edit_skid_path(id: sc.skid.id, ekid: sc.id), class: "btn btn-sm btn-primary" %>
-            <% else %>
-              <%= link_to "CREATE", new_skid_path(ekid: sc.id), class: "btn btn-sm btn-warning" %>
-            <% end %>
-          </td>
-          <td>
-            <% if sc.rflt.present? %>
-              <%= link_to "VIEW", rflt_path(sc.rflt.id), class: "btn btn-sm btn-success" %>
-            <% end %>
-          </td>
+          <th style="background-color:#d8b2d8">ID</th>
+          <th style="background-color:#d8b2d8">NAME</th>
+          <th style="background-color:#d8b2d8">PARENTS INFO</th>
+          <th style="background-color:#d8b2d8">SESSION INFO</th>
+          <th style="background-color:#d8b2d8">SCREENING REPORT</th>
+          <th style="background-color:#d8b2d8">REFER LETTER</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+      </thead>
+
+      <tbody>
+        <% @ekids.order('name ASC').each do |sc| %>
+          <tr>
+            <td><%= sc.id %></td>
+            <td><%= link_to "#{sc.name} (#{sc.ic})", ekidconf_path(id: sc.id), class: "btn btn-sm btn-info", target: "_blank" %></td>
+            <td>
+              <%= "#{sc.fname} (#{sc.fph})" %><br><br>
+              <%= "#{sc.mname} (#{sc.mmph})" %>
+            </td>
+            <td>
+              <%
+                clo = "danger"
+                clp = "danger" 
+                cls = "danger" 
+                cla = "danger"
+                if sc.ote.present?
+                  if sc.ote.stat
+                    clo = "success"
+                  elsif !sc.ote.stat
+                    clo = "warning"
+                  end
+                end
+                if sc.pte.present?
+                  if sc.pte.stat
+                    clp = "success"
+                  elsif !sc.pte.stat
+                    clp = "warning"
+                  end
+                end
+                if sc.ste.present?
+                  if sc.ste.stat
+                    cls = "success"
+                  elsif !sc.ste.stat
+                    cls = "warning"
+                  end
+                end
+                if sc.ate.present?
+                  if sc.ate.stat
+                    cla = "success"
+                  elsif !sc.ate.stat
+                    cla = "warning"
+                  end
+                end
+              %>
+              <%= link_to "OT", "#", class: "btn btn-sm btn-#{clo} active" %><br><br>
+              <%= link_to "PT", "#", class: "btn btn-sm btn-#{clp} active" %><br><br>
+              <%= link_to "ST", "#", class: "btn btn-sm btn-#{cls} active" %><br><br>
+              <%= link_to "AUDIO", "#", class: "btn btn-sm btn-#{cla} active" %><br>
+            </td>
+            <td>
+              <% if sc.skid.present? %>
+                <%= link_to "EDIT", edit_skid_path(id: sc.skid.id, ekid: sc.id), class: "btn btn-sm btn-primary" %>
+              <% else %>
+                <%= link_to "CREATE", new_skid_path(ekid: sc.id), class: "btn btn-sm btn-warning" %>
+              <% end %>
+            </td>
+            <td>
+              <% if sc.rflt.present? %>
+                <%= link_to "VIEW", rflt_path(sc.rflt.id), class: "btn btn-sm btn-success" %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% else %>
+  NO ACTIVE SESSION
+<% end %>
+
+

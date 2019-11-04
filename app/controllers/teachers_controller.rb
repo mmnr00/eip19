@@ -7,8 +7,8 @@ class TeachersController < ApplicationController
 		if @teacher.loc.blank? || @teacher.tp.blank?
 			redirect_to root_path
 		end
-		@sce = Sce.find($scses[@teacher.loc])
-		@ekids = @sce.ekids
+		@sce = Sce.where(curr: true, loc: @teacher.loc).first
+		@ekids = @sce.ekids unless @sce.blank?
 	end
 
 	# def index_old
