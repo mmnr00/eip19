@@ -1,6 +1,13 @@
 class AdminsController < ApplicationController
 	before_action :authenticate_admin!
 
+	def acclist
+		@admin = current_admin
+		@admins = Admin.all
+		@teachers = Teacher.all
+		@owners = Owner.all
+	end
+
 	def index
 		@admin = current_admin
 		@ekids = Ekid.where(admloc: $admloc[@admin.id])
