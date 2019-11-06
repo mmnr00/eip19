@@ -14,13 +14,14 @@
   <div class="form-group">
     <%= f.label :file, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <% if @foto.picture.content_type == 'application/pdf' %>
+      <% if @foto.picture.content_type == 'application/pdf' && 1==0 %>
         <a href="<%="#{@foto.picture.url}"%>" target="_blank">
           <%= image_tag(Foto.where(foto_name: "PDF ICON").first.picture.url, size: "500x500") if @foto.picture? %>
         </a>
       <% else %>
-
+        <a href="<%="#{@foto.picture.url}"%>" target="_blank">
         <%= image_tag(@foto.picture.url, size: "500x500") if @foto.picture? %>
+        </a>
       <% end %>
       <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png,application/pdf', required: true %>
     </div>

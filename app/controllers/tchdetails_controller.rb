@@ -52,49 +52,13 @@ class TchdetailsController < ApplicationController
 
 	def create
 		@tchdetail = Tchdetail.new(tchdetail_params)
-		pars = params[:tchdetail]
-		if pars[:teacher_id].present? #teacher taska
-
-		elsif pars[:college_id].present? #teacher college
-
-			# @college = College.find(pars[:college_id])
-			# owner = @college.owners.last
-
-			# owner.colleges.each do |clg|
-			# 	exs = clg.tchdetails.where(ic_1: @tchdetail.ic_1, ic_2: @tchdetail.ic_2, ic_3: @tchdetail.ic_3)
-			# 	if exs.present?
-			# 		break
-			# 	end
-			# end
-
-			@college = College.find(pars[:college_id])
-			owner = @college.owners.last
-			tchdc = nil
-			owner.colleges.each do |clg|
-				if tchdc.blank?
-					tchdc = clg.tchdetails
-				else
-					tchdc = tchdc.or(clg.tchdetails)
-				end
-			end
-
-			exs = tchdc.where(ic_1: @tchdetail.ic_1, ic_2: @tchdetail.ic_2, ic_3: @tchdetail.ic_3)
-			
-			if exs.present?
-				tchdclg = exs.first.tchdetail_colleges.first
-				tchdclg.college_id = @college.id
-				tchdclg.save
-				@tchdetail = exs.first
-			else
-				if @tchdetail.save
-					TchdetailCollege.create(college_id: @college.id, tchdetail_id: @tchdetail.id)
-				else
-					render @tchdetail.errors.full_messages
-					render :new
-				end
-			end
-			redirect_to tchd_anis_path(id: @tchdetail.id, anis: @tchdetail.anis)
-		end
+		if @tchdetail.save
+			flash[:success] = "Success"
+			redirect_to teacher_index_path
+		else
+			flash[:danger] = "Please try again"
+			redirect_to new_tchdetail_path(teacher_id: @teacher.id)
+		end		
 	end
 
 	def create_old
@@ -234,13 +198,8 @@ class TchdetailsController < ApplicationController
 		@teacher = @tchdetail.teacher
 		#@classroom = Classroom.find(params[:classroom])
 		if @tchdetail.update(tchdetail_params)
-			flash[:notice] = "Teacher was successfully updated"
-			if @tchdetail.teacher.blank?
-			#if @tchdetail.anis == "true" && !params[:tsktch] == "true"
-				redirect_to tchd_anis_path(id: @tchdetail.id, anis: @tchdetail.anis)
-			else
-				redirect_to teacher_taska_path(@teacher)
-			end
+			flash[:notice] = "Profile successfully updated"
+			redirect_to teacher_index_path
 			
 		else
 			render 'edit'
