@@ -14,6 +14,40 @@
             </div>
           </div>
         </div>
+
+        <!-- PROFILE PIC -->
+        <% m = 0 %> <!-- Stop loop at 1 -->
+        <div class="form-group"> 
+          <div class="row">
+            <div class="control-label col-sm-8">
+              <strong>PROFILE PIC</strong>
+            </div>
+          </div>
+          <div class="row">
+          <div class="col-sm-8 col-5">
+          <% image = @tchdetail.fotos.where(foto_name: "PROFILE PIC").first %>
+          <% if image.present? %>
+            <%= image_tag(image.picture.url, size: "200x200") if image.picture? %>
+              <div class="row">
+              <div class="col-sm-8 col-5">
+                <strong><%= link_to "EDIT", edit_foto_path(image.id), class: "btn btn-sm btn-success active" %></strong>
+              </div>
+              </div>  
+          <% else %>
+            <%= f.fields_for :fotos do |h| %>
+              <% break if m==1 %>
+                <div class="row">
+                  <div class="col-sm-8 col-8">
+                    <%= h.hidden_field :foto_name, value: "PROFILE PIC" %>
+                    <%= h.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+                  </div>
+                </div>
+                <% m = 1 %>
+              <% end %>
+            <% end %>
+          </div>
+          </div>
+        </div>
         <% k = 1 %>
         <div class="form-group"> <!-- IC -->
           <div class="row">

@@ -9,19 +9,39 @@ id=[7108,
 @ekids = Ekid.where(id: id)
 @ekids.each do |ek|
 @client = Twilio::REST::Client.new(ENV["TWILIO_ACCOUNT_SID"], ENV["TWILIO_AUTH_KEY"])
-dt= "20 Oktober 2019"
+dt= "17 November 2019"
 @client.messages.create(
 #to: "+60174151556",
-to: "+60#{ek.mph}", 
+to: "+6#{ek.mph}", 
 from: ENV["TWILIO_PHONE_NO"], 
+body: "MBI Selangor INC
+\nAnak anda terpilih ke Free Screening(#{dt}) di Denai Alam.
+\nHubungi Pn Rusmina Sukim di 019-6072688 untuk sahkan kehadiran.
+\nTQ"
+)
+end
+
+#OLD message
+
 body: "\n\n MBI Selangor Incorporated 
-\n Terima kasih kerana mendaftar untuk Program Saringan Percuma anjuran MBI Selangor (INC).
-\n Tahniah! #{ek.name} telah disenaraipendek untuk proses pemilihan seterusnya. Untuk makluman, program seterusnya akan diadakan pada #{dt} di Denai Alam.
+\n #{ek.name} telah disenaraipendek untuk Program Saringan Percuma akan diadakan pada #{dt} di Denai Alam.
 \n Klik link ini https://wa.me/60196072688?text=#{ek.name} dan klik send pada whatsapp untuk sahkan kehadiran.
 \n Untuk pertanyaan lanjut sila hubungi urusetia Program, Pn Rusmina Sukim di 019-6072688
 \n TEMPAT ADALAH AMAT TERHAD. Terima kasih atas kerjasama anda."
 )
-end
+
+@client = Twilio::REST::Client.new(ENV["TWILIO_ACCOUNT_SID"], ENV["TWILIO_AUTH_KEY"])
+dt= "17-Nov-19"
+@client.messages.create(
+to: "+60174151556",
+#to: "+6#{ek.mph}", 
+from: ENV["TWILIO_PHONE_NO"], 
+body: "MBI Selangor INC
+\nAnak anda terpilih ke Free Screening(#{dt}) di Denai Alam.
+\nHubungi Pn Rusmina Sukim di 019-6072688 untuk sahkan kehadiran.
+\nTQ"
+)
+
 
 #Change Mentoring to Pending
 Ekid.where(stat:"MENTOR").each do |ek|
