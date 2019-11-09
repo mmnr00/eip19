@@ -1,11 +1,4 @@
 #FREE SCREENING
-id=[7108,
-7101,
-7096,
-7094,
-7092,
-7087]
-
 @ekids = Ekid.where(id: id)
 @ekids.each do |ek|
 @client = Twilio::REST::Client.new(ENV["TWILIO_ACCOUNT_SID"], ENV["TWILIO_AUTH_KEY"])
@@ -20,6 +13,23 @@ body: "MBI Selangor INC
 \nTQ"
 )
 end
+
+#MENTORING
+@ekids = Ekid.where(id: id)
+@ekids.each do |ek|
+@client = Twilio::REST::Client.new(ENV["TWILIO_ACCOUNT_SID"], ENV["TWILIO_AUTH_KEY"])
+dt= "17 November 2019"
+@client.messages.create(
+#to: "+60174151556",
+to: "+6#{ek.mph}", 
+from: ENV["TWILIO_PHONE_NO"], 
+body: "MBI Selangor INC
+\nAnak anda terpilih ke Mentoring Coaching(#{dt},Shah Alam) 
+\nSila hubungi Pn Zaiha di 013-6689376.
+"
+)
+end
+
 
 #OLD message
 
@@ -42,6 +52,18 @@ body: "MBI Selangor INC
 \nTQ"
 )
 
+@client = Twilio::REST::Client.new(ENV["TWILIO_ACCOUNT_SID"], ENV["TWILIO_AUTH_KEY"])
+dt= "17-Nov-19"
+@client.messages.create(
+to: "+60174151556",
+#to: "+6#{ek.mph}", 
+from: ENV["TWILIO_PHONE_NO"], 
+body: "MBI Selangor INC
+\nAnak anda terpilih ke Mentoring Coaching(#{dt},Shah Alam) 
+\nSila hubungi Pn Zaiha di 013-6689376.
+"
+)
+
 
 #Change Mentoring to Pending
 Ekid.where(stat:"MENTOR").each do |ek|
@@ -49,9 +71,10 @@ ek.stat="PENDING"
 ek.save
 end
 
-#Sort first 40
-Ekid.where(stat: "NEW").order('created_at ASC').first(40).each do |ek|
+#Sort first 50
+Ekid.where(admloc: "sha", stat: "NEW").order('created_at ASC').first(50).each do |ek|
 ek.stat="MENTOR"
+ek.admloc="srd"
 ek.save
 end
 
