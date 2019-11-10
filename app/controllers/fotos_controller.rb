@@ -11,6 +11,8 @@ class FotosController < ApplicationController
 		if @foto.update(foto_params)
 			if @teacher 
         redirect_to edit_tchdetail_path(@tchdetail, teacher_id: @teacher.id)
+      elsif @owner
+        redirect_to edit_tchdetail_path(@tchdetail, owner_id: @owner.id)
       elsif @parent
       	@kid = @foto.kid
       	redirect_to edit_kid_path(@kid)

@@ -4,9 +4,7 @@ class TeachersController < ApplicationController
 
 
 	def index
-		if @teacher.loc.blank? || @teacher.tp.blank?
-			redirect_to root_path
-		elsif @teacher.tchdetail.blank?
+		if @teacher.tchdetail.blank?
 			redirect_to new_tchdetail_path(teacher_id: @teacher.id)
 		end
 		@sce = Sce.where(curr: true, loc: @teacher.loc).first

@@ -67,6 +67,8 @@
       </tbody>
     </table>
   </div>
+<% elsif @teacher.loc.blank? || @teacher.tp.blank?  %>
+  AWAITING APPROVAL FROM SYSTEM ADMIN
 <% else %>
   NO ACTIVE SESSION
 <% end %>

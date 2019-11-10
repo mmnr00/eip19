@@ -1,13 +1,17 @@
 <% 
-  tp = @tchdetail.teacher.tp
-  if tp == "at"
-    typ = "Audiologist"
-  elsif tp == "st"
-    typ = "Speech Therapist"
-  elsif tp == "ot"
-    typ = "Occupational Therapy"
-  elsif tp == "pt"
-    typ = "Physio Therapist"
+  if @tchdetail.teacher.present?
+    tp = @tchdetail.teacher.tp
+    if tp == "at"
+      typ = "Audiologist"
+    elsif tp == "st"
+      typ = "Speech Therapist"
+    elsif tp == "ot"
+      typ = "Occupational Therapy"
+    elsif tp == "pt"
+      typ = "Physio Therapist"
+    end
+  elsif @tchdetail.owner.present?
+    typ = "Doctor"
   end
 %>
 
@@ -68,6 +72,8 @@
           <td style="background-color:#cc99cc" align="center">
             <% if @tchdetail.teacher.present? %>
               <%= "#{@tchdetail.teacher.email}" %>
+            <% elsif @tchdetail.owner.present? %>
+              <%= "#{@tchdetail.owner.email}" %>
             <% else %>
               <%= "#{@tchdetail.email}" %>
             <% end %>

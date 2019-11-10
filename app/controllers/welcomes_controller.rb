@@ -13,7 +13,13 @@ class WelcomesController < ApplicationController
 		@admin = current_admin
 		@owner = current_owner
 		@parent = current_parent
-		render action: "index2", layout: "homepage2"
+		if @owner && @owner.tchdetail.blank?
+			redirect_to new_tchdetail_path(owner_id: @owner.id)
+		elsif @teacher && @teacher.tchdetail.blank?
+			redirect_to new_tchdetail_path(teacher_id: @teacher.id)
+		else
+			render action: "index2", layout: "homepage2"	
+		end		
 		
 	end
 

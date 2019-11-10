@@ -1,5 +1,6 @@
 class Tchdetail < ApplicationRecord
 	belongs_to :teacher, optional: true
+	belongs_to :owner, optional: true
 	has_many :fotos
 	has_many :tchdetail_colleges
 	has_many :colleges, through: :tchdetail_colleges

@@ -12,9 +12,6 @@ class TchdetailsController < ApplicationController
 			@admin = Admin.find(params[:adm])
 		end
 		@fotos = @tchdetail.fotos
-		if @owner 
-			render action: "show", layout: "dsb-owner-college"
-		end
 	end
 
 	def show_pdf
@@ -54,10 +51,14 @@ class TchdetailsController < ApplicationController
 		@tchdetail = Tchdetail.new(tchdetail_params)
 		if @tchdetail.save
 			flash[:success] = "Success"
-			redirect_to teacher_index_path
+			if @tchdetail.owner.present?
+				redirect_to owner_index_path
+			elsif @tchdetail.teacher.present?
+				redirect_to teacher_index_path
+			end
 		else
 			flash[:danger] = "Please try again"
-			redirect_to new_tchdetail_path(teacher_id: @teacher.id)
+			#redirect_to new_tchdetail_path(teacher_id: @teacher.id)
 		end		
 	end
 
@@ -199,7 +200,11 @@ class TchdetailsController < ApplicationController
 		#@classroom = Classroom.find(params[:classroom])
 		if @tchdetail.update(tchdetail_params)
 			flash[:notice] = "Profile successfully updated"
-			redirect_to teacher_index_path
+			if @tchdetail.owner.present?
+				redirect_to owner_index_path
+			elsif @tchdetail.teacher.present?
+				redirect_to teacher_index_path
+			end
 			
 		else
 			render 'edit'
@@ -236,6 +241,7 @@ class TchdetailsController < ApplicationController
       																	:postcode,
       																	:education,
       																	:teacher_id,
+      																	:owner_id,
       																	:ts_name,
       																	:ts_address_1,
       																	:ts_address_2,
@@ -271,6 +277,7 @@ class TchdetailsController < ApplicationController
       																	:postcode,
       																	:education,
       																	:teacher_id,
+      																	:owner_id,
       																	:income,
       																	:dob,
       																	:gender)
