@@ -1,5 +1,5 @@
 class TeachersController < ApplicationController
-	before_action :authenticate_teacher!, except: [:search, :find, :show]
+	before_action :authenticate_teacher!, except: [:search, :find, :show, :updtch]
 	before_action :set_teacher #, only: [:index, :college, :add_college, :remove_college, :payment_signup]
 
 
@@ -9,6 +9,15 @@ class TeachersController < ApplicationController
 		end
 		@sce = Sce.where(curr: true, loc: @teacher.loc).first
 		@ekids = @sce.ekids unless @sce.blank?
+	end
+
+	def updtch
+		tch = Teacher.find(params[:id])
+		tch.tp = params[:tp]
+		tch.loc = params[:loc]
+		tch.save
+		flash[:success] = "Update Successful #{tch.username}"
+		redirect_to acclist_path
 	end
 
 	# def index_old
