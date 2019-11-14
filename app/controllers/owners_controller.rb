@@ -11,6 +11,9 @@ class OwnersController < ApplicationController
 	end
 
 	def updowner
+		@owner = Owner.find(params[:id])
+		@owner.loc = params[:loc]
+		@owner.save
 		flash[:notice] = "Update Successful"
 		redirect_to acclist_path(tb2_a: "active", tb2_ar: true, tb2_d:"show active")
 	end

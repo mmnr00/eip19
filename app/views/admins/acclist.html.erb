@@ -136,7 +136,8 @@
                                         [["Shah Alam","sha"],["Serdang","srd"]], selected: ow.loc),
                                         required: true, include_blank: "SELECT",
                                         class: "form-control search-box input-lg"%>
-                                        <b>LOCATION</b>
+                                    <b>LOCATION</b>
+                                    <%= hidden_field_tag :id, ow.id %>
                                   </div>
                                   <div class="col-md-12">
                                     <%= button_tag(type: :submit, class: "btn btn-sm btn-primary active", id: "submit_expense") do %>
