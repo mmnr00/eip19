@@ -1,5 +1,5 @@
 class OwnersController < ApplicationController
-	before_action :authenticate_owner!
+	before_action :authenticate_owner!, except: [:updowner]
 	before_action :set_owner
 
 	def index
@@ -8,6 +8,11 @@ class OwnersController < ApplicationController
 		end
 		@sce = Sce.where(curr: true, loc: @owner.loc).first
 		@ekids = @sce.ekids unless @sce.blank?
+	end
+
+	def updowner
+		flash[:notice] = "Update Successful"
+		redirect_to acclist_path(tb2_a: "active", tb2_ar: true, tb2_d:"show active")
 	end
 	
 

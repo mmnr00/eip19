@@ -1,101 +1,169 @@
 <h3>ACCOUNT LIST</h3>
 
-<%= @owners.count %>
-<%= @teachers.count %>
-<%= @admins.count %>
+<div id="tabs" class="project-tab bg-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <nav>
+          <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link <%= "#{params[:tb1_a]}" %>" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="<%= "#{params[:tb1_ar]}" %>">
+              THERAPISTS (<%= @teachers.count %>)
+            </a>
+            <a class="nav-item nav-link <%= "#{params[:tb2_a]}" %>" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="<%= "#{params[:tb2_ar]}" %>">
+              DOCTORS (<%= @owners.count %>)
+            </a>
+          </div>
+        </nav>
 
-<div class="row">
 
-<div class="col-12">
-  <div class="card ">
-    <div class="card-header">
-      <h4>THERAPIST (<%= @teachers.count %>)</h4>
-    </div>
-    <div class="card-body">
-      <div class="table-responsive">
-        <table class="table table-striped table-bordered" width="100%" cellspacing="0">
-          <thead>
-            <tr>
-              <th style="background-color:#d8b2d8"> ACCOUNT </th>
-              <th style="background-color:#d8b2d8"> PROFILE </th>
-              <th style="background-color:#d8b2d8"> TYPE </th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @teachers.order('created_at DESC').each do |tc| 
-                tcd = tc.tchdetail
-            %>
-              <tr>
-                <td>
-                  <%= tc.username %><br>
-                  <%= tc.email %>
-                </td>
+        <div class="tab-content" id="nav-tabContent">
 
-                <td>
-                  <% if tcd.present? %>
-                    <%= tcd.name %><br>
-                    <%= link_to "VIEW", tchdetail_path(tcd), class: 'btn btn-sm btn-info', target: '_blank' %>
-                  <% end %>
-                </td>
+          <!-- GROSS MOTOR -->
+          <div class="tab-pane fade <%= "#{params[:tb1_d]}" %>" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"><br>
 
-                <td>
-                  <%= form_tag updtch_path, method: :get do %>
-                    <div class="row">
-                      <div class="col-md-12">
-                        <%= select_tag :tp, options_for_select(
-                            [["SPEECH THERAPIST","st"],["OCCUPATIONAL THERAPIST","ot"],["AUDIOLOGIST","at"],["PHYSIO THERAPIST","pt"]], selected: tc.tp), required: true, include_blank: "SELECT",
-                            class: "form-control search-box input-lg" %>
-                            <b>TYPE</b>
-                        <%= hidden_field_tag :id, tc.id %>
-                        <%= hidden_field_tag :stato, params[:stato] %>
-                      </div>
-                      <div class="col-md-12">
-                        <%= select_tag :loc, options_for_select(
-                            [["Shah Alam","sha"],["Serdang","srd"]], selected: tc.loc),
-                            required: true, include_blank: "SELECT",
-                            class: "form-control search-box input-lg"%>
-                            <b>LOCATION</b>
-                      </div>
-                      <div class="col-md-12">
-                        <%= button_tag(type: :submit, class: "btn btn-sm btn-primary active", id: "submit_expense") do %>
-                          <i class="fa fa-sync"></i> UPDATE
+            <div class="col-12">
+              <div class="card ">
+                <div class="card-header">
+                  <h4>THERAPIST</h4>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-striped table-bordered" width="100%" cellspacing="0">
+                      <thead>
+                        <tr>
+                          <th style="background-color:#d8b2d8"> ACCOUNT </th>
+                          <th style="background-color:#d8b2d8"> PROFILE </th>
+                          <th style="background-color:#d8b2d8"> TYPE </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% @teachers.order('created_at DESC').each do |tc| 
+                            tcd = tc.tchdetail
+                        %>
+                          <tr>
+                            <td>
+                              <%= tc.username %><br>
+                              <%= tc.email %>
+                            </td>
+
+                            <td>
+                              <% if tcd.present? %>
+                                <%= tcd.name %><br>
+                                <%= "#{tcd.ic_1}-#{tcd.ic_2}-#{tcd.ic_3}" %><br>
+                                <%= tcd.income %><br>
+                                <%= tcd.dun %><br>
+                                <%= link_to "VIEW", tchdetail_path(tcd), class: 'btn btn-sm btn-info', target: '_blank' %>
+                              <% end %>
+                            </td>
+
+                            <td>
+                              <%= form_tag updtch_path, method: :get do %>
+                                <div class="row">
+                                  <div class="col-md-12">
+                                    <%= select_tag :tp, options_for_select(
+                                        [["SPEECH THERAPIST","st"],["OCCUPATIONAL THERAPIST","ot"],["AUDIOLOGIST","at"],["PHYSIO THERAPIST","pt"]], selected: tc.tp), required: true, include_blank: "SELECT",
+                                        class: "form-control search-box input-lg" %>
+                                        <b>TYPE</b>
+                                    <%= hidden_field_tag :id, tc.id %>
+                                    <%= hidden_field_tag :stato, params[:stato] %>
+                                  </div>
+                                  <div class="col-md-12">
+                                    <%= select_tag :loc, options_for_select(
+                                        [["Shah Alam","sha"],["Serdang","srd"]], selected: tc.loc),
+                                        required: true, include_blank: "SELECT",
+                                        class: "form-control search-box input-lg"%>
+                                        <b>LOCATION</b>
+                                  </div>
+                                  <div class="col-md-12">
+                                    <%= button_tag(type: :submit, class: "btn btn-sm btn-primary active", id: "submit_expense") do %>
+                                      <i class="fa fa-sync"></i> UPDATE
+                                    <% end %>
+                                  </div>
+                                </div>
+                              <% end %>
+                            </td>
+                          </tr>
                         <% end %>
-                      </div>
-                    </div>
-                  <% end %>
-                </td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="tab-pane fade <%= "#{params[:tb2_d]}" %>" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"><br>
+
+            <div class="col-12">
+              <div class="card ">
+                <div class="card-header">
+                  <h4>DOCTORS</h4>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-striped table-bordered" width="100%" cellspacing="0">
+                      <thead>
+                        <tr>
+                          <th style="background-color:#d8b2d8"> ACCOUNT </th>
+                          <th style="background-color:#d8b2d8"> PROFILE </th>
+                          <th style="background-color:#d8b2d8"> TYPE </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% @owners.order('created_at DESC').each do |ow| 
+                          tcd = ow.tchdetail
+                        %>
+                          <tr>
+                            <td>
+                              <%= ow.username %><br>
+                              <%= ow.email %>
+                            </td>
+                            <td>
+                              <% if tcd.present? %>
+                                <%= tcd.name %><br>
+                                <%= "#{tcd.ic_1}-#{tcd.ic_2}-#{tcd.ic_3}" %><br>
+                                <%= tcd.income %><br>
+                                <%= link_to "VIEW", tchdetail_path(tcd), class: 'btn btn-sm btn-info', target: '_blank' %>
+                              <% end %>
+                            </td>
+                            <td>
+
+                              <%= form_tag updowner_path, method: :get do %>
+                                <div class="row">
+                                  <div class="col-md-12">
+                                    <%= select_tag :loc, options_for_select(
+                                        [["Shah Alam","sha"],["Serdang","srd"]], selected: ow.loc),
+                                        required: true, include_blank: "SELECT",
+                                        class: "form-control search-box input-lg"%>
+                                        <b>LOCATION</b>
+                                  </div>
+                                  <div class="col-md-12">
+                                    <%= button_tag(type: :submit, class: "btn btn-sm btn-primary active", id: "submit_expense") do %>
+                                      <i class="fa fa-sync"></i> UPDATE
+                                    <% end %>
+                                  </div>
+                                </div>
+                              <% end %>
+
+                            </td>
+                          </tr>
+
+                        <% end %>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="col-12">
-  <div class="card ">
-    <div class="card-header">
-      <h4>DOCTORS</h4>
-    </div>
-    <div class="card-body">
-      <div class="table-responsive">
-        <table class="table table-striped table-bordered" width="100%" cellspacing="0">
-          <thead>
-            <tr>
-              <th style="background-color:#d8b2d8"> PERIOD </th>
-              <th style="background-color:#d8b2d8"> TOTAL(RM) </th>
-              <th style="background-color:#d8b2d8"> ACTION </th>
-            </tr>
-          </thead>
-          <tbody>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-</div>
 
 
 
-</div>

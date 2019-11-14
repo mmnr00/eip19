@@ -17,7 +17,7 @@ class TeachersController < ApplicationController
 		tch.loc = params[:loc]
 		tch.save
 		flash[:success] = "Update Successful #{tch.username}"
-		redirect_to acclist_path
+		redirect_to acclist_path(tb1_a: "active", tb1_ar: true, tb1_d:"show active")
 	end
 
 	# def index_old

@@ -72,8 +72,8 @@ ek.save
 end
 
 #Sort first 50
-Ekid.where(admloc: "sha", stat: "NEW").order('created_at ASC').first(50).each do |ek|
-ek.stat="MENTOR"
+Ekid.where(admloc: "sha", stat: "NEW").order('created_at ASC').first(30).each do |ek|
+ek.stat="PENDING"
 ek.admloc="srd"
 ek.save
 end
