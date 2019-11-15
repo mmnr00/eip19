@@ -201,6 +201,7 @@ Rails.application.routes.draw do
   #~OWNERS (FOR COLLEGE)
   get 'owner_index', to: 'owners#index'
   get 'updowner', to: 'owners#updowner'
+  get 'ownprev', to: 'owners#ownprev'
 
   #~COLLEGES
   get '/owner/:id/colleges/new', to: 'colleges#new', as: 'new_college'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_09_132324) do
+ActiveRecord::Schema.define(version: 2019_11_14_213738) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -558,6 +558,7 @@ ActiveRecord::Schema.define(version: 2019_11_09_132324) do
     t.string "atin"
     t.string "aear"
     t.string "aresp"
+    t.integer "owner_id"
   end
 
   create_table "sces", force: :cascade do |t|
@@ -602,6 +603,7 @@ ActiveRecord::Schema.define(version: 2019_11_09_132324) do
     t.string "cmt"
     t.string "ovc"
     t.boolean "stat"
+    t.integer "owner_id"
   end
 
   create_table "stes", force: :cascade do |t|

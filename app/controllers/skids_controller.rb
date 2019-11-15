@@ -7,7 +7,7 @@ class SkidsController < ApplicationController
 		if @ekid.skid.present?
 			@skid=@ekid.skid
 		else
-			@skid = Skid.create(ekid_id: @ekid.id, stat: false)
+			@skid = Skid.create(ekid_id: @ekid.id, stat: false, owner_id: @owner.id)
 		end
 		
 		@ate = @ekid.ate

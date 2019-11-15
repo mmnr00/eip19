@@ -21,24 +21,24 @@
     pendrf = @rflt.pendr
   else
     # OT
-    osensf = @ote.sens
-    obeobf = @ote.beob
-    ocogf = @ote.cog
-    ogmtrf = @ote.gmtr
-    ofmtrf = @ote.fmtr
+    @ote.present? ? osensf = @ote.sens : osensf = "NO INPUT"
+    @ote.present? ? obeobf = @ote.beob : obeobf = "NO INPUT"
+    @ote.present? ? ocogf = @ote.cog : ocogf = "NO INPUT"
+    @ote.present? ? ogmtrf = @ote.gmtr : ogmtrf = "NO INPUT"
+    @ote.present? ? ofmtrf = @ote.fmtr : ofmtrf = "NO INPUT"
     # ST
-    spref = @ste.pre
-    srecf = @ste.rec
-    sexprf = @ste.expr
+    @ste.present? ? spref = @ste.pre : spref = "NO INPUT"
+    @ste.present? ? srecf = @ste.rec : srecf = "NO INPUT"
+    @ste.present? ? sexprf = @ste.expr : sexprf = "NO INPUT"
     # AT
-    ahrf = @ate.hr
-    atinf = @ate.tin
-    aearf = @ate.ear
-    arespf = @ate.resp
+    @ate.present? ? ahrf = @ate.hr : ahrf = "NO INPUT"
+    @ate.present? ? aatinf = @ate.tin : aatinf = "NO INPUT"
+    @ate.present? ? aaearf = @ate.ear : aaearf = "NO INPUT"
+    @ate.present? ? aarespf = @ate.resp : aarespf = "NO INPUT"
     # PT
-    pgmtrf = @pte.gmtr
-    pmovf = @pte.mov
-    pendrf = @pte.endr
+    @pte.present? ? pgmtrf = @pte.gmtr : pgmtrf = "NO INPUT"
+    @pte.present? ? pmovf = @pte.mov : pmovf = "NO INPUT"
+    @pte.present? ? pendrf = @pte.endr : pendrf = "NO INPUT"
   end
 %>
 
@@ -259,6 +259,7 @@
 
 
   <%= f.hidden_field :ekid_id, value: @ekid.id %>
+  <%= f.hidden_field :owner_id, value: @owner.id %>
 
   <div class="form-group">
     <div class="row">

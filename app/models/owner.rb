@@ -1,5 +1,9 @@
 class Owner < ApplicationRecord
+	has_many :rflts
+	has_many :skids
 	has_one	:tchdetail
+
+
 	has_many :owner_colleges
 	has_many :colleges, through: :owner_colleges
   # Include default devise modules. Others available are:

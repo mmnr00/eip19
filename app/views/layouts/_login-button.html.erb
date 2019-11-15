@@ -45,6 +45,7 @@
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
           <a class="dropdown-item" href="/owner_index">Back to Dashboard</a>
+          <a class="dropdown-item" href="/ownprev">Previous Records</a>
           <% if @owner.tchdetail.present? %>
             <a class="dropdown-item" href="/tchdetails/<%= @owner.tchdetail.id %>/edit?owner_id=<%= @owner.id %>">Edit Profile</a>
           <% end %>

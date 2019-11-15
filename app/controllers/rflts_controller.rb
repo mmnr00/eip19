@@ -39,8 +39,14 @@ class RfltsController < ApplicationController
 	def create
 		@rflt=Rflt.new(rflt_params)
 		if @rflt.save
+			sce = @rflt.ekid.sce
 			flash[:success] = "Refer letter successfully created"
-			redirect_to owner_index_path
+			sce = @rflt.ekid.sce
+			if sce.curr
+				redirect_to owner_index_path
+			else
+				redirect_to ownprev_path
+			end
 		else
 			flash[:danger] = "Unsuccessful. Please try again"
 		end
@@ -62,7 +68,12 @@ class RfltsController < ApplicationController
 		@rflt = Rflt.find(params[:id])
 		if @rflt.update(rflt_params)
 			flash[:success] = "Refer letter successfully updated"
-			redirect_to owner_index_path
+			sce = @rflt.ekid.sce
+			if sce.curr
+				redirect_to owner_index_path
+			else
+				redirect_to ownprev_path
+			end
 		else
 			flash[:danger] = "Unsuccessful. Please try again"
 		end
@@ -95,7 +106,8 @@ class RfltsController < ApplicationController
 																:ahr,
 																:atin,
 																:aear,
-																:aresp)
+																:aresp,
+																:owner_id)
 		end
 
 	def set_all

@@ -2,6 +2,19 @@ class OwnersController < ApplicationController
 	before_action :authenticate_owner!, except: [:updowner]
 	before_action :set_owner
 
+	def ownprev
+		@id =[]
+		@owner.skids.each do |sk|
+			@id << sk.ekid_id unless @id.include? sk.ekid_id
+		end
+		@owner.rflts.each do |rf|
+			@id << rf.ekid_id unless @id.include? rf.ekid_id
+		end
+		@ekids = Ekid.where(id: @id)
+		
+
+	end
+
 	def index
 		if @owner.tchdetail.blank?
 			redirect_to new_tchdetail_path(owner_id: @owner.id)
