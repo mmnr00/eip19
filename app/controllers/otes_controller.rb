@@ -25,6 +25,7 @@ class OtesController < ApplicationController
 		@ote.gmtr= par[:gmtr]
 		@ote.fmtr = par[:fmtr]
 		@ote.ovc = par[:ovc]
+		@ote.teacher_id = par[:teacher_id]
 		@ote.save
 		return @ote
 	end

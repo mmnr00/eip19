@@ -23,6 +23,7 @@ class PtesController < ApplicationController
 		@pte.mov = par[:mov]
 		@pte.endr = par[:endr]
 		@pte.ovc = par[:ovc]
+		@pte.teacher_id = par[:teacher_id]
 		@pte.save
 		return @pte
 	end

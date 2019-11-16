@@ -24,6 +24,7 @@ class AtesController < ApplicationController
 		@ate.ear = par[:ear]
 		@ate.resp = par[:resp]
 		@ate.ovc = par[:ovc]
+		@ate.teacher_id = par[:teacher_id]
 		@ate.save
 		return @ate
 	end

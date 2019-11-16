@@ -10,16 +10,16 @@ class StesController < ApplicationController
 		end
 
 		if params[:tp] == "st"
-			@ste = Ste.create(ekid_id: params[:id], stat: false)
+			@ste = Ste.create(ekid_id: params[:id], stat: false, teacher_id: @teacher.id)
 			redirect_to edit_ste_path(ass: @ste.id, chkl: @chkl.id)
 		elsif params[:tp] == "ot"
-			@ote = Ote.create(ekid_id: params[:id], stat: false)
+			@ote = Ote.create(ekid_id: params[:id], stat: false, teacher_id: @teacher.id)
 			redirect_to edit_ote_path(ass: @ote.id, chkl: @chkl.id)
 		elsif params[:tp] == "pt"
-			@pte = Pte.create(ekid_id: params[:id], stat: false)
+			@pte = Pte.create(ekid_id: params[:id], stat: false, teacher_id: @teacher.id)
 			redirect_to edit_pte_path(ass: @pte.id, chkl: @chkl.id)
 		elsif params[:tp] == "at"
-			@ate = Ate.create(ekid_id: params[:id], stat: false)
+			@ate = Ate.create(ekid_id: params[:id], stat: false, teacher_id: @teacher.id)
 			redirect_to edit_ate_path(ass: @ate.id, chkl: @chkl.id)
 		end
 	end
@@ -46,6 +46,7 @@ class StesController < ApplicationController
 		@ste.rec = par[:rec]
 		@ste.expr = par[:expr]
 		@ste.ovc = par[:ovc]
+		@ste.teacher_id = par[:teacher_id]
 		@ste.save
 		return @ste
 	end
