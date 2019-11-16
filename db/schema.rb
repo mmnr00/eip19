@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_14_213738) do
+ActiveRecord::Schema.define(version: 2019_11_16_141014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 2019_11_14_213738) do
     t.datetime "updated_at", null: false
     t.integer "ekid_id"
     t.boolean "stat"
+    t.integer "teacher_id"
   end
 
   create_table "chkls", force: :cascade do |t|
@@ -295,6 +296,7 @@ ActiveRecord::Schema.define(version: 2019_11_14_213738) do
     t.datetime "updated_at", null: false
     t.integer "ekid_id"
     t.boolean "stat"
+    t.integer "teacher_id"
   end
 
   create_table "otkids", force: :cascade do |t|
@@ -483,6 +485,7 @@ ActiveRecord::Schema.define(version: 2019_11_14_213738) do
     t.datetime "updated_at", null: false
     t.integer "ekid_id"
     t.boolean "stat"
+    t.integer "teacher_id"
   end
 
   create_table "ptns_mmbs", force: :cascade do |t|
@@ -615,6 +618,7 @@ ActiveRecord::Schema.define(version: 2019_11_14_213738) do
     t.datetime "updated_at", null: false
     t.integer "ekid_id"
     t.boolean "stat"
+    t.integer "teacher_id"
   end
 
   create_table "taska_admins", force: :cascade do |t|

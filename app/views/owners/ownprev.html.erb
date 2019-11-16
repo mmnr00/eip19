@@ -10,7 +10,7 @@
         <th style="background-color:#d8b2d8">NAME</th>
         <th style="background-color:#d8b2d8">SESSION</th>
         <th style="background-color:#d8b2d8">SCREENING REPORT</th>
-        <th style="background-color:#d8b2d8">REFER LETTER</th>
+        <!-- <th style="background-color:#d8b2d8">REFER LETTER</th> -->
       </tr>
     </thead>
 
@@ -30,11 +30,11 @@
               <%= link_to "CREATE", new_skid_path(ekid: ek.id, rcd: true), class: "btn btn-sm btn-warning" %>
             <% end %>
           </td>
-          <td>
+          <!-- <td>
             <% if ek.rflt.present? %>
-              <%= link_to "VIEW", rflt_path(ek.rflt.id, rcd: true), class: "btn btn-sm btn-success" %>
+              <%= link_to "EDIT", edit_rflt_path(id: ek.rflt.id, ekid: ek.rflt.ekid.id, rflt: 1), class: "btn btn-sm btn-primary" %>
             <% end %>
-          </td>
+          </td> -->
         </tr>
       <% end %>
     </tbody>
