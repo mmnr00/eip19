@@ -61,7 +61,7 @@
                                 <div class="row">
                                   <div class="col-md-12">
                                     <%= select_tag :tp, options_for_select(
-                                        [["SPEECH THERAPIST","st"],["OCCUPATIONAL THERAPIST","ot"],["AUDIOLOGIST","at"],["PHYSIO THERAPIST","pt"]], selected: tc.tp), required: true, include_blank: "SELECT",
+                                        [["SPEECH THERAPIST","st"],["OCCUPATIONAL THERAPIST","ot"],["AUDIOLOGIST","at"],["PHYSIO THERAPIST","pt"],["PENDING",nil]], selected: tc.tp), required: true, include_blank: "SELECT",
                                         class: "form-control search-box input-lg" %>
                                         <b>TYPE</b>
                                     <%= hidden_field_tag :id, tc.id %>
@@ -69,7 +69,7 @@
                                   </div>
                                   <div class="col-md-12">
                                     <%= select_tag :loc, options_for_select(
-                                        [["Shah Alam","sha"],["Serdang","srd"]], selected: tc.loc),
+                                        [["Shah Alam","sha"],["Serdang","srd"],["PENDING",nil]], selected: tc.loc),
                                         required: true, include_blank: "SELECT",
                                         class: "form-control search-box input-lg"%>
                                         <b>LOCATION</b>
@@ -133,7 +133,7 @@
                                 <div class="row">
                                   <div class="col-md-12">
                                     <%= select_tag :loc, options_for_select(
-                                        [["Shah Alam","sha"],["Serdang","srd"]], selected: ow.loc),
+                                        [["Shah Alam","sha"],["Serdang","srd"],["PENDING",nil]], selected: ow.loc),
                                         required: true, include_blank: "SELECT",
                                         class: "form-control search-box input-lg"%>
                                     <b>LOCATION</b>

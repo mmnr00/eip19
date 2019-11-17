@@ -34,7 +34,13 @@ class StesController < ApplicationController
 		@ste = form_ste(par)
 		@chkl = form_chkl(par[:chkl])
 		flash[:success] = "SUCCESSFULLY UPDATED FOR #{@chkl.ekid.name}"
-		redirect_to teacher_index_path
+		sce = @ste.ekid.sce
+		if sce.curr
+			redirect_to teacher_index_path
+		else
+			redirect_to prevtch_path
+		end
+		#redirect_to teacher_index_path
 	end
 
 	private

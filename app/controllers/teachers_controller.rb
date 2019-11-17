@@ -11,6 +11,34 @@ class TeachersController < ApplicationController
 		@ekids = @sce.ekids unless @sce.blank?
 	end
 
+	def prevtch
+		tp=@teacher.tp
+		@id = []
+    if tp == "st"
+    	ass = @teacher.stes
+    	ass.each do |k|
+    		@id << k.ekid_id unless @id.include? k.ekid_id
+    	end
+    elsif tp == "ot"
+      ass = @teacher.otes
+    	ass.each do |k|
+    		@id << k.ekid_id unless @id.include? k.ekid_id
+    	end
+    elsif tp == "pt"
+      ass = @teacher.ptes
+    	ass.each do |k|
+    		@id << k.ekid_id unless @id.include? k.ekid_id
+    	end
+    elsif tp == "at"
+      ass = @teacher.ates
+    	ass.each do |k|
+    		@id << k.ekid_id unless @id.include? k.ekid_id
+    	end
+    end
+    @ekids = Ekid.where(id: @id)
+
+	end
+
 	def updtch
 		tch = Teacher.find(params[:id])
 		tch.tp = params[:tp]

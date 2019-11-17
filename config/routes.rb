@@ -227,6 +227,7 @@ Rails.application.routes.draw do
   #~TEACHERS
   get 'teacher_index', to: 'teachers#index'
   get 'updtch', to: 'teachers#updtch'
+  get 'prevtch', to: 'teachers#prevtch'
 
   get '/taska/:id/search_teacher', to: 'teachers#search', as: 'search_teacher'
   get '/taska/:id/find_teacher', to: 'teachers#find', as: 'find_teacher'
