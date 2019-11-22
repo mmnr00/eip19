@@ -2,35 +2,42 @@
 <p style="background-color:#edd4d4" align="center">Tingkat 24, Bangunan Darul Ehsan, Jalan Indah, Seksyen 14,
 40000 Shah Alam, Selangor<br>
 Tel : 03 5513 8898 Fax : 03 5523 6466</p>
-<p>DATE: <b><%= @skid.updated_at.strftime('%d-%^b-%Y')%></b></p>
-<h5>
-  Screening Report for <u><%= @ekid.name %></u>
-  (DOB: <u><%= @ekid.dob.strftime('%d-%b-%y')%></u>)
+<p style="font-size:20px">DATE: <b><%= @skid.updated_at.strftime('%d-%^b-%Y')%></b></p>
+
+<p align="center" >
+  <a style="background-color:#cce5cc; font-size:40px"><b>SCREENING REPORT</b></a> <br>
+  <a style="font-size:25px"><b><%= @ekid.name.upcase %></b></a><br>
+  <b><%= @ekid.ic%></b><br>
   <% if @ekid.gdr == "Perempuan"
       gdr = "Female"
     else
       gdr = "Male"
     end
   %>
-  (Gender: <u><%= gdr %></u>)
-</h5>
-<hr>
+  <b><%= gdr %></h1>
+</p>
 
-<a style="font-size:17px">DIAGNOSED WITH DELAY?</a>
+<hr><br>
+
 <div class="table-responsive">
   <table class="table table-striped table-bordered" width="100%" cellspacing="0">
     <tbody>
       <tr>
-        <td style="background-color:white"><%= "#{@skid.dely}, #{@skid.delydesc}" %></td>
+        <td style="background-color:#ccccff"><b>DIAGNOSED WITH DELAY?</b></td>
+      </tr>
+      <tr>
+        <td style="background-color:white"><%= "#{@skid.dely} #{@skid.delydesc}" %></td>
       </tr>
     </tbody>
   </table>
-</div>
+</div><br>
 
-<a style="font-size:17px">TYPE OF DELAY(S)</a>
 <div class="table-responsive">
   <table class="table table-striped table-bordered" width="100%" cellspacing="0">
     <tbody>
+      <tr>
+        <td style="background-color:#ccccff" colspan="2"><b>TYPE OF DELAY(S)</b></td>
+      </tr>
       <tr>
         <td>PHYSICAL</td>
         <td><%= @skid.phy %></td>
@@ -53,7 +60,7 @@ Tel : 03 5513 8898 Fax : 03 5523 6466</p>
       </tr>
     </tbody>
   </table>
-</div>
+</div><br>
 
 <a style="font-size:17px">RECEIVED REFER LETTER?</a>
 <div class="table-responsive">

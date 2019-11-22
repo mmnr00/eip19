@@ -1,6 +1,24 @@
 class SkidsController < ApplicationController
 	before_action :set_all
 
+	def show
+		@skid = Skid.find(params[:id])
+		@ekid = @skid.ekid
+		respond_to do |format|
+	 		format.html
+	 		format.pdf do
+		   render pdf: "#{@ekid.name}",
+		   template: "skids/show.html.erb",
+		   #disposition: "attachment",
+		   #save_to_file: Rails.root.join('pdfs', "#{filename}.pdf"),
+       #save_only: true, 
+		   #page_size: "A6",
+		   orientation: "portrait",
+		   layout: 'pdf.html.erb'
+			end
+		end
+	end
+
 	def new
 		#@skid = Skid.new
 		@ekid = Ekid.find(params[:ekid])

@@ -46,8 +46,8 @@
         <th style="background-color:#99cc99">NAME</th>
         <th style="background-color:#99cc99">PARENTS INFO</th>
         <th style="background-color:#99cc99">ACTION</th>
-        <th style="background-color:#99cc99">SCREENING DATA</th>
-        <th style="background-color:#99cc99">FOLLOW UP DATA</th>
+        <th style="background-color:#99cc99">SCREENING REPORT</th>
+        <th style="background-color:#99cc99">REFER LETTER</th>
       </tr>
     </thead>
 
@@ -66,12 +66,30 @@
           </td>
           <td>
             <% if (sk=sc.skid).present? %>
-              <%= link_to "EDIT", edit_skid_path(id: sk.id, ekid: sc.id), class: "btn btn-sm btn-warning"%>
+              <%= link_to skid_path(id: sk.id, format: :pdf), class: "btn btn-sm btn-primary" do %>
+                <i class="fa fa-print"></i> PRINT 
+              <% end %>
+              <br><br>
+              <%= link_to edit_skid_path(id: sk.id, ekid: sc.id), class: "btn btn-sm btn-warning" do %>
+                <i class="fa fa-eye"></i> DETAILS
+              <% end %>
             <% else %>
-              <%= link_to "CREATE", new_skid_path(ekid: sc.id), class: "btn btn-sm btn-success" %>
+              PENDING
             <% end %>
           </td>
-          <td>FKID</td>
+          <td>
+            <% if (sk=sc.skid).present? %>
+              <%= link_to edit_skid_path(id: sk.id, ekid: sc.id), class: "btn btn-sm btn-primary" do %>
+                <i class="fa fa-print"></i> PRINT 
+              <% end %>
+              <br><br>
+              <%= link_to edit_skid_path(id: sk.id, ekid: sc.id), class: "btn btn-sm btn-warning" do %>
+                <i class="fa fa-eye"></i> DETAILS
+              <% end %>
+            <% else %>
+              PENDING
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>

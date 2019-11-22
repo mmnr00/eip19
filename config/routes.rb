@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   resources :ekids, only:[:new,:show,:create, :destroy, :update, :edit]
   resources :pkids, only:[:new,:show,:create, :destroy, :edit]
   resources :sces, only:[:new,:show,:create, :destroy, :update, :edit]
-  resources :skids, only:[:new,:create, :destroy, :update, :edit]
+  resources :skids, only:[:new,:create, :destroy, :update, :edit,:show]
   resources :rflts, only:[:show,:new,:create, :destroy, :update, :edit]
   #resources :teachers, only:[:show]
   #resources :taska_teachers, only:[:create,:destroy]
@@ -32,6 +32,8 @@ Rails.application.routes.draw do
 
   #~~PAGES
   get '/eipblank', to: 'pages#eipblank'
+
+  #~~skids
 
   #~~STE
   get '/new_ste', to: 'stes#new_ste'
