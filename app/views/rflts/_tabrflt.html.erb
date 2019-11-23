@@ -1,12 +1,14 @@
 <div class="col-sm-12 bg-white">
-  <h1 align="center">LOGO</h1>
+
+  <%= wicked_pdf_image_tag('kidcare_logo/mbi_eip.png', size: "891x116") %>
+
   <p style="background-color:#edd4d4" align="center">Tingkat 24, Bangunan Darul Ehsan, Jalan Indah, Seksyen 14,
   40000 Shah Alam, Selangor<br>
   Tel : 03 5513 8898 Fax : 03 5523 6466</p>
   <p>DATE: <b><%= @rflt.updated_at.strftime('%d-%^b-%Y')%></b></p>
 
 
-  <h4 align="center">Refer Letter for <u><%= @ekid.name %></u> (DOB: <u><%= @ekid.dob.strftime('%d-%b-%Y') %></u>)</h4><br>
+  <h4 style="background-color:#e5ffff" align="center">Refer Letter for <b><%= @ekid.name %></b> (DOB: <u><%= @ekid.dob.strftime('%d-%b-%Y') %></u>)</h4><br>
 
   <a style="font-size:17px">Dear Colleagues:</a> <br><br>
   <a style="font-size:17px">We are referring <strong><u><%= @ekid.name %></u></strong> for the care below:</a> <br>
@@ -32,10 +34,12 @@
   </div><br>
 
   
-  <a style="font-size:17px"><strong>Occupational Therapy Assessment Results:</strong></a>
   <div class="table-responsive">
     <table class="table table-striped table-bordered" width="100%" cellspacing="0">
       <tbody>
+        <tr>
+          <td style="background-color:#e5f2e5" colspan=2><b>Occupational Therapy Assessment Results:</b></td>
+        </tr>
         <tr>
           <td style="background-color:#b2b2ff">Areas</td>
           <td style="background-color:#b2b2ff">Comments</td>
@@ -64,10 +68,12 @@
     </table>
   </div><br>
 
-  <a style="font-size:17px"><strong>Speech Therapy Assessment Results:</strong></a>
   <div class="table-responsive">
     <table class="table table-striped table-bordered" width="100%" cellspacing="0">
       <tbody>
+        <tr>
+          <td style="background-color:#e5f2e5" colspan=2><b>Speech Therapy Assessment Results:</b></td>
+        </tr>
         <tr>
           <td style="background-color:#b2b2ff">Areas</td>
           <td style="background-color:#b2b2ff">Comments</td>
@@ -88,10 +94,12 @@
     </table>
   </div><br>
 
-  <a style="font-size:17px"><strong>Audiology Assessment Results:</strong></a>
   <div class="table-responsive">
     <table class="table table-striped table-bordered" width="100%" cellspacing="0">
       <tbody>
+        <tr>
+          <td style="background-color:#e5f2e5" colspan=2><b>Audiology Assessment Results:</b></td>
+        </tr>
         <tr>
           <td style="background-color:#b2b2ff">Areas</td>
           <td style="background-color:#b2b2ff">Comments</td>
@@ -116,10 +124,13 @@
     </table>
   </div><br>
 
-  <a style="font-size:17px"><strong>Physiotherapy Assessment Results:</strong></a>
+ 
   <div class="table-responsive">
     <table class="table table-striped table-bordered" width="100%" cellspacing="0">
       <tbody>
+        <tr>
+          <td style="background-color:#e5f2e5" colspan=2><b>Physiotherapy Assessment Results:</b></td>
+        </tr>
         <tr>
           <td style="background-color:#b2b2ff">Areas</td>
           <td style="background-color:#b2b2ff">Comments</td>
@@ -140,10 +151,13 @@
     </table>
   </div><br>
 
-  <a style="font-size:20px"><strong>OVERALL COMMENT</strong></a>
+  
   <div class="table-responsive">
     <table class="table table-striped table-bordered" width="100%" cellspacing="0">
       <tbody>
+        <tr>
+          <td style="background-color:#e5f2e5" colspan=2><b>OVERALL COMMENT</b></td>
+        </tr>
         <tr>
           <td style="background-color:#f2f2f2"><%= @rflt.ovc %></td>
         </tr>
@@ -151,10 +165,12 @@
     </table>
   </div><br>
 
-  <a style="font-size:25px"><strong>LIST OF INTERVENTIONISTS</strong></a>
   <div class="table-responsive">
     <table class="table table-striped table-bordered" width="100%" cellspacing="0">
       <tbody>
+        <tr>
+          <td style="background-color:#e5f2e5" colspan=2><b>LIST OF INTERVENTIONISTS</b></td>
+        </tr>
         <tr>
           <td style="background-color:#bf7fbf"><b>Role</b></td>
           <td style="background-color:#bf7fbf"><b>Personal Details</b></td>
@@ -162,24 +178,42 @@
         <tr>
           <td>Medical Officer</td>
           <td>
-            <%= (et=@skid.owner.tchdetail.name) unless 1==0 %> 
+            <% (tcd=@skid.owner.tchdetail) unless (@skid.blank? || @skid.owner.blank? || @skid.owner.tchdetail.blank?) %> 
+            <%= "#{tcd.name.upcase} (#{tcd.category})" unless tcd.blank? %><br>
+            <%= "#{tcd.phone_1}-#{tcd.phone_2}" unless tcd.blank? %>
           </td>
         </tr>
         <tr>
           <td>Audiologist</td>
-          <td><%= @rflt.pmov %></td>
+          <td>
+            <% (tcd=@ate.teacher.tchdetail) unless (@ate.blank? || @ate.teacher.blank? || @ate.teacher.tchdetail.blank?) %> 
+            <%= "#{tcd.name.upcase} (#{tcd.category})" unless tcd.blank? %><br>
+            <%= "#{tcd.phone_1}-#{tcd.phone_2}" unless tcd.blank? %>   
+          </td>
         </tr>
         <tr>
           <td>Physio Therapist</td>
-          <td><%= @rflt.pendr %></td>
+          <td>
+            <% (tcd=@pte.teacher.tchdetail) unless (@pte.blank? || @pte.teacher.blank? || @pte.teacher.tchdetail.blank?) %> 
+            <%= "#{tcd.name.upcase} (#{tcd.category})" unless tcd.blank? %><br>
+            <%= "#{tcd.phone_1}-#{tcd.phone_2}" unless tcd.blank? %>  
+          </td>
         </tr>
         <tr>
           <td>Speech Therapist</td>
-          <td><%= @rflt.pendr %></td>
+          <td>
+            <% (tcd=@ste.teacher.tchdetail) unless (@ste.blank? || @ste.teacher.blank? || @ste.teacher.tchdetail.blank?) %> 
+            <%= "#{tcd.name.upcase} (#{tcd.category})" unless tcd.blank? %><br>
+            <%= "#{tcd.phone_1}-#{tcd.phone_2}" unless tcd.blank? %>  
+          </td>
         </tr>
         <tr>
           <td>Occupational Therapist</td>
-          <td><%= @rflt.pendr %></td>
+          <td>
+            <% (tcd=@ote.teacher.tchdetail) unless (@ote.blank? || @ote.teacher.blank? || @ote.teacher.tchdetail.blank?) %> 
+            <%= "#{tcd.name.upcase} (#{tcd.category})" unless tcd.blank? %><br>
+            <%= "#{tcd.phone_1}-#{tcd.phone_2}" unless tcd.blank? %> 
+          </td>
         </tr>
       </tbody>
     </table>
