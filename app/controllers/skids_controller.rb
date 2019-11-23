@@ -4,11 +4,23 @@ class SkidsController < ApplicationController
 	def show
 		@skid = Skid.find(params[:id])
 		@ekid = @skid.ekid
+		@rflt = @ekid.rflt
+
+		@ote = @ekid.ote
+		@ste = @ekid.ste
+		@pte = @ekid.pte
+		@ate = @ekid.ate
+
 		respond_to do |format|
 	 		format.html
 	 		format.pdf do
 		   render pdf: "#{@ekid.name}",
 		   template: "skids/show.html.erb",
+		   footer: {
+		   					font_size: 8,
+		   					right: "#{@ekid.name} (#{@ekid.ic})",
+		   					left: "www.eipepic.my"
+		   },
 		   #disposition: "attachment",
 		   #save_to_file: Rails.root.join('pdfs', "#{filename}.pdf"),
        #save_only: true, 

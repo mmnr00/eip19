@@ -2,22 +2,26 @@
 <p style="background-color:#edd4d4" align="center">Tingkat 24, Bangunan Darul Ehsan, Jalan Indah, Seksyen 14,
 40000 Shah Alam, Selangor<br>
 Tel : 03 5513 8898 Fax : 03 5523 6466</p>
-<p style="font-size:20px">DATE: <b><%= @skid.updated_at.strftime('%d-%^b-%Y')%></b></p>
-
-<p align="center" >
-  <a style="background-color:#cce5cc; font-size:40px"><b>SCREENING REPORT</b></a> <br>
-  <a style="font-size:25px"><b><%= @ekid.name.upcase %></b></a><br>
-  <b><%= @ekid.ic%></b><br>
-  <% if @ekid.gdr == "Perempuan"
-      gdr = "Female"
-    else
-      gdr = "Male"
-    end
-  %>
-  <b><%= gdr %></h1>
+<p style="background-color:#cce5cc" align="center">
+<a style="font-size:40px"><b>SCREENING REPORT</b></a>
 </p>
 
-<hr><br>
+
+<p style="background-color:#e5ffff" align="center" >
+  <a style="font-size:25px"><b><%= @ekid.name.upcase %></b></a><br>
+  <a style="font-size:20px"><%= @ekid.ic%></a><br>
+  <% if @ekid.gdr == "Perempuan"
+      gdr = "FEMALE"
+    else
+      gdr = "MALE"
+    end
+  %>
+  <a style="font-size:20px"><%= gdr %></a></h1>
+</p>
+
+<hr>
+
+<p style="font-size:15px">ISSUANCE DATE: <b><%= @skid.updated_at.strftime('%d-%^b-%Y')%></b></p>
 
 <div class="table-responsive">
   <table class="table table-striped table-bordered" width="100%" cellspacing="0">
@@ -30,7 +34,7 @@ Tel : 03 5513 8898 Fax : 03 5523 6466</p>
       </tr>
     </tbody>
   </table>
-</div><br>
+</div>
 
 <div class="table-responsive">
   <table class="table table-striped table-bordered" width="100%" cellspacing="0">
@@ -60,12 +64,15 @@ Tel : 03 5513 8898 Fax : 03 5523 6466</p>
       </tr>
     </tbody>
   </table>
-</div><br>
+</div>
 
-<a style="font-size:17px">RECEIVED REFER LETTER?</a>
+
 <div class="table-responsive">
   <table class="table table-striped table-bordered" width="100%" cellspacing="0">
     <tbody>
+      <tr>
+        <td style="background-color:#ccccff" colspan="2"><b>RECEIVED REFER LETTER?</b></td>
+      </tr>
       <tr>
         <td style="background-color:white"><%= @skid.reflt %></td>
       </tr>
@@ -73,10 +80,12 @@ Tel : 03 5513 8898 Fax : 03 5523 6466</p>
   </table>
 </div>
 
-<a style="font-size:17px">DIAGNOSIS</a>
 <div class="table-responsive">
   <table class="table table-striped table-bordered" width="100%" cellspacing="0">
     <tbody>
+      <tr>
+        <td style="background-color:#ccccff" colspan="2"><b>DIAGNOSIS</b></td>
+      </tr>
       <tr>
         <td style="background-color:white"><%= @skid.diag %></td>
       </tr>
@@ -84,10 +93,12 @@ Tel : 03 5513 8898 Fax : 03 5523 6466</p>
   </table>
 </div>
 
-<a style="font-size:17px">SUMMARY</a>
 <div class="table-responsive">
   <table class="table table-striped table-bordered" width="100%" cellspacing="0">
     <tbody>
+      <tr>
+        <td style="background-color:#ccccff" colspan="2"><b>SUMMARY</b></td>
+      </tr>
       <tr>
         <td style="background-color:white"><%= @skid.summ %></td>
       </tr>
@@ -95,10 +106,13 @@ Tel : 03 5513 8898 Fax : 03 5523 6466</p>
   </table>
 </div>
 
-<a style="font-size:17px">ASSESSMENT RESULT: LEARNING/DEVELOPMENT/SCHEDULE OF GROWING SKILLS:</a>
+<a style="font-size:17px"></a>
 <div class="table-responsive">
   <table class="table table-striped table-bordered" width="100%" cellspacing="0">
     <tbody>
+      <tr>
+        <td style="background-color:#ccccff" colspan="2"><b>ASSESSMENT RESULT: LEARNING/DEVELOPMENT/SCHEDULE OF GROWING SKILLS:</b></td>
+      </tr>
       <tr>
         <td style="background-color:white"><%= @skid.assr %></td>
       </tr>
@@ -106,10 +120,13 @@ Tel : 03 5513 8898 Fax : 03 5523 6466</p>
   </table>
 </div>
 
-<a style="font-size:17px">OBSERVATION OF BEHAVIOUR/ OTHER OUTSTANDING ISSUES:</a>
+<a style="font-size:17px"></a>
 <div class="table-responsive">
   <table class="table table-striped table-bordered" width="100%" cellspacing="0">
     <tbody>
+      <tr>
+        <td style="background-color:#ccccff" colspan="2"><b>OBSERVATION OF BEHAVIOUR/ OTHER OUTSTANDING ISSUES:</b></td>
+      </tr>
       <tr>
         <td style="background-color:white"><%= @skid.obs %></td>
       </tr>
@@ -117,9 +134,12 @@ Tel : 03 5513 8898 Fax : 03 5523 6466</p>
   </table>
 </div>
 
-<a style="font-size:17px">PLAN/RECOMMENDATION</a>
+
 <div class="table-responsive">
   <table class="table table-striped table-bordered" width="100%" cellspacing="0">
+    <tr>
+      <td style="background-color:#ccccff" colspan="2"><b>PLAN/RECOMMENDATION</b></td>
+    </tr>
     <tr>
       <td>REFERRAL FOR THERAPY: SPEECH, PHYSIOTHERAPY, OCCUPATIONAL THERAPY, EIP CENTER</td>
       <td><%= @skid.refc %></td>
@@ -139,14 +159,26 @@ Tel : 03 5513 8898 Fax : 03 5523 6466</p>
   </table>
 </div>
 
-<a style="font-size:17px">OVERALL COMMENT</a>
 <div class="table-responsive">
   <table class="table table-striped table-bordered" width="100%" cellspacing="0">
     <tbody>
+      <tr>
+        <td style="background-color:#ccccff" colspan="2"><b>OVERALL COMMENT</b></td>
+      </tr>
       <tr>
         <td style="background-color:white"><%= @skid.ovc %></td>
       </tr>
     </tbody>
   </table>
 </div>
+
+<p style="font-size:25px">MEDICAL OFFICER INCHARGE:</p>
+<% tcd = @skid.owner.tchdetail %>
+<b><%= tcd.name.upcase %></b><br>
+CERT NO: <b><%= tcd.category %></b><br>
+PHONE: <b><%= "#{tcd.phone_1}-#{tcd.phone_2}" %></b><br>
+EMAIL: <b><%= @skid.owner.email %></b><br>
+
+
+
 

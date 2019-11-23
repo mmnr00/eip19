@@ -1,6 +1,47 @@
 
 <div class="bg-white">
-<div class="container">
-<%= render 'skids/showf' %>
-</div>
+  <div class="container">
+
+    <% if @rflt.present? %>
+      <%= render 'rflts/tabrflt' %>
+    <% end %>
+
+    
+    <p style='page-break-after:always;'></p>
+    <% if @skid.present? %>
+      <%= render 'skids/showf' %>
+    <% else %>
+      NO RECORD SCREENING REPORT 
+    <% end %>
+
+    <p style='page-break-after:always;'></p>
+    <% if @ote.present? %>
+      <%= render 'skids/oterep' %>
+    <% else %>
+      NO RECORD FOR OCCUPATIONAL THERAPIST REPORT
+    <% end %>
+
+    <p style='page-break-after:always;'></p>
+    <% if @ste.present? %>
+      <%= render 'skids/sterep' %>
+    <% else %>
+      <h1 align="center"><b>NO RECORD FOR SPEECH THERAPIST REPORT</b></h1>
+    <% end %>
+
+    <p style='page-break-after:always;'></p>
+    <% if @pte.present? %>
+      <%= render 'skids/pterep' %>
+    <% else %>
+      <h1 align="center"><b>NO RECORD FOR PHYSIO THERAPIST REPORT</b></h1>
+    <% end %>
+
+    <p style='page-break-after:always;'></p>
+    <% if @ate.present? %>
+      <%= render 'skids/aterep' %>
+    <% else %>
+      <h1 align="center"><b>NO RECORD FOR AUDIOLOGIST REPORT</b></h1>
+    <% end %>
+
+
+  </div>
 </div>
