@@ -47,7 +47,6 @@
         <th style="background-color:#99cc99">PARENTS INFO</th>
         <th style="background-color:#99cc99">ACTION</th>
         <th style="background-color:#99cc99">SCREENING REPORT</th>
-        <th style="background-color:#99cc99">REFER LETTER</th>
       </tr>
     </thead>
 
@@ -70,21 +69,10 @@
                 <i class="fa fa-print"></i> PRINT 
               <% end %>
               <br><br>
-              <%= link_to edit_skid_path(id: sk.id, ekid: sc.id), class: "btn btn-sm btn-warning" do %>
-                <i class="fa fa-eye"></i> DETAILS
-              <% end %>
-            <% else %>
-              PENDING
-            <% end %>
-          </td>
-          <td>
-            <% if (sk=sc.skid).present? %>
-              <%= link_to edit_skid_path(id: sk.id, ekid: sc.id), class: "btn btn-sm btn-primary" do %>
-                <i class="fa fa-print"></i> PRINT 
-              <% end %>
-              <br><br>
-              <%= link_to edit_skid_path(id: sk.id, ekid: sc.id), class: "btn btn-sm btn-warning" do %>
-                <i class="fa fa-eye"></i> DETAILS
+              <% if sc.chkl.present? %>
+                <%= link_to schkl_path(id: sc.chkl.id, format: :pdf), class: "btn btn-sm btn-warning" do %>
+                  <i class="fa fa-print"></i> CHECKLIST
+                <% end %>
               <% end %>
             <% else %>
               PENDING

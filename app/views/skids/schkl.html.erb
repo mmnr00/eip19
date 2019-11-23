@@ -1,0 +1,24 @@
+<%= wicked_pdf_image_tag('kidcare_logo/mbi_eip.png', size: "891x116") %>
+
+  <p style="background-color:#edd4d4" align="center">Tingkat 24, Bangunan Darul Ehsan, Jalan Indah, Seksyen 14,
+  40000 Shah Alam, Selangor<br>
+  Tel : 03 5513 8898 Fax : 03 5523 6466</p>
+  <p>DATE: <b><%= @chkl.updated_at.strftime('%d-%^b-%Y')%></b></p>
+
+  <p style="background-color:#e5ffff" align="center" >
+    <a style="font-size:25px"><b><%= @ekid.name.upcase %></b></a><br>
+    <a style="font-size:20px"><%= @ekid.ic%></a><br>
+    <% if @ekid.gdr == "Perempuan"
+        gdr = "FEMALE"
+      else
+        gdr = "MALE"
+      end
+    %>
+    <a style="font-size:20px"><%= gdr %></a></h1>
+  </p>
+
+<% if @chkl.present? %>
+  <%= render 'skids/chklrep' %>
+<% else %>
+  NO RECORD
+<% end %>

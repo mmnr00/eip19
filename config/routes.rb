@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   get '/eipblank', to: 'pages#eipblank'
 
   #~~skids
+  get '/schkl', to: 'skids#schkl'
 
   #~~STE
   get '/new_ste', to: 'stes#new_ste'
