@@ -53,9 +53,9 @@
 
           <td>
             <% if sc.stat == "ATT" %>
-              CHECK IN
+              <%= link_to "ATTENDANCE", confsce_path(id: @sce.id, ekid: sc.id), class:"btn btn-sm btn-primary" %>
             <% elsif sc.stat == "CONF" %>
-              CONFIRM
+              <%= link_to "CONFIRM", "#", class:"btn btn-sm btn-success" %>
             <% end %>
           </td>
 

@@ -5,7 +5,7 @@ class ParentsController < ApplicationController
 
 	def prtchkin
 		@ek = Ekid.find(params[:id])
-		@sce = Sce.where(curr: true,loc: "sha").first
+		@sce = Sce.where(curr: true,loc: params[:loc]).first
 		@ek.stat = "ATT"
 		@ek.sce_id = @sce.id
 		@ek.parent_id = @parent.id
@@ -20,7 +20,7 @@ class ParentsController < ApplicationController
 
 	def index
 		if params[:reg].present?
-			redirect_to my_kid_path(@parent, att: 1)
+			redirect_to my_kid_path(@parent, att: 1, loc: "sha")
 		end
 	end
 

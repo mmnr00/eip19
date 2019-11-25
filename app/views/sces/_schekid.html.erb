@@ -13,6 +13,7 @@
                   required: true %>
           <%= hidden_field_tag :sce, params[:sce], value: @sce.id unless @sce.blank? %>
           <%= hidden_field_tag :att, params[:att] %>
+          <%= hidden_field_tag :loc, params[:loc] %>
         </div>
         <div class="col-1">
           <%= button_tag(type: :submit, class: "btn btn-sm btn-info", id: "submit_expense") do %>

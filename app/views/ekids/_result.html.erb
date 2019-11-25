@@ -43,6 +43,9 @@
                 if (prs.stat == "ATT") && (prs.admloc == $admloc[@admin.id]) #&& (!prs.sce_id == params[:sce].to_i)
                   butn = "success"
                   coftx = "CONFIRM ATTENDANCE"
+                elsif (prs.stat == "CONFIRM") && (prs.admloc == $admloc[@admin.id]) #&& (!prs.sce_id == params[:sce].to_i)
+                  butn = "success"
+                  coftx = "CHECK IN AND CONFIRM"
                 elsif prs.sce_id == params[:sce].to_i
                   alreg = true
                   butn = "info"
@@ -57,6 +60,7 @@
                   coftx = "CHILDREN NOT IN THE FINAL LIST. CONFIRM ATTENDANCE?"
                 end
               %>
+
               <% if alreg %>
                 <%= link_to "#", class:"btn btn-sm btn-#{butn}" do %>
                   <i class="fa fa-edit"></i> <%= "#{coftx}"%>
@@ -69,7 +73,68 @@
 
             <% elsif params[:att].present? %> <!-- FOR CHECK IN -->
 
-              <%= link_to "CHECK IN", prtchkin_path(id: prs.id), class:"btn btn-sm btn-warning" %>
+              <!-- 
+
+              conditions for check in 
+              adm_loc kena sama
+              sce_present or not
+                sce_present? current sce or other
+              sce not present?
+                check stat only can check in
+              3 conditions: 
+                Sce not current
+                Sce current
+                  check-in 
+                  confirm
+                Sce not available
+                  Confirm
+                  Not Confirm
+
+              -->
+              <%
+                scex = false
+                scurr = false
+                @scstat = false
+                sta = false
+                if prs.sce_id.present?
+                  scex = true
+                  sc=Sce.find(prs.sce_id)
+                  if sc.id == Sce.where(curr: true, loc: params[:loc]).first.id
+                    scurr = true
+                    if prs.stat == "CONF"
+                      @scstat = true
+                    end
+                  end
+                else
+                  if prs.stat == "CONFIRM"
+                    sta=true
+                  end
+                end
+              %>
+              <% if scex %>
+
+                <% if scurr %>
+
+                  <% if @scstat %>
+                    <%= link_to "ATTENDANCE CONFIRMED", "#", class:"btn btn-sm btn-warning" %>
+                  <% else %>
+                    <%= link_to "CHECK-IN CONFIRMED", "#", class:"btn btn-sm btn-warning" %>
+                  <% end %>
+
+                <% else %>
+                  <%= link_to "#{sc.name} (#{sc.date.strftime('%d-%^b-%y')})", "#", class:"btn btn-sm btn-warning" %>
+                <% end %>
+
+              <% else %>
+
+                <% if sta %>
+                  <%= link_to "CHECK IN", prtchkin_path(id: prs.id, loc:params[:loc]), class:"btn btn-sm btn-warning" %>
+                <% else %>
+                  <%= link_to "NOT IN FINAL LIST", "#", class:"btn btn-sm btn-warning" %>
+                <% end %>
+
+              <% end %>
+              
 
             <% else %> <!-- FOR PARENT SEARCH -->
 
