@@ -3,10 +3,24 @@ class ParentsController < ApplicationController
 	before_action :authenticate_parent!
 	before_action :set_parent
 
+	def prtchkin
+		@ek = Ekid.find(params[:id])
+		@sce = Sce.where(curr: true,loc: "sha").first
+		@ek.stat = "ATT"
+		@ek.sce_id = @sce.id
+		@ek.parent_id = @parent.id
+		if @ek.save
+			flash[:notice]="Check In Successful"
+			redirect_to parent_index_path
+		else
+			flash[:notice]="Unsuccessful. Please try again"
+			redirect_to my_kid_path(@parent.id)
+		end
+	end
 
 	def index
 		if params[:reg].present?
-			redirect_to my_kid_path(@parent)
+			redirect_to my_kid_path(@parent, att: 1)
 		end
 	end
 

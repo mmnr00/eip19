@@ -5,10 +5,12 @@
       <div class="frontside">
         <div class="card">
           <div class="card-body text-center">
+
             <h4><%= prs.name.upcase %></h4>
             <p class="card-text">
               <strong><%= prs.ic %></strong>
             </p>
+
             <% if params[:adm].present? %> <!-- FOR ADMIN SEARCH -->
               <%
                 diff = (Date.today.year*12+Date.today.month) - (prs.dob.year*12+prs.dob.month)
@@ -22,37 +24,39 @@
               <b>STATUS : </b>&nbsp&nbsp <%= prs.stat %><br>
               <b>LOCATION : </b>&nbsp&nbsp <%= prs.prefloc %><br>
               <br>
+
             <% elsif params[:sce].present? %> <!-- FOR SCREENING SEARCH -->
-            <%
-                diff = (Date.today.year*12+Date.today.month) - (prs.dob.year*12+prs.dob.month)
-                year = diff/12
-                month = diff - year*12
+              <%
+                  diff = (Date.today.year*12+Date.today.month) - (prs.dob.year*12+prs.dob.month)
+                  year = diff/12
+                  month = diff - year*12
+                %>
+                <b>PHONE NO : </b>&nbsp&nbsp <%= prs.mph %><br>
+                <b>AGE : </b>&nbsp&nbsp <%= "#{year} Years, #{month} Months" %><br>
+                <b>INCOME : </b>&nbsp&nbsp <%= prs.pinc %><br>
+                <b>SIBLINGS : </b>&nbsp&nbsp <%= prs.sib %><br>
+                <b>STATUS : </b>&nbsp&nbsp <%= prs.stat %><br>
+                <b>LOCATION : </b>&nbsp&nbsp <%= prs.prefloc %><br>
+                <br>
+              <%
+                alreg = false
+                if (prs.stat == "ATT") && (prs.admloc == $admloc[@admin.id]) #&& (!prs.sce_id == params[:sce].to_i)
+                  butn = "success"
+                  coftx = "CONFIRM ATTENDANCE"
+                elsif prs.sce_id == params[:sce].to_i
+                  alreg = true
+                  butn = "info"
+                  coftx = "ALREADY REGISTERED"
+                elsif prs.sce_id.present? && prs.sce_id != params[:sce].to_i
+                  alreg = true
+                  scet = Sce.find(prs.sce_id)
+                  butn = "info"
+                  coftx = "ALREADY REGISTERED TO #{scet.name}"
+                else
+                  butn = "danger"
+                  coftx = "CHILDREN NOT IN THE FINAL LIST. CONFIRM ATTENDANCE?"
+                end
               %>
-              <b>PHONE NO : </b>&nbsp&nbsp <%= prs.mph %><br>
-              <b>AGE : </b>&nbsp&nbsp <%= "#{year} Years, #{month} Months" %><br>
-              <b>INCOME : </b>&nbsp&nbsp <%= prs.pinc %><br>
-              <b>SIBLINGS : </b>&nbsp&nbsp <%= prs.sib %><br>
-              <b>STATUS : </b>&nbsp&nbsp <%= prs.stat %><br>
-              <b>LOCATION : </b>&nbsp&nbsp <%= prs.prefloc %><br>
-              <br>
-            <%
-              alreg = false
-              if (prs.stat == "CONFIRM") && (prs.admloc == $admloc[@admin.id]) #&& (!prs.sce_id == params[:sce].to_i)
-                butn = "success"
-                coftx = "CONFIRM ATTENDANCE"
-              elsif prs.sce_id == params[:sce].to_i
-                butn = "info"
-                coftx = "ALREADY REGISTERED"
-              elsif prs.sce_id.present? && prs.sce_id != params[:sce].to_i
-                alreg = true
-                scet = Sce.find(prs.sce_id)
-                butn = "info"
-                coftx = "ALREADY REGISTERED TO #{scet.name}"
-              else
-                butn = "danger"
-                coftx = "CHILDREN NOT IN THE FINAL LIST. CONFIRM ATTENDANCE?"
-              end
-            %>
               <% if alreg %>
                 <%= link_to "#", class:"btn btn-sm btn-#{butn}" do %>
                   <i class="fa fa-edit"></i> <%= "#{coftx}"%>
@@ -62,25 +66,32 @@
                   <i class="fa fa-edit"></i> <%= "#{coftx}"%>
                 <% end %>
               <% end %>
-            <% else %> <!-- FOR PARENT SEARCH -->
-            <% if prs.pkid.blank? %>
-            <b>PROFIL TIDAK LENGKAP. SILA KLIK 'UBAH'</b> <br><br>
-            <% end %>
 
-            <h6>STATUS : 
-            <% if (sce=prs.sce).present? %>
-              <%= sce.name.upcase %></h6>
-            <% else %>
-              <%= $statekid[prs.stat] %></h6>
-            <% end %>
+            <% elsif params[:att].present? %> <!-- FOR CHECK IN -->
+
+              <%= link_to "CHECK IN", prtchkin_path(id: prs.id), class:"btn btn-sm btn-warning" %>
+
+            <% else %> <!-- FOR PARENT SEARCH -->
+
+              <% if prs.pkid.blank? %>
+                <b>PROFIL TIDAK LENGKAP. SILA KLIK 'UBAH'</b> <br><br>
+              <% end %>
+
+              <h6>STATUS : 
+              <% if (sce=prs.sce).present? && params[:att].blank? %>
+                <%= sce.name.upcase %></h6>
+              <% else %>
+                <%= $statekid[prs.stat] %></h6>
+              <% end %>
 
            
               <%= link_to edit_ekid_path(id: prs.id), class:"btn btn-sm btn-warning" do %>
                 <i class="fa fa-edit"></i> UBAH
               <% end %>
+
             <% end %>
 
-            <%= link_to ekidconf_path(id: prs.id), class:"btn btn-sm btn-info" do %>
+            <%= link_to ekidconf_path(id: prs.id), class:"btn btn-sm btn-info", target: "_blank" do %>
               <i class="fa fa-eye"></i> PROFIL
             <% end %>
             

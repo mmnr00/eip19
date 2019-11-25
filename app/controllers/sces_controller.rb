@@ -74,6 +74,12 @@ class ScesController < ApplicationController
 
 	def show
 		@ekids = @sce.ekids
+		cnt = 1
+		@turn = Hash.new
+		@ekids.where(stat: "CONF").order('updated_at ASC').each do |ek|
+			@turn[ek.id] = cnt
+			cnt = cnt + 1
+		end
 	end
 
 	def confsce

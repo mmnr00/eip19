@@ -13,25 +13,27 @@
     <thead>
       <tr>
         <th style="background-color:#99cc99">ID</th>
+        <th style="background-color:#99cc99">QUEUE NO</th>
         <th style="background-color:#99cc99">NAME</th>
         <th style="background-color:#99cc99">PARENTS INFO</th>
-        <th style="background-color:#99cc99">ACTION</th>
         <th style="background-color:#99cc99">SCREENING REPORT</th>
+        <th style="background-color:#99cc99">STATUS</th>
+        <th style="background-color:#99cc99">REVERT</th>
       </tr>
     </thead>
 
     <tbody>
-      <% @ekids.order('name ASC').each do |sc| %>
+      <% @ekids.order('stat ASC').order('name ASC').each do |sc| %>
         <tr>
           <td><%= sc.id %></td>
-          <td><%= "#{sc.name} (#{sc.ic})" %></td>
+          <td><%= @turn[sc.id] %></td>
+          <td>
+            <%= "#{sc.name} (#{sc.ic})" %>&nbsp
+            <%= link_to "PROFILE", ekidconf_path(id: sc.id), class: "btn btn-sm btn-info", target: "_blank" %>    
+          </td>
           <td>
             <%= "#{sc.fname} (#{sc.fph})" %><br><br>
             <%= "#{sc.mname} (#{sc.mmph})" %>
-          </td>
-          <td>
-            <%= link_to "PROFILE", ekidconf_path(id: sc.id), class: "btn btn-sm btn-info", target: "_blank" %>
-            <%= link_to "REMOVE", rmvsce_path(id: @sce.id, ekid: sc.id), data: {confirm: "Are you sure?"}, class: "btn btn-sm btn-danger" %>
           </td>
           <td>
             <% if (sk=sc.skid).present? %>
@@ -48,6 +50,19 @@
               PENDING
             <% end %>
           </td>
+
+          <td>
+            <% if sc.stat == "ATT" %>
+              CHECK IN
+            <% elsif sc.stat == "CONF" %>
+              CONFIRM
+            <% end %>
+          </td>
+
+          <td>
+            <%= link_to "REMOVE", rmvsce_path(id: @sce.id, ekid: sc.id), data: {confirm: "Are you sure?"}, class: "btn btn-sm btn-danger" %>
+          </td>
+
         </tr>
       <% end %>
     </tbody>

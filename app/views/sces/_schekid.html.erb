@@ -11,9 +11,8 @@
                   class: "form-control search-box input-lg", 
                   style: "text-transform:uppercase",
                   required: true %>
-          <%= hidden_field_tag :proge, params[:proge], value: params[:proge] %>
-          <%= hidden_field_tag :typ, params[:typ], value: params[:typ] %>
-          <%= hidden_field_tag :sce, params[:sce], value: @sce.id %>
+          <%= hidden_field_tag :sce, params[:sce], value: @sce.id unless @sce.blank? %>
+          <%= hidden_field_tag :att, params[:att] %>
         </div>
         <div class="col-1">
           <%= button_tag(type: :submit, class: "btn btn-sm btn-info", id: "submit_expense") do %>
