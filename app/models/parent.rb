@@ -4,6 +4,7 @@ class Parent < ApplicationRecord
   has_many :kids
   has_many :payments
   has_one  :prntdetail
+  has_many :ekids
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 

@@ -8,4 +8,5 @@ class Ekid < ApplicationRecord
 	has_one :chkl
 	has_one :rflt
 	belongs_to :sce, optional: true
+	belongs_to :parent, optional: true
 end

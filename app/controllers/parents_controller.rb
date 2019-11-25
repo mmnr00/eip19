@@ -2,27 +2,17 @@ class ParentsController < ApplicationController
 	require 'json'
 	before_action :authenticate_parent!
 	before_action :set_parent
-	#before_action	:update_bills
-	#$quarter = 3 || 6 || 9 || 12
 
 
 	def index
-		@parent = current_parent
-		#@mykids = @parent.kids.order('updated_at DESC')
-		@unpaid_bills = @parent.payments.where(paid: false).order("bill_month DESC")
-		#Prntdetail.create(parent_id: @parent.id)
-		if 1==1
+		if params[:reg].present?
 			redirect_to my_kid_path(@parent)
-			##render action: "index", layout: "dsb-parent-child"
-		else
-			#redirect_to my_kid_path(@parent)
-			redirect_to new_prntdetail_path(parent_id: @parent.id)
 		end
 	end
 
 	def my_kid
 		@mykids = @parent.kids.order("name ASC")
-		render action: "my_kid", layout: "dsb-parent-child"
+		#render action: "my_kid", layout: "dsb-parent-child"
 	end
 
 	def check_kid
@@ -123,7 +113,7 @@ class ParentsController < ApplicationController
 	private
 
 	def set_parent
-		@parent = Parent.find(current_parent.id)
+		@parent = current_parent
 	end
 
 	def update_bills
