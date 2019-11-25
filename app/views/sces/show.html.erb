@@ -2,37 +2,7 @@
 <h5><%= @sce.date.strftime('%d-%^b-%y') %></h5>
 <h5><%= @sce.venue %></h5>
 
-<div class="col-sm-12 bg-white">
-  <%= form_tag findekid_path, remote: true, method: :get, id: "find_kid" do %>
-    <div class="form-group text-center col-md-12">
-      <strong>CONFIRM CHILDREN ATTENDANCE</strong><br><br>
-      <div class="row">
-        <div class="col-3"></div>
-        <div class="col-5">
-          <%= text_field_tag :ic, params[:ic], 
-                  placeholder: "e.g 870829355647 (no dash)",
-                  autofocus: true, 
-                  class: "form-control search-box input-lg", 
-                  style: "text-transform:uppercase",
-                  required: true %>
-          <%= hidden_field_tag :proge, params[:proge], value: params[:proge] %>
-          <%= hidden_field_tag :typ, params[:typ], value: params[:typ] %>
-          <%= hidden_field_tag :sce, params[:sce], value: @sce.id %>
-        </div>
-        <div class="col-1">
-          <%= button_tag(type: :submit, class: "btn btn-sm btn-info", id: "submit_expense") do %>
-              <i class="fa fa-search"></i> FIND 
-          <% end %>
-        </div>
-        <br><br><br>
-        <div class="col-3"></div>
-      </div>
-      <div id="result_kid">
-        <%= render 'ekids/result' %> 
-      </div>
-    </div>
-  <%end%>
-</div>
+<%= render 'sces/schekid' %>
 
 <h4>NO OF CHILDRENS :  <%= @ekids.count %></h4>
 <%= link_to "EXTRACT DATA & REPORT", scexls_path(id: params[:id],format: :xlsx), class: "btn btn-sm btn-info" %>
