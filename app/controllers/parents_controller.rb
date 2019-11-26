@@ -19,6 +19,7 @@ class ParentsController < ApplicationController
 	end
 
 	def index
+		@ekids = @parent.ekids
 		if params[:reg].present?
 			redirect_to my_kid_path(@parent, att: 1, loc: "sha")
 		end

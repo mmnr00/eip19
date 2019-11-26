@@ -1,5 +1,52 @@
-<h1>DASHBOARD KID</h1>
+<div style="background-color:#e5f2e5"><h1 align="center">CHILDREN LIST</h1></div>
 
-<h3>CHILDREN LIST</h3>
+<% if @ekids.present? %>
 
+  
+    <div class="row">
+          <% @ekids.each do |kid| %>
+            <!-- Team member -->
+            <div class="col-xs-12 col-sm-6 col-md-4">
+              <div class="frontside">
+                <div class="card">
+                  <div class="card-body text-center">
+                    <h4 class="card-title"><%= kid.name.upcase %></h4>
+                    <p class="card-text">
+                      <%= kid.ic %>
+                    </p>
+                    <% if kid.sce.present? %>
+                        <%= link_to "#{kid.sce.name.upcase}", "#", style: "color:blue" %>
+                      <br>
+                      <% if kid.stat == 'CONF' %>
+                        ATTENDANCE CONFIRMED<br>
+                      <% else %>
+                         AWAITING CONFIRMATION FROM ADMIN <br><br>
+                      <% end %>
+                    <% else %>
+                      NO SCREENING PROGAM<br>
+                    <% end %>
+                    <%= link_to "EDIT DETAILS", edit_ekid_path(kid), class: "btn btn-sm btn-primary active" %>
+                    <br>
+                  </div>
+                  <% if kid.skid.present? %>
+                    <%= link_to "PRINT SCREENING REPORT", skid_path(id: kid.skid.id, format: :pdf), class: "btn btn-sm btn-success", target: "_blank" %>
+                    <%= link_to "FOLLOW UP", "#", class: "btn btn-sm btn-warning" %>
+                  <% else %>
+                    <%= link_to "NO SCREENING REPORT GENERATED", "#", class: "btn btn-sm btn-danger active" %>
+                    
+                  <% end %>
+                </div>
+              </div>     
+            </div>
+          <% end %>
+
+        </div>
+
+<% else %>
+
+NO CHILDREN REGISTERED
+
+<% end %>
+
+</br>
 <%= link_to "Check-In", my_kid_path(id: @parent.id, att: 1, loc: "sha"), class: "btn btn-xs btn-primary active"%></br></br>
