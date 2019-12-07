@@ -82,6 +82,35 @@ class ScesController < ApplicationController
 		end
 	end
 
+	def showstat
+		@ekids = @sce.ekids
+		cnt = 1
+		@turn = Hash.new
+
+		@stel = Hash.new
+		@atel = Hash.new
+		@ptel = Hash.new
+		@otel = Hash.new
+
+		@ekids.where(stat: "CONF").order('updated_at ASC').each do |ek|
+			@turn[ek.id] = cnt
+			cnt = cnt + 1
+
+			if ek.ste.present?
+				@stel[ek.id] = ek.ste.stat 
+			else
+				@stel[ek.id] = nil 
+			end
+
+			if ek.ate.present?
+				@atel[ek.id] = ek.ate.stat 
+			else
+				@atel[ek.id] = nil 
+			end
+
+		end
+	end
+
 	def confsce
 		@ekid = Ekid.find(params[:ekid])
 		@ekid.sce_id = @sce.id

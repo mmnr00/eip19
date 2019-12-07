@@ -104,6 +104,7 @@ Rails.application.routes.draw do
   get '/rmvsce', to: 'sces#rmvsce'
   get '/scexls', to: 'sces#scexls'
   get '/setsce', to: 'sces#setsce'
+  get '/showstat', to: 'sces#showstat'
 
 
 
