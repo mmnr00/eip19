@@ -1,0 +1,14 @@
+<% 
+  sess = "FREE"
+  clr = "#b2d8b2"
+  sess = "Currently in Speech Therapist Session" unless @stel[ek.id] != false
+  sess = "Currently in Audiologist Session" unless @atel[ek.id] != false
+  sess = "Currently in Physio Therapist Session" unless @ptel[ek.id] != false
+  sess = "Currently in Occupational Therapist Session" unless @otel[ek.id] != false
+  sess = "Currently in Doctor Session" unless @dtel[ek.id] != false
+  clr = "#ffb2b2" unless sess == "FREE"
+%>
+<div style="background-color:<%= clr %>"><i><%= sess %></i></div>
+<% if sess != nil %>
+  <br>
+<% end %>
