@@ -16,22 +16,22 @@
   clra="danger" unless @atel.has_value?(false)
   clrp="danger" unless @ptel.has_value?(false)
   clro="danger" unless @otel.has_value?(false)
-  clrd="danger" unless @otel.has_value?(false)
+  clrd="danger" unless @dtel.has_value?(false)
 
   cnts=0;cnta=0;cntp=0;cnto=0;cntd=0
   @stel.each do |k,v| cnts+=1 if v==false end
   @atel.each do |k,v| cnta+=1 if v==false end
   @ptel.each do |k,v| cntp+=1 if v==false end
   @otel.each do |k,v| cnto+=1 if v==false end
-  #@dtel.each do |k,v| cnta+=1 if v==false end
+  @dtel.each do |k,v| cntd+=1 if v==false end
 %>
 
 
 <%= link_to "SPEECH THERAPIST (#{cnts})", showstat_path(id: @sce.id, rm: "st"), class: "btn btn-sm btn-#{clrs}" %>
 <%= link_to "AUDIOLOGIST (#{cnta})", showstat_path(id: @sce.id, rm: "at"), class: "btn btn-sm btn-#{clra}" %>
-<%= link_to "PHYSIO THERAPIST (#{cntp})", "#", class: "btn btn-sm btn-#{clrp}" %>
-<%= link_to "OCCUPATIONAL THERAPIST (#{cnto})", "#", class: "btn btn-sm btn-#{clro}" %>
-<%= link_to "DOCTOR (#{cntd})", "#", class: "btn btn-sm btn-#{clrd}" %>
+<%= link_to "PHYSIO THERAPIST (#{cntp})", showstat_path(id: @sce.id, rm: "pt"), class: "btn btn-sm btn-#{clrp}" %>
+<%= link_to "OCCUPATIONAL THERAPIST (#{cnto})", showstat_path(id: @sce.id, rm: "ot"), class: "btn btn-sm btn-#{clro}" %>
+<%= link_to "DOCTOR (#{cntd})", showstat_path(id: @sce.id, rm: "dt"), class: "btn btn-sm btn-#{clrd}" %>
 <br><br>
 
 <div class="table-responsive">
@@ -102,11 +102,102 @@
         </tr>
       <% end %>
 
+      <% if params[:rm] == "pt" %>
+        <tr>
+          <td><b>PHYSIO THERAPIST</b></td>
+          <td>
+            <% cnt = 1 ; @ptel.each do |k,v| %>
+              <% if v == nil %>
+                <%= "#{cnt}. #{Ekid.find(k).name.upcase}" %><br><br>
+              <% cnt = cnt +1 ; end %>
+            <% end %>
+          </td>
+          <td>
+            <% cnt = 1 ; @ptel.each do |k,v| %>
+              <% if v == false %>
+                <%= "#{cnt}. #{Ekid.find(k).name.upcase}" %><br><br>
+              <% cnt = cnt +1 ; end %>
+            <% end %>  
+          </td>
+          <td>
+            <% cnt = 1 ; @ptel.each do |k,v| %>
+              <% if v == true %>
+                <%= "#{cnt}. #{Ekid.find(k).name.upcase}" %><br><br>
+              <% cnt = cnt +1 ; end %>
+            <% end %>      
+          </td>
+        </tr>
+      <% end %>
+
+      <% if params[:rm] == "ot" %>
+        <tr>
+          <td><b>OCCUPATIONAL THERAPIST</b></td>
+          <td>
+            <% cnt = 1 ; @otel.each do |k,v| %>
+              <% if v == nil %>
+                <%= "#{cnt}. #{Ekid.find(k).name.upcase}" %><br><br>
+              <% cnt = cnt +1 ; end %>
+            <% end %>
+          </td>
+          <td>
+            <% cnt = 1 ; @otel.each do |k,v| %>
+              <% if v == false %>
+                <%= "#{cnt}. #{Ekid.find(k).name.upcase}" %><br><br>
+              <% cnt = cnt +1 ; end %>
+            <% end %>  
+          </td>
+          <td>
+            <% cnt = 1 ; @otel.each do |k,v| %>
+              <% if v == true %>
+                <%= "#{cnt}. #{Ekid.find(k).name.upcase}" %><br><br>
+              <% cnt = cnt +1 ; end %>
+            <% end %>      
+          </td>
+        </tr>
+      <% end %>
+
+      <% if params[:rm] == "dt" %>
+        <tr>
+          <td><b>DOCTOR</b></td>
+          <td>
+            <% cnt = 1 ; @dtel.each do |k,v| %>
+              <% if v == nil %>
+                <%= "#{cnt}. #{(ek=Ekid.find(k)).name.upcase}" %><br>
+                <% 
+                  sess = nil
+                  sess = "Currently in Speech Therapist Session" unless @stel[ek.id] != false
+                  sess = "Currently in Audiologist Session" unless @atel[ek.id] != false
+                %>
+                <i><%= sess %></i>
+                <% if sess != nil %>
+                  <br>
+                <% end %>
+                <br>
+              <% cnt = cnt +1 ; end %>
+            <% end %>
+          </td>
+          <td>
+            <% cnt = 1 ; @dtel.each do |k,v| %>
+              <% if v == false %>
+                <%= "#{cnt}. #{Ekid.find(k).name.upcase}" %><br><br>
+              <% cnt = cnt +1 ; end %>
+            <% end %>  
+          </td>
+          <td>
+            <% cnt = 1 ; @dtel.each do |k,v| %>
+              <% if v == true %>
+                <%= "#{cnt}. #{Ekid.find(k).name.upcase}" %><br><br>
+              <% cnt = cnt +1 ; end %>
+            <% end %>      
+          </td>
+        </tr>
+      <% end %>
+
 
     </tbody>
   </table>
 </div>
 
 <script language="javascript" type="text/javascript">
-  setTimeout("location.reload();",3000);
+  setTimeout("location.reload();",100000);
 </script>

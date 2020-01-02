@@ -91,6 +91,7 @@ class ScesController < ApplicationController
 		@atel = Hash.new
 		@ptel = Hash.new
 		@otel = Hash.new
+		@dtel = Hash.new
 
 		@ekids.where(stat: "CONF").order('updated_at ASC').each do |ek|
 			@turn[ek.id] = cnt
@@ -107,6 +108,25 @@ class ScesController < ApplicationController
 			else
 				@atel[ek.id] = nil 
 			end
+
+			if ek.pte.present?
+				@ptel[ek.id] = ek.pte.stat 
+			else
+				@ptel[ek.id] = nil 
+			end
+
+			if ek.ote.present?
+				@otel[ek.id] = ek.ote.stat 
+			else
+				@otel[ek.id] = nil 
+			end
+
+			if ek.skid.present?
+				@dtel[ek.id] = ek.skid.stat 
+			else
+				@dtel[ek.id] = nil 
+			end
+
 
 		end
 	end
