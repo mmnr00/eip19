@@ -20,7 +20,7 @@ class OwnersController < ApplicationController
 			redirect_to new_tchdetail_path(owner_id: @owner.id)
 		end
 		@sce = Sce.where(curr: true, loc: @owner.loc).first
-		@ekids = @sce.ekids unless @sce.blank?
+		@ekids = @sce.ekids.where(stat: "CONF") unless @sce.blank?
 	end
 
 	def updowner

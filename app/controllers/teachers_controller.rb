@@ -8,7 +8,7 @@ class TeachersController < ApplicationController
 			redirect_to new_tchdetail_path(teacher_id: @teacher.id)
 		end
 		@sce = Sce.where(curr: true, loc: @teacher.loc).first
-		@ekids = @sce.ekids unless @sce.blank?
+		@ekids = @sce.ekids.where(stat: "CONF") unless @sce.blank?
 	end
 
 	def prevtch
