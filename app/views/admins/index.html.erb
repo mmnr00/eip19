@@ -126,9 +126,9 @@
           </td>
           <td><%= sc.date.strftime('%d-%^b-%y') %></td>
           <td><%= sc.venue %></td>
-          <td><%= sc.ekids.count %></td>
+          <td><%= "#{sc.ekids.where(stat: "CONF").count}/#{sc.ekids.count}" %></td>
           <td>
-            <%= link_to "VIEW", sce_path(sc.id), class: "btn btn-sm btn-primary" %>
+            <%= link_to "SUMMARY", sce_path(sc.id), class: "btn btn-sm btn-primary" %>
             <%= link_to "STATUS", showstat_path(id: sc.id), class: "btn btn-sm btn-info" %>
             <%= link_to "EDIT", edit_sce_path(sc.id), class: "btn btn-sm btn-warning" %>
             <%= link_to "DELETE", sce_path(sc.id),method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-sm btn-danger" %>
