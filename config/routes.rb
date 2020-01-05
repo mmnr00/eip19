@@ -35,6 +35,7 @@ Rails.application.routes.draw do
 
   #~~skids
   get '/schkl', to: 'skids#schkl'
+  get '/rmvskid', to: 'skids#rmvskid'
 
   #~~STE
   get '/new_ste', to: 'stes#new_ste'

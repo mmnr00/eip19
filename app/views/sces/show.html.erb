@@ -45,6 +45,7 @@
                 clp = "danger" 
                 cls = "danger" 
                 cla = "danger"
+                cld = "danger"
                 if sc.ote.present?
                   if sc.ote.stat
                     clo = "success"
@@ -73,11 +74,19 @@
                     cla = "warning"
                   end
                 end
+                if sc.skid.present?
+                  if sc.skid.stat
+                    cld = "success"
+                  elsif !sc.skid.stat
+                    cld = "warning"
+                  end
+                end
               %>
               <%= link_to "OT", "#", class: "btn btn-sm btn-#{clo} active" %><br><br>
               <%= link_to "PT", "#", class: "btn btn-sm btn-#{clp} active" %><br><br>
               <%= link_to "ST", "#", class: "btn btn-sm btn-#{cls} active" %><br><br>
-              <%= link_to "AUDIO", "#", class: "btn btn-sm btn-#{cla} active" %><br>
+              <%= link_to "AUDIO", "#", class: "btn btn-sm btn-#{cla} active" %><br><br>
+              <%= link_to "DOCTOR", "#", class: "btn btn-sm btn-#{cld} active" %><br>
           </td>
           <td>
             <% if (sk=sc.skid).present? %>

@@ -1,6 +1,16 @@
 class SkidsController < ApplicationController
 	before_action :set_all
 
+	def rmvskid
+		skid = Skid.find(params[:skid])
+		ekid = skid.ekid
+		rflt = ekid.rflt
+		skid.destroy
+		rflt.destroy unless rflt.blank?
+		flash[:success] = "Deletion successful"
+		redirect_to owner_index_path
+	end
+
 	def schkl
 		@chkl = Chkl.find(params[:id])
 		@ekid = @chkl.ekid
