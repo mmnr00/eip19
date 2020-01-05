@@ -100,6 +100,8 @@ class SkidsController < ApplicationController
 				if @ekid.rflt.present?
 					redirect_to edit_rflt_path(id: @ekid.rflt.id, ekid: @ekid.id, rflt: 1)
 				else
+					@skid.stat = false
+					@skid.save
 					redirect_to new_rflt_path(ekid: @ekid.id, rflt: 1)
 				end 
 			else

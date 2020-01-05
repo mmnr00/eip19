@@ -13,7 +13,8 @@
   end
 %>
 
-<% if @sce.present? %>
+<% if @sce.present? && (@teacher.loc.present? || @teacher.tp.present?) %>
+  <div style="background-color:blue"><h1 align="center" style="color:white"><%= actn %></h1></div>
   <h2><%= @sce.name %></h2>
   <h5><%= @sce.date.strftime('%d-%^b-%y') %></h5>
   <h5><%= @sce.venue %></h5>

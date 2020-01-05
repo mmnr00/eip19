@@ -40,6 +40,9 @@ class RfltsController < ApplicationController
 		@rflt=Rflt.new(rflt_params)
 		if @rflt.save
 			sce = @rflt.ekid.sce
+			skid = @rflt.ekid.skid
+			skid.stat = true
+			skid.save
 			flash[:success] = "Refer letter successfully created"
 			sce = @rflt.ekid.sce
 			if sce.curr

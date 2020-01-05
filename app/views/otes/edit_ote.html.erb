@@ -1,5 +1,7 @@
-<h4>OCCUPATIONAL THERAPIST ASSESSMENT FOR</h4> 
-<h3><%= @ote.ekid.name.upcase %></h3>
+<div style="background-color:blue">
+  <h4 align="center" style="color:white">OCCUPATIONAL THERAPIST ASSESSMENT FOR</h4> 
+  <h3 align="center" style="color:white"><%= @ote.ekid.name.upcase %></h3>
+</div>
 <br>
 <div class='col-12'>
   <%= form_for(:ote,:url => {:controller => "otes", :action => "upd_ote"}, :html => {multipart: true, class: "form-horizontal", role: "form"}) do |f| %>

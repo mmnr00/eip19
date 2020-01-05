@@ -1,5 +1,5 @@
-<h4>PHYSIO THERAPIST ASSESSMENT FOR</h4> 
-<h3><%= @pte.ekid.name.upcase %></h3>
+<div style="background-color:blue"><h4 align="center" style="color:white">PHYSIO THERAPIST ASSESSMENT FOR</h4> 
+<h3 align="center" style="color:white"><%= @pte.ekid.name.upcase %></h3></div>
 <br>
 <div class='col-12'>
   <%= form_for(:pte,:url => {:controller => "ptes", :action => "upd_pte"}, :html => {multipart: true, class: "form-horizontal", role: "form"}) do |f| %>

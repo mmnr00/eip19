@@ -1,5 +1,7 @@
-<h4>AUDIOLOGIST ASSESSMENT FOR</h4> 
-<h3><%= @ate.ekid.name.upcase %></h3>
+<div style="background-color:blue">
+  <h4 align="center" style="color:white">AUDIOLOGIST ASSESSMENT FOR</h4> 
+  <h3 align="center" style="color:white"><%= @ate.ekid.name.upcase %></h3>
+</div>
 <br>
 <div class='col-12'>
   <%= form_for(:ate,:url => {:controller => "ates", :action => "upd_ate"}, :html => {multipart: true, class: "form-horizontal", role: "form"}) do |f| %>

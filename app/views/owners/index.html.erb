@@ -1,5 +1,6 @@
-<% if @sce.present? %>
-
+<% if @sce.present? && @owner.loc.present? %>
+  
+  <div style="background-color:blue"><h1 align="center" style="color:white">DOCTOR ASSESSMENT</h1></div>
   <h2><%= @sce.name %></h2>
   <h5><%= @sce.date.strftime('%d-%^b-%y') %></h5>
   <h5><%= @sce.venue %></h5>
@@ -23,7 +24,8 @@
         <% @ekids.order('name ASC').each do |sc| %>
           <tr>
             <td><%= sc.id %></td>
-            <td><%= link_to "#{sc.name} (#{sc.ic})", ekidconf_path(id: sc.id), class: "btn btn-sm btn-info", target: "_blank" %></td>
+            <td><%= "#{sc.name} (#{sc.ic})" %>
+              <br><%= link_to "PROFILE", ekidconf_path(id: sc.id), class: "btn btn-sm btn-info", target: "_blank" %></td>
             <td>
               <%= "#{sc.fname} (#{sc.fph})" %><br><br>
               <%= "#{sc.mname} (#{sc.mmph})" %>
