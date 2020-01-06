@@ -38,6 +38,7 @@ class SkidsController < ApplicationController
 		@ste = @ekid.ste
 		@pte = @ekid.pte
 		@ate = @ekid.ate
+		@sce = @ekid.sce
 
 		respond_to do |format|
 	 		format.html
@@ -47,7 +48,7 @@ class SkidsController < ApplicationController
 		   footer: {
 		   					font_size: 8,
 		   					right: "#{@ekid.name} (#{@ekid.ic})",
-		   					left: "www.eipepic.my"
+		   					left: "#{@sce.name} (#{@sce.date.strftime('%d-%^b-%y')})"
 		   },
 		   #disposition: "attachment",
 		   #save_to_file: Rails.root.join('pdfs', "#{filename}.pdf"),
