@@ -92,7 +92,7 @@ class EkidsController < ApplicationController
 	
 	def index
 		@admin = current_admin
-		@ekids = Ekid.where(admloc: $admloc[@admin.id],stat: params[:stato])
+		@ekids = Ekid.where(stat: "CONFIRM")
 		#render action: "index", layout: "eipblank"
 	end
 
@@ -126,7 +126,7 @@ class EkidsController < ApplicationController
 
 	def new
 		@ekid = Ekid.new
-		render action: "new", layout: "eipblank"
+		#render action: "new", layout: "eipblank"
 	end
 
 	def create

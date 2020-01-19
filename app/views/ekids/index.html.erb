@@ -17,10 +17,10 @@ if params[:stato] == "NEW"
 elsif params[:stato] == "REJECT"
   szr = "lg"
   colr = "5"
-elsif params[:stato] == "PENDING"
+elsif params[:stato] == "ASSIGN"
   szp = "lg"
   colp = "5"
-elsif params[:stato] == "MENTOR"
+elsif params[:stato] == "IN PROGRESS"
   szm = "lg"
   colm = "5"
 elsif params[:stato] == "CONFIRM"
@@ -30,11 +30,10 @@ end
 
 %>
 
-<%= link_to "NEW (#{ekidis.where(stat: "NEW").count})", ekidindex_path(stato: "NEW"), class: "btn btn-#{szn} btn-primary col-md-#{coln}" %>
-<%= link_to "REJECTED (#{ekidis.where(stat: "REJECT").count})", ekidindex_path(stato: "REJECT"), class: "btn btn-#{szr} btn-danger col-md-#{colr}" %>
-<%= link_to "MENTOR (#{ekidis.where(stat: "MENTOR").count})", ekidindex_path(stato: "MENTOR"), class: "btn btn-#{szm} btn-success col-md-#{colm}" %>
-<%= link_to "PENDING (#{ekidis.where(stat: "PENDING").count})", ekidindex_path(stato: "PENDING"), class: "btn btn-#{szp} btn-primary col-md-#{colp}" %>
-<%= link_to "CONFIRM (#{ekidis.where(stat: "CONFIRM").count})", ekidindex_path(stato: "CONFIRM"), class: "btn btn-#{szc} btn-info col-md-#{colc}" %>
+<%= link_to "NEW (432)", ekidindex_path(stato: "NEW"), class: "btn btn-#{szn} btn-primary col-md-#{coln}" %>
+<%= link_to "REJECTED (210)", ekidindex_path(stato: "REJECT"), class: "btn btn-#{szr} btn-danger col-md-#{colr}" %>
+<%= link_to "ASSIGN (400)", ekidindex_path(stato: "ASSIGN"), class: "btn btn-#{szp} btn-success col-md-#{colp}" %>
+<%= link_to "IN PROGRESS (271)", ekidindex_path(stato: "IN PROGRESS"), class: "btn btn-#{szm} btn-primary col-md-#{colm}" %>
 
 
 
@@ -79,6 +78,24 @@ end
             <% end %>
             <br><br>
             
+            
+              
+          </td>
+          <td><%= e.mph %></td>
+          <td>
+            <%
+              diff = (Date.today.year*12+Date.today.month) - (e.dob.year*12+e.dob.month)
+              year = diff/12
+              month = diff - year*12
+            %>
+            <%= "#{e.dob.strftime('%d-%^b-%y')} (#{year} thn, #{month} bln)" %>
+          </td>
+          <td colspan="4">
+            <b>FAMILY INCOME (RM):</b>&nbsp&nbsp<%= e.pinc %><br><br>
+            <b>NO OF SIBLINGS: </b>&nbsp&nbsp<%= e.sib %><br><br>
+              
+          </td>
+          <td>
             <%= form_tag ekidchg_path, method: :get do %>
               <div class="row">
                 <div class="col-md-4">
@@ -102,28 +119,6 @@ end
                 </div>
               </div>
             <% end %>
-              
-          </td>
-          <td><%= e.mph %></td>
-          <td>
-            <%
-              diff = (Date.today.year*12+Date.today.month) - (e.dob.year*12+e.dob.month)
-              year = diff/12
-              month = diff - year*12
-            %>
-            <%= "#{e.dob.strftime('%d-%^b-%y')} (#{year} thn, #{month} bln)" %>
-          </td>
-          <td colspan="4">
-            <b>DATE:</b>&nbsp&nbsp<%= e.created_at.strftime('%d-%^b-%y') %><br><br>
-            <b>INCOME (RM):</b>&nbsp&nbsp<%= e.pinc %><br><br>
-            <b>NO OF SIBLINGS: </b>&nbsp&nbsp<%= e.sib %><br><br>
-            <b>REFER BEFORE ?: </b>&nbsp&nbsp<%= e.ref %><br><br>
-            <b>REFER LOCATION: </b>&nbsp&nbsp<%= e.refloc %><br><br>
-              
-          </td>
-          <td>
-            <%= link_to "EDIT", edit_ekid_path(id: e.id), class: "btn btn-sm btn-warning" %>
-            <%= link_to "PROFILE", ekidconf_path(id: e.id), class: "btn btn-sm btn-info" %>
           </td>
         </tr>
       <% end %>

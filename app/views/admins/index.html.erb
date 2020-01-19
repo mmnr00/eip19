@@ -1,12 +1,12 @@
 <div class="col-sm-12 bg-white">
   <%= form_tag findekid_path, remote: true, method: :get, id: "find_kid" do %>
     <div class="form-group text-center col-md-12">
-      <strong>SEARCH CHILDREN BY MYKID NO</strong><br><br>
+      <strong>SEARCH SERIAL NO </strong><br><br>
       <div class="row">
         <div class="col-3"></div>
         <div class="col-5">
           <%= text_field_tag :ic, params[:ic], 
-                  placeholder: "e.g 870829355647 (no dash)",
+                  placeholder: "e.g 5532_PPAS",
                   autofocus: true, 
                   class: "form-control search-box input-lg", 
                   style: "text-transform:uppercase",
@@ -34,113 +34,53 @@
 <div class="scontainer">
   <div class="row">
 
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="card-counter primary">
         <i class="fa fa-code-fork"></i>
-        <span class="count-numbers"><%= @ekids.where(stat: "NEW").count %></span>
+        <span class="count-numbers">432</span>
         <span class="count-name">
           <a href="/ekidindex?stato=NEW", style="color:#fff">New</a>
         </span>
       </div>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="card-counter danger">
         <i class="fa fa-exclamation-circle"></i>
-        <span class="count-numbers"><%= @ekids.where(stat: "REJECT").count %></span>
+        <span class="count-numbers">210</span>
         <span class="count-name">
           <a href="/ekidindex?stato=REJECT", style="color:#fff">Rejected</a>
         </span>
       </div>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="card-counter info">
         <i class="fa fa-globe"></i>
-        <span class="count-numbers"><%= @ekids.where(stat: "MENTOR").count %></span>
+        <span class="count-numbers">400</span>
         <span class="count-name">
-          <a href="/ekidindex?stato=MENTOR", style="color:#fff">Mentor</a>
+          <a href="/ekidindex?stato=MENTOR", style="color:#fff">Assigned</a>
         </span>
       </div>
     </div>
 
-
-    <div class="col-md-6">
+    <div class="col-md-3">
       <div class="card-counter success">
-        <i class="fa fa-pause"></i>
-        <span class="count-numbers"><%= @ekids.where(stat: "PENDING").count %></span>
+        <i class="fa fa-globe"></i>
+        <span class="count-numbers">271</span>
         <span class="count-name">
-          <a href="/ekidindex?stato=PENDING", style="color:#fff">Pending</a>
+          <a href="/ekidindex?stato=MENTOR", style="color:#fff">In Progress</a>
         </span>
       </div>
     </div>
+
 
     
-    <div class="col-md-6">
-      <div class="card-counter primary">
-        <i class="fa fa-check-circle"></i>
-        <span class="count-numbers"><%= @ekids.where(stat: "CONFIRM").count %></span>
-        <span class="count-name">
-          <a href="/ekidindex?stato=CONFIRM", style="color:#fff">Confirm</a>
-        </span>
-      </div>
-    </div>
-
   </div>
 </div>
 
-<hr>
-<div style="background-color:#ffcccc"><h2 align="center">LIST OF SCREENING PROGRAMS</h2></div>
-  <%= link_to "CREATE NEW PROGRAM", new_sce_path, class: "btn btn-sm btn-success" %>
-  <%= link_to "EXTRACT OVERALL DATA & REPORT", scexls_path(id: Sce.all.ids,format: :xlsx), class: "btn btn-sm btn-info" %>
-  <br><br>
 
 
-<div class="table-responsive">
-  <table class="table table-striped table-bordered" width="100%" cellspacing="0">
-
-    <thead>
-      <tr>
-        <th style="background-color:#99cc99">NAME</th>
-        <th style="background-color:#99cc99">DATE</th>
-        <th style="background-color:#99cc99">VENUE</th>
-        <th style="background-color:#99cc99">NO OF KIDS</th>
-        <th style="background-color:#99cc99">ACTION</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% Sce.where(loc: $admloc[@admin.id]).order('date DESC').each do |sc| %>
-        <tr>
-          <td>
-            <%= sc.name %>
-            <%= link_to "ACTIVE", "#", class: "btn btn-sm btn-success active" unless !sc.curr %>
-            <% if @admin.id == 1 %>
-              <% if sc.curr %>
-                <%= link_to "REMOVE", setsce_path(id: sc, curr: false), class: "btn btn-sm btn-danger" %>
-              <% else %>
-                <%= link_to "MAKE ACTIVE", setsce_path(id: sc, curr: true), class: "btn btn-sm btn-info" %>
-              <% end %> 
-            <% end %>   
-
-          </td>
-          <td><%= sc.date.strftime('%d-%^b-%y') %></td>
-          <td><%= sc.venue %></td>
-          <td><%= "#{sc.ekids.where(stat: "CONF").count}/#{sc.ekids.count}" %></td>
-          <td>
-            <%= link_to "SUMMARY", sce_path(sc.id), class: "btn btn-sm btn-primary" %>
-            <%= link_to "STATUS", showstat_path(id: sc.id), class: "btn btn-sm btn-info" %>
-            <%= link_to "EDIT", edit_sce_path(sc.id), class: "btn btn-sm btn-warning" %>
-            <%= link_to "DELETE", sce_path(sc.id),method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-sm btn-danger" %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
-  
-
-<hr>
 
 
 
