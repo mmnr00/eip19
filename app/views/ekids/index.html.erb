@@ -97,27 +97,16 @@ end
           </td>
           <td>
             <%= form_tag ekidchg_path, method: :get do %>
-              <div class="row">
-                <div class="col-md-4">
-                  <%= select_tag :stat, options_for_select(
-                      ["NEW","REJECT","PENDING","MENTOR","CONFIRM"], selected: e.stat),
-                      class: "form-control search-box input-lg"%>
-                      <b>CATEGORY</b>
-                  <%= hidden_field_tag :id, e.id %>
-                  <%= hidden_field_tag :stato, params[:stato] %>
-                </div>
-                <div class="col-md-4">
-                  <%= select_tag :loc, options_for_select(
-                      ["Shah Alam","Serdang"], selected: e.prefloc),
-                      class: "form-control search-box input-lg"%>
-                      <b>LOCATION</b>
-                </div>
-                <div class="col-md-4">
+                <div class="col-md-12">
+                  <b>NO SIRI READING SEEDS</b>
+                  <%= text_field_tag :stat %>
+                  
+                </div><br>
+                <div class="col-md-12">
                   <%= button_tag(type: :submit, class: "btn btn-sm btn-primary active", id: "submit_expense") do %>
-                    <i class="fa fa-sync"></i> UPDATE
+                    <i class="fa fa-sync"></i> ASSIGN
                   <% end %>
                 </div>
-              </div>
             <% end %>
           </td>
         </tr>
