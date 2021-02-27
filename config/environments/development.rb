@@ -12,6 +12,9 @@ Rails.application.configure do
   # Show full error reports.
   config.consider_all_requests_local = true
 
+  # Add Rack::LiveReload to the bottom of the middleware stack with the default options:
+  config.middleware.insert_after ActionDispatch::Static, Rack::LiveReload
+
   #config.billplz = "www.google.com"
 
   # Enable/disable caching. By default caching is disabled.
@@ -35,7 +38,7 @@ Rails.application.configure do
 
   # Don't care if the mailer can't send.
   config.action_mailer.delivery_method = :test
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => 'localhost:6000' }
   config.action_mailer.raise_delivery_errors = false
 
   config.action_mailer.perform_caching = false
