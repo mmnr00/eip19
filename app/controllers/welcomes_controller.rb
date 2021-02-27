@@ -13,6 +13,7 @@ class WelcomesController < ApplicationController
 		@admin = current_admin
 		@owner = current_owner
 		@parent = current_parent
+		@index = true
 		# if @owner && @owner.tchdetail.blank?
 		# 	redirect_to new_tchdetail_path(owner_id: @owner.id)
 		# elsif @teacher && @teacher.tchdetail.blank?

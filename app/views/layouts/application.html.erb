@@ -28,8 +28,7 @@
 
       <div id="logo" class="pull-left">
         <h1><a href="<%= root_url %>">
-          <img src="<%= image_path('kidcare_logo/eip_logo_header.png') %>" width="40" height="40" />
-          PT<span>NS</span>
+          <img src="<%= image_path('anislogo1.png') %>" width="129" height="60" />
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="/assets/reveal/logo.png" alt=""></a>-->
       </div>
@@ -54,9 +53,9 @@
           <li>
             <% current_admin.present? %>
             <% if current_admin.present? %>
-              <a href="<%= destroy_admin_session_url %>" data-confirm="Adakah anda pasti?" data-method="delete" >Log Keluar</a>
+              <a href="<%= destroy_admin_session_url %>" data-confirm="Adakah anda pasti?" data-method="delete" >Logout</a>
             <% else %>
-              <a href="<%= admin_index_url %>">Log Masuk</a>
+              <a href="<%= admin_index_url %>">Login</a>
             <% end %>
           </li>
 
