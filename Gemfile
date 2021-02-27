@@ -9,6 +9,8 @@ gem 'rails', '~> 5.2.1'
 
 gem 'sass'
 gem 'roo'
+#gem 'sass-rails', '~> 5.0.7'
+#gem 'sprockets'
 gem 'devise'
 gem 'twitter-bootstrap-rails'
 gem 'jquery-rails'
@@ -89,6 +91,8 @@ group :development do
   gem 'capistrano-bundler', require: false
   gem 'capistrano3-puma',   require: false
   gem 'wkhtmltopdf-binary-edge'
+  gem 'guard-livereload', '~> 2.5', require: false
+  gem 'rack-livereload'
 end
 
 group :test do
@@ -103,8 +107,8 @@ end
 group :production do
   #gem 'pg', '~>0.11' 
   #gem 'sqlite3'
-  gem 'wkhtmltopdf-heroku', '2.12.4'
-  #gem 'wkhtmltopdf-binary'
+  #gem 'wkhtmltopdf-heroku'
+  gem 'wkhtmltopdf-heroku', '2.12.5.0'
 end
 
 

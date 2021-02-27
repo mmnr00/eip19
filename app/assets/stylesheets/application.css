@@ -10,34 +10,18 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require bootstrap-glyphicons
- Start for WEBARCH
- * require plugins/bootstrapv3/css/bootstrap.min.css
- *= require plugins/bootstrapv3/css/bootstrap-theme.min.css
- *= require webarch/css/webarch.css 
  
- START ADMIN CARD (in vendor/stylesheets)
- * require admin_card
- * require font-awesome-new
 
-START PROFILE_CARD (in vendor/stylesheets)
- *= require w3
- *= require font-awesome-min
+ *= require reveal-css
 
- Start for AGENCY
- *= require bootstrap/css/bootstrap
- *= require fontawesome-free/css/all
- *= require css_agency/agency
- End for AGENCY
-
- START FOR ADMIN
- *= require datatables/dataTables.bootstrap4
+ *= require mmbcard
+ *= require pricing
  *= require css_sb-admin/sb-admin
- END FOR ADMIN
-
+ *= require font-awesome-min
+ *= require fontawesome-free/css/all
+ *= require sb-admin-2
  *= require_tree .
  *= require_self
-@import "fontawesome-free/css";
 
  */
 
@@ -53,6 +37,10 @@ html {
 
 
 */
+
+/*@import "bootstrap";*/
+/*@import "font-awesome-sprockets";*/
+/*@import "font-awesome";*/
 
 .iframe-container{
   position: relative;
@@ -436,9 +424,36 @@ tr.noBorder td {
     font-weight: 600;
 }
 
-
-
 /*PAYSLIP*/
+
+/*INSTRUCTION*/
+
+.stepz li:hover {
+background-color: #eee;   
+}
+
+.stepz {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.stepz li {
+  counter-increment: step-counter;
+  margin-bottom: 10px;
+  list-style-type:none;
+}
+
+.stepz li::before {
+  content: counter(step-counter);
+  margin-right: 5px;
+  font-size: 80%;
+  background-color: rgb(0,200,200);
+  color: white;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 3px;
+}
 
 
 
