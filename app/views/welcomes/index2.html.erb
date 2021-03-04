@@ -1,39 +1,64 @@
 <!-- Header -->
-<header class="masthead" style="background-image: url(<%= image_path('eip-bg.jpg') %>); background-size: cover; background-position: center; padding-bottom: 300px; margin-bottom: 10px">
-  <div class="intro-text" style="">
+<header class="masthead" style="background-image: url(<%= image_path('eip-bg.jpg') %>); background-size: cover; background-position: center; padding-bottom: 100px; margin-bottom: 0px; background-repeat: no-repeat;">
+  <div class="intro-text container" style="">
     <div class="intro-heading" style="text-align: center; color: black; background-color: #d8d8d8; opacity: 0.6; margin-top: 0px" >
       Sistem Jabatan ANIS
     </div>
   </div>
 
-  <section id="services">
-    <div class="containers">
+  <div style="text-align: center; font-size: 25px">
+  <%= link_to "Daftar Sekarang", root_path, class: "badge badge-pill badge-dark"%>
+</div>
 
-      <div class="row">
+</header>
 
-        <div class="col-lg-3">
-          <div class="box wow fadeInLeft">
-            <div class="icon"><i class="fa fa-bar-chart"></i></div>
-            <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-            <p class="description"></p>
-          </div>
+<section class="bg-light" id="services">
+  <div class="container bg-light">
+    <div class="section-header">
+      <h2>Produk ANIS</h2>
+      <p>Produk dibawah ANIS Selangor</p>
+    </div>
+
+    <div class="row">
+
+      <div class="col-lg-6">
+        <div class="box wow fadeInLeft">
+          <div class="icon"><i class="fas fa-gem"></i></div>
+          <h4 class="title"><a href="">Cikgu ANIS</a></h4>
+          <p class="description"></p>
         </div>
+      </div>
 
-        <div class="col-lg-3">
-          <div class="box wow fadeInRight">
-            <div class="icon"><i class="fa fa-picture-o"></i></div>
-            <h4 class="title"><a href="">Dolor Sitema</a></h4>
-            <p class="description"></p>
-          </div>
+      <div class="col-lg-6">
+        <div class="box wow fadeInRight">
+          <div class="icon"><i class="fa fa-paper-plane"></i></div>
+          <h4 class="title"><a href="">Didik ANIS</a></h4>
+          <p class="description"></p>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="box wow fadeInRight">
+          <div class="icon"><i class="fa fa-users"></i></div>
+          <h4 class="title"><a href="">Pusat Terapi ANIS</a></h4>
+          <p class="description"></p>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="box wow fadeInRight">
+          <div class="icon"><i class="fas fa-hands-helping"></i></div>
+          <h4 class="title"><a href="">Bantuan ANIS</a></h4>
+          <p class="description"></p>
         </div>
       </div>
 
     </div>
-  </section>
 
 
 
-</header>
+  </div>
+</section>
 
 
 

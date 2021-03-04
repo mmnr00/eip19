@@ -72,7 +72,7 @@ h1, h2, h3, h4, h5, h6 {
 # Top Bar
 --------------------------------------------------------------*/
 #topbar {
-  background: #fff;
+  background: #4ca2ff;
   padding: 10px 0;
   border-bottom: 1px solid #eee;
   font-size: 14px;
@@ -80,7 +80,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #topbar .contact-info a {
   line-height: 1;
-  color: #555;
+  color: #cccccc;
 }
 
 #topbar .contact-info a:hover {
@@ -88,7 +88,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #topbar .contact-info i {
-  color: #50d8af;
+  color: white;
   padding: 4px;
 }
 
@@ -99,7 +99,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #topbar .social-links a {
-  color: #555;
+  color: white;
   padding: 4px 12px;
   display: inline-block;
   line-height: 1px;
@@ -663,6 +663,7 @@ section {
   box-shadow: 10px 10px 15px rgba(73, 78, 92, 0.1);
   background: #fff;
   transition: 0.4s;
+  opacity: 1;
 }
 
 #services .box:hover {
