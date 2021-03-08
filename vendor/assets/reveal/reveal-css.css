@@ -658,12 +658,13 @@ section {
 }
 
 #services .box {
-  padding: 40px;
+  padding: 20px;
   margin-bottom: 40px;
   box-shadow: 10px 10px 15px rgba(73, 78, 92, 0.1);
-  background: #fff;
+  background: #BFDCFE;
   transition: 0.4s;
   opacity: 1;
+  border-left: 5px solid #60A7FF;
 }
 
 #services .box:hover {
@@ -693,11 +694,11 @@ section {
   -webkit-text-fill-color: transparent;
 }
 
-#services .box h4 {
-  margin-left: 100px;
+#services .box h5 {
+  margin-left: 0px;
   font-weight: 700;
   margin-bottom: 15px;
-  font-size: 22px;
+  font-size: 20px;
 }
 
 #services .box h4 a {
@@ -706,7 +707,7 @@ section {
 
 #services .box p {
   font-size: 14px;
-  margin-left: 100px;
+  margin-left: 0px;
   margin-bottom: 0;
   line-height: 24px;
 }
