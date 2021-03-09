@@ -1,0 +1,21 @@
+
+<div class="" style="margin-bottom: 20px; text-align: center ">
+  <h5 style="color: black; font-weight: 550">Sila Masukkan No MYKAD anda</h5>
+  <form>
+    <div class="row justify-content-center">
+
+      <%= form_tag persesch_path, method: :get, id: "find_kid" do %>
+        <div class="col-lg-5 col-md-7 col-sm-10">
+          <%= text_field_tag :icf, params[:icf], class: "form-control form-control-sm", placeholder: "cth: 870829342134", required: true, minlenght: 2 %>
+          <%= hidden_field_tag :sch, params[:sch], value: "sdhjdsh876671" %>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2">
+          <%= button_tag(type: :submit, class: "btn btn-block btn-sm btn-primary", style: "") do %>
+            <i class=""></i> Semak
+          <% end %>
+        </div>
+      <% end %>
+
+    </div>
+  </form>
+</div>

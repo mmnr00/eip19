@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_24_035220) do
+ActiveRecord::Schema.define(version: 2021_03_09_123627) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -435,6 +435,13 @@ ActiveRecord::Schema.define(version: 2019_11_24_035220) do
     t.string "dob"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "add"
+    t.string "race"
+    t.string "backg"
+    t.string "backgo"
+    t.string "kdoku"
+    t.string "kdiag"
+    t.string "email"
   end
 
   create_table "pkids", force: :cascade do |t|

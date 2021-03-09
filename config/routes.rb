@@ -80,6 +80,7 @@ Rails.application.routes.draw do
 
   #~~PERSE
   get '/perseindex', to: 'perses#index'
+  get '/persesch', to: 'perses#persesch'
 
   #~~EKID
   get '/ekidindex', to: 'ekids#index'

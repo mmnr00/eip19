@@ -1,0 +1,217 @@
+<% 
+  if actn == "new"
+    ctr= "perses"
+    act= "create"
+    btn = "CREATE"
+  elsif actn == "edit"
+    ctr= "perses"
+    act= "update"
+    btn= "UPDATE"
+  elsif actn == "editreg"
+    ctr= "proges"
+    act= "updreg"
+    btn = "UPDATE AND REGISTER"
+  elsif actn == "newreg"
+    ctr= "proges"
+    act= "crtreg"
+    btn = "CREATE AND REGISTER"
+  elsif actn == "cfmatt"
+    ctr= "proges"
+    act= "updatt"
+    btn = "CONFIRM"
+  elsif actn == "regatt"
+    ctr= "proges"
+    act= "newexsatt"
+    btn = "REGISTER & CONFIRM"
+  elsif actn == "newatt"
+    ctr= "proges"
+    act= "crtnewatt"
+    btn = "SIGN UP & CONFIRM"
+  end
+
+  if params[:ic].present?
+    icval = params[:ic]
+  else
+    icval = @perse.ic
+  end
+%>
+
+
+<div class='row'>
+  <div class='col-lg-8 col-12'>
+    <%= form_for(@perse,:url => {:controller => "#{ctr}", :action => "#{act}"}, :html => {multipart: true, class: "form-horizontal", role: "form"}) do |f| %>
+
+        
+        <div class="form-group"> <!-- name -->
+          <div class="row">
+            <div class="control-label col-sm-8">
+              <strong>NAME</strong>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-8 col-12">
+              <%= f.text_field :name, class: "form-control", placeholder: "YOUR FULL NAME AS PER IC", autofocus: true, required: true %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group"> <!-- IC -->
+          <div class="row">
+            <div class="control-label col-sm-8">
+              <strong>I/C NO</strong>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-8 col-12">
+              <%= f.number_field :ic, class: "form-control", placeholder: "e.g. 870829015436 (no dash)",value: icval,  autofocus: true, required: true %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group"> <!-- ph -->
+          <div class="row">
+            <div class="control-label col-sm-8">
+              <strong>PHONE NO</strong>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-8 col-12">
+              <%= f.number_field :ph, class: "form-control", placeholder: "e.g. 0174151557 (no dash)", autofocus: true, required: true %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group"> <!-- HOUSEHOLD MONTHLY INCOME (RM) -->
+          <div class="row">
+            <div class="control-label col-sm-8">
+              <strong>HOUSEHOLD MONTHLY INCOME (RM)</strong>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-8 col-12">
+              <%= f.select :inc, options_for_select(["More than 10,000", 
+                                                  "5,000 to 10,000", 
+                                                  "Less than 5,000"
+                                                  ], 
+                                                  selected: @perse.inc), 
+            {include_blank: "CHOOSE ONE"}, {required: true} %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group"> <!-- GENDER -->
+          <div class="row">
+            <div class="control-label col-sm-8">
+              <strong>GENDER</strong>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-8 col-12">
+              <%= f.select :gdr, options_for_select(["MALE","FEMALE"], 
+                                                  selected: @perse.gdr), 
+            {include_blank: "CHOOSE ONE"}, {required: true} %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group"> <!-- DUN -->
+          <div class="row">
+            <div class="control-label col-sm-8">
+              <strong>DUN</strong>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-8 col-12">
+              <%= f.select :dun, options_for_select(["Balakong  ",
+                                                    "Bandar Baru Klang ",
+                                                    "Bandar Utama  ",
+                                                    "Banting ",
+                                                    "Batang Kali ",
+                                                    "Batu Tiga ",
+                                                    "Bukit Antarabangsa ",
+                                                    "Bukit Gasing  ",
+                                                    "Bukit Lanjan  ",
+                                                    "Bukit Melawati  ",
+                                                    "Dengkil ",
+                                                    "Dusun Tua ",
+                                                    "Gombak Setia  ",
+                                                    "Hulu Bernam ",
+                                                    "Hulu Kelang ",
+                                                    "Ijok  ",
+                                                    "Jeram ",
+                                                    "Kajang  ",
+                                                    "Kampung Tunku ",
+                                                    "Kinrara ",
+                                                    "Kota Anggerik ",
+                                                    "Kota Damansara  ",
+                                                    "Kota Kemuning ",
+                                                    "Kuala Kubu Baharu ",
+                                                    "Kuang ",
+                                                    "Lembah Jaya ",
+                                                    "Meru  ",
+                                                    "Morib ",
+                                                    "Pandamaran  ",
+                                                    "Pandan Indah  ",
+                                                    "Paya Jaras  ",
+                                                    "Pelabuhan Klang ",
+                                                    "Permatang ",
+                                                    "Rawang  ",
+                                                    "Sabak ",
+                                                    "Sekinchan ",
+                                                    "Selat Klang ",
+                                                    "Sementa ",
+                                                    "Semenyih  ",
+                                                    "Sentosa ",
+                                                    "Seri Kembangan  ",
+                                                    "Seri Serdang  ",
+                                                    "Seri Setia  ",
+                                                    "Sijangkang  ",
+                                                    "Subang Jaya ",
+                                                    "Sungai Air Tawar ",
+                                                    "Sungai Burong ",
+                                                    "Sungai Kandis ",
+                                                    "Sungai Panjang ",
+                                                    "Sungai Pelek  ",
+                                                    "Sungai Ramal  ",
+                                                    "Sungai Tua  ",
+                                                    "Taman Medan ",
+                                                    "Taman Templer ",
+                                                    "Tanjong Sepat ",
+                                                    "Teratai "
+                                                      ], 
+                                                    selected: @perse.dun), 
+            {include_blank: "CHOOSE ONE"}, {required: true} %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group"> <!-- DATE OF BIRTH -->
+          <div class="row">
+            <div class="control-label col-sm-8">
+              <strong>DATE OF BIRTH (DOB)</strong>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-8 col-12">
+              <%= f.date_field :dob, class: "form-control", placeholder: "e.g. 0174151557 (no dash)", autofocus: true, required: true, value: @perse.dob %>
+            </div>
+          </div>
+        </div>
+
+        <%= f.hidden_field :id, value: params[:id] %>
+        <%= f.hidden_field :proge, value: params[:proge] %>
+        <%= f.hidden_field :perproge, value: params[:perproge] %>
+
+        <div class="form-group">
+          <div class="row">
+            <div class="col-sm-offset-2 col-sm-10 col-4">
+              <%= f.submit :"#{btn}",  class: 'btn btn-primary btn-lg' %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      
+    </div>
+  </div>
+
+  
