@@ -71,7 +71,7 @@
             <% if current_admin.present? %>
               <a href="<%= destroy_admin_session_url %>" data-confirm="Adakah anda pasti?" data-method="delete" >Logout</a>
             <% else %>
-              <a href="<%= admin_index_url %>"><img src="http://anis.yawas.my/web/images/anisicon/png/020-web-security.png" width="20" height="20"></a>
+              <a href="<%= admin_index_url %>"><img src="<%= image_path('anisPic/login-btn.png') %>" width="20" height="20"></a>
 
             <% end %>
           </li>
