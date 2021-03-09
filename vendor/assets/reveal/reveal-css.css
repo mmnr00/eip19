@@ -1308,3 +1308,30 @@ section {
 #footer .credits a {
   color: #0c2e8a;
 }
+
+/*--------------------------------------------------------------
+# Mus OWN
+--------------------------------------------------------------*/
+
+#perf {
+  text-align: center
+}
+
+#perf p {
+  color: black;
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+#article {
+  text-align: justify
+}
+
+#article p {
+  color: black;
+}
+
+
+
+

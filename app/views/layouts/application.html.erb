@@ -34,18 +34,37 @@
 
       <nav id="nav-menu-container">
         <ul class="nav-menu">
-          <% if 1==0 %>
-            <li class="menu-active"><a href="index.html">Home</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#team">Team</a></li>
-            <li class="menu-has-children"><a href="">Drop Down</a>
+          <% if 1==1 %>
+            <li class="menu-active"><a href="#">UTAMA</a></li>
+            <li class="menu-has-children"><a href="">TENTANG KAMI</a>
               <ul>
-                <li><a href="#">Drop Down 1</a></li>
-                <li><a href="#">Drop Down 3</a></li>
-                <li><a href="#">Drop Down 4</a></li>
-                <li><a href="#">Drop Down 5</a></li>
+                <li><a href="#">Pengenalan ANIS</a></li>
+                <li><a href="#">Profail YB</a></li>
+                <li><a href="#">Direktori Kakitangan</a></li>
+              </ul>
+            </li>
+            <li class="menu-has-children"><a href="">PROGRAM ANIS</a>
+              <ul>
+                <li><a href="#">Didik ANIS</a></li>
+                <li><a href="#">Akademi ANIS</a></li>
+                <li><a href="#">Cikgu ANIS</a></li>
+                <li><a href="#">Bantuan Khas ANIS</a></li>
+              </ul>
+            </li>
+            <li class="menu-has-children"><a href="">GALERI</a>
+              <ul>
+                <li><a href="#">Artikel</a></li>
+                <li><a href="#">Video</a></li>
+                <li><a href="#">Gambar</a></li>
+              </ul>
+            </li>
+            <li><a href="#team">HUBUNGI</a></li>
+            <li class="menu-has-children"><a href="">FAQ</a>
+              <ul>
+                <li><a href="#">Didik ANIS</a></li>
+                <li><a href="#">Akademi ANIS</a></li>
+                <li><a href="#">Cikgu ANIS</a></li>
+                <li><a href="#">Bantuan Khas ANIS</a></li>
               </ul>
             </li>
           <% end %>
@@ -54,7 +73,8 @@
             <% if current_admin.present? %>
               <a href="<%= destroy_admin_session_url %>" data-confirm="Adakah anda pasti?" data-method="delete" >Logout</a>
             <% else %>
-              <a href="<%= admin_index_url %>">Login</a>
+              <a href="<%= admin_index_url %>"><img src="http://anis.yawas.my/web/images/anisicon/png/020-web-security.png" width="20" height="20"></a>
+
             <% end %>
           </li>
 
