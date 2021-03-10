@@ -1,0 +1,249 @@
+<meta name="viewport" content="width=768">
+
+<div style="margin-left: 0px;margin-right: 0px; margin-bottom: 20px">
+
+  <div style="background-color: #2894f4; text-align: center; margin-bottom: 10px">
+    <h5 style="color: white; font-weight: 600"><%= @perse.name %></h5>
+  </div>
+
+  <div class="row">
+
+    <div class="col-4">
+      <div style="background-color: #ff944c; text-align: center; margin-bottom: 10px; border-radius: 40px">
+        <h6 style="text-align: center; font-weight: 500; color: white">Senarai Program</h6>
+      </div>
+      <section id="services"><div class="row" style="margin-top: -40px">
+
+        <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="box wow fadeInLeft">
+            <div style="text-align: center">
+            <img src="<%= image_path('anisPic/didik-anis-hp.png') %>" width="100" height="80">
+            </div>
+            <h5 style="color: black; padding-top: 10px; text-align: center">Didik ANIS</h5>
+            
+             <p style="font-size: 22px; text-align: center">
+              <%= link_to "Semak", root_path, class: "badge badge-info"%>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="box wow fadeInLeft">
+            <div style="text-align: center">
+            <img src="<%= image_path('anisPic/cikgu-anis-hp.png') %>" width="100" height="80">
+            </div>
+            <h5 style="color: black; padding-top: 10px; text-align: center">Cikgu ANIS</h5>
+            
+             <p style="font-size: 22px; text-align: center">
+              <%= link_to "Semak", root_path, class: "badge badge-info"%>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="box wow fadeInLeft">
+            <div style="text-align: center">
+            <img src="<%= image_path('anisPic/aka-anis-hp.png') %>" width="100" height="80">
+            </div>
+            <h5 style="color: black; padding-top: 10px; text-align: center">Akademi ANIS</h5>
+            
+             <p style="font-size: 22px; text-align: center">
+              <%= link_to "Semak", root_path, class: "badge badge-info"%>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="box wow fadeInLeft">
+            <div style="text-align: center">
+            <img src="<%= image_path('anisPic/bk-anis-hp.png') %>" width="100" height="80">
+            </div>
+            <h5 style="color: black; padding-top: 10px; text-align: center">Bantuan Khas ANIS</h5>
+            
+             <p style="font-size: 22px; text-align: center">
+              <%= link_to "Semak", root_path, class: "badge badge-info"%>
+            </p>
+          </div>
+        </div>
+
+      </div></section> <!-- row -->
+    </div>
+
+    <div class="col-8 bg-light">
+      <div style="background-color: #ff944c; text-align: center; margin-bottom: 10px; border-radius: 40px">
+        <h6 style="text-align: center; font-weight: 500; color: white">Maklumat Peribadi</h6>
+      </div>
+
+      <div class="col-md-12">
+        <div class="card mb-3" style="margin-left: -10px;margin-right: -10px">
+          <div class="card-body">
+
+            <div class="row">
+              <div class="col-md-3">
+                <h7 style="font-weight: 500; font-size: 12px;color:black">NO MYKAD</h7>
+              </div>
+              <div class="col-md-0">
+                <h7 style="font-weight: 500; font-size: 12px;color:black">:</h7>
+              </div>
+              <div class="col-md-8 text-secondary" style="margin-top: 0px">
+                <h7 style="color:blac; font-size: 12px"><%= @perse.ic %></h7>
+              </div>
+            </div>
+            <hr>
+
+            <div class="row">
+              <div class="col-md-3">
+                <h7 style="font-weight: 500; font-size: 12px;color:black">ALAMAT</h7>
+              </div>
+              <div class="col-md-0">
+                <h7 style="font-weight: 500; font-size: 12px;color:black">:</h7>
+              </div>
+              <div class="col-md-8 text-secondary" style="margin-top: 0px">
+                <h7 style="color:blac; font-size: 12px"><%= @perse.add %></h7>
+              </div>
+            </div>
+            <hr>
+
+            <div class="row">
+              <div class="col-md-3">
+                <h7 style="font-weight: 500; font-size: 12px;color:black">NO TELEFON</h7>
+              </div>
+              <div class="col-md-0">
+                <h7 style="font-weight: 500; font-size: 12px;color:black">:</h7>
+              </div>
+              <div class="col-md-8 text-secondary" style="margin-top: 0px">
+                <h7 style="color:blac; font-size: 12px"><%= @perse.ph %></h7>
+              </div>
+            </div>
+            <hr>
+
+            <div class="row">
+              <div class="col-md-3">
+                <h7 style="font-weight: 500; font-size: 12px;color:black">EMAIL</h7>
+              </div>
+              <div class="col-md-0">
+                <h7 style="font-weight: 500; font-size: 12px;color:black">:</h7>
+              </div>
+              <div class="col-md-8 text-secondary" style="margin-top: 0px">
+                <h7 style="color:blac; font-size: 12px"><%= @perse.email %></h7>
+              </div>
+            </div>
+            <hr>
+
+            <div class="row">
+              <div class="col-md-3">
+                <h7 style="font-weight: 500; font-size: 12px;color:black">LATAR BELAKANG</h7>
+              </div>
+              <div class="col-md-0">
+                <h7 style="font-weight: 500; font-size: 12px;color:black">:</h7>
+              </div>
+              <div class="col-md-8 text-secondary" style="margin-top: 0px">
+                <h7 style="color:blac; font-size: 12px"><%= @perse.backg %></h7>
+              </div>
+            </div>
+            <hr>
+
+            <div class="row">
+              <div class="col-md-3">
+                <h7 style="font-weight: 500; font-size: 12px;color:black">PENDAPATAN ISI RUMAH</h7>
+              </div>
+              <div class="col-md-0">
+                <h7 style="font-weight: 500; font-size: 12px;color:black">:</h7>
+              </div>
+              <div class="col-md-8 text-secondary" style="margin-top: 0px">
+                <h7 style="color:blac; font-size: 12px"><%= @perse.inc %></h7>
+              </div>
+            </div>
+            <hr>
+
+            <div class="row">
+              <div class="col-md-3">
+                <h7 style="font-weight: 500; font-size: 12px;color:black">BANGSA</h7>
+              </div>
+              <div class="col-md-0">
+                <h7 style="font-weight: 500; font-size: 12px;color:black">:</h7>
+              </div>
+              <div class="col-md-8 text-secondary" style="margin-top: 0px">
+                <h7 style="color:blac; font-size: 12px"><%= @perse.race %></h7>
+              </div>
+            </div>
+            <hr>
+
+            <div class="row">
+              <div class="col-md-3">
+                <h7 style="font-weight: 500; font-size: 12px;color:black">JANTINA</h7>
+              </div>
+              <div class="col-md-0">
+                <h7 style="font-weight: 500; font-size: 12px;color:black">:</h7>
+              </div>
+              <div class="col-md-8 text-secondary" style="margin-top: 0px">
+                <h7 style="color:blac; font-size: 12px"><%= @perse.gdr %></h7>
+              </div>
+            </div>
+            <hr>
+
+            <div class="row">
+              <div class="col-md-3">
+                <h7 style="font-weight: 500; font-size: 12px;color:black">DUN</h7>
+              </div>
+              <div class="col-md-0">
+                <h7 style="font-weight: 500; font-size: 12px;color:black">:</h7>
+              </div>
+              <div class="col-md-8 text-secondary" style="margin-top: 0px">
+                <h7 style="color:blac; font-size: 12px"><%= @perse.dun %></h7>
+              </div>
+            </div>
+            <hr>
+
+            <div class="row">
+              <div class="col-md-3">
+                <h7 style="font-weight: 500; font-size: 12px;color:black">TARIKH LAHIR</h7>
+              </div>
+              <div class="col-md-0">
+                <h7 style="font-weight: 500; font-size: 12px;color:black">:</h7>
+              </div>
+              <div class="col-md-8 text-secondary" style="margin-top: 0px">
+                <h7 style="color:blac; font-size: 12px"><%= @perse.dob %></h7>
+              </div>
+            </div>
+            <hr>
+
+            <div class="row">
+              <div class="col-md-3">
+                <h7 style="font-weight: 500; font-size: 12px;color:black">KATEGORI OKU ANAK</h7>
+              </div>
+              <div class="col-md-0">
+                <h7 style="font-weight: 500; font-size: 12px;color:black">:</h7>
+              </div>
+              <div class="col-md-8 text-secondary" style="margin-top: 0px">
+                <h7 style="color:blac; font-size: 12px"><%= @perse.kdoku %></h7>
+              </div>
+            </div>
+            <hr>
+
+            <div class="row">
+              <div class="col-md-3">
+                <h7 style="font-weight: 500; font-size: 12px;color:black">DIAGNOSIS ANAK</h7>
+              </div>
+              <div class="col-md-0">
+                <h7 style="font-weight: 500; font-size: 12px;color:black">:</h7>
+              </div>
+              <div class="col-md-8 text-secondary" style="margin-top: 0px">
+                <h7 style="color:blac; font-size: 12px"><%= @perse.kdiag %></h7>
+              </div>
+            </div>
+            <hr>
+
+            
+            
+          </div>
+        </div>
+      </div>
+
+      <%= link_to "Kemaskini Maklumat", edit_perse_path(id: @perse.id), class: "btn btn-success btn-block btn-sm" %>
+    </div>
+
+  </div>
+
+</div>
+</meta>

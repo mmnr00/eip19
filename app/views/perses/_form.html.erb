@@ -1,4 +1,4 @@
-<div style="background-color: blue; text-align: center; margin-bottom: 10px">
+<div style="background-color: #2894f4; text-align: center; margin-bottom: 10px">
   <h3 style="color: white">Maklumat Peserta</h3>
 </div>
 <div style=" margin-bottom: 10px">
@@ -31,7 +31,14 @@
         </div>
         <div class="row">
           <div class="col-lg-8 col-md-10 col-sm-12">
-            <%= f.number_field :ic, class: "form-control", placeholder: "e.g. 870829015436 (no dash)",value: params[:ic],  autofocus: true, required: true, readonly: true %>
+            <% 
+              if @perse.ic.present?
+                icf = @perse.ic
+              else
+                icf = params[:ic]
+              end
+            %>
+            <%= f.number_field :ic, class: "form-control", placeholder: "e.g. 870829015436 (no dash)", value: icf,  autofocus: true, required: true, readonly: true %>
           </div>
         </div>
       </div>
@@ -108,9 +115,9 @@
         </div>
         <div class="row">
           <div class="col-lg-8 col-md-10 col-sm-12">
-            <%= f.select :inc, options_for_select(["More than 10,000", 
-                                                "5,000 to 10,000", 
-                                                "Less than 5,000"
+            <%= f.select :inc, options_for_select(["Lebih dari RM10,000", 
+                                                "RM5,001 to RM10,000", 
+                                                "Kurang dari RM5,000"
                                                 ], 
                                                 selected: @perse.inc), 
           {include_blank: "Pilih Satu"}, {required: true} %>
@@ -145,7 +152,7 @@
         </div>
         <div class="row">
           <div class="col-lg-8 col-md-10 col-sm-12">
-            <%= f.select :gdr, options_for_select(["MALE","FEMALE"], 
+            <%= f.select :gdr, options_for_select(["Lelaki","Perempuan"], 
                                                 selected: @perse.gdr), 
           {include_blank: "Pilih Satu"}, {required: true} %>
           </div>
@@ -270,9 +277,6 @@
           </div>
         </div>
       </div>
-
-
-
 
       <%= f.hidden_field :id, value: params[:id] %>
       <%= f.hidden_field :proge, value: params[:proge] %>
