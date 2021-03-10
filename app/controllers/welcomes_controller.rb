@@ -4,6 +4,10 @@ class WelcomesController < ApplicationController
 	
 	#layout "page"
 
+	def didikanis
+		@index = true
+	end
+
 	def index
 		
 	end

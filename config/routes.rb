@@ -116,6 +116,7 @@ Rails.application.routes.draw do
 
   # For dtails on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
    #WELCOME
+  get '/didikanis', to: 'welcomes#didikanis'
   get 'login', to: 'welcomes#login'
   get 'sb_dashboard', to: 'welcomes#sb_dashboard'
   get 'sb_table', to: 'welcomes#sb_table'

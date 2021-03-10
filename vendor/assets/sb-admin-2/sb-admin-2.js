@@ -1,5 +1,6 @@
-(function($) {
-  "use strict"; // Start of use strict
+$(document).on('turbolinks:load', function() {
+  // "use strict";
+  console.log('mus 3')
 
   // Toggle the side navigation
   $("#sidebarToggle, #sidebarToggleTop").on('click', function(e) {
