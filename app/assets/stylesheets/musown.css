@@ -1,0 +1,15 @@
+.card .card-header{
+  background-color: #2894f4;
+}
+
+.card .card-header .text-title{
+  color: white;
+}
+
+.card .card-header.collapsed{
+  background-color: white;
+}
+
+.card .card-header.collapsed .text-title{
+  color: #2894f4;
+}
