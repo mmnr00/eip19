@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_09_123627) do
+ActiveRecord::Schema.define(version: 2021_03_11_083501) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -139,6 +139,14 @@ ActiveRecord::Schema.define(version: 2021_03_09_123627) do
     t.string "description"
     t.date "start"
     t.date "end"
+  end
+
+  create_table "ddks", force: :cascade do |t|
+    t.string "conum"
+    t.string "coname"
+    t.integer "perse_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "ekids", force: :cascade do |t|

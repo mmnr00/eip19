@@ -31,7 +31,11 @@ class PersesController < ApplicationController
 	def create
 		@perse = Perse.new(perse_params)
 		if @perse.save 
-			redirect_to perse_path(id: @perse.id, flg: true)
+			if params[:perse][:prog].present?
+				redirect_to root_path
+			else
+				redirect_to perse_path(id: @perse.id, flg: true)
+			end
 		else
 			render @perse.errors.full_messages
 			render :new
@@ -40,27 +44,31 @@ class PersesController < ApplicationController
 
 	def persesch
 		@verf = false
-		if params[:sch].present?
+		if params[:sch].present? #start search
 			perse = Perse.where(ic: params[:icf]).last
 
 			if perse.present? #IC present?
-				if params[:ph].present?
+				if params[:ph].present? #dah masuk no fon
 					if perse.ph == params[:ph]
 						flash[:success] = "Selamat Kembali #{perse.name}"
-						redirect_to perse_path(id: perse.id, flg: true)
+						if params[:prog].present?
+							redirect_to new_ddk_path(perse: perse.id)
+						else
+							redirect_to perse_path(id: perse.id, flg: true)
+						end
 					else
 						@verf = true
 						flash[:danger] = "No telefon yang dimasukkan tidak tepat"
 					end
-				else
+				else # belum masuk no fon
 					@verf = true
 					flash[:success] = "Selamat Kembali #{perse.name}"
 				end
 				
 				#redirect_to perse
-			else #IC not present
+			else #IC not present ahli baru
 				flash[:notice] = "Sila Lengkapkan Maklumat Anda"
-				redirect_to new_perse_path(ic: params[:icf])
+				redirect_to new_perse_path(ic: params[:icf], prog: params[:prog])
 			end
 	
 		end

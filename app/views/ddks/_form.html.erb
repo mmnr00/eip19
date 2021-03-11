@@ -1,0 +1,54 @@
+<div style="background-color: #2894f4; text-align: center; margin-top: 5px">
+  <h3 style="color: white">Permohonan Didik ANIS</h3>
+</div>
+<h6 style="font-weight: 600; color: black">Nama Pemohon: <%= @perse.name %></h6>
+<div style=" margin-bottom: 10px">
+  <a style="color: red">*</a> <a style="font-size: 15px;">Wajib Diisi</a>
+</div>
+
+<div class='row container'>
+  <div class='col-lg-8 col-12'>
+    <%= form_for(@ddk, :html => {multipart: true, class: "form-horizontal", role: "form"}) do |f| %>
+
+        
+      <div class="form-group"> <!-- name -->
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>NAMA SYARIKAT<a style="color: red">*</a></strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-8 col-md-10 col-sm-12">
+            <%= f.text_field :coname, class: "form-control", placeholder: "NAMA PENUH SEPERTI MYKAD", autofocus: true, required: true, style: "text-transform: uppercase" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> <!-- alamat -->
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>NO SSM SYARIKAT<a style="color: red">*</a></strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-8 col-md-10 col-sm-12">
+            <%= f.text_field :conum, class: "form-control", placeholder: "MASUKKAN ALAMAT PENUH", autofocus: true, required: true, style: "text-transform: uppercase" %>
+          </div>
+        </div>
+      </div>
+
+      
+
+      <%= f.hidden_field :perse_id, value: @perse.id %>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-offset-2 col-sm-10 col-4">
+            <%= f.submit :Hantar,  class: 'btn btn-success btn-sm' %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    
+  </div>
+</div>

@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :extras, only:[:new, :create, :destroy, :update, :edit]
   resources :tsklvs, only:[:new, :create, :destroy, :update, :edit]
   resources :perses, only:[:new,:show,:create, :destroy, :update, :edit]
+  resources :ddks, only:[:new,:show,:create, :destroy, :update, :edit]
   resources :proges, only:[:new,:show,:create, :destroy, :update, :edit]
   resources :ekids, only:[:new,:show,:create, :destroy, :update, :edit]
   resources :pkids, only:[:new,:show,:create, :destroy, :edit]
@@ -29,6 +30,8 @@ Rails.application.routes.draw do
   devise_for :admins
   devise_for :owners#, :controllers => { :passwords => 'passwords' }
 	root 'welcomes#index2'
+
+  #~~DDK
 
   #~~PAGES
   get '/eipblank', to: 'pages#eipblank'

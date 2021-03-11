@@ -22,22 +22,74 @@
 
   <div class="row" style="margin-bottom: 20px">
 
-    <div class="col-lg-6 col-md-12">
+    <div class="col-lg-6 col-md-12" style="margin-top: 12px">
 
       <div class="card shadow" style="margin-bottom: 10px">
         <!-- Card Header - Accordion -->
-        <a href="#collapseCardExample" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-          <h6 class="m-0 font-weight-bold text-title"><i class="fa fas fa-clock"></i> Collapsable Card Example</h6>
+        <a href="#coll1" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+          <h6 class="m-0 font-weight-bold text-title">Pengenalan Didik ANIS</h6>
         </a>
         <!-- Card Content - Collapse -->
-        <div class="collapse" id="collapseCardExample">
+        <div class="collapse" id="coll1">
           <div class="card-body">
             This is a collapsable card example using Bootstrap's built in collapse functionality. <strong>Click on the card header</strong> to see the card body collapse and expand!
           </div>
         </div>
       </div>
 
-      <%= link_to "Semak / Hantar Permohonan", "#", class: "btn btn-md btn-info"%>
+      <div class="card shadow" style="margin-bottom: 10px">
+        <!-- Card Header - Accordion -->
+        <a href="#coll2" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+          <h6 class="m-0 font-weight-bold text-title">Syarat Kelayakan</h6>
+        </a>
+        <!-- Card Content - Collapse -->
+        <div class="collapse" id="coll2">
+          <div class="card-body">
+            This is a collapsable card example using Bootstrap's built in collapse functionality. <strong>Click on the card header</strong> to see the card body collapse and expand!
+          </div>
+        </div>
+      </div>
+
+      <div class="card shadow" style="margin-bottom: 10px">
+        <!-- Card Header - Accordion -->
+        <a href="#coll3" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+          <h6 class="m-0 font-weight-bold text-title">Cara Permohonan</h6>
+        </a>
+        <!-- Card Content - Collapse -->
+        <div class="collapse" id="coll3">
+          <div class="card-body">
+            This is a collapsable card example using Bootstrap's built in collapse functionality. <strong>Click on the card header</strong> to see the card body collapse and expand!
+          </div>
+        </div>
+      </div>
+
+      <div class="card shadow" style="margin-bottom: 10px">
+        <!-- Card Header - Accordion -->
+        <a href="#coll4" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+          <h6 class="m-0 font-weight-bold text-title">Dokumen Diperlukan</h6>
+        </a>
+        <!-- Card Content - Collapse -->
+        <div class="collapse" id="coll4">
+          <div class="card-body">
+            This is a collapsable card example using Bootstrap's built in collapse functionality. <strong>Click on the card header</strong> to see the card body collapse and expand!
+          </div>
+        </div>
+      </div>
+
+      <div class="card shadow" style="margin-bottom: 10px">
+        <!-- Card Header - Accordion -->
+        <a href="#coll5" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+          <h6 class="m-0 font-weight-bold text-title">Senarai Jawatan Pegawai Pengesah</h6>
+        </a>
+        <!-- Card Content - Collapse -->
+        <div class="collapse" id="coll5">
+          <div class="card-body">
+            This is a collapsable card example using Bootstrap's built in collapse functionality. <strong>Click on the card header</strong> to see the card body collapse and expand!
+          </div>
+        </div>
+      </div>
+
+      <%= link_to "Semak / Hantar Permohonan", persesch_path(prog: "DIDIK ANIS"), class: "btn btn-sm btn-success btn-block"%>
 
       
 

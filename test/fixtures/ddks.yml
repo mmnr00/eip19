@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  conum: MyString
+  coname: MyString
+  perse_id: 1
+
+two:
+  conum: MyString
+  coname: MyString
+  perse_id: 1
