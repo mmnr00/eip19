@@ -49,9 +49,27 @@ class DdksController < ApplicationController
 	end
 
 	def ddk_params
-		params.require(:ddk).permit(:coname,
-																:conum,
-																:perse_id)
+		params.require(:ddk).permit(:conum,
+																:coname,
+																:perse_id,
+																:regby,
+																:addr,
+																:posk,
+																:state,
+																:email,
+																:ph,
+																:mpemb,
+																:mpeng,
+																:mpend,
+																:mpert,
+																:mfiz,
+																:mmen,
+																:mpelb,
+																:stafct,
+																:tchct,
+																:okuct,
+																:premdt,
+																:mdl)
 	end
 
 end

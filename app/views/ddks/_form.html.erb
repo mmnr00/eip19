@@ -1,5 +1,5 @@
 <div style="background-color: #2894f4; text-align: center; margin-top: 5px">
-  <h3 style="color: white">Permohonan Didik ANIS</h3>
+  <h5 style="color: white">BORANG PROFIL INSTITUSI/BADAN KEBAJIKAN DIDIK ANIS (AGENSI)</h5>
 </div>
 <h6 style="font-weight: 600; color: black">Nama Pemohon: <%= @perse.name %></h6>
 <div style=" margin-bottom: 10px">
@@ -14,12 +14,12 @@
       <div class="form-group"> <!-- name -->
         <div class="row">
           <div class="control-label col-sm-8">
-            <strong>NAMA SYARIKAT<a style="color: red">*</a></strong>
+            <strong>NAMA AGENSI<a style="color: red">*</a></strong>
           </div>
         </div>
         <div class="row">
-          <div class="col-lg-8 col-md-10 col-sm-12">
-            <%= f.text_field :coname, class: "form-control", placeholder: "NAMA PENUH SEPERTI MYKAD", autofocus: true, required: true, style: "text-transform: uppercase" %>
+          <div class="col-12">
+            <%= f.text_field :coname, class: "form-control", placeholder: "", autofocus: true, required: true, style: "text-transform: uppercase" %>
           </div>
         </div>
       </div>
@@ -27,15 +27,61 @@
       <div class="form-group"> <!-- alamat -->
         <div class="row">
           <div class="control-label col-sm-8">
-            <strong>NO SSM SYARIKAT<a style="color: red">*</a></strong>
+            <strong>DIDAFTARKAN OLEH<a style="color: red">*</a></strong>
           </div>
         </div>
         <div class="row">
-          <div class="col-lg-8 col-md-10 col-sm-12">
-            <%= f.text_field :conum, class: "form-control", placeholder: "MASUKKAN ALAMAT PENUH", autofocus: true, required: true, style: "text-transform: uppercase" %>
+          <div class="col-12">
+            <%= f.text_field :regby, class: "form-control", placeholder: "", autofocus: true, required: true, style: "" %>
           </div>
         </div>
       </div>
+
+      <div class="form-group"> <!-- alamat -->
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>ALAMAT<a style="color: red">*</a></strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <%= f.text_area :addr, class: "form-control", placeholder: "", autofocus: true, required: true, style: "" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <div class="form-group"> <!-- alamat -->
+            <div class="row">
+              <div class="control-label col-sm-8">
+                <strong>POSKOD<a style="color: red">*</a></strong>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <%= f.text_field :posk, class: "form-control", placeholder: "", autofocus: true, required: true, style: "" %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group"> <!-- alamat -->
+            <div class="row">
+              <div class="control-label col-sm-8">
+                <strong>NEGERI<a style="color: red">*</a></strong>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <%= f.text_field :state, class: "form-control", placeholder: "", autofocus: true, required: true, style: "" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
 
       
 

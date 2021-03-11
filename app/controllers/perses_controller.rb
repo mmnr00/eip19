@@ -32,7 +32,7 @@ class PersesController < ApplicationController
 		@perse = Perse.new(perse_params)
 		if @perse.save 
 			if params[:perse][:prog].present?
-				redirect_to root_path
+				redirect_to new_ddk_path(perse: @perse.id)
 			else
 				redirect_to perse_path(id: @perse.id, flg: true)
 			end
