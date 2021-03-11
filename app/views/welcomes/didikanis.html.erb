@@ -1,55 +1,88 @@
 <header class="prog-hd" style="background-image: url(<%= image_path('anisPic/bg-prog.jpeg') %>); background-size: cover; background-position: center; padding-bottom: 0px; margin-bottom: 0px; background-repeat: no-repeat; padding-top: 30px; padding-bottom: 30px">
 
-
   <div class="intro-text container" style="">
     <div class="intro-heading" style="text-align: left" >
       <h1 style="color: white; font-weight: 550">Didik ANIS</h1>
     </div>
   </div>
 
-  
-
 </header>
 
-<div class="container" style="margin-top: 20px; margin-left: -5px; margin-right: -50px">
+<!-- MESSAGE -->
+<div class="section-header container bg-white" style="margin-top: 20px">
+  <h3 style="">MAKLUMAN</h3>
+  <div class="border-prog" style=""></div>
+  <p style="text-align: center; color: black">Permohonan Bantuan Khas ANIS Telah Dibuka Sehingga 15 April 2021</p>
+  <p style="text-align: center; color: black">Tarikh Akhir Penghantaran Dokumen Sehingga 20 April 2021</p>
+</div>
+
+<!-- content -->
+<div class="container bg-light" style="margin-top: 20px">
 
 
-<div class="row" style="margin-bottom: 20px">
+  <div class="row" style="margin-bottom: 20px">
 
-  <div class="col-lg-6 col-md-12">
+    <div class="col-lg-6 col-md-12">
 
-    <div class="card shadow" style="margin-bottom: 10px">
-      <!-- Card Header - Accordion -->
-      <a href="#collapseCardExample" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-        <h6 class="m-0 font-weight-bold text-title">Collapsable Card Example</h6>
-      </a>
-      <!-- Card Content - Collapse -->
-      <div class="collapse" id="collapseCardExample">
-        <div class="card-body">
-          This is a collapsable card example using Bootstrap's built in collapse functionality. <strong>Click on the card header</strong> to see the card body collapse and expand!
+      <div class="card shadow" style="margin-bottom: 10px">
+        <!-- Card Header - Accordion -->
+        <a href="#collapseCardExample" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+          <h6 class="m-0 font-weight-bold text-title"><i class="fa fas fa-clock"></i> Collapsable Card Example</h6>
+        </a>
+        <!-- Card Content - Collapse -->
+        <div class="collapse" id="collapseCardExample">
+          <div class="card-body">
+            This is a collapsable card example using Bootstrap's built in collapse functionality. <strong>Click on the card header</strong> to see the card body collapse and expand!
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="card shadow">
-      <!-- Card Header - Accordion -->
-      <a href="#collapseCardExample2" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-        <h6 class="m-0 font-weight-bold text-title">Collapsable Card Example2</h6>
-      </a>
-      <!-- Card Content - Collapse -->
-      <div class="collapse" id="collapseCardExample2">
-        <div class="card-body">
-          This is a collapsable card example using Bootstrap's built in collapse functionality. <strong>Click on the card header</strong> to see the card body collapse and expand!
-        </div>
-      </div>
-    </div>
+      <%= link_to "Semak / Hantar Permohonan", "#", class: "btn btn-md btn-info"%>
 
-  </div> <!-- COL -->
+      
 
-  <div class="col-lg-6 col-md-12">
-    kdsjkds
-  </div> <!-- COL -->
+    </div> <!-- COL -->
 
-</div> <!-- ROW -->
+    <div class="col-lg-6 col-md-12">
+      <img src="http://anis.yawas.my/web/images/img_khas.jpeg" style="width: 100%"></img>
+    </div> <!-- COL -->
+
+  </div> <!-- ROW -->
 
 </div>
+
+<!-- PENCAPAIN ANIS -->
+
+<div class="bg-white container" style="margin-bottom: 20px">
+  <div class="section-header container bg-white" style="margin-top: 30px">
+    <h3 style="">PENCAPAIAN BANTUAN KHAS ANIS</h3>
+    <div class="border-prog" style=""></div>
+    <p style="text-align: center; color: black">Jumlah Permohonan</p>
+  </div>
+
+  <div id="perf" class="row">
+
+    <div class="col-lg-4 col-md-6 col-sm-12">
+      <img src="<%= image_path('anisPic/jph-hp.png') %>" width="100" height="100">
+      <p>Jumlah Permohonan</p>
+      <p style="font-size: 30px; margin-top: -20px"><%= number_with_delimiter(6205, :delimiter => ',') %></p>
+    </div>
+
+    <div class="col-lg-4 col-md-6 col-sm-12">
+      <img src="<%= image_path('anisPic/jpn-hp.png') %>" width="100" height="100">
+      <p>Jumlah Penerima</p>
+      <p style="font-size: 30px; margin-top: -20px"><%= number_with_delimiter(368, :delimiter => ',') %></p>
+    </div>
+
+    <div class="col-lg-4 col-md-6 col-sm-12">
+      <img src="<%= image_path('anisPic/peruntukan-hp.png') %>" width="100" height="100">
+      <p>Peruntukan Digunakan</p>
+      <p style="font-size: 30px; margin-top: -20px">RM<%= number_with_delimiter(953351, :delimiter => ',') %></p>
+    </div>
+    
+
+  </div> <!-- row -->
+</div> <!-- container -->
+
+
+

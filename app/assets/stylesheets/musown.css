@@ -13,3 +13,21 @@
 .card .card-header.collapsed .text-title{
   color: #2894f4;
 }
+
+.section-header h3 {
+  font-size: 25px;
+  color: #0c2e8a;
+  text-transform: uppercase;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 5px;
+  text-align: center
+}
+
+.border-prog {
+	border-bottom: 5px solid #50d8af; 
+	width: 50px; 
+	margin: auto; 
+	margin-bottom: 10px
+}
+
