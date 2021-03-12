@@ -81,6 +81,196 @@
         </div>
       </div>
 
+      <div class="form-group"> <!-- alamat -->
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>NO PENDAFTARAN<a style="color: red">*</a></strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <%= f.text_field :conum, class: "form-control", placeholder: "", autofocus: true, required: true, style: "" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> <!-- alamat -->
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>TAHUN PENDAFTARAN<a style="color: red">*</a></strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <%= f.number_field :regyr, class: "form-control", placeholder: "", autofocus: true, required: true, style: "" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <div class="form-group"> <!-- alamat -->
+            <div class="row">
+              <div class="control-label col-sm-8">
+                <strong>EMEL<a style="color: red">*</a></strong>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <%= f.email_field :email, class: "form-control", placeholder: "", autofocus: true, required: true, style: "" %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group"> <!-- alamat -->
+            <div class="row">
+              <div class="control-label col-sm-8">
+                <strong>NO TELEFON<a style="color: red">*</a></strong>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <%= f.text_field :ph, class: "form-control", placeholder: "", autofocus: true, required: true, style: "" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background-color: #e4bfbf; text-align: center; margin-bottom: 15px">
+        <h8 style="color: black;">Kategori Pelajar Oku Yang Didaftar Dibawah Agensi</h8>
+        <i style="color:black; size: 5px">(Nyatakan Diagnosis)</i>
+      </div>
+
+      <div class="table-responsive border" style="font-size: 12px">
+        <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0">
+          <thead style="text-align: center">
+            <tr class="shadow">
+              <th style="background-color:#7fbf7f;color:black; width: 30%">KATEGORI OKU</th>
+              <th style="background-color:#7fbf7f;color:black">JENIS DIAGNOSIS</th>
+            </tr>
+          </thead>
+          <tbody style="color: black">
+            <tr>
+              <td>Masalah Pembelajaran</td>
+              <td>
+                <%= f.text_area :mpemb, class: "form-control", placeholder: "", autofocus: true, required: true, style: "font-size: 12px" %>
+              </td>
+            </tr>
+            <tr>
+              <td>Masalah Penglihatan</td>
+              <td>
+                <%= f.text_area :mpeng, class: "form-control", placeholder: "", autofocus: true, required: true, style: "font-size: 12px" %>
+              </td>
+            </tr>
+            <tr>
+              <td>Masalah Pendengaran</td>
+              <td>
+                <%= f.text_area :mpend, class: "form-control", placeholder: "", autofocus: true, required: true, style: "font-size: 12px" %>
+              </td>
+            </tr>
+            <tr>
+              <td>Masalah Pertuturan</td>
+              <td>
+                <%= f.text_area :mpert, class: "form-control", placeholder: "", autofocus: true, required: true, style: "font-size: 12px" %>
+              </td>
+            </tr>
+            <tr>
+              <td>Masalah Fizikal</td>
+              <td>
+                <%= f.text_area :mfiz, class: "form-control", placeholder: "", autofocus: true, required: true, style: "font-size: 12px" %>
+              </td>
+            </tr>
+            <tr>
+              <td>Masalah Mental</td>
+              <td>
+                <%= f.text_area :mmen, class: "form-control", placeholder: "", autofocus: true, required: true, style: "font-size: 12px" %>
+              </td>
+            </tr>
+            <tr>
+              <td>Masalah Pelbagai</td>
+              <td>
+                <%= f.text_area :mpelb, class: "form-control", placeholder: "", autofocus: true, required: true, style: "font-size: 12px" %>
+              </td>
+            </tr>
+            
+          </tbody>
+
+        </table>
+      </div> <!-- DIV TABLE -->
+
+      <div style="background-color: #e4bfbf; text-align: center; margin-bottom: 15px; margin-top: 15px">
+        <h8 style="color: black;">Maklumat Premis</h8>
+      </div>
+
+      <div class="form-group"> <!-- alamat -->
+        <div class="row">
+          <div class="control-label col-sm-12">
+            <strong>BIL STAF PENTADBIRAN<a style="color: red">*</a></strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <%= f.number_field :stafct, class: "form-control", placeholder: "", autofocus: true, required: true, style: "" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> <!-- alamat -->
+        <div class="row">
+          <div class="control-label col-sm-12">
+            <strong>BIL GURU<a style="color: red">*</a></strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <%= f.number_field :tchct, class: "form-control", placeholder: "", autofocus: true, required: true, style: "" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> <!-- alamat -->
+        <div class="row">
+          <div class="control-label col-sm-12">
+            <strong>BIL PELAJAR OKU<a style="color: red">*</a></strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <%= f.number_field :okuct, class: "form-control", placeholder: "", autofocus: true, required: true, style: "" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> <!-- alamat -->
+        <div class="row">
+          <div class="control-label col-sm-12">
+            <strong>SAIZ DAN JENIS PREMIS<a style="color: red">*</a></strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <%= f.text_area :premdt, class: "form-control", placeholder: "", autofocus: true, required: true, style: "" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> <!-- alamat -->
+        <div class="row">
+          <div class="control-label col-sm-12">
+            <strong>MODUL YANG DILAKSANAKAN<a style="color: red">*</a></strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <%= f.text_area :mdl, class: "form-control", placeholder: "", autofocus: true, required: true, style: "" %>
+          </div>
+        </div>
+      </div>
+
+      
+
       
 
       

@@ -69,7 +69,8 @@ class DdksController < ApplicationController
 																:tchct,
 																:okuct,
 																:premdt,
-																:mdl)
+																:mdl,
+																:regyr)
 	end
 
 end
