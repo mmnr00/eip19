@@ -1,6 +1,18 @@
 class AdminsController < ApplicationController
 	before_action :authenticate_admin!
 
+	def index
+		@perses = Perse.all
+		@ddk = Ddk.all
+	end
+
+	def lsddk
+		@ddk = Ddk.all
+	end
+
+
+	######## OLD KIDCARE ###########
+
 	def acclist
 		@admin = current_admin
 		@admins = Admin.all
@@ -8,10 +20,7 @@ class AdminsController < ApplicationController
 		@owners = Owner.all
 	end
 
-	def index
-		@perses = Perse.all
-		@ddk = Ddk.all
-	end
+
 
 	def index_old
 		@admin = current_admin
