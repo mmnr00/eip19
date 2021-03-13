@@ -7,6 +7,11 @@
 #   )
 # end
 
+$ddkstat = {
+	"1" => ["primary","Permohonan Diterima", "Sila submit dokumen"],
+	"2" => ["warning","Permohonan Sedang Disemak", "Anggota Kami Sedang"]
+}
+
 $scses = {"sha" => 9, "srd" => 5}
 $admloc = {1=>["srd","sha"],2=>"sha",3=>"srd"}
 

@@ -21,6 +21,7 @@ class DdksController < ApplicationController
 
 	def create
 		@ddk = Ddk.new(ddk_params)
+		@ddk.stat = 1
 		if @ddk.save
 			flash[:success] = "Permohonan Didik ANIS Diterima. Terima kasih"
 			redirect_to ddk_path(@ddk)
@@ -75,7 +76,9 @@ class DdksController < ApplicationController
 																:okuct,
 																:premdt,
 																:mdl,
-																:regyr)
+																:regyr,
+																:stat,
+																:statrs)
 	end
 
 end
