@@ -9,6 +9,11 @@ class AdminsController < ApplicationController
 	end
 
 	def index
+		@perses = Perse.all
+		@ddk = Ddk.all
+	end
+
+	def index_old
 		@admin = current_admin
 		@ekids = Ekid.where(admloc: $admloc[@admin.id])
 		# if @admin.id == 1
