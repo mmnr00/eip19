@@ -8,8 +8,10 @@
 # end
 
 $ddkstat = {
-	"1" => ["primary","Permohonan Diterima", "Sila submit dokumen"],
-	"2" => ["warning","Permohonan Sedang Disemak", "Anggota Kami Sedang"]
+	"1" => ["primary","Permohonan Diterima", "Sila Submit Dokumen yang Lengkap ke Pejabat YAWAS"],
+	"2" => ["warning","Permohonan Dalam Proses", "Pihak Kami Sedang Menyemak Permohonan Anda"]
+	"3" => ["success","Permohonan Diluluskan", "Tahniah. Permohonan Anda Telah Diluluskan. Bayaran Akan Dibuat Terus ke Akaun Agensi"]
+	"4" => ["danger","Permohonan Ditolak", "Maaf. Permohonan Anda Tidak Diluluskan. Sila Semak Sebab Dibawah."]
 }
 
 $scses = {"sha" => 9, "srd" => 5}
