@@ -1,0 +1,144 @@
+<meta name="viewport" content="width=768">
+
+<div class="table-responsive borders" style="font-size: 12px; margin-top: 10px">
+  <table class="table table-bordered table-stripeds shadow" id="dataTable" width="100%" cellspacing="0">
+    <tbody style="color: black">
+
+      <tr>
+        <td colspan=1 style="text-align: center">
+          <img src="<%= image_path('anisPic/ddk-form')%>" width="100px" height="63px"></img><br>
+          <b>Jabatan Anak Istimewa Selangor (ANIS)</b>
+        </td>
+        <td colspan=3 style="vertical-align: middle"><h5 style="text-align: center; color: blue">
+          BORANG PROFIL INSTITUSI/BADAN KEBAJIKAN DIDIK ANIS (AGENSI)
+        </h5></td>
+      </tr>
+
+      <tr>
+        <td style="width: 25%" colspan=1><b>No Permohonan:</b></td>
+        <td colspan=3>
+          <h5 style="font-weight: 600">DDK-<%= @ddk.id.to_s.rjust(4, '0') %></h5>
+        </td>
+      </tr>
+
+      <tr>
+        <td style="width: 20%" colspan=1><b>Nama Agensi:</b></td>
+        <td colspan=3>
+          <%= @ddk.coname %>
+        </td>
+      </tr>
+
+      <tr>
+        <td style="width: 20%" colspan=1><b>Alamat:</b></td>
+        <td colspan=3>
+          <%= @ddk.addr %>
+        </td>
+      </tr>
+
+      <tr>
+        <td><b>Poskod:</b></td>
+        <td><%= @ddk.posk %></td>
+        <td style="width: 20%"><b>Negeri:</b></td>
+        <td><%= @ddk.state %></td>
+      </tr>
+
+      <tr>
+        <td><b>No Pendaftaran:</b></td>
+        <td><%= @ddk.conum %></td>
+        <td style="width: 20%"><b>Tahun Pendaftaran:</b></td>
+        <td><%= @ddk.regyr %></td>
+      </tr>
+
+      <tr>
+        <td><b>Alamat Emel:</b></td>
+        <td><%= @ddk.email %></td>
+        <td style="width: 20%"><b>No Telefon:</b></td>
+        <td><%= @ddk.ph %></td>
+      </tr>
+
+      <tr>
+        <td style="width: 20%" colspan=1><b>Kategori dan Diagnosis Pelajar Oku Yang Didaftar Dibawah Agensi:</b></td>
+        <td colspan=3>
+
+          <div class="table-responsive borders" style="font-size: 12px; margin-top: 0px">
+            <table class="table table-bordered table-striped shadow" width="100%" cellspacing="0" style="color: black;border: 0px solid black;">
+              <thead style="text-align: center">
+                <tr class="shadow" >
+                  <th style="background-color:#ffdb99; width: 30%">KATEGORI OKU</th>
+                  <th style="background-color:#ffdb99">JENIS DIAGNOSIS</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                <tr>
+                  <td><b>Masalah Pembelajaran</b></td>
+                  <td><%= @ddk.mpemb %></td>
+                </tr>
+
+                <tr>
+                  <td><b>Masalah Penglihatan</b></td>
+                  <td><%= @ddk.mpeng %></td>
+                </tr>
+
+                <tr>
+                  <td><b>Masalah Pendengaran</b></td>
+                  <td><%= @ddk.mpend %></td>
+                </tr>
+
+                <tr>
+                  <td><b>Masalah Pertuturan</b></td>
+                  <td><%= @ddk.mpert %></td>
+                </tr>
+
+                <tr>
+                  <td><b>Masalah Fizikal</b></td>
+                  <td><%= @ddk.mfiz %></td>
+                </tr>
+
+                <tr>
+                  <td><b>Masalah Mental</b></td>
+                  <td><%= @ddk.mmen %></td>
+                </tr>
+
+                <tr>
+                  <td><b>Masalah Pelbagai</b></td>
+                  <td><%= @ddk.mpelb %></td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+
+        </td>
+      </tr>
+
+      <tr>
+        <td style="width: 20%" colspan=1><b>Bilangan Staf dan Pelajar:</b></td>
+        <td colspan=3>
+          <b>Bilangan Staf Pentadbiran:</b> <%= @ddk.stafct %><br>
+          <b>Bilangan Guru:</b> <%= @ddk.tchct %><br>
+          <b>Bilangan Pelajar OKU:</b> <%= @ddk.okuct %><br>
+        </td>
+      </tr>
+
+      <tr>
+        <td style="width: 20%" colspan=1><b>Saiz dan Jenis Premis:</b></td>
+        <td colspan=3>
+          <%= @ddk.premdt %>
+        </td>
+      </tr>
+
+      <tr>
+        <td style="width: 20%" colspan=1><b>Modul yang dilaksanakan:</b></td>
+        <td colspan=3>
+          <%= @ddk.mdl %>
+        </td>
+      </tr>
+
+      
+
+    </tbody> 
+  </table>
+</div>
+
+</meta>

@@ -32,6 +32,7 @@ Rails.application.routes.draw do
 	root 'welcomes#index2'
 
   #~~DDK
+  get '/prtddk', to:'ddks#prtddk'
 
   #~~PAGES
   get '/eipblank', to: 'pages#eipblank'
