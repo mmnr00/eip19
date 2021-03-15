@@ -1,17 +1,17 @@
 #!/bin/bash
-git checkout 1wip
+git checkout dev_an
 git add -A
-git commit -m "eip"
+git commit -m "anis"
 git push
 
-git checkout master_e
-git merge 1wip
+git checkout ostg_an
+git merge dev_an
 git push
 
-git checkout prod_e
-git merge master_e
+git checkout prod_an
+git merge ostg_an
 git push
 
-git diff HEAD master_e
-git diff HEAD 1wip
-git checkout 1wip
+git diff HEAD ostg_an
+git diff HEAD dev_an
+git checkout dev_an
