@@ -1,6 +1,23 @@
 class AdminsController < ApplicationController
 	before_action :authenticate_admin!
 
+	def edtddk
+		@ddk = Ddk.find(params[:ddk])
+	end
+
+	def upddk
+		pars = params[:ddk]
+		@ddk = Ddk.find(pars[:ddk])
+		@ddk.stat = pars[:stat]
+		@ddk.statrs = pars[:statrs]
+		if @ddk.save
+			flash[:success] = "Permohonan Berjaya Dikemaskini"
+			redirect_to lsddk_path(@ddk)
+		else
+			redirect_to request.referrer
+		end
+	end
+
 	def index
 		@perses = Perse.all
 		@ddk = Ddk.all
@@ -8,6 +25,11 @@ class AdminsController < ApplicationController
 
 	def lsddk
 		@ddk = Ddk.all
+		if params[:sch].present?
+			@ddk = @ddk.where(stat: params[:stat]) unless params[:stat].blank?
+			#@ddk = @ddk.where(id: params[:sch_str]) unless (params[:sch_fld].blank? && params[:sch_str].blank?)
+
+		end
 	end
 
 

@@ -1,0 +1,69 @@
+<meta name="viewport" content="width=1024">
+
+    <% 
+      arr = $ddkstat[@ddk.stat]
+      clr = arr[0]
+      stat = arr[1]
+      desc = arr[2]
+
+      arr_stat = [["Permohonan Diterima",1],["Permohonan Dalam Proses",2], ["Permohonan Diluluskan",3], ["Permohonan Ditolak",4]]
+    %>
+
+<div class="row">
+  <div class="col-8 bg-light">
+    
+
+    <%= link_to "#{stat}", "#", class: "btn btn-sm btn-#{clr} btn-block", style: "font-size: 12px; margin-top: 5px; font-weight: 700" %>
+    <%= render 'ddks/prt-form'%>
+  </div>
+
+  <div class="col-4">
+    <div style="background-color: #ff944c; text-align: center; margin-bottom: 10px;margin-top: 10px; border-radius: 40px">
+        <h6 style="text-align: center; font-weight: 500; color: white">Kemaskini Status</h6>
+    </div>
+    <%= form_for(:ddk, :url => {:controller=>'admins', :action=>'upddk'}, :html => {multipart: true, class: "form-horizontal", role: "form"}) do |f| %>
+
+      <div class="form-group"> <!-- STATUS-->
+        <div class="row">
+          <div class="control-label col-8">
+            <strong>STATUS PERMOHONAN</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.select :stat, options_for_select(arr_stat, selected: @ddk.stat) ,{include_blank: "Sila Pilih"}, {required: true} %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> <!-- STATUS-->
+        <div class="row">
+          <div class="control-label col-12">
+            <strong>MAKLUMAT TAMBAHAN</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <%= f.text_area :statrs, class: "form-control", placeholder: "", autofocus: true, required: true, style: "" %>
+          </div>
+        </div>
+      </div>
+
+      <%= f.hidden_field :ddk, value: @ddk.id %>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-offset-2 col-sm-10 col-4">
+            <%= f.submit :Hantar,  class: 'btn btn-success btn-sm' %>
+          </div>
+        </div>
+      </div>
+
+    <% end %>
+
+
+  </div>
+
+</div> <!-- ROW -->
+
+</meta>

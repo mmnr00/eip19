@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   get '/prtddk', to:'ddks#prtddk'
 
 
+
   #~~PAGES
   get '/eipblank', to: 'pages#eipblank'
 
@@ -199,6 +200,8 @@ Rails.application.routes.draw do
   #~ADMINS
   get 'admin_index', to: 'admins#index'
   get 'lsddk', to: 'admins#lsddk'
+  get 'edtddk', to: 'admins#edtddk'
+  post 'upddk', to: 'admins#upddk'
   get 'acclist', to: 'admins#acclist'
   #get 'admin_index_old', to: 'admins#index_old'
   #get 'webarch', to: 'admins#webarch'

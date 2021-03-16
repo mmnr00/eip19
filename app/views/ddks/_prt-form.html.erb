@@ -22,6 +22,16 @@
       </tr>
 
       <tr>
+        <td style="width: 20%" colspan=1><b>Maklumat Pemohon:</b></td>
+        <% perse = @ddk.perse %>
+        <td colspan=3>
+          <b>Nama :</b> <%= perse.name %><br>
+          <b>No MyKad :</b> <%= perse.ic %><br>
+          <b>No Telefon :</b> <%= perse.ph %><br>
+        </td>
+      </tr>
+
+      <tr>
         <td style="width: 20%" colspan=1><b>Nama Agensi:</b></td>
         <td colspan=3>
           <%= @ddk.coname %>
