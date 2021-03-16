@@ -27,7 +27,18 @@ class AdminsController < ApplicationController
 		@ddk = Ddk.all
 		if params[:sch].present?
 			@ddk = @ddk.where(stat: params[:stat]) unless params[:stat].blank?
-			#@ddk = @ddk.where(id: params[:sch_str]) unless (params[:sch_fld].blank? && params[:sch_str].blank?)
+			if (str=params[:sch_str]).present?
+				fld = params[:sch_fld]
+				str = str.upcase
+
+				if fld == "No Siri (4 no belakang)"
+					@ddk = @ddk.where(id: str)
+				elsif fld == "Nama Agensi"
+					@ddk = @ddk.where('coname LIKE ?', "%#{str}%")
+				elsif fld == "No Pendaftaran Agensi"
+					@ddk = @ddk.where('conum LIKE ?', "%#{str}%")
+				end
+			end
 
 		end
 	end
