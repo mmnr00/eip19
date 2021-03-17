@@ -10,6 +10,7 @@ class WelcomesController < ApplicationController
 
 	def didikanis
 		@index = true
+		redirect_to persesch_path(prog: "DIDIK ANIS")
 	end
 
 	def index
