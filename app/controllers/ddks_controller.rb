@@ -3,6 +3,7 @@ class DdksController < ApplicationController
 	before_action :set_ddk, except: [:new,:create]
 
 	def prtddk
+		@print = true
 		@perse = @ddk.perse
 		render action: "prtddk", layout: "eipblank" 
 	end

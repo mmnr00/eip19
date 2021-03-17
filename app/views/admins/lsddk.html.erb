@@ -116,7 +116,9 @@
         <tbody>
           <% @ddk.order('created_at DESC').each do |ddk| %>
           <tr>
-            <td>DDK-<%= ddk.id.to_s.rjust(4, '0') %></td>
+            <td>
+              <a href="<%= ddk_url(ddk)%>">DDK-<%= ddk.id.to_s.rjust(4, '0') %></a>
+            </td>
             <td>
               
               <b>Nama Agensi: </b><%= ddk.coname %><br>
