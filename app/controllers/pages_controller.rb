@@ -5,6 +5,10 @@ class PagesController < ApplicationController
 
 	#layout "dsb-admin-eg"
 
+	def bizland
+		render action: "bizland", layout: "eipblank"
+	end
+
 	def eipblank
 		render action: "eipblank", layout: "eipblank"
 	end

@@ -28,7 +28,10 @@
 //= require superfish.min
 //= require venobox
 //= require wow
-//= require reveal-js
+// require reveal-js
+
+// BIZLAND
+//= require bizland
 
 // require js_sb-admin/sb-admin.min
 // require sb-admin-2

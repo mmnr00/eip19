@@ -12,7 +12,15 @@
  *
  
 
- *= require reveal-css
+ * require reveal-css
+
+ *BIZLAND
+ *= require animations
+ *= require aos
+ *= require boxicons
+ *= require icofont.min
+ *= require venobox
+ *= require bizland
 
  *= require mmbcard
  *= require pricing

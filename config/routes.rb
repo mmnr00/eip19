@@ -38,6 +38,7 @@ Rails.application.routes.draw do
 
   #~~PAGES
   get '/eipblank', to: 'pages#eipblank'
+  get '/bizland', to: 'pages#bizland'
 
   #~~skids
   get '/schkl', to: 'skids#schkl'
