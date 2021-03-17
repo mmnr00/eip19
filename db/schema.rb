@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_13_045631) do
+ActiveRecord::Schema.define(version: 2021_03_17_092018) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -169,6 +169,7 @@ ActiveRecord::Schema.define(version: 2021_03_13_045631) do
     t.string "regyr"
     t.string "stat"
     t.string "statrs"
+    t.string "agtp"
   end
 
   create_table "ekids", force: :cascade do |t|

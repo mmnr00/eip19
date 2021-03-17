@@ -10,7 +10,23 @@
   <div class='col-lg-8 col-12'>
     <%= form_for(@ddk, :html => {multipart: true, class: "form-horizontal", role: "form"}) do |f| %>
 
-        
+      <div class="form-group"> <!-- HOUSEHOLD MONTHLY INCOME (RM) -->
+        <div class="row">
+          <div class="col-lg-8 col-md-10 col-sm-12">
+            <strong>JENIS INSTITUSI<a style="color: red">*</a></strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-8 col-md-10 col-sm-12">
+            <%= f.select :agtp, options_for_select(["Institusi Pendidikan Anak Istimewa",
+                                                    "Program Pemulihan Dalam Komuniti (PPDK)",
+                                                ], 
+                                                selected: @ddk.agtp), 
+          {include_blank: "Pilih Satu"}, {required: true} %>
+          </div>
+        </div>
+      </div>
+
       <div class="form-group"> <!-- name -->
         <div class="row">
           <div class="control-label col-sm-8">
@@ -19,7 +35,7 @@
         </div>
         <div class="row">
           <div class="col-12">
-            <%= f.text_field :coname, class: "form-control", placeholder: "", autofocus: true, required: true, style: "text-transform: uppercase" %>
+            <%= f.text_field :coname, class: "form-control", placeholder: "", autofocus: true, required: true, style: "text-transform: uppercase", readonly: false %>
           </div>
         </div>
       </div>

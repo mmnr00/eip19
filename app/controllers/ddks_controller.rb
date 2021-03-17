@@ -13,6 +13,7 @@ class DdksController < ApplicationController
 	end
 
 	def new
+		@edit = false
 		@perse = Perse.find(params[:perse])
 		if @perse.ddk.present?
 			redirect_to ddk_path(id: @perse.ddk.id) and return
@@ -33,6 +34,7 @@ class DdksController < ApplicationController
 	end
 
 	def edit
+		@edit = true
 		@perse = @ddk.perse
 	end
 
@@ -79,7 +81,8 @@ class DdksController < ApplicationController
 																:mdl,
 																:regyr,
 																:stat,
-																:statrs)
+																:statrs,
+																:agtp)
 	end
 
 end
