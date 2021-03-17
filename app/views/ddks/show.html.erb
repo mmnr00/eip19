@@ -1,7 +1,8 @@
 <meta name="viewport" content="width=768">
-
-  <%= link_to "Kembali Ke Profil", perse_path(@perse, flg: true), class: "badge badge-pill badge-success", style: "font-size: 12px; margin-top: 10px" %>
-  <%= link_to "Kemaskini Borang", edit_ddk_path(@ddk), class: "badge badge-pill badge-warning", style: "font-size: 12px; margin-top: 10px" %>
+  <% if params[:adm].blank? %>
+    <%= link_to "Kembali Ke Profil", perse_path(@perse, flg: true), class: "badge badge-pill badge-success", style: "font-size: 12px; margin-top: 10px" %>
+    <%= link_to "Kemaskini Borang", edit_ddk_path(@ddk), class: "badge badge-pill badge-warning", style: "font-size: 12px; margin-top: 10px" %>
+  <% end %>
   <%= link_to "Versi PDF", prtddk_path(id: @ddk.id), class: "badge badge-pill badge-info", style: "font-size: 12px; margin-top: 10px", target: "_blank" %><br>
 
   <% 

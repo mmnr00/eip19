@@ -82,7 +82,7 @@
   <div class="card-header">
     <div class="row">
       <%= form_tag lsddk_path, method: :get, id: "find_kid" do %>
-        <%= text_field_tag :sch_str, params[:sch_str], placeholder: "Search Here", style: 'text-transform: uppercase', required: true %>
+        <%= text_field_tag :sch_str, params[:sch_str], placeholder: "Masukkan Carian", style: 'text-transform: uppercase', required: true %>
         <%= select_tag :sch_fld, options_for_select(["No Siri (4 no belakang)", "Nama Agensi","No Pendaftaran Agensi"], params[:sch_fld]),
               include_blank: "Pilih Carian", required: true %>
         <%= hidden_field_tag :stat, params[:stat], value: params[:stat] %>
@@ -117,7 +117,7 @@
           <% @ddk.order('created_at DESC').each do |ddk| %>
           <tr>
             <td>
-              <a href="<%= ddk_url(ddk)%>" target="_blank">DDK-<%= ddk.id.to_s.rjust(4, '0') %></a>
+              <a href="<%= ddk_url(ddk, adm: true)%>" target="_blank">DDK-<%= ddk.id.to_s.rjust(4, '0') %></a>
             </td>
             <td>
               
