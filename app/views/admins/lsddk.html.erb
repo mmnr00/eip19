@@ -117,7 +117,7 @@
           <% @ddk.order('created_at DESC').each do |ddk| %>
           <tr>
             <td>
-              <a href="<%= ddk_url(ddk)%>">DDK-<%= ddk.id.to_s.rjust(4, '0') %></a>
+              <a href="<%= ddk_url(ddk)%>" target="_blank">DDK-<%= ddk.id.to_s.rjust(4, '0') %></a>
             </td>
             <td>
               
