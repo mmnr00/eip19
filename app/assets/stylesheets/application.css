@@ -24,7 +24,7 @@
 
  *= require mmbcard
  *= require pricing
- *= require css_sb-admin/sb-admin
+ * require css_sb-admin/sb-admin
  *= require font-awesome-min
  *= require fontawesome-free/css/all
  *= require sb-admin-2
