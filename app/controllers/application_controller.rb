@@ -2,10 +2,28 @@ class ApplicationController < ActionController::Base
 	 before_action :configure_permitted_parameters, if: :devise_controller?
 	 protect_from_forgery prepend: true
 	 require 'roo'
-	 #def current_taska
-	 	#return unless session[:Taska_id]
-	 	#@current_taska ||= Taska.find(session[:Taska_id])
-	 #end
+	 
+	 def send_email(subject,to,body)
+	 	mail = SendGrid::Mail.new
+		mail.from = SendGrid::Email.new(email: "anis@yawas.my", name: "Jabatan ANIS")
+		mail.subject = "#{subject}"
+		#Personalisation, add cc
+		personalization = SendGrid::Personalization.new
+		personalization.add_to(SendGrid::Email.new(email: "#{to}"))
+		#personalization.add_cc(SendGrid::Email.new(email: "jabatananis@yawas.my"))
+		mail.add_personalization(personalization)
+		#add content
+		msg = "<html>
+		        <body>
+		          #{body}
+		        </body>
+		      </html>"
+		#sending email
+		mail.add_content(SendGrid::Content.new(type: 'text/html', value: "#{msg}"))
+		sg = SendGrid::API.new(api_key: ENV['SENDGRID_PASSWORD'])
+		@response = sg.client.mail._('send').post(request_body: mail.to_json)
+		puts @response
+	 end
 
 	 
 

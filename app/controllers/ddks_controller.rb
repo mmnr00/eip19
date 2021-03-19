@@ -26,6 +26,24 @@ class DdksController < ApplicationController
 		@ddk.stat = 1
 		if @ddk.save
 			flash[:success] = "Permohonan Didik ANIS Diterima. Terima kasih"
+
+			#send email
+			subject = "Permohonan Didik ANIS Diterima"
+			to = @ddk.email
+			link = "https://www.anisselangor.com/persesch?utf8=✓&icf=#{@ddk.perse.ic}&sch=sdhjdsh876671&prog=DIDIK+ANIS&button="
+			body = "
+			Terima kasih kerana memohon untuk program Didik ANIS. Sukacita kami ingin maklumkan permohonan bagi
+			<b>#{@ddk.coname}(#{@ddk.conum})</b> telah diterima.<br>
+			Maklumat Permohonan Anda adalah seperti dibawah: <br>
+			<ul>
+				<li><b>No Siri: </b> DDK-#{@ddk.id.to_s.rjust(4, '0')}</li>
+				<li><b>Nama Agensi: </b> #{@ddk.coname}</li>
+				<li><b>No Pendaftaran: </b>#{@ddk.conum}</li>
+				<li><b>Semakan Status: </b><a href=#{link}>Sila Klik Disini</a></li>
+			</ul>
+			"
+			send_email(subject,to,body)
+
 			redirect_to ddk_path(@ddk)
 		else
 			flash[:danger] = "Permohonan tidak berjaya. Sila Cuba Semula"

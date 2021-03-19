@@ -10,7 +10,7 @@ class WelcomesController < ApplicationController
 
 	def didikanis
 		@index = true
-		redirect_to persesch_path(prog: "DIDIK ANIS")
+		#redirect_to persesch_path(prog: "DIDIK ANIS")
 	end
 
 	def index
@@ -23,6 +23,7 @@ class WelcomesController < ApplicationController
 		@owner = current_owner
 		@parent = current_parent
 		@index = true
+		
 		# if @owner && @owner.tchdetail.blank?
 		# 	redirect_to new_tchdetail_path(owner_id: @owner.id)
 		# elsif @teacher && @teacher.tchdetail.blank?
