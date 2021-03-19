@@ -14,7 +14,7 @@
       <div class="card-body">
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">BARU</div>
+            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">DALAM PROSES</div>
             <a href="<%= lsddk_url(sch: true, stat: 1) %>"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ddk.where(stat: "1").count %></div></a>
           </div>
           <div class="col-auto">
@@ -30,7 +30,7 @@
       <div class="card-body">
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">DALAM SEMAKAN</div>
+            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">TIDAK LENGKAP</div>
             <a href="<%= lsddk_url(sch: true, stat: 2) %>"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ddk.where(stat: "2").count %></div></a>
           </div>
           <div class="col-auto">

@@ -8,8 +8,8 @@
 # end
 
 $ddkstat = {
-	"1" => ["primary","Permohonan Diterima", "Sila Submit Dokumen yang Lengkap bersama Dokumen Sokongan ke alamat emel", "BARU"],
-	"2" => ["warning","Permohonan Dalam Proses", "Pihak Kami Sedang Menyemak Permohonan Anda", "DALAM SEMAKAN"],
+	"1" => ["primary","Permohonan Dalam Proses", "Sila Hantar Dokumen yang Lengkap bersama Dokumen Sokongan ke alamat emel", "DALAM PROSES"],
+	"2" => ["warning","Dokumen Tidak Lengkap", "Sila Hantar Dokumen Yang Disenaraikan Dibawah ", "DALAM SEMAKAN"],
 	"3" => ["success","Permohonan Diluluskan", "Tahniah. Permohonan Anda Telah Diluluskan. Bayaran Akan Dibuat Terus ke Akaun Agensi", "LULUS"],
 	"4" => ["danger","Permohonan Ditolak", "Maaf. Permohonan Anda Tidak Diluluskan. Sila Semak Sebab Dibawah.", "GAGAL"]
 }
