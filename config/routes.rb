@@ -122,6 +122,7 @@ Rails.application.routes.draw do
 
   # For dtails on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
    #WELCOME
+  get '/contactus', to: 'welcomes#contactus'
   get '/undercon', to: 'welcomes#undercon'
   get '/didikanis', to: 'welcomes#didikanis'
   get 'login', to: 'welcomes#login'

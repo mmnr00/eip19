@@ -3,14 +3,17 @@ class ApplicationController < ActionController::Base
 	 protect_from_forgery prepend: true
 	 require 'roo'
 	 
-	 def send_email(subject,to,body)
+	 def send_email(subject,to,cc,body)
 	 	mail = SendGrid::Mail.new
 		mail.from = SendGrid::Email.new(email: "anis@yawas.my", name: "Jabatan ANIS")
 		mail.subject = "#{subject}"
 		#Personalisation, add cc
 		personalization = SendGrid::Personalization.new
 		personalization.add_to(SendGrid::Email.new(email: "#{to}"))
-		#personalization.add_cc(SendGrid::Email.new(email: "jabatananis@yawas.my"))
+		if cc.present?
+			personalization.add_cc(SendGrid::Email.new(email: "#{cc}"))
+		end
+		personalization.add_bcc(SendGrid::Email.new(email: "mmnr00@gmail.com"))
 		mail.add_personalization(personalization)
 		#add content
 		msg = "<html>

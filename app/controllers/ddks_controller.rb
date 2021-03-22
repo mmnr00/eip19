@@ -42,7 +42,7 @@ class DdksController < ApplicationController
 				<li><b>Semakan Status: </b><a href=#{link}>Sila Klik Disini</a></li>
 			</ul>
 			"
-			send_email(subject,to,body)
+			send_email(subject,to,"jabatananis@yawas.my",body)
 
 			redirect_to ddk_path(@ddk)
 		else

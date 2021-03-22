@@ -4,6 +4,9 @@ class WelcomesController < ApplicationController
 	
 	#layout "page"
 
+	def contactus
+	end
+
 	def undercon
 		@index = true
 	end
