@@ -1,29 +1,79 @@
-<header class="prog-hd" style="background-image: url(<%= image_path('anisPic/bg-prog.jpeg') %>); background-size: cover; background-position: center; padding-bottom: 0px; margin-bottom: 0px; background-repeat: no-repeat; padding-top: 30px; padding-bottom: 30px">
+<section id="contact" class="wow fadeInUp">
+  <div class="container">
+    <div class="section-header">
+      <h2>Hubungi Kami</h2>
+      <p>Untuk sebarang pertanyaan, anda boleh hubungi kami menggunakan saluran-saluran dibawah atau hantarkan email menggunakan borang dibawah</p>
+    </div>
 
-  <div class="intro-text container" style="">
-    <div class="intro-heading" style="text-align: left" >
-      <h1 style="color: white; font-weight: 550">Hubungi Kami</h1>
+    <div class="row contact-info">
+
+      
+
+      <div class="col-md-6">
+        <div class="contact-phone">
+          <i class="fas fa fa-phone-square"></i>
+          <h3>No Telefon</h3>
+          <p><a href="">03 5481 8800</a></p>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="contact-email">
+          <i class="fas fa fa-envelope"></i>
+          <h3>Alamat Emel</h3>
+          <p><a href="">jabatananis@yawas.my</a></p>
+        </div>
+      </div>
+
     </div>
   </div>
 
-</header>
-
-<div class="section-header container bg-white" style="margin-top: 20px">
-  <h3 style="font-size: 35px">MAKLUMAT JABATAN ANIS</h3>
-  <div class="border-prog" style=""></div>
-</div>
-
-<div class="container">
-  <div class="row">
-
-    <div class="col-lg-8">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.0577064368063!2d101.49135525038412!3d3.0792696544258176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc525987bcdc6b%3A0x558b502374e1d199!2sYayasan%20Warisan%20Anak%20Selangor!5e0!3m2!1sen!2smy!4v1616398142311!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-    </div>
-
-    <div class="col-lg-4">
-      ksdjksdj
-    </div>
-
-
+  <div class="container mb-4">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.0577064368063!2d101.49135525038412!3d3.0792696544258176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc525987bcdc6b%3A0x558b502374e1d199!2sYayasan%20Warisan%20Anak%20Selangor!5e0!3m2!1sen!2smy!4v1616400330543!5m2!1sen!2smy" width="100%" height="380" frameborder="0" style="border:0" allowfullscreen></iframe>
   </div>
-</div>
+
+
+
+  <div class="container">
+    <% if params[:after].present? %>
+      <h4 style="text-align: center; color:black; font-weight: 600">Terima kasih kerana menghantar pertanyaan kepada pihak kami.</h4>
+    <% else %>
+      <h3 style="text-align: center; color:black; font-weight: 600">PERTANYAAN</h3>
+      <div class="form">
+        <%= form_for(:ans,:url => {:controller=>'welcomes', :action=>"tanya"}, :html => {multipart: true, class: "form-horizontal", role: "form"}) do |f| %>
+          <div class="form-row">
+            <!-- NAME -->
+            <div class="form-group col-md-6">
+              <%= f.text_field :name, class: "form-control", autofocus: true, required: true, placeholder: "Nama Anda" %>
+            </div>
+            <!-- EMAIL -->
+            <div class="form-group col-md-6">
+              <%= f.email_field :email, class: "form-control", autofocus: true, required: true, placeholder: "Alamat Email" %>
+            </div>
+          </div>
+          <!-- SUBJECT -->
+          <div class="form-group">
+            <%= f.text_field :subject, class: "form-control", autofocus: true, required: true, placeholder: "Tajuk Pertanyaan" %>
+          </div>
+          <!-- MESSAGE -->
+          <div class="form-group">
+            <%= f.text_area :msg, class: "form-control", autofocus: true, required: true, placeholder: "Maklumat Lanjutan", rows: 5 %>
+          </div>
+
+          <div class="text-center"><%= f.submit :"Hantar",  class: 'btn btn-primary btn-sm btn-block' %></div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
