@@ -1,11 +1,66 @@
-<h1>
-  ProgEs Index
-  <%= link_to "NEW", new_proge_path, class: 'btn btn-sm btn-success active' %>
-</h1>
+<meta name="viewport" content="width=1024">
 
-<br>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    Senarai Program <b>AKADEMI ANIS</b>&nbsp
+    <%= link_to "Cipta Baru", new_proge_path, class: 'badge badge-pill badge-info' %>
+  </li>
+  
+</ol>
 
-<% @proges_index.each do |prg| %>
+<!-- TABLE -->
+<div class="cards shadow mb-4">
+  <div class="card-header">
+    <div class="row">
+      <%= form_tag progeindex_path, method: :get, id: "find_kid" do %>
+        <%= select_tag :tp, options_for_select(["No Siri (4 no belakang)", "Nama Agensi","No Pendaftaran Agensi"], params[:tp]),
+              include_blank: "Semua Jenis Program" %>
+        <%= select_tag :sch_fld, options_for_select(["No Siri (4 no belakang)", "Nama Agensi","No Pendaftaran Agensi"], params[:sch_fld]),
+              include_blank: "Semua Status" %>
+        <%= hidden_field_tag :stat, params[:stat], value: params[:stat] %>
+        <%= hidden_field_tag :sch, params[:sch], value: true %>
+        <%= button_tag(type: :submit, class: "badge badge-success shadow-none", style: "font-size: 14px; border-style: none; font-weight: normal",  id: "submit_expense") do %>
+            <i class="fa fa-search"></i> Cari
+        <% end %>
+        <%= link_to progeindex_path, class: "badge badge-danger shadow-sm", style: "font-size: 14px; font-weight: normal" do %>
+            <i class="fa fa-sync"></i> Semula
+        <% end %>
+        <%= "#{@proges.count} carian" unless params[:sch].blank? %>
+      <% end %>
+      <div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <div class="table table-responsive border" style="font-size:13px">
+      <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0" style="color: black">
+        <thead>
+          <tr class="shadow">
+            <th style="background-color:#ffb2b2; width: 12%">NAMA</th>
+            <th style="background-color:#ffb2b2">JENIS</th>
+            <th style="background-color:#ffb2b2">MAKLUMAT PEMOHON</th>
+            <th style="background-color:#ffb2b2; width: 18%">STATUS</th>
+            <th style="background-color:#ffb2b2">TARIKH PERMOHONAN</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @proges.order('created_at DESC').each do |ddk| %>
+          <tr>
+            <td>
+              <a href="<%= ddk_url(ddk, adm: true)%>" target="_blank">DDK-<%= ddk.id.to_s.rjust(4, '0') %></a>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+<% @proges.each do |prg| %>
   
   <%= prg.name %><br>
   <%= prg.date %><br>
