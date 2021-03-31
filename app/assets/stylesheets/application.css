@@ -11,13 +11,23 @@
  * It is generally better to create a new file per style scope.
  *
  
+ *BIZLAND
+ *= require animations
+ *= require icofont.min
+ * require aos
+ *= require boxicons
+ *= require owl.carousel
+ *= require owl.theme.default
+ *= require owl.theme.green
+ *= require venobox
+ *= require bizland
 
  *= require reveal-css
 
  *= require mmbcard
  *= require pricing
  *= require css_sb-admin/sb-admin
- *= require font-awesome-min
+ *= require font-awesome-new
  *= require fontawesome-free/css/all
  *= require sb-admin-2
  *= require_tree .
