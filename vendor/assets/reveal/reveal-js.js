@@ -6,7 +6,7 @@
 */
 $(document).on('turbolinks:load', function() {
   // "use strict";
-  console.log('mus 2')
+  console.log('reveal js')
 
   // Back to top button
   $(window).scroll(function() {

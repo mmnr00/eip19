@@ -20,6 +20,9 @@
 //= require turbolinks
 //= require turbolinks-compatibility
 
+
+
+
 // REVEAL
 //= require hoverIntent
 //= require isotope.pkgd
@@ -29,6 +32,10 @@
 //= require venobox
 //= require wow
 //= require reveal-js
+
+// BIZLAND
+//= require counterup.min
+//= require bizland
 
 // require js_sb-admin/sb-admin.min
 // require sb-admin-2
