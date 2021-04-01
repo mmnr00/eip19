@@ -1,8 +1,13 @@
 class WelcomesController < ApplicationController
 	#before_action :authenticate_admin!
 	before_action :allow_iframe_requests
+	before_action :set_all
 	
 	#layout "page"
+
+	def bantuananis
+		@index = true
+	end
 
 	def tanya
 		flash[:success] = "Pertanyaan anda telah direkodkan. Pihak kami akan menjawab secepat mungkin. Terima kasih"
@@ -83,6 +88,10 @@ class WelcomesController < ApplicationController
 
 
 	private
+
+	def set_all
+		@admin = current_admin
+	end
 
 	def allow_iframe_requests
   	response.headers.delete('X-Frame-Options')
