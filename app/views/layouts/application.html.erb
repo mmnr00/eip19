@@ -43,10 +43,10 @@
             </li>
             <li class="menu-has-children"><a href="">PROGRAM ANIS</a>
               <ul>
-                <li><a href="#">Didik ANIS</a></li>
+                <li><a href="<%= bantuananis_url %>">Bantuan ANIS</a></li>
+                <li><a href="<%= didikanis_url %>">Didik ANIS</a></li>
                 <li><a href="<%= undercon_url %>">Akademi ANIS</a></li>
-                <li><a href="<%= undercon_url %>">Cikgu ANIS</a></li>
-                <li><a href="<%= undercon_url %>">Bantuan Khas ANIS</a></li>
+                <li><a href="<%= undercon_url %>">Pusat Sokongan Pendidikan Awal ANIS</a></li>
               </ul>
             </li>
             <li class="menu-has-children"><a href="">GALERI</a>
@@ -57,14 +57,14 @@
               </ul>
             </li>
             <li><a href="<%= contactus_url %>">HUBUNGI</a></li>
-            <li class="menu-has-children"><a href="">FAQ</a>
+            <!-- <li class="menu-has-children"><a href="">FAQ</a>
               <ul>
                 <li><a href="<%= undercon_url %>">Didik ANIS</a></li>
                 <li><a href="<%= undercon_url %>">Akademi ANIS</a></li>
                 <li><a href="<%= undercon_url %>">Cikgu ANIS</a></li>
                 <li><a href="<%= undercon_url %>">Bantuan Khas ANIS</a></li>
               </ul>
-            </li>
+            </li> -->
           <% end %>
           <li class="menu-has-children">
             <% if current_admin.present? %>
