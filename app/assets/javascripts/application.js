@@ -35,7 +35,7 @@
 
 // BIZLAND
 //= require counterup.min
-//= require bizland
+// require bizland
 
 // require js_sb-admin/sb-admin.min
 // require sb-admin-2
