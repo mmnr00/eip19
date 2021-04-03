@@ -1,6 +1,10 @@
 <% if @admin %>
   <%= link_to 'Kemaskini', edit_artk_path(@artk), class: 'badge badge-pill badge-primary' %>
-<% end %>
+<% end %><br>
+
+<div class="align-items-center">
+<img src="<%= @artk.pic %>" width="50%" height="50%"><br>
+</div>
 
 
 <%= sanitize @artk.headl %> 
