@@ -40,6 +40,7 @@ class ArtksController < ApplicationController
 	end
 
 	def artk_list
+		@artks = Artk.all
 	end
 
 	private

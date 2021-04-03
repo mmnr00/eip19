@@ -1,10 +1,22 @@
 <% if @admin %>
   <%= link_to 'Kemaskini', edit_artk_path(@artk), class: 'badge badge-pill badge-primary' %>
-<% end %><br>
+  <%= link_to 'Kembali Paparan Artikel Admin', artk_index_path, class: 'badge badge-pill badge-success' %>
+<% end %>
+<%= link_to 'Kembali Ke Senarai Artikel', artk_list_path, class: 'badge badge-pill badge-info' %>
+<br>
 
-<div class="align-items-center">
-<img src="<%= @artk.pic %>" width="50%" height="50%"><br>
+<div class="" style="text-align: center">
+<img class="border" src="<%= @artk.pic %>" width="50%" height="50%" style="margin-top: 10px"><br>
 </div>
 
+<div style="text-align: center; margin-top: 30px; margin-bottom: 15px;">
+<h2 style="font-weight: 1000; color: black; margin-bottom: -2px"><%= @artk.title %></h2>
+<p style="font-size: 15px"><i class="fa fas fa-clock"></i> <%= @artk.created_at.strftime('%d-%b-%y')%> oleh <%= @artk.author %></p>
+</div>
 
-<%= sanitize @artk.headl %> 
+<div style="text-align: justify; color: black">
+
+<p><%= sanitize @artk.headl %></p>
+<%= sanitize @artk.bodl %>
+
+</div>

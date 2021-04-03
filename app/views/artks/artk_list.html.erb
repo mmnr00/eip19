@@ -1,0 +1,45 @@
+<section class="bg-white" id="services">
+  <div class="container" style="margin-bottom: 30px">
+    <div class="section-header">
+      <h2>SENARAI ARTIKEL</h2>
+      <p></p>
+    </div>
+
+    <div id="article" class="row">
+
+      <% @artks.order('created_at DESC').each do |artk| %>
+        <div class="col-lg-4 col-md-6 col-sm-12">
+        <img src="<%= artk.pic %>" width="350" height="235">
+        <p style="font-size: 15px"><i class="fa fas fa-clock"></i> <%= artk.created_at.strftime('%d-%b-%y')%> oleh <%= artk.author %></p>
+        <p style="font-weight: 700; font-size: 20px"><%= artk.title %></p>
+        <p><%= sanitize artk.headl %> <a href="<%= artk_path(artk) %>">Artikel Penuh</a></p>
+      </div>
+
+
+      <% end %>
+
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <img src="https://f8r8h5q2.rocketcdn.me/wp-content/uploads/2021/02/EIP-1.jpg" width="350" height="235">
+        <p style="font-size: 15px"><i class="fa fas fa-clock"></i> 23-Mar-21 oleh Zareef Muzammil</p>
+        <p style="font-weight: 700; font-size: 20px">Lebih 70 institusi pendidikan, PDK dijangka mohon bantuan anak OKU</p>
+        <p>Institusi Pendidikan Anak Istimewa dan Pemulihan Dalam Komuniti (PDK) diajak memohon bantuan sehingga RM10,000 yang disediakan Kerajaan Negeri dibawah program Didik Anak Istimewa Selangor (ANIS) <a href="https://selangorkini.my/2021/03/lebih-70-institusi-pendidikan-pdk-dijangka-mohon-bantuan-anak-oku/">Artikel Penuh</a></p>
+      </div>
+
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <img src="https://f8r8h5q2.rocketcdn.me/wp-content/uploads/2019/01/OKU.jpg" width="350" height="235">
+        <p style="font-size: 15px"><i class="fa fas fa-clock"></i> 14-Feb-21 oleh Norrasyidah Arshad</p>
+        <p style="font-weight: 700; font-size: 20px">Permohonan bantuan anak OKU Selangor dibuka esok</p>
+        <p>Permohonan Bantuan Khas Anak Istimewa Selangor (Anis) secara dalam talian dibuka mulai esok. Pemerbadanan Menteri Besar (MBI) berkata bantuan berkenaan layak untuk anak orang kelainan upaya (OKU) berusia 18 tahun ke bawah. <a href="https://selangorkini.my/2021/02/permohonan-bantuan-anak-oku-selangor-dibuka-esok/">Artikel Penuh</a></p>
+      </div>
+
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <img src="<%= image_path('anisPic/artikel3.png') %>" width="350" height="235">
+        <p style="font-size: 15px"><i class="fa fas fa-clock"></i> 12-Jan-20 oleh Norhayati Umor</p>
+        <p style="font-weight: 700; font-size: 20px">Selangor latih 1,202 Cikgu AnIS didik anak istimewa</p>
+        <p>SHAH ALAM, 12 JAN: Seramai 1,202 guru menerima latihan khusus dalam program Cikgu Anak Istimewa Selangor (AnIS) bagi mendidik anak-anak kelainan upaya di 452 taska seluruh negeri <a href="#">Artikel Penuh</a></p>
+      </div>
+      
+
+    </div> <!-- row -->
+  </div> <!-- container -->
+</section>
