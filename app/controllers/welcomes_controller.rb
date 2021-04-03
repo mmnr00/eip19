@@ -5,6 +5,10 @@ class WelcomesController < ApplicationController
 	
 	#layout "page"
 
+	def profilyb
+		@index = true
+	end
+
 	def bantuananis
 		@index = true
 	end
