@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_25_082753) do
+ActiveRecord::Schema.define(version: 2021_04_03_024706) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,6 +79,16 @@ ActiveRecord::Schema.define(version: 2021_03_25_082753) do
     t.datetime "updated_at", null: false
     t.string "kind"
     t.float "tot"
+  end
+
+  create_table "artks", force: :cascade do |t|
+    t.string "title"
+    t.string "author"
+    t.string "headl"
+    t.string "bodl"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "pic"
   end
 
   create_table "ates", force: :cascade do |t|

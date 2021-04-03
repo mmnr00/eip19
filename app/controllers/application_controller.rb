@@ -2,6 +2,10 @@ class ApplicationController < ActionController::Base
 	 before_action :configure_permitted_parameters, if: :devise_controller?
 	 protect_from_forgery prepend: true
 	 require 'roo'
+
+	 def set_all
+	 	@admin = current_admin
+	 end
 	 
 	 def send_email(subject,to,cc,body)
 	 	mail = SendGrid::Mail.new

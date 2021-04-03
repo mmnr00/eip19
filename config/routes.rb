@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :tsklvs, only:[:new, :create, :destroy, :update, :edit]
   resources :perses, only:[:new,:show,:create, :destroy, :update, :edit]
   resources :ddks, only:[:new,:show,:create, :destroy, :update, :edit]
+  resources :artks, only:[:new,:show,:create, :destroy, :update, :edit]
   resources :proges, only:[:new,:show,:create, :destroy, :update, :edit]
   resources :ekids, only:[:new,:show,:create, :destroy, :update, :edit]
   resources :pkids, only:[:new,:show,:create, :destroy, :edit]
@@ -30,6 +31,10 @@ Rails.application.routes.draw do
   devise_for :admins
   devise_for :owners#, :controllers => { :passwords => 'passwords' }
 	root 'welcomes#index2'
+
+  #~~ARTKS
+  get '/artk_index', to: 'artks#artk_index'
+  get '/artk_list', to: 'artks#artk_list'
 
   #~~DDK
   get '/prtddk', to:'ddks#prtddk'

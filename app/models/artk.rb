@@ -1,0 +1,2 @@
+class Artk < ApplicationRecord
+end

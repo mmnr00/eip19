@@ -1,0 +1,36 @@
+
+<%= link_to "Artikel Baru", new_artk_path, class: "badge badge-pill badge-info" %>
+
+<div class="cards shadow mb-4">
+  <div class="card-header">
+    <div class="row">
+      <btn class="btn btn-sm btn-success" style="font-weight: 600">Senarai Artikel</btn>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <div class="table table-responsive border" style="font-size:13px">
+      <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0" style="color: black">
+        <thead>
+          <tr class="shadow">
+            <th style="background-color:#ffb2b2; width: 12%">TARIKH</th>
+            <th style="background-color:#ffb2b2">TAJUK</th>
+            <th style="background-color:#ffb2b2">NAMA PENULIS</th>
+        </thead>
+        <tbody>
+          <% @artks.order('created_at DESC').each do |artk| %>
+          <tr>
+            <td><%= artk.created_at.strftime('%d-%^b-%y') %></td>
+            <td>
+              <%= artk.title %><br>
+              <%= link_to 'Lihat', artk_path(artk), class: 'badge badge-pill badge-primary' %>
+              <%= link_to 'Buang', edit_artk_path(artk), class: 'badge badge-pill badge-danger' %>
+            </td>
+            <td><%= artk.author %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
