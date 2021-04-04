@@ -5,6 +5,9 @@ class WelcomesController < ApplicationController
 	
 	#layout "page"
 
+	def videols
+	end
+
 	def profilyb
 		@index = true
 	end

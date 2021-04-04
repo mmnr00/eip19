@@ -1,0 +1,23 @@
+
+  <div class="container" style="margin-bottom: 30px">
+    <div class="section-header">
+      <h2>SENARAI VIDEO</h2>
+      <p></p>
+    </div>
+
+    <div id="article" class="row">
+
+      <% ["kQbShPCINrE","9DkKwiiTrHo"].each do |id| %>
+        <div class="col-lg-6 col-12" style="margin-bottom: 20px">
+          <%
+            video = VideoInfo.new("https://www.youtube.com/watch?v=#{id}")
+          %>
+
+          <img src="https://img.youtube.com/vi/<%= id %>/maxresdefault.jpg" width="400" height="400" /><br>
+          <p style="font-weight: 600; margin-bottom: -0px "><%= video.title %></p>
+          <a href="https://www.youtube.com/watch?v=<%= id %>" class="venobox btn btn-sm btn-primary" data-vbtype="video" data-autoplay="true"> Lihat Video <i class="fa fas fa-play-circle"></i></a>
+        </div>
+      <% end %>
+      
+    </div>
+  </div>

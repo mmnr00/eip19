@@ -9,6 +9,8 @@ gem 'rails', '~> 5.2.1'
 
 #gem 'icofont'
 
+gem 'video_info'
+
 gem 'sass'
 gem 'roo'
 #gem 'sass-rails', '~> 5.0.7'
