@@ -7,7 +7,7 @@
 
     <div id="article" class="row">
 
-      <% ["kQbShPCINrE","9DkKwiiTrHo"].each do |id| %>
+      <% ENV['anis_vid'].split(',').each do |id| %>
         <div class="col-lg-6 col-12" style="margin-bottom: 20px">
           <%
             video = VideoInfo.new("https://www.youtube.com/watch?v=#{id}")
