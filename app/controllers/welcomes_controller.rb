@@ -5,6 +5,10 @@ class WelcomesController < ApplicationController
 	
 	#layout "page"
 
+	def akademianis
+		@index = true
+	end
+
 	def videols
 	end
 
