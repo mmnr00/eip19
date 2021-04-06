@@ -1,4 +1,4 @@
-<meta name="viewport" content="width=1024">
+<meta name="viewport" content="width=768">
 
 <ol class="breadcrumb">
   <li class="breadcrumb-item">
@@ -38,19 +38,20 @@
       <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0" style="color: black">
         <thead>
           <tr class="shadow">
-            <th style="background-color:#ffb2b2; width: 12%">NAMA</th>
+            <th style="background-color:#ffb2b2; width:">NAMA PROGRAM</th>
+            <th style="background-color:#ffb2b2; width:">TARIKH</th>
             <th style="background-color:#ffb2b2">JENIS</th>
-            <th style="background-color:#ffb2b2">MAKLUMAT PEMOHON</th>
-            <th style="background-color:#ffb2b2; width: 18%">STATUS</th>
-            <th style="background-color:#ffb2b2">TARIKH PERMOHONAN</th>
+            <th style="background-color:#ffb2b2">PENDAFTARAN</th>
+            <th style="background-color:#ffb2b2">STATUS</th>
           </tr>
         </thead>
         <tbody>
-          <% @proges.order('created_at DESC').each do |ddk| %>
+          <% @proges.order('date ASC').each do |prg| %>
           <tr>
             <td>
-              <a href="<%= ddk_url(ddk, adm: true)%>" target="_blank">DDK-<%= ddk.id.to_s.rjust(4, '0') %></a>
+              <a href="<%= edit_proge_path(prg) %>" target="_blank"><%= prg.name %></a>
             </td>
+            <td><%= prg.date.strftime('%d-%^b-%y')%></td>
           </tr>
           <% end %>
         </tbody>

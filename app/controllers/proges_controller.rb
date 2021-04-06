@@ -14,7 +14,7 @@ class ProgesController < ApplicationController
 
 	def new
 		@proge = Proge.new
-		render action: "new", layout: "eipblank"
+		# render action: "new", layout: "eipblank"
 	end
 
 	def create
@@ -30,7 +30,7 @@ class ProgesController < ApplicationController
 
 	def edit
 		@proge = Proge.find(params[:id])
-		render action: "edit", layout: "eipblank"
+		# render action: "edit", layout: "eipblank"
 	end
 
 	def update
