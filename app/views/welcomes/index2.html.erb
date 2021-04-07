@@ -112,8 +112,9 @@
 
         <div class="row">
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-              <div class="icon"><img src="<%= image_path('anisPic/bk-anis-hp.png') %>" width="100" height="80"></div>
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="100"><!-- 
+              <div class="icon"><img src="<%= image_path('anisPic/bk-anis-hp.png') %>" width="100" height="80"></div> -->
+              <div class="icon" style="margin-bottom: 95px"></div>
               <h4 class="title"><a href="<%= bantuananis_url %>">Bantuan ANIS</a></h4>
               <p class="description">Peruntukan RM500,000 melalui YAWAS. Bantuan fokus kepada peralatan & keperluan Khas. Had maksima RM5,000 setahun</p>
             </div>
@@ -121,7 +122,7 @@
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
-              <div class="icon"><img src="<%= image_path('anisPic/didik-anis-hp.png') %>" width="100" height="80"></div>
+              <div class="icon" style="margin-bottom: 95px"></div>
               <h4 class="title"><a href="<%= didikanis_url %>">Didik ANIS</a></h4>
               <p class="description">Bantuan khusus untuk  pendidikan OKU Untuk Pusat terapi, pusat EIP dan PPDK</p>
             </div>
@@ -129,7 +130,7 @@
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
-              <div class="icon"><img src="<%= image_path('anisPic/aka-anis-hp.png') %>" width="100" height="80"></div>
+              <div class="icon" style="margin-bottom: 95px"></div>
               <h4 class="title"><a href="<%= akademianis_url %>">Akademi ANIS</a></h4>
               <p class="description">Program latihan untuk guru taska di seluruh Selangor bagi menerima latihan yang bersesuaian untuk melatih serta mengasuh anak Istimewa di Kawasan setempat.</p>
             </div>
@@ -137,7 +138,7 @@
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
-              <div class="icon"><img src="<%= image_path('anisPic/aka-anis-hp.png') %>" width="100" height="80"></div>
+              <div class="icon" style="margin-bottom: 95px"></div>
               <h4 class="title"><a href="<%= undercon_url %>">Pusat Sokongan Pendidikan Awal ANIS</a></h4>
               <p class="description">Pembinaan Pusat Terapi dan Kaunseling bagi memudahkan ibu-bapa atau penjaga anak OKU untuk mendapatkan rawatan.</p>
             </div>
@@ -225,13 +226,24 @@
     <section class="bg-white" id="services">
       <div class="container" style="margin-bottom: 30px">
         <div class="section-header">
-          <h2>ARTIKEL BERKAITAN</h2>
+          <h2>ARTIKEL TERKINI</h2>
           <p></p>
         </div>
 
         <div id="article" class="row">
 
-          <div class="col-lg-4 col-md-6 col-sm-12">
+          <% Artk.all.order('created_at DESC').each do |artk| %>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+            <img src="<%= artk.pic %>" width="350" height="235">
+            <p style="font-size: 15px"><i class="fa fas fa-clock"></i> <%= artk.created_at.strftime('%d-%b-%y')%> oleh <%= artk.author %></p>
+            <p style="font-weight: 700; font-size: 20px"><%= artk.title %></p>
+            <p><%= sanitize artk.headl %> <a href="<%= artk_path(artk) %>">Artikel Penuh</a></p>
+          </div>
+
+
+          <% end %>
+
+          <!-- <div class="col-lg-4 col-md-6 col-sm-12">
             <img src="https://f8r8h5q2.rocketcdn.me/wp-content/uploads/2021/02/EIP-1.jpg" width="350" height="235">
             <p style="font-size: 15px"><i class="fa fas fa-clock"></i> March 23, 2021 oleh Zareef Muzammil</p>
             <p style="font-weight: 700; font-size: 20px">Lebih 70 institusi pendidikan, PDK dijangka mohon bantuan anak OKU</p>
@@ -250,7 +262,7 @@
             <p style="font-size: 15px"><i class="fa fas fa-clock"></i> January 12, 2020 oleh Norhayati Umor</p>
             <p style="font-weight: 700; font-size: 20px">Selangor latih 1,202 Cikgu AnIS didik anak istimewa</p>
             <p>SHAH ALAM, 12 JAN: Seramai 1,202 guru menerima latihan khusus dalam program Cikgu Anak Istimewa Selangor (AnIS) bagi mendidik anak-anak kelainan upaya di 452 taska seluruh negeri <a href="#">Artikel Penuh</a></p>
-          </div>
+          </div> -->
           
 
         </div> <!-- row -->
