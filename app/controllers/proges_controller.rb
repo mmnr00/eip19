@@ -1,7 +1,22 @@
 class ProgesController < ApplicationController
 
+	def progeregls
+		@proges = Proge.all
+	end
+
+	def progeperse
+		@proge = Proge.find(params[:proge])
+		@perses = @proge.perses
+	end
+
+	def progecert
+		@perse = Perse.find(params[:perse])
+		@proge = Proge.find(params[:proge])
+		render action: "progecert", layout: "eipblank"
+	end
+
 	def index
-		@proges = Proge.all.order('date DESC')
+		@proges = Proge.all
 		# render action: "index", layout: "eipblank"
 	end
 

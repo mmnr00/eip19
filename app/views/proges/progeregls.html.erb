@@ -1,0 +1,20 @@
+<h4>Sila Pilih Dari Senarai Program</h4>
+
+
+<div class="col-lg-6 col-md-8 col-sm-12">
+  <% @proges.each do |prg| %>
+
+    <div class="card bg-info text-white shadow" style="margin-bottom: 8px">
+      <div class="card-body">
+        <a href="<%= persesch_url(prog: "AKADEMI ANIS", proge: prg.id) %>" class="text-white">
+          <b><%= prg.name %></b>
+        </a>
+        <p style="margin-bottom: -0px"><%= prg.date.strftime('%d-%m-%Y') %></p>
+        <div class="text-white-50 small">
+          <%= "#{prg.start.strftime('%I:%M%P')} - #{prg.end.strftime('%I:%M%P')}" %>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+</div>

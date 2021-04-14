@@ -51,11 +51,18 @@ class PersesController < ApplicationController
 				if params[:ph].present? #dah masuk no fon
 					if perse.ph == params[:ph]
 						flash[:success] = "Selamat Kembali #{perse.name}"
+
+						#program redirection
 						if params[:prog].present?
-							redirect_to new_ddk_path(perse: perse.id)
+							if params[:prog] == "DIDIK ANIS"
+								redirect_to new_ddk_path(perse: perse.id)
+							elsif params[:prog] == "AKADEMI ANIS"
+								redirect_to root_path
+							end			
 						else
 							redirect_to perse_path(id: perse.id, flg: true)
 						end
+
 					else
 						@verf = true
 						flash[:danger] = "No telefon yang dimasukkan tidak tepat"

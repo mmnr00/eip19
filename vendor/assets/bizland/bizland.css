@@ -1843,6 +1843,12 @@ section {
     -webkit-touch-callout: none;
   }
 
+  @media print {
+  .prt-card-header{
+    display:none;
+  }
+}
+
 
 
 

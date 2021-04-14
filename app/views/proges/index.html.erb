@@ -11,7 +11,7 @@
 <!-- TABLE -->
 <div class="cards shadow mb-4">
   <div class="card-header">
-    <div class="row">
+   <!--  <div class="row">
       <%= form_tag progeindex_path, method: :get, id: "find_kid" do %>
         <%= select_tag :tp, options_for_select(["No Siri (4 no belakang)", "Nama Agensi","No Pendaftaran Agensi"], params[:tp]),
               include_blank: "Semua Jenis Program" %>
@@ -30,7 +30,7 @@
       <div>
         
       </div>
-    </div>
+    </div> -->
   </div>
   <div class="card-body">
     
@@ -40,18 +40,24 @@
           <tr class="shadow">
             <th style="background-color:#ffb2b2; width:">NAMA PROGRAM</th>
             <th style="background-color:#ffb2b2; width:">TARIKH</th>
-            <th style="background-color:#ffb2b2">JENIS</th>
             <th style="background-color:#ffb2b2">PENDAFTARAN</th>
-            <th style="background-color:#ffb2b2">STATUS</th>
           </tr>
         </thead>
         <tbody>
-          <% @proges.order('date ASC').each do |prg| %>
+          <% @proges.order('date DESC').each do |prg| %>
           <tr>
             <td>
-              <a href="<%= edit_proge_path(prg) %>" target="_blank"><%= prg.name %></a>
+              <a href="<%= edit_proge_path(prg) %>" target=""><%= prg.name %></a>
             </td>
-            <td><%= prg.date.strftime('%d-%^b-%y')%></td>
+            <td>
+              <%= prg.date.strftime('%d-%^b-%y') %>  
+            </td>
+            <td>
+              <a href="<%= progeperse_url(proge: prg.id) %>">
+                <%= prg.perses.count %>
+              </a>
+                
+            </td>
           </tr>
           <% end %>
         </tbody>
@@ -61,7 +67,8 @@
 </div>
 
 
-<% @proges.each do |prg| %>
+
+<% if 1==0;@proges.each do |prg| %>
   
   <%= prg.name %><br>
   <%= prg.date %><br>
@@ -80,4 +87,4 @@
   <%= link_to "ATTENDANCE", schperse_path(proge: prg.id, typ: "att"), class: 'btn btn-sm btn-danger active' %>
   <hr>
 
-<% end %>
+<% end;end %>

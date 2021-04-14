@@ -1,0 +1,26 @@
+<meta name="viewport" content="width=1024">
+
+
+
+<div class="bg-white">
+  <div style="background-image: url(<%= image_path('cert.jpg') %>); background-size: auto 100%;background-repeat: no-repeat;
+    background-position: center; padding-bottom: 700px; text-align: center">
+
+    <div style="position:absolute;top:327px;left:0;right:0;margin-left:auto;margin-right:auto">
+      <p style="color:black; font-size: 20px; font-weight: 800">
+        <i><%= "#{@perse.name} (#{@perse.ic})"%></i>
+      </p>
+    </div>
+
+    <div style="position:absolute;top:453px;left:0;right:0;margin-left:auto;margin-right:auto;">
+      <p style="color:black; font-size: 18px; font-weight: 600">
+        <i><%= @proge.date.strftime('%d-%m-%Y') %></i>
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<div class="prt-card-header container">
+  <%= link_to "Cetak Sijil", progecert_path, class: "btn btn-sm btn-success btn-block", style: "margin-top: 10px", :onclick => 'window.print();return false;' %>
+</div>
