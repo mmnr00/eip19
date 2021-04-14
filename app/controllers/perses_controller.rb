@@ -7,7 +7,14 @@ class PersesController < ApplicationController
 	def update
 		@perse = Perse.find(params[:id])
 		if @perse.update(perse_params)
-			redirect_to perse_path(id: @perse.id, flg: true)
+			if params[:perse][:proge].present? && params[:perse][:prog] == "AKADEMI ANIS"
+				perprg = Perproge.new(perse_id: @perse.id, proge_id: params[:perse][:proge])
+				perprg.save
+				flash[:success] = "Pendaftaran untuk #{perprg.proge.name} berjaya!"
+				redirect_to persesch_path(prog: params[:perse][:prog], proge: params[:perse][:proge] )
+			else
+				redirect_to perse_path(id: @perse.id, flg: true)
+			end
 		else
 			render @perse.errors.full_messages
 			render :edit
@@ -31,8 +38,15 @@ class PersesController < ApplicationController
 	def create
 		@perse = Perse.new(perse_params)
 		if @perse.save 
-			if params[:perse][:prog].present?
-				redirect_to new_ddk_path(perse: @perse.id)
+			if (prog = params[:perse][:prog]).present?
+				if prog == "DIDIK ANIS"
+					redirect_to new_ddk_path(perse: @perse.id)
+				elsif prog == "AKADEMI ANIS"
+					Perproge.create(perse_id: @perse.id, proge_id: params[:perse][:proge])
+					prg = Proge.find(params[:perse][:proge])
+					flash[:success] = "Pendaftaran Untuk #{prg.name} Berjaya!"
+					redirect_to persesch_path(prog: prog, proge: params[:perse][:proge] )
+				end
 			else
 				redirect_to perse_path(id: @perse.id, flg: true)
 			end
@@ -58,9 +72,14 @@ class PersesController < ApplicationController
 								redirect_to new_ddk_path(perse: perse.id)
 							elsif params[:prog] == "AKADEMI ANIS"
 								prg = Proge.find(params[:proge])
-								Perproge.create(perse_id: perse.id, proge_id: prg.id) unless prg.perses.where(id: perse.id).present?
-								flash[:success] = "Pendaftaran Untuk #{prg.name} Berjaya!"
-								redirect_to persesch_path(prog: params[:prog], proge: params[:proge])
+								if perse.backg.present?
+									Perproge.create(perse_id: perse.id, proge_id: prg.id) unless prg.perses.where(id: perse.id).present?
+									flash[:success] = "Pendaftaran Untuk #{prg.name} Berjaya!"
+									redirect_to persesch_path(prog: params[:prog], proge: params[:proge])
+								else
+									flash[:danger] = "Sila Lengkapkan Maklumat Anda"
+									redirect_to edit_perse_path(id: perse.id, prog: params[:prog], proge: params[:proge])
+								end
 							end			
 						else
 							redirect_to perse_path(id: perse.id, flg: true)
@@ -78,7 +97,7 @@ class PersesController < ApplicationController
 				#redirect_to perse
 			else #IC not present ahli baru
 				flash[:notice] = "Sila Lengkapkan Maklumat Anda"
-				redirect_to new_perse_path(ic: params[:icf], prog: params[:prog])
+				redirect_to new_perse_path(ic: params[:icf], prog: params[:prog], proge: params[:proge])
 			end
 	
 		end
