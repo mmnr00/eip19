@@ -12,6 +12,10 @@
     <% end %>
     <% if params[:prog].present? %>
       <%= link_to "#{params[:prog]}", "#", class: "badge badge-pill badge-info" %>
+    <% end %><br>
+    <% if params[:proge].present?; prg = Proge.find(params[:proge]) %>
+
+      <%= link_to "#{prg.name}", "#", class: "badge badge-pill badge-success", style: "font-size: 12px" %>
     <% end %>
   </h5>
   <form>
@@ -27,6 +31,7 @@
           <%= text_field_tag :icf, params[:icf], class: "form-control form-control-sm", placeholder: "cth: 870829342134", required: true, minlenght: 2, readonly: @verf %>
           <%= hidden_field_tag :sch, params[:sch], value: "sdhjdsh876671" %>
           <%= hidden_field_tag :prog, params[:prog], value: params[:prog] %>
+          <%= hidden_field_tag :proge, params[:proge], value: params[:proge] %>
         </div>
         <div class="col-lg-2 col-md-2 col-sm-2">
           <%= button_tag(type: :submit, class: "btn btn-block btn-sm btn-primary", style: "") do %>
@@ -34,6 +39,8 @@
           <% end %>
         </div>
       <% end %>
+
+      
 
     </div>
   </form>

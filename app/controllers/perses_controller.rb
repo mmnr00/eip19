@@ -57,7 +57,10 @@ class PersesController < ApplicationController
 							if params[:prog] == "DIDIK ANIS"
 								redirect_to new_ddk_path(perse: perse.id)
 							elsif params[:prog] == "AKADEMI ANIS"
-								redirect_to root_path
+								prg = Proge.find(params[:proge])
+								Perproge.create(perse_id: perse.id, proge_id: prg.id) unless prg.perses.where(id: perse.id).present?
+								flash[:success] = "Pendaftaran Untuk #{prg.name} Berjaya!"
+								redirect_to persesch_path(prog: params[:prog], proge: params[:proge])
 							end			
 						else
 							redirect_to perse_path(id: perse.id, flg: true)
