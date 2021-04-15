@@ -69,6 +69,7 @@ Rails.application.routes.draw do
   get '/rflt_pdf', to: 'rflts#rflt_pdf'
 
   #~~PROGE
+  post '/upld_perse', to: 'proges#upld_perse'
   get '/progeregls', to: 'proges#progeregls'
   get '/progeperse', to: 'proges#progeperse'
   get '/progecert', to: 'proges#progecert'

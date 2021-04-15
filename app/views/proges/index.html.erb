@@ -8,6 +8,13 @@
   
 </ol>
 
+<% if current_admin.username == "eipadmin" %>
+  <%= form_tag upld_perse_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Uploads" %>
+  <% end %>
+<% end %>
+
 <!-- TABLE -->
 <div class="cards shadow mb-4">
   <div class="card-header">
