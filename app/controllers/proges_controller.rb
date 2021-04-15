@@ -5,7 +5,7 @@ class ProgesController < ApplicationController
 		proge = Proge.find(params[:proge])
 		subject = "Sijil Penyertaan untuk #{proge.name}"
 		proge.perses.each do |prs|
-			link = "https://www.anisselangor.com/progecert?perse=389&proge=38"
+			link = "https://www.anisselangor.com/progecert?perse=#{prs.id}&proge=#{proge.id}"
 			body = "
 			Terima kasih <b>#{prs.name}</b> kerana telah menyertai <b>#{proge.name}</b> pada 
 			<b>#{proge.date.strftime('%d-%m-%Y')}</b><br><br>
@@ -18,7 +18,7 @@ class ProgesController < ApplicationController
 			send_email(subject,prs.email,"",body)
 		end
 		
-		#redirect_to request.referrer
+		redirect_to request.referrer
 	end
 
 	def upld_perse
