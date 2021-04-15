@@ -1857,7 +1857,7 @@ section {
       transform: rotate(270deg) translate(-370mm, -15mm) scale(1.5);
       transform-origin: 0 0;
       position: relative;
-      
+      -webkit-print-color-adjust: exact;
     }
   }
 
