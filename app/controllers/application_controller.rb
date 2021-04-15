@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
 		if cc.present?
 			personalization.add_cc(SendGrid::Email.new(email: "#{cc}"))
 		end
-		personalization.add_bcc(SendGrid::Email.new(email: "mmnr00@gmail.com"))
+		# personalization.add_bcc(SendGrid::Email.new(email: "mmnr00@gmail.com"))
 		mail.add_personalization(personalization)
 		#add content
 		msg = "<html>
@@ -29,7 +29,8 @@ class ApplicationController < ActionController::Base
 		mail.add_content(SendGrid::Content.new(type: 'text/html', value: "#{msg}"))
 		sg = SendGrid::API.new(api_key: ENV['SENDGRID_PASSWORD'])
 		@response = sg.client.mail._('send').post(request_body: mail.to_json)
-		puts @response
+		puts @response.status_code
+		render json: @response and return
 	 end
 
 	 

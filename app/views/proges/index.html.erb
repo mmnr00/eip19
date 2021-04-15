@@ -62,6 +62,9 @@
             <td>
               <a href="<%= progeperse_url(proge: prg.id) %>">
                 <%= prg.perses.count %>
+                <% if current_admin.username == "eipadmin" %>&nbsp
+                <%= link_to "Hantar Email", send_cert_path(proge: prg.id), class: 'badge badge-pill badge-danger' %>
+                <% end %>
               </a>
                 
             </td>

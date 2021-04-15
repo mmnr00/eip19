@@ -1,5 +1,26 @@
 class ProgesController < ApplicationController
 
+	def send_cert
+		flash[:success] = "Email sent"
+		proge = Proge.find(params[:proge])
+		subject = "Sijil Penyertaan untuk #{proge.name}"
+		proge.perses.each do |prs|
+			link = "https://www.anisselangor.com/progecert?perse=389&proge=38"
+			body = "
+			Terima kasih <b>#{prs.name}</b> kerana telah menyertai <b>#{proge.name}</b> pada 
+			<b>#{proge.date.strftime('%d-%m-%Y')}</b><br><br>
+
+			Sila <a href=#{link}> KLIK DISINI </a> untuk mendapatkan sijil penyertaan anda. <br><br>
+
+			Yang Berusaha,<br>
+			<b>Jabatan ANIS</b> 
+			"
+			send_email(subject,prs.email,"",body)
+		end
+		
+		#redirect_to request.referrer
+	end
+
 	def upld_perse
 		xlsx = Roo::Spreadsheet.open(params[:file])
     header = xlsx.row(xlsx.first_row)
