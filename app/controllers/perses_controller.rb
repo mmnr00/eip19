@@ -46,6 +46,7 @@ class PersesController < ApplicationController
 					prg = Proge.find(params[:perse][:proge])
 					flash[:success] = "Pendaftaran Untuk #{prg.name} Berjaya!"
 					redirect_to persesch_path(prog: prog, proge: params[:perse][:proge] )
+				
 				end
 			else
 				redirect_to perse_path(id: @perse.id, flg: true)

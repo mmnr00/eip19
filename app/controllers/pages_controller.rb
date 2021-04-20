@@ -3,7 +3,13 @@ class PagesController < ApplicationController
 	 before_action :set_all
 	 before_action :superadmin, only: [:bank_status]
 
-	#layout "dsb-admin-eg"
+	def saringananis
+		redirect_to persesch_path(prog: "SARINGAN ANIS")
+	end
+
+	def terapianis
+		redirect_to persesch_path(prog: "TERAPI ANIS")
+	end
 
 	def eipblank
 		render action: "eipblank", layout: "eipblank"
