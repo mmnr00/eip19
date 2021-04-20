@@ -2,6 +2,13 @@ class EkidsController < ApplicationController
 	before_action :authenticate_admin!, only: [:index]
 	before_action :set_all
 
+	def ekid_list
+		@perse = Perse.find(params[:perse])
+		@ekids = @perse.ekids
+	end
+
+	#OLD
+
 	def ekass
 		tp = params[:tp]
 		@ekid = Ekid.find(params[:id])
@@ -126,7 +133,7 @@ class EkidsController < ApplicationController
 
 	def new
 		@ekid = Ekid.new
-		render action: "new", layout: "eipblank"
+		#render action: "new", layout: "eipblank"
 	end
 
 	def create

@@ -39,6 +39,7 @@ class PersesController < ApplicationController
 		@perse = Perse.new(perse_params)
 		if @perse.save 
 			if (prog = params[:perse][:prog]).present?
+
 				if prog == "DIDIK ANIS"
 					redirect_to new_ddk_path(perse: @perse.id)
 				elsif prog == "AKADEMI ANIS"
@@ -46,8 +47,10 @@ class PersesController < ApplicationController
 					prg = Proge.find(params[:perse][:proge])
 					flash[:success] = "Pendaftaran Untuk #{prg.name} Berjaya!"
 					redirect_to persesch_path(prog: prog, proge: params[:perse][:proge] )
-				
+				elsif prog == "TERAPI ANIS" || prog == "SARINGAN ANIS"
+					redirect_to ekid_list_path(perse: @perse.id)
 				end
+
 			else
 				redirect_to perse_path(id: @perse.id, flg: true)
 			end
@@ -69,6 +72,7 @@ class PersesController < ApplicationController
 
 						#program redirection
 						if params[:prog].present?
+
 							if params[:prog] == "DIDIK ANIS"
 								redirect_to new_ddk_path(perse: perse.id)
 							elsif params[:prog] == "AKADEMI ANIS"
@@ -81,7 +85,10 @@ class PersesController < ApplicationController
 									flash[:danger] = "Sila Lengkapkan Maklumat Anda"
 									redirect_to edit_perse_path(id: perse.id, prog: params[:prog], proge: params[:proge])
 								end
-							end			
+							elsif params[:prog] == "SARINGAN ANIS"
+							elsif params[:prog] == "TERAPI ANIS"
+							end	
+
 						else
 							redirect_to perse_path(id: perse.id, flg: true)
 						end

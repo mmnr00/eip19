@@ -102,6 +102,7 @@ Rails.application.routes.draw do
  
 
   #~~EKID
+  get '/ekid_list', to: 'ekids#ekid_list'
   get '/ekidindex', to: 'ekids#index'
   get '/ekidconf', to: 'ekids#ekidconf'
   get '/ekidpdf', to: 'ekids#ekidpdf'
