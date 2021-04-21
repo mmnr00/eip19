@@ -6,7 +6,12 @@
     act= "update"
     btn= "UPDATE"
   end
-  if @age <= 4
+  if @pkid.id.present?
+    dev = []
+    @pkid.devkid.each do |k,v|
+      dev << k
+    end
+  elsif @age <= 4
     dev = $newborn
   elsif @age <= 8
     dev = $empat
@@ -21,9 +26,11 @@
   end
 %>
 
+<% if @pkid.id.blank? %>
 <%= link_to edit_ekid_path(@ekid), class: "btn btn-sm btn-warning" do%>
   <i class="fa fa-arrow-circle-left"></i> KEMBALI KE PROFIL ANAK
 <% end %><br><br>
+<% end %>
 
 <div class='row'>
   <div class='col-lg-8 col-12'>

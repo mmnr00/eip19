@@ -170,7 +170,7 @@ class EkidsController < ApplicationController
 
 	def edit
 		@ekid = Ekid.find(params[:id])
-		render action: "edit", layout: "eipblank"
+		#render action: "edit", layout: "eipblank"
 	end
 
 	def update
@@ -182,11 +182,12 @@ class EkidsController < ApplicationController
 				@ekid.admloc = "srd"
 			end
 			@ekid.save
-			if (pkid = @ekid.pkid).present?
-				redirect_to edit_pkid_path(pkid,ekid: @ekid.id)
-			else
-				redirect_to new_pkid_path(ekid: @ekid.id)
-			end
+			# if (pkid = @ekid.pkid).present?
+			# 	redirect_to edit_pkid_path(pkid,ekid: @ekid.id)
+			# else
+			# 	redirect_to new_pkid_path(ekid: @ekid.id)
+			# end
+			redirect_to ekidconf_path(id: @ekid.id)
 		else
 			render @ekid.errors.full_messages
 			render :edit
@@ -525,7 +526,9 @@ class EkidsController < ApplicationController
 																:refloc,
 																:prbtp,
 																:prbot,
-																:prefloc)
+																:prefloc,
+																:tp,
+																:perse_id)
 	end
 
 	def set_all

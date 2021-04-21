@@ -4,7 +4,7 @@ class PkidsController < ApplicationController
 		@ekid = Ekid.find(params[:ekid])
 		dob = @ekid.dob
 		@age = (Date.today.year*12+Date.today.month) - (dob.year*12+dob.month)
-		render action: "new", layout: "eipblank"
+		#render action: "new", layout: "eipblank"
 	end
 
 	def create
@@ -17,7 +17,7 @@ class PkidsController < ApplicationController
 		@ekid = Ekid.find(params[:ekid])
 		dob = @ekid.dob
 		@age = (Date.today.year*12+Date.today.month) - (dob.year*12+dob.month)
-		render action: "edit", layout: "eipblank"
+		#render action: "edit", layout: "eipblank"
 	end
 
 	def update

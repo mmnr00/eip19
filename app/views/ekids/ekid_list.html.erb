@@ -1,6 +1,6 @@
 
 
-<%= link_to new_ekid_path(prog: "SARING ANIS", perse: params[:perse]), class: "btn btn-sm btn-success", style: "font-size: 15px" do %>
+<%= link_to new_ekid_path(prog: "SARINGAN ANIS", perse: params[:perse]), class: "btn btn-sm btn-success", style: "font-size: 15px" do %>
   <i class="fa far fa-plus"></i>&nbsp Daftar Saringan ANIS
 <% end %>
 &nbsp
@@ -33,11 +33,15 @@
         <tbody>
           <% @ekids.each do |ek| %>
             <tr>
-              <td><%= ek.name %></td>
+              <td>
+                <a href="<%= ekidconf_url(id: ek)%>" target="_blank"><%= ek.name %></a><br>
+                <%= link_to "Kemaskini Profil", edit_ekid_path(id: ek.id, perse: ek.perse.id), class: "badge badge-pill badge-secondary", target: "_blank" %><br> 
+                <%= link_to "Kemaskini Perkembangan", edit_pkid_path(id: ek.pkid.id, ekid: ek.id), class: "badge badge-pill badge-secondary", target: "_blank" %>    
+              </td>
               <td><%= ek.ic %></td>
-              <td><%= ek.stat %></td>
+              <td><%= ek.tp %></td>
             </tr>
-          <% end %>
+          <% end %> 
         </tbody>
       </table>
 
