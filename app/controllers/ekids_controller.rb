@@ -133,6 +133,14 @@ class EkidsController < ApplicationController
 
 	def new
 		@ekid = Ekid.new
+		if params[:sch].present?
+			ekd_exs = Ekid.where(ic: params[:ic])
+			if ekd_exs.present?
+				flash[:danger] = "No MYKAD ini sudah didaftarkan."
+			else
+				@cfm = true
+			end
+		end
 		#render action: "new", layout: "eipblank"
 	end
 
@@ -143,22 +151,22 @@ class EkidsController < ApplicationController
 			flash[:danger] = "NAMA ANAK SUDAH DIDAFTARKAN DALAM SISTEM"
 			redirect_to edit_ekid_path(id: exs.first.id)
 		else
-			if @ekid.prefloc == "Shah Alam"
-				@ekid.admloc = "sha"
-			elsif @ekid.prefloc == "Serdang"
-				@ekid.admloc = "srd"
-			end
-			#Filter early
-			dob = @ekid.dob
-			@age = (Date.today.year*12+Date.today.month) - (dob.year*12+dob.month)
-			year = @age/12
-			if @ekid.pinc == "Lebih dari 10,000" || (year >= 4)
-				@ekid.stat = "REJECT"
-			elsif @ekid.pinc == "5,000 hingga 10,000" && ((@ekid.sib.to_f) < 3)
-				@ekid.stat = "REJECT"
-			else
-				@ekid.stat = "NEW"
-			end
+			# if @ekid.prefloc == "Shah Alam"
+			# 	@ekid.admloc = "sha"
+			# elsif @ekid.prefloc == "Serdang"
+			# 	@ekid.admloc = "srd"
+			# end
+			####Filter early
+			# dob = @ekid.dob
+			# @age = (Date.today.year*12+Date.today.month) - (dob.year*12+dob.month)
+			# year = @age/12
+			# if @ekid.pinc == "Lebih dari 10,000" || (year >= 4)
+			# 	@ekid.stat = "REJECT"
+			# elsif @ekid.pinc == "5,000 hingga 10,000" && ((@ekid.sib.to_f) < 3)
+			# 	@ekid.stat = "REJECT"
+			# else
+			# 	@ekid.stat = "NEW"
+			# end
 			if @ekid.save 
 				redirect_to new_pkid_path(ekid: @ekid.id)
 			else

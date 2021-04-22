@@ -85,8 +85,8 @@ class PersesController < ApplicationController
 									flash[:danger] = "Sila Lengkapkan Maklumat Anda"
 									redirect_to edit_perse_path(id: perse.id, prog: params[:prog], proge: params[:proge])
 								end
-							elsif params[:prog] == "SARINGAN ANIS"
-							elsif params[:prog] == "TERAPI ANIS"
+							elsif params[:prog] == "SARINGAN ANIS" || params[:prog] == "TERAPI ANIS"
+								redirect_to ekid_list_path(perse: perse.id)
 							end	
 
 						else
