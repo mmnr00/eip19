@@ -35,8 +35,11 @@
             <tr>
               <td>
                 <a href="<%= ekidconf_url(id: ek)%>" target="_blank"><%= ek.name %></a><br>
-                <%= link_to "Kemaskini Profil", edit_ekid_path(id: ek.id, perse: ek.perse.id), class: "badge badge-pill badge-secondary", target: "_blank" %><br> 
-                <%= link_to "Kemaskini Perkembangan", edit_pkid_path(id: ek.pkid.id, ekid: ek.id), class: "badge badge-pill badge-secondary", target: "_blank" %>    
+                <%= link_to "Kemaskini Profil", edit_ekid_path(id: ek.id, perse: ek.perse.id), class: "badge badge-pill badge-secondary", target: "_blank" %>
+                <% if ek.pkid.present? %>
+                  <br> 
+                  <%= link_to "Kemaskini Perkembangan", edit_pkid_path(id: ek.pkid.id, ekid: ek.id), class: "badge badge-pill badge-secondary", target: "_blank" %> 
+                <% end %>   
               </td>
               <td><%= ek.ic %></td>
               <td><%= ek.tp %></td>

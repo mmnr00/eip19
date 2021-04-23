@@ -9,7 +9,8 @@ class PkidsController < ApplicationController
 
 	def create
 		@pkid = form_input(0,params[:pkid])
-		redirect_to ekidconf_path(id: @pkid.ekid)
+		#redirect_to ekidconf_path(id: @pkid.ekid)
+		redirect_to ekid_list_path(perse: @pkid.ekid.perse.id)
 	end
 
 	def edit

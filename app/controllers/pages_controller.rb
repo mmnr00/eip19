@@ -4,11 +4,11 @@ class PagesController < ApplicationController
 	 before_action :superadmin, only: [:bank_status]
 
 	def saringananis
-		redirect_to persesch_path(prog: "SARINGAN ANIS")
+		redirect_to persesch_path(prog: "SARINGAN ANIS", regkid: 1)
 	end
 
 	def terapianis
-		redirect_to persesch_path(prog: "TERAPI ANIS")
+		redirect_to persesch_path(prog: "TERAPI ANIS", regkid: 1)
 	end
 
 	def eipblank

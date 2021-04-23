@@ -136,7 +136,7 @@ class EkidsController < ApplicationController
 		if params[:sch].present?
 			ekd_exs = Ekid.where(ic: params[:ic])
 			if ekd_exs.present?
-				flash[:danger] = "No MYKAD ini sudah didaftarkan."
+				flash[:danger] = "No MYKID #{ekd_exs.last.name} ini sudah didaftarkan oleh #{ekd_exs.last.perse.name}"
 			else
 				@cfm = true
 			end
@@ -168,7 +168,31 @@ class EkidsController < ApplicationController
 			# 	@ekid.stat = "NEW"
 			# end
 			if @ekid.save 
-				redirect_to new_pkid_path(ekid: @ekid.id)
+				#send email
+				subject = "Permohonan #{@ekid.tp} Diterima"
+				to = @ekid.perse.email
+				link = "https://www.anisselangor.com/"
+				body = "
+				Terima kasih kerana memohon untuk program #{@ekid.tp}. Sukacita kami ingin maklumkan permohonan 
+				anda telah diterima.<br>
+				Maklumat Permohonan Anda adalah seperti dibawah: <br>
+				<ul>
+					<li><b>Nama Kanak-Kanak: </b> #{@ekid.name}</li>
+					<li><b>No MYKID Anak: </b> #{@ekid.ic} </li>
+					<li><b>Nama Pemohon: </b> #{@ekid.perse.name}</li>
+					<li><b>Semakan Status: </b><a href=#{link}>Sila Klik Disini</a></li>
+				</ul><br>
+				<b>Yang Berkhidmat,</b><br>
+				Jabatan Anak Istimewa Selangor
+
+				"
+				send_email(subject,to,"jabatananisss@yawas.my",body)
+				if @ekid.tp == "SARINGAN ANIS"
+					redirect_to new_pkid_path(ekid: @ekid.id)
+				else
+					redirect_to ekid_list_path(perse: @ekid.perse.id)
+				end
+
 			else
 				render @ekid.errors.full_messages
 				render :new

@@ -219,7 +219,7 @@
         <div class="col-sm-12" style="background-color:blue">
           <font color="white"><h4>KEBENARAN UNTUK PENILAIAN DAN INTERVENSI</h4></font>
         </div>
-
+        <% $agr %>
         <%= f.fields_for :agr do |h| %>
           <% $agr.each do |ent| %>
             <div class="form-group"> <!-- name -->
@@ -230,12 +230,16 @@
               </div>
               <div class="row">
                 <div class="col-sm-12 col-12">
-                  <% if ent == "Saya:"  %>
+                  <% if ent == "Saya:";
+                     agr = Date.today
+                     # agr = @pkid.agr["Tarikh Pengesahan Kebenaran"] unless @pkid.agr["Tarikh Pengesahan Kebenaran"].blank?
+                  %>
+                  <% @pkid.agr["Tarikh Pengesahan Kebenaran"] unless @pkid.agr["Tarikh Pengesahan Kebenaran"].blank? %>
                     <%= h.text_field :"#{ent}", class: "form-control",placeholder: "Nama Ibu/Bapa/Penjaga", value: @pkid.agr[ent], autofocus: true, required: true %>
                   <% elsif ent == "membenarkan pasukan Early Intervention Program untuk menilai dan menjalankan intervensi atau terapi yang diperlukan dan disarankan untuk"  %>
                     <%= h.text_field :"#{ent}", class: "form-control",placeholder: "Nama Anak/Klien", value: @pkid.agr[ent], autofocus: true, required: true %>
                   <% elsif ent == "Tarikh Pengesahan Kebenaran"  %>
-                    <%= h.date_field :"#{ent}", class: "form-control",placeholder: "Nama Anak/Klien", value: @pkid.agr[ent], autofocus: true, required: true %>
+                    <%= h.date_field :"#{ent}", class: "form-control",placeholder: "Nama Anak/Klien", value: agr, autofocus: true, required: true %>
                   <% elsif ent == "SAYA MENGESAHKAN MAKLUMAT YANG DIBERIKAN DI ATAS ADALAH BENAR"  %>
                     <%= h.select :"#{ent}", options_for_select(["Ya", 
                                                               "Tidak"], 
@@ -248,7 +252,7 @@
                                                               "Tidak Setuju"], 
                                                               selected: @pkid.agr[ent]), 
                         {include_blank: "SILA PILIH"}, {required: true} %><br>
-                    <font color="grey" size="2">Kami memahami bahawa penggunaan data atau maklumat peribadi adalah dianggap sebagai data peribadi sensiif yang tertakluk di bawah Akta Perlindungan Data Peribadi 2010 (Personal Data Protection Act 2010 - PDPA). SILA AMBIL PERHATIAN bahawa dengan memberikan semua maklumat yang terkandung di sini dan maklumat peribadi lain yang diperolehi daripada sebarang komunikasi dan / atau interaksi di antara pihak kami dan pihak anda (Subjek Data) dengan ini memberi persetujuan kepada MBI untuk mengumpul, memproses dan/atau menggunakan data peribadi untuk tujuan yang berkaitan dengan, atau selaras dengan (Early Intervention Program) di bawah inisiatif Smart Selangor (EIP) yang dikendalikan oleh MBI. MBI bersetuju untuk meyimpan data peribadi yang diterima daripada Subjek Data secara sulit dan mengikut peruntukan-peruntukan di bawah PDPA.</font>
+                    <font color="grey" size="2">Kami memahami bahawa penggunaan data atau maklumat peribadi adalah dianggap sebagai data peribadi sensiif yang tertakluk di bawah Akta Perlindungan Data Peribadi 2010 (Personal Data Protection Act 2010 - PDPA). SILA AMBIL PERHATIAN bahawa dengan memberikan semua maklumat yang terkandung di sini dan maklumat peribadi lain yang diperolehi daripada sebarang komunikasi dan / atau interaksi di antara pihak kami dan pihak anda (Subjek Data) dengan ini memberi persetujuan kepada Jabatan ANIS untuk mengumpul, memproses dan/atau menggunakan data peribadi untuk tujuan yang berkaitan dengan, atau selaras dengan program Saringan dan Terapi yang dikendalikan oleh Jabatan ANIS. Jabatan ANIS bersetuju untuk meyimpan data peribadi yang diterima daripada Subjek Data secara sulit dan mengikut peruntukan-peruntukan di bawah PDPA.</font>
                   <% else %>
                     <%= h.text_field :"#{ent}", class: "form-control",placeholder: "", value: @pkid.agr[ent], autofocus: true, required: true %>
                   <% end %>
