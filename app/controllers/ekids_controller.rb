@@ -133,6 +133,7 @@ class EkidsController < ApplicationController
 
 	def new
 		@ekid = Ekid.new
+		@ekid.fotos.build
 		if params[:sch].present?
 			ekd_exs = Ekid.where(ic: params[:ic])
 			if ekd_exs.present?
@@ -560,7 +561,8 @@ class EkidsController < ApplicationController
 																:prbot,
 																:prefloc,
 																:tp,
-																:perse_id)
+																:perse_id,
+																fotos_attributes: [:foto, :picture, :foto_name])
 	end
 
 	def set_all

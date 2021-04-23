@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_20_085324) do
+ActiveRecord::Schema.define(version: 2021_04_23_213707) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -221,6 +221,7 @@ ActiveRecord::Schema.define(version: 2021_04_20_085324) do
     t.integer "parent_id"
     t.integer "perse_id"
     t.string "tp"
+    t.integer "ekid_id"
   end
 
   create_table "expenses", force: :cascade do |t|
@@ -271,6 +272,7 @@ ActiveRecord::Schema.define(version: 2021_04_20_085324) do
     t.integer "applv_id"
     t.integer "payment_id"
     t.integer "parpaym_id"
+    t.integer "ekid_id"
   end
 
   create_table "kid_bills", force: :cascade do |t|
