@@ -4,12 +4,13 @@ class PkidsController < ApplicationController
 		@ekid = Ekid.find(params[:ekid])
 		dob = @ekid.dob
 		@age = (Date.today.year*12+Date.today.month) - (dob.year*12+dob.month)
-		render action: "new", layout: "eipblank"
+		#render action: "new", layout: "eipblank"
 	end
 
 	def create
 		@pkid = form_input(0,params[:pkid])
-		redirect_to ekidconf_path(id: @pkid.ekid)
+		#redirect_to ekidconf_path(id: @pkid.ekid)
+		redirect_to ekid_list_path(perse: @pkid.ekid.perse.id)
 	end
 
 	def edit
@@ -17,7 +18,7 @@ class PkidsController < ApplicationController
 		@ekid = Ekid.find(params[:ekid])
 		dob = @ekid.dob
 		@age = (Date.today.year*12+Date.today.month) - (dob.year*12+dob.month)
-		render action: "edit", layout: "eipblank"
+		#render action: "edit", layout: "eipblank"
 	end
 
 	def update

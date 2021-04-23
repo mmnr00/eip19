@@ -42,6 +42,8 @@ Rails.application.routes.draw do
 
 
   #~~PAGES
+  get '/saringananis', to: 'pages#saringananis'
+  get '/terapianis', to: 'pages#terapianis'
   get '/eipblank', to: 'pages#eipblank'
 
   #~~skids
@@ -100,6 +102,7 @@ Rails.application.routes.draw do
  
 
   #~~EKID
+  get '/ekid_list', to: 'ekids#ekid_list'
   get '/ekidindex', to: 'ekids#index'
   get '/ekidconf', to: 'ekids#ekidconf'
   get '/ekidpdf', to: 'ekids#ekidpdf'
@@ -132,6 +135,7 @@ Rails.application.routes.draw do
 
   # For dtails on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
    #WELCOME
+  get '/sokonganis', to: 'welcomes#sokonganis'
   get '/akademianis', to: 'welcomes#akademianis'
   get '/videols', to: 'welcomes#videols'
   get '/profilyb', to: 'welcomes#profilyb'

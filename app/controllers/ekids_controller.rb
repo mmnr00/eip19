@@ -2,6 +2,13 @@ class EkidsController < ApplicationController
 	before_action :authenticate_admin!, only: [:index]
 	before_action :set_all
 
+	def ekid_list
+		@perse = Perse.find(params[:perse])
+		@ekids = @perse.ekids
+	end
+
+	#OLD
+
 	def ekass
 		tp = params[:tp]
 		@ekid = Ekid.find(params[:id])
@@ -126,7 +133,16 @@ class EkidsController < ApplicationController
 
 	def new
 		@ekid = Ekid.new
-		render action: "new", layout: "eipblank"
+		@ekid.fotos.build
+		if params[:sch].present?
+			ekd_exs = Ekid.where(ic: params[:ic])
+			if ekd_exs.present?
+				flash[:danger] = "No MYKID #{ekd_exs.last.name} ini sudah didaftarkan oleh #{ekd_exs.last.perse.name}"
+			else
+				@cfm = true
+			end
+		end
+		#render action: "new", layout: "eipblank"
 	end
 
 	def create
@@ -136,24 +152,48 @@ class EkidsController < ApplicationController
 			flash[:danger] = "NAMA ANAK SUDAH DIDAFTARKAN DALAM SISTEM"
 			redirect_to edit_ekid_path(id: exs.first.id)
 		else
-			if @ekid.prefloc == "Shah Alam"
-				@ekid.admloc = "sha"
-			elsif @ekid.prefloc == "Serdang"
-				@ekid.admloc = "srd"
-			end
-			#Filter early
-			dob = @ekid.dob
-			@age = (Date.today.year*12+Date.today.month) - (dob.year*12+dob.month)
-			year = @age/12
-			if @ekid.pinc == "Lebih dari 10,000" || (year >= 4)
-				@ekid.stat = "REJECT"
-			elsif @ekid.pinc == "5,000 hingga 10,000" && ((@ekid.sib.to_f) < 3)
-				@ekid.stat = "REJECT"
-			else
-				@ekid.stat = "NEW"
-			end
+			# if @ekid.prefloc == "Shah Alam"
+			# 	@ekid.admloc = "sha"
+			# elsif @ekid.prefloc == "Serdang"
+			# 	@ekid.admloc = "srd"
+			# end
+			####Filter early
+			# dob = @ekid.dob
+			# @age = (Date.today.year*12+Date.today.month) - (dob.year*12+dob.month)
+			# year = @age/12
+			# if @ekid.pinc == "Lebih dari 10,000" || (year >= 4)
+			# 	@ekid.stat = "REJECT"
+			# elsif @ekid.pinc == "5,000 hingga 10,000" && ((@ekid.sib.to_f) < 3)
+			# 	@ekid.stat = "REJECT"
+			# else
+			# 	@ekid.stat = "NEW"
+			# end
 			if @ekid.save 
-				redirect_to new_pkid_path(ekid: @ekid.id)
+				#send email
+				subject = "Permohonan #{@ekid.tp} Diterima"
+				to = @ekid.perse.email
+				link = "https://www.anisselangor.com/"
+				body = "
+				Terima kasih kerana memohon untuk program #{@ekid.tp}. Sukacita kami ingin maklumkan permohonan 
+				anda telah diterima.<br>
+				Maklumat Permohonan Anda adalah seperti dibawah: <br>
+				<ul>
+					<li><b>Nama Kanak-Kanak: </b> #{@ekid.name}</li>
+					<li><b>No MYKID Anak: </b> #{@ekid.ic} </li>
+					<li><b>Nama Pemohon: </b> #{@ekid.perse.name}</li>
+					<li><b>Semakan Status: </b><a href=#{link}>Sila Klik Disini</a></li>
+				</ul><br>
+				<b>Yang Berkhidmat,</b><br>
+				Jabatan Anak Istimewa Selangor
+
+				"
+				send_email(subject,to,"jabatananisss@yawas.my",body)
+				if @ekid.tp == "SARINGAN ANIS"
+					redirect_to new_pkid_path(ekid: @ekid.id)
+				else
+					redirect_to ekid_list_path(perse: @ekid.perse.id)
+				end
+
 			else
 				render @ekid.errors.full_messages
 				render :new
@@ -163,7 +203,7 @@ class EkidsController < ApplicationController
 
 	def edit
 		@ekid = Ekid.find(params[:id])
-		render action: "edit", layout: "eipblank"
+		#render action: "edit", layout: "eipblank"
 	end
 
 	def update
@@ -175,11 +215,12 @@ class EkidsController < ApplicationController
 				@ekid.admloc = "srd"
 			end
 			@ekid.save
-			if (pkid = @ekid.pkid).present?
-				redirect_to edit_pkid_path(pkid,ekid: @ekid.id)
-			else
-				redirect_to new_pkid_path(ekid: @ekid.id)
-			end
+			# if (pkid = @ekid.pkid).present?
+			# 	redirect_to edit_pkid_path(pkid,ekid: @ekid.id)
+			# else
+			# 	redirect_to new_pkid_path(ekid: @ekid.id)
+			# end
+			redirect_to ekidconf_path(id: @ekid.id)
 		else
 			render @ekid.errors.full_messages
 			render :edit
@@ -518,7 +559,10 @@ class EkidsController < ApplicationController
 																:refloc,
 																:prbtp,
 																:prbot,
-																:prefloc)
+																:prefloc,
+																:tp,
+																:perse_id,
+																fotos_attributes: [:foto, :picture, :foto_name])
 	end
 
 	def set_all

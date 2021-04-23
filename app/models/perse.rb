@@ -2,6 +2,7 @@ class Perse < ApplicationRecord
 	has_many :perproges
 	has_many :proges, through: :perproges
 	has_one  :ddk
+	has_many :ekids
 	before_save :save_perses
 
 	private 

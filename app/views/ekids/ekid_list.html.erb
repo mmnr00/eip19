@@ -1,0 +1,56 @@
+
+
+<%= link_to new_ekid_path(prog: "SARINGAN ANIS", perse: params[:perse]), class: "btn btn-sm btn-success", style: "font-size: 15px" do %>
+  <i class="fa far fa-plus"></i>&nbsp Daftar Saringan ANIS
+<% end %>
+&nbsp
+<%= link_to new_ekid_path(prog: "TERAPI ANIS", perse: params[:perse]), class: "btn btn-sm btn-primary", style: "font-size: 15px" do %>
+  <i class="fa far fa-plus"></i>&nbsp Daftar Terapi ANIS
+<% end %>
+<div style="margin-bottom: 10px"></div>
+
+<% if @ekids.count >= 0 %>
+<div class="cards shadow mb-4" style="">
+  <div class="card-header">
+    
+    <btn class="badge badge-pill badge-secondary">
+      Senarai Anak Yang Didaftarkan Oleh <%= @perse.name %> 
+    </btn>
+    
+  </div>
+  <div class="card-body">
+
+    <div class="table table-responsive border" style="font-size:13px">
+
+      <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0" style="color: black">
+        <thead>
+          <tr class="shadow">
+            <th style="background-color:#ffb2b2; width: %">NAMA</th>
+            <th style="background-color:#ffb2b2; width: %">NO MYKAD</th>
+            <th style="background-color:#ffb2b2; width: %">PROGRAM</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @ekids.each do |ek| %>
+            <tr>
+              <td>
+                <a href="<%= ekidconf_url(id: ek)%>" target="_blank"><%= ek.name %></a><br>
+                <%= link_to "Kemaskini Profil", edit_ekid_path(id: ek.id, perse: ek.perse.id), class: "badge badge-pill badge-secondary", target: "_blank" %>
+                <% if ek.pkid.present? %>
+                  <br> 
+                  <%= link_to "Kemaskini Perkembangan", edit_pkid_path(id: ek.pkid.id, ekid: ek.id), class: "badge badge-pill badge-secondary", target: "_blank" %> 
+                <% end %>   
+              </td>
+              <td><%= ek.ic %></td>
+              <td><%= ek.tp %></td>
+            </tr>
+          <% end %> 
+        </tbody>
+      </table>
+
+    </div>
+
+  </div>
+</div>
+<% end %>
+

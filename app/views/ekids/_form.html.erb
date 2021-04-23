@@ -1,9 +1,9 @@
 <div class='row'>
-  <div class='col-lg-8 col-12'>
+  <div class='col-lg-12 col-12'>
     <%= form_for(@ekid,:html => {multipart: true, class: "form-horizontal", role: "form"}) do |f| %>
 
-      <div class="col-sm-12" style="background-color:blue">
-        <font color="white"><h4>MAKLUMAT ANAK</h4></font>
+      <div class="col-sm-8" style="background-color:#ffcccc">
+        <h6 style="color:black; font-weight: 600">Maklumat Anak</h6>
       </div>
 
       <div class="form-group"> 
@@ -14,7 +14,7 @@
         </div>
         <div class="row">
           <div class="col-sm-8 col-12">
-            <%= f.text_field :name, class: "form-control", placeholder: "NAMA PENUH SEPERTI DI MYKID", autofocus: true, required: true %>
+            <%= f.text_field :name, class: "form-control", placeholder: "Nama Penuh Seperti MyKid", autofocus: true, required: true %>
           </div>
         </div>
       </div>
@@ -34,7 +34,7 @@
                 icval = params[:ic]
               end 
             %>
-            <%= f.text_field :ic, class: "form-control", placeholder: "cth: 141201035647 (tiada dash)", autofocus: true, required: true, value: icval %>
+            <%= f.text_field :ic, class: "form-control", placeholder: "cth: 141201035647 (tiada dash)", autofocus: true, required: true, value: icval, readonly: true %>
           </div>
         </div>
       </div>
@@ -73,8 +73,8 @@
         </div>
       </div>
 
-      <br><div class="col-sm-12" style="background-color:blue">
-        <font color="white"><h4>MAKLUMAT KELUARGA</h4></font>
+      <br><div class="col-sm-8" style="background-color:#ffcccc">
+        <h6 style="color:black; font-weight: 600">Maklumat Keluarga</h6>
       </div>
 
       <div class="form-group"> 
@@ -85,7 +85,7 @@
         </div>
         <div class="row">
           <div class="col-sm-8 col-12">
-            <%= f.text_area :addr, class: "form-control", placeholder: "Pastikan ada memasukkan poskod, daerah dan negeri", autofocus: true, required: true %>
+            <%= f.text_area :addr, rows: 4, class: "form-control", placeholder: "Pastikan ada memasukkan poskod, daerah dan negeri", autofocus: true, required: true %>
           </div>
         </div>
       </div>
@@ -114,7 +114,7 @@
         </div>
       </div>
 
-      <div class="form-group"> 
+      <!-- <div class="form-group"> 
         <div class="row">
           <div class="control-label col-sm-8">
             <strong>LOKASI PILIHAN</strong>
@@ -128,7 +128,7 @@
             <br>Ujian Saringan akan diadakan disekitar lokasi diatas
           </div>
         </div>
-      </div>
+      </div> -->
 
       <div class="form-group"> 
         <div class="row">
@@ -396,8 +396,8 @@
         </div>
       </div>
 
-      <br><div class="col-sm-12" style="background-color:blue">
-        <font color="white"><h4>MAKLUMAT PERKEMBANGAN ANAK</h4></font>
+      <div class="col-sm-8" style="background-color:#ffcccc">
+        <h6 style="color:black; font-weight: 600">Maklumat Perkembangan Anak</h6>
       </div>
 
       <div class="form-group"> 
@@ -462,9 +462,41 @@
         </div>
       </div>
 
+      <div class="form-group"> 
+            <div class="row">
+              <div class="control-label col-sm-8">
+                <i class="fas fa-cloud-upload-alt"></i><strong>SURAT DIAGNOSIS</strong>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-8 col-12">
+                <% image = @ekid.fotos.where(foto_name: "DIAGNOSIS").first %>
+                <%  if image.present? %>
+                  <%= image_tag(image.picture.url, size: "200x200") if image.picture? %>
+                  <div class="row">
+                    <div class="col-sm-8 col-5">
+                      <strong><%= link_to "EDIT", edit_foto_path(image.id), class: "btn btn-sm btn-success active" %></strong>
+                    </div>
+                  </div>  
+                <% else %>
+                  <%= f.fields_for :fotos do |h| %>
+                    <div class="row">
+                      <div class="col-sm-8 col-8">
+                        <%= h.hidden_field :foto_name, value: "DIAGNOSIS" %>
+                        <%= h.file_field :picture, accept: 'image/jpeg,image/gif,image/png,application/pdf', required: true %>
+                      </div>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+            <i>Wajib Disertakan</i>
+          </div>
 
 
 
+      <%= f.hidden_field :tp, value: params[:prog] %>
+      <%= f.hidden_field :perse_id, value: params[:perse] %>
 
 
       <br>

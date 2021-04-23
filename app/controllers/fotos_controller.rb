@@ -18,6 +18,10 @@ class FotosController < ApplicationController
       	redirect_to edit_kid_path(@kid)
       elsif @tchdetail.present? #&& @tchdetail.anis == "true"
         redirect_to edit_tchdetail_path(@tchdetail)
+      elsif @foto.ekid_id.present?
+        ekid = @foto.ekid
+        flash[:success] = "Kemaskini Berjaya"
+        redirect_to edit_ekid_path(id: ekid.id, perse: ekid.perse.id)
       elsif @admin
         if @foto.taska.present?
         	@taska = @foto.taska
