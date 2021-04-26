@@ -135,6 +135,8 @@ Rails.application.routes.draw do
 
   # For dtails on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
    #WELCOME
+  get '/introanis', to: 'welcomes#introanis'
+  get '/orgchart', to: 'welcomes#orgchart'
   get '/sokonganis', to: 'welcomes#sokonganis'
   get '/akademianis', to: 'welcomes#akademianis'
   get '/videols', to: 'welcomes#videols'

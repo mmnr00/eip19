@@ -5,6 +5,14 @@ class WelcomesController < ApplicationController
 	
 	#layout "page"
 
+	def introanis
+		@index = true
+	end
+
+	def orgchart
+		@index = true
+	end
+
 	def sokonganis
 		@index = true
 	end
