@@ -240,7 +240,7 @@
             <div class="col-lg-4 col-md-6 col-sm-12">
             <img src="<%= artk.pic %>" width="350" height="235">
             <p style="font-size: 15px"><i class="fa fas fa-clock"></i> <%= artk.created_at.strftime('%d-%b-%y')%> oleh <%= artk.author %></p>
-            <p style="font-weight: 700; font-size: 20px"><%= artk.title %></p>
+            <p style="font-weight: 700; font-size: 16px; text-align: left"><%= artk.title %></p>
             <p><%= sanitize artk.headl %> <a href="<%= artk_path(artk) %>">Artikel Penuh</a></p>
           </div>
 
