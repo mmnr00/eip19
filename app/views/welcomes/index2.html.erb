@@ -236,7 +236,7 @@
 
         <div id="article" class="row">
 
-          <% Artk.all.order('created_at DESC').each do |artk| %>
+          <% Artk.all.order('created_at DESC').last(3).each do |artk| %>
             <div class="col-lg-4 col-md-6 col-sm-12">
             <img src="<%= artk.pic %>" width="350" height="235">
             <p style="font-size: 15px"><i class="fa fas fa-clock"></i> <%= artk.created_at.strftime('%d-%b-%y')%> oleh <%= artk.author %></p>
