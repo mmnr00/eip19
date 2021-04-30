@@ -2,7 +2,9 @@
   <div class="card-header">
     <b><%= @proge.name %></b> (<%= @perses.count%> penyertaan)
     <%= link_to "Kembali ke Senarai Program", progeindex_path, class: 'badge badge-pill badge-success' %> 
+    <% if current_admin.username == "eipadmin" %>
     <%= link_to "Send Email to All", progeindex_path, class: 'badge badge-pill badge-danger' %> 
+    <% end %>
   </div>
 
   <div class="card-body">

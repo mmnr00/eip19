@@ -14,6 +14,11 @@
   <div class="border-prog" style=""></div>
   <p style="text-align: center; color: black; font-weight: 600">Permohonan Bantuan Didik ANIS Kini Dibuka</p>
   <p style="text-align: center; color: black">Daftar Dan Hantar Dokumen Sokongan Selewatnya pada 30 April 2021</p>
+  <% if Date.today > Date.new(2021,04,30) %>
+    <div style="background-color: #6666ff; text-align: center; color: white; margin-bottom: -20px">
+      Pendaftaran Untuk Didik ANIS Telah Ditutup. Terima Kasih.
+    </div>
+  <% end %>
 </div>
 
 <!-- content -->

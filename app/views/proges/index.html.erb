@@ -54,7 +54,14 @@
           <% @proges.order('date DESC').each do |prg| %>
           <tr>
             <td>
-              <a href="<%= edit_proge_path(prg) %>" target=""><%= prg.name %></a>
+              <a href="<%= edit_proge_path(prg) %>" target="">
+                <%= prg.name %>
+              </a>&nbsp
+              <% if prg.acv %>
+                <%= link_to "Deactivate", updacv_path(proge: prg.id), class: "badge badge-success badge-pill" %>
+              <% else %>
+                <%= link_to "Activate", updacv_path(proge: prg.id), class: "badge badge-danger badge-pill" %>
+              <% end %> 
             </td>
             <td>
               <%= prg.date.strftime('%d-%^b-%y') %>  

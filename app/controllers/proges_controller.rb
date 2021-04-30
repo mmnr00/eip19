@@ -1,5 +1,13 @@
 class ProgesController < ApplicationController
 
+	def updacv
+		proge = Proge.find(params[:proge])
+		proge.acv = !proge.acv
+		proge.save
+		flash[:notice] = "Program Dikemaskini"
+		redirect_to request.referrer
+	end
+
 	def send_cert
 		flash[:success] = "Email sent"
 		proge = Proge.find(params[:proge])

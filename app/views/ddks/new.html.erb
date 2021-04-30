@@ -1,1 +1,8 @@
-<%= render 'ddks/form' %>
+<% if Date.today > Date.new(2021,04,30) %>
+  <div style="background-color: #6666ff; text-align: center; color: white">
+    Pendaftaran Untuk Didik ANIS Telah Ditutup. Terima Kasih.
+  </div>
+<% else %>
+ <%= render 'ddks/form' %> 
+<% end %>
+

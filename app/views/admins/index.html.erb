@@ -61,10 +61,11 @@
           <i><b><%= @ddk.where(stat: 1).count %></b> Permohonan Baru</i>
         </p>
       <% else;
-          nxt_prog = Proge.where("date >= ?", Date.today)
+          # nxt_prog = Proge.where("date >= ?", Date.today)
+          nxt_prog = Proge.where(acv: true)
        %>
         <p style="font-size: 12px; text-align: center; color: green">
-          <i><%= nxt_prog.count %> program seterusnya</i>
+          <i><%= nxt_prog.count %> program aktif</i>
         </p>
       <% end %>
       
