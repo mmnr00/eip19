@@ -1,0 +1,16 @@
+<% @proges.count %>
+
+<h5 style="font-weight: 600; color: black">SILA PILIH SESI</h5>
+<% @proges.order('date DESC').each do |prg| %>
+  <div class="card bg-info text-white shadow">
+    <div class="card-body">
+      <a href="<%= persesch_url(proge: prg.id, prog: "AKADEMI ANIS") %>" class="text-white">
+        <%= prg.name %>
+      </a>
+      <div class="text-white-50 small">
+        <%= prg.date.strftime('%d-%^b-%y') %>
+        (<%= prg.venue %>)
+      </div>
+    </div>
+  </div><br>
+<% end %>

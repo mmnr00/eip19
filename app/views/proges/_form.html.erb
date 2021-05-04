@@ -15,6 +15,24 @@
           </div>
         </div>
 
+        <div class="form-group"> <!-- name -->
+          <div class="row">
+            <div class="control-label col-sm-8">
+              <strong>JENIS PROGRAM</strong>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-8 col-12">
+              <%= f.select :tp, options_for_select(["Seminar",
+                                                    "Cikgu",
+                                                    "TOT"
+                                                  ], 
+                                                  selected: @proge.tp), 
+            {include_blank: "Pilih Satu"}, {required: true} %>
+            </div>
+          </div>
+        </div>
+
         <div class="form-group"> <!-- DATE-->
           <div class="row">
             <div class="control-label col-sm-8">

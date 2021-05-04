@@ -42,6 +42,7 @@ Rails.application.routes.draw do
 
 
   #~~PAGES
+  get '/seminaranis', to: 'pages#seminaranis'
   get '/saringananis', to: 'pages#saringananis'
   get '/terapianis', to: 'pages#terapianis'
   get '/eipblank', to: 'pages#eipblank'
@@ -71,6 +72,7 @@ Rails.application.routes.draw do
   get '/rflt_pdf', to: 'rflts#rflt_pdf'
 
   #~~PROGE
+  get '/progeperse_xls', to: 'proges#progeperse_xls'
   get '/updacv', to: 'proges#updacv'
   get '/send_cert', to: 'proges#send_cert'
   post '/upld_perse', to: 'proges#upld_perse'

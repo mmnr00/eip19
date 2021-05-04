@@ -1,5 +1,16 @@
 class ProgesController < ApplicationController
 
+	def progeperse_xls
+		@proge = Proge.find(params[:proge])
+		@perses = @proge.perses
+		respond_to do |format|
+      #format.html
+      format.xlsx{
+                  response.headers['Content-Disposition'] = 'attachment; filename="PENDAFTARAN.xlsx"'
+      }
+    end
+	end
+
 	def updacv
 		proge = Proge.find(params[:proge])
 		proge.acv = !proge.acv
@@ -328,7 +339,8 @@ class ProgesController < ApplicationController
 																	:date, 
 																	:venue, 
 																	:start,
-																	:end)
+																	:end,
+																	:tp)
 	end
 	
 end

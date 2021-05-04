@@ -3,6 +3,14 @@ class PagesController < ApplicationController
 	 before_action :set_all
 	 before_action :superadmin, only: [:bank_status]
 
+	def seminaranis
+		@proges = Proge.where(tp: "Seminar", acv: true)
+		if @proges.count == 1
+			redirect_to persesch_path(proge: @proges.last.id, prog: "AKADEMI ANIS") and return
+		else
+		end
+	end
+
 	def saringananis
 		redirect_to persesch_path(prog: "SARINGAN ANIS", regkid: 1)
 	end

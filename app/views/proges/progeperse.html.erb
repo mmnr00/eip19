@@ -1,13 +1,19 @@
 <div class="cards shadow mb-4">
-  <div class="card-header">
+  <div class="card-header" style="margin-bottom: -15px">
     <b><%= @proge.name %></b> (<%= @perses.count%> penyertaan)
-    <%= link_to "Kembali ke Senarai Program", progeindex_path, class: 'badge badge-pill badge-success' %> 
+    <%= link_to progeindex_path, class: 'badge badge-pill badge-primary' do %> 
+      <i class="fa fas fa-arrow-circle-left"></i>&nbsp&nbspKembali Ke Senarai Program
+    <% end %>
+    
     <% if current_admin.username == "eipadmin" %>
     <%= link_to "Send Email to All", progeindex_path, class: 'badge badge-pill badge-danger' %> 
     <% end %>
   </div>
 
   <div class="card-body">
+    <%= link_to progeperse_xls_path(proge: @proge.id, format: :xlsx), class: 'badge badge-pill badge-success' do %>
+      <i class="fa fas fa-file-excel"></i>&nbsp&nbspMuat Turun Senarai
+    <% end %> 
       
     <div class="table table-responsive border" style="font-size:13px">
       <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0" style="color: black">
