@@ -16,6 +16,14 @@ class EkidsController < ApplicationController
 		if params[:sch].present?
 			@ekids = @ekids.where(tp: params[:sch_fld]) unless params[:sch_fld].blank?
 			@ekids = @ekids.where('name LIKE ?', "%#{params[:sch_str].upcase}%") unless params[:sch_str].blank?
+			if params[:stat].present?
+				if params[:stat] == "AKTIF"
+					@ekids = @ekids.where(stat: [nil,""])
+				else
+					@ekids = @ekids.where.not(stat: [nil,""])
+				end
+				
+			end
 		end
 		@ddk = Ddk.all
 		#render action: "index", layout: "eipblank"
