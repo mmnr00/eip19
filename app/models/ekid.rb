@@ -12,5 +12,12 @@ class Ekid < ApplicationRecord
 	belongs_to :perse
 	belongs_to :sce, optional: true
 	belongs_to :parent, optional: true
+	before_save :save_ekids
+
+	private
+
+	def save_ekids
+		self.name = self.name.upcase
+	end
 
 end

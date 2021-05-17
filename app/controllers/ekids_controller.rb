@@ -2,6 +2,25 @@ class EkidsController < ApplicationController
 	before_action :authenticate_admin!, only: [:index]
 	before_action :set_all
 
+	def ekstat
+		@ekid = Ekid.find(params[:id])
+		@ekid.stat = params[:stat]
+		@ekid.save
+		flash[:success] = "Status #{@ekid.name} berjaya dikemaskini"
+		redirect_to request.referrer
+	end
+
+	def index
+		@admin = current_admin
+		@ekids = Ekid.all
+		if params[:sch].present?
+			@ekids = @ekids.where(tp: params[:sch_fld]) unless params[:sch_fld].blank?
+			@ekids = @ekids.where('name LIKE ?', "%#{params[:sch_str].upcase}%") unless params[:sch_str].blank?
+		end
+		@ddk = Ddk.all
+		#render action: "index", layout: "eipblank"
+	end
+
 	def ekid_list
 		@perse = Perse.find(params[:perse])
 		@ekids = @perse.ekids
@@ -97,11 +116,11 @@ class EkidsController < ApplicationController
 		end 
 	end
 	
-	def index
-		@admin = current_admin
-		@ekids = Ekid.where(admloc: $admloc[@admin.id],stat: params[:stato])
-		#render action: "index", layout: "eipblank"
-	end
+	# def index
+	# 	@admin = current_admin
+	# 	@ekids = Ekid.where(admloc: $admloc[@admin.id],stat: params[:stato])
+	# 	#render action: "index", layout: "eipblank"
+	# end
 
 	def ekidconf
 		@ekid = Ekid.find(params[:id])

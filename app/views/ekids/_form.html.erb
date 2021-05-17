@@ -14,7 +14,7 @@
         </div>
         <div class="row">
           <div class="col-sm-8 col-12">
-            <%= f.text_field :name, class: "form-control", placeholder: "Nama Penuh Seperti MyKid", autofocus: true, required: true %>
+            <%= f.text_field :name, class: "form-control", placeholder: "Nama Penuh Seperti MyKid", autofocus: true, required: true, style: "text-transform: uppercase" %>
           </div>
         </div>
       </div>
@@ -499,9 +499,15 @@
         </div>
       <% end %>
 
+      <% 
+        if @ekid.tp.present?
+          tp = @ekid.tp
+        else
+          tp = params[:prog]
+        end
+      %> 
 
-
-      <%= f.hidden_field :tp, value: params[:prog] %>
+      <%= f.hidden_field :tp, value: tp %>
       <%= f.hidden_field :perse_id, value: params[:perse] %>
 
 
