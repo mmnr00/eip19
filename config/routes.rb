@@ -43,8 +43,8 @@ Rails.application.routes.draw do
 
   #~~PAGES
   get '/seminaranis', to: 'pages#seminaranis'
-  get '/saringananis', to: 'pages#saringananis'
-  get '/terapianis', to: 'pages#terapianis'
+  get '/saringananis_reg', to: 'pages#saringananis_reg'
+  get '/terapianis_reg', to: 'pages#terapianis_reg'
   get '/eipblank', to: 'pages#eipblank'
 
   #~~skids
@@ -138,6 +138,8 @@ Rails.application.routes.draw do
 
   # For dtails on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
    #WELCOME
+  get '/terapianis', to: 'welcomes#terapianis'
+  get '/saringananis', to: 'welcomes#saringananis'
   get '/introanis', to: 'welcomes#introanis'
   get '/orgchart', to: 'welcomes#orgchart'
   get '/sokonganis', to: 'welcomes#sokonganis'
