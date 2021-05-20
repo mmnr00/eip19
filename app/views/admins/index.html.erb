@@ -18,7 +18,7 @@
         </p>
       <% else %>
         <p style="font-size: 12px; text-align: center; color: green">
-          <i>Akan Datang</i>
+          <i></i>
         </p>
       <% end %>
       
@@ -36,7 +36,7 @@
       <h5 style="color: black; padding-top: 10px; text-align: center; margin-bottom: 0px">Didik ANIS</h5>
       <% if @ddk.where(stat: 1).count > 0 %>
         <p style="font-size: 12px; text-align: center; color: red">
-          <i><b><%= @ddk.where(stat: 1).count %></b> Permohonan Baru</i>
+          <i><!-- <b><%= @ddk.where(stat: 1).count %></b> Permohonan Baru --></i>
         </p>
       <% else %>
         <p style="font-size: 12px; text-align: center; color: green">
@@ -58,14 +58,14 @@
       <h5 style="color: black; padding-top: 10px; text-align: center; margin-bottom: 0px">Akademi ANIS</h5>
       <% if 1==0 %>
         <p style="font-size: 12px; text-align: center; color: red">
-          <i><b><%= @ddk.where(stat: 1).count %></b> Permohonan Baru</i>
+          <i><!-- <b><%= @ddk.where(stat: 1).count %></b> Permohonan Baru --></i>
         </p>
       <% else;
           # nxt_prog = Proge.where("date >= ?", Date.today)
           nxt_prog = Proge.where(acv: true)
        %>
         <p style="font-size: 12px; text-align: center; color: green">
-          <i><%= nxt_prog.count %> program aktif</i>
+          <!-- <i><%= nxt_prog.count %> program aktif</i> -->
         </p>
       <% end %>
       
@@ -89,7 +89,7 @@
           a = 5
        %>
         <p style="font-size: 12px; text-align: center; color: green">
-          <i>Akan Datang</i>
+          <!-- <i>Akan Datang</i> -->
         </p>
       <% end %>
       
