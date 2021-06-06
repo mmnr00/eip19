@@ -57,18 +57,18 @@ $duaempat =["Tidak berminat untuk bermain",
 						"Tidak berminat untuk bermain atau berinteraksi dengan yang lain",
 						"Tidak berminat untuk makan"]
 
-$tigaenam = ["Tidak difahami oleh yang lain",
+$tigaenam = ["Adakah pertuturan anak difahami oleh yang lain?",
 						"Mempunyai masalah gagap yang menganggu kelancaran bertutur",
 						"Tidak boleh berbual",
 						"Tidak faham arahan",
 						"Tidak bermain dengan anak-anak lain"]
 
-$addfo = ["Nama Pakar Kanak - Kanak (Jika Ada)","No Telefon Pakar","Maklumat Adik Beradik"]
+$addfo = ["Nama Doktor/ Pakar Kanak - Kanak (Jika Ada)","Nama Klinik/Hospital (Jika Ada)","Maklumat Adik Beradik"]
 
 $health = ["Cacar Air",
 					"Campak",
 					"Scarlet Fever/Demam Scarlet",
-					"Rheumatic Fever/Demam",
+					"Demam Rheumatik",
 					"Pneumonia/Radang Paru-paru",
 					"Influenza",
 					"Asthma/Lelah",
