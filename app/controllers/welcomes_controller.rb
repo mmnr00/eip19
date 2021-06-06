@@ -5,13 +5,14 @@ class WelcomesController < ApplicationController
 	
 	#layout "page"
 
+	def intervensianis
+		@index = true
+	end
+
 	def saringananis
 		@index = true
 	end
 
-	def terapianis
-		@index = true
-	end
 
 	def introanis
 		@index = true

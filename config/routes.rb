@@ -138,7 +138,7 @@ Rails.application.routes.draw do
 
   # For dtails on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
    #WELCOME
-  get '/terapianis', to: 'welcomes#terapianis'
+  get '/intervensianis', to: 'welcomes#intervensianis'
   get '/saringananis', to: 'welcomes#saringananis'
   get '/introanis', to: 'welcomes#introanis'
   get '/orgchart', to: 'welcomes#orgchart'
