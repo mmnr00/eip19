@@ -5,7 +5,7 @@ git commit -m "anis"
 git push
 
 git checkout ostg_an
-git merge dev_an
+git merge dev_an1
 git push
 
 git checkout prod_an
