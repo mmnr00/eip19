@@ -13,5 +13,5 @@ git merge ostg_an
 git push
 
 git diff HEAD ostg_an
-git diff HEAD dev_an
-git checkout dev_an
+git diff HEAD dev_an1
+git checkout dev_an1
