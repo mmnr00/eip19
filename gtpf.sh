@@ -1,5 +1,5 @@
 #!/bin/bash
-git checkout dev_an
+git checkout dev_an1
 git add -A
 git commit -m "anis"
 git push
