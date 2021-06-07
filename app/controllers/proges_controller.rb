@@ -61,10 +61,10 @@ class ProgesController < ApplicationController
 				end
 				perse.ph = ph
 				perse.gdr = row["GENDER"]
-				dt = row["MYKAD"].to_s
-				if dt.to_i <= 0
-					perse.dob = Date.new("19#{dt[0..1]}".to_i,dt[2..3].to_i,dt[4..5].to_i)
-				end
+				# dt = row["MYKAD"].to_s
+				# if dt.to_i <= 0
+				# 	perse.dob = Date.new("19#{dt[0..1]}".to_i,dt[2..3].to_i,dt[4..5].to_i)
+				# end
 				perse.race = row["RACE"]
 				perse.backg = row["BACKG"]
 				perse.kdoku = row["OKU"]
