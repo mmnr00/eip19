@@ -15,7 +15,15 @@ wb.styles do |style|
                   "NAMA",
                   "NO MYKAD",
                   "NO TELEFON",
-                  "EMAIL"]
+                  "EMAIL",
+                  "LATAR BELAKANG",
+                  "PENDAPATAN ISI RUMAH",
+                  "KATEGORI OKU ANAK",
+                  "DIAGNOSIS ANAK",
+                  "BANGSA",
+                  "JANTINA",
+                  "DUN"
+                  ]
     sheet.rows[0].style = header_1
     sheet.rows[2].style = highlight_cell
     counter = 1
@@ -26,7 +34,15 @@ wb.styles do |style|
                     mmb.name,
                     mmb.ic,
                     "+6#{mmb.ph}",
-                    mmb.email], 
+                    mmb.email,
+                    mmb.backg,
+                    mmb.inc,
+                    mmb.kdoku,
+                    mmb.kdiag,
+                    mmb.race,
+                    mmb.gdr,
+                    mmb.dun
+                    ], 
       style: [nil, border_cell]
       sheet.rows[row+counter].style = border_cell
       counter = counter +1
