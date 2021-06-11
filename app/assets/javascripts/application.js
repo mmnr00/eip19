@@ -34,7 +34,7 @@
 //= require reveal-js
 
 // BIZLAND
-//= require counterup.min
+// require counterup.min
 // require bizland
 
 // require js_sb-admin/sb-admin.min

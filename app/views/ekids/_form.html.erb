@@ -387,7 +387,8 @@
         </div>
         <div class="row">
           <div class="col-sm-8 col-12">
-            <%= f.select :pinc, options_for_select(["Kurang dari 5,000", 
+            <%= f.select :pinc, options_for_select([ "Kurang dari 3,000",
+                                                  "3,000 dari 5,000", 
                                                   "5,000 hingga 10,000",
                                                   "Lebih dari 10,000"], 
                                                   selected: @ekid.pinc), 
@@ -437,6 +438,8 @@
         </div>
         <div class="row">
           <div class="col-sm-8 col-12">
+            <%= f.text_field :prbtp, class: "form-control", placeholder: "", autofocus: true %>
+            <!-- 
             <%= f.select :prbtp, options_for_select(["Lambat Bercakap",
                                                     "Lambat Berjalan",
                                                     "Lambat Belajar",
@@ -449,10 +452,12 @@
                                                     "Lain-lain"], 
                                                   selected: @ekid.prbtp), 
             {include_blank: "SILA PILIH"}, {required: true} %>
+          -->
           </div>
         </div>
       </div>
 
+      <!--
       <div class="form-group"> 
         <div class="row">
           <div class="control-label col-sm-8">
@@ -465,6 +470,7 @@
           </div>
         </div>
       </div>
+      -->
 
       <% if params[:prog] == "TERAPI ANIS" || @ekid.tp == "TERAPI ANIS" %>
         <div class="form-group"> 

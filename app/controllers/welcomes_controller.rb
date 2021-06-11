@@ -5,6 +5,10 @@ class WelcomesController < ApplicationController
 	
 	#layout "page"
 
+	def bantuanoku
+		@index = true
+	end
+
 	def intervensianis
 		@index = true
 	end
