@@ -73,6 +73,121 @@
         </div>
       </div>
 
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>BILANGAN ADIK BERADIK</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.number_field :sib, class: "form-control", placeholder: "", autofocus: true, required: true %>
+            Termasuk anak yang didaftarkan
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-8" style="background-color:#ffcccc">
+        <h6 style="color:black; font-weight: 600">Maklumat Perkembangan Anak</h6>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-12 col-12">
+            <strong>ADAKAH ANAK ANDA SUDAH DIRUJUK OLEH DOKTOR SEBELUM INI?</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.select :ref, options_for_select(["Ya", 
+                                                  "Tidak"], 
+                                                  selected: @ekid.ref), 
+            {include_blank: "SILA PILIH"}, {required: true} %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>JIKA YA, DIMANAKAH ANAK ANDA DIRUJUK</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.text_field :refloc, class: "form-control", placeholder: "", autofocus: true %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-12 col-12">
+            <strong>LEWAT PERKEMBANGAN YANG DIALAMI ANAK ANDA</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            
+            <%= f.select :prbtp, options_for_select(["Autism",
+                                                    "ADHD",
+                                                    "Down Syndrome",
+                                                    "Global developmental delay (GDD)"], 
+                                                  selected: @ekid.prbtp), 
+            {include_blank: "SILA PILIH"}, {required: true} %>
+          
+          </div>
+        </div>
+      </div>
+
+      <!--
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>JIKA LAIN-LAIN, SILA NYATAKAN KELEWATAN YANG DIALAMI</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.text_field :prbot, class: "form-control", placeholder: "", autofocus: true %>
+          </div>
+        </div>
+      </div>
+      -->
+
+      <% if params[:prog] == "TERAPI ANIS" || @ekid.tp == "TERAPI ANIS" %>
+        <div class="form-group"> 
+          <div class="row">
+            <div class="control-label col-sm-8">
+              <i class="fas fa-cloud-upload-alt"></i><strong>SURAT DIAGNOSIS</strong>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-8 col-12">
+              <% image = @ekid.fotos.where(foto_name: "DIAGNOSIS").first %>
+              <%  if image.present? %>
+                <%= image_tag(image.picture.url, size: "200x200") if image.picture? %>
+                <div class="row">
+                  <div class="col-sm-8 col-5">
+                    <strong><%= link_to "EDIT", edit_foto_path(image.id), class: "btn btn-sm btn-success active" %></strong>
+                  </div>
+                </div>  
+              <% else %>
+                <%= f.fields_for :fotos do |h| %>
+                  <div class="row">
+                    <div class="col-sm-8 col-8">
+                      <%= h.hidden_field :foto_name, value: "DIAGNOSIS" %>
+                      <%= h.file_field :picture, accept: 'image/jpeg,image/gif,image/png,application/pdf', required: true %>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+          <i>Wajib Disertakan</i>
+        </div>
+      <% end %>
+
       <br><div class="col-sm-8" style="background-color:#ffcccc">
         <h6 style="color:black; font-weight: 600">Maklumat Keluarga</h6>
       </div>
@@ -336,19 +451,7 @@
         </div>
       </div>
 
-      <div class="form-group"> 
-        <div class="row">
-          <div class="control-label col-sm-8">
-            <strong>BILANGAN ADIK BERADIK</strong>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-8 col-12">
-            <%= f.number_field :sib, class: "form-control", placeholder: "", autofocus: true, required: true %>
-            Termasuk anak yang didaftarkan
-          </div>
-        </div>
-      </div>
+      
 
       <div class="form-group"> 
         <div class="row">
@@ -388,7 +491,7 @@
         <div class="row">
           <div class="col-sm-8 col-12">
             <%= f.select :pinc, options_for_select([ "Kurang dari 3,000",
-                                                  "3,000 dari 5,000", 
+                                                  "3,000 hingga 5,000", 
                                                   "5,000 hingga 10,000",
                                                   "Lebih dari 10,000"], 
                                                   selected: @ekid.pinc), 
@@ -397,113 +500,7 @@
         </div>
       </div>
 
-      <div class="col-sm-8" style="background-color:#ffcccc">
-        <h6 style="color:black; font-weight: 600">Maklumat Perkembangan Anak</h6>
-      </div>
-
-      <div class="form-group"> 
-        <div class="row">
-          <div class="control-label col-sm-12 col-12">
-            <strong>ADAKAH ANAK ANDA SUDAH DIRUJUK OLEH DOKTOR SEBELUM INI?</strong>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-8 col-12">
-            <%= f.select :ref, options_for_select(["Ya", 
-                                                  "Tidak"], 
-                                                  selected: @ekid.ref), 
-            {include_blank: "SILA PILIH"}, {required: true} %>
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group"> 
-        <div class="row">
-          <div class="control-label col-sm-8">
-            <strong>JIKA YA, DIMANAKAH ANAK ANDA DIRUJUK</strong>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-8 col-12">
-            <%= f.text_field :refloc, class: "form-control", placeholder: "", autofocus: true %>
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group"> 
-        <div class="row">
-          <div class="control-label col-sm-12 col-12">
-            <strong>LEWAT PERKEMBANGAN YANG DIALAMI ANAK ANDA</strong>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-8 col-12">
-            <%= f.text_field :prbtp, class: "form-control", placeholder: "", autofocus: true %>
-            <!-- 
-            <%= f.select :prbtp, options_for_select(["Lambat Bercakap",
-                                                    "Lambat Berjalan",
-                                                    "Lambat Belajar",
-                                                    "Global developmental delay (GDD)",
-                                                    "Sindrom down",
-                                                    "Attention Defisit Hyperactivity Disorder (ADHD)",
-                                                    "Autisme",
-                                                    "Intelektual",
-                                                    "Dyslexia",
-                                                    "Lain-lain"], 
-                                                  selected: @ekid.prbtp), 
-            {include_blank: "SILA PILIH"}, {required: true} %>
-          -->
-          </div>
-        </div>
-      </div>
-
-      <!--
-      <div class="form-group"> 
-        <div class="row">
-          <div class="control-label col-sm-8">
-            <strong>JIKA LAIN-LAIN, SILA NYATAKAN KELEWATAN YANG DIALAMI</strong>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-8 col-12">
-            <%= f.text_field :prbot, class: "form-control", placeholder: "", autofocus: true %>
-          </div>
-        </div>
-      </div>
-      -->
-
-      <% if params[:prog] == "TERAPI ANIS" || @ekid.tp == "TERAPI ANIS" %>
-        <div class="form-group"> 
-          <div class="row">
-            <div class="control-label col-sm-8">
-              <i class="fas fa-cloud-upload-alt"></i><strong>SURAT DIAGNOSIS</strong>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-8 col-12">
-              <% image = @ekid.fotos.where(foto_name: "DIAGNOSIS").first %>
-              <%  if image.present? %>
-                <%= image_tag(image.picture.url, size: "200x200") if image.picture? %>
-                <div class="row">
-                  <div class="col-sm-8 col-5">
-                    <strong><%= link_to "EDIT", edit_foto_path(image.id), class: "btn btn-sm btn-success active" %></strong>
-                  </div>
-                </div>  
-              <% else %>
-                <%= f.fields_for :fotos do |h| %>
-                  <div class="row">
-                    <div class="col-sm-8 col-8">
-                      <%= h.hidden_field :foto_name, value: "DIAGNOSIS" %>
-                      <%= h.file_field :picture, accept: 'image/jpeg,image/gif,image/png,application/pdf', required: true %>
-                    </div>
-                  </div>
-                <% end %>
-              <% end %>
-            </div>
-          </div>
-          <i>Wajib Disertakan</i>
-        </div>
-      <% end %>
+      
 
       <% 
         if @ekid.tp.present?
