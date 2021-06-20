@@ -38,7 +38,7 @@
 // require bizland
 
 // require js_sb-admin/sb-admin.min
-// require sb-admin-2
+//= require sb-admin-2
 
 // require bootstrap
 

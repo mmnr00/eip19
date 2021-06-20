@@ -152,8 +152,10 @@ class EkidsController < ApplicationController
 		   #save_to_file: Rails.root.join('pdfs', "#{filename}.pdf"),
        #save_only: true, 
 		   #page_size: "A6",
-		   orientation: "portrait",
-		   layout: 'pdf.html.erb'
+		   zoom: 1,
+		   layout: 'pdf.html.erb',
+		   orientation: "portrait"
+		   
 			end
 		end
 	end
@@ -589,6 +591,19 @@ class EkidsController < ApplicationController
 																:prefloc,
 																:tp,
 																:perse_id,
+																:okunum,
+														    :birthplc,
+														    :relign,
+														    :race,
+														    :reltn,
+														    :allg,
+														    :diet,
+														    :fic,
+														    :mic,
+														    :frace,
+														    :mrace,
+														    :frelign,
+														    :mrelign,
 																fotos_attributes: [:foto, :picture, :foto_name])
 	end
 

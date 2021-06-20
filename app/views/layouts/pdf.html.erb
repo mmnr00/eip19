@@ -6,6 +6,7 @@
 <title>DOWNLOAD</title>
 <%= render 'layouts/page_head' %>
   <%= wicked_pdf_stylesheet_link_tag "bootstrap/css/bootstrap" %>
+  <%= wicked_pdf_stylesheet_link_tag "sb-admin-2" %>
   <%= wicked_pdf_stylesheet_link_tag "plugins/bootstrapv3/css/bootstrap-theme.min" %>
   
   <%= wicked_pdf_stylesheet_link_tag "fontawesome-free/css/all" %>
@@ -16,7 +17,7 @@
 </head>
 <body>
 
-  <div class='scontainer'>
+  <div class='container'>
     <%= yield %>
   </div>
 

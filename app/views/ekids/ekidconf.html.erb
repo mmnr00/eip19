@@ -1,4 +1,10 @@
+<% link_to "Cetak/Muat Turun", root_path, class: "badge badge-pill badge-info", style: "font-size: 12px; margin-top: 10px", :onclick => 'window.print();return false;' %>
+<% link_to "try", root_path, class: "badge badge-pill badge-info", style: "font-size: 12px; margin-top: 10px", :onclick => 'console.log("MUS");return false' %>
+
+
 
 <%= render 'ekids/profile' %>
 
+
 <%= link_to "MUAT TURUN", ekidpdf_path(id: params[:id], format: :pdf), class: "btn btn-sm btn-info" %><br><br>
+<% link_to "Click", "#", onclick: 'window.print()', class: 'btn btn-sm btn-primary' %>
