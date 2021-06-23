@@ -1338,6 +1338,25 @@ section {
   color: black;
 }
 
+@media print {
+  
+  .prt-hide{
+    display:none;
+  }
+
+
+  .prt-show{
+    display: inline;
+  }
+
+  #header{
+    display:none;
+  }
+
+  #fts{
+    display:none;
+  }
+}
 
 
 

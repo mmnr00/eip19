@@ -1,3 +1,13 @@
+
+    <h1 style="color:black;font-weight: 1000;text-align: center">BORANG MAKLUMAT ANAK</h1>
+    <h5 style="color:black;font-weight: 100;text-align: center;margin-top: -10px;">
+      Pusat Sokongan ANIS
+      <% img = image_path('anislogo1.png') %>
+      <% img = "#{root_url}#{img}"%>
+      <%= wicked_pdf_image_tag(img, size: "90x30") %>
+    </h5>
+  
+
 <%= render 'ekids/profile' %>
 
-<%= link_to "Click", "#", onclick: 'window.print()', class: 'btn btn-sm btn-primary' %>
+<%= link_to "Click", root_path, onclick: 'window.print();return false;', class: 'btn btn-sm btn-primary' %>

@@ -2,9 +2,27 @@
 <% link_to "try", root_path, class: "badge badge-pill badge-info", style: "font-size: 12px; margin-top: 10px", :onclick => 'console.log("MUS");return false' %>
 
 
+<h1 style="color:black;font-weight: 1000;text-align: center">BORANG MAKLUMAT ANAK</h1>
+    <h5 style="color:black;font-weight: 100;text-align: center;margin-top: -10px;">
+      Pusat Sokongan ANIS
+      <% img = image_path('anislogo1.png') %>
+      <% img = "#{root_url}#{img}"%>
+      <%= wicked_pdf_image_tag(img, size: "90x30") %>
+    </h5>
+
+<div class="prt-hide" style="margin-bottom: 10px;">
+  <%= link_to "Muat Turun Borang", "#", onclick: 'window.print()', class: 'btn btn-sm btn-success btn-block' %>
+</div>
+
 
 <%= render 'ekids/profile' %>
 
 
-<%= link_to "MUAT TURUN", ekidpdf_path(id: params[:id], format: :pdf), class: "btn btn-sm btn-info" %><br><br>
-<% link_to "Click", "#", onclick: 'window.print()', class: 'btn btn-sm btn-primary' %>
+<div class="prt-show" style="display: inline">
+  kldslksdj
+</div>
+
+
+
+<% link_to "MUAT TURUN", ekidpdf_path(id: params[:id], format: :pdf), class: "btn btn-sm btn-info" %><br><br>
+

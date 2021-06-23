@@ -135,7 +135,7 @@ class EkidsController < ApplicationController
 		@diff = (Date.today.year*12+Date.today.month) - (@ekid.dob.year*12+@ekid.dob.month)
 		@year = @diff/12
 		@month = @diff - @year*12
-		render action: "ekidconf", layout: "eipblank"
+		#render action: "ekidconf", layout: "eipblank"
 	end
 
 	def ekidpdf
@@ -147,13 +147,14 @@ class EkidsController < ApplicationController
 	 		format.html
 	 		format.pdf do
 		   render pdf: "#{@ekid.name}",
-		   template: "ekids/_profile.html.erb",
+		   template: "ekids/ekidpdf.html.erb",
 		   #disposition: "attachment",
 		   #save_to_file: Rails.root.join('pdfs', "#{filename}.pdf"),
        #save_only: true, 
 		   #page_size: "A6",
 		   zoom: 1,
 		   layout: 'pdf.html.erb',
+		   viewport_size: '1280x1024',
 		   orientation: "portrait"
 		   
 			end

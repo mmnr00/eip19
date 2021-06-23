@@ -1,91 +1,89 @@
 <% pk = @ekid.pkid %>
 
-<div class="table-responsive" style="">
+  
+
+
+<div class="table-responsive">
   <table class="table table-striped table-bordered" width="100%" cellspacing="0" style="color: black;border: 2px solid black">
 
     <tbody>
       <tr>
-        <td style="background-color:#203764" colspan="2"><strong><font color="white"><h2 align="center"><%= @ekid.name.upcase %> (ID: <%= @ekid.id %>)</h2></font></strong></td>
+        <td style="background-color:#203764 !important" colspan="2"><strong><font color="white"><h2 align="center"><%= @ekid.name.upcase %> (ID: <%= @ekid.id %>)</h2></font></strong></td>
+      </tr>
+      <tr>
+        <td style="background-color:#0070C0 !important; width: 40%" ><font color="white">NO MYKID</font></td>
+        <td style="background-color:#D9E1F2 !important"><%= "#{@ekid.ic}" %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#0070C0 !important" ><font color="white">NO KAD OKU</font></td>
+        <td style="background-color:#D9E1F2 !important"><%= @ekid.okunum %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#0070C0 !important" ><font color="white">JANTINA</font></td>
+        <td style="background-color:#D9E1F2 !important"><%= @ekid.gdr %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#0070C0 !important" ><font color="white">TARIKH LAHIR</font></td>
+        <td style="background-color:#D9E1F2 !important"><%= @ekid.dob.strftime('%d-%^b-%Y') %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#0070C0 !important" ><font color="white">UMUR</font></td>
+        <td style="background-color:#D9E1F2 !important"><%= "#{@year} Tahun, #{@month} Bulan" %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#0070C0 !important" ><font color="white">TEMPAT LAHIR</font></td>
+        <td style="background-color:#D9E1F2 !important"><%= @ekid.birthplc %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#0070C0 !important" ><font color="white">AGAMA</font></td>
+        <td style="background-color:#D9E1F2 !important"><%= @ekid.relign %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#0070C0 !important" ><font color="white">BANGSA</font></td>
+        <td style="background-color:#D9E1F2 !important"><%= @ekid.race %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#0070C0 !important" ><font color="white">BILANGAN ADIK BERADIK</font></td>
+        <td style="background-color:#D9E1F2 !important"><%= @ekid.sib %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#0070C0 !important" ><font color="white">HUBUNGAN ANAK DENGAN PEMOHON</font></td>
+        <td style="background-color:#D9E1F2 !important"><%= @ekid.reltn %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#0070C0 !important" ><font color="white">ALAHAN</font></td>
+        <td style="background-color:#D9E1F2 !important"><%= @ekid.allg %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#0070C0 !important" ><font color="white">DIET</font></td>
+        <td style="background-color:#D9E1F2 !important"><%= @ekid.diet %></td>
       </tr>
     </tbody>
     <tbody>
       <tr>
-        <td style="background-color:#0070C0; width: 40%" ><font color="white">NO MYKID</font></td>
-        <td style="background-color:#D9E1F2"><%= "#{@ekid.ic[0..5]}-#{@ekid.ic[6..7]}-#{@ekid.ic[8..12]}" %></td>
+        <td style="background-color:#833C0C !important" colspan="2"><font color="white"><h4>MAKLUMAT PERKEMBANGAN ANAK</h4></font></td>
       </tr>
       <tr>
-        <td style="background-color:#0070C0" ><font color="white">NO KAD OKU</font></td>
-        <td style="background-color:#D9E1F2"><%= @ekid.okunum %></td>
+        <td style="background-color:#C65911 !important" ><font color="white">ADAKAH ANAK ANDA MEMPEROLEH RUJUKAN PAKAR SEBELUM INI?</font></td>
+        <td style="background-color:#FCE4D6 !important"><%= @ekid.ref %></td>
       </tr>
       <tr>
-        <td style="background-color:#0070C0" ><font color="white">JANTINA</font></td>
-        <td style="background-color:#D9E1F2"><%= @ekid.gdr %></td>
+        <td style="background-color:#C65911 !important" ><font color="white">JIKA YA, DIMANAKAH ANAK ANDA DIRUJUK?</font></td>
+        <td style="background-color:#FCE4D6 !important"><%= @ekid.refloc %></td>
       </tr>
       <tr>
-        <td style="background-color:#0070C0" ><font color="white">TARIKH LAHIR</font></td>
-        <td style="background-color:#D9E1F2"><%= @ekid.dob.strftime('%d-%^b-%Y') %></td>
-      </tr>
-      <tr>
-        <td style="background-color:#0070C0" ><font color="white">UMUR</font></td>
-        <td style="background-color:#D9E1F2"><%= "#{@year} Tahun, #{@month} Bulan" %></td>
-      </tr>
-      <tr>
-        <td style="background-color:#0070C0" ><font color="white">TEMPAT LAHIR</font></td>
-        <td style="background-color:#D9E1F2"><%= @ekid.birthplc %></td>
-      </tr>
-      <tr>
-        <td style="background-color:#0070C0" ><font color="white">AGAMA</font></td>
-        <td style="background-color:#D9E1F2"><%= @ekid.relign %></td>
-      </tr>
-      <tr>
-        <td style="background-color:#0070C0" ><font color="white">BANGSA</font></td>
-        <td style="background-color:#D9E1F2"><%= @ekid.race %></td>
-      </tr>
-      <tr>
-        <td style="background-color:#0070C0" ><font color="white">BILANGAN ADIK BERADIK</font></td>
-        <td style="background-color:#D9E1F2"><%= @ekid.sib %></td>
-      </tr>
-      <tr>
-        <td style="background-color:#0070C0" ><font color="white">HUBUNGAN ANAK DENGAN PEMOHON</font></td>
-        <td style="background-color:#D9E1F2"><%= @ekid.reltn %></td>
-      </tr>
-      <tr>
-        <td style="background-color:#0070C0" ><font color="white">ALAHAN</font></td>
-        <td style="background-color:#D9E1F2"><%= @ekid.allg %></td>
-      </tr>
-      <tr>
-        <td style="background-color:#0070C0" ><font color="white">DIET</font></td>
-        <td style="background-color:#D9E1F2"><%= @ekid.diet %></td>
-      </tr>
-    </tbody>
-
-    <tbody>
-      <tr>
-        <td style="background-color:#833C0C" colspan="2"><font color="white"><h4>MAKLUMAT PERKEMBANGAN ANAK</h4></font></td>
-      </tr>
-    </tbody>
-    <tbody>
-      <tr>
-        <td style="background-color:#C65911" ><font color="white">ADAKAH ANAK ANDA MEMPEROLEH RUJUKAN PAKAR SEBELUM INI?</font></td>
-        <td style="background-color:#FCE4D6"><%= @ekid.ref %></td>
-      </tr>
-      <tr>
-        <td style="background-color:#C65911" ><font color="white">JIKA YA, DIMANAKAH ANAK ANDA DIRUJUK?</font></td>
-        <td style="background-color:#FCE4D6"><%= @ekid.refloc %></td>
-      </tr>
-      <tr>
-        <td style="background-color:#C65911" ><font color="white">LEWAT PERKEMBANGAN YANG DIALAMI</font></td>
-        <td style="background-color:#FCE4D6"><%= @ekid.prbtp %></td>
+        <td style="background-color:#C65911 !important" ><font color="white">LEWAT PERKEMBANGAN YANG DIALAMI</font></td>
+        <td style="background-color:#FCE4D6 !important"><%= @ekid.prbtp %></td>
       </tr>
       <!-- <tr>
-        <td style="background-color:#C65911" ><font color="white">Maklumat perkembangan jika lain-lain</font></td>
-        <td style="background-color:#FCE4D6"><%= @ekid.prbot %></td>
+        <td style="background-color:#C65911 !important" ><font color="white">Maklumat perkembangan jika lain-lain</font></td>
+        <td style="background-color:#FCE4D6 !important"><%= @ekid.prbot %></td>
       </tr> -->
       <% if pk.present? %>
         <% pk.devkid.each do |k,v| %>
           <tr>
-            <td style="background-color:#C65911" ><font color="white"><%= k %></font></td>
-            <td style="background-color:#FCE4D6"><%= v %></td>
+            <td style="background-color:#C65911 !important" ><font color="white"><%= k %></font></td>
+            <td style="background-color:#FCE4D6 !important"><%= v %></td>
           </tr>
         <% end %>
       <% end %>
@@ -93,117 +91,119 @@
 
     <tbody>
       <tr>
-        <td style="background-color:#375623" colspan="2"><font color="white"><h4>MAKLUMAT KELUARGA</font></h4></td>
-      </tr>
-    </tbody>
-    <tbody>
-      <tr>
-        <td style="background-color:#548235" ><font color="white">DAERAH YANG DIDIAMI</font></td>
-        <td style="background-color:#E2EFDA"><%= @ekid.dun %></td>
+        <td style="background-color:#375623 !important" colspan="2"><font color="white"><h4>MAKLUMAT KELUARGA</font></h4></td>
       </tr>
       <tr>
-        <td style="background-color:#548235" ><font color="white">ALAMAT TERKINI</font></td>
-        <td style="background-color:#E2EFDA"><%= @ekid.addr %></td>
+        <td style="background-color:#548235 !important" ><font color="white">DAERAH YANG DIDIAMI</font></td>
+        <td style="background-color:#E2EFDA !important"><%= @ekid.dun %></td>
       </tr>
       <tr>
-        <td style="background-color:#548235" ><font color="white">NO TELEFON UTAMA</font></td>
-        <td style="background-color:#E2EFDA"><%= @ekid.mph %></td>
+        <td style="background-color:#548235 !important" ><font color="white">ALAMAT TERKINI</font></td>
+        <td style="background-color:#E2EFDA !important"><%= @ekid.addr %></td>
       </tr>
       <tr>
-        <td style="background-color:#548235" ><font color="white">NAMA BAPA</font></td>
-        <td style="background-color:#E2EFDA"><%= @ekid.fname %></td>
+        <td style="background-color:#548235 !important" ><font color="white">NO TELEFON UTAMA</font></td>
+        <td style="background-color:#E2EFDA !important"><%= @ekid.mph %></td>
+      </tr>
+      <tr style="">
+        <td style="background-color:#548235 !important" ><font color="white">NAMA BAPA</font></td>
+        <td style="background-color:#E2EFDA !important"><%= @ekid.fname %></td>
+      </tr>
+      
+      <tr style="">
+        <td style="background-color:#548235 !important" ><font color="white">
+          NO MYKAD BAPA
+        </font></td>
+        <td style="background-color:#E2EFDA !important"><%= @ekid.fic %></td>
+      </tr>
+
+      <tr>
+        <td style="background-color:#548235 !important" ><font color="white">UMUR BAPA</font></td>
+        <td style="background-color:#E2EFDA !important"><%= @ekid.fage %></td>
+      </tr>
+      <tr style="break-inside: avoid !important;">
+        <td style="background-color:#548235 !important" ><font color="white">BANGSA BAPA</font></td>
+        <td style="background-color:#E2EFDA !important"><%= @ekid.frace %></td>
       </tr>
       <tr>
-        <td style="background-color:#548235" ><font color="white">NAMA MYKAD BAPA</font></td>
-        <td style="background-color:#E2EFDA"><%= @ekid.fic %></td>
+        <td style="background-color:#548235 !important" ><font color="white">AGAMA BAPA</font></td>
+        <td style="background-color:#E2EFDA !important"><%= @ekid.frelign %></td>
       </tr>
       <tr>
-        <td style="background-color:#548235" ><font color="white">UMUR BAPA</font></td>
-        <td style="background-color:#E2EFDA"><%= @ekid.fage %></td>
+        <td style="background-color:#548235 !important" ><font color="white">NO TELEFON BAPA</font></td>
+        <td style="background-color:#E2EFDA !important"><%= @ekid.fph %></td>
       </tr>
       <tr>
-        <td style="background-color:#548235" ><font color="white">BANGSA BAPA</font></td>
-        <td style="background-color:#E2EFDA"><%= @ekid.frace %></td>
+        <td style="background-color:#548235 !important" ><font color="white">EMAIL BAPA</font></td>
+        <td style="background-color:#E2EFDA !important"><%= @ekid.femail %></td>
       </tr>
       <tr>
-        <td style="background-color:#548235" ><font color="white">AGAMA BAPA</font></td>
-        <td style="background-color:#E2EFDA"><%= @ekid.frelign %></td>
+        <td style="background-color:#548235 !important" ><font color="white">TAHAP PENDIDIKAN BAPA</font></td>
+        <td style="background-color:#E2EFDA !important"><%= @ekid.fedu %></td>
       </tr>
       <tr>
-        <td style="background-color:#548235" ><font color="white">NO TELEFON BAPA</font></td>
-        <td style="background-color:#E2EFDA"><%= @ekid.fph %></td>
+        <td style="background-color:#548235 !important" ><font color="white">ADAKAH BAPA BEKERJA</font></td>
+        <td style="background-color:#E2EFDA !important"><%= @ekid.fwork %></td>
       </tr>
       <tr>
-        <td style="background-color:#548235" ><font color="white">EMAIL BAPA</font></td>
-        <td style="background-color:#E2EFDA"><%= @ekid.femail %></td>
+        <td style="background-color:#548235 !important" ><font color="white">PEKERJAAN BAPA</font></td>
+        <td style="background-color:#E2EFDA !important"><%= @ekid.fworktp %></td>
       </tr>
       <tr>
-        <td style="background-color:#548235" ><font color="white">TAHAP PENDIDIKAN BAPA</font></td>
-        <td style="background-color:#E2EFDA"><%= @ekid.fedu %></td>
+        <td style="background-color:#548235 !important" ><font color="white">NAMA IBU</font></td>
+        <td style="background-color:#E2EFDA !important"><%= @ekid.mname %></td>
       </tr>
       <tr>
-        <td style="background-color:#548235" ><font color="white">ADAKAH BAPA BEKERJA</font></td>
-        <td style="background-color:#E2EFDA"><%= @ekid.fwork %></td>
+        <td style="background-color:#548235 !important" ><font color="white">NAMA MYKAD IBU</font></td>
+        <td style="background-color:#E2EFDA !important"><%= @ekid.mic %></td>
       </tr>
       <tr>
-        <td style="background-color:#548235" ><font color="white">PEKERJAAN BAPA</font></td>
-        <td style="background-color:#E2EFDA"><%= @ekid.fworktp %></td>
+        <td style="background-color:#548235 !important" ><font color="white">UMUR IBU</font></td>
+        <td style="background-color:#E2EFDA !important"><%= @ekid.mage %></td>
       </tr>
       <tr>
-        <td style="background-color:#548235" ><font color="white">NAMA IBU</font></td>
-        <td style="background-color:#E2EFDA"><%= @ekid.mname %></td>
+        <td style="background-color:#548235 !important" ><font color="white">BANGSA IBU</font></td>
+        <td style="background-color:#E2EFDA !important"><%= @ekid.mrace %></td>
       </tr>
       <tr>
-        <td style="background-color:#548235" ><font color="white">NAMA MYKAD IBU</font></td>
-        <td style="background-color:#E2EFDA"><%= @ekid.mic %></td>
+        <td style="background-color:#548235 !important" ><font color="white">AGAMA IBU</font></td>
+        <td style="background-color:#E2EFDA !important"><%= @ekid.mrelign %></td>
       </tr>
       <tr>
-        <td style="background-color:#548235" ><font color="white">UMUR IBU</font></td>
-        <td style="background-color:#E2EFDA"><%= @ekid.mage %></td>
+        <td style="background-color:#548235 !important" ><font color="white">NO TELEFON IBU</font></td>
+        <td style="background-color:#E2EFDA !important"><%= @ekid.mmph %></td>
       </tr>
       <tr>
-        <td style="background-color:#548235" ><font color="white">BANGSA IBU</font></td>
-        <td style="background-color:#E2EFDA"><%= @ekid.mrace %></td>
+        <td style="background-color:#548235 !important" ><font color="white">EMAIL IBU</font></td>
+        <td style="background-color:#E2EFDA !important"><%= @ekid.memail %></td>
       </tr>
       <tr>
-        <td style="background-color:#548235" ><font color="white">AGAMA IBU</font></td>
-        <td style="background-color:#E2EFDA"><%= @ekid.mrelign %></td>
+        <td style="background-color:#548235 !important" ><font color="white">TAHAP PENDIDIKAN IBU</font></td>
+        <td style="background-color:#E2EFDA !important"><%= @ekid.medu %></td>
       </tr>
       <tr>
-        <td style="background-color:#548235" ><font color="white">NO TELEFON IBU</font></td>
-        <td style="background-color:#E2EFDA"><%= @ekid.mmph %></td>
+        <td style="background-color:#548235 !important" ><font color="white">ADAKAH IBU BEKERJA</font></td>
+        <td style="background-color:#E2EFDA !important"><%= @ekid.mwork %></td>
       </tr>
       <tr>
-        <td style="background-color:#548235" ><font color="white">EMAIL IBU</font></td>
-        <td style="background-color:#E2EFDA"><%= @ekid.memail %></td>
+        <td style="background-color:#548235 !important" ><font color="white">PEKERJAAN IBU</font></td>
+        <td style="background-color:#E2EFDA !important"><%= @ekid.mworktp %></td>
       </tr>
       <tr>
-        <td style="background-color:#548235" ><font color="white">TAHAP PENDIDIKAN IBU</font></td>
-        <td style="background-color:#E2EFDA"><%= @ekid.medu %></td>
+        <td style="background-color:#548235 !important" ><font color="white">BILANGAN TANGGUNGAN</font></td>
+        <td style="background-color:#E2EFDA !important"><%= @ekid.sib %></td>
       </tr>
       <tr>
-        <td style="background-color:#548235" ><font color="white">ADAKAH IBU BEKERJA</font></td>
-        <td style="background-color:#E2EFDA"><%= @ekid.mwork %></td>
+        <td style="background-color:#548235 !important" ><font color="white">SEJARAH LEWAT PERKEMBANGAN IBU-BAPA</font></td>
+        <td style="background-color:#E2EFDA !important"><%= @ekid.phist %></td>
       </tr>
       <tr>
-        <td style="background-color:#548235" ><font color="white">PEKERJAAN IBU</font></td>
-        <td style="background-color:#E2EFDA"><%= @ekid.mworktp %></td>
+        <td style="background-color:#548235 !important" ><font color="white">JENIS LEWAT PERKEMBANGAN IBU-BAPA</font></td>
+        <td style="background-color:#E2EFDA !important"><%= @ekid.phisttp %></td>
       </tr>
       <tr>
-        <td style="background-color:#548235" ><font color="white">BILANGAN TANGGUNGAN</font></td>
-        <td style="background-color:#E2EFDA"><%= @ekid.sib %></td>
-      </tr>
-      <tr>
-        <td style="background-color:#548235" ><font color="white">SEJARAH LEWAT PERKEMBANGAN IBU-BAPA</font></td>
-        <td style="background-color:#E2EFDA"><%= @ekid.phist %></td>
-      </tr>
-      <tr>
-        <td style="background-color:#548235" ><font color="white">JENIS LEWAT PERKEMBANGAN IBU-BAPA</font></td>
-        <td style="background-color:#E2EFDA"><%= @ekid.phisttp %></td>
-      </tr>
-      <tr>
-        <td style="background-color:#548235" ><font color="white">PENDAPATAN ISI RUMAH SEBULAN (RM)</font></td>
-        <td style="background-color:#E2EFDA"><%= @ekid.pinc %></td>
+        <td style="background-color:#548235 !important" ><font color="white">PENDAPATAN ISI RUMAH SEBULAN (RM)</font></td>
+        <td style="background-color:#E2EFDA !important"><%= @ekid.pinc %></td>
       </tr>
     </tbody>
 
@@ -212,52 +212,48 @@
     <% if pk.present? %>
     <tbody>
       <tr>
-        <td style="background-color:#203764" colspan="2"><font color="white"><h4>MAKLUMAT TAMBAHAN</h4></font></td>
+        <td style="background-color:#203764 !important" colspan="2"><font color="white"><h4>MAKLUMAT TAMBAHAN</h4></font></td>
       </tr>
-    </tbody>
-    <tbody>
       <% pk.addfo.each do |k,v| %>
         <tr>
-          <td style="background-color:#0070C0" ><font color="white"><%= k %></font></td>
-          <td style="background-color:#D9E1F2"><%= v %></td>
+          <td style="background-color:#0070C0 !important" ><font color="white"><%= k %></font></td>
+          <td style="background-color:#D9E1F2 !important"><%= v %></td>
         </tr>
       <% end %>
       <% pk.health.each do |k,v| %>
         <tr>
-          <td style="background-color:#0070C0" ><font color="white"><%= k %></font></td>
-          <td style="background-color:#D9E1F2"><%= v %></td>
+          <td style="background-color:#0070C0 !important" ><font color="white"><%= k %></font></td>
+          <td style="background-color:#D9E1F2 !important"><%= v %></td>
         </tr>
       <% end %>
       <% pk.birth.each do |k,v| %>
         <tr>
-          <td style="background-color:#0070C0" ><font color="white"><%= k %></font></td>
-          <td style="background-color:#D9E1F2"><%= v %></td>
+          <td style="background-color:#0070C0 !important" ><font color="white"><%= k %></font></td>
+          <td style="background-color:#D9E1F2 !important"><%= v %></td>
         </tr>
       <% end %>
       <% pk.grow.each do |k,v| %>
         <tr>
-          <td style="background-color:#0070C0" ><font color="white"><%= k %></font></td>
-          <td style="background-color:#D9E1F2"><%= v %></td>
+          <td style="background-color:#0070C0 !important" ><font color="white"><%= k %></font></td>
+          <td style="background-color:#D9E1F2 !important"><%= v %></td>
         </tr>
       <% end %>
       <% pk.physpch.each do |k,v| %>
         <tr>
-          <td style="background-color:#0070C0" ><font color="white"><%= k %></font></td>
-          <td style="background-color:#D9E1F2"><%= v %></td>
+          <td style="background-color:#0070C0 !important" ><font color="white"><%= k %></font></td>
+          <td style="background-color:#D9E1F2 !important"><%= v %></td>
         </tr>
       <% end %> 
     </tbody>
 
     <tbody>
       <tr>
-        <td style="background-color:#7030A0" colspan="2"><font color="white"><h4>KEBENARAN UNTUK PENILAIAN DAN INTERVENSI</h4></font></td>
+        <td style="background-color:#7030A0 !important" colspan="2"><font color="white"><h4>KEBENARAN UNTUK PENILAIAN DAN INTERVENSI</h4></font></td>
       </tr>
-    </tbody>
-    <tbody>
       <% pk.agr.each do |k,v| %>
         <tr>
-          <td style="background-color:#B04EFF" ><font color="white"><%= k %></font></td>
-          <td style="background-color:#F7A4FF"><%= v %></td>
+          <td style="background-color:#B04EFF !important" ><font color="white"><%= k %></font></td>
+          <td style="background-color:#F7A4FF !important"><%= v %></td>
         </tr>
       <% end %>
     </tbody>
@@ -266,45 +262,45 @@
     <% if (sk=@ekid.skid).present? %>
       <tbody>
         <tr>
-          <td style="background-color:#664c51" colspan="2"><font color="white"><h4>MAKLUMAT UJIAN SARINGAN</h4></font></td>
+          <td style="background-color:#664c51 !important" colspan="2"><font color="white"><h4>MAKLUMAT UJIAN SARINGAN</h4></font></td>
         </tr>
       </tbody>
       <tbody>
         <tr>
-          <td style="background-color:#997379" ><font color="white">Adakah anak ini mempunyai lewat perkembangan?</font></td>
-          <td style="background-color:#ffc0cb"><%= sk.dely %></td>
+          <td style="background-color:#997379 !important" ><font color="white">Adakah anak ini mempunyai lewat perkembangan?</font></td>
+          <td style="background-color:#ffc0cb !important"><%= sk.dely %></td>
         </tr>
         <tr>
-          <td style="background-color:#997379" ><font color="white">Maklumat Tambahan mengenai lewat perkembangan anak</font></td>
-          <td style="background-color:#ffc0cb"><%= sk.delydesc %></td>
+          <td style="background-color:#997379 !important" ><font color="white">Maklumat Tambahan mengenai lewat perkembangan anak</font></td>
+          <td style="background-color:#ffc0cb !important"><%= sk.delydesc %></td>
         </tr>
         <tr>
-          <td style="background-color:#997379" ><font color="white">Kelewatan Fizikal?</font></td>
-          <td style="background-color:#ffc0cb"><%= sk.phy %></td>
+          <td style="background-color:#997379 !important" ><font color="white">Kelewatan Fizikal?</font></td>
+          <td style="background-color:#ffc0cb !important"><%= sk.phy %></td>
         </tr>
         <tr>
-          <td style="background-color:#997379" ><font color="white">Kelewatan Kognitif?</font></td>
-          <td style="background-color:#ffc0cb"><%= sk.cog %></td>
+          <td style="background-color:#997379 !important" ><font color="white">Kelewatan Kognitif?</font></td>
+          <td style="background-color:#ffc0cb !important"><%= sk.cog %></td>
         </tr>
         <tr>
-          <td style="background-color:#997379" ><font color="white">Kelewatan Komunikasi?</font></td>
-          <td style="background-color:#ffc0cb"><%= sk.comm %></td>
+          <td style="background-color:#997379 !important" ><font color="white">Kelewatan Komunikasi?</font></td>
+          <td style="background-color:#ffc0cb !important"><%= sk.comm %></td>
         </tr>
         <tr>
-          <td style="background-color:#997379" ><font color="white">Kelewatan Sosial/Emosi?</font></td>
-          <td style="background-color:#ffc0cb"><%= sk.soc %></td>
+          <td style="background-color:#997379 !important" ><font color="white">Kelewatan Sosial/Emosi?</font></td>
+          <td style="background-color:#ffc0cb !important"><%= sk.soc %></td>
         </tr>
         <tr>
-          <td style="background-color:#997379" ><font color="white">Kelewatan Penyesuaian Diri?</font></td>
-          <td style="background-color:#ffc0cb"><%= sk.adap %></td>
+          <td style="background-color:#997379 !important" ><font color="white">Kelewatan Penyesuaian Diri?</font></td>
+          <td style="background-color:#ffc0cb !important"><%= sk.adap %></td>
         </tr>
         <tr>
-          <td style="background-color:#997379" ><font color="white">Adakah anak menerima surat rujukan?</font></td>
-          <td style="background-color:#ffc0cb"><%= sk.reflt %></td>
+          <td style="background-color:#997379 !important" ><font color="white">Adakah anak menerima surat rujukan?</font></td>
+          <td style="background-color:#ffc0cb !important"><%= sk.reflt %></td>
         </tr>
         <tr>
-          <td style="background-color:#997379" ><font color="white">Maklumat tambahan untuk surat rujukan</font></td>
-          <td style="background-color:#ffc0cb"><%= sk.otnt %></td>
+          <td style="background-color:#997379 !important" ><font color="white">Maklumat tambahan untuk surat rujukan</font></td>
+          <td style="background-color:#ffc0cb !important"><%= sk.otnt %></td>
         </tr>
       </tbody>
     <% end %>
