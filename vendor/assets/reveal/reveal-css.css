@@ -1353,6 +1353,10 @@ section {
     display:none;
   }
 
+  #topbar{
+    display: none;
+  }
+
   #fts{
     display:none;
   }

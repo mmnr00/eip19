@@ -1,3 +1,5 @@
+<meta name="viewport" content="width=1024">
+
 <% link_to "Cetak/Muat Turun", root_path, class: "badge badge-pill badge-info", style: "font-size: 12px; margin-top: 10px", :onclick => 'window.print();return false;' %>
 <% link_to "try", root_path, class: "badge badge-pill badge-info", style: "font-size: 12px; margin-top: 10px", :onclick => 'console.log("MUS");return false' %>
 
@@ -18,9 +20,164 @@
 <%= render 'ekids/profile' %>
 
 
-<div class="prt-show" style="display: inline">
-  kldslksdj
+<div style="page-break-before: always">
+
+  <div class="table-responsive">
+    <table class="table table-striped" width="100%" cellspacing="0">
+      <tr>
+        <td style="background-color:#0070C0 !important; color: white">PERAKUAN PEMOHON</td>
+      </tr>
+      <tr style="color: black; font-size: 12px;">
+        <td style="background-color:#e5e5e5 !important; ">
+          <p style="margin-bottom: 100px;">SAYA MENGAKU BAHAWA SEMUA PERNYATAAN YANG TERKANDUNG DI DALAM BORANG INI ADALAH BENAR DAN BETUL</p>
+          <p>&nbsp&nbsp&nbsp.......................................................................</p>
+          <p style="margin-top: -10px;">
+            &nbsp&nbsp&nbspTANDATANGAN
+            
+            <font style="margin-left: 700px">TARIKH :</font>
+          </p>
+          <p style="margin-top: -10px;">
+            &nbsp&nbsp&nbspNAMA PEMOHON: <b><%= @ekid.perse.name %></b>
+          </p>
+          <p style="margin-top: -10px;">
+            &nbsp&nbsp&nbspNO MYKAD PEMOHON: <b><%= @ekid.perse.ic %></b>
+          </p>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <tr>
+        <td style="background-color:#0070C0 !important; color: white" colspan=4>PENGESAHAN TARAF MASTAUTIN</td>
+      </tr>
+      <tr style="color: black; font-size: 12px;">
+        <td style="background-color:#e5e5e5 !important; "colspan=4>
+          <p style="margin-bottom: -5px;">SAYA MENGAKU BAHAWA PEMOHON INI TELAH BERMASTAUTIN SECARA SAH SEKURANG-KURANGNYA 10 TAHUN DI NEGERI SELANGOR <b>(PERMOHONAN KELAHIRAN LUAR SELANGOR SAHAJA)</b></p>
+        </td>
+      </tr>
+
+      <tr style="color: black; font-size: 13px; padding-left: 20px; height: -5px;">
+        <td style="background-color:#e5e5e5 !important; width: 35%;" rowspan=4>
+          <p style="background-color:white!important; padding-bottom: 150px;" align="center">TANDATANGAN DAN COP PEGAWAI</p>
+        </td>
+        <td style="background-color:#e5e5e5 !important; width: %">
+          NAMA PEGAWAI :
+        </td>
+        <td style="background-color:white !important; width: 45%">
+        </td>
+        <td style="background-color:#e5e5e5 !important; width: 2%"></td>
+      </tr>
+
+      <tr style="color: black; font-size: 13px;">
+        <td style="background-color:#e5e5e5 !important; width: %">
+          NO KP BARU :
+        </td>
+        <td style="background-color:white !important; width: %">
+        <td style="background-color:#e5e5e5 !important; width: 2%"></td>
+      </tr>
+
+      <tr style="color: black; font-size: 13px;">
+        <td style="background-color:#e5e5e5 !important; width: %">
+          NO TELEFON :
+        </td>
+        <td style="background-color:white !important; width: %">
+        <td style="background-color:#e5e5e5 !important; width: 2%"></td>
+      </tr>
+
+      <tr style="color: black; font-size: 13px;">
+        <td style="background-color:#e5e5e5 !important; width: %">
+          JAWATAN :
+        </td>
+        <td style="background-color:white !important; width: %;"></td>
+        <td style="background-color:#e5e5e5 !important; width: 2%"></td>
+      </tr>
+
+      <tr>
+        <td style="background-color:#e5e5e5 !important;" colspan="4"></td>
+      </tr>
+      <tr style="color: black; font-size: 13px;border: 2px solid black">
+        <td style="background-color:white !important; width: 20%" colspan="" >
+          <b>SENARAI JAWATAN PENGESAH:</b><br><br>
+          I. AHLI PARLIMEN/SENATOR<br>
+          II. ADUN/PENYELARAS ADUN<br>
+          III. PENGHULU/KETUA KAMPUNG<br>
+        </td>
+        <td style="background-color:white !important;" colspan="3">
+          <br><br>
+          IV. PENGERUSI TAMAN PERUMAHAN/KETUA BLOK<br>
+          VI. MASJID/PENGERUSI SURAU/KETUA TOKONG/KETUA KUIL/KETUA GEREJA/KETUA KOMUNITI<br>
+        </td>
+      </tr>
+      
+    </table>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <tr>
+        <td style="background-color:#0070C0 !important; color: white" colspan=4>DOKUMENTASI YAWAS</td>
+      </tr>
+      <tr style="color: black; font-size: 12px;">
+        <td style="background-color:#e5e5e5 !important; "colspan=4>
+          <p style="margin-bottom: -5px;">SAYA MENGAKU BAHAWA BORANG INI TELAH DITERIMA OLEH PEJABAT YAYASAN WARISAN ANAK SELANGOR</p>
+        </td>
+      </tr>
+
+      <tr style="color: black; font-size: 13px; padding-left: 20px; height: -5px;">
+        <td style="background-color:#e5e5e5 !important; width: 35%;" rowspan=5>
+          <p style="background-color:white!important; padding-bottom: 170px;" align="center">TANDATANGAN STAF YAWAS</p>
+        </td>
+        <td style="background-color:#e5e5e5 !important; width: %">
+          NAMA STAF :
+        </td>
+        <td style="background-color:white !important; width: 40%">
+        </td>
+        <td style="background-color:#e5e5e5 !important; width: 2%"></td>
+      </tr>
+
+      <tr style="color: black; font-size: 13px;">
+        <td style="background-color:#e5e5e5 !important; width: %">
+          NO KP BARU :
+        </td>
+        <td style="background-color:white !important; width: %">
+        <td style="background-color:#e5e5e5 !important; width: 2%"></td>
+      </tr>
+
+      <tr style="color: black; font-size: 13px;">
+        <td style="background-color:#e5e5e5 !important; width: %">
+          TARIKH BORANG DITERIMA :
+        </td>
+        <td style="background-color:white !important; width: %">
+        <td style="background-color:#e5e5e5 !important; width: 2%"></td>
+      </tr>
+
+      <tr style="color: black; font-size: 13px;">
+        <td style="background-color:#e5e5e5 !important; width: %">
+          TARIKH PERMOHONAN :
+        </td>
+        <td style="background-color:white !important; width: %;"></td>
+        <td style="background-color:#e5e5e5 !important; width: 2%"></td>
+      </tr>
+
+      <tr style="color: black; font-size: 13px;">
+        <td style="background-color:#e5e5e5 !important; width: %">
+          NO RUJUKAN YAWAS :
+        </td>
+        <td style="background-color:white !important; width: %;"></td>
+        <td style="background-color:#e5e5e5 !important; width: 2%"></td>
+      </tr>
+
+      <tr>
+        <td style="background-color:#e5e5e5 !important;" colspan="4"></td>
+      </tr>
+      
+    </table>
+  </div>
+
 </div>
+
 
 
 
