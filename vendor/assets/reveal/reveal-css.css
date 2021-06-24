@@ -1314,6 +1314,43 @@ section {
 /*--------------------------------------------------------------
 # Mus OWN
 --------------------------------------------------------------*/
+
+.header-org{
+  background-color: #ffe4b2; 
+  margin-bottom: 10px; 
+  border-radius: 20px; 
+  padding-top:5px; 
+  padding-bottom: 5px; 
+  color: #b27300;
+  font-size: 16px;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+.sub-org{
+  font-size: 13px;
+  margin-bottom: 10px; 
+  letter-spacing: 1px;
+  font-weight: 700;
+  padding: 8px 20px;
+  background: #ffedcc;
+  color: #cc8400;
+  display: inline-block;
+  border-radius: 50px;
+}
+
+.sub-2-org{
+  font-size: 12px;
+  margin-bottom: 10px; 
+  letter-spacing: 1px;
+  font-weight: 700;
+  padding: 3px 10px;
+  background: #cce5cc;
+  color: #198c19;
+  display: inline-block;
+  border-radius: 50px;
+}
+
 .prog-hd {
    
   
