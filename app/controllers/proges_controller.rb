@@ -2,6 +2,62 @@ class ProgesController < ApplicationController
 
 	def rptproge
 		@proge = Proge.find(params[:proge])
+		@perses = @proge.perses
+		@backg = @perses.group(:backg).count
+		@inc = @perses.group(:inc).count
+		@oku = @perses.group(:kdoku).count
+		@race = @perses.group(:race).count
+		@gdr = @perses.group(:gdr).count
+		@dun = @perses.group(:dun).count
+	end
+
+	def upld_perse
+		xlsx = Roo::Spreadsheet.open(params[:file])
+    header = xlsx.row(xlsx.first_row)
+    ((xlsx.first_row+1)..(xlsx.last_row)).each do |n|
+    	row = Hash[[header, xlsx.row(n)].transpose]
+    	ic = row["MYKAD"]
+
+    	#create perse
+    	if Perse.where(ic: ic).present?
+    		perse = Perse.where(ic: ic).first
+    	else
+    		perse = Perse.new
+    		perse.name = row["NAMA"]
+				perse.ic = row["MYKAD"]
+				if row["PHONE"][0] != "0"
+					ph = "0#{row["PHONE"]}"
+				else
+					ph = row["PHONE"]
+				end
+				perse.ph = ph
+				perse.gdr = row["GENDER"]
+				# dt = row["MYKAD"].to_s
+				# if dt.to_i <= 0
+				# 	perse.dob = Date.new("19#{dt[0..1]}".to_i,dt[2..3].to_i,dt[4..5].to_i)
+				# end
+				perse.race = row["RACE"]
+				perse.backg = row["BACKGROUND"]
+				perse.kdoku = row["JENIS OKU"]
+				# perse.kdiag = row["JENIS OKU"]
+				perse.email = row["EMAIL"]
+				perse.inc = row["INC"]
+				perse.dun = row["DUN"]
+				if row["ALAMAT"].present?
+					add = row["ALAMAT"]
+				else
+					add = "Tiada Alamat"
+				end
+				perse.add = add
+				perse.save
+    	end
+
+    	#create perproge
+    	if Perproge.where(perse_id:perse.id, proge_id:row["EVENT"]).blank?
+    		Perproge.create(perse_id:perse.id, proge_id:row["EVENT"])
+    	end
+
+    end
 	end
 
 	def progeperse_xls
@@ -44,52 +100,7 @@ class ProgesController < ApplicationController
 		redirect_to request.referrer
 	end
 
-	def upld_perse
-		xlsx = Roo::Spreadsheet.open(params[:file])
-    header = xlsx.row(xlsx.first_row)
-    ((xlsx.first_row+1)..(xlsx.last_row)).each do |n|
-    	row = Hash[[header, xlsx.row(n)].transpose]
-    	ic = row["MYKAD"]
-
-    	#create perse
-    	if Perse.where(ic: ic).present?
-    		perse = Perse.where(ic: ic).first
-    	else
-    		perse = Perse.new
-    		perse.name = row["NAMA"]
-				perse.ic = row["MYKAD"]
-				if row["PHONE"][0] != "0"
-					ph = "0#{row["PHONE"]}"
-				else
-					ph = row["PHONE"]
-				end
-				perse.ph = ph
-				perse.gdr = row["GENDER"]
-				# dt = row["MYKAD"].to_s
-				# if dt.to_i <= 0
-				# 	perse.dob = Date.new("19#{dt[0..1]}".to_i,dt[2..3].to_i,dt[4..5].to_i)
-				# end
-				perse.race = row["RACE"]
-				perse.backg = row["BACKG"]
-				perse.kdoku = row["OKU"]
-				perse.kdiag = row["JENIS OKU"]
-				perse.email = row["EMAIL"]
-				if row["ALAMAT"].present?
-					add = row["ALAMAT"]
-				else
-					add = "Tiada Alamat"
-				end
-				perse.add = add
-				perse.save
-    	end
-
-    	#create perproge
-    	if Perproge.where(perse_id:perse.id, proge_id:row["EVENT"]).blank?
-    		Perproge.create(perse_id:perse.id, proge_id:row["EVENT"])
-    	end
-
-    end
-	end
+	
 
 	def progeregls
 		@proges = Proge.all
