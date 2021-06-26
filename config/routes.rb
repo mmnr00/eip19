@@ -72,6 +72,7 @@ Rails.application.routes.draw do
   get '/rflt_pdf', to: 'rflts#rflt_pdf'
 
   #~~PROGE
+  get '/rptproge', to: 'proges#rptproge'
   get '/progeperse_xls', to: 'proges#progeperse_xls'
   get '/updacv', to: 'proges#updacv'
   get '/send_cert', to: 'proges#send_cert'

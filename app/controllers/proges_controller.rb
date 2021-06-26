@@ -1,5 +1,9 @@
 class ProgesController < ApplicationController
 
+	def rptproge
+		@proge = Proge.find(params[:proge])
+	end
+
 	def progeperse_xls
 		@proge = Proge.find(params[:proge])
 		@perses = @proge.perses
