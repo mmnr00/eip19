@@ -5,11 +5,20 @@
 
 
 <h1 style="color:black;font-weight: 1000;text-align: center">BORANG MAKLUMAT ANAK</h1>
-    <h5 style="color:black;font-weight: 100;text-align: center;margin-top: -10px;">
+    
+      <% 
+        img = image_path('logo-yawas.png') 
+        img = "#{root_url}#{img}"
+        img1 = image_path('anislogo1.png') 
+        img1 = "#{root_url}#{img1}"
+      %>
+      <h5 style="color:black;font-weight: 100;text-align: center;margin-top: -10px;">
+      
+      <%= wicked_pdf_image_tag(img, size: "65x30") %>&nbsp&nbsp
       Pusat Sokongan ANIS
-      <% img = image_path('anislogo1.png') %>
-      <% img = "#{root_url}#{img}"%>
-      <%= wicked_pdf_image_tag(img, size: "90x30") %>
+      
+      <%= wicked_pdf_image_tag(img1, size: "90x30") %>
+
     </h5>
 
 <div class="prt-hide" style="margin-bottom: 10px;">

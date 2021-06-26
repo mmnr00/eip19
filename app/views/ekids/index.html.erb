@@ -121,7 +121,7 @@
           <% @ekids.order('created_at DESC').each do |ek|; perse = ek.perse %>
           <tr>
             <td>
-              <a href="#" target="_blank">PPN-<%= ek.id.to_s.rjust(4, '0') %></a>
+              <a href="<%= ekidconf_url(id: ek.id)%>" target="_blank">PPN-<%= ek.id.to_s.rjust(4, '0') %></a>
             </td>
             <td>
               <%= ek.name %><br>
