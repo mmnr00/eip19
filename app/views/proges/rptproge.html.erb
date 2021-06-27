@@ -41,7 +41,7 @@
       <div class="card-body">
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Markah Program</div>
+            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Markah Purata Program</div>
             <div class="row no-gutters align-items-center">
               <div class="col-auto">
                 <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><%= 5.32 %></div>
@@ -153,8 +153,12 @@
         <tbody>
           <% @perses.each do |prs| %>
             <tr>
-              <td><%= prs.name %></td>
-              <td><%= prs.ph %></td>
+              <td>
+                <%= prs.name %>
+              </td>
+              <td>
+                <%= prs.ph %>   
+              </td>
               <td><%= prs.email %></td>
               <td></td>
               <td></td>
