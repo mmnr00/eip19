@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rate: 1
+  good: MyString
+  bad: MyString
+  perse_id: 1
+  proge_id: 1
+
+two:
+  rate: 1
+  good: MyString
+  bad: MyString
+  perse_id: 1
+  proge_id: 1
