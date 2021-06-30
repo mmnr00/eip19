@@ -14,7 +14,7 @@
 <div class="section-header container bg-white" style="margin-top: 20px">
   <h3 style="">MAKLUMAN</h3>
   <div class="border-prog" style=""></div>
-  <p style="text-align: center; color: black; font-weight: 600">Permohonan Bantuan OKU KITA Selangor 2.0 Akan Dibuka Pada 1 Julai 2021</p>
+  <p style="text-align: center; color: black; font-weight: 600">Permohonan Bantuan OKU KITA Selangor 2.0 Sudah Dibuka!</p>
   <p style="text-align: center; color: black">Tempoh Permohonan : 1 - 31 Julai 2021</p>
 </div>
 
@@ -25,7 +25,7 @@
   <div class="row" style="margin-bottom: 20px">
 
     <div class="col-lg-6 col-md-12">
-      <img src="<%= image_path('anisPic/bantuanoku.png')%>" style="width: 100%;margin-bottom: 10px;margin-top: 10px"></img>
+      <img src="<%= image_path('anisPic/bantuanoku.jpeg')%>" style="width: 100%;margin-bottom: 10px;margin-top: 10px"></img>
       <img src="<%= image_path('anisPic/permohonan-oku.png')%>" style="width: 100%;margin-bottom: 10px"></img>
       <img src="<%= image_path('anisPic/modus-oku.png')%>" style="width: 100%;margin-bottom: 10px"></img>
     </div> <!-- COL -->
@@ -159,9 +159,9 @@
         <div class="collapse" id="coll4ii">
           <div class="card-body"  style="text-align: justify">
             <ol>
-              <li>Borang Permohonan</li>
-              <li>Senarai semak dokumen</li>
-              <li>Surat pengesahan pendapatan</li>
+              <li><a href="https://kidcare.my/bantuanoku_anis/BORANG-DAFTAR-BANTUAN-OKU-2021.pdf" target="_blank">Borang Permohonan</a></li>
+              <li><a href="https://kidcare.my/bantuanoku_anis/SENARAI-SEMAK-DOKUMEN-BANTUAN-KHAS.pdf" target="_blank">Senarai semak dokumen</a></li>
+              <li><a href="https://kidcare.my/bantuanoku_anis/BORANG-PENGESAHAN-AKUAN-PENDAPATAN.pdf" target="_blank">Surat pengesahan pendapatan</a></li>
             </ol>
 
           </div>
@@ -277,7 +277,9 @@
 
       <%= link_to "Semakan Permohonan", "https://bantuanoku.yawas.my/admin/semakan_online.php", class: "btn btn-sm btn-info btn-block"%>
 
-      <%= link_to "Permohonan Belum Dibuka", "#", class: "btn btn-sm btn-danger btn-block"%>
+      <%= link_to "Permohanan Secara Manual Sila Muat Turun Borang Disini", "https://kidcare.my/bantuanoku_anis/BORANG-DAFTAR-BANTUAN-OKU-2021.pdf", class: "btn btn-sm btn-secondary btn-block", target: "_blank" %>
+
+      <% link_to "Permohonan Belum Dibuka", "#", class: "btn btn-sm btn-danger btn-block"%>
 
       
 
