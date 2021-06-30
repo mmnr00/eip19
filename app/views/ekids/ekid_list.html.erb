@@ -1,11 +1,11 @@
 
 
-<%= link_to new_ekid_path(prog: "SARINGAN ANIS", perse: params[:perse]), class: "btn btn-sm btn-success", style: "font-size: 15px" do %>
+<% link_to new_ekid_path(prog: "SARINGAN ANIS", perse: params[:perse]), class: "btn btn-sm btn-success", style: "font-size: 15px" do %>
   <i class="fa far fa-plus"></i>&nbsp Daftar Saringan ANIS
 <% end %>
 &nbsp
-<%= link_to new_ekid_path(prog: "TERAPI ANIS", perse: params[:perse]), class: "btn btn-sm btn-primary", style: "font-size: 15px" do %>
-  <i class="fa far fa-plus"></i>&nbsp Daftar Terapi ANIS
+<%= link_to new_ekid_path(prog: "INTERVENSI ANIS", perse: params[:perse]), class: "btn btn-sm btn-primary", style: "font-size: 15px" do %>
+  <i class="fa far fa-plus"></i>&nbsp Daftar Intervensi ANIS
 <% end %>
 <div style="margin-bottom: 10px"></div>
 
@@ -26,8 +26,9 @@
         <thead>
           <tr class="shadow">
             <th style="background-color:#ffb2b2; width: %">NAMA</th>
-            <th style="background-color:#ffb2b2; width: %">NO MYKAD</th>
-            <th style="background-color:#ffb2b2; width: %">PROGRAM</th>
+            <th style="background-color:#ffb2b2; width: %">NO MYKAD</th><!-- 
+            <th style="background-color:#ffb2b2; width: %">PROGRAM</th> -->
+            <th style="background-color:#ffb2b2; width: %">STATUS PERMOHONAN</th>
           </tr>
         </thead>
         <tbody>
@@ -41,8 +42,9 @@
                   <%= link_to "Kemaskini Perkembangan", edit_pkid_path(id: ek.pkid.id, ekid: ek.id), class: "badge badge-pill badge-secondary", target: "_blank" %> 
                 <% end %>   
               </td>
-              <td><%= ek.ic %></td>
-              <td><%= ek.tp %></td>
+              <td><%= ek.ic %></td><!-- 
+              <td><%= ek.tp %></td> -->
+              <td><%= ek.stat %></td>
             </tr>
           <% end %> 
         </tbody>

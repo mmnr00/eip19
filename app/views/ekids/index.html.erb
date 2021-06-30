@@ -1,8 +1,7 @@
 <meta name="viewport" content="width=1024">
-<%= link_to "Click", "#", onclick: 'window.print()', class: 'btn btn-sm btn-primary' %>
 <ol class="breadcrumb">
   <li class="breadcrumb-item">
-    Paparan Admin <b>PUSPANIS</b></b>
+    Paparan Admin <b>Pusat ANIS</b></b>
   </li>
 </ol>
 
@@ -85,7 +84,7 @@
     <div class="row">
       <%= form_tag ekidindex_path, method: :get, id: "find_kid" do %>
         <%= text_field_tag :sch_str, params[:sch_str], placeholder: "Masukkan Nama", style: 'text-transform: uppercase' %>
-        <%= select_tag :sch_fld, options_for_select(["SARINGAN ANIS", "TERAPI ANIS"], params[:sch_fld]),
+        <% select_tag :sch_fld, options_for_select(["SARINGAN ANIS", "TERAPI ANIS"], params[:sch_fld]),
               include_blank: "Semua Program" %>
         <%= select_tag :stat, options_for_select(["AKTIF", "TIDAK AKTIF"], params[:stat]),
               include_blank: "Semua Status" %>
@@ -112,9 +111,10 @@
             <th style="background-color:#ffb2b2; width: 12%">NO SIRI</th>
             <th style="background-color:#ffb2b2">MAKLUMAT ANAK</th>
             <th style="background-color:#ffb2b2">MAKLUMAT PEMOHON</th>
-            <th style="background-color:#ffb2b2">PROGRAM</th>
+            <!-- <th style="background-color:#ffb2b2">PROGRAM</th> -->
+            <th style="background-color:#ffb2b2; width: 30%">MAKLUMAT TAMBAHAN</th>
             <th style="background-color:#ffb2b2; width: 18%">STATUS</th>
-            <th style="background-color:#ffb2b2">TARIKH PERMOHONAN</th>
+            <th style="background-color:#ffb2b2; width: 20%">TARIKH</th>
           </tr>
         </thead>
         <tbody>
@@ -125,17 +125,35 @@
             </td>
             <td>
               <%= ek.name %><br>
-              (<%= ek.ic %>)
+              (<%= ek.ic %>)<br>
+              <%
+                image = ek.fotos.where(foto_name: "DIAGNOSIS").first
+                if image.present? && image.picture.present?
+                  url = image.picture.url
+                else
+                  url = ""
+                end
+              %>
+              <a href="<%= url %>" target="_blank" download><btn class="badge badge-pill badge-secondary">Borang Diagnosis</btn></a>
             </td>
             <td>
               <%= perse.name %><br>
               <%= perse.ph %><br>
               <%= perse.email %><br>
             </td>
+            
             <td>
-              <%= ek.tp %>
+              <%
+                age = (Date.today.year*12+Date.today.month) - (ek.dob.year*12+ek.dob.month)
+                yr = age/12
+                mth = age - yr*12
+        
+              %>
+              <b>Kategori: </b><%= ek.prbtp %><br>
+              <b>Umur: </b><%= "#{yr} tahun, #{mth} bulan" %><br>
+              <b>Pendapatan (RM): </b><%= ek.pinc %>
             </td>
-            <td>
+            <!-- <td>
               <%
                 if ek.stat.present?
                   stat_sr = "Tidak Aktif"
@@ -149,8 +167,13 @@
               %>
               <btn class="btn btn-sm btn-block btn-<%= clr %>"><%= stat_sr %></btn>
               <a href="<%= ekstat_url(id: ek.id, stat: staturl) %>"><btn class="badge badge-pill badge-secondary">Ubah Status</btn></a>
+            </td> -->
+            <td><%= ek.stat %></td>
+
+            <td>
+              <b>Kemaskini</b> :<%= ek.updated_at.strftime('%d-%^b-%y') %><br>
+              <b>Permohonan</b> :<%= ek.created_at.strftime('%d-%^b-%y') %>    
             </td>
-            <td><%= ek.created_at.strftime('%d-%^b-%y') %></td>
           </tr>
           <% end %>
         </tbody>

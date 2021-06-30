@@ -198,6 +198,7 @@ class EkidsController < ApplicationController
 			# else
 			# 	@ekid.stat = "NEW"
 			# end
+			@ekid.stat = "Permohonan Diterima"
 			if @ekid.save 
 				#send email
 				subject = "Permohonan #{@ekid.tp} Diterima"
