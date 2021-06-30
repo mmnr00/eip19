@@ -8,7 +8,7 @@ git checkout ostg_an
 git merge dev_an2
 git push
 
-git checkout prod_an
+git checkout prod_an2
 git merge ostg_an
 git push
 
