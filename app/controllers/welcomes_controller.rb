@@ -5,6 +5,10 @@ class WelcomesController < ApplicationController
 	
 	#layout "page"
 
+	def bantuanoku2
+		redirect_to "https://www.anisselangor.com/bantuanOKU"
+	end
+
 	def bantuanoku
 		@index = true
 	end
