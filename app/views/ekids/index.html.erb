@@ -5,7 +5,7 @@
   </li>
 </ol>
 
-<!-- DASHBOARD SUMMARY -->
+<!-- DASHBOARD SUMMARY 
 <div class="row">
 
   <div class="col-3">
@@ -75,7 +75,7 @@
   
 
 
-</div>
+</div> -->
 
 <!-- TABLE -->
 <br>
@@ -86,7 +86,7 @@
         <%= text_field_tag :sch_str, params[:sch_str], placeholder: "Masukkan Nama", style: 'text-transform: uppercase' %>
         <% select_tag :sch_fld, options_for_select(["SARINGAN ANIS", "TERAPI ANIS"], params[:sch_fld]),
               include_blank: "Semua Program" %>
-        <%= select_tag :stat, options_for_select(["AKTIF", "TIDAK AKTIF"], params[:stat]),
+        <%= select_tag :stat, options_for_select(["Permohonan Diterima", "Permohonan Tidak Lengkap","Permohonan Diluluskan", "Permohonan Ditolak"], params[:stat]),
               include_blank: "Semua Status" %>
         <%= hidden_field_tag :sch, params[:sch], value: true %>
         <%= button_tag(type: :submit, class: "badge badge-success shadow-none", style: "font-size: 14px; border-style: none; font-weight: normal",  id: "submit_expense") do %>

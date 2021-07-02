@@ -17,11 +17,12 @@ class EkidsController < ApplicationController
 			@ekids = @ekids.where(tp: params[:sch_fld]) unless params[:sch_fld].blank?
 			@ekids = @ekids.where('name LIKE ?', "%#{params[:sch_str].upcase}%") unless params[:sch_str].blank?
 			if params[:stat].present?
-				if params[:stat] == "AKTIF"
-					@ekids = @ekids.where(stat: [nil,""])
-				else
-					@ekids = @ekids.where.not(stat: [nil,""])
-				end
+				# if params[:stat] == "AKTIF"
+				# 	@ekids = @ekids.where(stat: [nil,""])
+				# else
+				# 	@ekids = @ekids.where.not(stat: [nil,""])
+				# end
+				@ekids = @ekids.where(stat: params[:stat])
 				
 			end
 		end
@@ -218,7 +219,7 @@ class EkidsController < ApplicationController
 				Jabatan Anak Istimewa Selangor
 
 				"
-				send_email(subject,to,"jabatananisss@yawas.my",body)
+				send_email(subject,to,"intervensianis@gmail.com",body)
 				if @ekid.tp == "SARINGAN ANIS"
 					redirect_to new_pkid_path(ekid: @ekid.id)
 				else

@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
 		if cc.present?
 			personalization.add_cc(SendGrid::Email.new(email: "#{cc}"))
 		end
-		# personalization.add_bcc(SendGrid::Email.new(email: "mmnr00@gmail.com"))
+		personalization.add_bcc(SendGrid::Email.new(email: "mmnr00@gmail.com"))
 		mail.add_personalization(personalization)
 		#add content
 		msg = "<html>
