@@ -105,7 +105,9 @@
   <div class="card-body">
     
     <div class="table table-responsive border" style="font-size:13px">
+      <%= form_for(:ek, :url => {:controller=>'ekids', :action=>'statekid'}, :html => {multipart: true, class: "form-horizontal", method: :post, role: "form"}) do |f| %>
       <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0" style="color: black">
+        
         <thead>
           <tr class="shadow">
             <th style="background-color:#ffb2b2; width: 12%">NO SIRI</th>
@@ -168,16 +170,26 @@
               <btn class="btn btn-sm btn-block btn-<%= clr %>"><%= stat_sr %></btn>
               <a href="<%= ekstat_url(id: ek.id, stat: staturl) %>"><btn class="badge badge-pill badge-secondary">Ubah Status</btn></a>
             </td> -->
-            <td><%= ek.stat %></td>
+            <td>
+              <%= f.fields_for :"#{ek.id}" do |h| %>
+              <% ek.stat %>
+                <%= h.select :stat, options_for_select(["Permohonan Diterima", "Permohonan Tidak Lengkap","Permohonan Diluluskan", "Permohonan Ditolak"],selected: ek.stat), {include_blank: "Pilih Status"}, required: false %>
+              <% end %>
+            </td>
 
             <td>
               <b>Kemaskini</b> :<%= ek.updated_at.strftime('%d-%^b-%y') %><br>
               <b>Permohonan</b> :<%= ek.created_at.strftime('%d-%^b-%y') %>    
             </td>
           </tr>
-          <% end %>
+
+          <% end %> <!-- END LOOP -->
+
         </tbody>
+        
       </table>
+      <%= f.submit :"Kemaskini",  class: 'btn btn-sm btn-block btn-success btn-lg', style: "align:center" %>
+      <% end %> <!-- END FORM -->
     </div>
   </div>
 </div>

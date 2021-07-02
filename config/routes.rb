@@ -106,6 +106,7 @@ Rails.application.routes.draw do
  
 
   #~~EKID
+  post '/statekid', to: 'ekids#statekid'
   get '/ekstat', to: 'ekids#ekstat'
   get '/ekid_list', to: 'ekids#ekid_list'
   get '/ekidindex', to: 'ekids#index'

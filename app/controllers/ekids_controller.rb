@@ -2,6 +2,17 @@ class EkidsController < ApplicationController
 	before_action :authenticate_admin!, only: [:index]
 	before_action :set_all
 
+	def statekid
+		pars = params[:ek]
+		pars.each do |k,v|
+			ek = Ekid.find(k)
+			ek.stat = v["stat"]
+			ek.save
+		end
+		flash[:success] = "Kemaskini Status Berjaya"
+		redirect_to request.referrer
+	end
+
 	def ekstat
 		@ekid = Ekid.find(params[:id])
 		@ekid.stat = params[:stat]
