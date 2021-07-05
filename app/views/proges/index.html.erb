@@ -9,7 +9,7 @@
 </ol>
 
 <% if current_admin.username == "eipadmin" %>
-  <%= form_tag upld_perse_path, multipart: true do %>
+  <% form_tag upld_perse_path, multipart: true do %>
     <%= file_field_tag :file %>
     <%= submit_tag "Uploads" %>
   <% end %>
@@ -18,13 +18,13 @@
 <!-- TABLE -->
 <div class="cards shadow mb-4">
   <div class="card-header">
-   <!--  <div class="row">
+   <div class="row">
       <%= form_tag progeindex_path, method: :get, id: "find_kid" do %>
-        <%= select_tag :tp, options_for_select(["No Siri (4 no belakang)", "Nama Agensi","No Pendaftaran Agensi"], params[:tp]),
+        <%= select_tag :tp, options_for_select(["SEMINAR ANIS", "CIKGU ANIS(TADIKA)", "CIKGU ANIS(PDK)","CIKGU ANIS(PPKI)"], params[:tp]),
               include_blank: "Semua Jenis Program" %>
-        <%= select_tag :sch_fld, options_for_select(["No Siri (4 no belakang)", "Nama Agensi","No Pendaftaran Agensi"], params[:sch_fld]),
+        <% select_tag :sch_fld, options_for_select(["No Siri (4 no belakang)", "Nama Agensi","No Pendaftaran Agensi"], params[:sch_fld]),
               include_blank: "Semua Status" %>
-        <%= hidden_field_tag :stat, params[:stat], value: params[:stat] %>
+        <% hidden_field_tag :stat, params[:stat], value: params[:stat] %>
         <%= hidden_field_tag :sch, params[:sch], value: true %>
         <%= button_tag(type: :submit, class: "badge badge-success shadow-none", style: "font-size: 14px; border-style: none; font-weight: normal",  id: "submit_expense") do %>
             <i class="fa fa-search"></i> Cari
@@ -37,7 +37,7 @@
       <div>
         
       </div>
-    </div> -->
+    </div>
   </div>
   <div class="card-body">
     
@@ -45,9 +45,10 @@
       <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0" style="color: black">
         <thead>
           <tr class="shadow">
-            <th style="background-color:#ffb2b2; width:">NAMA PROGRAM</th>
+            <th style="background-color:#ffb2b2; width: 30%">NAMA PROGRAM</th>
             <th style="background-color:#ffb2b2; width:">TARIKH</th>
-            <th style="background-color:#ffb2b2">PENDAFTARAN</th>
+            <th style="background-color:#ffb2b2; width: 5%">PENDAFTARAN</th>
+            <th style="background-color:#ffb2b2">JENIS</th>
           </tr>
         </thead>
         <tbody>
@@ -56,7 +57,7 @@
             <td>
               <a href="<%= edit_proge_path(prg) %>" target="">
                 <%= prg.name %>
-              </a>&nbsp
+              </a><br>
               <% if prg.acv %>
                 <%= link_to "Deactivate", updacv_path(proge: prg.id), class: "badge badge-success badge-pill" %>
                 <%= link_to "Register", persesch_path(proge: prg.id, prog: "AKADEMI ANIS"), class: "badge badge-primary badge-pill" %>
@@ -67,6 +68,9 @@
             </td>
             <td>
               <%= prg.date.strftime('%d-%^b-%y') %>  
+              <% if prg.daten.present? %>
+                <b>to</b> <%= prg.daten.strftime('%d-%^b-%y') %>  
+              <% end %>
             </td>
             <td>
               <a href="<%= progeperse_url(proge: prg.id) %>">
@@ -81,6 +85,7 @@
               <% link_to "Report", rptproge_path(proge: prg.id), class: 'badge badge-pill badge-secondary', target: "_blank" %>
                 
             </td>
+            <td><%= prg.tp %></td>
           </tr>
           <% end %>
         </tbody>

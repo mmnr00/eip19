@@ -119,6 +119,9 @@ class ProgesController < ApplicationController
 
 	def index
 		@proges = Proge.all
+		if params[:sch].present?
+			@proges = Proge.where(tp: params[:tp])
+		end
 		# render action: "index", layout: "eipblank"
 	end
 
@@ -352,6 +355,7 @@ class ProgesController < ApplicationController
 	def proge_params
 		params.require(:proge).permit(:name, 
 																	:date, 
+																	:daten,
 																	:venue, 
 																	:start,
 																	:end,

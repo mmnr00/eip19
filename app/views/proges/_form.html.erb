@@ -23,9 +23,7 @@
           </div>
           <div class="row">
             <div class="col-sm-8 col-12">
-              <%= f.select :tp, options_for_select(["Seminar",
-                                                    "Cikgu",
-                                                    "TOT"
+              <%= f.select :tp, options_for_select(["SEMINAR ANIS", "CIKGU ANIS(TADIKA)", "CIKGU ANIS(PDK)","CIKGU ANIS(PPKI)"
                                                   ], 
                                                   selected: @proge.tp), 
             {include_blank: "Pilih Satu"}, {required: true} %>
@@ -46,6 +44,20 @@
           </div>
         </div>
 
+        <div class="form-group"> <!-- DATE-->
+          <div class="row">
+            <div class="control-label col-sm-8">
+              <strong>TARIKH AKHIR PROGRAM</strong>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-8 col-12">
+              <%= f.date_field :daten, class: "form-control", placeholder: "e.g. 870829015436 (no dash)", autofocus: true, required: true %>
+            </div>
+          </div>
+          <i style="font-size: 12px;">Kosongkan jika Program Satu Hari</i>
+        </div>
+
         <div class="form-group"> <!-- VENUE-->
           <div class="row">
             <div class="control-label col-sm-8">
@@ -59,7 +71,8 @@
           </div>
         </div>
 
-        <div class="form-group"> <!-- START-->
+        
+        <div class="form-group"> 
           <div class="row">
             <div class="control-label col-sm-8">
               <strong>MASA BERMULA</strong>
@@ -72,7 +85,7 @@
           </div>
         </div>
 
-        <div class="form-group"> <!-- END-->
+        <div class="form-group"> 
           <div class="row">
             <div class="control-label col-sm-8">
               <strong>MASA BERAKHIR</strong>
@@ -84,6 +97,7 @@
             </div>
           </div>
         </div>
+
 
         <div class="form-group">
           <div class="row">
