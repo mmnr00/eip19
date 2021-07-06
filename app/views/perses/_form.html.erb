@@ -83,7 +83,7 @@
         </div>
       </div>
 
-      <% if params[:proge].present? %>
+      <% if params[:prog] == "AKADEMI ANIS" && Proge.find(params[:proge]).tp == "SEMINAR ANIS" || (@perse.backg.present? && @perse.inc.present? && @perse.kdoku.present? && @perse.kdiag.present?) %>
         <div class="form-group"> <!-- HOUSEHOLD MONTHLY INCOME (RM) -->
           <div class="row">
             <div class="col-lg-8 col-md-10 col-sm-12">
@@ -98,7 +98,9 @@
                                                       "Pendidik Anak Istimewa (SK/SMK- PPKI)",
                                                       "Pendidik Anak Istimewa (SK/SMK- Inklusif)",
                                                       "Pengusaha Institusi Pendidikan Anak Istimewa/Badan Kebajikan",
-                                                      "Pendidik Anak Istimewa (PPDK/Swasta/NGO/Lain-lain)",
+                                                      "Pendidik Anak Istimewa (PPKI)",
+                                                      "Pendidik Anak Istimewa (PDK)",
+                                                      "Pendidik Anak Istimewa (TADIKA)",
                                                       "Orang Awam"
                                                   ], 
                                                   selected: @perse.backg), 
@@ -159,7 +161,48 @@
             </div>
           </div>
         </div>
-      <% end %>
+      <% end %> <!-- END SEMINAR ANIS -->
+
+      <% if params[:prog] == "AKADEMI ANIS" && (Proge.find(params[:proge]).tp.include? "CIKGU ANIS") || (@perse.backg.present? && @perse.stdoku.present?) %>
+        <div class="form-group"> <!-- HOUSEHOLD MONTHLY INCOME (RM) -->
+          <div class="row">
+            <div class="col-lg-8 col-md-10 col-sm-12">
+              <strong>LATAR BELAKANG PESERTA<a style="color: red">*</a></strong>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-md-10 col-sm-12">
+              <%= f.select :backg, options_for_select(["Pendidik Anak Istimewa (PPKI)",
+                                                      "Pendidik Anak Istimewa (PDK)",
+                                                      "Pendidik Anak Istimewa (TADIKA)"
+                                                  ], 
+                                                  selected: @perse.backg), 
+            {include_blank: "Pilih Satu"}, {required: true} %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group"> <!-- BANGSA -->
+          <div class="row">
+            <div class="col-lg-8 col-md-10 col-sm-12">
+              <strong>TANDAKAN KATEGORI OKU MURID ANDA</strong>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-md-10 col-sm-12">
+              <%= f.check_box :stdoku, {multiple: true, checked: (@perse.stdoku.include? "1") }, 1, nil %> Masalah Penglihatan <br>
+              <%= f.check_box :stdoku, {multiple: true, checked: (@perse.stdoku.include? "2")}, 2, nil%> Masalah Pendengaran <br>
+              <%= f.check_box :stdoku, {multiple: true, checked: (@perse.stdoku.include? "3")}, 3, nil %> Masalah Pertuturan <br>
+              <%= f.check_box :stdoku, {multiple: true, checked: (@perse.stdoku.include? "4")}, 4, nil %> Masalah Fizikal <br>
+              <%= f.check_box :stdoku, {multiple: true, checked: (@perse.stdoku.include? "5")}, 5, nil %> Masalah Pembelajaran <br>
+              <%= f.check_box :stdoku, {multiple: true, checked: (@perse.stdoku.include? "6")}, 6, nil %> Masalah Mental <br>
+              <%= f.check_box :stdoku, {multiple: true, checked: (@perse.stdoku.include? "7")}, 7, nil %> Masalah Pelbagai <br>
+              <%= f.check_box :stdoku, {multiple: true, checked: (@perse.stdoku.include? "8")}, 8, nil %> Belum/Tiada Diagnosis <br>
+            </div>
+          </div>
+        </div>
+
+      <% end %> <!-- END CIKGU ANIS -->
 
       <div class="form-group"> <!-- BANGSA -->
         <div class="row">

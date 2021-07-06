@@ -6,6 +6,12 @@ class PersesController < ApplicationController
 
 	def update
 		@perse = Perse.find(params[:id])
+		if @perse.stdoku.present? && params[:perse][:stdoku].blank?
+			flash[:danger] = "Sila Pilih Satu Kategori Murid"
+			redirect_to request.referrer and return
+		end
+		@perse.stdoku = nil
+		@perse.save
 		if @perse.update(perse_params)
 			if params[:perse][:proge].present? && params[:perse][:prog] == "AKADEMI ANIS"
 				perprg = Perproge.new(perse_id: @perse.id, proge_id: params[:perse][:proge])
@@ -37,16 +43,23 @@ class PersesController < ApplicationController
 
 	def create
 		@perse = Perse.new(perse_params)
+		@proge = Proge.find(params[:perse][:proge])
+		if (@proge.tp.include? "CIKGU ANIS") && params[:perse][:stdoku].blank?
+			flash[:danger] = "Sila Pilih Satu Kategori OKU Murid Anda"
+			redirect_to request.referrer and return
+		end
 		if @perse.save 
 			if (prog = params[:perse][:prog]).present?
 
 				if prog == "DIDIK ANIS"
 					redirect_to new_ddk_path(perse: @perse.id)
+
 				elsif prog == "AKADEMI ANIS"
 					Perproge.create(perse_id: @perse.id, proge_id: params[:perse][:proge])
 					prg = Proge.find(params[:perse][:proge])
 					flash[:success] = "Pendaftaran Untuk #{prg.name} Berjaya!"
 					redirect_to persesch_path(prog: prog, proge: params[:perse][:proge] )
+
 				elsif prog == "TERAPI ANIS" || prog == "SARINGAN ANIS" || prog == "INTERVENSI ANIS"
 					if params[:perse][:regkid].present?
 						redirect_to new_ekid_path(perse: @perse.id, prog: prog)
@@ -79,16 +92,29 @@ class PersesController < ApplicationController
 
 							if params[:prog] == "DIDIK ANIS"
 								redirect_to new_ddk_path(perse: perse.id)
+
 							elsif params[:prog] == "AKADEMI ANIS"
 								prg = Proge.find(params[:proge])
-								if perse.backg.present?
-									Perproge.create(perse_id: perse.id, proge_id: prg.id) unless prg.perses.where(id: perse.id).present?
-									flash[:success] = "Pendaftaran Untuk #{prg.name} Berjaya!"
-									redirect_to persesch_path(prog: params[:prog], proge: params[:proge])
-								else
-									flash[:danger] = "Sila Lengkapkan Maklumat Anda"
-									redirect_to edit_perse_path(id: perse.id, prog: params[:prog], proge: params[:proge])
+								if prg.tp.include? "SEMINAR ANIS"
+									if perse.backg.present?
+										Perproge.create(perse_id: perse.id, proge_id: prg.id) unless prg.perses.where(id: perse.id).present?
+										flash[:success] = "Pendaftaran Untuk #{prg.name} Berjaya!"
+										redirect_to persesch_path(prog: params[:prog], proge: params[:proge])
+									else
+										flash[:danger] = "Sila Lengkapkan Maklumat Anda"
+										redirect_to edit_perse_path(id: perse.id, prog: params[:prog], proge: params[:proge])
+									end
+								elsif prg.tp.include? "CIKGU ANIS"
+									if perse.stdoku.present?
+										Perproge.create(perse_id: perse.id, proge_id: prg.id) unless prg.perses.where(id: perse.id).present?
+										flash[:success] = "Pendaftaran Untuk #{prg.name} Berjaya!"
+										redirect_to persesch_path(prog: params[:prog], proge: params[:proge])
+									else
+										flash[:danger] = "Sila Lengkapkan Maklumat Anda"
+										redirect_to edit_perse_path(id: perse.id, prog: params[:prog], proge: params[:proge])
+									end
 								end
+
 							elsif params[:prog] == "SARINGAN ANIS" || params[:prog] == "TERAPI ANIS" || params[:prog] == "INTERVENSI ANIS"
 								if params[:regkid].present?
 									redirect_to new_ekid_path(perse: perse.id, prog: params[:prog])
@@ -179,7 +205,8 @@ class PersesController < ApplicationController
 															    :backgo,
 															    :kdoku,
 															    :kdiag,
-															    :email)
+															    :email,
+															    :stdoku => [])
 	end
 
 end

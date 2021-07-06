@@ -21,8 +21,8 @@
           <tr class="shadow">
             <th style="background-color:#ffb2b2; width: 12%">NO</th>
             <th style="background-color:#ffb2b2; width:">NAMA</th>
-            <th style="background-color:#ffb2b2; width:">NO MYKAD</th>
-            <th style="background-color:#ffb2b2; width:">SIJIL</th>
+            <th style="background-color:#ffb2b2; width:">NO MYKAD</th><!-- 
+            <th style="background-color:#ffb2b2; width:">SIJIL</th> -->
           </tr>
         </thead>
         <tbody>
@@ -31,10 +31,10 @@
             <tr>
               <td><%= cnt %></td>
               <td><%= prs.name %></td>
-              <td><%= prs.ic %></td>
+              <td><%= prs.ic %></td><!-- 
               <td>
                 <%= link_to "Jana Sijil", progecert_path(perse: prs.id, proge: @proge.id), target: "_blank" %>
-              </td>
+              </td> -->
             </tr>
 
           <% cnt = cnt + 1;end %>
