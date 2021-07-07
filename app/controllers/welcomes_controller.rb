@@ -5,6 +5,36 @@ class WelcomesController < ApplicationController
 	
 	#layout "page"
 
+	def cikguanisppki
+		prog = Proge.where(tp: "CIKGU ANIS(PPKI)", acv: true)
+		if prog.present? && prog.count == 1
+			redirect_to persesch_path(prog:"AKADEMI ANIS", proge: prog.last.id)
+		else
+			flash[:danger] = "Maaf pendaftaran telah ditutup. Sila hubungi Penyelaras Program untuk maklumat lanjut"
+			redirect_to persesch_path
+		end
+	end
+
+	def cikguanistadika
+		prog = Proge.where(tp: "CIKGU ANIS(TADIKA)", acv: true)
+		if prog.present? && prog.count == 1
+			redirect_to persesch_path(prog:"AKADEMI ANIS", proge: prog.last.id)
+		else
+			flash[:danger] = "Maaf pendaftaran telah ditutup. Sila hubungi Penyelaras Program untuk maklumat lanjut"
+			redirect_to persesch_path
+		end	
+	end
+
+	def cikguanispdk
+		prog = Proge.where(tp: "CIKGU ANIS(PDK)", acv: true)
+		if prog.present? && prog.count == 1
+			redirect_to persesch_path(prog:"AKADEMI ANIS", proge: prog.last.id)
+		else
+			flash[:danger] = "Maaf pendaftaran telah ditutup. Sila hubungi Penyelaras Program untuk maklumat lanjut"
+			redirect_to persesch_path
+		end	
+	end
+
 	def bantuanoku2
 		redirect_to "https://www.anisselangor.com/bantuanOKU"
 	end

@@ -141,7 +141,10 @@ Rails.application.routes.draw do
 
   # For dtails on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
    #WELCOME#
-   get '/bantuanoku', to: 'welcomes#bantuanoku2'
+   get '/cikguanispdk', to: 'welcomes#cikguanispdk'
+   get '/cikguanistadika', to: 'welcomes#cikguanistadika'
+  get '/cikguanisppki', to: 'welcomes#cikguanisppki'
+  get '/bantuanoku', to: 'welcomes#bantuanoku2'
   get '/bantuanOKU', to: 'welcomes#bantuanoku'
   get '/intervensianis', to: 'welcomes#intervensianis'
   get '/saringananis', to: 'welcomes#saringananis'
