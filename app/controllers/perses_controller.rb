@@ -43,10 +43,12 @@ class PersesController < ApplicationController
 
 	def create
 		@perse = Perse.new(perse_params)
-		@proge = Proge.find(params[:perse][:proge])
-		if (@proge.tp.include? "CIKGU ANIS") && params[:perse][:stdoku].blank?
-			flash[:danger] = "Sila Pilih Satu Kategori OKU Murid Anda"
-			redirect_to request.referrer and return
+		if params[:perse][:proge].present?
+			@proge = Proge.find(params[:perse][:proge])
+			if (@proge.tp.include? "CIKGU ANIS") && params[:perse][:stdoku].blank?
+				flash[:danger] = "Sila Pilih Satu Kategori OKU Murid Anda"
+				redirect_to request.referrer and return
+			end
 		end
 		if @perse.save 
 			if (prog = params[:perse][:prog]).present?

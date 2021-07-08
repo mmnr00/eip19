@@ -83,7 +83,7 @@
         </div>
       </div>
 
-      <% if params[:prog] == "AKADEMI ANIS" && Proge.find(params[:proge]).tp == "SEMINAR ANIS" || (@perse.backg.present? && @perse.inc.present? && @perse.kdoku.present? && @perse.kdiag.present?) %>
+      <% if params[:prog] == "AKADEMI ANIS" && Proge.find(params[:proge]).tp == "SEMINAR ANIS"  %>
         <div class="form-group"> <!-- HOUSEHOLD MONTHLY INCOME (RM) -->
           <div class="row">
             <div class="col-lg-8 col-md-10 col-sm-12">
@@ -163,7 +163,7 @@
         </div>
       <% end %> <!-- END SEMINAR ANIS -->
 
-      <% if params[:prog] == "AKADEMI ANIS" && (Proge.find(params[:proge]).tp.include? "CIKGU ANIS") || (@perse.backg.present? && @perse.stdoku.present?) %>
+      <% if params[:prog] == "AKADEMI ANIS" && (Proge.find(params[:proge]).tp.include? "CIKGU ANIS")  %>
         <div class="form-group"> <!-- HOUSEHOLD MONTHLY INCOME (RM) -->
           <div class="row">
             <div class="col-lg-8 col-md-10 col-sm-12">
