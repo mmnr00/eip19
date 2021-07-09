@@ -32,6 +32,10 @@ Rails.application.routes.draw do
   devise_for :owners#, :controllers => { :passwords => 'passwords' }
 	root 'welcomes#index2'
 
+  #~~CNTPS
+  get '/cntplist', to: 'cntps#cntplist'
+  post '/crtcntp', to: 'cntps#crtcntp'
+
   #~~ARTKS
   get '/artk_index', to: 'artks#artk_index'
   get '/artk_list', to: 'artks#artk_list'

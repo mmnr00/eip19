@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  start: 2021-07-09 21:32:07
+  end: 2021-07-09 21:32:07
+  lec: MyString
+  ctn: MyString
+  proge_id: 1
+
+two:
+  title: MyString
+  start: 2021-07-09 21:32:07
+  end: 2021-07-09 21:32:07
+  lec: MyString
+  ctn: MyString
+  proge_id: 1

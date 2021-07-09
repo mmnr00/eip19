@@ -85,7 +85,13 @@
               <% link_to "Report", rptproge_path(proge: prg.id), class: 'badge badge-pill badge-secondary', target: "_blank" %>
                 
             </td>
-            <td><%= prg.tp %></td>
+            <td>
+              <%= tp = prg.tp %>
+              <% if (tp.include? "CIKGU ANIS")%>
+                <br>
+                <%= link_to "Program", cntplist_path(proge: prg.id), class: 'btn btn-sm btn-success', target: "_blank" %>
+              <% end %>
+            </td>
           </tr>
           <% end %>
         </tbody>
