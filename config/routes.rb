@@ -33,8 +33,11 @@ Rails.application.routes.draw do
 	root 'welcomes#index2'
 
   #~~CNTPS
+  get '/editcntp', to: 'cntps#editcntp'
+  post '/updcntp', to: 'cntps#updcntp'
   get '/cntplist', to: 'cntps#cntplist'
   post '/crtcntp', to: 'cntps#crtcntp'
+  get '/rmvcntp', to: 'cntps#rmvcntp'
 
   #~~ARTKS
   get '/artk_index', to: 'artks#artk_index'

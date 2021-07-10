@@ -1,50 +1,10 @@
 
 
-<div style="background-color: red;margin-bottom: -5px">
-  <h4 style="text-align: center; color: white">Senarai Program <%= @proge.name %></h4>
-</div>
 
-<div class="bg-white" style="margin-bottom: 15px; text-align: center" >
-<i><%= "#{@proge.date.strftime('%d-%^b-%Y')} hingga #{@proge.daten.strftime('%d-%^b-%Y')}" %> </i>
-</div>
+<%= render 'cntps/schd', adm: 1%>
 
-<% @proge.cntps.order('start ASC').each do |cn| %>
-  <%= sanitize cn.ctn %><br>
-  <%= cn.start.strftime('%I:%M%p') %>
-  <%= cn.end.strftime('%I:%M%p') %>
-  <br><br>
-<% end %>
 
 <div style="background-color: blue;margin-bottom: -5px">
   <h6 style="text-align: center; color: white">Program Baru Untuk <%= @proge.name %></h6>
 </div>
-<%= form_for(@cntp, :url => {:controller=>'cntps', :action=>'crtcntp'}, :html => {multipart: true, class: "form-horizontal", method: :post, role: "form"}) do |f| %>
-  <div class="control-label col-sm-12">
-    <strong>TAJUK</strong>
-    <%= f.text_field :title, class: "form-control", autofocus: true, required: true %><br>
-  </div>
-  
-  <div class="control-label col-sm-12">
-    <strong>NAMA PENCERAMAH</strong>
-    <%= f.text_field :lec, class: "form-control", autofocus: true, required: true %><br>
-  </div>
-
-  <div class="control-label col-sm-12">
-    <strong>MAKLUMAT PROGRAM</strong>
-    <%= f.text_area :ctn, class: "form-control", autofocus: true, required: true, rows: 5 %><br>
-  </div>
-  
-  <div class="control-label col-sm-12">
-    <strong>MASA MULA</strong>
-    <%= f.time_field :start, class: "form-control", autofocus: true, required: true %><br>
-  </div>
-  
-  <div class="control-label col-sm-12">
-    <strong>MASA AKHIR</strong>
-    <%= f.time_field :end, class: "form-control", autofocus: true, required: true %><br>
-  </div>
-  
-
-  <%= f.hidden_field :proge_id, value: @proge.id%>
-  <%= f.submit :"Hantar",  class: 'btn btn-sm btn-warning btn-lg', style: "align:center" %>
-<% end %>
+<%= render 'cntps/form', act: "crtcntp" %>
