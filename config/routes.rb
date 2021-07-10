@@ -32,6 +32,9 @@ Rails.application.routes.draw do
   devise_for :owners#, :controllers => { :passwords => 'passwords' }
 	root 'welcomes#index2'
 
+  #~~FBPROGES
+  get '/newfbproge', to: 'fbproges#newfbproge'
+
   #~~CNTPS
   get '/editcntp', to: 'cntps#editcntp'
   post '/updcntp', to: 'cntps#updcntp'

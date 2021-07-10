@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_09_133207) do
+ActiveRecord::Schema.define(version: 2021_07_10_122155) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -137,6 +137,7 @@ ActiveRecord::Schema.define(version: 2021_07_09_133207) do
     t.integer "proge_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "dt"
   end
 
   create_table "colleges", force: :cascade do |t|
@@ -266,6 +267,16 @@ ActiveRecord::Schema.define(version: 2021_07_09_133207) do
     t.string "name"
     t.float "price"
     t.integer "taska_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "fbproges", force: :cascade do |t|
+    t.integer "rate"
+    t.integer "perse_id"
+    t.integer "proge_id"
+    t.text "ctnr"
+    t.string "cmt"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

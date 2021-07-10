@@ -5,6 +5,7 @@ class Perse < ApplicationRecord
 	has_many :ekids
 	has_many :prgfds
 	serialize :stdoku,Array
+	has_many :fbproges
 	before_save :save_perses
 
 	private 

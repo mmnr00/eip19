@@ -44,6 +44,7 @@ class CntpsController < ApplicationController
 																:end,
 																:lec,
 																:ctn,
+																:dt,
 																:proge_id)
 	end
 end
