@@ -4,12 +4,7 @@
         <div class="card-header" style="color: white; font-size: 13px">
           <i class="fas fa-calendar"></i>&nbsp
           <strong><%= "Jadual Untuk #{@proge.name}"%></strong><br>
-          <%= "#{@proge.date.strftime('%d-%^b-%Y')} hingga #{@proge.daten.strftime('%d-%^b-%Y')}" %> 
-          <% if 0 == 1 %>
-            <%= link_to "View", owner_course_path(course: course), class: "btn btn-sm btn-success" %> <!-- ID is for course -->
-                  &nbsp
-            <%= link_to "Edit", edit_course_path(id: course, owner_id: @owner.id, college: params[:college]), class: "btn btn-sm btn-warning" %>
-          <% end %>
+          <%= "#{@proge.date.strftime('%d-%^b-%Y')} hingga #{@proge.daten.strftime('%d-%^b-%Y')}" %>
         </div>
         <div class="card-body" style="font-size: 12px;">
           <div class="table-responsive">
@@ -28,20 +23,26 @@
                     <%= prg.start.strftime("%I:%M %p") %> -
                     <%= prg.end.strftime("%I:%M %p") %>
                   </td>
-                  <td>
-                    <%= prg.title %>
-                    <% if adm == 1 %>
-                      <br>
-                      <%= link_to "Kemaskini", editcntp_path(cntp: prg.id), class: 'badge badge-pill badge-warning'%>
-                      <%= link_to "Buang", rmvcntp_path(cntp: prg.id), class: 'badge badge-pill badge-danger', data: {confirm: "Adakah Anda Pasti?"}%>
-                    <% end %>
-                  </td>
-                  <td>
-                    <%= prg.lec %>
-                  </td>
-                  <td>
-                    <%= sanitize prg.ctn %>
-                  </td>
+                  <% if (prg.title.include? "REHAT") %>
+                    <td colspan=3 style="text-align: center; background-color: #ffff32">
+                      <b><%= prg.title %></b>
+                    </td>
+                  <% else %>
+                    <td>
+                      <%= prg.title %>
+                      <% if adm == 1 %>
+                        <br>
+                        <%= link_to "Kemaskini", editcntp_path(cntp: prg.id), class: 'badge badge-pill badge-warning'%>
+                        <%= link_to "Buang", rmvcntp_path(cntp: prg.id), class: 'badge badge-pill badge-danger', data: {confirm: "Adakah Anda Pasti?"}%>
+                      <% end %>
+                    </td>
+                    <td>
+                      <%= prg.lec %>
+                    </td>
+                    <td>
+                      <%= sanitize prg.ctn %>
+                    </td>
+                  <% end %>
                 <% end %></tr>
               </tbody>
             </table>
