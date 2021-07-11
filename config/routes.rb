@@ -34,6 +34,7 @@ Rails.application.routes.draw do
 
   #~~FBPROGES
   get '/newfbproge', to: 'fbproges#newfbproge'
+  post '/crtfbproge', to: 'fbproges#crtfbproge'
 
   #~~CNTPS
   get '/editcntp', to: 'cntps#editcntp'
