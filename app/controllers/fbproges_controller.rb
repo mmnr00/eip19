@@ -5,25 +5,26 @@ class FbprogesController < ApplicationController
 		@fbproge = Fbproge.new
 		@fbproge.perse_id = pars[:perse]
 		@fbproge.proge_id = pars[:proge]
+		@fbproge.rate = pars[:rate]
+		@fbproge.cmt = pars[:cmt]
 		tmp = Hash.new
+		puts pars
 		pars.each do |k,v|
-			# arr_tmp = []
-			# arr_tmp[0] = v[:rate]
-			# arr_tmp[1] = v[:gd]
-			# arr_tmp[2] = v[:bd]
-			# tmp[k] = arr_tmp
-			if k != "perse" || k != "proge"
-				puts k 
-				puts v
+			if k == "perse" || k == "proge" || k == "rate" || k == "cmt" 
+			else
 				arr_tmp = []
-				arr_tmp[0] = v[:rate]
+				arr_tmp[0] = v[:rate][0].to_i
 				arr_tmp[1] = v[:gd]
 				arr_tmp[2] = v[:bd]
 				tmp[k] = arr_tmp
+				puts "K---> #{k} -- #{k.class}"
+				puts "V---> #{v} -- #{v.class}"
+
 			end
 		end
 		@fbproge.ctnr = tmp 
 		@fbproge.save
+		redirect_to progecert_path(perse: pars[:perse], proge: pars[:proge])
 		# puts pars[:proge]
 	end
 

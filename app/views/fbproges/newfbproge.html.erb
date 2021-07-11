@@ -35,7 +35,23 @@
               </div>
             </div>
           <% end %> <!-- field H -->
-        <% end %> <!-- LOOP --><br>
+        <% end %> <!-- LOOP -->
+      <div class="header-org" style="background-color: #fbd7e3; color: #d53368; text-align: center; font-size: 15px; margin-bottom: 10px">
+          Maklumbalas Keseluruhan Program
+        </div>
+        <div>
+          <div style="margin-top: 2px;margin-bottom: 5px">
+            <b>MARKAH KESELURUHAN:</b>
+            <%= f.select :rate, options_for_select(["5 - Cemerlang",
+                                                    "4 - Sangat Baik",
+                                                    "3 - Baik",
+                                                    "2 - Memuaskan",
+                                                    "1 - Tidak Memuaskan"]),{include_blank: "Pilih Satu"}, {required: true} %><br>
+            
+            <b>KOMEN KESELURUHAN:</b><br>
+            <%= f.text_area :cmt, class: "form-control", autofocus: true%><br>
+          </div>
+        </div>
       <%= f.hidden_field :proge, class: "form-control", value: params[:proge] %>
       <%= f.hidden_field :perse, class: "form-control", value: params[:perse] %>
       <%= f.submit :"Hantar",  class: 'btn btn-sm btn-block btn-success btn-lg', style: "align:center" %>

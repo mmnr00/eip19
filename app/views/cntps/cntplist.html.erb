@@ -1,8 +1,9 @@
 
-<%= link_to "#{newfbproge_url(proge: @proge.id)}", newfbproge_path(proge: @proge.id, perse: 407) %>
 
+<%= link_to "Muat Turun Laporan Program", root_path, class: 'badge badge-success', style: 'font-size: 15px; margin-bottom: 5px'%>
 
 <%= render 'cntps/schd', adm: 1%>
+<%= link_to "Link Maklumbalas", persesch_path(prog: "CIKGU ANIS",proge: @proge.id) %>
 
 
 <div style="background-color: blue;margin-bottom: -5px">

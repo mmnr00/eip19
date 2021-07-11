@@ -117,6 +117,21 @@ class PersesController < ApplicationController
 									end
 								end
 
+							elsif params[:prog] == "CIKGU ANIS"
+								if Perproge.where(perse_id: perse.id, proge_id: params[:proge]).present?
+									if Fbproge.where(perse_id: perse.id, proge_id: params[:proge]).present?
+										redirect_to progecert_path(perse: perse.id, proge: params[:proge])
+									else
+										flash[:danger] = "Sila Lengkapkan Maklumbalas Program"
+										redirect_to newfbproge_path(perse: perse.id, proge: params[:proge])
+									end
+									
+								else
+									flash[:danger] = "Anda Tidak Mendaftar ke Program Ini"
+									redirect_to persesch_path(proge: params[:proge], prog: params[:prog])
+								end
+								
+
 							elsif params[:prog] == "SARINGAN ANIS" || params[:prog] == "TERAPI ANIS" || params[:prog] == "INTERVENSI ANIS"
 								if params[:regkid].present?
 									redirect_to new_ekid_path(perse: perse.id, prog: params[:prog])
@@ -140,8 +155,13 @@ class PersesController < ApplicationController
 				
 				#redirect_to perse
 			else #IC not present ahli baru
-				flash[:notice] = "Sila Lengkapkan Maklumat Anda"
-				redirect_to new_perse_path(ic: params[:icf], prog: params[:prog], proge: params[:proge], regkid: params[:regkid])
+				if params[:prog] == "CIKGU ANIS"
+					flash[:danger] = "No MyKad Anda Tiada Dalam Rekod"
+					redirect_to request.referrer
+				else
+					flash[:notice] = "Sila Lengkapkan Maklumat Anda"
+					redirect_to new_perse_path(ic: params[:icf], prog: params[:prog], proge: params[:proge], regkid: params[:regkid])
+				end
 			end
 	
 		end
