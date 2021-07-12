@@ -6,11 +6,14 @@ class PersesController < ApplicationController
 
 	def update
 		@perse = Perse.find(params[:id])
-		if @perse.stdoku.present? && params[:perse][:stdoku].blank?
-			flash[:danger] = "Sila Pilih Satu Kategori Murid"
-			redirect_to request.referrer and return
+		if params[:perse][:proge].present?
+			@proge = Proge.find(params[:perse][:proge])
+			if @perse.stdoku.blank? && params[:perse][:stdoku].blank? && (@proge.tp.include? "CIKGU ANIS")
+				flash[:danger] = "Sila Pilih Satu Kategori Murid"
+				redirect_to request.referrer and return
+			end
 		end
-		@perse.stdoku = nil
+		#@perse.stdoku = nil
 		@perse.save
 		if @perse.update(perse_params)
 			if params[:perse][:proge].present? && params[:perse][:prog] == "AKADEMI ANIS"

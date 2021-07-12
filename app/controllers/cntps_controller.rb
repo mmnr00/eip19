@@ -1,5 +1,16 @@
 class CntpsController < ApplicationController
 
+	def rptcntps_xls
+		@proge = Proge.find(params[:proge])
+		@perses = @proge.perses
+		respond_to do |format|
+      #format.html
+      format.xlsx{
+                  response.headers['Content-Disposition'] = "attachment; filename=Laporan #{@proge.name}.xlsx"
+      }
+    end
+	end
+
 	def editcntp
 		@cntp = Cntp.find(params[:cntp])
 		@proge = @cntp.proge

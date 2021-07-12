@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   post '/crtfbproge', to: 'fbproges#crtfbproge'
 
   #~~CNTPS
+  get '/rptcntps_xls', to: 'cntps#rptcntps_xls'
   get '/editcntp', to: 'cntps#editcntp'
   post '/updcntp', to: 'cntps#updcntp'
   get '/cntplist', to: 'cntps#cntplist'
