@@ -2,6 +2,7 @@ class ProgesController < ApplicationController
 
 	def rptproge
 		@proge = Proge.find(params[:proge])
+		@fbc = @proge.fbproges
 		@perses = @proge.perses
 		@backg = @perses.group(:backg).count
 		@inc = @perses.group(:inc).count
@@ -9,6 +10,54 @@ class ProgesController < ApplicationController
 		@race = @perses.group(:race).count
 		@gdr = @perses.group(:gdr).count
 		@dun = @perses.group(:dun).count
+
+		@rate = @proge.fbproges.average(:rate)
+		if @rate.present?
+			@rate = @rate.round(2)
+		else
+			@rate = 0
+		end
+
+		@age = {"< 20" => 0, "20 - 29" => 0, "30 - 39" => 0, "40 - 49" => 0, "50 - 59" => 0, "> 60" => 0 }
+		@perses.each do |prs|
+			yr = Date.today.year - prs.dob[0..3].to_i
+			if yr < 20
+				@age["< 20"] += 1
+			elsif yr < 30
+				@age["20 - 29"] += 1
+			elsif yr < 40
+				@age["30 - 39"] += 1
+			elsif yr < 50
+				@age["40 - 49"] += 1
+			elsif yr < 60
+				@age["50 - 59"] += 1
+			else 
+				@age["> 60"] += 1
+			end
+		end
+
+		if @proge.tp.include? "CIKGU ANIS"
+			@stdoku = { "Masalah Penglihatan" => 0, 
+										"Masalah Pendengaran" => 0,
+										"Masalah Pertuturan" => 0,
+										"Masalah Fizikal" => 0,
+										"Masalah Pembelajaran" => 1,
+										"Masalah Mental" => 0,
+										"Masalah Pelbagai" => 0,
+										"Belum/Tiada Diagnosis" => 0
+									}
+			@perses.where.not(stdoku: nil).each do |prs|
+				@stdoku["Masalah Penglihatan"] += 1 unless !prs.stdoku.include? "1"
+				@stdoku["Masalah Pendengaran"] += 1 unless !prs.stdoku.include? "2"
+				@stdoku["Masalah Pertuturan"] += 1 unless !prs.stdoku.include? "3"
+				@stdoku["Masalah Fizikal"] += 1 unless !prs.stdoku.include? "4"
+				@stdoku["Masalah Pembelajaran"] += 1 unless !prs.stdoku.include? "5"
+				@stdoku["Masalah Mental"] += 1 unless !prs.stdoku.include? "6"
+				@stdoku["Masalah Pelbagai"] += 1 unless !prs.stdoku.include? "7"
+				@stdoku["Belum/Tiada Diagnosis"] += 1 unless !prs.stdoku.include? "8"
+			end
+		end
+
 	end
 
 	def upld_perse

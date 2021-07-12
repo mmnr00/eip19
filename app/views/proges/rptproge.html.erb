@@ -9,7 +9,12 @@
 </div>
 
 <div class="bg-white" style="margin-bottom: 10px; text-align: center; color: black" >
-  <i><%= @proge.date.strftime('%d-%^b-%Y') %></i>
+  <i>
+    <%= @proge.date.strftime('%d-%^b-%Y') %>
+    <% if @proge.daten.present? %>
+      hingga <%= @proge.daten.strftime('%d-%^b-%Y') %>
+    <% end %> 
+  </i>
 </div>
 
 <div class="row">
@@ -44,7 +49,7 @@
             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Markah Purata Program</div>
             <div class="row no-gutters align-items-center">
               <div class="col-auto">
-                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><%= 5.32 %></div>
+                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><%= @rate %></div>
               </div>
               <div class="col">
               </div>
@@ -60,113 +65,34 @@
 
 </div>
 
-<div class="header-org" style="background-color: #e5cce5; color: #730073; text-align: center; font-size: 13px; margin-top: 30px">
-  TABURAN DEMOGRAFIK PESERTA
-</div>
+<% if @proge.tp.include? 'CIKGU ANIS' %>
+  <%= render 'proges/rptcikgu' %>
+<% elsif @proge.tp.include? 'SEMINAR' %>
+  <%= render 'proges/rptseminar' %>
+<% end %>
 
-<div class="row" style="margin-top: 20px">
-    
-  <div class="col-lg-6 col-md-6" style="margin-bottom: 20px;margin-top: -10px;" align="center">
-    <div class="card"><div class="card-body">
-      <div style="background-color: #a52a2a; margin-top: -15px">
-        <h6 style="text-align: center; color: white">Latar Belakang Peserta</i></h6>
-      </div>
-      <%= column_chart @backg, colors: ["#329932"] ,width: "400px", height: "400px" %> 
-    </div></div>
-  </div>
 
-  <div class="col-lg-6 col-md-6" style="margin-bottom: 20px;margin-top: -10px;" align="center">
-    <div class="card"><div class="card-body">
-      <div style="background-color: #a52a2a; margin-top: -15px">
-        <h6 style="text-align: center; color: white">Pendapatan Isi Rumah</i></h6>
-      </div>
-      <%= pie_chart @inc, width: "400px", height: "400px", legend: true, donut: true  %>  
-    </div></div>
-  </div>
 
-</div>
 
-<div class="row" style="margin-top: 10px">
-    
-  <div class="col-lg-6 col-md-6" style="margin-bottom: 20px;margin-top: -10px;" align="center">
-    <div class="card"><div class="card-body">
-      <div style="background-color: #a52a2a; margin-top: -15px">
-        <h6 style="text-align: center; color: white">Kategori OKU</i></h6>
-      </div>
-      <%= bar_chart @oku, width: "400px", height: "400px"  %>  
-    </div></div>
-  </div>
 
-  <div class="col-lg-6 col-md-6" style="margin-bottom: 20px;margin-top: -10px;" align="center">
-    <div class="card"><div class="card-body">
-      <div style="background-color: #a52a2a; margin-top: -15px">
-        <h6 style="text-align: center; color: white">Bangsa Peserta</i></h6>
-      </div>
-      <%= pie_chart @race, width: "400px", height: "400px", legend: true, donut: true  %>  
-    </div></div>
-  </div>
 
-</div>
 
-<div class="row" style="margin-top: 20px; page-break-before: always;">
-    
-  <div class="col-lg-6 col-md-6" style="margin-bottom: 20px;margin-top: -10px;" align="center">
-    <div class="card"><div class="card-body">
-      <div style="background-color: #a52a2a; margin-top: -15px">
-        <h6 style="text-align: center; color: white">Jantina Peserta</i></h6>
-      </div>
-      <%= pie_chart @gdr, width: "400px", height: "400px", legend: true, donut: true  %>  
-    </div></div>
-  </div>
 
-  <div class="col-lg-6 col-md-6" style="margin-bottom: 20px;margin-top: -10px;" align="center">
-    <div class="card"><div class="card-body">
-      <div style="background-color: #a52a2a; margin-top: -15px">
-        <h6 style="text-align: center; color: white">Dun Peserta</i></h6>
-      </div>
-      <%= column_chart @dun, colors: ["#329932"],width: "400px", height: "400px"  %>  
-    </div></div>
-  </div>
 
-</div>
 
-<!-- CENTER TABLE -->
-<div class="card mb-3" >
-  <div style="background-color: #e5cce5; color: #730073; text-align: center; font-size: 18px;">
-    <i class="fas fa"></i>
-    <b>MAKLUM BALAS PESERTA </b>
-    <% link_to "Download List", root_path(format: :xlsx), class: "badge badge-pill badge-info", format: :xlsx %>
-  </div>
-  <div class="card-body">
-    <div class="table-responsive">
-      <table class="table table-striped table-bordered" style="font-size: 12px; color: black" width="100%" cellspacing="0">
-        <thead>
-          <tr style="">
-            <th style="background-color: #ffb2b2 !important;width: 20%"> NAMA </th>
-            <th style="background-color: #ffb2b2 !important;width: 10%"> NO TELEFON </th>
-            <th style="background-color: #ffb2b2 !important;width: 10%"> EMAIL </th>
-            <th style="background-color: #ffb2b2 !important;width: 10"> PERKARA YANG DISUKAI </th>
-            <th style="background-color: #ffb2b2 !important;width: "> PERKARA YANG PERLU DIPERBAIKI </th>
-          </tr>
-        </thead>
 
-        <tbody>
-          <% @perses.each do |prs| %>
-            <tr>
-              <td>
-                <%= prs.name %>
-              </td>
-              <td>
-                <%= prs.ph %>   
-              </td>
-              <td><%= prs.email %></td>
-              <td></td>
-              <td></td>
-            </tr>
-          <% end %>
-        </tbody>
 
-      </table>
-    </div>
-  </div>
-</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
