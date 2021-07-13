@@ -56,12 +56,13 @@ class ProgesController < ApplicationController
 				@stdoku["Masalah Pelbagai"] += 1 unless !prs.stdoku.include? "7"
 				@stdoku["Belum/Tiada Diagnosis"] += 1 unless !prs.stdoku.include? "8"
 			end
-			@cntps = @proge.cntps.where.not('title LIKE ?', "%REHAT%").order('dt ASC').order('start ASC')
+			@cntps = @proge.cntps.where(fbc: true).order('dt ASC').order('start ASC')
 			@cntfb = {}
 			@cntps.each do |cn|
 				
 				arr_gd = []
 				arr_bd = []
+				arr_lr = []
 				rt_tot = 0.0
 				rt_len = 0
 				@proge.fbproges.each do |fb|
@@ -69,8 +70,9 @@ class ProgesController < ApplicationController
 					rt_len += 1
 					arr_gd << fb.ctnr[cn.id.to_s][1] unless fb.ctnr[cn.id.to_s][1].blank?
 					arr_bd << fb.ctnr[cn.id.to_s][2] unless fb.ctnr[cn.id.to_s][2].blank?
+					arr_lr << fb.ctnr[cn.id.to_s][3] unless fb.ctnr[cn.id.to_s][3].blank?
 				end
-				@cntfb[cn.id] = [(rt_tot/rt_len).round(2),arr_gd,arr_bd]
+				@cntfb[cn.id] = [(rt_tot/rt_len).round(2),arr_gd,arr_bd,arr_lr]
 			end
 		end
 

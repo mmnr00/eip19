@@ -1,5 +1,5 @@
 class EkidsController < ApplicationController
-	before_action :authenticate_admin!, only: [:index]
+	before_action :authenticate_admin!, only: [:index,:ekidlistxls]
 	before_action :set_all
 
 	def statekid
@@ -102,11 +102,12 @@ class EkidsController < ApplicationController
 
 	def ekidlistxls
 		@admin = current_admin
-		if params[:sce].present?
-			@ekids = Ekid.where(sce_id: params[:sce]).order('name ASC')
-		else
-			@ekids = Ekid.where(admloc: $admloc[@admin.id],stat: params[:stato]).order('name ASC')
-		end
+		# if params[:sce].present?
+		# 	@ekids = Ekid.where(sce_id: params[:sce]).order('name ASC')
+		# else
+		# 	@ekids = Ekid.where(admloc: $admloc[@admin.id],stat: params[:stato]).order('name ASC')
+		# end
+		@ekids = Ekid.all
 		respond_to do |format|
       #format.html
       format.xlsx{

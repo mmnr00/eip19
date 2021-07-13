@@ -112,9 +112,10 @@
         <thead>
           <tr style="">
             <th style="background-color: #ffb2b2 !important;width: 20%"> TARIKH & MASA </th>
-            <th style="background-color: #ffb2b2 !important;width: 30%"> MODUL </th>
+            <th style="background-color: #ffb2b2 !important;width: 20%"> MODUL </th>
             <th style="background-color: #ffb2b2 !important;width: 2%"> MARKAH </th>
-            <th style="background-color: #ffb2b2 !important;width: "> PERKARA YANG DISUKAI </th>
+            <th style="background-color: #ffb2b2 !important;width: %"> PERKARA YANG DISUKAI </th>
+            <th style="background-color: #ffb2b2 !important;width: "> PERKARA BARU YANG DIPELAjARI </th>
             <th style="background-color: #ffb2b2 !important;width: "> PERKARA YANG PERLU DIPERBAIKI </th>
           </tr>
         </thead>
@@ -136,6 +137,13 @@
               <td>
                 <% cnt = 1 %>
                 <% @cntfb[cn.id][1].each do |gd| %>
+                  <%= "#{cnt}. #{gd}" %><br>
+                  <% cnt += 1 %>
+                <% end %>
+              </td>
+              <td>
+                <% cnt = 1 %>
+                <% @cntfb[cn.id][3].each do |gd| %>
                   <%= "#{cnt}. #{gd}" %><br>
                   <% cnt += 1 %>
                 <% end %>

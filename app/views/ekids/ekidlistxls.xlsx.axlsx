@@ -54,7 +54,7 @@ wb.styles do |style|
                       "#{ek.ic[0..5]}-#{ek.ic[6..7]}-#{ek.ic[8..11]}", 
                       ek.dob.strftime('%d/%m/%Y'),
                       "#{year} tahun, #{mth} bulan",
-                      "#{ek.mph[0..2]}-#{ek.mph[3..11]}",
+                      ek.mph,
                       ek.fname,
                       ek.fph,
                       ek.mname,

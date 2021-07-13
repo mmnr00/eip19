@@ -16,6 +16,7 @@ class FbprogesController < ApplicationController
 				arr_tmp[0] = v[:rate][0].to_i
 				arr_tmp[1] = v[:gd]
 				arr_tmp[2] = v[:bd]
+				arr_tmp[3] = v[:lr]
 				tmp[k] = arr_tmp
 				puts "K---> #{k} -- #{k.class}"
 				puts "V---> #{v} -- #{v.class}"

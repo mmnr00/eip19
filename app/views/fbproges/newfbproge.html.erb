@@ -12,7 +12,7 @@
     Nama Peserta : <b><%= @perse.name %></b><br>
     No MyKad : <b><%= @perse.ic %></b><br><br>
     <%= form_for(:fbc, :url => {:controller=>'fbproges', :action=> 'crtfbproge'}, :html => {multipart: true, class: "form-horizontal", method: :post, role: "form"}) do |f| %>
-        <% @proge.cntps.where.not('title LIKE ?', "%REHAT%").order('dt ASC').order('start ASC').each do |cntp| %>
+        <% @proge.cntps.where(fbc: true).order('dt ASC').order('start ASC').each do |cntp| %>
           <%= f.fields_for :"#{cntp.id}" do |h| %>
             <div class="header-org" style="background-color: #fbd7e3; color: #d53368; text-align: center; font-size: 11px; margin-bottom: -1px">
               <%= cntp.title %>
@@ -30,6 +30,8 @@
                                                         "1 - Tidak Memuaskan"]),{include_blank: "Pilih Satu"}, {required: true} %><br>
                 <b>PERKARA YANG DISUKAI:</b><br>
                 <%= h.text_area :gd, class: "form-control", autofocus: true%>
+                <b>PERKARA BARU YANG DIPELAJARI:</b><br>
+                <%= h.text_area :lr, class: "form-control", autofocus: true%>
                 <b>PERKARA YANG BOLEH DIPERBAIKI:</b><br>
                 <%= h.text_area :bd, class: "form-control", autofocus: true%><br>
               </div>

@@ -78,7 +78,11 @@
 </div> -->
 
 <!-- TABLE -->
-<br>
+
+<%= link_to ekidlistxls_path(format: :xlsx), class: "badge badge-info shadow-sm", style: "font-size: 16px; font-weight: normal" do %>
+  <i class="fa fa-file-excel"></i> Muat Turun Senarai
+<% end %>
+
 <div class="cards shadow mb-4">
   <div class="card-header">
     <div class="row">
@@ -97,7 +101,8 @@
         <% end %>
         <%= "#{@ekids.count} carian" %>
       <% end %>
-      <div>
+    <div>
+
         
       </div>
     </div>
