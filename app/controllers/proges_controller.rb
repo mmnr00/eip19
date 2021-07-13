@@ -41,7 +41,7 @@ class ProgesController < ApplicationController
 										"Masalah Pendengaran" => 0,
 										"Masalah Pertuturan" => 0,
 										"Masalah Fizikal" => 0,
-										"Masalah Pembelajaran" => 1,
+										"Masalah Pembelajaran" => 0,
 										"Masalah Mental" => 0,
 										"Masalah Pelbagai" => 0,
 										"Belum/Tiada Diagnosis" => 0
