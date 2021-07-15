@@ -146,13 +146,8 @@ Rails.application.routes.draw do
   get '/setsce', to: 'sces#setsce'
   get '/showstat', to: 'sces#showstat'
 
-
-
-  ######## OLD FROM KIDCARE ###############
-
-
-  # For dtails on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-   #WELCOME#
+  #WELCOME#
+  get '/mpachart', to: 'welcomes#mpachart'
    get '/cikguanispdk', to: 'welcomes#cikguanispdk'
    get '/cikguanistadika', to: 'welcomes#cikguanistadika'
   get '/cikguanisppki', to: 'welcomes#cikguanisppki'
@@ -175,6 +170,14 @@ Rails.application.routes.draw do
   get 'sb_dashboard', to: 'welcomes#sb_dashboard'
   get 'sb_table', to: 'welcomes#sb_table'
   get 'star_rating', to: 'welcomes#star_rating'
+
+
+
+  ######## OLD FROM KIDCARE ###############
+
+
+  # For dtails on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+   
 
   #~PTNSMMB
   get '/daftarptns', to: 'ptns_mmbs#new', as: 'new_ptns_mmb'

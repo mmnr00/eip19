@@ -5,6 +5,10 @@ class WelcomesController < ApplicationController
 	
 	#layout "page"
 
+	def mpachart
+		@index = true
+	end
+
 	def cikguanisppki
 		prog = Proge.where(tp: "CIKGU ANIS(PPKI)", acv: true)
 		if prog.present? && prog.count == 1
