@@ -91,10 +91,22 @@
                     <btn class="badge badge-pill badge-danger" style="font-size: 12px">Log Keluar</btn>
                   </a></li>
               </ul>
+            <% elsif current_teacher.present? %>
+              <a href=""><btn class="badge badge-pill badge-primary" style="font-size: 12px"><%= current_teacher.username %></btn></a>
+              <ul>
+                <li><a href="<%= teacher_index_url %>">Kembali Ke Paparan Terapis</a></li>
+                <li><a href="<%= destroy_teacher_session_url %>" data-confirm="Adakah anda pasti?" data-method="delete" >
+                    <btn class="badge badge-pill badge-danger" style="font-size: 12px">Log Keluar</btn>
+                  </a></li>
               
 
             <% else %>
-              <a href="<%= admin_index_url %>"><img src="<%= image_path('anisPic/login-btn.png') %>" width="20" height="20"></a>
+              
+              <a href=""><btn class="badge badge-secondary" style="font-size: 15px">Log Masuk</btn></a>
+              <ul>
+                <li><a href="<%= admin_index_url %>">Log Masuk Admin</a></li>
+                <li><a href="<%= teacher_index_url %>">Log Masuk Terapis</a></li>
+              </ul>
 
             <% end %>
           </li>

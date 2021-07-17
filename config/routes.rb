@@ -294,29 +294,7 @@ Rails.application.routes.draw do
 
   #~TEACHERS
   get 'teacher_index', to: 'teachers#index'
-  get 'updtch', to: 'teachers#updtch'
-  get 'prevtch', to: 'teachers#prevtch'
 
-  get '/taska/:id/search_teacher', to: 'teachers#search', as: 'search_teacher'
-  get '/taska/:id/find_teacher', to: 'teachers#find', as: 'find_teacher'
-  get '/teacher/:id/my_college', to: 'teachers#college', as: 'teacher_college'
-  get '/teacher/:id/my_taska', to: 'teachers#taska', as: 'teacher_taska'
-  get '/teacher/:id/my_leave', to: 'teachers#tchleave', as: 'tchleave'
-  get '/leave/:id/edit_leave', to: 'teachers#tcheditlv', as: 'tcheditlv'
-  post '/teacher/:id/add_college', to: 'teachers#add_college', as: 'add_college'
-  post '/teacher/:id/remove_college', to: 'teachers#remove_college', as: 'remove_college'
-  get '/teacher/:id/payment_signup', to: 'teachers#payment_signup', as: 'payment_signup'
-  get '/teacher/:id/teacher_pay_bill', to: 'teachers#teacher_pay_bill', as: 'teacher_pay_bill'
-  get '/add_taska', to: 'teachers#add_taska', as: 'tch_add_taska'
-  get '/find_taska', to: 'teachers#find_taska', as: 'tch_find_taska'
-  get '/teacher/:id/teacher_payslip', to: 'teachers#tchpslip', as: 'tchpslip'
-
-  #~APPLVS
-  post '/apply_leave', to: 'applvs#apply', as: 'tchapplylv'
-  patch 'leave/:id/update_leave', to: 'applvs#tchupdate', as: 'tchupdatelv'
-  get 'action_leave', to: 'applvs#admupdate', as: 'admupdatelv'
-  get 'revert_leave', to: 'applvs#revleave', as: 'revleave'
-  delete 'leave/:id/delete_leave', to: 'applvs#tchdelete', as: 'tchdeletelv'
 
   #~PARENTS
   get 'prtchkin', to: 'parents#prtchkin'

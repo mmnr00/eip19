@@ -1,75 +1,129 @@
-<%
-  tp=@teacher.tp
-  if tp == "st"
-    actn = "SPEECH THERAPIST ASSESSMENT"
-  elsif tp == "ot"
-    actn = "OCCUPATIONAL THERAPIST ASSESSMENT"
-  elsif tp == "pt"
-    actn = "PHYSIO THERAPIST ASSESSMENT"
-  elsif tp == "at"
-    actn = "AUDIOLOGIST ASSESSMENT"
-  else
-    actn = "MUS"
-  end
-%>
+<meta name="viewport" content="width=1024">
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    Paparan Admin <b>Pusat ANIS</b></b>
+  </li>
+</ol>
 
-<% if @sce.present? && (@teacher.loc.present? || @teacher.tp.present?) %>
-  <div style="background-color:blue"><h1 align="center" style="color:white"><%= actn %></h1></div>
-  <h2><%= @sce.name %></h2>
-  <h5><%= @sce.date.strftime('%d-%^b-%y') %></h5>
-  <h5><%= @sce.venue %></h5>
 
-  <h5>NO OF CHILDRENS :  <%= @ekids.count %></h5>
-  <div class="table-responsive">
-    <table class="table table-striped table-bordered" width="100%" cellspacing="0">
 
-      <thead>
-        <tr>
-          <th style="background-color:#99cc99">ID</th>
-          <th style="background-color:#99cc99">NAME</th>
-          <th style="background-color:#99cc99">PARENTS INFO</th>
-          <th style="background-color:#99cc99"><%= actn %></th>
-        </tr>
-      </thead>
+<%= link_to ekidlistxls_path(format: :xlsx), class: "badge badge-info shadow-sm", style: "font-size: 16px; font-weight: normal" do %>
+  <i class="fa fa-file-excel"></i> Muat Turun Senarai
+<% end %>
 
-      <tbody>
-        <% @ekids.order('name ASC').each do |sc| %>
-          <%
-            tp=@teacher.tp
-            if tp == "st"
-              gtf = sc.ste.present?
-            elsif tp == "ot"
-              gtf = sc.ote.present?
-            elsif tp == "pt"
-              gtf = sc.pte.present?
-            elsif tp == "at"
-              gtf = sc.ate.present?
-            else
-              actn = "MUS"
-            end
-          %>
+<div class="cards shadow mb-4">
+  <div class="card-header">
+    <div class="row">
+      <%= form_tag ekidindex_path, method: :get, id: "find_kid" do %>
+        <%= text_field_tag :sch_str, params[:sch_str], placeholder: "Masukkan Nama", style: 'text-transform: uppercase' %>
+        <% select_tag :sch_fld, options_for_select(["SARINGAN ANIS", "TERAPI ANIS"], params[:sch_fld]),
+              include_blank: "Semua Program" %>
+        <%= select_tag :stat, options_for_select(["Permohonan Diterima", "Permohonan Dalam Semakan", "Permohonan Tidak Lengkap","Permohonan Diluluskan", "Permohonan Ditolak"], params[:stat]),
+              include_blank: "Semua Status" %>
+        <%= hidden_field_tag :sch, params[:sch], value: true %>
+        <%= button_tag(type: :submit, class: "badge badge-success shadow-none", style: "font-size: 14px; border-style: none; font-weight: normal",  id: "submit_expense") do %>
+            <i class="fa fa-search"></i> Cari
+        <% end %>
+        <%= link_to ekidindex_path, class: "badge badge-danger shadow-sm", style: "font-size: 14px; font-weight: normal" do %>
+            <i class="fa fa-sync"></i> Semula
+        <% end %>
+        <%= "#{@ekids.count} carian" %>
+      <% end %>
+    <div>
+
+        
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <div class="table table-responsive border" style="font-size:13px">
+      <%= form_for(:ek, :url => {:controller=>'ekids', :action=>'statekid'}, :html => {multipart: true, class: "form-horizontal", method: :post, role: "form"}) do |f| %>
+      <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0" style="color: black">
+        
+        <thead>
+          <tr class="shadow">
+            <th style="background-color:#ffb2b2; width: 12%">NO SIRI</th>
+            <th style="background-color:#ffb2b2">MAKLUMAT ANAK</th>
+            <th style="background-color:#ffb2b2">MAKLUMAT PEMOHON</th>
+            <!-- <th style="background-color:#ffb2b2">PROGRAM</th> -->
+            <th style="background-color:#ffb2b2; width: 30%">MAKLUMAT TAMBAHAN</th>
+            <th style="background-color:#ffb2b2; width: 18%">STATUS</th>
+            <th style="background-color:#ffb2b2; width: 20%">TARIKH</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @ekids.order('created_at DESC').each do |ek|; perse = ek.perse %>
           <tr>
-            <td><%= sc.id %></td>
-            <td><%= "#{sc.name} (#{sc.ic})" %>
-              <br><%= link_to "PROFILE", ekidconf_path(id: sc.id), class: "btn btn-sm btn-info", target: "_blank" %></td>
             <td>
-              <%= "#{sc.fname} (#{sc.fph})" %><br><br>
-              <%= "#{sc.mname} (#{sc.mmph})" %>
+              <a href="<%= ekidconf_url(id: ek.id)%>" target="_blank">PPN-<%= ek.id.to_s.rjust(4, '0') %></a>
             </td>
             <td>
-              <% if gtf %>
-                <%= link_to "EDIT", ekass_path(id: sc.id, tp: tp), class: "btn btn-sm btn-success" %>
-              <% else %>
-                <%= link_to "CREATE", new_ste_path(id: sc.id, tp: tp), class: "btn btn-sm btn-warning" %>
+              <%= ek.name %><br>
+              (<%= ek.ic %>)<br>
+              <%
+                image = ek.fotos.where(foto_name: "DIAGNOSIS").first
+                if image.present? && image.picture.present?
+                  url = image.picture.url
+                else
+                  url = ""
+                end
+              %>
+              <a href="<%= url %>" target="_blank" download><btn class="badge badge-pill badge-secondary">Borang Diagnosis</btn></a>
+            </td>
+            <td>
+              <%= perse.name %><br>
+              <%= perse.ph %><br>
+              <%= perse.email %><br>
+            </td>
+            
+            <td>
+              <%
+                age = (Date.today.year*12+Date.today.month) - (ek.dob.year*12+ek.dob.month)
+                yr = age/12
+                mth = age - yr*12
+        
+              %>
+              <b>Kategori: </b><%= ek.prbtp %><br>
+              <b>Umur: </b><%= "#{yr} tahun, #{mth} bulan" %><br>
+              <b>Pendapatan (RM): </b><%= ek.pinc %>
+            </td>
+            <!-- <td>
+              <%
+                if ek.stat.present?
+                  stat_sr = "Tidak Aktif"
+                  clr = "danger"
+                  staturl = ""
+                else
+                  stat_sr = "Aktif"
+                  clr = "success"
+                  staturl = "TIDAK AKTIF"
+                end 
+              %>
+              <btn class="btn btn-sm btn-block btn-<%= clr %>"><%= stat_sr %></btn>
+              <a href="<%= ekstat_url(id: ek.id, stat: staturl) %>"><btn class="badge badge-pill badge-secondary">Ubah Status</btn></a>
+            </td> -->
+            <td>
+              <%= f.fields_for :"#{ek.id}" do |h| %>
+              <% ek.stat %>
+                <%= h.select :stat, options_for_select(["Permohonan Diterima","Permohonan Dalam Semakan", "Permohonan Tidak Lengkap","Permohonan Diluluskan", "Permohonan Ditolak"],selected: ek.stat), {include_blank: "Pilih Status"}, required: false %>
               <% end %>
             </td>
+
+            <td>
+              <b>Kemaskini</b> :<%= ek.updated_at.strftime('%d-%^b-%y') %><br>
+              <b>Permohonan</b> :<%= ek.created_at.strftime('%d-%^b-%y') %>    
+            </td>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+
+          <% end %> <!-- END LOOP -->
+
+        </tbody>
+        
+      </table>
+      <%= f.submit :"Kemaskini",  class: 'btn btn-sm btn-block btn-success btn-lg', style: "align:center" %>
+      <% end %> <!-- END FORM -->
+    </div>
   </div>
-<% elsif @teacher.loc.blank? || @teacher.tp.blank?  %>
-  AWAITING APPROVAL FROM SYSTEM ADMIN
-<% else %>
-  NO ACTIVE SESSION
-<% end %>
+</div>
+
