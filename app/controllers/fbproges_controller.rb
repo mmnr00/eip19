@@ -25,7 +25,9 @@ class FbprogesController < ApplicationController
 		end
 		@fbproge.ctnr = tmp 
 		@fbproge.save
-		redirect_to progecert_path(perse: pars[:perse], proge: pars[:proge])
+		flash[:notice] = "Terima kasih atas maklumbalas anda"
+		redirect_to persesch_path
+		# redirect_to progecert_path(perse: pars[:perse], proge: pars[:proge])
 		# puts pars[:proge]
 	end
 

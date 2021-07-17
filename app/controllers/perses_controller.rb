@@ -123,7 +123,9 @@ class PersesController < ApplicationController
 							elsif params[:prog] == "CIKGU ANIS"
 								if Perproge.where(perse_id: perse.id, proge_id: params[:proge]).present?
 									if Fbproge.where(perse_id: perse.id, proge_id: params[:proge]).present?
-										redirect_to progecert_path(perse: perse.id, proge: params[:proge])
+										# redirect_to progecert_path(perse: perse.id, proge: params[:proge])
+										flash[:notice] = "Terima kasih atas maklumbalas anda"
+										redirect_to persesch_path
 									else
 										flash[:danger] = "Sila Lengkapkan Maklumbalas Program"
 										redirect_to newfbproge_path(perse: perse.id, proge: params[:proge])
