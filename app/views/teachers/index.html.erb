@@ -88,23 +88,14 @@
 
               
             </td>
-            <!-- <td>
-              <%
-                if ek.stat.present?
-                  stat_sr = "Tidak Aktif"
-                  clr = "danger"
-                  staturl = ""
-                else
-                  stat_sr = "Aktif"
-                  clr = "success"
-                  staturl = "TIDAK AKTIF"
-                end 
-              %>
-              <btn class="btn btn-sm btn-block btn-<%= clr %>"><%= stat_sr %></btn>
-              <a href="<%= ekstat_url(id: ek.id, stat: staturl) %>"><btn class="badge badge-pill badge-secondary">Ubah Status</btn></a>
-            </td> -->
             <td>
-              
+              <% 
+                ekrps = ek.ekrps
+                ekr = ekrps.last
+              %>
+              <b>Bil Laporan: </b><%= ekrps.count %><br>
+              <b>Tarikh Terakhir: </b><%= ekr.dt unless ekr.blank? %><br>
+              <%= link_to "Senarai Laporan", ekrpls_path(ekid: ek.id), class: "badge badge-pill badge-info", target: "_blank"%>
             </td>
           </tr>
 

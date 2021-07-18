@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   resources :sces, only:[:new,:show,:create, :destroy, :update, :edit]
   resources :skids, only:[:new,:create, :destroy, :update, :edit,:show]
   resources :rflts, only:[:show,:new,:create, :destroy, :update, :edit]
+  resources :ekrps, only:[:new,:create, :destroy, :update, :edit]
   #resources :teachers, only:[:show]
   #resources :taska_teachers, only:[:create,:destroy]
   devise_for :parents
@@ -31,6 +32,9 @@ Rails.application.routes.draw do
   devise_for :admins
   devise_for :owners#, :controllers => { :passwords => 'passwords' }
 	root 'welcomes#index2'
+
+  #~~EKRPS
+  get '/ekrpls', to: 'ekrps#ekrpls'
 
   #~~FBPROGES
   get '/newfbproge', to: 'fbproges#newfbproge'

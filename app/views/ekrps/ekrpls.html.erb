@@ -1,0 +1,30 @@
+<div class="cards shadow mb-4">
+  <div class="card-header" style="color: black">
+    Senarai Laporan Intervensi <b><%= "#{@ekid.name} (#{@ekid.ic})" %></b>  
+    <%= link_to "Cipta Laporan Baru", new_ekrp_path(ekid: @ekid.id), class: "badge badge-pill badge-info"%>
+  </div>
+  <div class="card-body">
+    <div class="table table-responsive border" style="font-size:13px">
+      <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0" style="color: black">
+        
+        <thead>
+          <tr class="shadow">
+            <th style="background-color:#ffb2b2; width: %">TARIKH</th>
+            <th style="background-color:#ffb2b2; width: %">DIKEMASKINI</th>
+            <th style="background-color:#ffb2b2; width: %">MAKLUMAT RINGKAS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @ekrps.order('dt DESC').each do |ekr| %><tr>
+            <td><%= ekr.dt %></td>
+            <td>
+              <%= link_to 'Kemaskini', edit_ekrp_path(ekr, ekid: @ekid.id), class: "badge badge-pill badge-warning"%>
+              <%= link_to 'Padam', ekrp_path(ekr, ekid: @ekid.id), class: "badge badge-pill badge-danger", method: :delete, :data => {:confirm => 'Adakah Anda Pasti?'}%>
+                
+            </td>
+          <% end %></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
