@@ -92,7 +92,7 @@
                   </a></li>
               </ul>
             <% elsif current_teacher.present? %>
-              <a href=""><btn class="badge badge-pill badge-primary" style="font-size: 12px"><%= current_teacher.username %></btn></a>
+              <a href=""><btn class="badge badge-pill badge-success" style="font-size: 12px"><%= current_teacher.username %></btn></a>
               <ul>
                 <li><a href="<%= teacher_index_url %>">Kembali Ke Paparan Terapis</a></li>
                 <li><a href="<%= destroy_teacher_session_url %>" data-confirm="Adakah anda pasti?" data-method="delete" >

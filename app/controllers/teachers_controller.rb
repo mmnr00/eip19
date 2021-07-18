@@ -7,7 +7,15 @@ class TeachersController < ApplicationController
 		# if @teacher.tchdetail.blank?
 		# 	redirect_to new_tchdetail_path(teacher_id: @teacher.id)
 		# end
-		@ekids = Ekid.where(tp: "TERAPI ANIS", stat: "Permohonan Diluluskan")
+		@ekids = Ekid.where(tp: "INTERVENSI ANIS", stat: "Permohonan Diluluskan")
+		if params[:sch].present?
+			if params[:sch_nm].blank? && params[:sch_ic].blank?
+				flash[:danger] = "Sila Masukkan Salah Satu Carian"
+				redirect_to teacher_index_path and return
+			end
+			@ekids = @ekids.where('name LIKE ?', "%#{params[:sch_nm].upcase}%") unless params[:sch_nm].blank?
+			@ekids = @ekids.where('ic LIKE ?', "%#{params[:sch_ic].upcase}%") unless params[:sch_ic].blank?
+		end
 	end
 
 

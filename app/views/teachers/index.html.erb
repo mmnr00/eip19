@@ -1,7 +1,7 @@
 <meta name="viewport" content="width=1024">
 <ol class="breadcrumb">
   <li class="breadcrumb-item">
-    Paparan Admin <b>Pusat ANIS</b></b>
+    Paparan Terapis <b>Pusat ANIS</b></b>
   </li>
 </ol>
 
@@ -14,20 +14,19 @@
 <div class="cards shadow mb-4">
   <div class="card-header">
     <div class="row">
-      <%= form_tag ekidindex_path, method: :get, id: "find_kid" do %>
-        <%= text_field_tag :sch_str, params[:sch_str], placeholder: "Masukkan Nama", style: 'text-transform: uppercase' %>
-        <% select_tag :sch_fld, options_for_select(["SARINGAN ANIS", "TERAPI ANIS"], params[:sch_fld]),
-              include_blank: "Semua Program" %>
-        <%= select_tag :stat, options_for_select(["Permohonan Diterima", "Permohonan Dalam Semakan", "Permohonan Tidak Lengkap","Permohonan Diluluskan", "Permohonan Ditolak"], params[:stat]),
-              include_blank: "Semua Status" %>
+      <%= form_tag teacher_index_path, method: :get, id: "find_kid" do %>
+        <%= text_field_tag :sch_nm, params[:sch_nm], placeholder: "Carian Nama", style: 'text-transform: uppercase' %>
+        <%= text_field_tag :sch_ic, params[:sch_ic], placeholder: "Carian No MyKad", style: 'text-transform: uppercase' %>
+        
         <%= hidden_field_tag :sch, params[:sch], value: true %>
         <%= button_tag(type: :submit, class: "badge badge-success shadow-none", style: "font-size: 14px; border-style: none; font-weight: normal",  id: "submit_expense") do %>
             <i class="fa fa-search"></i> Cari
         <% end %>
-        <%= link_to ekidindex_path, class: "badge badge-danger shadow-sm", style: "font-size: 14px; font-weight: normal" do %>
+        <%= link_to teacher_index_path, class: "badge badge-danger shadow-sm", style: "font-size: 14px; font-weight: normal" do %>
             <i class="fa fa-sync"></i> Semula
         <% end %>
-        <%= "#{@ekids.count} carian" %>
+        
+        <%= "#{@ekids.count} carian" unless params[:sch].blank? %>
       <% end %>
     <div>
 
@@ -38,7 +37,6 @@
   <div class="card-body">
     
     <div class="table table-responsive border" style="font-size:13px">
-      <%= form_for(:ek, :url => {:controller=>'ekids', :action=>'statekid'}, :html => {multipart: true, class: "form-horizontal", method: :post, role: "form"}) do |f| %>
       <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0" style="color: black">
         
         <thead>
@@ -48,15 +46,14 @@
             <th style="background-color:#ffb2b2">MAKLUMAT PEMOHON</th>
             <!-- <th style="background-color:#ffb2b2">PROGRAM</th> -->
             <th style="background-color:#ffb2b2; width: 30%">MAKLUMAT TAMBAHAN</th>
-            <th style="background-color:#ffb2b2; width: 18%">STATUS</th>
-            <th style="background-color:#ffb2b2; width: 20%">TARIKH</th>
+            <th style="background-color:#ffb2b2; width: 20%">LAPORAN PERKEMBANGAN</th>
           </tr>
         </thead>
         <tbody>
           <% @ekids.order('created_at DESC').each do |ek|; perse = ek.perse %>
           <tr>
             <td>
-              <a href="<%= ekidconf_url(id: ek.id)%>" target="_blank">PPN-<%= ek.id.to_s.rjust(4, '0') %></a>
+              PPN-<%= ek.id.to_s.rjust(4, '0') %>
             </td>
             <td>
               <%= ek.name %><br>
@@ -86,7 +83,10 @@
               %>
               <b>Kategori: </b><%= ek.prbtp %><br>
               <b>Umur: </b><%= "#{yr} tahun, #{mth} bulan" %><br>
-              <b>Pendapatan (RM): </b><%= ek.pinc %>
+              <b>Pendapatan (RM): </b><%= ek.pinc %><br>
+              <%= link_to "Profil Penuh", ekidconf_path(id: ek.id, trp: true), class: "badge badge-pill badge-primary", target: "_blank"%>
+
+              
             </td>
             <!-- <td>
               <%
@@ -104,15 +104,7 @@
               <a href="<%= ekstat_url(id: ek.id, stat: staturl) %>"><btn class="badge badge-pill badge-secondary">Ubah Status</btn></a>
             </td> -->
             <td>
-              <%= f.fields_for :"#{ek.id}" do |h| %>
-              <% ek.stat %>
-                <%= h.select :stat, options_for_select(["Permohonan Diterima","Permohonan Dalam Semakan", "Permohonan Tidak Lengkap","Permohonan Diluluskan", "Permohonan Ditolak"],selected: ek.stat), {include_blank: "Pilih Status"}, required: false %>
-              <% end %>
-            </td>
-
-            <td>
-              <b>Kemaskini</b> :<%= ek.updated_at.strftime('%d-%^b-%y') %><br>
-              <b>Permohonan</b> :<%= ek.created_at.strftime('%d-%^b-%y') %>    
+              
             </td>
           </tr>
 
@@ -121,8 +113,6 @@
         </tbody>
         
       </table>
-      <%= f.submit :"Kemaskini",  class: 'btn btn-sm btn-block btn-success btn-lg', style: "align:center" %>
-      <% end %> <!-- END FORM -->
     </div>
   </div>
 </div>
