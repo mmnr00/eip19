@@ -12,11 +12,13 @@
       </p>
     </div>
 
+    <% if @proge.tp.include? "CIKGU ANIS" %>
     <div style="position:absolute;top:390px;left:0;right:0;margin-left:20px;margin-right:120px; background-color: #ebecf1; padding-left: 70px;margin-top: 3px; height:5%">
       <p style="color:black; font-size: 20px; font-weight: 800; vertical-align: center">
         <%= @proge.name %>
       </p>
     </div>
+    <% end %>
 
     <div style="position:absolute;top:453px;left:0;right:0;margin-left:auto;margin-right:auto;">
       <p style="color:black; font-size: 18px; font-weight: 600">
