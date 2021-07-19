@@ -18,6 +18,7 @@
           <% @ekrps.order('dt DESC').each do |ekr| %><tr>
             <td><%= ekr.dt %></td>
             <td>
+              <%= link_to 'Lihat', ekrp_path(ekr, ekid: @ekid.id), class: "badge badge-pill badge-success"%>
               <%= link_to 'Kemaskini', edit_ekrp_path(ekr, ekid: @ekid.id), class: "badge badge-pill badge-warning"%>
               <%= link_to 'Padam', ekrp_path(ekr, ekid: @ekid.id), class: "badge badge-pill badge-danger", method: :delete, :data => {:confirm => 'Adakah Anda Pasti?'}%>
                 

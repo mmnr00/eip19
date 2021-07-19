@@ -1,5 +1,9 @@
 class EkrpsController < ApplicationController
 
+	def show
+		@ekrp = Ekrp.find(params[:id])
+	end
+
 	def new
 		@ekrp = Ekrp.new
 		@ekid = Ekid.find(params[:ekid])
