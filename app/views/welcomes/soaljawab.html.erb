@@ -1,0 +1,12 @@
+Soal Jawab
+
+<%= form_for(:ek, :url => {:controller=>'welcomes', :action=>'soaljawab'}, :html => {multipart: true, class: "form-horizontal", method: :post, role: "form"}) do |f| %>
+
+  <%= f.text_field :dt, class: "form-control schbox", style: "text-transform: uppercase" %><br>
+
+  <%= f.submit :Hantar,  class: 'btn btn-success btn-sm' %>
+
+<% end %>
+
+
+<button class="badge badge-warning badge-pill" id="tryclick">CLICK</button>

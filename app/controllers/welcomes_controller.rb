@@ -5,6 +5,9 @@ class WelcomesController < ApplicationController
 	
 	#layout "page"
 
+	def soaljawab
+	end
+
 	def mpachart
 		@index = true
 	end
