@@ -18,6 +18,7 @@ $(document).on('turbolinks:load', function() {
   const allq = document.querySelector('#allq');
   const schq = document.querySelector('#schq');
   const schbox = document.querySelector('.schbox');
+  const submitQa = document.querySelector('#submitQa');
   var str = '';
 
   function loopChild (strPar){
@@ -31,19 +32,16 @@ $(document).on('turbolinks:load', function() {
       var dv = c[j]
       var strId = c[j].id
       if (strId.includes(strPar)){
+        c[0].style.display = "inline"
         dv.style.display = 'inline'
+        submitQa.style.display = 'none'
+      } else {
+        submitQa.style.display = 'inline'
       }
       
     }
   }
 
-  function clrChild (){
-    var c = schq.children
-    var i;
-    for (i = 0; i < c.length; i++) {
-      c[i].style.display = 'none'
-    }
-  }
 
 
   if (typeof schbox === 'undefined'){
@@ -64,6 +62,7 @@ $(document).on('turbolinks:load', function() {
         allq.style.display = 'none'
         schq.style.display = 'inline'
         loopChild(str)
+        
       } else {
         allq.style.display = 'inline'
         schq.style.display = 'none'

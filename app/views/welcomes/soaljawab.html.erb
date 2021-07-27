@@ -2,29 +2,30 @@ Soal Jawab
 
 <%= form_for(:ek, :url => {:controller=>'welcomes', :action=>'soaljawab'}, :html => {multipart: true, class: "form-horizontal", method: :post, role: "form"}) do |f| %>
 
-  <%= f.text_field :dt, class: "form-control schbox", style: "text-transform: uppercase" %><br>
+  <%= f.text_field :dt, class: "form-control schbox", style: "text-transform: uppercase" %>
 
-  <%= f.submit :Hantar,  class: 'btn btn-success btn-sm' %>
+  <div id="allq" style="">
+    allq<br>
+    <% @perse.last(5).each do |prs| %>
+       <%= prs.name %><br>
+    <% end %>
+  </div>
+
+  <div id="schq" style="display: none">
+    schq<br>
+    <% @perse.each do |prs| %>
+      <div id="<%= prs.name %>" style="display: none">
+       <%= prs.name %><br>
+      </div>
+    <% end %>
+  </div>
+
+  <div id="submitQa" style="display: none">
+    <%= f.submit :Hantar,  class: 'btn btn-success btn-sm' %>
+  </div>
 
 <% end %>
 
-<div id="allq" style="">
-  allq
-  <% @perse.each do |prs| %>
-    <div id="<%= prs.name %>">
-     <%= prs.name %><br>
-    </div>
-  <% end %>
-</div>
-
-<div id="schq" style="display: none">
-  schq<br>
-  <% @perse.each do |prs| %>
-    <div id="<%= prs.name %>" style="display: none">
-     <%= prs.name %><br>
-    </div>
-  <% end %>
-</div>
 
 
-<button class="badge badge-warning badge-pill" id="tryclick">CLICK</button>
+
