@@ -6,6 +6,7 @@ class WelcomesController < ApplicationController
 	#layout "page"
 
 	def soaljawab
+		@perse = Perse.all
 	end
 
 	def mpachart

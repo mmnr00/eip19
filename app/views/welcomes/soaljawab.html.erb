@@ -8,5 +8,23 @@ Soal Jawab
 
 <% end %>
 
+<div id="allq" style="">
+  allq
+  <% @perse.each do |prs| %>
+    <div id="<%= prs.name %>">
+     <%= prs.name %><br>
+    </div>
+  <% end %>
+</div>
+
+<div id="schq" style="display: none">
+  schq<br>
+  <% @perse.each do |prs| %>
+    <div id="<%= prs.name %>" style="display: none">
+     <%= prs.name %><br>
+    </div>
+  <% end %>
+</div>
+
 
 <button class="badge badge-warning badge-pill" id="tryclick">CLICK</button>
