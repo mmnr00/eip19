@@ -25,6 +25,8 @@ $(document).on('turbolinks:load', function() {
     var c = schq.children
     var i;
     var j;
+    var notFound = 0
+
     for (i = 0; i < c.length; i++) {
       c[i].style.display = 'none'
     }
@@ -32,14 +34,20 @@ $(document).on('turbolinks:load', function() {
       var dv = c[j]
       var strId = c[j].id
       if (strId.includes(strPar)){
-        c[0].style.display = "inline"
+        
         dv.style.display = 'inline'
         submitQa.style.display = 'none'
       } else {
+        
+        notFound++
         submitQa.style.display = 'inline'
       }
-      
+      c[0].style.display = "block"
     }
+    if (notFound == c.length){
+      schq.style.display = 'none'
+    }
+    
   }
 
 
@@ -47,18 +55,21 @@ $(document).on('turbolinks:load', function() {
   if (typeof schbox === 'undefined'){
   } else {
     schbox.addEventListener('keydown', function (e){
-
-      if (e.key === 'Backspace'){
-        str = str.substring(0, str.length - 1);
-        loopChild(str)
-      } else {
-        str += e.key.toUpperCase()
+      if ((e.keyCode == 32) || (e.keyCode >= 48 && e.keyCode <= 57) || (e.keyCode >= 65 && e.keyCode <= 90) || (e.keyCode == 8)){
+        // console.log(e.keyCode)
+        if (e.key === 'Backspace'){
+          str = str.substring(0, str.length - 1);
+          loopChild(str)
+        } else {
+          str += e.key.toUpperCase()
+        }
       }
+      
       
       
       if (str.length > 0){
         console.log(str)
-        console.log(schq)
+        // console.log(schq)
         allq.style.display = 'none'
         schq.style.display = 'inline'
         loopChild(str)
@@ -70,9 +81,5 @@ $(document).on('turbolinks:load', function() {
     }) // for event listener
 
   } // IF SCHBOX present
-
-
-    
-
 
 })

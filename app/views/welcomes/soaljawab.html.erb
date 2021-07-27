@@ -5,14 +5,14 @@ Soal Jawab
   <%= f.text_field :dt, class: "form-control schbox", style: "text-transform: uppercase" %>
 
   <div id="allq" style="">
-    allq<br>
+    <div class="badge badge-pill badge-success" style="font-size: 18px; margin-top: 5px; display: block">Soalan Terbaru</div>
     <% @perse.last(5).each do |prs| %>
        <%= prs.name %><br>
     <% end %>
   </div>
 
   <div id="schq" style="display: none">
-    schq<br>
+    <div class="badge badge-pill badge-info" style="font-size: 18px; margin-top: 5px">Soalan Yang Sama</div>
     <% @perse.each do |prs| %>
       <div id="<%= prs.name %>" style="display: none">
        <%= prs.name %><br>
@@ -21,7 +21,7 @@ Soal Jawab
   </div>
 
   <div id="submitQa" style="display: none">
-    <%= f.submit :Hantar,  class: 'btn btn-success btn-sm' %>
+    <%= f.submit :'+ Tanya Soalan Baru',  class: 'btn btn-primary btn-sm btn-block', style: "margin-top: 5px; font-size: 18px" %>
   </div>
 
 <% end %>
