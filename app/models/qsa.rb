@@ -1,0 +1,2 @@
+class Qsa < ApplicationRecord
+end

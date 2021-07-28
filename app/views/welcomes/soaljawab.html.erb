@@ -1,8 +1,8 @@
 Soal Jawab
 
-<%= form_for(:ek, :url => {:controller=>'welcomes', :action=>'soaljawab'}, :html => {multipart: true, class: "form-horizontal", method: :post, role: "form"}) do |f| %>
+<%= form_for(:ek, :url => {:controller=>'qsas', :action=>'new'}, :html => {multipart: true, class: "form-horizontal", method: :get, role: "form"}) do |f| %>
 
-  <%= f.text_field :dt, class: "form-control schbox", style: "text-transform: uppercase" %>
+  <%= f.text_field :ques, class: "form-control schbox", style: "text-transform: uppercase" %>
 
   <div id="allq" style="">
     <div class="badge badge-pill badge-success" style="font-size: 18px; margin-top: 5px; display: block">Soalan Terbaru</div>
@@ -18,9 +18,11 @@ Soal Jawab
        <%= prs.name %><br>
       </div>
     <% end %>
+    <%= f.hidden_field :send, value: 1 %>
   </div>
 
   <div id="submitQa" style="display: none">
+
     <%= f.submit :'+ Tanya Soalan Baru',  class: 'btn btn-primary btn-sm btn-block', style: "margin-top: 5px; font-size: 18px" %>
   </div>
 
