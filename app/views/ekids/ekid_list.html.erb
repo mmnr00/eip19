@@ -44,7 +44,11 @@
               </td>
               <td><%= ek.ic %></td><!-- 
               <td><%= ek.tp %></td> -->
-              <td><%= ek.stat %></td>
+              <td>
+                <div class="badge badge-pill badge-info" style="font-size: 13px;"><%= ek.stat %></div><br>
+                <b>Makluman Admin: </b><%= ek.descr %>
+                  
+              </td>
             </tr>
           <% end %> 
         </tbody>
