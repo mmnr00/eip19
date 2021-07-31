@@ -178,7 +178,8 @@
             <td>
               <%= f.fields_for :"#{ek.id}" do |h| %>
               <% ek.stat %>
-                <%= h.select :stat, options_for_select(["Permohonan Diterima","Permohonan Dalam Semakan", "Permohonan Tidak Lengkap","Permohonan Diluluskan", "Permohonan Ditolak"],selected: ek.stat), {include_blank: "Pilih Status"}, required: false %>
+                <%= h.select :stat, options_for_select(["Permohonan Diterima","Permohonan Dalam Semakan", "Permohonan Tidak Lengkap","Permohonan Diluluskan", "Permohonan Ditolak"],selected: ek.stat), {include_blank: "Pilih Status"}, required: false %><br>
+                <%= h.text_area :descr, placeholder: "Makluman Admin", style: "margin-top: 10px; width: 100%", value: ek.descr %>
               <% end %>
             </td>
 

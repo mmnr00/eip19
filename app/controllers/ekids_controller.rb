@@ -7,6 +7,7 @@ class EkidsController < ApplicationController
 		pars.each do |k,v|
 			ek = Ekid.find(k)
 			ek.stat = v["stat"]
+			ek.descr = v["descr"]
 			ek.save
 		end
 		flash[:success] = "Kemaskini Status Berjaya"
