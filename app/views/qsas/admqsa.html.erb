@@ -1,0 +1,45 @@
+<%= link_to "Soalan Baru", new_artk_path, class: "badge badge-pill badge-info" %>
+
+<div class="cards shadow mb-4">
+  <div class="card-header">
+    <div class="row">
+      <btn class="btn btn-sm btn-success btn-block" style="font-weight: 600">Senarai Soalan</btn>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <div class="table table-responsive border" style="font-size:13px">
+      <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0" style="color: black">
+        <thead style="color: white">
+          <tr class="shadow">
+            <th style="background-color:#8c198c; width: 25%">MAKLUMAT PENGHANTAR</th>
+            <th style="background-color:#8c198c">SOALAN</th>
+            <th style="background-color:#8c198c; width: 30%">RINGKASAN JAWAPAN</th>
+        </thead>
+        <tbody>
+          <% @qsas.order('created_at DESC').each do |qs| %>
+          <tr>
+            <td>
+              <b><%= qs.name %></b><br>
+              <%= qs.email %><br>
+              <i><%= qs.ph %></i>
+            </td>
+            <td>
+              <%= qs.ques %>
+            </td>
+            <td>
+              <%= qs.ans[0..20] %>
+              <% if qs.ans.length > 20 %>
+                .....
+              <% end %>
+              <br>
+              <%= link_to "Jawab Soalan", edit_qsa_path(qs.id), class: "badge badge-pill badge-primary" %>
+              <%= link_to "Padam Soalan", new_artk_path, class: "badge badge-pill badge-danger" %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

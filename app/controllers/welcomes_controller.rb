@@ -6,7 +6,8 @@ class WelcomesController < ApplicationController
 	#layout "page"
 
 	def soaljawab
-		@perse = Perse.all
+		@index = true
+		@qsas = Qsa.where.not(ans: ["",nil])
 	end
 
 	def mpachart

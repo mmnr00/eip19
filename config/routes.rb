@@ -35,6 +35,7 @@ Rails.application.routes.draw do
 	root 'welcomes#index2'
 
   #~~QSAS
+  get '/admqsa', to: 'qsas#admqsa'
 
   #~~EKRPS
   get '/ekrpls', to: 'ekrps#ekrpls'
