@@ -1,5 +1,5 @@
 wb = xlsx_package.workbook
-col_widths= [5,10,40,15,15,8,17,55,18,55,15,18,18,13,30]
+col_widths= [5,10,40,15,15,24,33,20,20,20,20,20,20,20,20]
 wb.styles do |style|
   header_1 = style.add_style(sz: 20, b: true)
   dlt_cell = style.add_style(bg_color: "FF0000",
@@ -30,6 +30,7 @@ wb.styles do |style|
                   "MYKID",
                   "T/LAHIR",
                   "UMUR",
+                  "JENIS KELEWATAN",
                   "NO TELEFON",
                   "NAMA BAPA",
                   "NO TEL BAPA",
@@ -54,6 +55,7 @@ wb.styles do |style|
                       "#{ek.ic[0..5]}-#{ek.ic[6..7]}-#{ek.ic[8..11]}", 
                       ek.dob.strftime('%d/%m/%Y'),
                       "#{year} tahun, #{mth} bulan",
+                      ek.prbtp,
                       ek.mph,
                       ek.fname,
                       ek.fph,

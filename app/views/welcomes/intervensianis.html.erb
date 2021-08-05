@@ -15,8 +15,8 @@
 <div class="section-header container bg-white" style="margin-top: 20px">
   <h3 style="">MAKLUMAN</h3>
   <div class="border-prog" style=""></div>
-  <p style="text-align: center; color: black; font-weight: 600">Permohonan Program Intervensi Awal ANIS telah dibuka</p>
-  <p style="text-align: center; color: black">Tempoh Pendaftaran: 1 Julai 2021 - 30 Julai 2021</p>
+  <p style="text-align: center; color: black; font-weight: 600">Permohonan Program Intervensi Awal ANIS telah ditutup</p>
+  <p style="text-align: center; color: black">Sila Semak Status Permohanan Pada Butang Di Bawah</p>
   <% if 1==0 %>
     <div style="background-color: #6666ff; text-align: center; color: white; margin-bottom: -20px">
       Pendaftaran Untuk Didik ANIS Telah Ditutup. Terima Kasih.
@@ -435,7 +435,7 @@
         </div>
       </div>
 
-      <%= link_to "Permohonan Baru", persesch_url(prog: "INTERVENSI ANIS", regkid: 1), class: "btn btn-sm btn-success btn-block"%>
+      <% link_to "Permohonan Baru", persesch_url(prog: "INTERVENSI ANIS", regkid: 1), class: "btn btn-sm btn-success btn-block"%>
       <%= link_to "Semak Permohonan", persesch_url(prog: "INTERVENSI ANIS"), class: "btn btn-sm btn-info btn-block"%>
       <% link_to "Permohonan Belum Dibuka", "#", class: "btn btn-sm btn-danger btn-block"%>
 
