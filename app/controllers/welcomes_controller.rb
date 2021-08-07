@@ -5,6 +5,11 @@ class WelcomesController < ApplicationController
 	
 	#layout "page"
 
+	def soaljawab
+		@index = true
+		@qsas = Qsa.where.not(ans: ["",nil])
+	end
+
 	def mpachart
 		@index = true
 	end

@@ -28,7 +28,7 @@
 
 <%= render 'ekids/profile' %>
 
-
+<% if params[:trp].blank? %>
 <div style="page-break-before: always">
 
   <div class="table-responsive">
@@ -186,6 +186,7 @@
   </div>
 
 </div>
+<% end %>
 
 
 
