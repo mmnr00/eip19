@@ -7,6 +7,7 @@ class EkrpsController < ApplicationController
 	def new
 		@ekrp = Ekrp.new
 		@ekid = Ekid.find(params[:ekid])
+		@perse = @ekid.perse
 	end
 
 	def create 

@@ -1,13 +1,154 @@
+<meta name="viewport" content="width=768">
+
 <div class='row'>
   <div class='col-12'>
     <%= form_for(@ekrp, :html => {multipart: true, class: "form-horizontal", role: "form"}) do |f| %>
-    <%
-      if @ekrp.dt.present?
-        dt = @ekrp.dt.to_date
-      else
-        dt = Date.today
-      end
-    %>
+      <%
+        if @ekrp.dt.present?
+          dt = @ekrp.dt.to_date
+        else
+          dt = Date.today
+        end
+      %>
+
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <tr>
+            <td style="background-color:#0070C0 !important; color: white" colspan=4>PROGRAM INTERVENSI ANIS</td>
+          </tr>
+          <tr style="color: black; font-size: 12px;">
+            <td style="background-color:#e5e5e5 !important; "colspan=4>
+              <p style="margin-bottom: -5px; font-size: 14px; font-weight: 800">INSTRUMEN PENAKSIRAN AWAL KANAK-KANAK</p>
+            </td>
+          </tr>
+
+          <tr style="color: black; font-size: 13px; padding-left: 20px; height: -5px;">
+            <td style="background-color:#e5e5e5 !important; width: %">
+              NAMA IBU/BAPA/PENJAGA :
+            </td>
+            <td style="background-color:white !important; width: 70%">
+              <%= @perse.name %>
+            </td>
+            <td style="background-color:#e5e5e5 !important; width: %"></td>
+          </tr>
+
+          <tr style="color: black; font-size: 13px;">
+            <td style="background-color:#e5e5e5 !important; width: %">
+              TARIKH LAPORAN:
+            </td>
+            <td style="background-color:white !important; width: %">
+              <%= dt.strftime('%d-%^b-%Y') %>
+              <%= f.hidden_field :dt, value: dt %>
+            </td>
+            <td style="background-color:#e5e5e5 !important; width: 1%"></td>
+          </tr>
+
+          <tr style="color: black; font-size: 13px; padding-left: 20px; height: -5px;">
+            <td style="background-color:#e5e5e5 !important; width: %">
+              NO TELEFON :
+            </td>
+            <td style="background-color:white !important; width: 60%">
+              <%= @perse.ph %>
+            </td>
+            <td style="background-color:#e5e5e5 !important; width: %"></td>
+          </tr>
+
+          <tr style="color: black; font-size: 13px; padding-left: 20px; height: -5px;">
+            <td style="background-color:#e5e5e5 !important; width: %">
+              ALAMAT EMEL :
+            </td>
+            <td style="background-color:white !important; width: 60%">
+              <%= @perse.email %>
+            </td>
+            <td style="background-color:#e5e5e5 !important; width: %"></td>
+          </tr>
+
+          <tr style="color: black; font-size: 13px; padding-left: 20px; height: -5px;">
+            <td style="background-color:#e5e5e5 !important; width: %">
+              NAMA KANAK-KANAK :
+            </td>
+            <td style="background-color:white !important; width: 60%">
+              <%= @ekid.name %>
+            </td>
+            <td style="background-color:#e5e5e5 !important; width: %"></td>
+          </tr>
+
+          <tr style="color: black; font-size: 13px; padding-left: 20px; height: -5px;">
+            <td style="background-color:#e5e5e5 !important; width: %">
+              NO MYKID :
+            </td>
+            <td style="background-color:white !important; width: 60%">
+              <%= @ekid.ic %>
+            </td>
+            <td style="background-color:#e5e5e5 !important; width: %"></td>
+          </tr>
+
+          <tr style="color: black; font-size: 13px; padding-left: 20px; height: -5px;">
+            <td style="background-color:#e5e5e5 !important; width: %">
+              UMUR KANAK-KANAK :
+            </td>
+            <td style="background-color:white !important; width: 60%">
+              <%
+                age = (Date.today.year*12+Date.today.month) - (@ekid.dob.year*12+@ekid.dob.month)
+                yr = age/12
+                mth = age - yr*12
+              %>
+              <%= "#{yr} tahun, #{mth} bulan" %>
+            </td>
+            <td style="background-color:#e5e5e5 !important; width: %"></td>
+          </tr>
+
+          <tr>
+            <td style="background-color:#e5e5e5 !important;" colspan="4"></td>
+          </tr>
+          
+        </table>
+      </div>
+
+      <p style="color: black">
+        <b>Arahan Kepada Pegawai Intervensi</b><br>
+        <i>Instrumen penaksiran awal kanak-kanak ini adalah bertujuan untuk menilai kemahiran kanak-kanak</i>
+      </p>
+
+      <div class="table-responsive">
+        <table class="table table-bordered" >
+          <thead style="color: white">
+            <tr>
+              <th style="background-color:#b266b2; width: 30%">Sosial</th>
+              <th style="background-color:#b266b2">Komen</th>
+            </tr>
+          </thead>
+
+          <tbody style="color: black; ">
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Tumpuan Bersama</td>
+              <td style="border-bottom: 1px solid black">
+                <b>Objek :</b> &nbsp&nbsp<%= f.select :dt, options_for_select(["Ya", "Tidak"],selected: @ekrp.dt),{include_blank: "Pilih Satu"}, {required: true} %> <br>
+                <b>Orang :</b> &nbsp<%= f.select :dt, options_for_select(["Ya", "Tidak"],selected: @ekrp.dt),{include_blank: "Pilih Satu"}, {required: true} %>  <br>
+                <b>Catatan :</b> <br><%= f.text_area :dt, rows: 5, cols: 60 %>
+              </td>
+            </tr>
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Tempoh Tumpuan</td>
+              <td style="border-bottom: 1px solid black">
+                <%= f.number_field :dt %> minit <br>
+                <b>Catatan :</b> <br><%= f.text_area :dt, rows: 5, cols: 60 %>
+              </td>
+            </tr>
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Aktiviti Berkumpulan</td>
+              <td style="border-bottom: 1px solid black">
+                <%= f.number_field :dt %> minit <br>
+                <b>Catatan :</b> <br><%= f.text_area :dt, rows: 5, cols: 60 %>
+              </td>
+            </tr>
+          </tbody>
+
+
+          
+          
+        </table>
+      </div>
     
 
       <div class="form-group"> <!-- name -->
@@ -18,20 +159,15 @@
         </div>
         <div class="row">
           <div class="col-lg-4 col-md-4 col-sm-12">
-            <%= f.date_field :dt, class: "form-control", required: true, value: dt %>
+            <%= f.date_field :dt, class: "form-control", required: true, value: dt, readonly: true %>
           </div>
         </div>
       </div>
 
       <%= f.hidden_field :ekid_id, value: params[:ekid] %>
 
-      <div class="form-group">
-        <div class="row">
-          <div class="col-sm-offset-2 col-sm-10 col-4">
-            <%= f.submit :Hantar,  class: 'btn btn-success btn-sm' %>
-          </div>
-        </div>
-      </div>
+      
+      <%= f.submit :Hantar,  class: 'btn btn-success btn-sm btn-block' %>
 
     <% end %>
   </div>
