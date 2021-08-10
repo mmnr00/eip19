@@ -9,18 +9,22 @@
         
         <thead>
           <tr class="shadow">
-            <th style="background-color:#ffb2b2; width: %">TARIKH</th>
-            <th style="background-color:#ffb2b2; width: %">DIKEMASKINI</th>
-            <th style="background-color:#ffb2b2; width: %">MAKLUMAT RINGKAS</th>
+            <th style="background-color:#ffb2b2; width: %">TARIKH LAPORAN</th>
+            <th style="background-color:#ffb2b2; width: %">MAKLUMAT PENILAI</th>
           </tr>
         </thead>
         <tbody>
           <% @ekrps.order('dt DESC').each do |ekr| %><tr>
-            <td><%= ekr.dt %></td>
             <td>
+              <%= ekr.dt.strftime('%d-%^b-%y') %><br>
               <%= link_to 'Lihat', ekrp_path(ekr, ekid: @ekid.id), class: "badge badge-pill badge-success"%>
               <%= link_to 'Kemaskini', edit_ekrp_path(ekr, ekid: @ekid.id), class: "badge badge-pill badge-warning"%>
               <%= link_to 'Padam', ekrp_path(ekr, ekid: @ekid.id), class: "badge badge-pill badge-danger", method: :delete, :data => {:confirm => 'Adakah Anda Pasti?'}%>
+            </td>
+            <td>
+              <% ekr.exmls.each do |exm| %>
+                <b><%= exm[0] %></b> (<%= exm[1].strftime('%d-%^b-%y') %>)<br>
+              <% end %>
                 
             </td>
           <% end %></tr>

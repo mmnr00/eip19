@@ -94,7 +94,7 @@
                 ekr = ekrps.last
               %>
               <b>Bil Laporan: </b><a href="<%= ekrpls_url(ekid: ek.id) %>"><%= ekrps.count %></a><br>
-              <b>Tarikh Terakhir: </b><%= ekr.dt unless ekr.blank? %><br>
+              <b>Tarikh Terakhir: </b><%= ekr.dt.strftime('%d-%^b-%y') unless ekr.blank? %><br>
               <%= link_to "Cipta Laporan Baru", new_ekrp_path(ekid: ek.id), class: "badge badge-pill badge-info", target: "_blank"%>
             </td>
           </tr>
