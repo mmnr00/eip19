@@ -12,6 +12,7 @@ class EkrpsController < ApplicationController
 
 	def create 
 		@ekrp = Ekrp.new(ekrp_params)
+		@ekrp.exmls << [params[:ekrp][:exm], Date.today]
 		if @ekrp.save 
 			flash[:notice] = "Laporan Intervensi berjaya dijana"
 			redirect_to ekrpls_path(ekid: @ekrp.ekid_id)
@@ -24,10 +25,12 @@ class EkrpsController < ApplicationController
 	def edit
 		@ekrp = Ekrp.find(params[:id])
 		@ekid = @ekrp.ekid
+		@perse = @ekid.perse
 	end
 
 	def update
 		@ekrp = Ekrp.find(params[:id])
+		@ekrp.exmls << [params[:ekrp][:exm], Date.today]
 		if @ekrp.update(ekrp_params)
 			flash[:success] = "Kemaskini Berjaya"
 			redirect_to ekrpls_path(ekid: @ekrp.ekid_id)
@@ -58,7 +61,75 @@ class EkrpsController < ApplicationController
 
 	def ekrp_params
 		params.require(:ekrp).permit(:dt,
-																	:ekid_id)
+																:aa,
+														    :ab,
+														    :ac,
+														    :ad,
+														    :ae,
+														    :af,
+														    :ag,
+														    :ah,
+														    :ai,
+														    :aj,
+														    :ak,
+														    :al,
+														    :am,
+														    :an,
+														    :ao,
+														    :ap,
+														    :aq,
+														    :ar,
+														    :as,
+														    :at,
+														    :au,
+														    :av,
+														    :aw,
+														    :ax,
+														    :ay,
+														    :az,
+														    :ba,
+														    :bb,
+														    :bc,
+														    :bd,
+														    :be,
+														    :bf,
+														    :bg,
+														    :bh,
+														    :bi,
+														    :bj,
+														    :bk,
+														    :bl,
+														    :bm,
+														    :bn,
+														    :bo,
+														    :bp,
+														    :bq,
+														    :br,
+														    :bs,
+														    :bt,
+														    :bu,
+														    :bv,
+														    :bw,
+														    :bx,
+														    :by,
+														    :bz,
+														    :ca,
+														    :cb,
+														    :cc,
+														    :cd,
+														    :ce,
+														    :cf,
+														    :cg,
+														    :ch,
+														    :ci,
+														    :cj,
+														    :ck,
+														    :cl,
+														    :cm,
+														    :cn,
+														    :co,
+														    :cp,
+																:ekid_id)
 	end
 
 end
