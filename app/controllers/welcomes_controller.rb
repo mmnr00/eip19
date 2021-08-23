@@ -5,6 +5,11 @@ class WelcomesController < ApplicationController
 	
 	#layout "page"
 
+	def pengumuman
+		@index = true
+		@artks = Artk.all
+	end
+
 	def mpachart
 		@index = true
 	end
