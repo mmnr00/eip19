@@ -5,6 +5,14 @@ class WelcomesController < ApplicationController
 	
 	#layout "page"
 
+	def jkmdaerah
+		@index = true
+	end
+
+	def jkmnegeri
+		@index = true
+	end
+
 	def pengumuman
 		@index = true
 		@artks = Artk.all

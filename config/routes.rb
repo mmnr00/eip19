@@ -147,6 +147,8 @@ Rails.application.routes.draw do
   get '/showstat', to: 'sces#showstat'
 
   #WELCOME#
+  get '/jkmdaerah', to: 'welcomes#jkmdaerah'
+  get '/jkmnegeri', to: 'welcomes#jkmnegeri'
   get '/pengumuman', to: 'welcomes#pengumuman'
   get '/mpachart', to: 'welcomes#mpachart'
    get '/cikguanispdk', to: 'welcomes#cikguanispdk'
