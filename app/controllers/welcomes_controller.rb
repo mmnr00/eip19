@@ -5,6 +5,10 @@ class WelcomesController < ApplicationController
 	
 	#layout "page"
 
+	def senaraipdk
+		@index = true
+	end
+
 	def jkmdaerah
 		@index = true
 	end
