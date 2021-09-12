@@ -37,8 +37,9 @@
               TARIKH LAPORAN:
             </td>
             <td style="background-color:white !important; width: %">
-              <%= dt.strftime('%d-%^b-%Y') %>
-              <%= f.hidden_field :dt, value: dt %>
+              <% dt.strftime('%d-%^b-%Y') %>
+              <% f.hidden_field :dt, value: dt %>
+              <%= f.date_field :dt, value: dt %>
             </td>
             <td style="background-color:#e5e5e5 !important; width: 1%"></td>
           </tr>
