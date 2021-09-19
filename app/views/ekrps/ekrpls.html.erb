@@ -12,8 +12,8 @@
     <div class="row">
       <%= form_tag ekrpls_path, method: :get, id: "find_kid" do %>
       
-        Dari <%= date_field_tag :dtfr, required: true %>
-        Hingga <%= date_field_tag :dtto, required: true %>
+        Dari <%= date_field_tag :dtfr, params[:dtfr], required: true %>
+        Hingga <%= date_field_tag :dtto, params[:dtto], required: true %>
         <%= hidden_field_tag :ekid, params[:ekid], value: params[:ekid] %>
         <%= hidden_field_tag :sch, params[:sch], value: true %>
 
@@ -28,7 +28,7 @@
           
        
 
-        <% if 1==1 && params[:sch].present? #params[:sch].present? %>
+        <% if @ekrps.count > 1 && params[:sch].present? #params[:sch].present? %>
           <%= link_to root_path(@taska, sch_yr: Date.today.year, sch_mth: Date.today.month, shw: true), class: "badge badge-warning shadow-sm", style: "font-size: 14px; font-weight: normal" do %>
               <i class="fa fa-eye"></i> Jana Laporan Keseluruhan
           <% end %>

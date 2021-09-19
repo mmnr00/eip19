@@ -57,6 +57,13 @@ class EkrpsController < ApplicationController
 	def ekrpls
 		@ekid = Ekid.find(params[:ekid])
 		@ekrps = @ekid.ekrps
+		if params[:sch].present?
+			# if params[:dtfr].blank? || params[:dtto].blank?
+			# 	flash[:danger] = "Sila Masukkan Kedua-Dua Tarikh"
+			# 	redirect_to request.referrer and return
+			# end
+			@ekrps = @ekrps.where("dt >= ?", params[:dtfr]).where("dt <= ?", params[:dtto])
+		end
 	end
 
 	private
