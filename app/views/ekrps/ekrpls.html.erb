@@ -29,7 +29,7 @@
        
 
         <% if @ekrps.count > 1 && params[:sch].present? #params[:sch].present? %>
-          <%= link_to root_path(@taska, sch_yr: Date.today.year, sch_mth: Date.today.month, shw: true), class: "badge badge-warning shadow-sm", style: "font-size: 14px; font-weight: normal" do %>
+          <%= link_to ekrpsum_path(dtfr: params[:dtfr], dtto: params[:dtto], ekid: params[:ekid]), class: "badge badge-warning shadow-sm", style: "font-size: 14px; font-weight: normal" do %>
               <i class="fa fa-eye"></i> Jana Laporan Keseluruhan
           <% end %>
           <span class="badge badge-dark"><b><%= @ekrps.count %></b> carian</span>

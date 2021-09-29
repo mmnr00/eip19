@@ -1,5 +1,12 @@
 class EkrpsController < ApplicationController
 
+	def ekrpsum
+		@ekid = Ekid.find(params[:ekid])
+		@perse = @ekid.perse
+		@ekrps = @ekid.ekrps.where("dt >= ?", params[:dtfr]).where("dt <= ?", params[:dtto])
+		@ekrp = @ekrps.last
+	end
+
 	def show
 		@ekrp = Ekrp.find(params[:id])
 		@ekid = @ekrp.ekid

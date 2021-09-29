@@ -39,6 +39,7 @@ Rails.application.routes.draw do
 
   #~~EKRPS
   get '/ekrpls', to: 'ekrps#ekrpls'
+  get '/ekrpsum', to: 'ekrps#ekrpsum'
 
   #~~FBPROGES
   get '/newfbproge', to: 'fbproges#newfbproge'

@@ -14,7 +14,7 @@
 
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap.bundle
+// require bootstrap.bundle
 //= require activestorage
 //= require Chart.bundle
 //= require chartkick
