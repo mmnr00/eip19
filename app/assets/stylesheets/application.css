@@ -23,17 +23,17 @@
  *= require bizland
 
  *= require reveal-css
-
+ *= require font-awesome
  *= require mmbcard
  *= require pricing
  *= require css_sb-admin/sb-admin
- *= require font-awesome-new
- *= require fontawesome-free/css/all
+ * require font-awesome-new
+ * require fontawesome-free/css/all
  *= require sb-admin-2
  *= require_tree .
  *= require_self
 
- */
+ *
 
  
 
