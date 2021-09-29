@@ -1,8 +1,10 @@
 <div style="margin-bottom: -10px;">
 <ol class="breadcrumb">
   <li class="breadcrumb-item">
-    Senarai Laporan Intervensi <b><%= "#{@ekid.name} (#{@ekid.ic})" %></b> 
+    Senarai Laporan Intervensi <b><%= "#{@ekid.name} (#{@ekid.ic})" %></b>
+    <% if current_teacher %> 
     <%= link_to "Cipta Laporan Baru", new_ekrp_path(ekid: @ekid.id), class: "badge badge-pill badge-info"%> 
+    <% end %>
   </li>
 </ol>
 </div>
@@ -53,8 +55,10 @@
             <td>
               <%= ekr.dt.strftime('%d-%^b-%y') %><br>
               <%= link_to 'Lihat', ekrp_path(ekr, ekid: @ekid.id), class: "badge badge-pill badge-success"%>
+              <% if current_teacher %>
               <%= link_to 'Kemaskini', edit_ekrp_path(ekr, ekid: @ekid.id), class: "badge badge-pill badge-warning"%>
               <%= link_to 'Padam', ekrp_path(ekr, ekid: @ekid.id), class: "badge badge-pill badge-danger", method: :delete, :data => {:confirm => 'Adakah Anda Pasti?'}%>
+              <% end %>
             </td>
             <td>
               <% ekr.exmls.each do |exm| %>
