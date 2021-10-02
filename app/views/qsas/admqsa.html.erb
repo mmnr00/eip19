@@ -28,10 +28,11 @@
               <%= qs.ques %>
             </td>
             <td>
+              <% if qs.ans.present? %>
               <%= qs.ans[0..20] %>
               <% if qs.ans.length > 20 %>
                 .....
-              <% end %>
+              <% end %><% end %>
               <br>
               <%= link_to "Jawab Soalan", edit_qsa_path(qs.id), class: "badge badge-pill badge-primary" %>
               <%= link_to "Padam Soalan", new_artk_path, class: "badge badge-pill badge-danger" %>
