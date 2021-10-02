@@ -2,4 +2,8 @@
 <div class="badge badge-pill badge-info" style="font-size: 15px; margin-top: 5px; margin-bottom: 5px; display: block">Soalan Terbaru</div>
 </div>
 
-<%=  render 'qsas/form' %>
+<% if params[:admq].present? %>
+  <%=  render 'qsas/form-q-adm' %>
+<% else %>
+  <%=  render 'qsas/form' %>
+<% end %>

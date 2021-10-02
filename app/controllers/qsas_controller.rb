@@ -8,6 +8,10 @@ class QsasController < ApplicationController
 
 	def new
 		@qsa = Qsa.new
+		@qscatg = []
+		Qsa.all.each do |qs|
+			@qscatg << qs.catg unless @qscatg.include? qs.catg
+		end
 	end
 
 	def show
@@ -44,6 +48,7 @@ class QsasController < ApplicationController
 																:ans,
 																:stat,
 																:email,
+																:catg,
 																:name,
 																:ph)
 	end
