@@ -18,39 +18,53 @@
   <%= f.text_area :ques, class: "form-control schbox", style: "text-transform: uppercase" %>
 
   <div id="allq" style="">
-    <div class="badge badge-pill badge-success" style="font-size: 15px; margin-top: 5px; display: block">Soalan Terbaru</div>
+    <div class="badge badge-pill badge-success" style="font-size: 15px; margin-top: 5px;margin-bottom: 5px; display: block">Soalan Terbaru</div>
     <% @qsas.order('updated_at DESC').last(20).each do |qs| %>
-      <div class="card" style="margin-top: 5px">
-        <!-- Card Header - Accordion -->
-        <a href="#coll<%= qs.id %>" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-          <h6 class="m-0 font-weight-bold text-title" style="font-size: 12px;"><%= qs.ques %></h6>
-        </a>
-        <!-- Card Content - Collapse -->
-        <div class="collapse" id="coll<%= qs.id %>">
-          <div class="card-body" style="text-align: justify">
-            <%= qs.ans %>
-          </div>
+      <div class="card mb-2">
+        <div class="card-body p-2 p-sm-3">
+            <div class="media forum-item">
+                <a href="#" data-toggle="collapse" data-target=".forum-content"><img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="mr-3 rounded-circle" width="50" alt="User" /></a>
+                <div class="media-body">
+                    <h6><a href="#" data-toggle="collapse" data-target=".forum-content" class="text-body"><b><%= qs.ques %></b></a></h6>
+                    <p class="text-secondary">
+                        <%= qs.ans %>
+                    </p>
+                    <p class="text-muted"><a href="javascript:void(0)"><%= qs.name %></a> dalam kategori
+                    <i><u><span class="d-none d-sm-inline-block"><%= qs.catg %></span></u></i>
+                    </p>
+                </div>
+                <div class="text-muted small text-center align-self-center">
+                  <span class="d-none d-sm-inline-block"><%= qs.created_at.strftime('%d-%^b-%y')%></span>
+                </div>
+            </div>
         </div>
       </div>
     <% end %>
   </div>
 
   <div id="schq" style="display: none">
-    <div class="badge badge-pill badge-info" style="font-size: 15px; margin-top: 5px">Soalan Yang Sama</div>
+    <div class="badge badge-pill badge-info" style="font-size: 15px; margin-top: 5px;margin-bottom: 5px;">Soalan Yang Sama</div>
     <% @qsas.each do |qs| %>
       <div id="<%= qs.ques %>">
-      <div class="card" style="margin-top: 5px">
-        <!-- Card Header - Accordion -->
-        <a href="#coll<%= qs.id %>" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-          <h6 class="m-0 font-weight-bold text-title" style="font-size: 12px;"><%= qs.ques %></h6>
-        </a>
-        <!-- Card Content - Collapse -->
-        <div class="collapse" id="coll<%= qs.id %>">
-          <div class="card-body" style="text-align: justify">
-            <%= qs.ans %>
+        <div class="card mb-2">
+          <div class="card-body p-2 p-sm-3">
+              <div class="media forum-item">
+                  <a href="#" data-toggle="collapse" data-target=".forum-content"><img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="mr-3 rounded-circle" width="50" alt="User" /></a>
+                  <div class="media-body">
+                      <h6><a href="#" data-toggle="collapse" data-target=".forum-content" class="text-body"><b><%= qs.ques %></b></a></h6>
+                      <p class="text-secondary">
+                          <%= qs.ans %>
+                      </p>
+                      <p class="text-muted"><a href="javascript:void(0)"><%= qs.name %></a> dalam kategori
+                    <i><u><span class="d-none d-sm-inline-block"><%= qs.catg %></span></u></i>
+                    </p>
+                </div>
+                <div class="text-muted small text-center align-self-center">
+                  <span class="d-none d-sm-inline-block"><%= qs.created_at.strftime('%d-%^b-%y')%></span>
+                </div>
+              </div>
           </div>
         </div>
-      </div>
       </div>
     <% end %>
     <%= f.hidden_field :send, value: 1 %>
