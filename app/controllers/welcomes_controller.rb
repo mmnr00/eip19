@@ -5,6 +5,9 @@ class WelcomesController < ApplicationController
 	
 	#layout "page"
 
+	def qatemp
+	end
+
 	def soaljawab
 		@index = true
 		@qsas = Qsa.where.not(ans: ["",nil])
