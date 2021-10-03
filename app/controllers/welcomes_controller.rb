@@ -10,7 +10,15 @@ class WelcomesController < ApplicationController
 
 	def soaljawab
 		@index = true
-		@qsas = Qsa.where.not(ans: ["",nil])
+		@qsall = Qsa.where.not(ans: ["",nil])
+		@qsas = @qsall
+		if params[:catg].present?
+			@qsas = @qsas.where(catg: params[:catg])
+		end
+		@catg = []
+		Qsa.all.each do |qs|
+			@catg << qs.catg unless @catg.include? qs.catg
+		end
 	end
 
 	def mpachart
