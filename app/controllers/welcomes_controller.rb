@@ -16,7 +16,7 @@ class WelcomesController < ApplicationController
 			@qsas = @qsas.where(catg: params[:catg])
 		end
 		@catg = []
-		Qsa.all.each do |qs|
+		@qsall.each do |qs|
 			@catg << qs.catg unless @catg.include? qs.catg
 		end
 	end

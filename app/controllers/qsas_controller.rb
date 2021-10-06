@@ -4,6 +4,15 @@ class QsasController < ApplicationController
 
 	def admqsa
 		@qsas = Qsa.all
+		@qsall = @qsas
+		if params[:catg].present?
+			@qsas = @qsas.where(catg: params[:catg])
+		end
+		
+		@qscatg = []
+		@qsall.each do |qs|
+			@qscatg << qs.catg unless @qscatg.include? qs.catg
+		end
 	end
 
 	def new
@@ -20,11 +29,22 @@ class QsasController < ApplicationController
 	def create
 		@qsa = Qsa.new(qsa_params)
 		@qsa.save 
-		redirect_to root_path
+		if @qsa.ans.present?
+			flash[:notice] = "Berjaya"
+			redirect_to admqsa_path
+		else
+			flash[:notice] = "Soalan Anda Diterima. Pihak kami akan maklumkan melalui email"
+			redirect_to soaljawab_path
+		end
+		
 	end
 
 	def edit
 		@qsa = Qsa.find(params[:id])
+		@qscatg = []
+		Qsa.all.each do |qs|
+			@qscatg << qs.catg unless @qscatg.include? qs.catg
+		end
 	end
 
 	def update
