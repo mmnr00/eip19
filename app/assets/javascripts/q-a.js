@@ -15,6 +15,8 @@ $(document).on('turbolinks:load', function() {
   //   })
   // }
 
+  console.log('q-a js')
+
   const allq = document.querySelector('#allq');
   const schq = document.querySelector('#schq');
   const schbox = document.querySelector('.schbox');

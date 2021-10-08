@@ -5,6 +5,10 @@ class WelcomesController < ApplicationController
 	
 	#layout "page"
 
+	def tanyaanis
+		redirect_to soaljawab_path
+	end
+
 	def qatemp
 	end
 
