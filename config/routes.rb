@@ -161,7 +161,7 @@ Rails.application.routes.draw do
   get '/saringananis', to: 'welcomes#saringananis'
   get '/introanis', to: 'welcomes#introanis'
   get '/orgchart', to: 'welcomes#orgchart'
-  get '/sokonganis', to: 'welcomes#sokonganis'
+  get '/pusatanis', to: 'welcomes#sokonganis'
   get '/akademianis', to: 'welcomes#akademianis'
   get '/videols', to: 'welcomes#videols'
   get '/profilyb', to: 'welcomes#profilyb'
