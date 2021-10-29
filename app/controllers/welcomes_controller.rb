@@ -5,6 +5,7 @@ class WelcomesController < ApplicationController
 	
 	#layout "page"
 
+
 	def senaraipdk
 		@index = true
 	end
@@ -20,6 +21,26 @@ class WelcomesController < ApplicationController
 	def pengumuman
 		@index = true
 		@artks = Artk.all
+	end
+	 
+	def tanyaanis
+		redirect_to soaljawab_path
+	end
+
+	def qatemp
+	end
+
+	def soaljawab
+		@index = true
+		@qsall = Qsa.where.not(ans: ["",nil])
+		@qsas = @qsall
+		if params[:catg].present?
+			@qsas = @qsas.where(catg: params[:catg])
+		end
+		@catg = []
+		@qsall.each do |qs|
+			@catg << qs.catg unless @catg.include? qs.catg
+		end
 	end
 
 	def mpachart

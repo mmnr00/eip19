@@ -1,0 +1,551 @@
+<meta name="viewport" content="width=768">
+
+<div class='row'>
+  <div class='col-12'>
+    <%= form_for(@ekrp, :html => {multipart: true, class: "form-horizontal", role: "form"}) do |f| %>
+      <%
+        if @ekrp.dt.present?
+          dt = @ekrp.dt.to_date
+        else
+          dt = Date.today
+        end
+      %>
+
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <tr>
+            <td style="background-color:#0070C0 !important; color: white" colspan=4>PROGRAM INTERVENSI ANIS</td>
+          </tr>
+          <tr style="color: black; font-size: 12px;">
+            <td style="background-color:#e5e5e5 !important; "colspan=4>
+              <p style="margin-bottom: -5px; font-size: 14px; font-weight: 800">INSTRUMEN PENAKSIRAN AWAL KANAK-KANAK</p>
+            </td>
+          </tr>
+
+          <tr style="color: black; font-size: 13px; padding-left: 20px; height: -5px;">
+            <td style="background-color:#e5e5e5 !important; width: %">
+              NAMA IBU/BAPA/PENJAGA :
+            </td>
+            <td style="background-color:white !important; width: 70%">
+              <%= @perse.name %>
+            </td>
+            <td style="background-color:#e5e5e5 !important; width: %"></td>
+          </tr>
+
+          <tr style="color: black; font-size: 13px;">
+            <td style="background-color:#e5e5e5 !important; width: %">
+              TARIKH LAPORAN:
+            </td>
+            <td style="background-color:white !important; width: %">
+              <% dt.strftime('%d-%^b-%Y') %>
+              <% f.hidden_field :dt, value: dt %>
+              <%= f.date_field :dt, value: dt %>
+            </td>
+            <td style="background-color:#e5e5e5 !important; width: 1%"></td>
+          </tr>
+
+          <tr style="color: black; font-size: 13px; padding-left: 20px; height: -5px;">
+            <td style="background-color:#e5e5e5 !important; width: %">
+              NO TELEFON :
+            </td>
+            <td style="background-color:white !important; width: 60%">
+              <%= @perse.ph %>
+            </td>
+            <td style="background-color:#e5e5e5 !important; width: %"></td>
+          </tr>
+
+          <tr style="color: black; font-size: 13px; padding-left: 20px; height: -5px;">
+            <td style="background-color:#e5e5e5 !important; width: %">
+              ALAMAT EMEL :
+            </td>
+            <td style="background-color:white !important; width: 60%">
+              <%= @perse.email %>
+            </td>
+            <td style="background-color:#e5e5e5 !important; width: %"></td>
+          </tr>
+
+          <tr style="color: black; font-size: 13px; padding-left: 20px; height: -5px;">
+            <td style="background-color:#e5e5e5 !important; width: %">
+              NAMA KANAK-KANAK :
+            </td>
+            <td style="background-color:white !important; width: 60%">
+              <%= @ekid.name %>
+            </td>
+            <td style="background-color:#e5e5e5 !important; width: %"></td>
+          </tr>
+
+          <tr style="color: black; font-size: 13px; padding-left: 20px; height: -5px;">
+            <td style="background-color:#e5e5e5 !important; width: %">
+              NO MYKID :
+            </td>
+            <td style="background-color:white !important; width: 60%">
+              <%= @ekid.ic %>
+            </td>
+            <td style="background-color:#e5e5e5 !important; width: %"></td>
+          </tr>
+
+          <tr style="color: black; font-size: 13px; padding-left: 20px; height: -5px;">
+            <td style="background-color:#e5e5e5 !important; width: %">
+              UMUR KANAK-KANAK :
+            </td>
+            <td style="background-color:white !important; width: 60%">
+              <%
+                age = (Date.today.year*12+Date.today.month) - (@ekid.dob.year*12+@ekid.dob.month)
+                yr = age/12
+                mth = age - yr*12
+              %>
+              <%= "#{yr} tahun, #{mth} bulan" %>
+            </td>
+            <td style="background-color:#e5e5e5 !important; width: %"></td>
+          </tr>
+
+          <tr style="color: black; font-size: 13px; padding-left: 20px; height: -5px;">
+            <td style="background-color:#e5e5e5 !important; width: %">
+              NAMA PENILAI :
+            </td>
+            <td style="background-color:white !important; width: 60%">
+              <% @ekrp.exmls.each do |ek| %>
+                <b><%= ek[0] %></b> (<%= ek[1].strftime('%d-%^b-%y') %>)<br>
+              <% end %>
+              <%= f.text_area :exm, cols: 50, rows: 1, required: true %>
+            </td>
+            <td style="background-color:#e5e5e5 !important; width: %"></td>
+          </tr>
+
+          <tr>
+            <td style="background-color:#e5e5e5 !important;" colspan="4"></td>
+          </tr>
+          
+        </table>
+      </div>
+
+      <p style="color: black">
+        <b>Arahan Kepada Pegawai Intervensi</b><br>
+        <i>Instrumen penaksiran awal kanak-kanak ini adalah bertujuan untuk menilai kemahiran kanak-kanak</i>
+      </p>
+
+      <!-- SOSIAL -->
+      <div class="table-responsive">
+        <table class="table table-bordered" >
+          <thead style="color: white">
+            <tr>
+              <th style="background-color:#b266b2; width: 30%">SOSIAL</th>
+              <th style="background-color:#b266b2">KOMEN</th>
+            </tr>
+          </thead>
+
+          <tbody style="color: black; font-size: 13px">
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Tumpuan Bersama</td>
+              <td style="border-bottom: 1px solid black">
+                <b>Objek :</b> &nbsp&nbsp<%= f.select :aa, options_for_select(["Ya", "Tidak"],selected: @ekrp.aa),{include_blank: "Pilih Satu"}, {required: true} %> <br>
+                <b>Orang :</b> &nbsp<%= f.select :ab, options_for_select(["Ya", "Tidak"],selected: @ekrp.ab),{include_blank: "Pilih Satu"}, {required: true} %>  <br>
+                <b>Catatan :</b> <br><%= f.text_area :ac, rows: 5, cols: 60 %>
+              </td>
+            </tr>
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Tempoh Tumpuan</td>
+              <td style="border-bottom: 1px solid black">
+                <%= f.number_field :ad %> minit <br>
+                <b>Catatan :</b> <br><%= f.text_area :ae, rows: 5, cols: 60 %>
+              </td>
+            </tr>
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Aktiviti Berkumpulan</td>
+              <td style="border-bottom: 1px solid black">
+                <%= f.number_field :af %> minit <br>
+                <b>Catatan :</b> <br><%= f.text_area :ag, rows: 5, cols: 60 %>
+              </td>
+            </tr>
+          </tbody>     
+        </table>
+      </div>
+
+      <!-- BAHASA KOMUNIKASI -->
+      <div class="table-responsive">
+        <table class="table table-bordered" >
+          <thead style="color: white">
+            <tr>
+              <th style="background-color:#b266b2; width: 30%">BAHASA KOMUNIKASI</th>
+              <th style="background-color:#b266b2">KOMEN</th>
+            </tr>
+          </thead>
+
+          <tbody style="color: black; font-size: 13px">
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Komunikasi</td>
+              <td style="border-bottom: 1px solid black">
+                <b><%= f.select :ah, options_for_select(["Lisan", "Bukan Lisan"],selected: @ekrp.ah),{include_blank: "Pilih Satu"}, {required: true} %>
+              </td>
+            </tr>
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Echolalia</td>
+              <td style="border-bottom: 1px solid black">
+                <%= f.select :ai, options_for_select(["Ya", "Tidak"],selected: @ekrp.ai),{include_blank: "Pilih Satu"}, {required: true} %>
+                 <br>
+                <b>Catatan :</b> <br><%= f.text_area :aj, rows: 5, cols: 60 %>
+              </td>
+            </tr>
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Meminta</td>
+              <td style="border-bottom: 1px solid black">
+                <%= f.select :ak, options_for_select(["Ya", "Tidak"],selected: @ekrp.ak),{include_blank: "Pilih Satu"}, {required: true} %>
+                 <br>
+                <b>Catatan :</b> <br><%= f.text_area :al, rows: 5, cols: 60 %>
+              </td>
+            </tr>
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Object Yang Disebut</td>
+              <td style="border-bottom: 1px solid black">
+                <%= f.select :am, options_for_select(["Ya", "Tidak"],selected: @ekrp.am),{include_blank: "Pilih Satu"}, {required: true} %>
+                 <br>
+                <b>Catatan :</b> <br><%= f.text_area :an, rows: 5, cols: 60 %>
+              </td>
+            </tr>
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Menjawab/Memahami Soalan Mudah</td>
+              <td style="border-bottom: 1px solid black">
+                <%= f.select :ao, options_for_select(["Ya", "Tidak"],selected: @ekrp.ao),{include_blank: "Pilih Satu"}, {required: true} %>
+                 <br>
+                <b>Catatan :</b> <br><%= f.text_area :ap, rows: 5, cols: 60 %>
+              </td>
+            </tr>
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Membina Ayat</td>
+              <td style="border-bottom: 1px solid black">
+                <%= f.select :aq, options_for_select(["Ya", "Tidak"],selected: @ekrp.aq),{include_blank: "Pilih Satu"}, {required: true} %>
+                 <br>
+                <b>Catatan :</b> <br><%= f.text_area :ar, rows: 5, cols: 60 %>
+              </td>
+            </tr>
+          </tbody>     
+        </table>
+      </div>
+
+      <!-- KOGNITIF -->
+      <div class="table-responsive">
+        <table class="table table-bordered" >
+          <thead style="color: white">
+            <tr>
+              <th style="background-color:#b266b2; width: 30%">KOGNITIF</th>
+              <th style="background-color:#b266b2">KOMEN</th>
+            </tr>
+          </thead>
+
+          <tbody style="color: black; font-size: 13px; ">
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Warna</td>
+              <td style="border-bottom: 1px solid black">
+                <%= f.select :as, options_for_select(["Reseptif", "Ekspresif"],selected: @ekrp.as),{include_blank: "Pilih Satu"}, {required: true} %><br>
+                <div class="row"  style="margin-top: 5px">
+                  <div class="col-2" style="margin-top: 2px;"><b>Merah</b></div>
+                  <div><%= f.text_area :at, rows: 1, cols: 50%></div>
+                </div>
+                <div class="row"  style="margin-top: 5px">
+                  <div class="col-2" style="margin-top: 2px;"><b>Kuning</b></div>
+                  <div><%= f.text_area :au, rows: 1, cols: 50%></div>
+                </div>
+                <div class="row"  style="margin-top: 5px">
+                  <div class="col-2" style="margin-top: 2px;"><b>Biru</b></div>
+                  <div><%= f.text_area :av, rows: 1, cols: 50%></div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Bentuk</td>
+              <td style="border-bottom: 1px solid black">
+                <%= f.select :aw, options_for_select(["Reseptif", "Ekspresif"],selected: @ekrp.aw),{include_blank: "Pilih Satu"}, {required: true} %><br>
+                <div class="row"  style="margin-top: 5px">
+                  <div class="col-3" style="margin-top: 2px;"><b>Segi Empat</b></div>
+                  <div><%= f.text_area :ax, rows: 1, cols: 45%></div>
+                </div>
+                <div class="row"  style="margin-top: 5px">
+                  <div class="col-3" style="margin-top: 2px;"><b>Segi Tiga</b></div>
+                  <div><%= f.text_area :ay, rows: 1, cols: 45%></div>
+                </div>
+                <div class="row"  style="margin-top: 5px">
+                  <div class="col-3" style="margin-top: 2px;"><b>Bulat</b></div>
+                  <div><%= f.text_area :az, rows: 1, cols: 45%></div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Abjad</td>
+              <td style="border-bottom: 1px solid black">
+                <%= f.select :ba, options_for_select(["Reseptif", "Ekspresif"],selected: @ekrp.ba),{include_blank: "Pilih Satu"}, {required: true} %><br>
+                <b>Catatan :</b><br>
+                <%= f.text_area :bb, rows: 5, cols: 60%>
+              </td>
+            </tr>
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Nombor</td>
+              <td style="border-bottom: 1px solid black">
+                <%= f.select :bc, options_for_select(["Reseptif", "Ekspresif"],selected: @ekrp.bc),{include_blank: "Pilih Satu"}, {required: true} %><br>
+                <b>Catatan :</b><br>
+                <%= f.text_area :bd, rows: 5, cols: 60%>
+              </td>
+            </tr>
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Anggota Badan</td>
+              <td style="border-bottom: 1px solid black">
+                <%= f.select :be, options_for_select(["Reseptif", "Ekspresif"],selected: @ekrp.be),{include_blank: "Pilih Satu"}, {required: true} %><br>
+                <b>Bahagian Muka :</b><br>
+                <%= f.text_area :bf, rows: 2, cols: 60%><br>
+                <b>Anggota Atas :</b><br>
+                <%= f.text_area :bg, rows: 2, cols: 60%><br>
+                <b>Anggota Bawah :</b><br>
+                <%= f.text_area :bh, rows: 2, cols: 60%><br>
+              </td>
+            </tr>
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Fungsi Objek</td>
+              <td style="border-bottom: 1px solid black">
+                <%= f.select :bi, options_for_select(["Reseptif", "Ekspresif"],selected: @ekrp.bi),{include_blank: "Pilih Satu"}, {required: true} %><br>
+                <b>Catatan :</b><br>
+                <%= f.text_area :bj, rows: 5, cols: 60%>
+              </td>
+            </tr>
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Mengikuti Arahan Guru</td>
+              <td style="border-bottom: 1px solid black">
+                <%= f.select :bk, options_for_select(["Reseptif", "Ekspresif"],selected: @ekrp.bk),{include_blank: "Pilih Satu"}, {required: true} %><br>
+                <b>Catatan :</b><br>
+                <%= f.text_area :bl, rows: 5, cols: 60%>
+              </td>
+            </tr>
+          </tbody>     
+        </table>
+      </div>
+
+      <!-- URUS DIRI -->
+      <div class="table-responsive">
+        <table class="table table-bordered" >
+          <thead style="color: white">
+            <tr>
+              <th style="background-color:#b266b2; width: 30%">URUS DIRI</th>
+              <th style="background-color:#b266b2">KOMEN</th>
+            </tr>
+            <tbody style="color: black; font-size: 13px; ">
+              <tr>
+                <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Lampin Pakai Buang</td>
+                <td style="border-bottom: 1px solid black">
+                  <%= f.select :bm, options_for_select(["Ya", "Tidak"],selected: @ekrp.bm),{include_blank: "Pilih Satu"}, {required: true} %>
+                </td>
+              </tr>
+            </tbody>
+          </thead>
+        </table>
+      </div>
+
+      <!-- MOTOR HALUS -->
+      <div class="table-responsive">
+        <table class="table table-bordered" >
+          <thead style="color: white">
+            <tr>
+              <th style="background-color:#b266b2; width: 30%">MOTOR HALUS</th>
+              <th style="background-color:#b266b2">KOMEN</th>
+            </tr>
+            <tbody style="color: black; font-size: 13px; ">
+              <tr>
+                <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Pegang Pensel</td>
+                <td style="border-bottom: 1px solid black">
+                  <%= f.select :bn, options_for_select(["Matang", "Tidak Matang"],selected: @ekrp.bn),{include_blank: "Pilih Satu"}, {required: true} %>
+                </td>
+              </tr>
+              <tr>
+                <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Menconteng</td>
+                <td style="border-bottom: 1px solid black">
+                  <%= f.select :bo, options_for_select(["Ya", "Tidak"],selected: @ekrp.bo),{include_blank: "Pilih Satu"}, {required: true} %>
+                </td>
+              </tr>
+              <tr>
+                <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Mewarna Dalam Garis Tebal</td>
+                <td style="border-bottom: 1px solid black">
+                  <b>Skor : </b><%= f.select :bp, options_for_select(["0", "1", "2"],selected: @ekrp.bp),{include_blank: "Pilih Satu"}, {required: true} %>
+                </td>
+              </tr>
+              <tr>
+                <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Menyurih Bentuk</td>
+                <td style="border-bottom: 1px solid black">
+                  <b>Skor : </b><%= f.select :bq, options_for_select(["0", "1", "2"],selected: @ekrp.bq),{include_blank: "Pilih Satu"}, {required: true} %>
+                </td>
+              </tr>
+              <tr>
+                <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Menyurih Huruf/Angka</td>
+                <td style="border-bottom: 1px solid black">
+                  <b>Skor : </b><%= f.select :br, options_for_select(["0", "1", "2"],selected: @ekrp.br),{include_blank: "Pilih Satu"}, {required: true} %>
+                </td>
+              </tr>
+              <tr>
+                <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Menyalin Huruf/Angka</td>
+                <td style="border-bottom: 1px solid black">
+                  <b>Skor : </b><%= f.select :bs, options_for_select(["0", "1", "2"],selected: @ekrp.bs),{include_blank: "Pilih Satu"}, {required: true} %>
+                </td>
+              </tr>
+            </tbody>
+          </thead>
+        </table>
+      </div>
+
+      <!-- MOTOR KASAR -->
+      <div class="table-responsive">
+        <table class="table table-bordered" >
+          <thead style="color: white">
+            <tr>
+              <th style="background-color:#b266b2; width: 30%">MOTOR KASAR</th>
+              <th style="background-color:#b266b2">KOMEN</th>
+            </tr>
+            <tbody style="color: black; font-size: 13px; ">
+              <tr>
+                <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Baling Bola</td>
+                <td style="border-bottom: 1px solid black">
+                  <%= f.select :bt, options_for_select(["Ya", "Tidak"],selected: @ekrp.bt),{include_blank: "Pilih Satu"}, {required: true} %>
+                </td>
+              </tr>
+              <tr>
+                <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Mengguling</td>
+                <td style="border-bottom: 1px solid black">
+                  <%= f.select :bu, options_for_select(["Ya", "Tidak"],selected: @ekrp.bu),{include_blank: "Pilih Satu"}, {required: true} %>
+                </td>
+              </tr>
+              <tr>
+                <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Menjulur</td>
+                <td style="border-bottom: 1px solid black">
+                  <%= f.select :bv, options_for_select(["Ya", "Tidak"],selected: @ekrp.bv),{include_blank: "Pilih Satu"}, {required: true} %>
+                </td>
+              </tr>
+              <tr>
+                <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Merangkak</td>
+                <td style="border-bottom: 1px solid black">
+                  <%= f.select :bw, options_for_select(["Ya", "Tidak"],selected: @ekrp.bw),{include_blank: "Pilih Satu"}, {required: true} %>
+                </td>
+              </tr>
+              <tr>
+                <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Melompat</td>
+                <td style="border-bottom: 1px solid black">
+                  <%= f.select :bx, options_for_select(["Ya", "Tidak"],selected: @ekrp.bx),{include_blank: "Pilih Satu"}, {required: true} %>
+                </td>
+              </tr>
+              <tr>
+                <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Berjalan Atas Titi</td>
+                <td style="border-bottom: 1px solid black">
+                  <%= f.select :by, options_for_select(["Ya", "Tidak"],selected: @ekrp.by),{include_blank: "Pilih Satu"}, {required: true} %>
+                </td>
+              </tr>
+            </tbody>
+          </thead>
+        </table>
+      </div>
+
+      <!-- TINGKAHLAKU/SENSORI -->
+      <div class="table-responsive">
+        <table class="table table-bordered" >
+          <thead style="color: white">
+            <tr>
+              <th style="background-color:#b266b2; width: 30%">TINGKAHLAKU/SENSORI</th>
+              <th style="background-color:#b266b2">KOMEN</th>
+            </tr>
+          </thead>
+
+          <tbody style="color: black; font-size: 13px; ">
+            
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Tingkahlaku Mencabar</td>
+              <td style="border-bottom: 1px solid black">
+                <%= f.select :bz, options_for_select(["Ya", "Tidak"],selected: @ekrp.bz),{include_blank: "Pilih Satu"}, {required: true} %><br>
+                <b>Catatan :</b><br>
+                <%= f.text_area :ca, rows: 5, cols: 60%>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Stereotaip</td>
+              <td style="border-bottom: 1px solid black">
+                <%= f.select :cb, options_for_select(["Ya", "Tidak"],selected: @ekrp.cb),{include_blank: "Pilih Satu"}, {required: true} %><br>
+                <b>Catatan :</b><br>
+                <%= f.text_area :cc, rows: 5, cols: 60%>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Mengamuk</td>
+              <td style="border-bottom: 1px solid black">
+                <%= f.select :cd, options_for_select(["Ya", "Tidak"],selected: @ekrp.cd),{include_blank: "Pilih Satu"}, {required: true} %><br>
+                <b>Catatan :</b><br>
+                <%= f.text_area :ce, rows: 5, cols: 60%>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Isu Sensori</td>
+              <td style="border-bottom: 1px solid black">
+                <b>Proprioceptif : </b><%= f.select :cf, options_for_select(["Ya", "Tidak"],selected: @ekrp.cf),{include_blank: "Pilih Satu"}, {required: true} %><br>
+                <b>Catatan :</b><br>
+                <%= f.text_area :cg, rows: 5, cols: 60%><br>
+                <b>Sentuhan : </b><%= f.select :ch, options_for_select(["Ya", "Tidak"],selected: @ekrp.ch),{include_blank: "Pilih Satu"}, {required: true} %><br>
+                <b>Catatan :</b><br>
+                <%= f.text_area :ci, rows: 5, cols: 60%><br>
+                <b>Keseimbangan : </b><%= f.select :cj, options_for_select(["Ya", "Tidak"],selected: @ekrp.cj),{include_blank: "Pilih Satu"}, {required: true} %><br>
+                <b>Catatan :</b><br>
+                <%= f.text_area :ck, rows: 5, cols: 60%><br>
+              </td>
+            </tr>
+          </tbody>     
+        </table>
+      </div>
+
+      <!-- TINGKAHLAKU/SENSORI -->
+      <div class="table-responsive">
+        <table class="table table-bordered" >
+          <thead style="color: white">
+            <tr>
+              <th style="background-color:#b266b2; width: 30%" colspan="2">KESIMPULAN</th>
+            </tr>
+          </thead>
+
+          <tbody style="color: black; font-size: 13px; ">
+            
+            <tr>
+              <td colspan="2"><b>Sila Pilih Pada Tahap Yang Berkenaan : </b></td>
+            </tr>
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black" width="20%">Akademik</td>
+              <td style="border-bottom: 1px solid black">
+                <%= f.select :cl, options_for_select(["Tinggi", "Sederhana", "Rendah"],selected: @ekrp.cl),{include_blank: "Pilih Satu"}, {required: true} %>
+              </td>
+            </tr>
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Tingkahlaku</td>
+              <td style="border-bottom: 1px solid black">
+                <%= f.select :cm, options_for_select(["Terkawal", "Sederhana", "Mencabar"],selected: @ekrp.cm),{include_blank: "Pilih Satu"}, {required: true} %>
+              </td>
+            </tr>
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Komunikasi</td>
+              <td style="border-bottom: 1px solid black">
+                <div style="margin-bottom: 8px;">
+                <b>Reseptif : </b><%= f.select :cn, options_for_select(["Terkawal", "Sederhana", "Mencabar"],selected: @ekrp.cn),{include_blank: "Pilih Satu"}, {required: true} %><br></div>
+                <b>Ekspresif : </b><%= f.select :co, options_for_select(["Terkawal", "Sederhana", "Mencabar"],selected: @ekrp.co),{include_blank: "Pilih Satu"}, {required: true} %><br>
+              </td>
+            </tr>
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Komen Keseluruhan</td>
+              <td style="border-bottom: 1px solid black">
+                <%= f.text_area :cp, rows: 5, cols: 60%><br>
+              </td>
+            </tr>
+
+          </tbody>     
+        </table>
+      </div>
+    
+
+
+      <%= f.hidden_field :ekid_id, value: params[:ekid] %>
+
+      
+      <%= f.submit :Hantar,  class: 'btn btn-success btn-sm btn-block' %>
+
+    <% end %>
+  </div>
+</div>

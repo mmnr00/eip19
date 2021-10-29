@@ -1,0 +1,534 @@
+
+<div class="prt-card-header">
+<%= link_to "Cetak/Muat Turun", root_path, class: "badge badge-pill badge-info", style: "font-size: 12px; margin-top: 10px", :onclick => 'window.print();return false;' %>
+</div>
+
+<meta name="viewport" content="width=768">
+
+<div class='row'>
+  <div class='col-12'>
+    
+      <%
+        if @ekrp.dt.present?
+          dt = @ekrp.dt.to_date
+        else
+          dt = Date.today
+        end
+      %>
+
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <tr>
+            <td style="background-color:#0070C0 !important; color: white" colspan=4>LAPORAN RUMUSAN PROGRAM INTERVENSI ANIS</td>
+          </tr>
+          <tr style="color: black; font-size: 12px;">
+            <td style="background-color:#e5e5e5 !important; "colspan=4>
+              <p style="margin-bottom: -5px; font-size: 14px; font-weight: 800">INSTRUMEN PENAKSIRAN AWAL KANAK-KANAK</p>
+            </td>
+          </tr>
+
+          <tr style="color: black; font-size: 13px; padding-left: 20px; height: -5px;">
+            <td style="background-color:#e5e5e5 !important; width: %">
+              NAMA IBU/BAPA/PENJAGA :
+            </td>
+            <td style="background-color:white !important; width: 70%">
+              <%= @perse.name %>
+            </td>
+            <td style="background-color:#e5e5e5 !important; width: %"></td>
+          </tr>
+
+          <tr style="color: black; font-size: 13px;">
+            <td style="background-color:#e5e5e5 !important; width: %">
+              TARIKH LAPORAN:
+            </td>
+            <td style="background-color:white !important; width: %">
+              <% @ekrps.order('dt ASC').each do |ekr| %>
+                <%= ekr.dt.strftime('%d-%^b-%Y') %><br>
+              <% end %>
+            </td>
+            <td style="background-color:#e5e5e5 !important; width: 1%"></td>
+          </tr>
+
+          <tr style="color: black; font-size: 13px; padding-left: 20px; height: -5px;">
+            <td style="background-color:#e5e5e5 !important; width: %">
+              NO TELEFON :
+            </td>
+            <td style="background-color:white !important; width: 60%">
+              <%= @perse.ph %>
+            </td>
+            <td style="background-color:#e5e5e5 !important; width: %"></td>
+          </tr>
+
+          <tr style="color: black; font-size: 13px; padding-left: 20px; height: -5px;">
+            <td style="background-color:#e5e5e5 !important; width: %">
+              ALAMAT EMEL :
+            </td>
+            <td style="background-color:white !important; width: 60%">
+              <%= @perse.email %>
+            </td>
+            <td style="background-color:#e5e5e5 !important; width: %"></td>
+          </tr>
+
+          <tr style="color: black; font-size: 13px; padding-left: 20px; height: -5px;">
+            <td style="background-color:#e5e5e5 !important; width: %">
+              NAMA KANAK-KANAK :
+            </td>
+            <td style="background-color:white !important; width: 60%">
+              <%= @ekid.name %>
+            </td>
+            <td style="background-color:#e5e5e5 !important; width: %"></td>
+          </tr>
+
+          <tr style="color: black; font-size: 13px; padding-left: 20px; height: -5px;">
+            <td style="background-color:#e5e5e5 !important; width: %">
+              NO MYKID :
+            </td>
+            <td style="background-color:white !important; width: 60%">
+              <%= @ekid.ic %>
+            </td>
+            <td style="background-color:#e5e5e5 !important; width: %"></td>
+          </tr>
+
+          <tr style="color: black; font-size: 13px; padding-left: 20px; height: -5px;">
+            <td style="background-color:#e5e5e5 !important; width: %">
+              UMUR KANAK-KANAK :
+            </td>
+            <td style="background-color:white !important; width: 60%">
+              <%
+                age = (Date.today.year*12+Date.today.month) - (@ekid.dob.year*12+@ekid.dob.month)
+                yr = age/12
+                mth = age - yr*12
+              %>
+              <%= "#{yr} tahun, #{mth} bulan" %>
+            </td>
+            <td style="background-color:#e5e5e5 !important; width: %"></td>
+          </tr>
+
+          <tr style="color: black; font-size: 13px; padding-left: 20px; height: -5px;">
+            <td style="background-color:#e5e5e5 !important; width: %">
+              SENARAI PENILAI :
+            </td>
+            <td style="background-color:white !important; width: 60%">
+              <%  @ekrps.order('dt ASC').each do |ekr| %><% ekr.exmls.each do |ek| %>
+                <b><%= ek[0] %></b> (<%= ek[1].strftime('%d-%^b-%y') %>)<br>
+              <% end %><% end %>
+            </td>
+            <td style="background-color:#e5e5e5 !important; width: %"></td>
+          </tr>
+
+          <tr>
+            <td style="background-color:#e5e5e5 !important;" colspan="4"></td>
+          </tr>
+          
+        </table>
+      </div>
+
+      <p style="color: black">
+        <b>Arahan Kepada Pegawai Intervensi</b><br>
+        <i>Instrumen penaksiran awal kanak-kanak ini adalah bertujuan untuk menilai kemahiran kanak-kanak</i>
+      </p>
+
+      <!-- SOSIAL -->
+      <div class="table-responsive">
+        <table class="table table-bordered" >
+          <thead style="color: white">
+            <tr>
+              <th style="background-color:#b266b2 !important; width: 30%">SOSIAL</th>
+              <th style="background-color:#b266b2 !important">KOMEN</th>
+            </tr>
+          </thead>
+
+          <tbody style="color: black; font-size: 13px">
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Tumpuan Bersama</td>
+              <td style="border-bottom: 1px solid black">
+                <b>Objek :</b> &nbsp<% @ekrps.group(:aa).count.each do |k,v| %><%= "#{k} (#{v})" %><% end %> <br>
+                <b>Orang :</b> &nbsp<% @ekrps.group(:ab).count.each do |k,v| %><%= "#{k} (#{v})" %><% end %>  <br>
+                <b>Catatan :</b> <br><% @ekrps.where.not(ac: "").each do |ek| %><%= ek.ac %><br><% end %>
+              </td>
+            </tr>
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Tempoh Tumpuan</td>
+              <td style="border-bottom: 1px solid black">
+                <% @ekrps.group(:ad).count.each do |k,v| %><%= "#{k} minit (#{v})" %> <br><% end %>
+                <b>Catatan :</b> <br><% @ekrps.where.not(ae: "").each do |ek| %><%= ek.ae %><br><% end %>
+              </td>
+            </tr>
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Aktiviti Berkumpulan</td>
+              <td style="border-bottom: 1px solid black">
+                <% @ekrps.group(:af).count.each do |k,v| %><%= "#{k} minit (#{v})" %> <br><% end %>
+                <b>Catatan :</b> <br><% @ekrps.where.not(ag: "").each do |ek| %><%= ek.ag %><br><% end %>
+              </td>
+            </tr>
+          </tbody>     
+        </table>
+      </div>
+
+      <!-- BAHASA KOMUNIKASI -->
+      <div class="table-responsive">
+        <table class="table table-bordered" >
+          <thead style="color: white">
+            <tr>
+              <th style="background-color:#b266b2 !important; width: 30%">BAHASA KOMUNIKASI</th>
+              <th style="background-color:#b266b2 !important">KOMEN</th>
+            </tr>
+          </thead>
+
+          <tbody style="color: black; font-size: 13px">
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Komunikasi</td>
+              <td style="border-bottom: 1px solid black">
+                <% @ekrps.group(:aa).count.each do |k,v| %><%= "#{k} (#{v})" %><% end %>
+              </td>
+            </tr>
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Echolalia</td>
+              <td style="border-bottom: 1px solid black">
+                <% @ekrps.group(:ai).count.each do |k,v| %><%= "#{k} (#{v})" %><br><% end %>
+                <b>Catatan :</b> <br><% @ekrps.where.not(aj: "").each do |ek| %><%= ek.aj %><br><% end %>
+              </td>
+            </tr>
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Meminta</td>
+              <td style="border-bottom: 1px solid black">
+                <% @ekrps.group(:ak).count.each do |k,v| %><%= "#{k} (#{v})" %><br><% end %>
+                <b>Catatan :</b> <br><% @ekrps.where.not(al: "").each do |ek| %><%= ek.al %><br><% end %>
+              </td>
+            </tr>
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Object Yang Disebut</td>
+              <td style="border-bottom: 1px solid black">
+                <% @ekrps.group(:am).count.each do |k,v| %><%= "#{k} (#{v})" %><br><% end %>
+                <b>Catatan :</b> <br><% @ekrps.where.not(an: "").each do |ek| %><%= ek.an %><br><% end %>
+              </td>
+            </tr>
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Menjawab/Memahami Soalan Mudah</td>
+              <td style="border-bottom: 1px solid black">
+                <% @ekrps.group(:ao).count.each do |k,v| %><%= "#{k} (#{v})" %><br><% end %>
+                <b>Catatan :</b> <br><% @ekrps.where.not(ap: "").each do |ek| %><%= ek.ap %><br><% end %>
+              </td>
+            </tr>
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Membina Ayat</td>
+              <td style="border-bottom: 1px solid black">
+                <% @ekrps.group(:aq).count.each do |k,v| %><%= "#{k} (#{v})" %><br><% end %>
+                <b>Catatan :</b> <br><% @ekrps.where.not(ar: "").each do |ek| %><%= ek.ar %><br><% end %>
+              </td>
+            </tr>
+          </tbody>     
+        </table>
+      </div>
+
+      <div style="page-break-before: always"></div>
+      <!-- KOGNITIF -->
+      <div class="table-responsive">
+        <table class="table table-bordered" >
+          <thead style="color: white">
+            <tr>
+              <th style="background-color:#b266b2 !important; width: 30%">KOGNITIF</th>
+              <th style="background-color:#b266b2 !important">KOMEN</th>
+            </tr>
+          </thead>
+
+          <tbody style="color: black; font-size: 13px; ">
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Warna</td>
+              <td style="border-bottom: 1px solid black">
+                <% @ekrps.group(:as).count.each do |k,v| %><%= "#{k}(#{v})  " %><% end %><br>
+                <div class="row"  style="margin-top: 5px">
+                  <div class="col-2" style="margin-top: 2px;"><b>Merah</b></div>
+                  <div><% @ekrps.where.not(at: "").each do |ek| %><%= ek.at %><br><% end %></div>
+                </div>
+                <div class="row"  style="margin-top: 5px">
+                  <div class="col-2" style="margin-top: 2px;"><b>Kuning</b></div>
+                  <div><% @ekrps.where.not(au: "").each do |ek| %><%= ek.au %><br><% end %></div>
+                </div>
+                <div class="row"  style="margin-top: 5px">
+                  <div class="col-2" style="margin-top: 2px;"><b>Biru</b></div>
+                  <div><% @ekrps.where.not(av: "").each do |ek| %><%= ek.av %><br><% end %></div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Bentuk</td>
+              <td style="border-bottom: 1px solid black">
+                <% @ekrps.group(:aw).count.each do |k,v| %><%= "#{k}(#{v})  " %><% end %><br>
+                <div class="row"  style="margin-top: 5px">
+                  <div class="col-3" style="margin-top: 2px;"><b>Segi Empat</b></div>
+                  <div><% @ekrps.where.not(ax: "").each do |ek| %><%= ek.ax %><br><% end %></div>
+                </div>
+                <div class="row"  style="margin-top: 5px">
+                  <div class="col-3" style="margin-top: 2px;"><b>Segi Tiga</b></div>
+                  <div><% @ekrps.where.not(ay: "").each do |ek| %><%= ek.ay %><br><% end %></div>
+                </div>
+                <div class="row"  style="margin-top: 5px">
+                  <div class="col-3" style="margin-top: 2px;"><b>Bulat</b></div>
+                  <div><% @ekrps.where.not(az: "").each do |ek| %><%= ek.az %><br><% end %></div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Abjad</td>
+              <td style="border-bottom: 1px solid black">
+                <% @ekrps.group(:ba).count.each do |k,v| %><%= "#{k}(#{v})  " %><% end %><br>
+                <b>Catatan :</b> <br><% @ekrps.where.not(bb: "").each do |ek| %><%= ek.bb %><br><% end %>
+              </td>
+            </tr>
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Nombor</td>
+              <td style="border-bottom: 1px solid black">
+                <% @ekrps.group(:bc).count.each do |k,v| %><%= "#{k}(#{v})  " %><% end %><br>
+                <b>Catatan :</b> <br><% @ekrps.where.not(bd: "").each do |ek| %><%= ek.bd %><br><% end %>
+            </tr>
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Anggota Badan</td>
+              <td style="border-bottom: 1px solid black">
+                <% @ekrps.group(:be).count.each do |k,v| %><%= "#{k}(#{v})  " %><% end %><br>
+                <b>Bahagian Muka :</b><br>
+                <div><% @ekrps.where.not(bf: "").each do |ek| %><%= ek.bf %><br><% end %></div>
+                <b>Anggota Atas :</b><br>
+                <div><% @ekrps.where.not(bg: "").each do |ek| %><%= ek.bg %><br><% end %></div>
+                <b>Anggota Bawah :</b><br>
+                <div><% @ekrps.where.not(bh: "").each do |ek| %><%= ek.bh %><br><% end %></div>
+              </td>
+            </tr>
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Fungsi Objek</td>
+              <td style="border-bottom: 1px solid black">
+                <% @ekrps.group(:bi).count.each do |k,v| %><%= "#{k}(#{v})  " %><% end %><br>
+                <b>Catatan :</b> <br><% @ekrps.where.not(bj: "").each do |ek| %><%= ek.bj %><br><% end %>
+              </td>
+            </tr>
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Mengikuti Arahan Guru</td>
+              <td style="border-bottom: 1px solid black">
+                <% @ekrps.group(:bk).count.each do |k,v| %><%= "#{k}(#{v})  " %><% end %><br>
+                <b>Catatan :</b> <br><% @ekrps.where.not(bl: "").each do |ek| %><%= ek.bl %><br><% end %>
+              </td>
+            </tr>
+          </tbody>     
+        </table>
+      </div>
+
+      <!-- URUS DIRI -->
+      <div class="table-responsive">
+        <table class="table table-bordered" >
+          <thead style="color: white">
+            <tr>
+              <th style="background-color:#b266b2 !important; width: 30%">URUS DIRI</th>
+              <th style="background-color:#b266b2 !important">KOMEN</th>
+            </tr>
+            <tbody style="color: black; font-size: 13px; ">
+              <tr>
+                <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Lampin Pakai Buang</td>
+                <td style="border-bottom: 1px solid black">
+                  <% @ekrps.group(:bm).count.each do |k,v| %><%= "#{k}(#{v})  " %><% end %>
+                </td>
+              </tr>
+            </tbody>
+          </thead>
+        </table>
+      </div>
+
+      <!-- MOTOR HALUS -->
+      <div class="table-responsive">
+        <table class="table table-bordered" >
+          <thead style="color: white">
+            <tr>
+              <th style="background-color:#b266b2 !important; width: 30%">MOTOR HALUS</th>
+              <th style="background-color:#b266b2 !important">KOMEN</th>
+            </tr>
+            <tbody style="color: black; font-size: 13px; ">
+              <tr>
+                <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Pegang Pensel</td>
+                <td style="border-bottom: 1px solid black">
+                  <% @ekrps.group(:bn).count.each do |k,v| %><%= "#{k}(#{v})  " %><% end %>
+                </td>
+              </tr>
+              <tr>
+                <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Menconteng</td>
+                <td style="border-bottom: 1px solid black">
+                  <% @ekrps.group(:bo).count.each do |k,v| %><%= "#{k}(#{v})  " %><% end %>
+                </td>
+              </tr>
+              <tr>
+                <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Mewarna Dalam Garis Tebal</td>
+                <td style="border-bottom: 1px solid black">
+                  <b>Skor : </b><% @ekrps.group(:bp).count.each do |k,v| %><%= "#{k}(#{v})  " %><% end %>
+                </td>
+              </tr>
+              <tr>
+                <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Menyurih Bentuk</td>
+                <td style="border-bottom: 1px solid black">
+                  <b>Skor : </b><% @ekrps.group(:bq).count.each do |k,v| %><%= "#{k}(#{v})  " %><% end %>
+                </td>
+              </tr>
+              <tr>
+                <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Menyurih Huruf/Angka</td>
+                <td style="border-bottom: 1px solid black">
+                  <b>Skor : </b><% @ekrps.group(:br).count.each do |k,v| %><%= "#{k}(#{v})  " %><% end %>
+                </td>
+              </tr>
+              <tr>
+                <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Menyalin Huruf/Angka</td>
+                <td style="border-bottom: 1px solid black">
+                  <b>Skor : </b><% @ekrps.group(:bs).count.each do |k,v| %><%= "#{k}(#{v})  " %><% end %>
+                </td>
+              </tr>
+            </tbody>
+          </thead>
+        </table>
+      </div>
+
+      <!-- MOTOR KASAR -->
+      <div class="table-responsive">
+        <table class="table table-bordered" >
+          <thead style="color: white">
+            <tr>
+              <th style="background-color:#b266b2 !important; width: 30%">MOTOR KASAR</th>
+              <th style="background-color:#b266b2 !important">KOMEN</th>
+            </tr>
+            <tbody style="color: black; font-size: 13px; ">
+              <tr>
+                <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Baling Bola</td>
+                <td style="border-bottom: 1px solid black">
+                  <% @ekrps.group(:bt).count.each do |k,v| %><%= "#{k}(#{v})  " %><% end %>
+                </td>
+              </tr>
+              <tr>
+                <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Mengguling</td>
+                <td style="border-bottom: 1px solid black">
+                  <% @ekrps.group(:bu).count.each do |k,v| %><%= "#{k}(#{v})  " %><% end %>
+                </td>
+              </tr>
+              <tr>
+                <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Menjulur</td>
+                <td style="border-bottom: 1px solid black">
+                  <% @ekrps.group(:bv).count.each do |k,v| %><%= "#{k}(#{v})  " %><% end %>
+                </td>
+              </tr>
+              <tr>
+                <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Merangkak</td>
+                <td style="border-bottom: 1px solid black">
+                  <% @ekrps.group(:bw).count.each do |k,v| %><%= "#{k}(#{v})  " %><% end %>
+                </td>
+              </tr>
+              <tr>
+                <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Melompat</td>
+                <td style="border-bottom: 1px solid black">
+                  <% @ekrps.group(:bx).count.each do |k,v| %><%= "#{k}(#{v})  " %><% end %>
+                </td>
+              </tr>
+              <tr>
+                <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Berjalan Atas Titi</td>
+                <td style="border-bottom: 1px solid black">
+                  <% @ekrps.group(:by).count.each do |k,v| %><%= "#{k}(#{v})  " %><% end %>
+                </td>
+              </tr>
+            </tbody>
+          </thead>
+        </table>
+      </div>
+
+      <!-- TINGKAHLAKU/SENSORI -->
+      <div class="table-responsive">
+        <table class="table table-bordered" >
+          <thead style="color: white">
+            <tr>
+              <th style="background-color:#b266b2 !important; width: 30%">TINGKAHLAKU/SENSORI</th>
+              <th style="background-color:#b266b2 !important">KOMEN</th>
+            </tr>
+          </thead>
+
+          <tbody style="color: black; font-size: 13px; ">
+            
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Tingkahlaku Mencabar</td>
+              <td style="border-bottom: 1px solid black">
+                <% @ekrps.group(:bz).count.each do |k,v| %><%= "#{k}(#{v})  " %><% end %><br>
+                <b>Catatan :</b> <br><% @ekrps.where.not(ca: "").each do |ek| %><%= ek.ca %><br><% end %>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Stereotaip</td>
+              <td style="border-bottom: 1px solid black">
+                <% @ekrps.group(:cb).count.each do |k,v| %><%= "#{k}(#{v})  " %><% end %><br>
+                <b>Catatan :</b> <br><% @ekrps.where.not(cc: "").each do |ek| %><%= ek.cc %><br><% end %>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Mengamuk</td>
+              <td style="border-bottom: 1px solid black">
+                <% @ekrps.group(:cd).count.each do |k,v| %><%= "#{k}(#{v})  " %><% end %><br>
+                <b>Catatan :</b> <br><% @ekrps.where.not(ce: "").each do |ek| %><%= ek.ca %><br><% end %>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Isu Sensori</td>
+              <td style="border-bottom: 1px solid black">
+                <b>Proprioceptif : </b><% @ekrps.group(:cf).count.each do |k,v| %><%= "#{k}(#{v})  " %><% end %><br>
+                <b>Catatan :</b> <br><% @ekrps.where.not(cg: "").each do |ek| %><%= ek.cg %><br><% end %><br>
+                <b>Sentuhan : </b><% @ekrps.group(:ch).count.each do |k,v| %><%= "#{k}(#{v})  " %><% end %><br>
+                <b>Catatan :</b> <br><% @ekrps.where.not(ci: "").each do |ek| %><%= ek.ci %><br><% end %><br>
+                <b>Keseimbangan : </b><% @ekrps.group(:cj).count.each do |k,v| %><%= "#{k}(#{v})  " %><% end %><br>
+                <b>Catatan :</b> <br><% @ekrps.where.not(ck: "").each do |ek| %><%= ek.ck %><br><% end %><br>
+              </td>
+            </tr>
+          </tbody>     
+        </table>
+      </div>
+
+      <!-- TINGKAHLAKU/SENSORI -->
+      <div class="table-responsive">
+        <table class="table table-bordered" >
+          <thead style="color: white">
+            <tr>
+              <th style="background-color:#b266b2 !important; width: 30%" colspan="2">KESIMPULAN</th>
+            </tr>
+          </thead>
+
+          <tbody style="color: black; font-size: 13px; ">
+            
+            <tr>
+              <td colspan="2"><b>Sila Pilih Pada Tahap Yang Berkenaan : </b></td>
+            </tr>
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black" width="20%">Akademik</td>
+              <td style="border-bottom: 1px solid black">
+                <% @ekrps.group(:cl).count.each do |k,v| %><%= "#{k}(#{v})  " %><% end %>
+              </td>
+            </tr>
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Tingkahlaku</td>
+              <td style="border-bottom: 1px solid black">
+                <% @ekrps.group(:cm).count.each do |k,v| %><%= "#{k}(#{v})  " %><% end %>
+              </td>
+            </tr>
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Komunikasi</td>
+              <td style="border-bottom: 1px solid black">
+                <div style="margin-bottom: 8px;">
+                <b>Reseptif : </b><% @ekrps.group(:cn).count.each do |k,v| %><%= "#{k}(#{v})  " %><% end %><br></div>
+                <b>Ekspresif : </b><% @ekrps.group(:co).count.each do |k,v| %><%= "#{k}(#{v})  " %><% end %><br>
+              </td>
+            </tr>
+            <tr>
+              <td style="background-color: #f2e5f2; border-bottom: 1px solid black">Komen Keseluruhan</td>
+              <td style="border-bottom: 1px solid black">
+                <% @ekrps.where.not(cp: "").each do |ek| %><%= ek.cp %><br><% end %><br>
+              </td>
+            </tr>
+
+          </tbody>     
+        </table>
+      </div>
+    
+
+      
+  </div>
+</div>

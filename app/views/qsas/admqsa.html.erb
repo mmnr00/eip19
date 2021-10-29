@@ -1,0 +1,86 @@
+<%= link_to "Soalan Baru", new_qsa_path(admq: true), class: "badge badge-pill badge-info" %>
+
+<% 
+  acvall = "active"
+  acvcatg = {}
+  @qscatg.each do |ctg|
+    acvcatg[ctg] = ""
+  end
+  if params[:catg].present?
+    acvall = ""
+    acvcatg[params[:catg]] = "active"
+  end
+%>
+<div class="row">
+
+  <div class="col-lg-3 col-md-4 bg-light" style="margin-top: 12px;">
+    <div class="inner-sidebar-headers justify-content-center">
+      <button class="btn btn-primary btn-sm has-icon btn-block" type="button" data-toggle="modal" data-target="#threadModal">
+          KATEGORI
+      </button>
+    </div>
+    <div class="simplebar-mask">
+      <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
+          <div class="simplebar-content-wrapper" style="height: 100%; overflow: hidden scroll;">
+              <div class="simplebar-content" style="padding: 16px;">
+                  <nav class="nav nav-pills nav-gap-y-1 flex-column">
+                      <a href="<%= admqsa_url %>" class="nav-link nav-link-faded has-icon <%= acvall%>">Semua (<%= @qsall.count %>)</a>
+                      <% @qscatg.sort.reverse.each do |ctg| %>
+                        <a href="<%= admqsa_url(catg: ctg) %>" class="nav-link nav-link-faded has-icon <%= acvcatg[ctg] %>"><%= "#{ctg} (#{@qsall.where(catg: ctg).count})" %></a>
+                      <% end %>
+                  </nav>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-9 col-md-4 bg-light">
+    <div class="cards shadow mb-4">
+      <div class="card-header">
+        <div class="row">
+          <btn class="btn btn-sm btn-success btn-block" style="font-weight: 600">Senarai Soalan</btn>
+        </div>
+      </div>
+      <div class="card-body">
+        
+        <div class="table table-responsive border" style="font-size:13px">
+          <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0" style="color: black">
+            <thead style="color: white">
+              <tr class="shadow">
+                <th style="background-color:#8c198c; width: 25%">MAKLUMAT PENGHANTAR</th>
+                <th style="background-color:#8c198c">SOALAN</th>
+                <th style="background-color:#8c198c">KATEGORI</th>
+                <th style="background-color:#8c198c; width: 30%">RINGKASAN JAWAPAN</th>
+            </thead>
+            <tbody>
+              <% @qsas.order('created_at DESC').each do |qs| %>
+              <tr>
+                <td>
+                  <b><%= qs.name %></b><br>
+                  <%= qs.email %><br>
+                  <i><%= qs.ph %></i>
+                </td>
+                <td>
+                  <%= qs.ques %>
+                </td>
+                <td><%= qs.catg %></td>
+                <td>
+                  <% if qs.ans.present? %>
+                  <%= qs.ans[0..20] %>
+                  <% if qs.ans.length > 20 %>
+                    .....
+                  <% end %><% end %>
+                  <br>
+                  <%= link_to "Jawab Soalan", edit_qsa_path(qs.id), class: "badge badge-pill badge-primary" %>
+                  <%= link_to "Padam Soalan", new_artk_path, class: "badge badge-pill badge-danger" %>
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

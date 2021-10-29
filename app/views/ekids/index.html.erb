@@ -129,6 +129,10 @@
           <tr>
             <td>
               <a href="<%= ekidconf_url(id: ek.id)%>" target="_blank">PPN-<%= ek.id.to_s.rjust(4, '0') %></a>
+              <% if ek.ekrps.count > 0 %>
+                <br>
+                <%= link_to "Lihat Senarai Laporan", ekrpls_path(ekid: ek.id), class: "badge badge-pill badge-success", target: "_blank"%>
+              <% end %>
             </td>
             <td>
               <%= ek.name %><br>
@@ -178,6 +182,7 @@
             <td>
               <%= f.fields_for :"#{ek.id}" do |h| %>
               <% ek.stat %>
+
                 <%= h.select :stat, options_for_select(["Permohonan Diterima","Permohonan Dalam Semakan", "Permohonan Tidak Lengkap","Permohonan Diluluskan", "Permohonan Ditolak"],selected: ek.stat), {include_blank: "Pilih Status"}, required: false %>
                 <%= h.text_area :descr, placeholder: "Makluman Admin", value: ek.descr, style: "margin-top: 5px; width: 100%" %>
               <% end %>

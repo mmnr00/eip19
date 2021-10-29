@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_31_031355) do
+ActiveRecord::Schema.define(version: 2021_08_08_074631) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -249,6 +249,83 @@ ActiveRecord::Schema.define(version: 2021_07_31_031355) do
     t.string "frelign"
     t.string "mrelign"
     t.string "descr"
+  end
+
+  create_table "ekrps", force: :cascade do |t|
+    t.datetime "dt"
+    t.integer "ekid_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "exmls"
+    t.string "exm"
+    t.string "aa"
+    t.string "ab"
+    t.string "ac"
+    t.string "ad"
+    t.string "ae"
+    t.string "af"
+    t.string "ag"
+    t.string "ah"
+    t.string "ai"
+    t.string "aj"
+    t.string "ak"
+    t.string "al"
+    t.string "am"
+    t.string "an"
+    t.string "ao"
+    t.string "ap"
+    t.string "aq"
+    t.string "ar"
+    t.string "as"
+    t.string "at"
+    t.string "au"
+    t.string "av"
+    t.string "aw"
+    t.string "ax"
+    t.string "ay"
+    t.string "az"
+    t.string "ba"
+    t.string "bb"
+    t.string "bc"
+    t.string "bd"
+    t.string "be"
+    t.string "bf"
+    t.string "bg"
+    t.string "bh"
+    t.string "bi"
+    t.string "bj"
+    t.string "bk"
+    t.string "bl"
+    t.string "bm"
+    t.string "bn"
+    t.string "bo"
+    t.string "bp"
+    t.string "bq"
+    t.string "br"
+    t.string "bs"
+    t.string "bt"
+    t.string "bu"
+    t.string "bv"
+    t.string "bw"
+    t.string "bx"
+    t.string "by"
+    t.string "bz"
+    t.string "ca"
+    t.string "cb"
+    t.string "cc"
+    t.string "cd"
+    t.string "ce"
+    t.string "cf"
+    t.string "cg"
+    t.string "ch"
+    t.string "ci"
+    t.string "cj"
+    t.string "ck"
+    t.string "cl"
+    t.string "cm"
+    t.string "cn"
+    t.string "co"
+    t.string "cp"
   end
 
   create_table "expenses", force: :cascade do |t|
@@ -636,6 +713,18 @@ ActiveRecord::Schema.define(version: 2021_07_31_031355) do
     t.string "thr"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "qsas", force: :cascade do |t|
+    t.string "ques"
+    t.string "ans"
+    t.string "stat"
+    t.string "email"
+    t.string "name"
+    t.string "ph"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "catg"
   end
 
   create_table "rflts", force: :cascade do |t|

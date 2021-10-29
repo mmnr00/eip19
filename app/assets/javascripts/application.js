@@ -33,6 +33,7 @@
 //= require venobox
 //= require wow
 //= require reveal-js
+//= require qa-n
 
 // BIZLAND
 // require counterup.min

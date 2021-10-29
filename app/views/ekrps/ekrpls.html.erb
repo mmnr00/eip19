@@ -1,0 +1,74 @@
+<div style="margin-bottom: -10px;">
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    Senarai Laporan Intervensi <b><%= "#{@ekid.name} (#{@ekid.ic})" %></b>
+    <% if current_teacher %> 
+    <%= link_to "Cipta Laporan Baru", new_ekrp_path(ekid: @ekid.id), class: "badge badge-pill badge-info"%> 
+    <% end %>
+  </li>
+</ol>
+</div>
+
+<div class="cards shadow mb-4">
+  <div class="card-header" style="color: black">
+    <div class="row">
+      <%= form_tag ekrpls_path, method: :get, id: "find_kid" do %>
+      
+        Dari <%= date_field_tag :dtfr, params[:dtfr], required: true %>
+        Hingga <%= date_field_tag :dtto, params[:dtto], required: true %>
+        <%= hidden_field_tag :ekid, params[:ekid], value: params[:ekid] %>
+        <%= hidden_field_tag :sch, params[:sch], value: true %>
+
+        <%= button_tag(type: :submit, class: "badge badge-success shadow-none", style: "font-size: 14px; border-style: none; font-weight: normal", id: "submit_expense") do %>
+            <i class="fa fa-search"></i> Cari
+        <% end %>
+        <%= link_to ekrpls_path(ekid: params[:ekid]), class: "badge badge-danger shadow-sm", style: "font-size: 14px; font-weight: normal" do %>
+            <i class="fa fa-sync"></i> Semula
+        <% end %>
+
+        
+          
+       
+
+        <% if @ekrps.count > 1 && params[:sch].present? #params[:sch].present? %>
+          <%= link_to ekrpsum_path(dtfr: params[:dtfr], dtto: params[:dtto], ekid: params[:ekid]), class: "badge badge-warning shadow-sm", style: "font-size: 14px; font-weight: normal" do %>
+              <i class="fa fa-eye"></i> Jana Laporan Keseluruhan
+          <% end %>
+          <span class="badge badge-dark"><b><%= @ekrps.count %></b> carian</span>
+        <% end %>
+      <% end %>
+
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="table table-responsive border" style="font-size:13px">
+      <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0" style="color: black">
+        
+        <thead>
+          <tr class="shadow">
+            <th style="background-color:#ffb2b2; width: %">TARIKH LAPORAN</th>
+            <th style="background-color:#ffb2b2; width: %">MAKLUMAT PENILAI</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @ekrps.order('dt DESC').each do |ekr| %><tr>
+            <td>
+              <%= ekr.dt.strftime('%d-%^b-%y') %><br>
+              <%= link_to 'Lihat', ekrp_path(ekr, ekid: @ekid.id), class: "badge badge-pill badge-success"%>
+              <% if current_teacher %>
+              <%= link_to 'Kemaskini', edit_ekrp_path(ekr, ekid: @ekid.id), class: "badge badge-pill badge-warning"%>
+              <%= link_to 'Padam', ekrp_path(ekr, ekid: @ekid.id), class: "badge badge-pill badge-danger", method: :delete, :data => {:confirm => 'Adakah Anda Pasti?'}%>
+              <% end %>
+            </td>
+            <td>
+              <% ekr.exmls.each do |exm| %>
+                <b><%= exm[0] %></b> (<%= exm[1].strftime('%d-%^b-%y') %>)<br>
+              <% end %>
+                
+            </td>
+          <% end %></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

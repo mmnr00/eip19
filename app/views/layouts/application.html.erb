@@ -8,7 +8,7 @@
   <section id="topbar" class="d-none d-lg-block">
     <div class="container clearfix">
       <div class="contact-info float-left">
-        <a href="https://goo.gl/maps/NR7g8qg3saCjrjrM9" style="color: white" target="_blank"><i class="fas fa-map-marked"></i>Yayasan Warisan Anak Selangor</a>
+        <a href="https://goo.gl/maps/NR7g8qg3saCjrjrM9" style="color: white" target="_blank"><i class="fa fa-map-marker"></i>Yayasan Warisan Anak Selangor</a>
         <a href="mailto: jabatananis@yawas.my" style="color: white"><i class="fa fa-envelope-o"></i>jabatananis@yawas.my</a>
       </div>
       <div class="social-links float-right">
@@ -73,8 +73,7 @@
                 <li><a href="<%= undercon_url %>">PROMOSI</a></li>
               </ul>
             </li>
-            <li><a href="<%= undercon_url %>">TANYA ANIS</a></li>
-
+            <li><a href="<%= tanyaanis_url %>">TANYA ANIS</a></li>
             
             <!-- <li class="menu-has-children"><a href="">GALERI</a>
               <ul>
@@ -102,10 +101,22 @@
                     <btn class="badge badge-pill badge-danger" style="font-size: 12px">Log Keluar</btn>
                   </a></li>
               </ul>
+            <% elsif current_teacher.present? %>
+              <a href=""><btn class="badge badge-pill badge-success" style="font-size: 12px"><%= current_teacher.username %></btn></a>
+              <ul>
+                <li><a href="<%= teacher_index_url %>">Kembali Ke Paparan Terapis</a></li>
+                <li><a href="<%= destroy_teacher_session_url %>" data-confirm="Adakah anda pasti?" data-method="delete" >
+                    <btn class="badge badge-pill badge-danger" style="font-size: 12px">Log Keluar</btn>
+                  </a></li>
               
 
             <% else %>
-              <a href="<%= admin_index_url %>"><img src="<%= image_path('anisPic/login-btn.png') %>" width="20" height="20"></a>
+              
+              <a href=""><btn class="badge badge-secondary" style="font-size: 15px">Log Masuk</btn></a>
+              <ul>
+                <li><a href="<%= admin_index_url %>">Log Masuk Admin</a></li>
+                <li><a href="<%= teacher_index_url %>">Log Masuk Terapis</a></li>
+              </ul>
 
             <% end %>
           </li>
@@ -116,7 +127,7 @@
   </header><!-- End Header -->
       <% if @index.present? %>
         <div class="bg-white">
-
+          
       <% else %>
         <div class="container bg-white" style="margin-top: 10px">
         <%= render partial: "shared/flash_messages", flash: flash %>
