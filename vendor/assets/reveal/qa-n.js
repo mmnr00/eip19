@@ -54,7 +54,7 @@ $(document).on('turbolinks:load', function() {
 
 
 
-  if (typeof schbox === 'undefined'){
+  if (schbox == null){
   } else {
     schbox.addEventListener('keydown', function (e){
       if ((e.keyCode == 32) || (e.keyCode >= 48 && e.keyCode <= 57) || (e.keyCode >= 65 && e.keyCode <= 90) || (e.keyCode == 8)){
