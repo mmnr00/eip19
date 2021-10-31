@@ -1,9 +1,18 @@
 <meta name="viewport" content="width=1024">
-
+<%
+  tp = @proge.tp
+  if tp == "CIKGU ANIS(TADIKA)"
+    crtemp = 'cert-3.jpg'
+  elsif tp == "CIKGU ANIS(PDK)"
+    crtemp = 'cert-2.jpg'
+  else
+    crtemp = 'cert.jpg'
+  end
+%>
 
 <div class="prt-cert">
 <div class="bg-white">
-  <div style="background-image: url(<%= image_path('cert.jpg') %>); background-size: auto 100%;background-repeat: no-repeat;
+  <div style="background-image: url(<%= image_path(crtemp) %>); background-size: auto 100%;background-repeat: no-repeat;
     background-position: center; padding-bottom: 700px; text-align: center">
 
     <div style="position:absolute;top:327px;left:0;right:0;margin-left:auto;margin-right:auto">
