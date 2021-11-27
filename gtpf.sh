@@ -1,17 +1,17 @@
 #!/bin/bash
-git checkout dev_an2
+git checkout dev-an
 git add -A
 git commit -m "anis"
 git push
 
-git checkout ostg_an
-git merge dev_an2
+git checkout ostg-an
+git merge dev-an
 git push
 
-git checkout prod_an2
-git merge ostg_an
+git checkout prod-an
+git merge ostg-an 
 git push
 
-git diff HEAD ostg_an
-git diff HEAD dev_an2
-git checkout dev_an2
+git diff HEAD ostg-an
+git diff HEAD dev-an
+git checkout dev-an
