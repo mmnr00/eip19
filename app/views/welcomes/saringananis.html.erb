@@ -8,11 +8,13 @@
 
 </header>
 
+
+
 <!-- MESSAGE -->
 <div class="section-header container bg-white" style="margin-top: 20px">
   <h3 style="">MAKLUMAN</h3>
   <div class="border-prog" style=""></div>
-  <p style="text-align: center; color: black; font-weight: 600">Permohonan Program Saringan ANIS akan dibuka</p>
+  <p style="text-align: center; color: black; font-weight: 600">Permohonan Program Saringan ANIS telah dibuka</p>
   <p style="text-align: center; color: black"><!-- Daftar Dan Hantar Dokumen Sokongan Selewatnya pada 30 April 2021 --></p>
   <% if 1==0 %>
     <div style="background-color: #6666ff; text-align: center; color: white; margin-bottom: -20px">
@@ -237,7 +239,7 @@
       </div>
       <% end %>
 
-      <%= link_to "Semak / Hantar Permohonan", "https://eipepic.kidcare.my/daftarsaringanpercuma/", class: "btn btn-sm btn-success btn-block", target: "_blank"%>
+      <%= link_to "Semak / Hantar Permohonan", daftarsaringan_path, class: "btn btn-sm btn-success btn-block", target: ""%>
       <% link_to "Permohonan Belum Dibuka", "#", class: "btn btn-sm btn-danger btn-block"%>
 
       

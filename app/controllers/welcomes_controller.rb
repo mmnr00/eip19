@@ -89,6 +89,10 @@ class WelcomesController < ApplicationController
 		@index = true
 	end
 
+	def daftarsaringan
+		@index = true
+	end
+
 	def saringananis
 		@index = true
 	end
