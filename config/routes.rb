@@ -170,7 +170,7 @@ Rails.application.routes.draw do
   get '/bantuanoku', to: 'welcomes#bantuanoku2'
   get '/bantuanOKU', to: 'welcomes#bantuanoku'
   get '/intervensianis', to: 'welcomes#intervensianis'
-  get '/saringananis', to: 'welcomes#saringananis'
+  get '/saringan', to: 'welcomes#saringananis'
   get '/introanis', to: 'welcomes#introanis'
   get '/orgchart', to: 'welcomes#orgchart'
   get '/pusatanis', to: 'welcomes#sokonganis'

@@ -68,6 +68,8 @@
         </div>
       </div>
 
+      <!-- pending anis -->
+      <% if 1==0 %>
       <div class="card shadow" style="margin-bottom: 10px">
         <!-- Card Header - Accordion -->
         <a href="#coll3" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
@@ -233,9 +235,10 @@
           </div>
         </div>
       </div>
+      <% end %>
 
-      <% link_to "Semak / Hantar Permohonan", persesch_url(prog: "SARINGAN ANIS"), class: "btn btn-sm btn-success btn-block"%>
-      <%= link_to "Permohonan Belum Dibuka", "#", class: "btn btn-sm btn-danger btn-block"%>
+      <%= link_to "Semak / Hantar Permohonan", "https://eipepic.kidcare.my/daftarsaringanpercuma/", class: "btn btn-sm btn-success btn-block", target: "_blank"%>
+      <% link_to "Permohonan Belum Dibuka", "#", class: "btn btn-sm btn-danger btn-block"%>
 
       
 
