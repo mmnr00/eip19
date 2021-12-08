@@ -1,16 +1,37 @@
-<% @proges.count %>
 
-<h5 style="font-weight: 600; color: black">SILA PILIH SESI</h5>
-<% @proges.order('date DESC').each do |prg| %>
-  <div class="card bg-info text-white shadow">
-    <div class="card-body">
-      <a href="<%= persesch_url(proge: prg.id, prog: "AKADEMI ANIS") %>" class="text-white">
-        <%= prg.name %>
-      </a>
-      <div class="text-white-50 small">
-        <%= prg.date.strftime('%d-%^b-%y') %>
-        (<%= prg.venue %>)
+    <div class="container-fluid bg-light">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="carousel slide" id="carousel-554496">
+            <ol class="carousel-indicators">
+                <li data-slide-to="0" data-target="#carousel-554496" class="active"> </li>
+                <li data-slide-to="1" data-target="#carousel-554496"> </li>
+                <li data-slide-to="2" data-target="#carousel-554496"> </li>
+                <li data-slide-to="3" data-target="#carousel-554496"> </li>
+                <li data-slide-to="4" data-target="#carousel-554496"> </li>
+                <li data-slide-to="5" data-target="#carousel-554496"> </li>
+                <li data-slide-to="6" data-target="#carousel-554496"> </li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-inner">
+                <div class="carousel-item active"> <img class="d-block w-100" alt="Carousel Bootstrap First" src="https://kidcare.my/anisdocs/Belanjawan/bl-1.jpg" />
+                </div>
+                <div class="carousel-item"> <img class="d-block w-100" alt="Carousel Bootstrap Second" src="https://kidcare.my/anisdocs/Belanjawan/bl-2.jpg" />
+                </div>
+                <div class="carousel-item"> <img class="d-block w-100" alt="Carousel Bootstrap Third" src="https://kidcare.my/anisdocs/Belanjawan/bl-3.jpg" />
+                </div>
+                <div class="carousel-item"> <img class="d-block w-100" alt="Carousel Bootstrap Fourth" src="https://kidcare.my/anisdocs/Belanjawan/bl-4.jpg" />
+                </div>
+                <div class="carousel-item"> <img class="d-block w-100" alt="Carousel Bootstrap Fourth" src="https://kidcare.my/anisdocs/Belanjawan/bl-5.jpg" />
+                </div>
+                <div class="carousel-item"> <img class="d-block w-100" alt="Carousel Bootstrap Fourth" src="https://kidcare.my/anisdocs/Belanjawan/bl-6.jpg" />
+                </div>
+                <div class="carousel-item"> <img class="d-block w-100" alt="Carousel Bootstrap Fourth" src="https://kidcare.my/anisdocs/Belanjawan/bl-7.jpg" />
+                </div>
+              </div>
+            </div> 
+            <a class="carousel-control-prev" href="#carousel-554496" data-slide="prev"><span class="carousel-control-prev-icon"></span> <span class="sr-only">Previous</span></a> <a class="carousel-control-next" href="#carousel-554496" data-slide="next"><span class="carousel-control-next-icon"></span> <span class="sr-only">Next</span></a>
+          </div>
+        </div>
       </div>
     </div>
-  </div><br>
-<% end %>
