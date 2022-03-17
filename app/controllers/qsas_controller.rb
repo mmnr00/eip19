@@ -21,6 +21,7 @@ class QsasController < ApplicationController
 		Qsa.all.each do |qs|
 			@qscatg << qs.catg unless @qscatg.include? qs.catg
 		end
+		#letak email to jabatan anis
 	end
 
 	def show

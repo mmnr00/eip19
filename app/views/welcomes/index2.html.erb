@@ -2,6 +2,11 @@
 
 <body>
 
+<%
+ a = ["tl6_Xol4GjU","ghXpn6TYFTA","OP6Aa5or5gM","R5RA8VqU71M","heAFimMdRgI","Y1Dqm4Jygn8","3EXn6AqpI5U"]
+ str_vid = a[rand(0..(a.length-1))]
+%>
+
    
 <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
@@ -12,7 +17,7 @@
       <div class="d-flex">
         <a href="<%= persesch_url %>" class="btn-get-started scrollto">Daftar Sekarang</a>
         <!-- <a href="https://www.youtube.com/watch?v=kQbShPCINrE" class="venobox btn-watch-video" data-vbtype="video" data-autoplay="false"> Lihat Video <i class="fa fas fa-play-circle"></i></a> -->
-        <a id="try-click" href="https://youtu.be/3hYrGeBwd70" class="venobox btn-watch-video" data-vbtype="video" data-autoplay="false"> Lihat Video<i class="fa fas fa-play-circle"></i></a>
+        <a id="try-click" href="https://youtu.be/<%= str_vid %>" class="venobox btn-watch-video" data-vbtype="video" data-autoplay="false"> Lihat Video<i class="fa fas fa-play-circle"></i></a>
       </div>
     </div>
   </section><!-- End Hero -->
@@ -164,7 +169,7 @@
           <h3 style="color: black"></h3>
 
         </div>
-        <img style="width: 100%; margin-top: -20px" src="<%= image_path('anis_kerjasama.jpeg') %>">
+        <img style="width: 100%; margin-top: -20px" src="<%= image_path('anis_kerjasama-1.jpeg') %>">
         
       </div>
     </section>
