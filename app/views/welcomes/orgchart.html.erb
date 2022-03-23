@@ -8,219 +8,22 @@
 
 </header>
 
-<section id="team" class="team section-bg">
-  <div class="container bg-light" data-aos="fade-up" style="text-align: center;">
+<div class="col-12" style="display: flex; justify-content: center;">
+  <img src="<%= image_path('org-chart-22.png')%>" style="height: 100% ; width: %"></img>
+</div>
 
-    <div class="header-org" style="background-color: #d4e9fc; color: #2076c3">
-      PENGASAS
-    </div>
-    <div class="row justify-content-center">
-
-      <div class="col-lg-4 col-md-6 col-sm-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-        <div class="member">
-          <div class="member-img">
-            <img src="<%= image_path('anisPic/yb-mariah.jpg') %>" width="100%" height="100%">
-          </div>
-          <div class="member-info">
-            <h4>YB PUAN DR. SITI MARIAH BINTI MAHMUD</h4>
-            PENGERUSI JAWATANKUASA TETAP KESIHATAN AWAM, PERPADUAN DAN PEMBANGUNAN WANITA & KELUARGA
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="header-org" style="background-color: #fbd7e3; color: #d53368">
-      YAYASAN WARISAN ANAK SELANGOR (YAWAS)
-    </div>
-
-    <div class="header-org" style="background-color: #e5cce5; color: #730073">
-      MAJLIS PENASIHAT ANIS (MPA)
-      <%= link_to "Lihat Senarai Ahli", mpachart_path, class: 'badge badge-pill badge-secondary', target: "_blank" %>
-    </div>
-
-    <div class="header-org" style="">
-      JABATAN ANIS
-    </div>
-    <div class="row justify-content-center">
-
-      <div class="col-lg-3 col-md-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-        <div class="member">
-          <div class="member-img">
-            <img src="<%= image_path('profilpic/Danial.png') %>" width="100%" height="200%">
-          </div>
-          <div class="member-info">
-            <h4>DANIAL AL RASHID BIN HARON </h4>
-            KETUA JABATAN<br>
-            <span>danial@yawas.my</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- start pentadbiran dan operasi -->
-    <div class="sub-org" style="">
-      Pentadbiran dan Pengurusan
-    </div>
-    <div class="row justify-content-center">
-
-      <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-        <div class="member">
-          <div class="member-img">
-            <img src="<%= image_path('profilpic/Nisha.png') %>" width="100%" height="200%">
-          </div>
-          <div class="member-info">
-            <h4>DEENESHAVATHY THASARATHEN</h4>
-            EKSEKUTIF OPERASI<br>
-            <span>nesha@yawas.my</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-        <div class="member">
-          <div class="member-img">
-            <img src="<%= image_path('profilpic/syahmi.png') %>" width="100%" height="200%">
-          </div>
-          <div class="member-info">
-            <h4>MUHAMMAD SYAHMI BIN ZAHARI</h4>
-            EKSEKUTIF OPERASI<br>
-            <span>syahmi@yawas.my</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-        <div class="member">
-          <div class="member-img">
-            <img src="<%= image_path('profilpic/nadia.png') %>" width="100%" height="200%">
-          </div>
-          <div class="member-info">
-            <h4>NADIAH BINTI SOLAHUDDIN</h4>
-            EKSEKUTIF OPERASI<br>
-            <span>nadiah@yawas.my</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-        <div class="member">
-          <div class="member-img">
-            <img src="<%= image_path('profilpic/annuar.png') %>" width="100%" height="100%">
-          </div>
-          <div class="member-info">
-            <h4>MUHAMMAD ANNUAR AIMAN BIN MOHD ABDULLAH</h4>
-            PEMBANTU TADBIR<br>
-            <span>annuar@yawas.my</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-        <div class="member">
-          <div class="member-img">
-            <img src="<%= image_path('profilpic/farh.png') %>" width="100%" height="200%">
-          </div>
-          <div class="member-info">
-            <h4>NOR FARHAINI BT MOHD YUSOFF</h4>
-            KERANI KANAN<br>
-            <span>farhainiyusoff@yawas.my</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-    <!-- end pentadbiran dan operasi -->
-
-    <!-- start Operasi dan Intervensi -->
-    <div class="sub-org" style="">
-      Operasi dan Intervensi
-    </div><br>
-
-    <div class="sub-2-org" style="">
-      Guru Pendidikan Khas ANIS
-    </div>
-    <div class="row justify-content-center">
-
-      <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-        <div class="member">
-          <div class="member-img">
-            <img src="<%= image_path('profilpic/norA.png') %>" width="100%" height="200%">
-          </div>
-          <div class="member-info">
-            <h4>SITI NORAISHAH BINTI MANSOR</h4>
-            Guru Pendidikan Khas<br>
-            <span>sitinoraishahmansor@yawas.my</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-        <div class="member">
-          <div class="member-img">
-            <img src="<%= image_path('profilpic/Puni.png') %>" width="100%" height="200%">
-          </div>
-          <div class="member-info">
-            <h4>PUNITA SANTHIRAPIRAGASAM</h4>
-            Guru Pendidikan Khas<br>
-            <span>smpunitha@yawas.my</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-        <div class="member">
-          <div class="member-img">
-            <img src="<%= image_path('profilpic/nusa.png') %>" width="100%" height="200%">
-          </div>
-          <div class="member-info">
-            <h4>NUSAIBAH BINTI WAN FATUL</h4>
-            Guru Pendidikan Khas<br>
-            <span>nusaibah@yawas.my</span>
-          </div>
-        </div>
-      </div>
-
-      
-
-    </div>
-
-    <div class="sub-2-org" style="">
-      Pembantu Guru Pendidikan Khas ANIS
-    </div>
-    <div class="row justify-content-center">
-
-      <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-        <div class="member">
-          <div class="member-img">
-            <img src="<%= image_path('profilpic/syaz.png') %>" width="100%" height="200%">
-          </div>
-          <div class="member-info">
-            <h4>NOR SYAZWANI BINTI EDRIS</h4>
-            PEMBANTU GURU<br>
-            <span>syazwani@yawas.my</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-    <!-- end Operasi dan Intervensi -->
-
-
-  </div>
-</section>
 
 <div class="container bg-white" style="margin-top: 20px; text-align: center">
   <div class="row">
     <div class="col-lg-12 col-12">
       <!-- <img src="<%= image_path('anisPic/orgchart.jpeg') %>" width="100%" height="100%"> -->
     </div>
+
     <div class="col-lg-12 col-12">
       <div class="section-title" style="margin-top: 10px">
         <h2>Hubungi Kami Di</h2> 
         <p style="font-size: 18px; color: black">
-          <b>Pusat Sokongan Pendidikan Awal Anak Istimewa (PUSPANIS)</b>
+          <b>Pusat Sokongan Pendidikan Awal Anak Istimewa <br>(PUSAT ANIS)</b>
         </p>
         <p style="font-size: 15px; color: black">
           East Entrance G26-28  Bangunan IDCC,<br>
