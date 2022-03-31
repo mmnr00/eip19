@@ -23,8 +23,12 @@ class AdminsController < ApplicationController
 		@ddk = Ddk.all
 	end
 
+	def oldlsddk
+		@ddk = Ddk.where(old1: true)
+	end
+
 	def lsddk
-		@ddk = Ddk.all
+		@ddk = Ddk.where(old1: nil)
 		if params[:sch].present?
 			@ddk = @ddk.where(stat: params[:stat]) unless params[:stat].blank?
 			if (str=params[:sch_str]).present?

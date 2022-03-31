@@ -21,7 +21,7 @@ class QsasController < ApplicationController
 		Qsa.all.each do |qs|
 			@qscatg << qs.catg unless @qscatg.include? qs.catg
 		end
-		#letak email to jabatan anis
+		
 	end
 
 	def show
@@ -34,6 +34,25 @@ class QsasController < ApplicationController
 			flash[:notice] = "Berjaya"
 			redirect_to admqsa_path
 		else
+			#letak email to jabatan anis
+			subject = "[TANYA ANIS] Soalan Baru Diterima Dibawah Kategori #{@qsa.catg}"
+			to = "anisselangor@gmail.com"
+			cc = @qsa.email
+			body = "
+				
+				Maklumat Soalan adalah seperti dibawah: <br>
+				<ul>
+					<li><b>Nama Peserta: </b> #{@qsa.name}</li>
+					<li><b>Email: </b> #{@qsa.email} </li>
+					<li><b>No Telefon: </b> #{@qsa.ph}</li>
+					<li><b>Kategori: </b> #{@qsa.catg}</li>
+					<li><b>Soalan: </b> #{@qsa.ques}</li>
+				</ul><br>
+				<b>Yang Berkhidmat,</b><br>
+				Sistem Jabatan ANIS
+
+				"
+			send_email(subject,to,cc,body)
 			flash[:notice] = "Soalan Anda Diterima. Pihak kami akan maklumkan melalui email"
 			redirect_to soaljawab_path
 		end
@@ -52,6 +71,26 @@ class QsasController < ApplicationController
 		@qsa = Qsa.find(params[:id])
 		if @qsa.update(qsa_params)
 			flash[:notice] = "Kemaskini Berjaya"
+			#letak email to jabatan anis
+			subject = "[TANYA ANIS] Jawapan Diterima Untuk Soalan Anda"
+			to = "anisselangor@gmail.com"
+			cc = @qsa.email
+			body = "
+				
+				Maklumat Soalan adalah seperti dibawah: <br>
+				<ul>
+					<li><b>Nama Peserta: </b> #{@qsa.name}</li>
+					<li><b>Email: </b> #{@qsa.email} </li>
+					<li><b>No Telefon: </b> #{@qsa.ph}</li>
+					<li><b>Kategori: </b> #{@qsa.catg}</li>
+					<li><b>Soalan: </b> #{@qsa.ques}</li>
+					<li><b>Jawapan: </b> #{@qsa.ans}</li>
+				</ul><br>
+				<b>Yang Berkhidmat,</b><br>
+				Sistem Jabatan ANIS
+
+				"
+			send_email(subject,to,cc,body)
 			redirect_to admqsa_path
 		else
 			flash[:danger] = "Kemaskini Tidak Berjaya. Sila Cuba Lagi"

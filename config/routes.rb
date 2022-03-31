@@ -267,6 +267,7 @@ Rails.application.routes.draw do
   #~ADMINS
   get 'admin_index', to: 'admins#index'
   get 'lsddk', to: 'admins#lsddk'
+  get 'oldlsddk', to: 'admins#oldlsddk'
   get 'edtddk', to: 'admins#edtddk'
   post 'upddk', to: 'admins#upddk'
   get 'acclist', to: 'admins#acclist'

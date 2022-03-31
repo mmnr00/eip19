@@ -1,0 +1,49 @@
+<meta name="viewport" content="width=1024">
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    Senarai Permohonan Terdahulu <b>DIDIK ANIS</b>
+  </li>
+</ol>
+
+<div class="card-body">
+    
+  <div class="table table-responsive border" style="font-size:13px">
+    <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0" style="color: black">
+      <thead>
+        <tr class="shadow">
+          <th style="background-color:#ffb2b2; width: 12%">NO SIRI</th>
+          <th style="background-color:#ffb2b2">MAKLUMAT AGENSI</th>
+          <th style="background-color:#ffb2b2">MAKLUMAT PEMOHON</th>
+          <th style="background-color:#ffb2b2; width: 18%">STATUS</th>
+          <th style="background-color:#ffb2b2">TARIKH PERMOHONAN</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @ddk.order('created_at DESC').each do |ddk| %>
+        <tr>
+          <td>
+            <a href="<%= ddk_url(ddk, adm: true)%>" target="_blank">DDK-<%= ddk.id.to_s.rjust(4, '0') %></a>
+          </td>
+          <td>
+            
+            <b>Nama Agensi: </b><%= ddk.coname %><br>
+            <b>No Pendaftaran: </b><%= ddk.conum %><br>
+            <b>Alamat: </b><%= "#{ddk.addr},#{ddk.posk},#{ddk.state}" %><br>
+          </td>
+          <td>
+            <% perse = ddk.perse %>
+            <b>Nama : </b><%= perse.name %><br>
+            <b>No MyKad: </b><%= perse.ic %><br>
+            <b>No Telefon: </b><%= perse.ph %><br>
+          </td>
+          <td>
+            <%= link_to "#{$ddkstat[ddk.stat][3]}", edtddk_path(ddk:ddk.id), class: "badge badge-pill badge-#{$ddkstat[ddk.stat][0]}", style: "font-size: 10px", target: "_blank" %> 
+          </td>
+          <td><%= ddk.created_at.strftime('%d-%^b-%Y') %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

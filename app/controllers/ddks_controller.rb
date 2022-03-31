@@ -15,7 +15,7 @@ class DdksController < ApplicationController
 	def new
 		@edit = false
 		@perse = Perse.find(params[:perse])
-		if @perse.ddk.present?
+		if @perse.ddk.present? && !@perse.ddk.old?
 			redirect_to ddk_path(id: @perse.ddk.id) and return
 		end
 		@ddk = Ddk.new

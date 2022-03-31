@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_08_074631) do
+ActiveRecord::Schema.define(version: 2022_03_31_125023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -193,6 +193,8 @@ ActiveRecord::Schema.define(version: 2021_08_08_074631) do
     t.string "stat"
     t.string "statrs"
     t.string "agtp"
+    t.boolean "old"
+    t.boolean "old1"
   end
 
   create_table "ekids", force: :cascade do |t|

@@ -3,6 +3,12 @@
     Pendaftaran Untuk Didik ANIS Telah Ditutup. Terima Kasih.
   </div>
 <% else %>
+<% if @perse.ddk.present? %>
+  <b>Senarai Permohonan Terdahulu</b><br>
+  <% Ddk.where(perse_id: @perse.id, old1: true).each do |ddk| %>
+    <a href="<%= ddk_url(ddk, adm: true)%>" target="_blank">DDK-<%= ddk.id.to_s.rjust(4, '0') %></a><br>
+  <% end %>
+<% end %>
  <%= render 'ddks/form' %> 
 <% end %>
 

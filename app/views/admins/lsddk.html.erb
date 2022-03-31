@@ -94,7 +94,11 @@
             <i class="fa fa-sync"></i> Semula
         <% end %>
         <%= "#{@ddk.count} carian" unless params[:sch].blank? %>
+        <%= link_to oldlsddk_path, class: "badge badge-secondary shadow-sm", target: "_blank", style: "font-size: 18px; font-weight: normal" do %>
+            <i class="fa fa-sync"></i> Rekod Terdahulu
+        <% end %>
       <% end %>
+
       <div>
         
       </div>
