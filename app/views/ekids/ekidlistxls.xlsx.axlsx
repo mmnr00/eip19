@@ -1,5 +1,5 @@
 wb = xlsx_package.workbook
-col_widths= [5,10,40,15,15,24,33,20,20,20,20,20,20,20,20]
+col_widths= [5,10,40,15,15,24,33,20,20,20,20,20,20,20,20,20,40]
 wb.styles do |style|
   header_1 = style.add_style(sz: 20, b: true)
   dlt_cell = style.add_style(bg_color: "FF0000",
@@ -39,7 +39,9 @@ wb.styles do |style|
                   "PENDAPATAN",
                   "BIL BERADIK",
                   "RUJUKAN",
-                  "TARIKH PERMOHONAN"]
+                  "TARIKH PERMOHONAN",
+                  "DAERAH",
+                  "ALAMAT"]
     sheet.rows[0].style = header_1
     sheet.rows[2].style = highlight_cell
     counter = 1
@@ -64,7 +66,9 @@ wb.styles do |style|
                       ek.pinc,
                       ek.sib,
                       ek.ref,
-                      ek.created_at.strftime('%d-%^b-%Y')], style: [nil, border_cell]
+                      ek.created_at.strftime('%d-%^b-%Y'),
+                      ek.dun,
+                      ek.addr], style: [nil, border_cell]
         sheet.rows[row+counter].style = border_cell
         counter = counter +1
       end
