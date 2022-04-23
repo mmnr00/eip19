@@ -1,6 +1,16 @@
 class DdksController < ApplicationController
 
-	before_action :set_ddk, except: [:new,:create]
+	before_action :set_ddk, except: [:new,:create,:ddkxls]
+
+	def ddkxls
+		@ddks = Ddk.where(old1: params[:old1])
+		respond_to do |format|
+      #format.html
+      format.xlsx{
+                  response.headers['Content-Disposition'] = "attachment; filename=Senarai Didik ANIS.xlsx"
+      }
+		end
+	end
 
 	def prtddk
 		@print = true

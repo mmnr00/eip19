@@ -59,6 +59,7 @@ Rails.application.routes.draw do
 
   #~~DDK
   get '/prtddk', to:'ddks#prtddk'
+  get '/ddkxls', to: 'ddks#ddkxls'
 
 
 

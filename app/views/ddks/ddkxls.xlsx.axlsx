@@ -1,0 +1,85 @@
+wb = xlsx_package.workbook
+
+wb.styles do |style|
+  # maklumat peserta
+  header_1 = style.add_style(sz: 20)
+  highlight_cell = style.add_style(bg_color: "EFC376",
+                                  border: Axlsx::STYLE_THIN_BORDER,
+                                  sz: 13,
+                                   alignment: { horizontal: :center })
+  border_cell = style.add_style(border: Axlsx::STYLE_THIN_BORDER)       
+  wb.add_worksheet(name: "Maklumat Peserta") do |sheet|
+
+    sheet.add_row ["","Senarai Permohonan Didik ANIS"]
+    sheet.add_row [""]
+    sheet.add_row ["NO",
+                  "NO SIRI",
+                  "NAMA PEMOHON",
+                  "NO MYKAD",
+                  "NO TEL PEMOHON",
+                  "EMAIL",
+                  "JENIS INSTITUSI",
+                  "NAMA AGENSI",
+                  "ALAMAT AGENSI",
+                  "NO PENDAFTARAN",
+                  "TAHUN PENDAFTARAN",
+                  "EMAIL AGENSI",
+                  "NO TEL AGENSI"]
+    sheet.rows[0].style = header_1
+    sheet.rows[2].style = highlight_cell
+    counter = 1
+    row =2
+
+    @ddks.each do |ddk|
+      prs = ddk.perse
+      sheet.add_row [counter,
+                    "DDK-#{ddk.id.to_s.rjust(4, '0')}",
+                    prs.name,
+                    prs.ic,
+                    "'#{prs.ph}",
+                    prs.email,
+                    ddk.agtp,
+                    ddk.coname,
+                    "#{ddk.addr},#{ddk.posk},#{ddk.state}",
+                    ddk.conum,
+                    ddk.regyr,
+                    ddk.email,
+                    "'#{ddk.ph}"
+                    ], 
+      style: [nil, border_cell]
+      sheet.rows[row+counter].style = border_cell
+      counter = counter +1
+    end
+
+  end
+
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
