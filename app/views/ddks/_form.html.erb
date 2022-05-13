@@ -285,6 +285,49 @@
         </div>
       </div>
 
+      <div style="background-color: #e4bfbf; text-align: center; margin-bottom: 15px; margin-top: 15px">
+        <h8 style="color: black;">Maklumat Akaun Bank</h8>
+      </div>
+
+      <div class="form-group"> <!-- alamat -->
+        <div class="row">
+          <div class="control-label col-sm-12">
+            <strong>NAMA AKAUN BANK<a style="color: red">*</a></strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <%= f.text_field :accname, class: "form-control", placeholder: "", autofocus: true, required: true, style: "" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> <!-- alamat -->
+        <div class="row">
+          <div class="control-label col-sm-12">
+            <strong>NO AKAUN BANK<a style="color: red">*</a></strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <%= f.number_field :accno, class: "form-control", placeholder: "", autofocus: true, required: true, style: "" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> <!-- alamat -->
+        <div class="row">
+          <div class="control-label col-sm-12">
+            <strong>NAMA BANK/INSTITUSI KEWANGAN<a style="color: red">*</a></strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <%= f.text_field :accbank, class: "form-control", placeholder: "", autofocus: true, required: true, style: "" %>
+          </div>
+        </div>
+      </div>
+
       
 
       

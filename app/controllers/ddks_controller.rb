@@ -110,7 +110,10 @@ class DdksController < ApplicationController
 																:regyr,
 																:stat,
 																:statrs,
-																:agtp)
+																:agtp,
+																:accname,
+																:accnum,
+																:accbank)
 	end
 
 end
