@@ -1,6 +1,21 @@
 class DdksController < ApplicationController
 
-	before_action :set_ddk, except: [:new,:create,:ddkxls]
+	before_action :set_ddk, except: [:new,:create,:ddkxls,:btnoku]
+
+	def btnoku
+		@ddk = Ddk.first
+		@ddk.okucnt = @ddk.okucnt + 1
+		@ddk.save 
+		cnt = @ddk.okucnt
+		#send email
+		subject = "#{cnt} permohonan untuk Bantuan OKU ANIS"
+		to = "mustrivium@yahoo.com"
+		body = "Permohonan Bantuan OKU ANIS terkini adalah sebanyak #{cnt}"
+		send_email(subject,to,"",body)
+		redirect_to "https://kidcare.my/anisdocs/Borang Bantuan ANIS_2022-1.pdf"
+
+
+	end
 
 	def ddkxls
 		@ddks = Ddk.where(old1: params[:old1])

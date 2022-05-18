@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_13_012510) do
+ActiveRecord::Schema.define(version: 2022_05_18_032519) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -198,6 +198,7 @@ ActiveRecord::Schema.define(version: 2022_05_13_012510) do
     t.string "accno"
     t.string "accname"
     t.string "accbank"
+    t.integer "okucnt"
   end
 
   create_table "ekids", force: :cascade do |t|
