@@ -11,7 +11,7 @@ class DdksController < ApplicationController
 		subject = "#{cnt} permohonan untuk Bantuan OKU ANIS"
 		to = "anisselangor@gmail.com"
 		body = "Permohonan Bantuan OKU ANIS terkini adalah sebanyak #{cnt}"
-		send_email(subject,to,"",body)
+		#send_email(subject,to,"",body)
 		redirect_to "https://kidcare.my/anisdocs/Borang Bantuan ANIS_2022-1.pdf"
 
 
