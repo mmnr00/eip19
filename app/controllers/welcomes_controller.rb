@@ -5,6 +5,10 @@ class WelcomesController < ApplicationController
 	
 	#layout "page"
 
+	def prasekolahanis
+		@index = true
+	end
+
 
 	def senaraipdk
 		@index = true
@@ -126,18 +130,23 @@ class WelcomesController < ApplicationController
 	end
 
 	def tanya
-		flash[:success] = "Pertanyaan anda telah direkodkan. Pihak kami akan menjawab secepat mungkin. Terima kasih"
-		pars = params[:ans]
-		subject = pars[:subject]
-		to = "jabatananis@yawas.my"
-		cc = pars[:email]
-		body = "
-			<b>Nama: </b> #{pars[:name]}<br>
-			<b>Email: </b> #{pars[:email]}<br>
-			<b>Maklumat: </b> #{pars[:msg]}<br>
-		"
-		send_email(subject,to,cc,body)
-		redirect_to contactus_path(after: 1)
+		if params["g-recaptcha-response"].blank?
+			flash[:danger] = "Pertanyaan tidak berjaya. Sila cuba lagi"
+			redirect_to contactus_path
+		else
+			flash[:success] = "Pertanyaan anda telah direkodkan. Pihak kami akan menjawab secepat mungkin. Terima kasih"
+			pars = params[:ans]
+			subject = pars[:subject]
+			to = "jabatananis@yawas.my"
+			cc = pars[:email]
+			body = "
+				<b>Nama: </b> #{pars[:name]}<br>
+				<b>Email: </b> #{pars[:email]}<br>
+				<b>Maklumat: </b> #{pars[:msg]}<br>
+			"
+			send_email(subject,to,cc,body)
+			redirect_to contactus_path(after: 1)
+		end
 	end
 
 	def contactus

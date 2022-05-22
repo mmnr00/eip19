@@ -60,7 +60,7 @@
           <div class="form-group">
             <%= f.text_area :msg, class: "form-control", autofocus: true, required: true, placeholder: "Maklumat Lanjutan", rows: 5 %>
           </div>
-
+          <%= recaptcha_tags %>
           <div class="text-center"><%= f.submit :"Hantar",  class: 'btn btn-primary btn-sm btn-block' %></div>
         <% end %>
       </div>

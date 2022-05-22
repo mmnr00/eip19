@@ -9,6 +9,8 @@ gem 'rails', '~> 5.2.1'
 
 #gem 'icofont'
 
+gem "recaptcha", require: "recaptcha/rails"
+
 gem 'video_info'
 
 gem 'sass'
