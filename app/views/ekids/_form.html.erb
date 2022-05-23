@@ -178,14 +178,16 @@
         </div>
       </div>
 
+      
+
       <div class="col-sm-8" style="background-color:#ffcccc">
-        <h6 style="color:black; font-weight: 600">Maklumat Perkembangan Anak</h6>
+        <h6 style="color:black; font-weight: 600">Maklumat Diagnosis Anak</h6>
       </div>
 
       <div class="form-group"> 
         <div class="row">
           <div class="control-label col-sm-12 col-12">
-            <strong>ADAKAH ANAK ANDA SUDAH DIRUJUK OLEH DOKTOR SEBELUM INI?</strong>
+            <strong>ADAKAH ANAK ANDA MEMPUNYAI DIAGNOSIS?</strong>
           </div>
         </div>
         <div class="row">
@@ -200,21 +202,8 @@
 
       <div class="form-group"> 
         <div class="row">
-          <div class="control-label col-sm-8">
-            <strong>JIKA YA, DIMANAKAH ANAK ANDA DIRUJUK</strong>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-8 col-12">
-            <%= f.text_field :refloc, class: "form-control", placeholder: "", autofocus: true %>
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group"> 
-        <div class="row">
           <div class="control-label col-sm-12 col-12">
-            <strong>LEWAT PERKEMBANGAN YANG DIALAMI ANAK ANDA</strong>
+            <strong>JIKA YA, NYATAKAN DIAGNOSIS ANAK ANDA</strong>
           </div>
         </div>
         <div class="row">
@@ -231,22 +220,20 @@
         </div>
       </div>
 
-      <!--
       <div class="form-group"> 
         <div class="row">
           <div class="control-label col-sm-8">
-            <strong>JIKA LAIN-LAIN, SILA NYATAKAN KELEWATAN YANG DIALAMI</strong>
+            <strong>KLINIK / HOSPITAL YANG MEMBERI DIAGNOSIS</strong>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-8 col-12">
-            <%= f.text_field :prbot, class: "form-control", placeholder: "", autofocus: true %>
+            <%= f.text_field :refloc, class: "form-control", placeholder: "", autofocus: true %>
           </div>
         </div>
       </div>
-      -->
 
-      <% if params[:prog] == "TERAPI ANIS" || @ekid.tp == "TERAPI ANIS" || params[:prog] == "INTERVENSI ANIS" || @ekid.tp == "INTERVENSI ANIS" %>
+      <% if params[:prog] == "TERAPI ANIS" || @ekid.tp == "TERAPI ANIS" || params[:prog] == "INTERVENSI ANIS" || @ekid.tp == "INTERVENSI ANIS" ||  params[:prog] == "PRASEKOLAH ANIS" || @ekid.tp == "PRASEKOLAH ANIS" %>
         <div class="form-group"> 
           <div class="row">
             <div class="control-label col-sm-8">
@@ -278,6 +265,75 @@
           <i>Wajib Disertakan</i>
         </div>
       <% end %>
+
+      <% if params[:prog] == "PRASEKOLAH ANIS" || @ekid.tp == "PRASEKOLAH ANIS" %>
+
+        <div class="col-sm-8" style="background-color:#ffcccc">
+          <h6 style="color:black; font-weight: 600">Maklumat Pusat EIP</h6>
+        </div>
+
+        <div class="form-group"> 
+          <div class="row">
+            <div class="control-label col-sm-12 col-12">
+              <strong>ADAKAH ANAK ANDA PERNAH MENGIKUTI PROGRAM EIP?</strong>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-8 col-12">
+              <%= f.select :curreip, options_for_select(["Ya", 
+                                                    "Tidak"], 
+                                                    selected: @ekid.curreip), 
+              {include_blank: "SILA PILIH"}, {required: true} %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group"> 
+          <div class="row">
+            <div class="control-label col-sm-12 col-12">
+              <strong>JIKA YA, NYATAKAN NAMA PUSAT EIP</strong>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-8 col-12">
+              
+             <%= f.text_field :nmeip, class: "form-control", placeholder: "", autofocus: true %>
+            
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group"> 
+          <div class="row">
+            <div class="control-label col-sm-8">
+              <strong>TEMPOH MENGIKUTI PROGRAM PUSAT EIP (BULAN)</strong>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-8 col-12">
+              <%= f.number_field :tmeip, class: "form-control", placeholder: "", autofocus: true %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      
+
+      <!--
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>JIKA LAIN-LAIN, SILA NYATAKAN KELEWATAN YANG DIALAMI</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.text_field :prbot, class: "form-control", placeholder: "", autofocus: true %>
+          </div>
+        </div>
+      </div>
+      -->
+
+      
 
       <br><div class="col-sm-8" style="background-color:#ffcccc">
         <h6 style="color:black; font-weight: 600">Maklumat Keluarga</h6>

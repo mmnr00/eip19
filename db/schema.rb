@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_18_032519) do
+ActiveRecord::Schema.define(version: 2022_05_23_121657) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -255,6 +255,9 @@ ActiveRecord::Schema.define(version: 2022_05_18_032519) do
     t.string "frelign"
     t.string "mrelign"
     t.string "descr"
+    t.string "curreip"
+    t.string "nmeip"
+    t.string "tmeip"
   end
 
   create_table "ekrps", force: :cascade do |t|

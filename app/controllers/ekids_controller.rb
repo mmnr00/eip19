@@ -109,6 +109,19 @@ class EkidsController < ApplicationController
 		# 	@ekids = Ekid.where(admloc: $admloc[@admin.id],stat: params[:stato]).order('name ASC')
 		# end
 		@ekids = Ekid.all
+		if params[:sch].present?
+			@ekids = @ekids.where(tp: params[:sch_fld]) unless params[:sch_fld].blank?
+			@ekids = @ekids.where('name LIKE ?', "%#{params[:sch_str].upcase}%") unless params[:sch_str].blank?
+			if params[:stat].present?
+				# if params[:stat] == "AKTIF"
+				# 	@ekids = @ekids.where(stat: [nil,""])
+				# else
+				# 	@ekids = @ekids.where.not(stat: [nil,""])
+				# end
+				@ekids = @ekids.where(stat: params[:stat])
+				
+			end
+		end
 		respond_to do |format|
       #format.html
       format.xlsx{
@@ -232,7 +245,7 @@ class EkidsController < ApplicationController
 				Jabatan Anak Istimewa Selangor
 
 				"
-				send_email(subject,to,"intervensianis@gmail.com",body)
+				send_email(subject,to,"intervensianis@gmails.com",body)
 				if @ekid.tp == "SARINGAN ANIS"
 					redirect_to new_pkid_path(ekid: @ekid.id)
 				else
@@ -620,6 +633,9 @@ class EkidsController < ApplicationController
 														    :mrace,
 														    :frelign,
 														    :mrelign,
+														    :curreip,
+														    :nmeip,
+														    :tmeip,
 																fotos_attributes: [:foto, :picture, :foto_name])
 	end
 

@@ -61,19 +61,20 @@
     </tbody>
     <tbody>
       <tr>
-        <td style="background-color:#0070C0 !important" colspan="2"><font color="white"><h4>MAKLUMAT PERKEMBANGAN ANAK</h4></font></td>
+        <td style="background-color:#0070C0 !important" colspan="2"><font color="white"><h4>MAKLUMAT DIAGNOSIS ANAK</h4></font></td>
       </tr>
       <tr>
-        <td style="background-color:#e5e5e5 !important" ><font color="black">ADAKAH ANAK ANDA MEMPEROLEH RUJUKAN PAKAR SEBELUM INI?</font></td>
+        <td style="background-color:#e5e5e5 !important" ><font color="black">ADAKAH ANAK ANDA MEMPUNYAI DIAGNOSIS?</font></td>
         <td style="background-color: !important"><%= @ekid.ref %></td>
       </tr>
+      
       <tr>
-        <td style="background-color:#e5e5e5 !important" ><font color="black">JIKA YA, DIMANAKAH ANAK ANDA DIRUJUK?</font></td>
-        <td style="background-color: !important"><%= @ekid.refloc %></td>
+        <td style="background-color:#e5e5e5 !important" ><font color="black">JIKA YA, NYATAKAN DIAGNOSIS ANAK ANDA</font></td>
+        <td style="background-color: !important"><%= @ekid.prbtp %></td>
       </tr>
       <tr>
-        <td style="background-color:#e5e5e5 !important" ><font color="black">LEWAT PERKEMBANGAN YANG DIALAMI</font></td>
-        <td style="background-color: !important"><%= @ekid.prbtp %></td>
+        <td style="background-color:#e5e5e5 !important" ><font color="black">KLINIK / HOSPITAL YANG MEMBERI DIAGNOSIS</font></td>
+        <td style="background-color: !important"><%= @ekid.refloc %></td>
       </tr>
       <!-- <tr>
         <td style="background-color:#e5e5e5 !important" ><font color="black">Maklumat perkembangan jika lain-lain</font></td>
@@ -88,6 +89,38 @@
         <% end %>
       <% end %>
     </tbody>
+    <% if @ekid.tp == "PRASEKOLAH ANIS" %>
+      <tbody>
+        <tr>
+          <td style="background-color:#0070C0 !important" colspan="2"><font color="white"><h4>MAKLUMAT PUSAT EIP</h4></font></td>
+        </tr>
+        <tr>
+          <td style="background-color:#e5e5e5 !important" ><font color="black">ADAKAH ANAK ANDA PERNAH MENGIKUTI PROGRAM EIP?</font></td>
+          <td style="background-color: !important"><%= @ekid.curreip %></td>
+        </tr>
+        
+        <tr>
+          <td style="background-color:#e5e5e5 !important" ><font color="black">JIKA YA, NYATAKAN NAMA PUSAT EIP</font></td>
+          <td style="background-color: !important"><%= @ekid.nmeip %></td>
+        </tr>
+        <tr>
+          <td style="background-color:#e5e5e5 !important" ><font color="black">TEMPOH MENGIKUTI PROGRAM PUSAT EIP (BULAN)</font></td>
+          <td style="background-color: !important"><%= @ekid.nmeip %></td>
+        </tr>
+        <!-- <tr>
+          <td style="background-color:#e5e5e5 !important" ><font color="black">Maklumat perkembangan jika lain-lain</font></td>
+          <td style="background-color: !important"><%= @ekid.prbot %></td>
+        </tr> -->
+        <% if pk.present? %>
+          <% pk.devkid.each do |k,v| %>
+            <tr>
+              <td style="background-color:#e5e5e5 !important" ><font color="black"><%= k %></font></td>
+              <td style="background-color: !important"><%= v %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    <% end %>
 
     <tbody>
       <tr>

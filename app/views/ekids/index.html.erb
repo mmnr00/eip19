@@ -79,7 +79,7 @@
 
 <!-- TABLE -->
 
-<%= link_to ekidlistxls_path(format: :xlsx), class: "badge badge-info shadow-sm", style: "font-size: 16px; font-weight: normal" do %>
+<%= link_to ekidlistxls_path(format: :xlsx, sch_fld: params[:sch_fld], sch: params[:sch], sch_str: params[:sch_str]), class: "badge badge-info shadow-sm", style: "font-size: 16px; font-weight: normal" do %>
   <i class="fa fa-file-excel"></i> Muat Turun Senarai
 <% end %>
 
@@ -88,7 +88,7 @@
     <div class="row">
       <%= form_tag ekidindex_path, method: :get, id: "find_kid" do %>
         <%= text_field_tag :sch_str, params[:sch_str], placeholder: "Masukkan Nama", style: 'text-transform: uppercase' %>
-        <% select_tag :sch_fld, options_for_select(["SARINGAN ANIS", "TERAPI ANIS"], params[:sch_fld]),
+        <%= select_tag :sch_fld, options_for_select(["INTERVENSI ANIS", "PRASEKOLAH ANIS"], params[:sch_fld]),
               include_blank: "Semua Program" %>
         <%= select_tag :stat, options_for_select(["Permohonan Diterima", "Permohonan Dalam Semakan", "Permohonan Tidak Lengkap","Permohonan Diluluskan", "Permohonan Ditolak"], params[:stat]),
               include_blank: "Semua Status" %>
@@ -115,7 +115,7 @@
         
         <thead>
           <tr class="shadow">
-            <th style="background-color:#ffb2b2; width: 12%">NO SIRI</th>
+            <th style="background-color:#ffb2b2; width: 12%">NO SIRI (JENIS PROGRAM)</th>
             <th style="background-color:#ffb2b2">MAKLUMAT ANAK</th>
             <th style="background-color:#ffb2b2">MAKLUMAT PEMOHON</th>
             <!-- <th style="background-color:#ffb2b2">PROGRAM</th> -->
@@ -128,7 +128,8 @@
           <% @ekids.order('created_at DESC').each do |ek|; perse = ek.perse %>
           <tr>
             <td>
-              <a href="<%= ekidconf_url(id: ek.id)%>" target="_blank">PPN-<%= ek.id.to_s.rjust(4, '0') %></a>
+              <a href="<%= ekidconf_url(id: ek.id)%>" target="_blank">PPN-<%= ek.id.to_s.rjust(4, '0') %></a><br>
+              (<%= ek.tp %>)
               <% if ek.ekrps.count > 0 %>
                 <br>
                 <%= link_to "Lihat Senarai Laporan", ekrpls_path(ekid: ek.id), class: "badge badge-pill badge-success", target: "_blank"%>

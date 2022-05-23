@@ -9,6 +9,10 @@ class WelcomesController < ApplicationController
 		@index = true
 	end
 
+	def senaraipusatterapi
+		@index = true
+	end
+
 
 	def senaraipdk
 		@index = true
