@@ -1,6 +1,11 @@
 class AdminsController < ApplicationController
 	before_action :authenticate_admin!
 
+	def senaraipeserta
+		@index = true
+		@perses = Perse.all
+	end
+
 	def edtddk
 		@ddk = Ddk.find(params[:ddk])
 	end
