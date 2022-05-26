@@ -127,7 +127,7 @@ class DdksController < ApplicationController
 																:statrs,
 																:agtp,
 																:accname,
-																:accnum,
+																:accno,
 																:accbank)
 	end
 
