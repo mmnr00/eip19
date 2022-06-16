@@ -192,7 +192,7 @@ class EkidsController < ApplicationController
 		@ekid = Ekid.new
 		@ekid.fotos.build
 		if params[:sch].present?
-			ekd_exs = Ekid.where(ic: params[:ic])
+			ekd_exs = Ekid.where(ic: params[:ic], tp: params[:prog])
 			if ekd_exs.present?
 				flash[:danger] = "No MYKID #{ekd_exs.last.name} ini sudah didaftarkan oleh #{ekd_exs.last.perse.name}"
 			else
@@ -205,7 +205,7 @@ class EkidsController < ApplicationController
 	def create
 		@ekid = Ekid.new(ekid_params)
 		#double entry
-		if (exs=Ekid.where(ic: @ekid.ic)).present?
+		if (exs=Ekid.where(ic: @ekid.ic, tp: @ekid.tp)).present?
 			flash[:danger] = "NAMA ANAK SUDAH DIDAFTARKAN DALAM SISTEM"
 			redirect_to edit_ekid_path(id: exs.first.id)
 		else
@@ -245,7 +245,7 @@ class EkidsController < ApplicationController
 				Jabatan Anak Istimewa Selangor
 
 				"
-				send_email(subject,to,"intervensianis@gmails.com",body)
+				#send_email(subject,to,"intervensianis@gmails.com",body)
 				if @ekid.tp == "SARINGAN ANIS"
 					redirect_to new_pkid_path(ekid: @ekid.id)
 				else
