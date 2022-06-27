@@ -5,6 +5,10 @@ class WelcomesController < ApplicationController
 	
 	#layout "page"
 
+	def bukuanis
+		@index = true
+	end
+
 	def prasekolahanis
 		@index = true
 	end

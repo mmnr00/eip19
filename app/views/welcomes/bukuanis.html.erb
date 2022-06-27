@@ -1,0 +1,39 @@
+<header class="prog-hd" style="background-image: url(<%= image_path('anisPic/ocean-book.jpeg') %>); background-size: cover; background-position: center; padding-bottom: 0px; margin-bottom: 0px; background-repeat: no-repeat; padding-top: 100px; padding-bottom: 100px">
+
+  <div class="intro-text container" style="">
+    <div class="intro-heading" style="text-align: left" >
+      <h1 style="color: white; font-weight: 550">BUKU ANIS</h1>
+    </div>
+  </div>
+
+</header>
+
+<%
+ book = Artk.first.book
+ cnt = book.count - 1
+ bookrev = book.reverse()
+%>
+
+<section class="bg-white" id="services">
+  <div class="container" style="margin-bottom: 30px">
+    <div class="section-header">
+      <h2>SENARAI PENERBITAN</h2>
+      <p></p>
+    </div>
+
+    <div id="article" class="row">
+
+      <% bookrev.each do |artk| %>
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <a href="https://kidcare.my/anisdocs/anis-book/anis-book-<%= cnt %>.pdf" target="_blank">
+            <img src="https://kidcare.my/anisdocs/anis-book/anis-book-<%= cnt %>.png" width="350" height="235">
+            <p style="font-weight: 700; font-size: 13px; text-align: left"><%= artk %></p>
+          </a>
+        </div>
+
+      <% cnt = cnt -1 ;end %>
+
+      
+    </div> <!-- row -->
+  </div> <!-- container -->
+</section>
