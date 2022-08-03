@@ -155,15 +155,18 @@
         </div>
       </div>
 
-      <% link_to "Semak / Hantar Permohonan", persesch_path(prog: "DIDIK ANIS"), class: "btn btn-sm btn-success btn-block"%>
-      <%= link_to "Permohonan Ditutup", "#", class: "btn btn-sm btn-danger btn-block"%>
+      <% if ENV['DDK_OPEN'] == "TRUE" %>
+        <%= link_to "Semak / Hantar Permohonan", persesch_path(prog: "DIDIK ANIS"), class: "btn btn-sm btn-success btn-block"%>
+      <% else %>
+        <%= link_to "Permohonan Ditutup", "#", class: "btn btn-sm btn-danger btn-block"%>
+      <% end %>
 
       
 
     </div> <!-- COL -->
 
     <div class="col-lg-6 col-md-12">
-      <img src="<%= image_path('anisPic/poster-didik-anis2.jpeg')%>" style="width: 100%; margin-bottom: 10px"></img>
+      <img src="<%= image_path('anisPic/poster-didik-anis3.jpeg')%>" style="width: 100%; margin-bottom: 10px"></img>
       <img src="<%= image_path('anisPic/didik-anis22(2).jpeg')%>" style="width: 100%; margin-bottom: 10px"></img>
       <img src="<%= image_path('anisPic/didik-anis22(3).jpeg')%>" style="width: 100%; margin-bottom: 10px"></img>
       <img src="<%= image_path('anisPic/didik-anis22(4).jpeg')%>" style="width: 100%; margin-bottom: 10px"></img>
