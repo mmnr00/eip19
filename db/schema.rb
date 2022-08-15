@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_27_082718) do
+ActiveRecord::Schema.define(version: 2022_08_15_081520) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -398,6 +398,29 @@ ActiveRecord::Schema.define(version: 2022_06_27_082718) do
     t.integer "payment_id"
     t.integer "parpaym_id"
     t.integer "ekid_id"
+    t.integer "ilsc_id"
+  end
+
+  create_table "ilscs", force: :cascade do |t|
+    t.string "name"
+    t.string "ic"
+    t.string "applnm"
+    t.string "applic"
+    t.string "addr"
+    t.string "ph"
+    t.string "vote"
+    t.string "email"
+    t.string "race"
+    t.string "relg"
+    t.string "oku"
+    t.string "dob"
+    t.string "gender"
+    t.string "diag"
+    t.string "lastsch"
+    t.string "allerg"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "perse_id"
   end
 
   create_table "kid_bills", force: :cascade do |t|
