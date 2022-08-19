@@ -158,6 +158,8 @@ Rails.application.routes.draw do
   get '/showstat', to: 'sces#showstat'
 
   #WELCOME#
+  get '/sediakerja', to: 'welcomes#sediakerja'
+  get '/ilsc', to: 'welcomes#ilsc'
   get '/bukuanis7878768768766787678421', to: 'welcomes#bukuanis'
   get '/senaraipusatterapi', to: 'welcomes#senaraipusatterapi'
   get '/prasekolahanis', to: 'welcomes#prasekolahanis'

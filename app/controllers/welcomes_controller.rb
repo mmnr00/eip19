@@ -5,6 +5,14 @@ class WelcomesController < ApplicationController
 	
 	#layout "page"
 
+	def sediakerja
+		@index = true
+	end
+
+	def ilsc
+		@index = true
+	end
+
 	def bukuanis
 		@index = true
 	end
