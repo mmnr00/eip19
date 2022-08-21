@@ -18,7 +18,7 @@
   <p style="text-align: center; color: black; font-weight: 600">
     Permohonan Program Persediaan Alam Pekerjaan ANIS telah dibuka!
   </p>
-  <p style="text-align: center; color: black">Sila Semak Status Permohanan Pada Butang Di Bawah</p>
+  <p style="text-align: center; color: black"></p>
   <% if 1==0 %>
     <div style="background-color: #6666ff; text-align: center; color: white; margin-bottom: -20px">
       Pendaftaran Untuk Didik ANIS Telah Ditutup. Terima Kasih.
@@ -71,7 +71,7 @@
             <ol>
               <li>Ibubapa perlu mendaftar dan mengisi borang di laman web <a href="https://www.anisselangor.com/sediakerja">https://www.anisselangor.com/sediakerja</a> dan melengkapkan dokumen yang diperlukan</li>
               <li>Permohonan Program Persediaan kearah Kerjaya ini akan diadakan dan dilaksanakan 4 kali setahun mengikut ketetapan Tarikh yang ditetapkan oleh Jabatan ANIS</li>
-              <li>Para Peserta yang layak akan menerima panggilan daripada pihak Jabtana ANIS dan hadir pada hari ProgramKe arah Kerjaya.</li>
+              <li>Para Peserta yang layak akan menerima panggilan daripada pihak Jabtana ANIS dan hadir pada hari program.</li>
                 
             </ol>
           </div>
@@ -114,33 +114,15 @@
         <div class="collapse" id="coll5i">
           <div class="card-body"  style="text-align: justify">
             <ol>
-              <li>Permohonan hendaklah dibuat secara atas talian di laman sesawang <a href="https://www.anisselangor.com/intervensianis">www.anisselangor.com/intervensianis</a></li>
-              <li>Borang permohonan hendaklah dicetak dan dihantar bersama dengan dokumen yang lengkap dalam tempoh 14 hari bekerja dari tarikh permohonan.</li>
-              <li>Penghantaran dokumen yang tidak lengkap akan menyebabkan permohonan tidak akan diproses.</li>
-              <li>Borang permohonan dan dokumen boleh dihantar melalui salah satu kaedah seperti berikut:
-                <ol type="a">
-                  <li>Penghantaran melalui emel di intervensianis@gmail.com ; <b>ATAU</b></li>
-                  <li>Hantar ke pejabat Yayasan Warisan Anak Selangor (YAWAS) di alamat:</li>
-                </ol>
-                <p align="center" style="margin-top: 10px">
-                  <b>Pusat Sokongan Pendidikan Awal ANIS</b><br>
-                  Yayasan Warisan Anak Selangor<br>
-                  Lot G26-G28 Tingkat G, Bangunan IDCC,<br>
-                  Jalan Pahat L 15/L, Seksyen 15, 40200 Shah Alam<br>
-                  Hotline : 03-55453170 (Pusat ANIS)<br> / 03 – 54818800 (YAWAS – HQ)
-              </p>
-              </li>
+              <li>Permohonan hendaklah dibuat secara atas talian di laman sesawang <a href="https://www.anisselangor.com/sediakerja">https://www.anisselangor.com/sediakerja</a></li>
+              <li>Pihak ANIS akan menghubungi peserta untuk menghadiri ke program.</li>
             </ol>
-            <p style="text-align: center">
-              <b>Modus Operandi Permohonan Intervensi ANIS</b>
-              <img src="<%= image_path('https://kidcare.my/anisdocs/intervensi-flow.jpeg')%>" style="width: 100%"></img>
-            </p>
           </div>
         </div>
       </div>
 
-      <%= link_to "Permohonan Baru", persesch_url(prog: "PERSEDIAAN ALAM PEKERJAAN", regkid: 1), class: "btn btn-sm btn-success btn-block"%>
-      <%= link_to "Semak Permohonan", persesch_url(prog: "PERSEDIAAN ALAM PEKERJAAN"), class: "btn btn-sm btn-info btn-block"%>
+      <%= link_to "Klik Disini Untuk Memohon", persesch_url(prog: "PERSEDIAAN ALAM PEKERJAAN", regkid: 1), class: "btn btn-sm btn-success btn-block"%>
+      <% link_to "Semak Permohonan", persesch_url(prog: "PERSEDIAAN ALAM PEKERJAAN"), class: "btn btn-sm btn-info btn-block"%>
 
       <% link_to "Permohonan Baru", persesch_url(prog: "INTERVENSI ANIS", regkid: 1), class: "btn btn-sm btn-success btn-block"%>
       <% link_to "Semak Permohonan", persesch_url(prog: "INTERVENSI ANIS"), class: "btn btn-sm btn-info btn-block"%>

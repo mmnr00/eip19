@@ -35,6 +35,9 @@ Rails.application.routes.draw do
   devise_for :owners#, :controllers => { :passwords => 'passwords' }
 	root 'welcomes#index2'
 
+  #~~ILSC
+  get '/ilsc_list', to: 'ilscs#ilsc_list'
+
   #~~QSAS
   get '/admqsa', to: 'qsas#admqsa'
 
