@@ -71,7 +71,16 @@ class PersesController < ApplicationController
 					else
 						redirect_to ekid_list_path(perse: @perse.id)
 					end
+			
+
+				elsif prog == "PERSEDIAAN ALAM PEKERJAAN" 
+					if params[:perse][:regkid].present?
+						redirect_to new_ekid_path(perse: @perse.id, prog: prog)
+					else
+						redirect_to ekid_list_path(perse: @perse.id)
+					end
 				end
+			
 
 			else
 				redirect_to perse_path(id: @perse.id, flg: true)
@@ -140,6 +149,12 @@ class PersesController < ApplicationController
 							elsif params[:prog] == "SARINGAN ANIS" || params[:prog] == "TERAPI ANIS" || params[:prog] == "INTERVENSI ANIS" || params[:prog] == "PRASEKOLAH ANIS"
 								if params[:regkid].present?
 									redirect_to new_ekid_path(perse: perse.id, prog: params[:prog])
+								else
+									redirect_to ekid_list_path(perse: perse.id)
+								end
+							elsif params[:prog] == "PERSEDIAAN ALAM PEKERJAAN" 
+								if params[:regkid].present?
+									redirect_to new_ilsc_path(perse: perse.id, prog: params[:prog])
 								else
 									redirect_to ekid_list_path(perse: perse.id)
 								end

@@ -1,0 +1,61 @@
+<div class='row'>
+  <div class='col-lg-12 col-12'>
+    <%= form_for(@ilsc,:html => {multipart: true, class: "form-horizontal", role: "form"}) do |f| %>
+
+      <div class="col-sm-8" style="background-color:#ffcccc">
+        <h6 style="color:black; font-weight: 600">Maklumat Anak</h6>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>NAMA ANAK</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.text_field :name, class: "form-control", placeholder: "Nama Penuh Seperti MyKid", autofocus: true, required: true, style: "text-transform: uppercase" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>NO MYKID</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <% 
+              if @ilsc.ic.present?
+                icval = @ilsc.ic
+              else
+                icval = params[:ic]
+              end 
+            %>
+            <%= f.text_field :ic, class: "form-control", placeholder: "cth: 141201035647 (tiada dash)", autofocus: true, required: true, value: icval, readonly: true %>
+          </div>
+        </div>
+      </div>
+
+      <%= f.hidden_field :tp, value: params[:prog] %>
+      <%= f.hidden_field :perse_id, value: params[:perse] %>
+
+
+      <br>
+<!-- SUBMIT BUTTON -->
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-offset-2 col-sm-10 col-4">
+            <%= f.submit :"TERUSKAN",  class: 'btn btn-primary btn-lg' %>
+          </div>
+        </div>
+      </div>
+      
+    <% end %>
+
+  </div>
+</div>
+
+<br><br><br><br><br>
