@@ -2,6 +2,30 @@ class IlscsController < ApplicationController
 	before_action :authenticate_admin!, only: [:index,:ekidlistxls]
 	before_action :set_all
 
+	def ilsc_conf
+		@ilsc = Ilsc.find(params[:id])
+		@perse = @ilsc.perse
+		@diff = (Date.today.year*12+Date.today.month) - (@ilsc.dobn.year*12+@ilsc.dobn.month)
+		@year = @diff/12
+		@month = @diff - @year*12
+	end
+
+	def edit
+		@ilsc = Ilsc.find(params[:id])
+		@perse = Perse.find(params[:perse])
+	end
+
+	def update
+		@ilsc = Ilsc.find(params[:id])
+		if @ilsc.update(ilsc_params)
+			@ilsc.save
+			redirect_to ilsc_list_path(perse: @ilsc.perse.id)
+		else
+			render @ekid.errors.full_messages
+			render :edit
+		end
+	end
+
 	def ilsc_list
 		@perse = Perse.find(params[:perse])
 		@ilscs = @perse.ilscs
@@ -32,7 +56,7 @@ class IlscsController < ApplicationController
 		else
 			if @ilsc.save 
 				flash[:success] = "Pendaftaran Diterima. Pihak ANIS akan menghubungi anda jika permohonan diluluskan"
-
+				redirect_to ilsc_list_path(perse: @ilsc.perse.id)
 			else
 				render @ilsc.errors.full_messages
 				render :new
@@ -54,7 +78,7 @@ class IlscsController < ApplicationController
 																:race,
 																:relg,
 																:oku,
-																:dob,
+																:dobn,
 																:gender,
 																:diag,
 																:lastsch,

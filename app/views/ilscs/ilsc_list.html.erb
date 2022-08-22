@@ -2,8 +2,8 @@
 
 
 &nbsp
-<% link_to new_ekid_path(prog: "INTERVENSI ANIS", perse: params[:perse]), class: "btn btn-sm btn-primary", style: "font-size: 15px" do %>
-  <i class="fa far fa-plus"></i>&nbsp Daftar Intervensi ANIS
+<%= link_to new_ilsc_path(prog: "PERSEDIAAN ALAM PEKERJAAN", perse: params[:perse]), class: "btn btn-sm btn-primary", style: "font-size: 15px" do %>
+  <i class="fa far fa-plus"></i>&nbsp Daftar Program Persediaan Alam Pekerjaan
 <% end %> &nbsp
 <% link_to new_ekid_path(prog: "PRASEKOLAH ANIS", perse: params[:perse]), class: "btn btn-sm btn-success", style: "font-size: 15px" do %>
   <i class="fa far fa-plus"></i>&nbsp Daftar Prasekolah ANIS
@@ -26,23 +26,37 @@
       <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0" style="color: black">
         <thead>
           <tr class="shadow">
-            <th style="background-color:#ffb2b2; width: %">NAMA</th>
-            <th style="background-color:#ffb2b2; width: %">NO MYKAD</th>
+            <th style="background-color:#ffb2b2; width: %">NO</th>
+            <th style="background-color:#ffb2b2; width: %">MAKLUMAT PESERTA</th>
+            <th style="background-color:#ffb2b2; width: %">MAKLUMAT PEMOHON</th>
             <th style="background-color:#ffb2b2; width: %">PROGRAM</th>
-            <th style="background-color:#ffb2b2; width: %">STATUS PERMOHONAN</th>
+            <th style="background-color:#ffb2b2; width: %">TARIKH PERMOHONAN</th>
           </tr>
         </thead>
         <tbody>
-          <% @ilscs.each do |ek| %>
+          <% cnt = 1; @ilscs.order('created_at DESC').each do |ek|; perse = ek.perse %>
+          <%
+            diff = (Date.today.year*12+Date.today.month) - (ek.dobn.year*12+ek.dobn.month)
+            year = diff/12
+            month = diff - year*12 
+          %>
             <tr>
+              <td><%= cnt %></td>
               <td>
-                <a href="<%= ekidconf_url(id: ek)%>" target="_blank"><%= ek.name %></a><br>
-                <%= link_to "Kemaskini Profil", edit_ekid_path(id: ek.id, perse: ek.perse.id), class: "badge badge-pill badge-secondary", target: "_blank" %> 
+                <a href="<%= ilsc_conf_url(id: ek)%>" target="_blank"><%= ek.name %></a><br>
+                <%= ek.ic %><br>
+                <%= "#{year} Tahun, #{month} Bulan" %><br>
+                <%= link_to "Kemaskini Profil", edit_ilsc_path(id: ek.id, perse: ek.perse.id, prog: ek.tp), class: "badge badge-pill badge-secondary", target: "" %> 
               </td>
-              <td><%= ek.ic %></td>
+              <td>
+                <b><%= perse.name %></b><br>
+                <%= perse.ph %><br>
+                <%= perse.email %><br>
+              </td>
               <td><%= ek.tp %></td>
+              <td><%= ek.created_at.strftime('%d-%^b-%y') %></td>
             </tr>
-          <% end %> 
+          <% cnt = cnt +1 ; end %> 
         </tbody>
       </table>
 

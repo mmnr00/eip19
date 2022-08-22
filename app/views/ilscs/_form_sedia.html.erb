@@ -169,7 +169,7 @@
         </div>
         <div class="row">
           <div class="col-sm-8 col-12">
-            <%= f.date_field :dob, class: "form-control", placeholder: "", autofocus: true, required: true, style: "text-transform: uppercase" %>
+            <%= f.date_field :dobn, class: "form-control", placeholder: "", autofocus: true, required: true, style: "text-transform: uppercase" %>
           </div>
         </div>
       </div>
@@ -182,7 +182,10 @@
         </div>
         <div class="row">
           <div class="col-sm-8 col-12">
-            <%= f.text_field :gender, class: "form-control", placeholder: "", autofocus: true, required: true, style: "text-transform: uppercase" %>
+            <%= f.select :gender, options_for_select(["Lelaki", 
+                                                  "Perempuan"], 
+                                                  selected: @ilsc.gender), 
+            {include_blank: "SILA PILIH"}, {required: true} %>
           </div>
         </div>
       </div>

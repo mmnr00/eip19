@@ -1,0 +1,75 @@
+<div class="table-responsive">
+  <table class="table table-bordered" width="100%" cellspacing="0" style="color: black;borders: 2px solid black">
+
+    <tbody>
+      <tr style="borders: 1.5px solid black">
+        <td style="background-color:#0070C0 !important" colspan="2"><strong><font color="white"><h3 align="center"><%= @ilsc.name.upcase %> (ID: <%= @ilsc.id %>)</h3></font></strong></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">NO MYKAD</font></td>
+        <td style="background-color: !important"><%= "#{@ilsc.ic}" %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">NO KAD OKU</font></td>
+        <td style="background-color: !important"><%= "#{@ilsc.oku}" %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">UMUR</font></td>
+        <td style="background-color: !important"><%= "#{@year} Tahun, #{@month} Bulan" %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">JANTINA</font></td>
+        <td style="background-color: !important"><%= "#{@ilsc.gender}" %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">DIAGNOSIS</font></td>
+        <td style="background-color: !important"><%= "#{@ilsc.diag}" %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">NAMA SEKOLAH TERAKHIR</font></td>
+        <td style="background-color: !important"><%= "#{@ilsc.lastsch}" %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">ALAHAN</font></td>
+        <td style="background-color: !important"><%= "#{@ilsc.allerg}" %></td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr>
+        <td style="background-color:#d29494 !important" colspan="2"><font color="white"><h5>MAKLUMAT IBU/BAPA/PENJAGA</h5></font></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">NAMA</font></td>
+        <td style="background-color: !important"><%= @perse.name %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">NO MYKAD</font></td>
+        <td style="background-color: !important"><%= @perse.ic %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">NO TELEFON</font></td>
+        <td style="background-color: !important"><%= @perse.ph %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">EMAIL</font></td>
+        <td style="background-color: !important"><%= @perse.email %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">ALAMAT</font></td>
+        <td style="background-color: !important"><%= @perse.add %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">DUN</font></td>
+        <td style="background-color: !important"><%= @perse.dun %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">BANGSA</font></td>
+        <td style="background-color: !important"><%= @perse.race %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">AGAMA</font></td>
+        <td style="background-color: !important"><%= @ilsc.relg %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
