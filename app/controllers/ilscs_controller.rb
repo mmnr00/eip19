@@ -1,6 +1,26 @@
 class IlscsController < ApplicationController
-	before_action :authenticate_admin!, only: [:index,:ekidlistxls]
+	before_action :authenticate_admin!, only: [:ilscindex,:ekidlistxls]
 	before_action :set_all
+
+	def ilscindex
+		@admin = current_admin
+		@ilscs = Ilsc.all
+		@ekids = Ekid.all
+		if params[:sch].present?
+			@ilscs  = @ilscs.where(tp: params[:sch_fld]) unless params[:sch_fld].blank?
+			@ilscs  = @ilscs.where('name LIKE ?', "%#{params[:sch_str].upcase}%") unless params[:sch_str].blank?
+			# if params[:stat].present?
+			# 	# if params[:stat] == "AKTIF"
+			# 	# 	@ekids = @ekids.where(stat: [nil,""])
+			# 	# else
+			# 	# 	@ekids = @ekids.where.not(stat: [nil,""])
+			# 	# end
+			# 	@ekids = @ekids.where(stat: params[:stat])
+				
+			# end
+		end
+		@ddk = Ddk.all
+	end
 
 	def ilsc_conf
 		@ilsc = Ilsc.find(params[:id])

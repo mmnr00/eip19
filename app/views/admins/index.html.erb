@@ -9,7 +9,7 @@
 
 <section id="services"><div class="row" style="margin-top: -20px">
 
-  <div class="col-lg-3 col-md-6 col-12">
+  <div class="col-lg-2 col-md-6 col-12">
     <div class="box wow fadeInLeft">
       <div style="text-align: center">
       <img src="<%= image_path('anisPic/bk-anis-hp.png') %>" width="100" height="80">
@@ -34,7 +34,7 @@
     </div>
   </div>
 
-  <div class="col-lg-3 col-md-6 col-12">
+  <div class="col-lg-2 col-md-6 col-12">
     <div class="box wow fadeInLeft">
       <div style="text-align: center">
       <img src="<%= image_path('anisPic/didik-anis-hp.png') %>" width="100" height="80">
@@ -56,7 +56,7 @@
     </div>
   </div>
 
-  <div class="col-lg-3 col-md-6 col-12">
+  <div class="col-lg-2 col-md-6 col-12">
     <div class="box wow fadeInLeft">
       <div style="text-align: center">
       <img src="<%= image_path('anisPic/aka-anis-hp.png') %>" width="100" height="80">
@@ -81,10 +81,10 @@
     </div>
   </div>
 
-  <div class="col-lg-3 col-md-6 col-12">
+  <div class="col-lg-2 col-md-6 col-12">
     <div class="box wow fadeInLeft">
       <div style="text-align: center">
-      <img src="<%= image_path('anisPic/cikgu-anis-hp.png') %>" width="100" height="80">
+      <img src="<%= image_path('anislogo1.png') %>" width="100" height="80">
       </div>
       <h5 style="color: black; padding-top: 10px; text-align: center; margin-bottom: 0px">Pusat ANIS</h5>
       <% if 1==0 %>
@@ -101,6 +101,30 @@
       
       <p style="font-size: 20px; text-align: center">
         <%= link_to "Semak", ekidindex_path, class: "badge badge-info"%>
+      </p>
+    </div>
+  </div>
+
+  <div class="col-lg-2 col-md-6 col-12">
+    <div class="box wow fadeInLeft">
+      <div style="text-align: center">
+      <img src="<%= image_path('anislogo1.png') %>" width="100" height="80">
+      </div>
+      <h5 style="color: black; padding-top: 10px; text-align: center; margin-bottom: 0px">ILSC</h5>
+      <% if 1==0 %>
+        <p style="font-size: 12px; text-align: center; color: red">
+          <i><b><%= @ddk.where(stat: 1).count %></b> Permohonan Baru</i>
+        </p>
+      <% else;
+          a = 5
+       %>
+        <p style="font-size: 12px; text-align: center; color: green">
+          <!-- <i>Akan Datang</i> -->
+        </p>
+      <% end %>
+      
+      <p style="font-size: 20px; text-align: center">
+        <%= link_to "Semak", ilscindex_path, class: "badge badge-info"%>
       </p>
     </div>
   </div>
