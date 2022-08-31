@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   get '/ilsc_list', to: 'ilscs#ilsc_list'
   get '/ilsc_conf', to: 'ilscs#ilsc_conf'
   get '/ilscindex', to: 'ilscs#ilscindex'
+  get '/ilsclistxls', to: 'ilscs#ilsclistxls'
 
   #~~QSAS
   get '/admqsa', to: 'qsas#admqsa'

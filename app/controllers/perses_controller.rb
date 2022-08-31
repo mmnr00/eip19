@@ -152,7 +152,7 @@ class PersesController < ApplicationController
 								else
 									redirect_to ekid_list_path(perse: perse.id)
 								end
-							elsif params[:prog] == "PERSEDIAAN ALAM PEKERJAAN" 
+							elsif params[:prog] == "PERSEDIAAN ALAM PEKERJAAN" || params[:prog] == "TRANSISI PEKERJAAN" 
 								if params[:regkid].present?
 									redirect_to new_ilsc_path(perse: perse.id, prog: params[:prog])
 								else

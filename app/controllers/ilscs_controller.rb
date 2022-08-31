@@ -1,6 +1,35 @@
 class IlscsController < ApplicationController
-	before_action :authenticate_admin!, only: [:ilscindex,:ekidlistxls]
+	before_action :authenticate_admin!, only: [:ilscindex,:ilsclistxls]
 	before_action :set_all
+
+	def ilsclistxls
+		@admin = current_admin
+		# if params[:sce].present?
+		# 	@ekids = Ekid.where(sce_id: params[:sce]).order('name ASC')
+		# else
+		# 	@ekids = Ekid.where(admloc: $admloc[@admin.id],stat: params[:stato]).order('name ASC')
+		# end
+		@ilscs = Ilsc.all
+		if params[:sch].present?
+			@ilscs = @ilscs.where(tp: params[:sch_fld]) unless params[:sch_fld].blank?
+			@ilscs= @ilscs.where('name LIKE ?', "%#{params[:sch_str].upcase}%") unless params[:sch_str].blank?
+			# if params[:stat].present?
+			# 	if params[:stat] == "AKTIF"
+			# 		@ekids = @ekids.where(stat: [nil,""])
+			# 	else
+			# 	 	@ekids = @ekids.where.not(stat: [nil,""])
+			# 	end
+			# 	@ilscs = @ilscs.where(stat: params[:stat])
+				
+			# end
+		end
+		respond_to do |format|
+      #format.html
+      format.xlsx{
+                  response.headers['Content-Disposition'] = 'attachment; filename="ILSC List.xlsx"'
+      }
+    end
+	end
 
 	def ilscindex
 		@admin = current_admin

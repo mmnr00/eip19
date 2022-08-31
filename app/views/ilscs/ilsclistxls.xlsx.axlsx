@@ -1,0 +1,80 @@
+wb = xlsx_package.workbook
+col_widths= [5,35,40,15,15,24,33,20,20,20,20,20,20,20,20,20,40]
+wb.styles do |style|
+  header_1 = style.add_style(sz: 20, b: true)
+  dlt_cell = style.add_style(bg_color: "FF0000",
+                            b: true,
+                            fg_color: "FFFFFF",
+                            sz: 13,
+                            alignment: { horizontal: :center })
+  inp_cell = style.add_style(bg_color: "3232ff",
+                            b: true,
+                            fg_color: "FFFFFF",
+                            sz: 13,
+                            alignment: { horizontal: :center })
+  highlight_cell = style.add_style(bg_color: "EFC376",
+                                  b: true,
+                                  border: Axlsx::STYLE_THIN_BORDER,
+                                  sz: 15,
+                                   alignment: { horizontal: :center })
+  border_cell = style.add_style(border: Axlsx::STYLE_THIN_BORDER) 
+  border_cell_eg = style.add_style(border: Axlsx::STYLE_THIN_BORDER,
+                                  bg_color: "cce5cc",
+                                  i: true)       
+  wb.add_worksheet(name: "NAMELIST") do |sheet|
+    sheet.add_row ["","SENARAI NAMA ILSC (#{@ilscs.count})"]
+    sheet.add_row [""]
+    sheet.add_row ["NO",
+                  "NAMA PESERTA",
+                  "NO MYKAD PESERTA",
+                  "T/LAHIR",
+                  "UMUR",
+                  "NAMA PEMOHON",
+                  "NO MYKAD PEMOHON",
+                  "EMAIL PEMOHON",
+                  "PROGRAM",
+                  "TARIKH"]
+    sheet.rows[0].style = header_1
+    sheet.rows[2].style = highlight_cell
+    counter = 1
+    row =2
+    @ilscs.each do |ek|
+      prs = ek.perse
+      diff =(Date.today.year*12+Date.today.month) - (ek.dobn.year*12+ek.dobn.month)
+      year = diff/12
+      mth = diff - year*12
+      if 1==1
+        sheet.add_row [counter, 
+                      ek.name,
+                      "'#{ek.ic}",
+                      ek.dobn.strftime('%d-%^b-%y'),
+                      "#{year}  tahun, #{mth} bulan",
+                      prs.name,
+                      "'#{prs.ic}",
+                      prs.email,
+                      ek.tp,
+                      ek.created_at.strftime('%d-%^b-%y')
+                      ], style: [nil, border_cell]
+        sheet.rows[row+counter].style = border_cell
+        counter = counter +1
+      end
+    end
+
+   sheet.column_widths *col_widths 
+  end
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

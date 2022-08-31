@@ -1,7 +1,7 @@
 <meta name="viewport" content="width=1024">
 <ol class="breadcrumb">
   <li class="breadcrumb-item">
-    Paparan Admin <b>Pusat ANIS</b></b>
+    Paparan Admin <b>ILSC</b></b>
   </li>
 </ol>
 
@@ -79,20 +79,17 @@
 
 <!-- TABLE -->
 
-<% link_to ekidlistxls_path(format: :xlsx, sch_fld: params[:sch_fld], sch: params[:sch], sch_str: params[:sch_str]), class: "badge badge-info shadow-sm", style: "font-size: 16px; font-weight: normal" do %>
+<%= link_to ilsclistxls_path(format: :xlsx, sch_fld: params[:sch_fld], sch: params[:sch], sch_str: params[:sch_str]), class: "badge badge-info shadow-sm", style: "font-size: 16px; font-weight: normal" do %>
   <i class="fa fa-file-excel"></i> Muat Turun Senarai
 <% end %>
 
-<%= link_to "#", class: "badge badge-info shadow-sm", style: "font-size: 16px; font-weight: normal" do %>
-  <i class="fa fa-file-excel"></i> Muat Turun Senarai
-<% end %>
 
 <div class="cards shadow mb-4">
   <div class="card-header">
     <div class="row">
       <%= form_tag ilscindex_path, method: :get, id: "find_kid" do %>
         <%= text_field_tag :sch_str, params[:sch_str], placeholder: "Masukkan Nama", style: 'text-transform: uppercase' %>
-        <%= select_tag :sch_fld, options_for_select(["PERSEDIAAN ALAM PEKERJAAN", "TRANSISI KERJAYA"], params[:sch_fld]),
+        <%= select_tag :sch_fld, options_for_select(["PERSEDIAAN ALAM PEKERJAAN", "TRANSISI PEKERJAAN"], params[:sch_fld]),
               include_blank: "Semua Program" %>
         <% select_tag :stat, options_for_select(["Permohonan Diterima", "Permohonan Dalam Semakan", "Permohonan Tidak Lengkap","Permohonan Diluluskan", "Permohonan Ditolak"], params[:stat]),
               include_blank: "Semua Status" %>
@@ -119,11 +116,11 @@
         
         <thead>
           <tr class="shadow">
-            <th style="background-color:#ffb2b2; width: 12%">NO</th>
-            <th style="background-color:#ffb2b2">MAKLUMAT ANAK</th>
-            <th style="background-color:#ffb2b2">MAKLUMAT PEMOHON</th>
-            <!-- <th style="background-color:#ffb2b2">PROGRAM</th> -->
-            <th style="background-color:#ffb2b2; width: 30%">UMUR</th>
+            <th style="background-color:#ffb2b2; width: 1%">NO</th>
+            <th style="background-color:#ffb2b2; width: 20%">MAKLUMAT PESERTA</th>
+            <th style="background-color:#ffb2b2; width: 20%">MAKLUMAT PEMOHON</th>
+            <th style="background-color:#ffb2b2">PROGRAM</th>
+            <th style="background-color:#ffb2b2; width: 15%">UMUR</th>
             <th style="background-color:#ffb2b2; width: 20%">TARIKH</th>
           </tr>
         </thead>
@@ -154,7 +151,7 @@
               <%= perse.ph %><br>
               <%= perse.email %><br>
             </td>
-            
+            <td><%= ek.tp %></td>
             <td>
               <%
                 age = (Date.today.year*12+Date.today.month) - (ek.dobn.year*12+ek.dobn.month)
@@ -162,7 +159,7 @@
                 mth = age - yr*12
         
               %>
-              <b>Umur: </b><%= "#{yr} tahun, #{mth} bulan" %>
+              <%= "#{yr} tahun, #{mth} bulan" %>
             </td>
             
 
