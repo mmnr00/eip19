@@ -5,11 +5,15 @@ class WelcomesController < ApplicationController
 	
 	#layout "page"
 
+	def transisikerja
+		@index = true
+	end 
+
 	def sediakerja
 		@index = true
 	end
 
-	def ilsc
+	def ilscanis
 		@index = true
 	end
 
