@@ -96,6 +96,8 @@ class IlscsController < ApplicationController
 	
 	end
 
+	
+
 	def create
 		@ilsc = Ilsc.new(ilsc_params)
 		#double entry
@@ -103,9 +105,16 @@ class IlscsController < ApplicationController
 			flash[:danger] = "NAMA ANAK SUDAH DIDAFTARKAN DALAM SISTEM"
 			redirect_to edit_ekid_path(id: exs.first.id)
 		else
+			
+			params[:ilsc][:schi].each do |k,v|
+				@ilsc.schi[k] = [v["sek"],v["tahun"],v["keluar"],v["pencapaian"]]
+			end
+			
 			if @ilsc.save 
+				
+
 				flash[:success] = "Pendaftaran Diterima. Pihak ANIS akan menghubungi anda jika permohonan diluluskan"
-				redirect_to ilsc_list_path(perse: @ilsc.perse.id)
+				#redirect_to ilsc_list_path(perse: @ilsc.perse.id)
 			else
 				render @ilsc.errors.full_messages
 				render :new
