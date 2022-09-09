@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_08_122647) do
+ActiveRecord::Schema.define(version: 2022_09_09_000436) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -424,6 +424,8 @@ ActiveRecord::Schema.define(version: 2022_09_08_122647) do
     t.string "tp"
     t.date "dobn"
     t.text "schi"
+    t.text "crls"
+    t.text "sbls"
   end
 
   create_table "kid_bills", force: :cascade do |t|

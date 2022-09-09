@@ -192,21 +192,25 @@
             </tr>
           </thead>
           <tbody style="color: black">
-            <% (0..5).each do |n| %>
+            <%= f.fields_for :schi do |h| %>
+            <% (1..5).each do |n| %>
+            <%= h.fields_for :"#{n}" do |g| %>
               <tr>
                 <td>
-                  <%= f.text_field :name, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px" %>
+                  <%= g.text_field :"sek", class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px" %>
                 </td>
                 <td>
-                  <%= f.text_field :name, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px" %>
+                  <%= g.text_field :"tahun", class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px" %>
                 </td>
                 <td>
-                  <%= f.text_field :name, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px" %>
+                  <%= g.text_field :"keluar", class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px" %>
                 </td>
                 <td>
-                  <%= f.text_field :name, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px" %>
+                  <%= g.text_field :"pencapaian", class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px" %>
                 </td>
               </tr>
+            <% end %>
+            <% end %>
             <% end %>
                    
           </tbody>
@@ -226,18 +230,22 @@
             </tr>
           </thead>
           <tbody style="color: black">
-            <% (0..5).each do |n| %>
+            <%= f.fields_for :crls do |h| %>
+            <% (1..5).each do |n| %>
+            <%= h.fields_for :"#{n}" do |g| %>
               <tr>
                 <td>
-                  <%= f.text_field :name, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px" %>
+                  <%= g.text_field :nmcr, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px" %>
                 </td>
                 <td>
-                  <%= f.text_field :name, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px" %>
+                  <%= g.text_field :ven, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px" %>
                 </td>
                 <td>
-                  <%= f.text_field :name, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px" %>
+                  <%= g.text_field :prd, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px" %>
                 </td>
               </tr>
+            <% end %>
+            <% end %>
             <% end %>
                    
           </tbody>
@@ -259,24 +267,29 @@
             </tr>
           </thead>
           <tbody style="color: black">
-            <% (0..10).each do |n| %>
+            <%= f.fields_for :sbls do |h| %>
+            <% (1..10).each do |n| %>
+            <%= h.fields_for :"#{n}" do |g| %>
+            
               <tr>
                 <td>
-                  <%= f.text_field :name, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px" %>
+                  <%= g.text_field :nmsb, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px" %>
                 </td>
                 <td>
-                  <%= f.text_field :name, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px" %>
+                  <%= g.text_field :age, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px" %>
                 </td>
                 <td>
-                  <%= f.text_field :name, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px" %>
+                  <%= g.text_field :skjb, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px" %>
                 </td>
                 <td>
-                  <%= f.text_field :name, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px" %>
+                  <%= g.text_field :sbph, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px" %>
                 </td>
                 <td>
-                  <%= f.text_field :name, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px" %>
+                  <%= g.text_field :thp, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px" %>
                 </td>
               </tr>
+            <% end %>
+            <% end %>
             <% end %>
                    
           </tbody>

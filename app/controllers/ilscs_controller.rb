@@ -109,7 +109,15 @@ class IlscsController < ApplicationController
 			params[:ilsc][:schi].each do |k,v|
 				@ilsc.schi[k] = [v["sek"],v["tahun"],v["keluar"],v["pencapaian"]]
 			end
-			
+
+			params[:ilsc][:crls].each do |k,v|
+				@ilsc.crls[k] = [v["nmcr"],v["ven"],v["prd"]]
+			end
+
+			params[:ilsc][:sbls].each do |k,v|
+				@ilsc.sbls[k] = [v["nmsb"],v["age"],v["skjb"],v["sbph"],v["thp"]]
+			end
+
 			if @ilsc.save 
 				
 
