@@ -5,8 +5,12 @@
   <div class='col-lg-12 col-12'>
     <%= form_for(@ilsc,:html => {multipart: true, class: "form-horizontal", role: "form"}) do |f| %>
 
-      
-    <div class="form-group"> 
+      <!-- BAHAGIAN A -->
+      <div class="col-sm-12" style="background-color:#ffcccc">
+        <h4 style="color:black; font-weight: 600">Bahagian A</h4>
+      </div>
+
+      <div class="form-group"> 
         <div class="row">
           <div class="control-label col-sm-8">
             <strong>NAMA</strong>
@@ -18,92 +22,193 @@
           </div>
         </div>
       </div>
-      <b><u>MAKLUMAT KURSUS YANG PERNAH DIHADIRI</u></b>
 
-      <div class="table-responsive border" style="font-size: 12px">
-        <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0">
-          <thead style="text-align: center">
-            <tr class="shadow">
-              <th style="background-color:#7fbf7f;color:black">NAMA KURSUS</th>
-              <th style="background-color:#7fbf7f;color:black">TEMPAT</th>
-              <th style="background-color:#7fbf7f;color:black">TEMPOH</th>
-            </tr>
-          </thead>
-          <tbody style="color: black">
-            <%= f.fields_for :crls do |h| %>
-            <% (1..5).each do |n| %>
-            <%= h.fields_for :"#{n}" do |g| %>
-              <tr>
-                <td>
-                  <%= g.text_field :nmcr, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px" %>
-                </td>
-                <td>
-                  <%= g.text_field :ven, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px" %>
-                </td>
-                <td>
-                  <%= g.text_field :prd, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px" %>
-                </td>
-              </tr>
-            <% end %>
-            <% end %>
-            <% end %>
-                   
-          </tbody>
 
-        </table>
-      </div> <!-- DIV TABLE -->
+       <!-- BAHAGIAN C -->
+      <div class="col-sm-12" style="background-color:#ffcccc">
+        <h4 style="color:black; font-weight: 600">Bahagian D</h4>
+      </div>
 
-      <b><u>MAKLUMAT ADIK BERADIK</u></b>
+      <u><h6 style="color:black; font-weight: 300">Dokumen Yang Diperlukan</h6></u>
 
-      <div class="table-responsive border" style="font-size: 12px">
-        <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0">
-          <thead style="text-align: center">
-            <tr class="shadow">
-              <th style="background-color:#7fbf7f;color:black; width: 35%">NAMA</th>
-              <th style="background-color:#7fbf7f;color:black">UMUR</th>
-              <th style="background-color:#7fbf7f;color:black">PERSEKOLAHAN/PERKERJAAN</th>
-              <th style="background-color:#7fbf7f;color:black">NO TELEFON</th>
-              <th style="background-color:#7fbf7f;color:black">TAHAP</th>
-            </tr>
-          </thead>
-          <tbody style="color: black">
-            <%= f.fields_for :sbls do |h| %>
-            <% (1..10).each do |n| %>
-            <%= h.fields_for :"#{n}" do |g| %>
-            
-              <tr>
-                <td>
-                  <%= g.text_field :nmsb, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px" %>
-                </td>
-                <td>
-                  <%= g.text_field :age, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px" %>
-                </td>
-                <td>
-                  <%= g.text_field :skjb, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px" %>
-                </td>
-                <td>
-                  <%= g.text_field :sbph, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px" %>
-                </td>
-                <td>
-                  <%= g.text_field :thp, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px" %>
-                </td>
-              </tr>
+      
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <i class="fas fa-cloud-upload-alt"></i><strong>MYKAD BAPA</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <% image = @ilsc.fotos.where(foto_name: "MYKAD BAPA").first %>
+            <%  if image.present? %>
+              <%= image_tag(image.picture.url, size: "200x200") if image.picture? %>
+              <div class="row">
+                <div class="col-sm-8 col-5">
+                  <strong><%= link_to "EDIT", edit_foto_path(image.id), class: "btn btn-sm btn-success active" %></strong>
+                </div>
+              </div>  
+            <% else %>
+              <%= f.fields_for :fotos do |h| %>
+                <div class="row">
+                  <div class="col-sm-8 col-8">
+                    <%= h.hidden_field :foto_name, value: "MYKAD BAPA" %>
+                    <%= h.file_field :picture, accept: 'image/jpeg,image/gif,image/png,application/pdf', required: true %>
+                  </div>
+                </div>
+              <% end %>
             <% end %>
-            <% end %>
-            <% end %>
-                   
-          </tbody>
+          </div>
+        </div>
+        <i>Wajib Disertakan</i>
+      </div>
 
-        </table>
-      </div> <!-- DIV TABLE -->
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <i class="fas fa-cloud-upload-alt"></i><strong>MYKAD IBU</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <% image = @ilsc.fotos.where(foto_name: "MYKAD IBU").first %>
+            <%  if image.present? %>
+              <%= image_tag(image.picture.url, size: "200x200") if image.picture? %>
+              <div class="row">
+                <div class="col-sm-8 col-5">
+                  <strong><%= link_to "EDIT", edit_foto_path(image.id), class: "btn btn-sm btn-success active" %></strong>
+                </div>
+              </div>  
+            <% else %>
+              <%= f.fields_for :fotos do |h| %>
+                <div class="row">
+                  <div class="col-sm-8 col-8">
+                    <%= h.hidden_field :foto_name, value: "MYKAD IBU" %>
+                    <%= h.file_field :picture, accept: 'image/jpeg,image/gif,image/png,application/pdf', required: true %>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <i>Wajib Disertakan</i>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <i class="fas fa-cloud-upload-alt"></i><strong>MYKAD ANAK</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <% image = @ilsc.fotos.where(foto_name: "MYKAD ANAK").first %>
+            <%  if image.present? %>
+              <%= image_tag(image.picture.url, size: "200x200") if image.picture? %>
+              <div class="row">
+                <div class="col-sm-8 col-5">
+                  <strong><%= link_to "EDIT", edit_foto_path(image.id), class: "btn btn-sm btn-success active" %></strong>
+                </div>
+              </div>  
+            <% else %>
+              <%= f.fields_for :fotos do |h| %>
+                <div class="row">
+                  <div class="col-sm-8 col-8">
+                    <%= h.hidden_field :foto_name, value: "MYKAD ANAK" %>
+                    <%= h.file_field :picture, accept: 'image/jpeg,image/gif,image/png,application/pdf', required: true %>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <i>Wajib Disertakan</i>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <i class="fas fa-cloud-upload-alt"></i><strong>SLIP MENGUNDI IBU/BAPA</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <% image = @ilsc.fotos.where(foto_name: "SLIP UNDI").first %>
+            <%  if image.present? %>
+              <%= image_tag(image.picture.url, size: "200x200") if image.picture? %>
+              <div class="row">
+                <div class="col-sm-8 col-5">
+                  <strong><%= link_to "EDIT", edit_foto_path(image.id), class: "btn btn-sm btn-success active" %></strong>
+                </div>
+              </div>  
+            <% else %>
+              <%= f.fields_for :fotos do |h| %>
+                <div class="row">
+                  <div class="col-sm-8 col-8">
+                    <%= h.hidden_field :foto_name, value: "SLIP UNDI" %>
+                    <%= h.file_field :picture, accept: 'image/jpeg,image/gif,image/png,application/pdf', required: true %>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <i>Wajib Disertakan</i>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <i class="fas fa-cloud-upload-alt"></i><strong>KAD OKU ANAK/DIAGNOSIS</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <% image = @ilsc.fotos.where(foto_name: "KAD OKU").first %>
+            <%  if image.present? %>
+              <%= image_tag(image.picture.url, size: "200x200") if image.picture? %>
+              <div class="row">
+                <div class="col-sm-8 col-5">
+                  <strong><%= link_to "EDIT", edit_foto_path(image.id), class: "btn btn-sm btn-success active" %></strong>
+                </div>
+              </div>  
+            <% else %>
+              <%= f.fields_for :fotos do |h| %>
+                <div class="row">
+                  <div class="col-sm-8 col-8">
+                    <%= h.hidden_field :foto_name, value: "KAD OKU" %>
+                    <%= h.file_field :picture, accept: 'image/jpeg,image/gif,image/png,application/pdf', required: true %>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <i>Wajib Disertakan</i>
+      </div>
+
+
+      <!-- OLD VERSION -->
 
       
 
+      <%
+        if @ilsc.perse.present?
+          perse_id = @ilsc.perse.id
+        else
+          perse_id = params[:perse]
+        end
 
+        if @ilsc.tp.present?
+          tp = @ilsc.tp
+        else
+          tp = params[:prog]
+        end
+      %>
+
+      <%= f.hidden_field :tp, value: tp %>
       
-
-      <%= f.hidden_field :tp, value: params[:prog] %>
-      <%= f.hidden_field :perse_id, value: params[:perse] %>
+      <%= f.hidden_field :perse_id, value: perse_id %>
 
 
       <br>

@@ -61,16 +61,17 @@ class IlscsController < ApplicationController
 
 	def edit
 		@ilsc = Ilsc.find(params[:id])
-		@perse = Perse.find(params[:perse])
+		@perse = @ilsc.perse
 	end
 
 	def update
 		@ilsc = Ilsc.find(params[:id])
 		if @ilsc.update(ilsc_params)
+			ilsc_ls(@ilsc.id,params[:ilsc])
 			@ilsc.save
 			redirect_to ilsc_list_path(perse: @ilsc.perse.id)
 		else
-			render @ekid.errors.full_messages
+			render @ilsc.errors.full_messages
 			render :edit
 		end
 	end
@@ -103,26 +104,17 @@ class IlscsController < ApplicationController
 		#double entry
 		if (exs=Ilsc.where(ic: @ilsc.ic, tp: @ilsc.tp)).present?
 			flash[:danger] = "NAMA ANAK SUDAH DIDAFTARKAN DALAM SISTEM"
-			redirect_to edit_ekid_path(id: exs.first.id)
+			redirect_to edit_ilsc_path(id: exs.first.id)
 		else
+
 			
-			params[:ilsc][:schi].each do |k,v|
-				@ilsc.schi[k] = [v["sek"],v["tahun"],v["keluar"],v["pencapaian"]]
-			end
-
-			params[:ilsc][:crls].each do |k,v|
-				@ilsc.crls[k] = [v["nmcr"],v["ven"],v["prd"]]
-			end
-
-			params[:ilsc][:sbls].each do |k,v|
-				@ilsc.sbls[k] = [v["nmsb"],v["age"],v["skjb"],v["sbph"],v["thp"]]
-			end
 
 			if @ilsc.save 
+				ilsc_ls(@ilsc.id,params[:ilsc])
 				
 
 				flash[:success] = "Pendaftaran Diterima. Pihak ANIS akan menghubungi anda jika permohonan diluluskan"
-				#redirect_to ilsc_list_path(perse: @ilsc.perse.id)
+				redirect_to ilsc_list_path(perse: @ilsc.perse.id)
 			else
 				render @ilsc.errors.full_messages
 				render :new
@@ -131,6 +123,31 @@ class IlscsController < ApplicationController
 	end
 
 	private
+
+	def ilsc_ls(id,params)
+		par = params
+		@ilsc = Ilsc.find(id)
+		par[:schi].each do |k,v|
+			@ilsc.schi[k] = [v["sek"],v["tahun"],v["keluar"],v["pencapaian"]]
+		end
+
+		par[:crls].each do |k,v|
+			@ilsc.crls[k] = [v["nmcr"],v["ven"],v["prd"]]
+		end
+
+		par[:sbls].each do |k,v|
+			@ilsc.sbls[k] = [v["nmsb"],v["age"],v["skjb"],v["sbph"],v["thp"]]
+		end
+
+		par[:prtls].each do |k,v|
+			@ilsc.prtls[k] = v
+		end
+
+		par[:warls].each do |k,v|
+			@ilsc.warls[k] = v
+		end
+		@ilsc.save
+	end
 
 	def ilsc_params
 		params.require(:ilsc).permit(:name,
@@ -150,7 +167,18 @@ class IlscsController < ApplicationController
 																:lastsch,
 																:allerg,
 																:perse_id,
-																:tp)
+																:tp,
+																:birthplc,
+														    :phtr,
+														    :sport,
+														    :hobby,
+														    :jobint,
+														    :occdiag,
+														    :medc,
+														    :occmedc,
+														    :amtmedc,
+														    :docnm,
+														    :docph)
 	end
 
 	def set_all

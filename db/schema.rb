@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_09_000436) do
+ActiveRecord::Schema.define(version: 2022_09_10_080041) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -426,6 +426,19 @@ ActiveRecord::Schema.define(version: 2022_09_09_000436) do
     t.text "schi"
     t.text "crls"
     t.text "sbls"
+    t.text "prtls"
+    t.text "warls"
+    t.string "birthplc"
+    t.string "phtr"
+    t.string "sport"
+    t.string "hobby"
+    t.string "jobint"
+    t.string "occdiag"
+    t.string "medc"
+    t.string "occmedc"
+    t.string "amtmedc"
+    t.string "docnm"
+    t.string "docph"
   end
 
   create_table "kid_bills", force: :cascade do |t|

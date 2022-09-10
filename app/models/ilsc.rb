@@ -4,6 +4,8 @@ class Ilsc < ApplicationRecord
 	serialize :schi,Hash
 	serialize :crls,Hash
 	serialize :sbls,Hash
+	serialize :prtls,Hash
+	serialize :warls,Hash
 
 	before_save :save_ilscs
 
