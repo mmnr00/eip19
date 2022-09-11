@@ -49,88 +49,110 @@
         <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">NO TELEFON PELATIH</font></td>
         <td style="background-color: !important"><%= "#{@ilsc.phtr}" %></td>
       </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">SUKAN</font></td>
+        <td style="background-color: !important"><%= "#{@ilsc.sport}" %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">HOBI</font></td>
+        <td style="background-color: !important"><%= "#{@ilsc.hobby}" %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">PEKERJAAN YANG DIMINATI</font></td>
+        <td style="background-color: !important"><%= "#{@ilsc.jobint}" %></td>
+      </tr>
     </tbody>
+  </table>
+</div>
+
+<table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0">
+  <thead style="text-align: center">
+    <th style="background-color:#ccccff;color:black" colspan="4">MAKLUMAT PERSEKOLAHAN</th>
+  </thead>
+  <thead style="text-align: center">
+    <tr class="shadow">
+      <th style="background-color:#7fbf7f;color:black">NAMA SEKOLAH RENDAH/MENENGAH/INSTITUSI LAIN</th>
+      <th style="background-color:#7fbf7f;color:black">TAHUN MASUK</th>
+      <th style="background-color:#7fbf7f;color:black">TAHUN KELUAR</th>
+      <th style="background-color:#7fbf7f;color:black">PENCAPAIAN</th>
+    </tr>
+  </thead>
+  <tbody style="color: black">
+    <% (1..5).each do |n| %>
+      <tr>
+        <td><%= @ilsc.schi["#{n}"][0] %></td>
+        <td><%= @ilsc.schi["#{n}"][1] %></td>
+        <td><%= @ilsc.schi["#{n}"][2] %></td>
+        <td><%= @ilsc.schi["#{n}"][3] %></td>
+      </tr>
+    <% end %>
+           
+  </tbody>
+</table>
+
+<table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0">
+  <thead style="text-align: center">
+    <th style="background-color:#ccccff;color:black" colspan="3">MAKLUMAT KURSUS</th>
+  </thead>
+  <thead style="text-align: center">
+    <tr class="shadow">
+      <th style="background-color:#7fbf7f;color:black">NAMA KURSUS</th>
+      <th style="background-color:#7fbf7f;color:black">TEMPAT</th>
+      <th style="background-color:#7fbf7f;color:black">TEMPOH</th>
+    </tr>
+  </thead>
+  <tbody style="color: black">
+    <% (1..5).each do |n| %>
+      <tr>
+        <td><%= @ilsc.crls["#{n}"][0] %></td>
+        <td><%= @ilsc.crls["#{n}"][1] %></td>
+        <td><%= @ilsc.crls["#{n}"][2] %></td>
+      </tr>
+    <% end %>
+           
+  </tbody>
+</table>
+
+<table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0">
+  <thead style="text-align: center">
+    <th style="background-color:#ccccff;color:black" colspan="5">MAKLUMAT ADIK BERADIK</th>
+  </thead>
+  <thead style="text-align: center">
+    <tr class="shadow">
+      <th style="background-color:#7fbf7f;color:black; width: 35%">NAMA</th>
+      <th style="background-color:#7fbf7f;color:black">UMUR</th>
+      <th style="background-color:#7fbf7f;color:black">PERSEKOLAHAN/PERKERJAAN</th>
+      <th style="background-color:#7fbf7f;color:black">NO TELEFON</th>
+      <th style="background-color:#7fbf7f;color:black">TAHAP</th>
+    </tr>
+  </thead>
+  <tbody style="color: black">
+    <% (1..10).each do |n| %>
+      <tr>
+        <td><%= @ilsc.sbls["#{n}"][0] %></td>
+        <td><%= @ilsc.sbls["#{n}"][1] %></td>
+        <td><%= @ilsc.sbls["#{n}"][2] %></td>
+        <td><%= @ilsc.sbls["#{n}"][3] %></td>
+        <td><%= @ilsc.sbls["#{n}"][4] %></td>
+      </tr>
+    <% end %>
+           
+  </tbody>
+</table>
+      
+    
+<div class="table-responsive">
+  <table class="table table-bordered" width="100%" cellspacing="0" style="color: black;borders: 2px solid black">
     <tbody>
       <tr>
         <td style="background-color:#d29494 !important" colspan="2"><font color="white"><h5>BAHAGIAN B</h5></font></td>
       </tr>
-
-      <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0">
-        <thead style="text-align: center">
-          <th style="background-color:#ccccff;color:black" colspan="4">MAKLUMAT PERSEKOLAHAN</th>
-        </thead>
-        <thead style="text-align: center">
-          <tr class="shadow">
-            <th style="background-color:#7fbf7f;color:black">NAMA SEKOLAH RENDAH/MENENGAH/INSTITUSI LAIN</th>
-            <th style="background-color:#7fbf7f;color:black">TAHUN MASUK</th>
-            <th style="background-color:#7fbf7f;color:black">TAHUN KELUAR</th>
-            <th style="background-color:#7fbf7f;color:black">PENCAPAIAN</th>
-          </tr>
-        </thead>
-        <tbody style="color: black">
-          <% (1..5).each do |n| %>
-            <tr>
-              <td><%= @ilsc.schi["#{n}"][0] %></td>
-              <td><%= @ilsc.schi["#{n}"][1] %></td>
-              <td><%= @ilsc.schi["#{n}"][2] %></td>
-              <td><%= @ilsc.schi["#{n}"][3] %></td>
-            </tr>
-          <% end %>
-                 
-        </tbody>
-      </table>
-
-      <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0">
-        <thead style="text-align: center">
-          <th style="background-color:#ccccff;color:black" colspan="3">MAKLUMAT KURSUS</th>
-        </thead>
-        <thead style="text-align: center">
-          <tr class="shadow">
-            <th style="background-color:#7fbf7f;color:black">NAMA KURSUS</th>
-            <th style="background-color:#7fbf7f;color:black">TEMPAT</th>
-            <th style="background-color:#7fbf7f;color:black">TEMPOH</th>
-          </tr>
-        </thead>
-        <tbody style="color: black">
-          <% (1..5).each do |n| %>
-            <tr>
-              <td><%= @ilsc.crls["#{n}"][0] %></td>
-              <td><%= @ilsc.crls["#{n}"][1] %></td>
-              <td><%= @ilsc.crls["#{n}"][2] %></td>
-            </tr>
-          <% end %>
-                 
-        </tbody>
-      </table>
-
-      <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0">
-        <thead style="text-align: center">
-          <th style="background-color:#ccccff;color:black" colspan="5">MAKLUMAT ADIK BERADIK</th>
-        </thead>
-        <thead style="text-align: center">
-          <tr class="shadow">
-            <th style="background-color:#7fbf7f;color:black; width: 35%">NAMA</th>
-            <th style="background-color:#7fbf7f;color:black">UMUR</th>
-            <th style="background-color:#7fbf7f;color:black">PERSEKOLAHAN/PERKERJAAN</th>
-            <th style="background-color:#7fbf7f;color:black">NO TELEFON</th>
-            <th style="background-color:#7fbf7f;color:black">TAHAP</th>
-          </tr>
-        </thead>
-        <tbody style="color: black">
-          <% (1..10).each do |n| %>
-            <tr>
-              <td><%= @ilsc.sbls["#{n}"][0] %></td>
-              <td><%= @ilsc.sbls["#{n}"][1] %></td>
-              <td><%= @ilsc.sbls["#{n}"][2] %></td>
-              <td><%= @ilsc.sbls["#{n}"][3] %></td>
-              <td><%= @ilsc.sbls["#{n}"][4] %></td>
-            </tr>
-          <% end %>
-                 
-        </tbody>
-      </table>
-
     </tbody>
+  </table>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-bordered" width="100%" cellspacing="0" style="color: black;borders: 2px solid black">
     <tbody>
       <tr>
         <td style="background-color:#d29494 !important" colspan="2"><font color="white"><h5>BAHAGIAN C</h5></font></td>
@@ -138,3 +160,5 @@
     </tbody>
   </table>
 </div>
+
+  
