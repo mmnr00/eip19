@@ -1,4 +1,4 @@
-<div class="table-responsive">
+<div class="table-responsive" style="font-size: 12px">
   <table class="table table-bordered" width="100%" cellspacing="0" style="color: black;borders: 2px solid black">
 
     <tbody>
@@ -65,6 +65,7 @@
   </table>
 </div>
 
+<div class="table-responsive border" style="font-size: 12px">
 <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0">
   <thead style="text-align: center">
     <th style="background-color:#ccccff;color:black" colspan="4">MAKLUMAT PERSEKOLAHAN</th>
@@ -89,7 +90,9 @@
            
   </tbody>
 </table>
+</div>
 
+<div class="table-responsive border" style="font-size: 12px">
 <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0">
   <thead style="text-align: center">
     <th style="background-color:#ccccff;color:black" colspan="3">MAKLUMAT KURSUS</th>
@@ -112,7 +115,9 @@
            
   </tbody>
 </table>
+</div>
 
+<div class="table-responsive border" style="font-size: 12px">
 <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0">
   <thead style="text-align: center">
     <th style="background-color:#ccccff;color:black" colspan="5">MAKLUMAT ADIK BERADIK</th>
@@ -139,6 +144,7 @@
            
   </tbody>
 </table>
+</div>
       
     
 <div class="table-responsive">
@@ -151,11 +157,216 @@
   </table>
 </div>
 
-<div class="table-responsive">
+<div class="table-responsive border" style="font-size: 12px">
+  <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0">
+    <thead style="text-align: center">
+      <th style="background-color:#ccccff;color:black" colspan="3">MAKLUMAT IBU-BAPA/PENJAGA</th>
+    </thead>
+    <thead style="text-align: center">
+      <tr class="shadow">
+        <th style="background-color:#7fbf7f;color:black">MAKLUMAT</th>
+        <th style="background-color:#7fbf7f;color:black">BAPA/PENJAGA</th>
+        <th style="background-color:#7fbf7f;color:black">IBU/PENJAGA</th>
+      </tr>
+    </thead>
+    <tbody style="color: black">
+      <tr>
+        <td>
+         NAMA
+        </td>
+        <td>
+          <%= @ilsc.prtls["namef"] %>
+        </td>
+        <td>
+          <%=  @ilsc.prtls["namem"] %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+         NO MYKAD
+        </td>
+        <td>
+          <%= @ilsc.prtls["icf"] %>
+        </td>
+        <td>
+          <%= @ilsc.prtls["icm"] %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+         PEKERJAAN
+        </td>
+        <td>
+          <%=  @ilsc.prtls["jobf"] %>
+        </td>
+        <td>
+          <%=  @ilsc.prtls["jobm"] %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+         NAMA DAN ALAMAT MAJIKAN
+        </td>
+        <td>
+          <%= @ilsc.prtls["addf"] %>
+        </td>
+        <td>
+          <%=  @ilsc.prtls["addm"] %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+         PENDAPATAN BULANAN (RM)
+        </td>
+        <td>
+          <%= @ilsc.prtls["incf"] %>
+        </td>
+        <td>
+          <%= @ilsc.prtls["incm"] %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+         NO TELEFON PEJABAT
+        </td>
+        <td>
+          <%= @ilsc.prtls["phof"] %>
+        </td>
+        <td>
+          <%=  @ilsc.prtls["phom"] %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+         NO TELEFON BIMBIT
+        </td>
+        <td>
+          <%= @ilsc.prtls["phf"] %>
+        </td>
+        <td>
+          <%= @ilsc.prtls["phm"] %>
+        </td>
+      </tr>    
+    </tbody>
+
+  </table>
+</div> <!-- DIV TABLE -->
+
+
+
+<div class="table-responsive border" style="font-size: 12px">
+  <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0">
+    <thead style="text-align: center">
+      <th style="background-color:#ccccff;color:black" colspan="3">MAKLUMAT 2 WARIS</th>
+    </thead>
+    <thead style="text-align: center">
+      <tr class="shadow">
+        <th style="background-color:#7fbf7f;color:black">MAKLUMAT</th>
+        <th style="background-color:#7fbf7f;color:black">WARIS 1</th>
+        <th style="background-color:#7fbf7f;color:black">WARIS 2</th>
+      </tr>
+    </thead>
+    <tbody style="color: black">
+      <tr>
+        <td>
+         NAMA
+        </td>
+        <td>
+          <%=  @ilsc.warls["name1"] %>
+        </td>
+        <td>
+          <%=  @ilsc.warls["name2"] %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+         HUBUNGAN
+        </td>
+        <td>
+          <%= @ilsc.warls["rel1"] %>
+        </td>
+        <td>
+          <%= @ilsc.warls["rel2"] %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+         NO TELEFON RUMAH
+        </td>
+        <td>
+          <%= @ilsc.warls["ph1"] %>
+        </td>
+        <td>
+          <%= @ilsc.warls["ph2"] %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+         NO TELEFON BIMBIT
+        </td>
+        <td>
+          <%= @ilsc.warls["mob1"] %>
+        </td>
+        <td>
+          <%= @ilsc.warls["mob2"] %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+         ALAMAT
+        </td>
+        <td>
+          <%=  @ilsc.warls["add1"] %>
+        </td>
+        <td>
+          <%= @ilsc.warls["add2"] %>
+        </td>
+      </tr>
+             
+    </tbody>
+
+  </table>
+</div> <!-- DIV TABLE -->
+
+
+
+<div class="table-responsive" style="font-size: 12px;">
   <table class="table table-bordered" width="100%" cellspacing="0" style="color: black;borders: 2px solid black">
     <tbody>
       <tr>
         <td style="background-color:#d29494 !important" colspan="2"><font color="white"><h5>BAHAGIAN C</h5></font></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">DIAGNOSIS PENYAKIT</font></td>
+        <td style="background-color: !important"><%= "#{@ilsc.diag}" %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">KEKERAPAN SERANGAN</font></td>
+        <td style="background-color: !important"><%= "#{@ilsc.occdiag}" %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">NAMA UBAT</font></td>
+        <td style="background-color: !important"><%= "#{@ilsc.medc}" %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">KEKERAPAN UBAT</font></td>
+        <td style="background-color: !important"><%= "#{@ilsc.occmedc}" %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">JUMLAH DIAMBIL</font></td>
+        <td style="background-color: !important"><%= "#{@ilsc.amtmedc}" %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">ALAHAN MAKANAN</font></td>
+        <td style="background-color: !important"><%= "#{@ilsc.allerg}" %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">DOKTOR PERIBADI (JIKA ADA)</font></td>
+        <td style="background-color: !important"><%= "#{@ilsc.docnm}" %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">NO TELEFON DOKTOR PERIBADI</font></td>
+        <td style="background-color: !important"><%= "#{@ilsc.docph}" %></td>
       </tr>
     </tbody>
   </table>

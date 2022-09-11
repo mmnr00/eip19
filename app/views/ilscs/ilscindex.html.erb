@@ -120,7 +120,7 @@
             <th style="background-color:#ffb2b2; width: 20%">MAKLUMAT PESERTA</th>
             <th style="background-color:#ffb2b2; width: 20%">MAKLUMAT PEMOHON</th>
             <th style="background-color:#ffb2b2">PROGRAM</th>
-            <th style="background-color:#ffb2b2; width: 15%">UMUR</th>
+            <th style="background-color:#ffb2b2; width: 15%">DOKUMEN</th>
             <th style="background-color:#ffb2b2; width: 20%">TARIKH</th>
           </tr>
         </thead>
@@ -128,22 +128,16 @@
           <% cnt =1 ; @ilscs.order('created_at DESC').each do |ek|; perse = ek.perse %>
           <tr>
             <td><%= cnt %></td>
-            <!-- <td>
-              <%= ek.name %><br>
-              (<%= ek.ic %>)<br>
-              <%
-                image = ek.fotos.where(foto_name: "DIAGNOSIS").first
-                if image.present? && image.picture.present?
-                  url = image.picture.url
-                else
-                  url = ""
-                end
-              %>
-              <a href="<%= url %>" target="_blank" download><btn class="badge badge-pill badge-secondary">Borang Diagnosis</btn></a>
-            </td> -->
             <td>
               <%= ek.name %><br>
               (<%= ek.ic %>)<br>
+              <%
+                age = (Date.today.year*12+Date.today.month) - (ek.dobn.year*12+ek.dobn.month)
+                yr = age/12
+                mth = age - yr*12
+        
+              %>
+              <%= "#{yr} tahun, #{mth} bulan" %><br>
               <a href="<%= ilsc_conf_url(id: ek) %>" target="_blank"><btn class="badge badge-pill badge-secondary">Profil</btn></a>
             </td>
             <td>
@@ -154,12 +148,55 @@
             <td><%= ek.tp %></td>
             <td>
               <%
-                age = (Date.today.year*12+Date.today.month) - (ek.dobn.year*12+ek.dobn.month)
-                yr = age/12
-                mth = age - yr*12
-        
+                image = ek.fotos.where(foto_name: "MYKAD BAPA").first
+                if image.present? && image.picture.present?
+                  url = image.picture.url
+                else
+                  url = ""
+                end
               %>
-              <%= "#{yr} tahun, #{mth} bulan" %>
+              <a href="<%= url %>" target="_blank"><btn class="badge badge-pill badge-secondary">MYKAD BAPA</btn></a><br>
+
+              <%
+                image = ek.fotos.where(foto_name: "MYKAD IBU").first
+                if image.present? && image.picture.present?
+                  url = image.picture.url
+                else
+                  url = ""
+                end
+              %>
+              <a href="<%= url %>" target="_blank"><btn class="badge badge-pill badge-secondary">MYKAD IBU</btn></a><br>
+
+              <%
+                image = ek.fotos.where(foto_name: "MYKAD ANAK").first
+                if image.present? && image.picture.present?
+                  url = image.picture.url
+                else
+                  url = ""
+                end
+              %>
+              <a href="<%= url %>" target="_blank"><btn class="badge badge-pill badge-secondary">MYKAD ANAK</btn></a><br>
+
+              <%
+                image = ek.fotos.where(foto_name: "SLIP UNDI").first
+                if image.present? && image.picture.present?
+                  url = image.picture.url
+                else
+                  url = ""
+                end
+              %>
+              <a href="<%= url %>" target="_blank"><btn class="badge badge-pill badge-secondary">SLIP MENGUNDI IBU/BAPA</btn></a><br>
+
+              <%
+                image = ek.fotos.where(foto_name: "KAD OKU").first
+                if image.present? && image.picture.present?
+                  url = image.picture.url
+                else
+                  url = ""
+                end
+              %>
+              <a href="<%= url %>" target="_blank"><btn class="badge badge-pill badge-secondary">KAD OKU ANAK/DIAGNOSIS</btn></a><br>
+              
             </td>
             
 
