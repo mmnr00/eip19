@@ -83,6 +83,9 @@ class IlscsController < ApplicationController
 
 	def new
 		@ilsc = Ilsc.new
+		@ilsc.schi = {"1"=>["", "", "", ""], "2"=>["", "", "", ""], "3"=>["", "", "", ""], "4"=>["", "", "", ""], "5"=>["", "", "", ""]}
+		@ilsc.crls = {"1"=>["", "", ""], "2"=>["", "", ""], "3"=>["", "", ""], "4"=>["", "", ""], "5"=>["", "", ""]} 
+		@ilsc.sbls = {"1"=>["", "", "", "", ""], "2"=>["", "", "", "", ""], "3"=>["", "", "", "", ""], "4"=>["", "", "", "", ""], "5"=>["", "", "", "", ""], "6"=>["", "", "", "", ""], "7"=>["", "", "", "", ""], "8"=>["", "", "", "", ""], "9"=>["", "", "", "", ""], "10"=>["", "", "", "", ""]} 
 		@perse = Perse.find(params[:perse])
 		@ilsc.fotos.build
 		if params[:sch].present?
@@ -178,7 +181,8 @@ class IlscsController < ApplicationController
 														    :occmedc,
 														    :amtmedc,
 														    :docnm,
-														    :docph)
+														    :docph,
+																fotos_attributes: [:foto, :picture, :foto_name])
 	end
 
 	def set_all

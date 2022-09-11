@@ -1,5 +1,6 @@
 class Ilsc < ApplicationRecord
 	has_many :fotos
+	accepts_nested_attributes_for :fotos
 	belongs_to :perse
 	serialize :schi,Hash
 	serialize :crls,Hash

@@ -22,6 +22,10 @@ class FotosController < ApplicationController
         ekid = @foto.ekid
         flash[:success] = "Kemaskini Berjaya"
         redirect_to edit_ekid_path(id: ekid.id, perse: ekid.perse.id)
+      elsif @foto.ilsc_id.present?
+        ilsc = @foto.ilsc
+        flash[:success] = "Kemaskini Berjaya"
+        redirect_to edit_ilsc_path(id: ilsc.id)
       elsif @admin
         if @foto.taska.present?
         	@taska = @foto.taska
