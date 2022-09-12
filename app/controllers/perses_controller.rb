@@ -245,6 +245,8 @@ class PersesController < ApplicationController
 															    :race,
 															    :backg,
 															    :backgo,
+															    :backgs,
+															    :backgoth,
 															    :kdoku,
 															    :kdiag,
 															    :email,

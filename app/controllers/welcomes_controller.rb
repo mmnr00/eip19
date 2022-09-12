@@ -71,8 +71,18 @@ class WelcomesController < ApplicationController
 		@index = true
 	end
 
+	def sukarelawananis
+		prog = Proge.where(tp: "SEMINAR SUKARELAWAN", acv: true)
+		if prog.present? && prog.count == 1
+			redirect_to persesch_path(prog:"AKADEMI ANIS", proge: prog.last.id)
+		else
+			flash[:danger] = "Maaf pendaftaran telah ditutup. Sila hubungi Penyelaras Program untuk maklumat lanjut"
+			redirect_to persesch_path
+		end
+	end
+
 	def cikguanisppki
-		prog = Proge.where(tp: "CIKGU ANIS(PPKI)", acv: true)
+		prog = Proge.where(tp: "SEMINAR SUKARELAWAN", acv: true)
 		if prog.present? && prog.count == 1
 			redirect_to persesch_path(prog:"AKADEMI ANIS", proge: prog.last.id)
 		else

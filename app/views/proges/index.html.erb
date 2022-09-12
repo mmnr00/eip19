@@ -20,7 +20,7 @@
   <div class="card-header">
    <div class="row">
       <%= form_tag progeindex_path, method: :get, id: "find_kid" do %>
-        <%= select_tag :tp, options_for_select(["SEMINAR ANIS", "CIKGU ANIS(TADIKA)", "CIKGU ANIS(PDK)","CIKGU ANIS(PPKI)"], params[:tp]),
+        <%= select_tag :tp, options_for_select(["SEMINAR ANIS", "CIKGU ANIS(TADIKA)", "CIKGU ANIS(PDK)","CIKGU ANIS(PPKI)", "SEMINAR SUKARELAWAN ANIS"], params[:tp]),
               include_blank: "Semua Jenis Program" %>
         <% select_tag :sch_fld, options_for_select(["No Siri (4 no belakang)", "Nama Agensi","No Pendaftaran Agensi"], params[:sch_fld]),
               include_blank: "Semua Status" %>

@@ -179,6 +179,7 @@ Rails.application.routes.draw do
   get '/qatemp', to: 'welcomes#qatemp'
   get '/soaljawab', to: 'welcomes#soaljawab'
   get '/mpachart', to: 'welcomes#mpachart'
+  get '/sukarelawananis', to: 'welcomes#sukarelawananis'
    get '/cikguanispdk', to: 'welcomes#cikguanispdk'
    get '/cikguanistadika', to: 'welcomes#cikguanistadika'
   get '/cikguanisppki', to: 'welcomes#cikguanisppki'

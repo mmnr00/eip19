@@ -21,7 +21,7 @@
       </p>
     </div>
 
-    <% if @proge.tp.include? "CIKGU ANIS" %>
+    <% if (@proge.tp.include? "CIKGU ANIS") || (@proge.tp.include? "SEMINAR SUKARELAWAN") %>
     <div style="position:absolute;top:390px;left:0;right:0;margin-left:20px;margin-right:120px; background-color: #ebecf1; padding-left: 70px;margin-top: 3px; height:5%">
       <p style="color:black; font-size: 20px; font-weight: 800; vertical-align: center">
         <%= @proge.name %>
@@ -33,7 +33,7 @@
       <p style="color:black; font-size: 18px; font-weight: 600">
         <i>
           <%= @proge.date.strftime('%d-%m-%Y') %>
-          <% if (@proge.tp.include? "CIKGU ANIS") %>
+          <% if (@proge.tp.include? "CIKGU ANIS") || (@proge.tp.include? "SEMINAR SUKARELAWAN") %>
             hingga <%= @proge.daten.strftime('%d-%m-%Y') %>
           <% end %> 
         </i>
