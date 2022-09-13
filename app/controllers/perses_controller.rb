@@ -127,7 +127,17 @@ class PersesController < ApplicationController
 										flash[:danger] = "Sila Lengkapkan Maklumat Anda"
 										redirect_to edit_perse_path(id: perse.id, prog: params[:prog], proge: params[:proge])
 									end
+									elsif prg.tp.include? "SEMINAR SUKARELAWAN"
+									if perse.backgs.present?
+										Perproge.create(perse_id: perse.id, proge_id: prg.id) unless prg.perses.where(id: perse.id).present?
+										flash[:success] = "Pendaftaran Untuk #{prg.name} Berjaya!"
+										redirect_to persesch_path(prog: params[:prog], proge: params[:proge])
+									else
+										flash[:danger] = "Sila Lengkapkan Maklumat Anda"
+										redirect_to edit_perse_path(id: perse.id, prog: params[:prog], proge: params[:proge])
+									end
 								end
+								
 
 							elsif params[:prog] == "CIKGU ANIS"
 								if Perproge.where(perse_id: perse.id, proge_id: params[:proge]).present?

@@ -372,4 +372,31 @@
   </table>
 </div>
 
+<div class="table-responsive" style="font-size: 12px;">
+  <table class="table table-bordered" width="100%" cellspacing="0" style="color: black;borders: 2px solid black">
+    <tbody>
+      <tr>
+        <td style="background-color:#d29494 !important" colspan="2"><font color="white"><h5>BAHAGIAN D</h5></font></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">KURSUS YANG DIMINATI</font></td>
+        <%
+          crs = {"1"=>"Kursus Jahitan",
+                "2"=>"Kursus Bakeri",
+                "3"=>"Kursus Pengurusan Pejabat",
+                "4"=>"Kursus Teknologi Digital",
+                "5"=>"Kursus Kecerdasan Buatan (Artificial Intelligence)"}
+
+        %>
+        <td style="background-color: !important">
+          <% @ilsc.crstp.each do |n| %>
+            <%= crs[n] %><br>
+          <% end %>
+            
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
   

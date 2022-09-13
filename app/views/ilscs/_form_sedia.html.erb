@@ -628,6 +628,29 @@
       <div class="col-sm-12" style="background-color:#ffcccc">
         <h4 style="color:black; font-weight: 600">Bahagian D</h4>
       </div>
+      <u><h6 style="color:black; font-weight: 300">Kursus Yang Ditawarkan</h6></u>
+
+      <div class="form-group"> <!-- BANGSA -->
+        <div class="row">
+          <div class="col-lg-8 col-md-10 col-sm-12">
+            <strong>Sila Pilih Kursus Yang Diminati<a style="color: red">*</a></strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-8 col-md-10 col-sm-12">
+            <%= f.check_box :crstp, {multiple: true, checked: (@ilsc.crstp.include? "1") }, 1, nil %> Kursus Jahitan <br>
+            <%= f.check_box :crstp, {multiple: true, checked: (@ilsc.crstp.include? "2")}, 2, nil%> Kursus Bakeri <br>
+            <%= f.check_box :crstp, {multiple: true, checked: (@ilsc.crstp.include? "3")}, 3, nil %> Kursus Pengurusan Pejabat <br>
+            <%= f.check_box :crstp, {multiple: true, checked: (@ilsc.crstp.include? "4")}, 4, nil %> Kursus Teknologi Digital <br>
+            <%= f.check_box :crstp, {multiple: true, checked: (@ilsc.crstp.include? "5")}, 5, nil %> Kursus Kecerdasan Buatan (Artificial Intelligence) <br>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-sm-12" style="background-color:#ffcccc">
+        <h4 style="color:black; font-weight: 600">Bahagian E</h4>
+      </div>
 
       <u><h6 style="color:black; font-weight: 300">Dokumen Yang Diperlukan</h6></u>
 

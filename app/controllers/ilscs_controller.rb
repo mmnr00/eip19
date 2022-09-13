@@ -182,6 +182,7 @@ class IlscsController < ApplicationController
 														    :amtmedc,
 														    :docnm,
 														    :docph,
+														    :crstp => [],
 																fotos_attributes: [:foto, :picture, :foto_name])
 	end
 
