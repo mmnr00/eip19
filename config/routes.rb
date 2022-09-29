@@ -168,7 +168,7 @@ Rails.application.routes.draw do
   get '/transisikerja', to: 'welcomes#transisikerja'
   get '/sediakerja', to: 'welcomes#sediakerja'
   get '/ilscanis', to: 'welcomes#ilscanis'
-  get '/bukuanis7878768768766787678421', to: 'welcomes#bukuanis'
+  get '/bukuanis', to: 'welcomes#bukuanis'
   get '/senaraipusatterapi', to: 'welcomes#senaraipusatterapi'
   get '/prasekolahanis', to: 'welcomes#prasekolahanis'
   get '/senaraipdk', to: 'welcomes#senaraipdk'

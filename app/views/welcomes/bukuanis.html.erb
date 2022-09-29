@@ -9,7 +9,7 @@
 </header>
 
 <%
- book = Artk.first.book
+ book = ENV["ANIS_BOOK"].split(";")
  cnt = book.count - 1
  bookrev = book.reverse()
 %>
