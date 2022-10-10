@@ -87,7 +87,7 @@
             </td>
             <td>
               <%= tp = prg.tp %>
-              <% if (tp.include? "CIKGU ANIS")%>
+              <% if ((tp.include? "CIKGU ANIS") || (tp.include? "SEMINAR SUKARELAWAN"))%>
                 <br>
                 <%= link_to "Program", cntplist_path(proge: prg.id), class: 'btn btn-sm btn-success', target: "_blank" %>
               <% end %>

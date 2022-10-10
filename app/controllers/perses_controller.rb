@@ -100,6 +100,17 @@ class PersesController < ApplicationController
 				if params[:ph].present? #dah masuk no fon
 					if perse.ph == params[:ph]
 						flash[:success] = "Selamat Kembali #{perse.name}"
+						ppr = Perproge.where(perse_id: perse.id, proge: params[:proge]).last
+						if params[:att].present?
+							if ppr.present?
+								ppr.att << params[:dt] unless (ppr.att.include? params[:dt])
+								ppr.save
+								flash[:success] = "Kehadiran Anda Telah Direkodkan"
+							else
+								flash[:success] = "Rekod anda tiada dalam pendaftaran program. Sila daftar and sahkan semula kedatangan"
+							end
+							redirect_to persesch_path(prog: "AKADEMI ANIS", proge: params[:proge]) and return
+						end
 
 						#program redirection
 						if params[:prog].present?
@@ -188,6 +199,9 @@ class PersesController < ApplicationController
 				if params[:prog] == "CIKGU ANIS"
 					flash[:danger] = "No MyKad Anda Tiada Dalam Rekod"
 					redirect_to request.referrer
+				elsif params[:prog] == "AKADEMI ANIS"
+					flash[:success] = "Rekod anda tiada dalam pendaftaran program. Sila daftar and sahkan semula kedatangan"
+					redirect_to persesch_path(prog: "AKADEMI ANIS", proge: params[:proge])
 				else
 					flash[:notice] = "Sila Lengkapkan Maklumat Anda"
 					redirect_to new_perse_path(ic: params[:icf], prog: params[:prog], proge: params[:proge], regkid: params[:regkid])

@@ -5,7 +5,9 @@
 <% end %> 
 
 <%= render 'cntps/schd', adm: 1%>
-<%= link_to "Link Maklumbalas", persesch_path(prog: "CIKGU ANIS",proge: @proge.id) %>
+<%= link_to "Link Maklumbalas", persesch_path(prog: "CIKGU ANIS",proge: @proge.id) %><br>
+<%= link_to "Kehadiran #{@proge.date.strftime('%d-%^b-%Y')}", persesch_path(prog: "AKADEMI ANIS" ,proge: @proge.id, att:1, dt: @proge.date) %><br>
+<%= link_to "Kehadiran #{@proge.daten.strftime('%d-%^b-%Y')}", persesch_path(prog: "AKADEMI ANIS" ,proge: @proge.id, att:1, dt: @proge.daten) %>
 
 
 <div style="background-color: blue;margin-bottom: -5px">
