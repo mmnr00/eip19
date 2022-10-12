@@ -65,8 +65,10 @@
 
 </div>
 
-<% if @proge.tp.include? 'CIKGU ANIS' %>
+<% if (@proge.tp.include? 'CIKGU ANIS')  %>
   <%= render 'proges/rptcikgu' %>
+<% elsif (@proge.tp.include? 'SUKARELAWAN') %>
+  <%= render 'proges/rptsukarelawan' %>
 <% elsif @proge.tp.include? 'SEMINAR' %>
   <%= render 'proges/rptseminar' %>
 <% end %>

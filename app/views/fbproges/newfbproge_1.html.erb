@@ -1,0 +1,62 @@
+
+<div class="card" style="font-size: 13px; margin-top: 5px;">
+  <div class="card-header" style="color: white; font-size: 13px">
+    <i class="fas fa-question-circle"></i>&nbsp
+    BORANG MAKLUMBALAS<br>
+    <i class="fas fa-thumbtack"></i>&nbsp
+    <strong><%= @proge.name %></strong><br>
+    <i class="fas fa-calendar"></i>&nbsp
+    <%= "#{@proge.date.strftime('%d-%^b-%Y')} hingga #{@proge.daten.strftime('%d-%^b-%Y')}" %>
+  </div>
+  <div class="card-body" style="color: black">
+    Nama Peserta : <b><%= @perse.name %></b><br>
+    No MyKad : <b><%= @perse.ic %></b><br><br>
+    <%= form_for(:fbc, :url => {:controller=>'fbproges', :action=> 'crtfbproge'}, :html => {multipart: true, class: "form-horizontal", method: :post, role: "form"}) do |f| %>
+        <% @proge.cntps.where(fbc: true).order('dt ASC').order('start ASC').each do |cntp| %>
+          <%= f.fields_for :"#{cntp.id}" do |h| %>
+            <div class="header-org" style="background-color: #fbd7e3; color: #d53368; text-align: center; font-size: 11px; margin-bottom: -1px">
+              <%= cntp.title %>
+            </div>
+            <div>
+              Tarikh: <%= cntp.dt.strftime('%d-%^b-%y') %><br>
+              Masa: <%= "#{cntp.start.strftime('%I:%M%p')} - #{cntp.end.strftime('%I:%M%p')}" %><br>
+              Penceramah: <%= cntp.lec %><br>
+              <div style="margin-top: 2px;margin-bottom: 5px">
+                <b>MARKAH:</b>
+                <%= h.select :rate, options_for_select(["5 - Cemerlang",
+                                                        "4 - Sangat Baik",
+                                                        "3 - Baik",
+                                                        "2 - Memuaskan",
+                                                        "1 - Tidak Memuaskan"]),{include_blank: "Pilih Satu"}, {required: true} %><br>
+                <b>PERKARA YANG DISUKAI:</b><br>
+                <%= h.text_area :gd, class: "form-control", autofocus: true%>
+                <b>PERKARA BARU YANG DIPELAJARI:</b><br>
+                <%= h.text_area :lr, class: "form-control", autofocus: true%>
+                <b>PERKARA YANG BOLEH DIPERBAIKI:</b><br>
+                <%= h.text_area :bd, class: "form-control", autofocus: true%><br>
+              </div>
+            </div>
+          <% end %> <!-- field H -->
+        <% end %> <!-- LOOP -->
+      <div class="header-org" style="background-color: #fbd7e3; color: #d53368; text-align: center; font-size: 15px; margin-bottom: 10px">
+          Maklumbalas Keseluruhan Program
+        </div>
+        <div>
+          <div style="margin-top: 2px;margin-bottom: 5px">
+            <b>MARKAH KESELURUHAN:</b>
+            <%= f.select :rate, options_for_select(["5 - Cemerlang",
+                                                    "4 - Sangat Baik",
+                                                    "3 - Baik",
+                                                    "2 - Memuaskan",
+                                                    "1 - Tidak Memuaskan"]),{include_blank: "Pilih Satu"}, {required: true} %><br>
+            
+            <b>KOMEN KESELURUHAN:</b><br>
+            <%= f.text_area :cmt, class: "form-control", autofocus: true%><br>
+          </div>
+        </div>
+      <%= f.hidden_field :proge, class: "form-control", value: params[:proge] %>
+      <%= f.hidden_field :perse, class: "form-control", value: params[:perse] %>
+      <%= f.submit :"Hantar",  class: 'btn btn-sm btn-block btn-success btn-lg', style: "align:center" %>
+    <% end %> <!-- FORM -->
+  </div>
+</div>

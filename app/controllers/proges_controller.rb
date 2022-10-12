@@ -36,7 +36,7 @@ class ProgesController < ApplicationController
 			end
 		end
 
-		if @proge.tp.include? "CIKGU ANIS"
+		if (@proge.tp.include? "CIKGU ANIS") || (@proge.tp.include? "SUKARELAWAN")
 			@stdoku = { "Masalah Penglihatan" => 0, 
 										"Masalah Pendengaran" => 0,
 										"Masalah Pertuturan" => 0,
@@ -65,14 +65,14 @@ class ProgesController < ApplicationController
 				arr_lr = []
 				rt_tot = 0.0
 				rt_len = 0
-				@proge.fbproges.each do |fb|
-					rt_tot += fb.ctnr[cn.id.to_s][0]
-					rt_len += 1
-					arr_gd << fb.ctnr[cn.id.to_s][1] unless fb.ctnr[cn.id.to_s][1].blank?
-					arr_bd << fb.ctnr[cn.id.to_s][2] unless fb.ctnr[cn.id.to_s][2].blank?
-					arr_lr << fb.ctnr[cn.id.to_s][3] unless fb.ctnr[cn.id.to_s][3].blank?
-				end
-				@cntfb[cn.id] = [(rt_tot/rt_len).round(2),arr_gd,arr_bd,arr_lr]
+				# @proge.fbproges.each do |fb|
+				# 	rt_tot += fb.ctnr[cn.id.to_s][0]
+				# 	rt_len += 1
+				# 	arr_gd << fb.ctnr[cn.id.to_s][1] unless fb.ctnr[cn.id.to_s][1].blank?
+				# 	arr_bd << fb.ctnr[cn.id.to_s][2] unless fb.ctnr[cn.id.to_s][2].blank?
+				# 	arr_lr << fb.ctnr[cn.id.to_s][3] unless fb.ctnr[cn.id.to_s][3].blank?
+				# end
+				# @cntfb[cn.id] = [(rt_tot/rt_len).round(2),arr_gd,arr_bd,arr_lr]
 			end
 		end
 
@@ -130,6 +130,7 @@ class ProgesController < ApplicationController
 	def progeperse_xls
 		@proge = Proge.find(params[:proge])
 		@perses = @proge.perses
+
 		respond_to do |format|
       #format.html
       format.xlsx{
@@ -176,6 +177,7 @@ class ProgesController < ApplicationController
 	def progeperse
 		@proge = Proge.find(params[:proge])
 		@perses = @proge.perses
+		@perproges = @proge.perproges
 	end
 
 	def progecert

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_10_081843) do
+ActiveRecord::Schema.define(version: 2022_10_12_125444) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -369,6 +369,11 @@ ActiveRecord::Schema.define(version: 2022_10_10_081843) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "fbc"
+    t.integer "rate2"
+    t.integer "rate3"
+    t.integer "rate4"
+    t.integer "rate5"
+    t.string "recm"
   end
 
   create_table "feedbacks", force: :cascade do |t|

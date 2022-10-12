@@ -26,11 +26,16 @@
           </tr>
         </thead>
         <tbody>
-          <% cnt = 1 ;@perses.each do |prs| %>
+          <% cnt = 1 ;@perses.each do |prs|; perprg = @perproges.where(perse_id: prs.id).last %>
 
             <tr>
               <td><%= cnt %></td>
-              <td><%= prs.name %></td>
+              <td><h6><%= prs.name %></h6>
+                <% if @proge.tp.include? "SUKARELAWAN" %>
+                  <i><%= @proge.date.strftime('%d-%^b-%y') %></i> - <b><%= "HADIR" unless !perprg.att.include? @proge.date.to_s %></b><br>
+                  <i><%= @proge.daten.strftime('%d-%^b-%y') %></i> - <b><%= "HADIR" unless !perprg.att.include? @proge.daten.to_s  %></b><br>
+                <% end %>
+              </td>
               <td><%= prs.ic %></td>
               <td>
                 <%= link_to "Jana Sijil", progecert_path(perse: prs.id, proge: @proge.id), target: "_blank" %>
