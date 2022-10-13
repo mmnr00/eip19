@@ -11,7 +11,17 @@ class ProgesController < ApplicationController
 		@gdr = @perses.group(:gdr).count
 		@dun = @perses.group(:dun).count
 
-		@rate = @proge.fbproges.average(:rate)
+		if @proge.tp.include? "SUKARELAWAN"
+			arr = [@fbc.average(:rate),@fbc.average(:rate2),@fbc.average(:rate3),@fbc.average(:rate4),@fbc.average(:rate5)]
+			puts arr
+			if arr.any?
+				@rate = arr.sum / arr.size.to_f
+			else
+				@rate = nil
+			end
+		else
+			@rate = @proge.fbproges.average(:rate)
+		end
 		if @rate.present?
 			@rate = @rate.round(2)
 		else
