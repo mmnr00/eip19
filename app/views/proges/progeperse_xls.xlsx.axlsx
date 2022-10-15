@@ -22,7 +22,9 @@ wb.styles do |style|
                   "DIAGNOSIS ANAK",
                   "BANGSA",
                   "JANTINA",
-                  "DUN"
+                  "DUN",
+                  "#{@proge.date.strftime('%d-%^b-%y')}",
+                  "#{@proge.daten.strftime('%d-%^b-%y')}"
                   ]
     sheet.rows[0].style = header_1
     sheet.rows[2].style = highlight_cell
@@ -30,6 +32,17 @@ wb.styles do |style|
     row =2
 
     @perses.order('name ASC').each do |mmb|
+      pprg = Perproge.where(perse_id: mmb.id, proge_id: @proge.id).last
+      if pprg.att.include? @proge.date.to_s
+        date = "Hadir"
+      else
+        date = ""
+      end
+      if pprg.att.include? @proge.daten.to_s
+        daten = "Hadir"
+      else
+        daten = ""
+      end
       sheet.add_row [counter,
                     mmb.name,
                     mmb.ic,
@@ -41,7 +54,9 @@ wb.styles do |style|
                     mmb.kdiag,
                     mmb.race,
                     mmb.gdr,
-                    mmb.dun
+                    mmb.dun,
+                    date,
+                    daten
                     ], 
       style: [nil, border_cell]
       sheet.rows[row+counter].style = border_cell
