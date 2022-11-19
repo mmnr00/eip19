@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_12_125444) do
+ActiveRecord::Schema.define(version: 2022_11_19_101844) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -194,7 +194,6 @@ ActiveRecord::Schema.define(version: 2022_10_12_125444) do
     t.string "stat"
     t.string "statrs"
     t.string "agtp"
-    t.boolean "old"
     t.boolean "old1"
     t.string "accno"
     t.string "accname"
@@ -445,6 +444,8 @@ ActiveRecord::Schema.define(version: 2022_10_12_125444) do
     t.string "docnm"
     t.string "docph"
     t.text "crstp"
+    t.string "stat"
+    t.string "descr"
   end
 
   create_table "kid_bills", force: :cascade do |t|

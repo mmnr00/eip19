@@ -111,7 +111,7 @@
   <div class="card-body">
     
     <div class="table table-responsive border" style="font-size:13px">
-      <%= form_for(:ek, :url => {:controller=>'ekids', :action=>'statekid'}, :html => {multipart: true, class: "form-horizontal", method: :post, role: "form"}) do |f| %>
+      <%= form_for(:ek, :url => {:controller=>'ilscs', :action=>'statilsc'}, :html => {multipart: true, class: "form-horizontal", method: :post, role: "form"}) do |f| %>
       <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0" style="color: black">
         
         <thead>
@@ -121,6 +121,7 @@
             <th style="background-color:#ffb2b2; width: 20%">MAKLUMAT PEMOHON</th>
             <th style="background-color:#ffb2b2">PROGRAM</th>
             <th style="background-color:#ffb2b2; width: 15%">DOKUMEN</th>
+            <th style="background-color:#ffb2b2; width: 15%">STATUS</th>
             <th style="background-color:#ffb2b2; width: 20%">TARIKH</th>
           </tr>
         </thead>
@@ -197,6 +198,15 @@
               %>
               <a href="<%= url %>" target="_blank"><btn class="badge badge-pill badge-secondary">KAD OKU ANAK/DIAGNOSIS</btn></a><br>
               
+            </td>
+
+            <td>
+              <%= f.fields_for :"#{ek.id}" do |h| %>
+              <% ek.stat %>
+
+                <%= h.select :stat, options_for_select(["Permohonan Diterima","Permohonan Dalam Semakan", "Permohonan Tidak Lengkap","Permohonan Diluluskan", "Permohonan Ditolak"],selected: ek.stat), {include_blank: "Pilih Status"}, required: false %>
+                <%= h.text_area :descr, placeholder: "Makluman Admin", value: ek.descr, style: "margin-top: 5px; width: 100%" %>
+              <% end %>
             </td>
             
 

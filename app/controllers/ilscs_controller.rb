@@ -2,6 +2,18 @@ class IlscsController < ApplicationController
 	before_action :authenticate_admin!, only: [:ilscindex,:ilsclistxls]
 	before_action :set_all
 
+	def statilsc
+		pars = params[:ek]
+		pars.each do |k,v|
+			ek = Ilsc.find(k)
+			ek.stat = v["stat"]
+			ek.descr = v["descr"]
+			ek.save
+		end
+		flash[:success] = "Kemaskini Status Berjaya"
+		redirect_to request.referrer
+	end
+
 	def ilsclistxls
 		@admin = current_admin
 		# if params[:sce].present?

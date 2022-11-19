@@ -40,6 +40,7 @@ Rails.application.routes.draw do
   get '/ilsc_conf', to: 'ilscs#ilsc_conf'
   get '/ilscindex', to: 'ilscs#ilscindex'
   get '/ilsclistxls', to: 'ilscs#ilsclistxls'
+  post '/statilsc', to: 'ilscs#statilsc'
 
   #~~QSAS
   get '/admqsa', to: 'qsas#admqsa'

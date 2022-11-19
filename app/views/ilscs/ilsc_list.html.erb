@@ -30,7 +30,9 @@
             <th style="background-color:#ffb2b2; width: %">MAKLUMAT PESERTA</th>
             <th style="background-color:#ffb2b2; width: %">MAKLUMAT PEMOHON</th>
             <th style="background-color:#ffb2b2; width: %">PROGRAM</th>
+            <th style="background-color:#ffb2b2; width: %">STATUS</th>
             <th style="background-color:#ffb2b2; width: %">TARIKH PERMOHONAN</th>
+
           </tr>
         </thead>
         <tbody>
@@ -54,6 +56,10 @@
                 <%= perse.email %><br>
               </td>
               <td><%= ek.tp %></td>
+              <td>
+                <div class="badge badge-pill badge-info" style="font-size: 13px;"><%= ek.stat %></div><br>
+                <b>Makluman Admin: </b><%= ek.descr %>
+              </td>
               <td><%= ek.created_at.strftime('%d-%^b-%y') %></td>
             </tr>
           <% cnt = cnt +1 ; end %> 
