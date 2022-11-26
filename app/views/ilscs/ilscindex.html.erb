@@ -5,6 +5,16 @@
   </li>
 </ol>
 
+<%
+  crs = {"1"=>"Kursus Jahitan",
+        "2"=>"Kursus Bakeri",
+        "3"=>"Kursus Pengurusan Pejabat",
+        "4"=>"Kursus Teknologi Digital",
+        "5"=>"Kursus Kecerdasan Buatan (Artificial Intelligence)"}
+
+%>
+
+
 <!-- DASHBOARD SUMMARY 
 <div class="row">
 
@@ -91,6 +101,8 @@
         <%= text_field_tag :sch_str, params[:sch_str], placeholder: "Masukkan Nama", style: 'text-transform: uppercase' %>
         <%= select_tag :sch_fld, options_for_select(["PERSEDIAAN ALAM PEKERJAAN", "TRANSISI PEKERJAAN"], params[:sch_fld]),
               include_blank: "Semua Program" %>
+        <%= select_tag :sch_crs, options_for_select(["Kursus Jahitan", "Kursus Bakeri","Kursus Pengurusan Pejabat","Kursus Teknologi Digital","Kursus Kecerdasan Buatan"], params[:sch_crs]),
+              include_blank: "Semua Kursus" %>
         <% select_tag :stat, options_for_select(["Permohonan Diterima", "Permohonan Dalam Semakan", "Permohonan Tidak Lengkap","Permohonan Diluluskan", "Permohonan Ditolak"], params[:stat]),
               include_blank: "Semua Status" %>
         <%= hidden_field_tag :sch, params[:sch], value: true %>
@@ -118,11 +130,11 @@
           <tr class="shadow">
             <th style="background-color:#ffb2b2; width: 1%">NO</th>
             <th style="background-color:#ffb2b2; width: 20%">MAKLUMAT PESERTA</th>
-            <th style="background-color:#ffb2b2; width: 20%">MAKLUMAT PEMOHON</th>
-            <th style="background-color:#ffb2b2">PROGRAM</th>
+            <th style="background-color:#ffb2b2; width: 10%">MAKLUMAT PEMOHON</th>
+            <th style="background-color:#ffb2b2; width: 20%">PROGRAM & KURSUS</th>
             <th style="background-color:#ffb2b2; width: 15%">DOKUMEN</th>
             <th style="background-color:#ffb2b2; width: 15%">STATUS</th>
-            <th style="background-color:#ffb2b2; width: 20%">TARIKH</th>
+            <th style="background-color:#ffb2b2; width: 5%">TARIKH</th>
           </tr>
         </thead>
         <tbody>
@@ -146,7 +158,13 @@
               <%= perse.ph %><br>
               <%= perse.email %><br>
             </td>
-            <td><%= ek.tp %></td>
+            <td>
+              <%= ek.tp %><br><br>
+              <% ek.crstp.each do |n| %>
+                <%= crs[n] %><br>
+              <% end %>
+                
+            </td>
             <td>
               <%
                 image = ek.fotos.where(foto_name: "MYKAD BAPA").first

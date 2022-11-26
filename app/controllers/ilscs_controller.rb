@@ -50,6 +50,21 @@ class IlscsController < ApplicationController
 		if params[:sch].present?
 			@ilscs  = @ilscs.where(tp: params[:sch_fld]) unless params[:sch_fld].blank?
 			@ilscs  = @ilscs.where('name LIKE ?', "%#{params[:sch_str].upcase}%") unless params[:sch_str].blank?
+			if params[:sch_crs].present?
+				crs = {"Kursus Jahitan"=>"1",
+        "Kursus Bakeri"=>"2",
+        "Kursus Pengurusan Pejabat"=>"3",
+        "Kursus Teknologi Digital"=>"4",
+        "Kursus Kecerdasan Buatan"=>"5"}
+
+        slc_crs = crs[params[:sch_crs]]
+        arr_il = []
+        @ilscs.each do |il|
+        	arr_il << il.id unless !il.crstp.include? slc_crs
+
+        end
+        @ilscs = Ilsc.where(id: arr_il)
+			end
 			# if params[:stat].present?
 			# 	# if params[:stat] == "AKTIF"
 			# 	# 	@ekids = @ekids.where(stat: [nil,""])
