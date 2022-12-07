@@ -3,6 +3,20 @@ class ApplicationController < ActionController::Base
 	 protect_from_forgery prepend: true
 	 require 'roo'
 
+	 def check_bday(ic)
+	 	curr_yr = Date.today.year.to_s[2..3].to_i
+	 	yr_ic = ic[0..1].to_i 
+	 	if yr_ic <= curr_yr
+	 		yr_bday = "20#{ic[0..1]}"
+	 	else
+	 		yr_bday = "19#{ic[0..1]}"
+	 	end
+	 	bday_dt = Date.new(yr_bday.to_i, ic[2..3].to_i, ic[4..5].to_i)
+
+	 	puts bday_dt
+	 	return true
+	 end
+
 	 def set_all
 	 	@admin = current_admin
 	 end

@@ -116,9 +116,13 @@ class IlscsController < ApplicationController
 		@perse = Perse.find(params[:perse])
 		@ilsc.fotos.build
 		if params[:sch].present?
+			dt = check_bday(params[:ic])
 			ilsc_exs = Ilsc.where(ic: params[:ic], tp: params[:prog])
 			if ilsc_exs.present?
 				flash[:danger] = "No MYKAD #{ilsc_exs.last.name} ini sudah didaftarkan oleh #{ilsc_exs.last.perse.name}"
+			elsif dt == true 
+				flash[:danger] = "Lebih umur"
+				redirect_to request.referrer
 			else
 				@cfm = true
 			end
