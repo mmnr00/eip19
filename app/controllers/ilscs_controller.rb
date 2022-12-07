@@ -117,14 +117,18 @@ class IlscsController < ApplicationController
 		@ilsc.fotos.build
 		if params[:sch].present?
 			dt = check_bday(params[:ic])
-			ilsc_exs = Ilsc.where(ic: params[:ic], tp: params[:prog])
-			if ilsc_exs.present?
-				flash[:danger] = "No MYKAD #{ilsc_exs.last.name} ini sudah didaftarkan oleh #{ilsc_exs.last.perse.name}"
-			elsif dt == true 
-				flash[:danger] = "Lebih umur"
-				redirect_to request.referrer
+			puts dt
+			puts ((dt>=17) && (dt<=22))
+			if ((dt>=17) && (dt<=22))
+				ilsc_exs = Ilsc.where(ic: params[:ic], tp: params[:prog])
+				if ilsc_exs.present?
+					flash[:danger] = "No MYKAD #{ilsc_exs.last.name} ini sudah didaftarkan oleh #{ilsc_exs.last.perse.name}"
+				else
+					@cfm = true
+				end
 			else
-				@cfm = true
+				flash[:danger] = "Umur peserta tidak menetapi syarat program (17 hingga 22 tahun)"
+				redirect_to request.referrer	
 			end
 		end
 		#render action: "new", layout: "eipblank"
