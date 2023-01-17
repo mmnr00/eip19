@@ -196,7 +196,7 @@ class EkidsController < ApplicationController
 		@ekid.fotos.build
 		if params[:sch].present?
 			dt = check_bday(params[:ic])
-			if ((dt>=5) && (dt<=6) && (params[:prog]=="PRASEKOLAH ANIS")) || ((dt>=2) && (dt<=6) && (params[:prog]=="INTERVENSI ANIS"))
+			if ((dt>=2) && (dt<=6))
 				ekd_exs = Ekid.where(ic: params[:ic], tp: params[:prog])
 				if ekd_exs.present?
 					flash[:danger] = "No MYKID #{ekd_exs.last.name} ini sudah didaftarkan oleh #{ekd_exs.last.perse.name}"
