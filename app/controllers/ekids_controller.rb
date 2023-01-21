@@ -2,6 +2,16 @@ class EkidsController < ApplicationController
 	before_action :authenticate_admin!, only: [:index,:ekidlistxls]
 	before_action :set_all
 
+	def statekid_new
+		pars = params[:ek]
+		ek = Ekid.find(pars[:ekid])
+		ek.update(phs: pars[:phs],descr: pars[:descr], dtp: pars[:dtp], dts: pars[:dts], dte:pars[:dte])
+		ek.admupd << [Date.today, current_admin.id, ek.stat, pars[:phs], pars[:descr],pars[:dtp],pars[:dts],pars[:dte]]
+		ek.save
+		flash[:success] = "Kemaskini Status Berjaya"
+		redirect_to request.referrer
+	end
+
 	def statekid
 		pars = params[:ek]
 		pars.each do |k,v|
@@ -11,6 +21,14 @@ class EkidsController < ApplicationController
 			ek.save
 		end
 		flash[:success] = "Kemaskini Status Berjaya"
+		redirect_to request.referrer
+	end
+
+	def ekstat_new
+		@ekid = Ekid.find(params[:id])
+		@ekid.stat = params[:stat]
+		@ekid.save
+		flash[:success] = "Status #{@ekid.name} berjaya dikemaskini"
 		redirect_to request.referrer
 	end
 

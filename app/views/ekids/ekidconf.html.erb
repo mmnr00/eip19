@@ -23,6 +23,41 @@
 
 <div class="prt-hide" style="margin-bottom: 10px;">
   <%= link_to "Muat Turun Borang", "#", onclick: 'window.print()', class: 'btn btn-sm btn-success btn-block' %>
+  <% if params[:prt].blank? %>
+    <% ekstat = ["Permohonan","Penilaian","Kemasukan Program","Tamat Program"]
+    ekstat.each do |st| 
+      if @ekid.stat == st
+        btn = "primary"
+      else
+        btn = "secondary"
+      end
+    %>
+
+      <%= link_to "#{st}", ekstat_new_path(id: @ekid.id,stat: st), class: "badge badge-pill badge-#{btn}" %> 
+    <% end %>
+  
+    <%
+      phs = {"Permohonan" => ["Permohonan Baru","Permohonan Tidak Lengkap", "Permohonan Dalam Semakan", "Permohonan Ditolak"],
+      "Penilaian" => ["Permohonan Dalam Senarai Menunggu","Penilaian Dalam Semakan","Panggilan Penilaian Pelajar"],
+      "Kemasukan Program" => ["Kemasukan Program Intervensi","Kemasukan Program Prasekolah"],
+      "Tamat Program" => ["Tamat Program"]}
+    %>
+
+    <%= form_for(:ek, :url => {:controller=>'ekids', :action=>'statekid_new'}, :html => {multipart: true, class: "form-horizontal", method: :post, role: "form"}) do |f| %>
+      <%= f.select :phs, options_for_select(phs[@ekid.stat],selected: @ekid.phs), {include_blank: "Pilih Status"}, required: true, style: "margin-top: 5px" %>
+      <%= f.text_field :descr, placeholder: "Makluman Admin", value: @ekid.descr, style: "margin-top: 5px; width: 100%" %>
+      <% ste = @ekid.stat ; if ste != "Permohonan" %>
+        <% if ste == "Penilaian" %>
+          <b>Tarikh Penilaian:</b><br> <%= f.date_field :dtp, value: @ekid.dtp, style: "margin-top: 5px" %><br>
+        <% end %>
+        <b>Tarikh Mula Program:</b><br> <%= f.date_field :dts, value: @ekid.dts, style: "margin-top: 5px" %><br>
+        <b>Tarikh Tamat Program:</b><br> <%= f.date_field :dte, value: @ekid.dte, style: "margin-top: 5px" %><br>
+      <% end %>
+      <%= f.hidden_field :ekid, value: @ekid.id%>
+      <%= f.submit :"Kemaskini",  class: 'btn btn-sm btn-info btn-lg', style: "margin-top: 5px" %>
+    <% end %>
+  <% end %>
+ 
 </div>
 
 

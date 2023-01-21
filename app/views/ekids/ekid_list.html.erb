@@ -38,7 +38,7 @@
           <% @ekids.each do |ek| %>
             <tr>
               <td>
-                <a href="<%= ekidconf_url(id: ek)%>" target="_blank"><%= ek.name %></a><br>
+                <a href="<%= ekidconf_url(id: ek, prt: 1)%>" target="_blank"><%= ek.name %></a><br>
                 <%= link_to "Kemaskini Profil", edit_ekid_path(id: ek.id, perse: ek.perse.id), class: "badge badge-pill badge-secondary", target: "_blank" %>
                 <% if ek.pkid.present? %>
                   <br> 
