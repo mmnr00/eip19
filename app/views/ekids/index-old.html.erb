@@ -110,6 +110,7 @@
   <div class="card-body"><% if params[:sch].present? %>
     
     <div class="table table-responsive border" style="font-size:13px">
+      <%= form_for(:ek, :url => {:controller=>'ekids', :action=>'statekid'}, :html => {multipart: true, class: "form-horizontal", method: :post, role: "form"}) do |f| %>
       <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0" style="color: black">
         
         <thead>
@@ -162,7 +163,7 @@
               %>
               <b>Kategori: </b><%= ek.prbtp %><br>
               <b>Umur: </b><%= "#{yr} tahun, #{mth} bulan" %><br>
-              <b>Pendapatan: </b><%= ek.pinc %>
+              <b>Pendapatan (RM): </b><%= ek.pinc %>
             </td>
             <!-- <td>
               <%
@@ -180,14 +181,11 @@
               <a href="<%= ekstat_url(id: ek.id, stat: staturl) %>"><btn class="badge badge-pill badge-secondary">Ubah Status</btn></a>
             </td> -->
             <td>
-              <%= link_to ek.stat, "#", class: "badge badge-pill badge-secondary" %><br>
-              <%= link_to ek.phs, "#", class: "badge badge-pill badge-primary" %><br>
-              <b>Maklumat Admin:</b><br>
-              <%= ek.descr %><br>
-              <% upd = ek.admupd.last %>
-              <% if upd.present? %>
-                <b><%= Admin.find(upd[1]).username %></b> (<%= upd[0].strftime('%d-%^b-%y') %>)<br>
-                <%= link_to "Sejarah Kemaskini Admin", admhist_path(id: ek.id), target: "_blank" %><br>
+              <%= f.fields_for :"#{ek.id}" do |h| %>
+              <% ek.stat %>
+
+                <%= h.select :stat, options_for_select(["Permohonan Diterima","Permohonan Dalam Semakan", "Permohonan Tidak Lengkap","Permohonan Diluluskan", "Permohonan Ditolak"],selected: ek.stat), {include_blank: "Pilih Status"}, required: false %>
+                <%= h.text_area :descr, placeholder: "Makluman Admin", value: ek.descr, style: "margin-top: 5px; width: 100%" %>
               <% end %>
             </td>
 
@@ -202,6 +200,8 @@
         </tbody>
         
       </table>
+      <%= f.submit :"Kemaskini",  class: 'btn btn-sm btn-block btn-success btn-lg', style: "align:center" %>
+      <% end %> <!-- END FORM -->
     </div>
   </div><% end %>
 </div>

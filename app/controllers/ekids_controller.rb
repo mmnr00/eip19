@@ -1,13 +1,18 @@
 class EkidsController < ApplicationController
-	before_action :authenticate_admin!, only: [:index,:ekidlistxls]
+	before_action :authenticate_admin!, only: [:index,:ekidlistxls, :admhist]
 	before_action :set_all
+
+	def admhist
+		@index = true
+		@ekid = Ekid.find(params[:id])
+	end
 
 	def statekid_new
 		pars = params[:ek]
 		ek = Ekid.find(pars[:ekid])
-		ek.update(phs: pars[:phs],descr: pars[:descr], dtp: pars[:dtp], dts: pars[:dts], dte:pars[:dte])
-		ek.admupd << [Date.today, current_admin.id, ek.stat, pars[:phs], pars[:descr],pars[:dtp],pars[:dts],pars[:dte]]
-		ek.save
+		ek.update(phs: pars[:phs],descr: pars[:descr], dtp: pars[:dtp], dts: pars[:dts], dte:pars[:dte], tp: pars[:tp])
+		ek.admupd << [Date.today, current_admin.id, ek.stat, pars[:phs], pars[:descr],pars[:dtp],pars[:dts],pars[:dte],pars[:tp]]
+		ek.save  
 		flash[:success] = "Kemaskini Status Berjaya"
 		redirect_to request.referrer
 	end
@@ -18,7 +23,7 @@ class EkidsController < ApplicationController
 			ek = Ekid.find(k)
 			ek.stat = v["stat"]
 			ek.descr = v["descr"]
-			ek.save
+			ek.save 
 		end
 		flash[:success] = "Kemaskini Status Berjaya"
 		redirect_to request.referrer

@@ -47,9 +47,13 @@
       <%= f.select :phs, options_for_select(phs[@ekid.stat],selected: @ekid.phs), {include_blank: "Pilih Status"}, required: true, style: "margin-top: 5px" %>
       <%= f.text_field :descr, placeholder: "Makluman Admin", value: @ekid.descr, style: "margin-top: 5px; width: 100%" %>
       <% ste = @ekid.stat ; if ste != "Permohonan" %>
+        <%= f.select :tp, options_for_select(["INTERVENSI ANIS","PRASEKOLAH ANIS"],selected: @ekid.tp), {include_blank: "Pilih Jenis Program"}, required: true, style: "margin-top: 5px" %><br>
         <% if ste == "Penilaian" %>
           <b>Tarikh Penilaian:</b><br> <%= f.date_field :dtp, value: @ekid.dtp, style: "margin-top: 5px" %><br>
+        <% else %>
+          <%= f.hidden_field :dtp, value: @ekid.dtp, style: "margin-top: 5px" %>
         <% end %>
+
         <b>Tarikh Mula Program:</b><br> <%= f.date_field :dts, value: @ekid.dts, style: "margin-top: 5px" %><br>
         <b>Tarikh Tamat Program:</b><br> <%= f.date_field :dte, value: @ekid.dte, style: "margin-top: 5px" %><br>
       <% end %>
