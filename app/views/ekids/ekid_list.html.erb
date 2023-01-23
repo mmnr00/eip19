@@ -48,8 +48,11 @@
               <td><%= ek.ic %></td>
               <td><%= ek.tp %></td>
               <td>
-                <div class="badge badge-pill badge-info" style="font-size: 13px;"><%= ek.stat %></div><br>
-                <b>Makluman Admin: </b><%= ek.descr %>
+                <div class="badge badge-pill badge-info" style="font-size: 13px;"><%= ek.phs %></div><br>
+                <b>Makluman Admin: </b><%= ek.descr %><br>
+                <b>Tarikh Penilaian: </b><%= ek.dtp.strftime('%d-%^b-%y') unless ek.dtp.blank? %><br>
+                <b>Tarikh Masuk: </b><%= ek.dts.strftime('%d-%^b-%y') unless ek.dts.blank? %><br>
+                <b>Tarikh Tamar: </b><%= ek.dte.strftime('%d-%^b-%y') unless ek.dte.blank? %><br>
               </td>
             </tr>
           <% end %> 

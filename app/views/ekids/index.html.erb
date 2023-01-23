@@ -180,7 +180,7 @@
               <a href="<%= ekstat_url(id: ek.id, stat: staturl) %>"><btn class="badge badge-pill badge-secondary">Ubah Status</btn></a>
             </td> -->
             <td>
-              <%= link_to ek.stat, "#", class: "badge badge-pill badge-secondary" %><br>
+              <%= link_to ek.stat, "#", class: "btn btn-block btn-success", style: "margin-bottom: -20px; font-size: 15px"%><br>
               <%= link_to ek.phs, "#", class: "badge badge-pill badge-primary" %><br>
               <b>Maklumat Admin:</b><br>
               <%= ek.descr %><br>
@@ -193,7 +193,10 @@
 
             <td>
               <b>Kemaskini</b> :<%= ek.updated_at.strftime('%d-%^b-%y') %><br>
-              <b>Permohonan</b> :<%= ek.created_at.strftime('%d-%^b-%y') %>    
+              <b>Permohonan</b> :<%= ek.created_at.strftime('%d-%^b-%y') %><br>   
+              <b>Penilaian</b> :<%= ek.dtp.strftime('%d-%^b-%y') unless ek.dtp.blank? %><br>   
+              <b>Mula</b> :<%= ek.dts.strftime('%d-%^b-%y') unless ek.dts.blank? %><br>   
+              <b>Tamat</b> :<%= ek.dte.strftime('%d-%^b-%y') unless ek.dte.blank? %><br>    
             </td>
           </tr>
 
