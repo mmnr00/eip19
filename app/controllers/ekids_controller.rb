@@ -76,7 +76,12 @@ class EkidsController < ApplicationController
 
 	def index
 		@admin = current_admin
-		@ekids = Ekid.where(del: nil)
+		if params[:yr].present?
+			@init_ekid = Ekid.where('extract(year from created_at) = ?', params[:yr])
+		else
+			@init_ekid = Ekid.all
+		end
+		@ekids = @init_ekid.where(del: nil)
 		@ekid_all = @ekids
 		if params[:sch].present?
 			@ekids = @ekids.where(tp: params[:sch_fld]) unless params[:sch_fld].blank?
@@ -164,10 +169,18 @@ class EkidsController < ApplicationController
 		# else
 		# 	@ekids = Ekid.where(admloc: $admloc[@admin.id],stat: params[:stato]).order('name ASC')
 		# end
-		@ekids = Ekid.all
+		if params[:yr].present?
+			@init_ekid = Ekid.where('extract(year from created_at) = ?', params[:yr])
+		else
+			@init_ekid = Ekid.all
+		end
+		@ekids = @init_ekid.all
 		if params[:sch].present?
 			@ekids = @ekids.where(tp: params[:sch_fld]) unless params[:sch_fld].blank?
 			@ekids = @ekids.where('name LIKE ?', "%#{params[:sch_str].upcase}%") unless params[:sch_str].blank?
+			if @ekids.blank?
+				@ekids = @ekid_all.where('ic LIKE ?', "%#{params[:sch_str]}%") unless params[:sch_str].blank?
+			end
 			if params[:stat].present?
 				# if params[:stat] == "AKTIF"
 				# 	@ekids = @ekids.where(stat: [nil,""])
@@ -701,6 +714,8 @@ class EkidsController < ApplicationController
 														    :curreip,
 														    :nmeip,
 														    :tmeip,
+														    :dtwlk,
+														    :kdhealth,
 																fotos_attributes: [:foto, :picture, :foto_name])
 	end
 
