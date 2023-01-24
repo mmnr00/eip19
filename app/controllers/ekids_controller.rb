@@ -2,6 +2,22 @@ class EkidsController < ApplicationController
 	before_action :authenticate_admin!, only: [:index,:ekidlistxls, :admhist]
 	before_action :set_all
 
+	def vwadmbin
+		@ekids = Ekid.where(del: true)
+	end
+
+	def admbin
+		@ekid = Ekid.find(params[:id])
+		if params[:del].present?
+			@ekid.update(del: true)
+		else
+			@ekid.update(del: nil)
+		end
+		@ekid.save
+		flash[:success] = "Kemaskini Permohonan #{@ekid.name} berjaya"
+		redirect_to ekidindex_path
+	end
+
 	def admhist
 		@index = true
 		@ekid = Ekid.find(params[:id])
@@ -47,7 +63,7 @@ class EkidsController < ApplicationController
 
 	def index
 		@admin = current_admin
-		@ekids = Ekid.all
+		@ekids = Ekid.where(del: nil)
 		@ekid_all = @ekids
 		if params[:sch].present?
 			@ekids = @ekids.where(tp: params[:sch_fld]) unless params[:sch_fld].blank?

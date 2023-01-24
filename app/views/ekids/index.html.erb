@@ -5,77 +5,7 @@
   </li>
 </ol>
 
-<!-- DASHBOARD SUMMARY 
-<div class="row">
 
-  <div class="col-3">
-    <div class="card border-left-success shadow h-100 py-2">
-      <div class="card-body">
-        <div class="row no-gutters align-items-center">
-          <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">AKTIF</div>
-            <a href="<%= lsddk_url(sch: true, stat: 3) %>"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ekids.where(stat: [nil,""]).count %></div></a>
-          </div>
-          <div class="col-auto">
-            <i class="fa fa-thumbs-up fa-2x text-gray-300"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-3">
-    <div class="card border-left-danger shadow h-100 py-2">
-      <div class="card-body">
-        <div class="row no-gutters align-items-center">
-          <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">TIDAK AKTIF</div>
-            <a href="<%= lsddk_url(sch: true, stat: 4) %>"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ekids.where.not(stat: [nil,""]).count %></div></a>
-          </div>
-          <div class="col-auto">
-            <i class="fa fa-exclamation-circle fa-2x text-gray-300"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <div class="col-3">
-    <div class="card border-left-primary shadow h-100 py-2">
-      <div class="card-body">
-        <div class="row no-gutters align-items-center">
-          <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">SARINGAN</div>
-            <a href="<%= lsddk_url(sch: true, stat: 1) %>"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ekids.where(tp: "SARINGAN ANIS").count %></div></a>
-          </div>
-          <div class="col-auto">
-            <i class="fas fa-folder-plus fa-2x text-gray-300"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-3">
-    <div class="card border-left-warning shadow h-100 py-2">
-      <div class="card-body">
-        <div class="row no-gutters align-items-center">
-          <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">TERAPI</div>
-            <a href="<%= lsddk_url(sch: true, stat: 2) %>"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ekids.where(tp: "TERAPI ANIS").count %></div></a>
-          </div>
-          <div class="col-auto">
-            <i class="fa fa-spinner fa-2x text-gray-300"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  
-
-
-</div> -->
 
 <!-- DASHBOARD SUMMARY -->
 <div class="row">
@@ -153,6 +83,8 @@
   <i class="fa fa-file-excel"></i> Muat Turun Senarai
 <% end %>
 
+<%= link_to "Permohonan Dipadam (#{Ekid.where(del: true).count})", vwadmbin_path, class: "badge badge badge-danger", style: "font-size: 16px; font-weight: normal; margin-top: 5px" %><br>
+
 <div class="cards shadow mb-4">
   <div class="card-header">
     <div class="row">
@@ -198,7 +130,10 @@
           <tr>
             <td>
               <a href="<%= ekidconf_url(id: ek.id)%>" target="_blank">PPN-<%= ek.id.to_s.rjust(4, '0') %></a><br>
-              (<%= ek.tp %>)
+              (<%= ek.tp %>)<br>
+              <%= link_to "Kemaskini", "#", class: "badge badge-pill badge-warning" %><br>
+              <%= link_to "Padam", admbin_path(id: ek.id, del: 1), class: "badge badge-pill badge-danger" %><br>
+
               <% if ek.ekrps.count > 0 %>
                 <br>
                 <%= link_to "Lihat Senarai Laporan", ekrpls_path(ekid: ek.id), class: "badge badge-pill badge-success", target: "_blank"%>
@@ -207,6 +142,7 @@
             <td>
               <%= ek.name %><br>
               (<%= ek.ic %>)<br>
+              
               <%
                 image = ek.fotos.where(foto_name: "DIAGNOSIS").first
                 if image.present? && image.picture.present?

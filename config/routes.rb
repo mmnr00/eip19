@@ -137,6 +137,8 @@ Rails.application.routes.draw do
  
 
   #~~EKID
+  get '/vwadmbin', to: 'ekids#vwadmbin'
+  get '/admbin', to: 'ekids#admbin'
   get '/admhist', to: 'ekids#admhist'
   post '/statekid_new', to: 'ekids#statekid_new'
   post '/statekid', to: 'ekids#statekid'
