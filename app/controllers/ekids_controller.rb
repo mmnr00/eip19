@@ -2,16 +2,29 @@ class EkidsController < ApplicationController
 	before_action :authenticate_admin!, only: [:index,:ekidlistxls, :admhist]
 	before_action :set_all
 
+	def destroy
+		@ekid = Ekid.find(params[:id])
+		if @ekid.destroy
+			flash[:success] = "Permohonan Berjaya Dipandamkan Dari Sistem"
+		else
+			flash[:danger] = "Tidak Berjaya. Sila Cuba Lagi"
+		end
+		redirect_to request.referrer
+	end
+
 	def vwadmbin
 		@ekids = Ekid.where(del: true)
 	end
 
 	def admbin
 		@ekid = Ekid.find(params[:id])
+		@admin = current_admin
 		if params[:del].present?
-			@ekid.update(del: true)
+			@ekid.update(del: true, stat:"Permohonan",phs:"Dalam Proses Untuk Dipadam")
+			@ekid.admupd << [Date.today, @admin.id, "Permohonan", "Dalam Proses Untuk Dipadam",nil,nil,nil,nil,nil]
 		else
-			@ekid.update(del: nil)
+			@ekid.update(del: nil,stat:"Permohonan",phs:"Permohonan Baru")
+			@ekid.admupd << [Date.today, @admin.id, "Permohonan", "Permohonan Baru",nil,nil,nil,nil,nil]
 		end
 		@ekid.save
 		flash[:success] = "Kemaskini Permohonan #{@ekid.name} berjaya"
