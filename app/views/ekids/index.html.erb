@@ -77,9 +77,79 @@
 
 </div> -->
 
+<!-- DASHBOARD SUMMARY -->
+<div class="row">
+  
+  <div class="col-3">
+    <div class="card border-left-primary shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">JUMLAH PENDAFTARAN</div>
+            <a href="<%= lsddk_url(sch: true, stat: 1) %>"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ekid_all.count %></div></a>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-folder-plus fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-3">
+    <div class="card border-left-warning shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">PENDAFTARAN BARU</div>
+            <a href="<%= lsddk_url(sch: true, stat: 2) %>"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ekid_all.where(phs: "Permohonan Baru").count %></div></a>
+          </div>
+          <div class="col-auto">
+            <i class="fa fa-spinner fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-3">
+    <div class="card border-left-success shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">INTERVENSI</div>
+            <a href="<%= lsddk_url(sch: true, stat: 3) %>"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ekid_all.where(tp: "INTERVENSI ANIS").count %></div></a>
+          </div>
+          <div class="col-auto">
+            <i class="fa fa-thumbs-up fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-3">
+    <div class="card border-left-danger shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">PRASEKOLAH</div>
+            <a href="<%= lsddk_url(sch: true, stat: 4) %>"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ekid_all.where(tp: "PRASEKOLAH ANIS").count %></div></a>
+          </div>
+          <div class="col-auto">
+            <i class="fa fa-exclamation-circle fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
 <!-- TABLE -->
 
-<%= link_to ekidlistxls_path(format: :xlsx, sch_fld: params[:sch_fld], sch: params[:sch], sch_str: params[:sch_str]), class: "badge badge-info shadow-sm", style: "font-size: 16px; font-weight: normal" do %>
+<%= link_to ekidlistxls_path(format: :xlsx, sch_fld: params[:sch_fld], sch: params[:sch], sch_str: params[:sch_str]), class: "badge badge-info shadow-sm", style: "font-size: 16px; font-weight: normal; margin-top: 5px" do %>
   <i class="fa fa-file-excel"></i> Muat Turun Senarai
 <% end %>
 

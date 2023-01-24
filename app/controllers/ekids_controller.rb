@@ -48,9 +48,13 @@ class EkidsController < ApplicationController
 	def index
 		@admin = current_admin
 		@ekids = Ekid.all
+		@ekid_all = @ekids
 		if params[:sch].present?
 			@ekids = @ekids.where(tp: params[:sch_fld]) unless params[:sch_fld].blank?
 			@ekids = @ekids.where('name LIKE ?', "%#{params[:sch_str].upcase}%") unless params[:sch_str].blank?
+			if @ekids.blank?
+				@ekids = @ekid_all.where('ic LIKE ?', "%#{params[:sch_str]}%") unless params[:sch_str].blank?
+			end
 			if params[:stat].present?
 				# if params[:stat] == "AKTIF"
 				# 	@ekids = @ekids.where(stat: [nil,""])
