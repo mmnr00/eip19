@@ -89,13 +89,13 @@ class EkidsController < ApplicationController
 			if @ekids.blank?
 				@ekids = @ekid_all.where('ic LIKE ?', "%#{params[:sch_str]}%") unless params[:sch_str].blank?
 			end
-			if params[:stat].present?
+			if params[:phs].present?
 				# if params[:stat] == "AKTIF"
 				# 	@ekids = @ekids.where(stat: [nil,""])
 				# else
 				# 	@ekids = @ekids.where.not(stat: [nil,""])
 				# end
-				@ekids = @ekids.where(stat: params[:stat])
+				@ekids = @ekids.where(phs: params[:phs])
 				
 			end
 		end

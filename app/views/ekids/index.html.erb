@@ -92,7 +92,7 @@
         <%= text_field_tag :sch_str, params[:sch_str], placeholder: "Nama atau MyKid", style: 'text-transform: uppercase' %>
         <%= select_tag :sch_fld, options_for_select(["INTERVENSI ANIS", "PRASEKOLAH ANIS"], params[:sch_fld]),
               include_blank: "Semua Program" %>
-        <%= select_tag :stat, options_for_select(["Permohonan Diterima", "Permohonan Dalam Semakan", "Permohonan Tidak Lengkap","Permohonan Diluluskan", "Permohonan Ditolak"], params[:stat]),
+        <%= select_tag :phs, options_for_select(["Permohonan Baru","Permohonan Tidak Lengkap", "Permohonan Dalam Semakan", "Permohonan Ditolak","Permohonan Dalam Senarai Menunggu","Penilaian Dalam Semakan","Panggilan Penilaian Pelajar","Kemasukan Program Intervensi","Kemasukan Program Prasekolah","Tamat Program"], params[:phs]),
               include_blank: "Semua Status" %>
         <%= select_tag :yr, options_for_select((2021..Date.today.year).to_a, params[:yr]),
               include_blank: "Semua Tahun" %>
