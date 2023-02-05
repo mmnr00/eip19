@@ -1,6 +1,50 @@
 class EkidsController < ApplicationController
-	before_action :authenticate_admin!, only: [:index,:ekidlistxls]
+	before_action :authenticate_admin!, only: [:index,:ekidlistxls, :admhist]
 	before_action :set_all
+
+	def destroy
+		@ekid = Ekid.find(params[:id])
+		if @ekid.destroy
+			flash[:success] = "Permohonan Berjaya Dipandamkan Dari Sistem"
+		else
+			flash[:danger] = "Tidak Berjaya. Sila Cuba Lagi"
+		end
+		redirect_to request.referrer
+	end
+
+	def vwadmbin
+		@ekids = Ekid.where(del: true)
+	end
+
+	def admbin
+		@ekid = Ekid.find(params[:id])
+		@admin = current_admin
+		if params[:del].present?
+			@ekid.update(del: true, stat:"Permohonan",phs:"Dalam Proses Untuk Dipadam")
+			@ekid.admupd << [Date.today, @admin.id, "Permohonan", "Dalam Proses Untuk Dipadam",nil,nil,nil,nil,nil]
+		else
+			@ekid.update(del: nil,stat:"Permohonan",phs:"Permohonan Baru")
+			@ekid.admupd << [Date.today, @admin.id, "Permohonan", "Permohonan Baru",nil,nil,nil,nil,nil]
+		end
+		@ekid.save
+		flash[:success] = "Kemaskini Permohonan #{@ekid.name} berjaya"
+		redirect_to ekidindex_path
+	end
+
+	def admhist
+		@index = true
+		@ekid = Ekid.find(params[:id])
+	end
+
+	def statekid_new
+		pars = params[:ek]
+		ek = Ekid.find(pars[:ekid])
+		ek.update(phs: pars[:phs],descr: pars[:descr], dtp: pars[:dtp], dts: pars[:dts], dte:pars[:dte], tp: pars[:tp])
+		ek.admupd << [Date.today, current_admin.id, ek.stat, pars[:phs], pars[:descr],pars[:dtp],pars[:dts],pars[:dte],pars[:tp]]
+		ek.save  
+		flash[:success] = "Kemaskini Status Berjaya"
+		redirect_to request.referrer
+	end
 
 	def statekid
 		pars = params[:ek]
@@ -8,9 +52,17 @@ class EkidsController < ApplicationController
 			ek = Ekid.find(k)
 			ek.stat = v["stat"]
 			ek.descr = v["descr"]
-			ek.save
+			ek.save 
 		end
 		flash[:success] = "Kemaskini Status Berjaya"
+		redirect_to request.referrer
+	end
+
+	def ekstat_new
+		@ekid = Ekid.find(params[:id])
+		@ekid.stat = params[:stat]
+		@ekid.save
+		flash[:success] = "Status #{@ekid.name} berjaya dikemaskini"
 		redirect_to request.referrer
 	end
 
@@ -24,17 +76,26 @@ class EkidsController < ApplicationController
 
 	def index
 		@admin = current_admin
-		@ekids = Ekid.all
+		if params[:yr].present?
+			@init_ekid = Ekid.where('extract(year from created_at) = ?', params[:yr])
+		else
+			@init_ekid = Ekid.all
+		end
+		@ekids = @init_ekid.where(del: nil)
+		@ekid_all = @ekids
 		if params[:sch].present?
 			@ekids = @ekids.where(tp: params[:sch_fld]) unless params[:sch_fld].blank?
 			@ekids = @ekids.where('name LIKE ?', "%#{params[:sch_str].upcase}%") unless params[:sch_str].blank?
-			if params[:stat].present?
+			if @ekids.blank?
+				@ekids = @ekid_all.where('ic LIKE ?', "%#{params[:sch_str]}%") unless params[:sch_str].blank?
+			end
+			if params[:phs].present?
 				# if params[:stat] == "AKTIF"
 				# 	@ekids = @ekids.where(stat: [nil,""])
 				# else
 				# 	@ekids = @ekids.where.not(stat: [nil,""])
 				# end
-				@ekids = @ekids.where(stat: params[:stat])
+				@ekids = @ekids.where(phs: params[:phs])
 				
 			end
 		end
@@ -108,10 +169,18 @@ class EkidsController < ApplicationController
 		# else
 		# 	@ekids = Ekid.where(admloc: $admloc[@admin.id],stat: params[:stato]).order('name ASC')
 		# end
-		@ekids = Ekid.all
+		if params[:yr].present?
+			@init_ekid = Ekid.where('extract(year from created_at) = ?', params[:yr])
+		else
+			@init_ekid = Ekid.all
+		end
+		@ekids = @init_ekid.all
 		if params[:sch].present?
 			@ekids = @ekids.where(tp: params[:sch_fld]) unless params[:sch_fld].blank?
 			@ekids = @ekids.where('name LIKE ?', "%#{params[:sch_str].upcase}%") unless params[:sch_str].blank?
+			if @ekids.blank?
+				@ekids = @ekid_all.where('ic LIKE ?', "%#{params[:sch_str]}%") unless params[:sch_str].blank?
+			end
 			if params[:stat].present?
 				# if params[:stat] == "AKTIF"
 				# 	@ekids = @ekids.where(stat: [nil,""])
@@ -196,7 +265,7 @@ class EkidsController < ApplicationController
 		@ekid.fotos.build
 		if params[:sch].present?
 			dt = check_bday(params[:ic])
-			if ((dt>=5) && (dt<=6) && (params[:prog]=="PRASEKOLAH ANIS")) || ((dt>=2) && (dt<=6) && (params[:prog]=="INTERVENSI ANIS"))
+			if ((dt>=4) && (dt<=6))
 				ekd_exs = Ekid.where(ic: params[:ic], tp: params[:prog])
 				if ekd_exs.present?
 					flash[:danger] = "No MYKID #{ekd_exs.last.name} ini sudah didaftarkan oleh #{ekd_exs.last.perse.name}"
@@ -234,7 +303,8 @@ class EkidsController < ApplicationController
 			# else
 			# 	@ekid.stat = "NEW"
 			# end
-			@ekid.stat = "Permohonan Diterima"
+			@ekid.stat = "Permohonan"
+			@ekid.phs = "Permohonan Baru"
 			if @ekid.save 
 				#send email
 				subject = "Permohonan #{@ekid.tp} Diterima"
@@ -645,6 +715,8 @@ class EkidsController < ApplicationController
 														    :curreip,
 														    :nmeip,
 														    :tmeip,
+														    :dtwlk,
+														    :kdhealth,
 																fotos_attributes: [:foto, :picture, :foto_name])
 	end
 

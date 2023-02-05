@@ -23,7 +23,11 @@
         <%= image_tag(@foto.picture.url, size: "500x500") if @foto.picture? %>
         </a>
       <% end %>
-      <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png,application/pdf', required: true %>
+      <% if @foto.ekid_id.present? %>
+        <%= f.file_field :picture, accept: 'application/pdf', required: true %>
+      <% else %>
+        <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png,application/pdf', required: true %>
+      <% end %>
     </div>
   </div>
 

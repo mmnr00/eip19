@@ -1,6 +1,8 @@
 <div class="col-sm-8" style="background-color:#4c4cff; border-radius: 40px">
-  <h5 style="color:white; font-weight: 600; text-align: center">PENDAFTARAN BARU UNTUK <%= params[:prog]%></h5>
+  <h5 style="color:white; font-weight: 600; text-align: center">PENDAFTARAN BARU UNTUK PUSAT ANIS</h5>
 </div>
+
+<h7 style="color:black; font-weight: 600">*Syarat Kelayakan Umur Anak untuk Intervensi (4-5 Tahun) dan Prasekolah (5-6 Tahun)</h7>
 
 <% if @cfm.present? %>
   <div style="font-size: 12px">
@@ -8,7 +10,7 @@
   </div>
 <% else %>
 
-  <% if params[:prog] == "PRASEKOLAH ANIS" && params[:prasek].blank? %>
+  <% if 1==0 #params[:prog] == "PRASEKOLAH ANIS" && params[:prasek].blank? %>
     <h5>Adakah Anak Anda Pernah Menghadiri Mana-Mana Program EIP Selama 1 Tahun?</h5>
     <%= link_to "YA", new_ekid_path(prog: "PRASEKOLAH ANIS", prasek: "true", perse: params[:perse]), class: "btn btn-sm btn-success btn-block", target: ""%>
     <%= link_to "TIDAK", new_ekid_path(prog: "INTERVENSI ANIS", perse: params[:perse]), class: "btn btn-sm btn-danger btn-block", target: ""%>

@@ -5,50 +5,16 @@
   </li>
 </ol>
 
-
-
-<!-- DASHBOARD SUMMARY -->
+<!-- DASHBOARD SUMMARY 
 <div class="row">
-  
-  <div class="col-3">
-    <div class="card border-left-primary shadow h-100 py-2">
-      <div class="card-body">
-        <div class="row no-gutters align-items-center">
-          <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">JUMLAH PENDAFTARAN</div>
-            <a href="<%= lsddk_url(sch: true, stat: 1) %>"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ekid_all.count %></div></a>
-          </div>
-          <div class="col-auto">
-            <i class="fas fa-folder-plus fa-2x text-gray-300"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-3">
-    <div class="card border-left-warning shadow h-100 py-2">
-      <div class="card-body">
-        <div class="row no-gutters align-items-center">
-          <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">PENDAFTARAN BARU</div>
-            <a href="<%= lsddk_url(sch: true, stat: 2) %>"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ekid_all.where(phs: "Permohonan Baru").count %></div></a>
-          </div>
-          <div class="col-auto">
-            <i class="fa fa-spinner fa-2x text-gray-300"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <div class="col-3">
     <div class="card border-left-success shadow h-100 py-2">
       <div class="card-body">
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">INTERVENSI</div>
-            <a href="<%= lsddk_url(sch: true, stat: 3) %>"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ekid_all.where(tp: "INTERVENSI ANIS").count %></div></a>
+            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">AKTIF</div>
+            <a href="<%= lsddk_url(sch: true, stat: 3) %>"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ekids.where(stat: [nil,""]).count %></div></a>
           </div>
           <div class="col-auto">
             <i class="fa fa-thumbs-up fa-2x text-gray-300"></i>
@@ -63,8 +29,8 @@
       <div class="card-body">
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">PRASEKOLAH</div>
-            <a href="<%= lsddk_url(sch: true, stat: 4) %>"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ekid_all.where(tp: "PRASEKOLAH ANIS").count %></div></a>
+            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">TIDAK AKTIF</div>
+            <a href="<%= lsddk_url(sch: true, stat: 4) %>"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ekids.where.not(stat: [nil,""]).count %></div></a>
           </div>
           <div class="col-auto">
             <i class="fa fa-exclamation-circle fa-2x text-gray-300"></i>
@@ -73,29 +39,59 @@
       </div>
     </div>
   </div>
+  
+  <div class="col-3">
+    <div class="card border-left-primary shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">SARINGAN</div>
+            <a href="<%= lsddk_url(sch: true, stat: 1) %>"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ekids.where(tp: "SARINGAN ANIS").count %></div></a>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-folder-plus fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-3">
+    <div class="card border-left-warning shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">TERAPI</div>
+            <a href="<%= lsddk_url(sch: true, stat: 2) %>"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ekids.where(tp: "TERAPI ANIS").count %></div></a>
+          </div>
+          <div class="col-auto">
+            <i class="fa fa-spinner fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
 
 
-</div>
+</div> -->
 
 <!-- TABLE -->
 
-<%= link_to ekidlistxls_path(format: :xlsx, sch_fld: params[:sch_fld], sch: params[:sch], sch_str: params[:sch_str], yr: params[:yr]), class: "badge badge-info shadow-sm", style: "font-size: 16px; font-weight: normal; margin-top: 5px" do %>
+<%= link_to ekidlistxls_path(format: :xlsx, sch_fld: params[:sch_fld], sch: params[:sch], sch_str: params[:sch_str]), class: "badge badge-info shadow-sm", style: "font-size: 16px; font-weight: normal" do %>
   <i class="fa fa-file-excel"></i> Muat Turun Senarai
 <% end %>
-
-<%= link_to "Permohonan Dipadam (#{Ekid.where(del: true).count})", vwadmbin_path, class: "badge badge badge-danger", style: "font-size: 16px; font-weight: normal; margin-top: 5px" %><br>
 
 <div class="cards shadow mb-4">
   <div class="card-header">
     <div class="row">
       <%= form_tag ekidindex_path, method: :get, id: "find_kid" do %>
-        <%= text_field_tag :sch_str, params[:sch_str], placeholder: "Nama atau MyKid", style: 'text-transform: uppercase' %>
+        <%= text_field_tag :sch_str, params[:sch_str], placeholder: "Masukkan Nama", style: 'text-transform: uppercase' %>
         <%= select_tag :sch_fld, options_for_select(["INTERVENSI ANIS", "PRASEKOLAH ANIS"], params[:sch_fld]),
               include_blank: "Semua Program" %>
-        <%= select_tag :phs, options_for_select(["Permohonan Baru","Permohonan Tidak Lengkap", "Permohonan Dalam Semakan", "Permohonan Ditolak","Permohonan Dalam Senarai Menunggu","Penilaian Dalam Semakan","Panggilan Penilaian Pelajar","Kemasukan Program Intervensi","Kemasukan Program Prasekolah","Tamat Program"], params[:phs]),
+        <%= select_tag :stat, options_for_select(["Permohonan Diterima", "Permohonan Dalam Semakan", "Permohonan Tidak Lengkap","Permohonan Diluluskan", "Permohonan Ditolak"], params[:stat]),
               include_blank: "Semua Status" %>
-        <%= select_tag :yr, options_for_select((2021..Date.today.year).to_a, params[:yr]),
-              include_blank: "Semua Tahun" %>
         <%= hidden_field_tag :sch, params[:sch], value: true %>
         <%= button_tag(type: :submit, class: "badge badge-success shadow-none", style: "font-size: 14px; border-style: none; font-weight: normal",  id: "submit_expense") do %>
             <i class="fa fa-search"></i> Cari
@@ -114,6 +110,7 @@
   <div class="card-body"><% if params[:sch].present? %>
     
     <div class="table table-responsive border" style="font-size:13px">
+      <%= form_for(:ek, :url => {:controller=>'ekids', :action=>'statekid'}, :html => {multipart: true, class: "form-horizontal", method: :post, role: "form"}) do |f| %>
       <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0" style="color: black">
         
         <thead>
@@ -132,10 +129,7 @@
           <tr>
             <td>
               <a href="<%= ekidconf_url(id: ek.id)%>" target="_blank">PPN-<%= ek.id.to_s.rjust(4, '0') %></a><br>
-              (<%= ek.tp %>)<br>
-              <%= link_to "Kemaskini Profil", edit_ekid_path(id: ek.id, perse: ek.perse.id), class: "badge badge-pill badge-warning", target: "_blank" %><br>
-              <%= link_to "Padam", admbin_path(id: ek.id, del: 1), class: "badge badge-pill badge-danger" %><br>
-
+              (<%= ek.tp %>)
               <% if ek.ekrps.count > 0 %>
                 <br>
                 <%= link_to "Lihat Senarai Laporan", ekrpls_path(ekid: ek.id), class: "badge badge-pill badge-success", target: "_blank"%>
@@ -144,7 +138,6 @@
             <td>
               <%= ek.name %><br>
               (<%= ek.ic %>)<br>
-              
               <%
                 image = ek.fotos.where(foto_name: "DIAGNOSIS").first
                 if image.present? && image.picture.present?
@@ -170,7 +163,7 @@
               %>
               <b>Kategori: </b><%= ek.prbtp %><br>
               <b>Umur: </b><%= "#{yr} tahun, #{mth} bulan" %><br>
-              <b>Pendapatan: </b><%= ek.pinc %>
+              <b>Pendapatan (RM): </b><%= ek.pinc %>
             </td>
             <!-- <td>
               <%
@@ -188,23 +181,17 @@
               <a href="<%= ekstat_url(id: ek.id, stat: staturl) %>"><btn class="badge badge-pill badge-secondary">Ubah Status</btn></a>
             </td> -->
             <td>
-              <%= link_to ek.stat, "#", class: "btn btn-block btn-success", style: "margin-bottom: -20px; font-size: 15px"%><br>
-              <%= link_to ek.phs, "#", class: "badge badge-pill badge-primary" %><br>
-              <b>Maklumat Admin:</b><br>
-              <%= ek.descr %><br>
-              <% upd = ek.admupd.last %>
-              <% if upd.present? %>
-                <b><%= Admin.find(upd[1]).username %></b> (<%= upd[0].strftime('%d-%^b-%y') %>)<br>
-                <%= link_to "Sejarah Kemaskini Admin", admhist_path(id: ek.id), target: "_blank" %><br>
+              <%= f.fields_for :"#{ek.id}" do |h| %>
+              <% ek.stat %>
+
+                <%= h.select :stat, options_for_select(["Permohonan Diterima","Permohonan Dalam Semakan", "Permohonan Tidak Lengkap","Permohonan Diluluskan", "Permohonan Ditolak"],selected: ek.stat), {include_blank: "Pilih Status"}, required: false %>
+                <%= h.text_area :descr, placeholder: "Makluman Admin", value: ek.descr, style: "margin-top: 5px; width: 100%" %>
               <% end %>
             </td>
 
             <td>
               <b>Kemaskini</b> :<%= ek.updated_at.strftime('%d-%^b-%y') %><br>
-              <b>Permohonan</b> :<%= ek.created_at.strftime('%d-%^b-%y') %><br>   
-              <b>Penilaian</b> :<%= ek.dtp.strftime('%d-%^b-%y') unless ek.dtp.blank? %><br>   
-              <b>Mula</b> :<%= ek.dts.strftime('%d-%^b-%y') unless ek.dts.blank? %><br>   
-              <b>Tamat</b> :<%= ek.dte.strftime('%d-%^b-%y') unless ek.dte.blank? %><br>    
+              <b>Permohonan</b> :<%= ek.created_at.strftime('%d-%^b-%y') %>    
             </td>
           </tr>
 
@@ -213,6 +200,8 @@
         </tbody>
         
       </table>
+      <%= f.submit :"Kemaskini",  class: 'btn btn-sm btn-block btn-success btn-lg', style: "align:center" %>
+      <% end %> <!-- END FORM -->
     </div>
   </div><% end %>
 </div>

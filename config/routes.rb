@@ -137,7 +137,12 @@ Rails.application.routes.draw do
  
 
   #~~EKID
+  get '/vwadmbin', to: 'ekids#vwadmbin'
+  get '/admbin', to: 'ekids#admbin'
+  get '/admhist', to: 'ekids#admhist'
+  post '/statekid_new', to: 'ekids#statekid_new'
   post '/statekid', to: 'ekids#statekid'
+  get '/ekstat_new', to: 'ekids#ekstat_new'
   get '/ekstat', to: 'ekids#ekstat'
   get '/ekid_list', to: 'ekids#ekid_list'
   get '/ekidindex', to: 'ekids#index'
@@ -191,7 +196,8 @@ Rails.application.routes.draw do
   get '/saringan', to: 'welcomes#saringananis'
   get '/introanis', to: 'welcomes#introanis'
   get '/orgchart', to: 'welcomes#orgchart'
-  get '/pusatanis', to: 'welcomes#sokonganis'
+  get '/pusatanis', to: 'welcomes#pusatanis'
+  get '/sokongananis', to: 'welcomes#sokonganis'
   get '/akademianis', to: 'welcomes#akademianis'
   get '/videols', to: 'welcomes#videols'
   get '/profilyb', to: 'welcomes#profilyb'

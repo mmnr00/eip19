@@ -233,7 +233,33 @@
         </div>
       </div>
 
-      <% if params[:prog] == "TERAPI ANIS" || @ekid.tp == "TERAPI ANIS" || params[:prog] == "INTERVENSI ANIS" || @ekid.tp == "INTERVENSI ANIS" ||  params[:prog] == "PRASEKOLAH ANIS" || @ekid.tp == "PRASEKOLAH ANIS" %>
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>UMUR ANAK KETIKA BOLEH BERJALAN</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.text_field :dtwlk, class: "form-control", placeholder: "", autofocus: true, required: true %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>MASALAH KESIHATAN ANAK</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.text_field :kdhealth, class: "form-control", placeholder: "", autofocus: true, required: true %>
+          </div>
+        </div>
+      </div>
+
+      <% if 1==1 #if params[:prog] == "TERAPI ANIS" || @ekid.tp == "TERAPI ANIS" || params[:prog] == "INTERVENSI ANIS" || @ekid.tp == "INTERVENSI ANIS" ||  params[:prog] == "PRASEKOLAH ANIS" || @ekid.tp == "PRASEKOLAH ANIS" %>
         <div class="form-group"> 
           <div class="row">
             <div class="control-label col-sm-8">
@@ -255,7 +281,7 @@
                   <div class="row">
                     <div class="col-sm-8 col-8">
                       <%= h.hidden_field :foto_name, value: "DIAGNOSIS" %>
-                      <%= h.file_field :picture, accept: 'image/jpeg,image/gif,image/png,application/pdf', required: true %>
+                      <%= h.file_field :picture, accept: 'application/pdf', required: true %>
                     </div>
                   </div>
                 <% end %>
@@ -266,7 +292,7 @@
         </div>
       <% end %>
 
-      <% if params[:prog] == "PRASEKOLAH ANIS" || @ekid.tp == "PRASEKOLAH ANIS" %>
+      <% if 1==1 #params[:prog] == "PRASEKOLAH ANIS" || @ekid.tp == "PRASEKOLAH ANIS" %>
 
         <div class="col-sm-8" style="background-color:#ffcccc">
           <h6 style="color:black; font-weight: 600">Maklumat Pusat EIP</h6>
@@ -733,7 +759,7 @@
         if @ekid.tp.present?
           tp = @ekid.tp
         else
-          tp = params[:prog]
+          tp = nil
         end
       %> 
 

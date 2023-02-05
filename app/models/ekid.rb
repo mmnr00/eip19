@@ -9,6 +9,7 @@ class Ekid < ApplicationRecord
 	has_one :rflt
 	has_many :fotos
 	has_many :ekrps
+	serialize :admupd,Array
 	accepts_nested_attributes_for :fotos
 	belongs_to :perse
 	belongs_to :sce, optional: true

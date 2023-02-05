@@ -65,7 +65,7 @@ class PersesController < ApplicationController
 					flash[:success] = "Pendaftaran Untuk #{prg.name} Berjaya!"
 					redirect_to persesch_path(prog: prog, proge: params[:perse][:proge] )
 
-				elsif prog == "TERAPI ANIS" || prog == "SARINGAN ANIS" || prog == "INTERVENSI ANIS" || prog == "PRASEKOLAH ANIS"
+				elsif prog == "PUSAT ANIS" || prog == "TERAPI ANIS" || prog == "SARINGAN ANIS" || prog == "INTERVENSI ANIS" || prog == "PRASEKOLAH ANIS"
 					if params[:perse][:regkid].present?
 						redirect_to new_ekid_path(perse: @perse.id, prog: prog)
 					else
@@ -167,7 +167,7 @@ class PersesController < ApplicationController
 								end
 								
 
-							elsif params[:prog] == "SARINGAN ANIS" || params[:prog] == "TERAPI ANIS" || params[:prog] == "INTERVENSI ANIS" || params[:prog] == "PRASEKOLAH ANIS"
+							elsif params[:prog] == "PUSAT ANIS" || params[:prog] == "SARINGAN ANIS" || params[:prog] == "TERAPI ANIS" || params[:prog] == "INTERVENSI ANIS" || params[:prog] == "PRASEKOLAH ANIS"
 								if params[:regkid].present?
 									redirect_to new_ekid_path(perse: perse.id, prog: params[:prog])
 								else

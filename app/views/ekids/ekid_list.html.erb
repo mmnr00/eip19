@@ -4,10 +4,10 @@
   <i class="fa far fa-plus"></i>&nbsp Daftar Saringan ANIS
 <% end %>
 &nbsp
-<%= link_to new_ekid_path(prog: "INTERVENSI ANIS", perse: params[:perse]), class: "btn btn-sm btn-primary", style: "font-size: 15px" do %>
-  <i class="fa far fa-plus"></i>&nbsp Daftar Intervensi ANIS
+<%= link_to new_ekid_path(prog: "PUSAT ANIS", perse: params[:perse]), class: "btn btn-sm btn-primary", style: "font-size: 15px" do %>
+  <i class="fa far fa-plus"></i>&nbsp Daftar Pusat ANIS
 <% end %> &nbsp
-<%= link_to new_ekid_path(prog: "PRASEKOLAH ANIS", perse: params[:perse]), class: "btn btn-sm btn-success", style: "font-size: 15px" do %>
+<% link_to new_ekid_path(prog: "PRASEKOLAH ANIS", perse: params[:perse]), class: "btn btn-sm btn-success", style: "font-size: 15px" do %>
   <i class="fa far fa-plus"></i>&nbsp Daftar Prasekolah ANIS
 <% end %>
 <div style="margin-bottom: 10px"></div>
@@ -38,7 +38,7 @@
           <% @ekids.each do |ek| %>
             <tr>
               <td>
-                <a href="<%= ekidconf_url(id: ek)%>" target="_blank"><%= ek.name %></a><br>
+                <a href="<%= ekidconf_url(id: ek, prt: 1)%>" target="_blank"><%= ek.name %></a><br>
                 <%= link_to "Kemaskini Profil", edit_ekid_path(id: ek.id, perse: ek.perse.id), class: "badge badge-pill badge-secondary", target: "_blank" %>
                 <% if ek.pkid.present? %>
                   <br> 
@@ -48,8 +48,11 @@
               <td><%= ek.ic %></td>
               <td><%= ek.tp %></td>
               <td>
-                <div class="badge badge-pill badge-info" style="font-size: 13px;"><%= ek.stat %></div><br>
-                <b>Makluman Admin: </b><%= ek.descr %>
+                <div class="badge badge-pill badge-info" style="font-size: 13px;"><%= ek.phs %></div><br>
+                <b>Makluman Admin: </b><%= ek.descr %><br>
+                <b>Tarikh Penilaian: </b><%= ek.dtp.strftime('%d-%^b-%y') unless ek.dtp.blank? %><br>
+                <b>Tarikh Masuk: </b><%= ek.dts.strftime('%d-%^b-%y') unless ek.dts.blank? %><br>
+                <b>Tarikh Tamar: </b><%= ek.dte.strftime('%d-%^b-%y') unless ek.dte.blank? %><br>
               </td>
             </tr>
           <% end %> 
