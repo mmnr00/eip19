@@ -139,7 +139,13 @@
               <b>No Telefon: </b><%= perse.ph %><br>
             </td>
             <td>
-              <%= link_to "#{$ddkstat[ddk.stat][3]}", edtddk_path(ddk:ddk.id), class: "badge badge-pill badge-#{$ddkstat[ddk.stat][0]}", style: "font-size: 10px", target: "_blank" %> 
+              <%= link_to "#{$ddkstat[ddk.stat][3]}", edtddk_path(ddk:ddk.id), class: "badge badge-pill badge-#{$ddkstat[ddk.stat][0]}", style: "font-size: 10px", target: "_blank" %><br>
+              <b>Maklumat Admin:</b><br>
+              <%= ddk.statrs %><br> 
+              <b>Tarikh Pembayaran:</b><br>
+              <%= ddk.dtpmt.strftime('%d-%^b-%y') unless ddk.dtpmt.blank? %><br>
+              <b>Jumlah Pembayaran:</b><br>
+              <%= "RM#{ddk.amtpmt.round(2)}" unless ddk.amtpmt.blank? %><br>
             </td>
             <td><%= ddk.created_at.strftime('%d-%^b-%Y') %></td>
           </tr>

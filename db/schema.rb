@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_24_123652) do
+ActiveRecord::Schema.define(version: 2023_02_06_012855) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -199,6 +199,9 @@ ActiveRecord::Schema.define(version: 2023_01_24_123652) do
     t.string "accname"
     t.string "accbank"
     t.integer "okucnt"
+    t.float "amtpmt"
+    t.date "dtpmt"
+    t.text "admhist"
   end
 
   create_table "ekids", force: :cascade do |t|

@@ -15,6 +15,8 @@ class AdminsController < ApplicationController
 		@ddk = Ddk.find(pars[:ddk])
 		@ddk.stat = pars[:stat]
 		@ddk.statrs = pars[:statrs]
+		@ddk.amtpmt = pars[:amtpmt]
+		@ddk.dtpmt = pars[:dtpmt]
 		if @ddk.save
 			flash[:success] = "Permohonan Berjaya Dikemaskini"
 			redirect_to lsddk_path(@ddk)
