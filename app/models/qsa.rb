@@ -6,7 +6,7 @@ class Qsa < ApplicationRecord
 
 	def save_qsas
 		self.ques = self.ques.upcase
-		self.ans = self.ans.upcase unless self.ans.blank?
+		#self.ans = self.ans.upcase unless self.ans.blank?
 		self.catg = self.catg.upcase
 	end
 	

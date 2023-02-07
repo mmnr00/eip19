@@ -69,7 +69,7 @@
                     <div class="media-body">
                         <h6><a href="#" data-toggle="collapse" data-target=".forum-content" class="text-body"><b><%= qs.ques %></b></a></h6>
                         <p class="text-secondary">
-                            <%= qs.ans %>
+                            <%= simple_format qs.ans %>
                         </p>
                         <p class="text-muted"><a href="javascript:void(0)"><%= qs.name %></a> dalam kategori
                         <i><u><span class="d-none d-sm-inline-block"><%= link_to qs.catg, soaljawab_path(catg: qs.catg) %></span></u></i>
@@ -95,7 +95,7 @@
                       <div class="media-body">
                           <h6><a href="#" data-toggle="collapse" data-target=".forum-content" class="text-body"><b><%= qs.ques %></b></a></h6>
                           <p class="text-secondary">
-                              <%= qs.ans %>
+                              <%= simple_format qs.ans %>
                           </p>
                           <p class="text-muted"><a href="javascript:void(0)"><%= qs.name %></a> dalam kategori
                         <i><u><span class="d-none d-sm-inline-block"><%= link_to qs.catg, soaljawab_path(catg: qs.catg) %></span></u></i>
