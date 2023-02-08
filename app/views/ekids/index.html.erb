@@ -204,7 +204,9 @@
               <b>Permohonan</b> :<%= ek.created_at.strftime('%d-%^b-%y') %><br>   
               <b>Penilaian</b> :<%= ek.dtp.strftime('%d-%^b-%y') unless ek.dtp.blank? %><br>   
               <b>Mula</b> :<%= ek.dts.strftime('%d-%^b-%y') unless ek.dts.blank? %><br>   
-              <b>Tamat</b> :<%= ek.dte.strftime('%d-%^b-%y') unless ek.dte.blank? %><br>    
+              <b>Tamat</b> :<%= ek.dte.strftime('%d-%^b-%y') unless ek.dte.blank? %><br>   
+              <b>Hari Sesi</b> :<%= ek.sesd %><br>  
+              <b>Masa Sesi</b> :<%= ek.sest %><br> 
             </td>
           </tr>
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_06_012855) do
+ActiveRecord::Schema.define(version: 2023_02_08_115533) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -269,6 +269,8 @@ ActiveRecord::Schema.define(version: 2023_02_06_012855) do
     t.boolean "del"
     t.string "dtwlk"
     t.string "kdhealth"
+    t.string "sesd"
+    t.string "sest"
   end
 
   create_table "ekrps", force: :cascade do |t|

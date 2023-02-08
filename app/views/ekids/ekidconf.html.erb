@@ -41,6 +41,10 @@
       "Penilaian" => ["Permohonan Dalam Senarai Menunggu","Penilaian Dalam Semakan","Panggilan Penilaian Pelajar"],
       "Kemasukan Program" => ["Kemasukan Program Intervensi","Kemasukan Program Prasekolah"],
       "Tamat Program" => ["Tamat Program"]}
+
+      hari_sesi = ["Isnin","Selasa","Rabu","Khamis"]
+      slot_sesi = {"INTERVENSI ANIS"=>["8:30am - 10:30am","11:00am - 1:00pm","2:30pm - 4:30pm"],
+                  "PRASEKOLAH ANIS"=>["8:30am - 12:30am","1:30pm - 5:30pm"]}
     %>
 
     <%= form_for(:ek, :url => {:controller=>'ekids', :action=>'statekid_new'}, :html => {multipart: true, class: "form-horizontal", method: :post, role: "form"}) do |f| %>
@@ -53,9 +57,15 @@
         <% else %>
           <%= f.hidden_field :dtp, value: @ekid.dtp, style: "margin-top: 5px" %>
         <% end %>
-
         <b>Tarikh Mula Program:</b><br> <%= f.date_field :dts, value: @ekid.dts, style: "margin-top: 5px" %><br>
         <b>Tarikh Tamat Program:</b><br> <%= f.date_field :dte, value: @ekid.dte, style: "margin-top: 5px" %><br>
+        <% if ste == "Kemasukan Program" && @ekid.tp.present? %>
+          <b>Hari Sesi:</b><br> <%= f.select :sesd, options_for_select(hari_sesi,selected: @ekid.sesd), {include_blank: "Pilih Hari"}, required: true, style: "margin-top: 5px" %><br>
+          <b>Masa Sesi:</b><br> <%= f.select :sest, options_for_select(slot_sesi[@ekid.tp],selected: @ekid.sest), {include_blank: "Pilih Masa"}, required: true, style: "margin-top: 5px" %><br>
+        <% else %>
+          <%= f.hidden_field :sesd, value: @ekid.sesd, style: "margin-top: 5px" %>
+          <%= f.hidden_field :sest, value: @ekid.sest, style: "margin-top: 5px" %>
+        <% end %>
       <% end %>
       <%= f.hidden_field :ekid, value: @ekid.id%>
       <%= f.submit :"Kemaskini",  class: 'btn btn-sm btn-info btn-lg', style: "margin-top: 5px" %>

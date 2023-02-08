@@ -39,8 +39,8 @@ class EkidsController < ApplicationController
 	def statekid_new
 		pars = params[:ek]
 		ek = Ekid.find(pars[:ekid])
-		ek.update(phs: pars[:phs],descr: pars[:descr], dtp: pars[:dtp], dts: pars[:dts], dte:pars[:dte], tp: pars[:tp])
-		ek.admupd << [Date.today, current_admin.id, ek.stat, pars[:phs], pars[:descr],pars[:dtp],pars[:dts],pars[:dte],pars[:tp]]
+		ek.update(phs: pars[:phs],descr: pars[:descr], dtp: pars[:dtp], dts: pars[:dts], dte:pars[:dte], tp: pars[:tp], sesd: pars[:sesd], sest: pars[:sest])
+		ek.admupd << [Date.today, current_admin.id, ek.stat, pars[:phs], pars[:descr],pars[:dtp],pars[:dts],pars[:dte],pars[:tp],pars[:sesd],pars[:sest]]
 		ek.save  
 		flash[:success] = "Kemaskini Status Berjaya"
 		redirect_to request.referrer
