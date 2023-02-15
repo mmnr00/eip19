@@ -28,6 +28,8 @@ class AdminsController < ApplicationController
 	def index
 		@perses = Perse.all
 		@ddk = Ddk.all
+		@admin = current_admin
+		render action: "index", layout: "dsb-admin-account" 
 	end
 
 	def oldlsddk
