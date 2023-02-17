@@ -16,7 +16,7 @@
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">JUMLAH PENDAFTARAN</div>
-            <a href="<%= lsddk_url(sch: true, stat: 1) %>"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ekid_all.count %></div></a>
+            <div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ekid_all.count %></div>
           </div>
           <div class="col-auto">
             <i class="fas fa-folder-plus fa-2x text-gray-300"></i>
@@ -32,7 +32,7 @@
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">PENDAFTARAN BARU</div>
-            <a href="<%= lsddk_url(sch: true, stat: 2) %>"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ekid_all.where(phs: "Permohonan Baru").count %></div></a>
+            <a href="<%= ekidindex_url(sch: true,phs: "Permohonan Baru",yr: params[:yr]) %>"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ekid_all.where(phs: "Permohonan Baru").count %></div></a>
           </div>
           <div class="col-auto">
             <i class="fa fa-spinner fa-2x text-gray-300"></i>
@@ -48,7 +48,7 @@
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">INTERVENSI</div>
-            <a href="<%= lsddk_url(sch: true, stat: 3) %>"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ekid_all.where(tp: "INTERVENSI ANIS").count %></div></a>
+            <a href="<%= ekidindex_url(sch: true,sch_fld: "INTERVENSI ANIS",yr: params[:yr]) %>"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ekid_all.where(tp: "INTERVENSI ANIS").count %></div></a>
           </div>
           <div class="col-auto">
             <i class="fa fa-thumbs-up fa-2x text-gray-300"></i>
@@ -64,7 +64,7 @@
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">PRASEKOLAH</div>
-            <a href="<%= lsddk_url(sch: true, stat: 4) %>"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ekid_all.where(tp: "PRASEKOLAH ANIS").count %></div></a>
+            <a href="<%= ekidindex_url(sch: true,sch_fld: "PRASEKOLAH ANIS",yr: params[:yr]) %>"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ekid_all.where(tp: "PRASEKOLAH ANIS").count %></div></a>
           </div>
           <div class="col-auto">
             <i class="fa fa-exclamation-circle fa-2x text-gray-300"></i>
