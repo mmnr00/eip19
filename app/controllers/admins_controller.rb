@@ -4,6 +4,7 @@ class AdminsController < ApplicationController
 	def senaraipeserta
 		@index = true
 		@perses = Perse.all
+		render action: "senaraipeserta", layout: "dsb-admin-pers" 
 	end
 
 	def edtddk
@@ -29,7 +30,7 @@ class AdminsController < ApplicationController
 		@perses = Perse.all
 		@ddk = Ddk.all
 		@admin = current_admin
-		render action: "index", layout: "dsb-admin-account" 
+		render action: "index", layout: "dsb-admin-overview" 
 	end
 
 	def oldlsddk
@@ -54,6 +55,7 @@ class AdminsController < ApplicationController
 			end
 
 		end
+		render action: "lsddk", layout: "dsb-admin-ddk" 
 	end
 
 

@@ -37,6 +37,7 @@ class ArtksController < ApplicationController
 
 	def artk_index
 		@artks = Artk.all
+		render action: "artk_index", layout: "dsb-admin-artk" 
 	end
 
 	def artk_list

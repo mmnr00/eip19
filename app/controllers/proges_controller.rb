@@ -203,7 +203,7 @@ class ProgesController < ApplicationController
 		if params[:sch].present?
 			@proges = Proge.where(tp: params[:tp])
 		end
-		# render action: "index", layout: "eipblank"
+		render action: "index", layout: "dsb-admin-akd"
 	end
 
 	def show

@@ -1,149 +1,202 @@
-<div class="col-sm-12 bg-white">
-  <%= form_tag findekid_path, remote: true, method: :get, id: "find_kid" do %>
-    <div class="form-group text-center col-md-12">
-      <strong>SEARCH CHILDREN BY MYKID NO</strong><br><br>
-      <div class="row">
-        <div class="col-3"></div>
-        <div class="col-5">
-          <%= text_field_tag :ic, params[:ic], 
-                  placeholder: "e.g 870829355647 (no dash)",
-                  autofocus: true, 
-                  class: "form-control search-box input-lg", 
-                  style: "text-transform:uppercase",
-                  required: true %>
-          <%= hidden_field_tag :proge, params[:proge], value: params[:proge] %>
-          <%= hidden_field_tag :typ, params[:typ], value: params[:typ] %>
-          <%= hidden_field_tag :adm, params[:adm], value: @admin.id %>
-        </div>
-        <div class="col-1">
-          <%= button_tag(type: :submit, class: "btn btn-sm btn-info", id: "submit_expense") do %>
-              <i class="fa fa-search"></i> FIND 
-          <% end %>
-        </div>
-        <br><br><br>
-        <div class="col-3"></div>
-      </div>
-      <div id="result_kid">
-        <%= render 'ekids/result' %> 
-      </div>
-    </div>
-  <%end%>
+<meta name="viewport" content="width=1024">
+
+<div style="background-color: #ff944c; text-align: center; margin-bottom: 10px; border-radius: 40px">
+    <h4 style="text-align: center; font-weight: 500; color: white">Pilihan Program Untuk Paparan Admin</h4>
 </div>
+<%= link_to "Senarai Artikel", artk_index_path, class: 'badge badge-pill badge-success', style: "padding-top: -200px"%>
+<%= link_to "Senarai Soal Jawab", admqsa_path, class: 'badge badge-pill badge-primary', style: "padding-top: -200px"%>
+<%= link_to "Senarai Peserta", senaraipeserta_path, class: 'badge badge-pill badge-secondary', style: "padding-top: -200px"%>
 
+<section id="services"><div class="row" style="margin-top: -20px">
 
-<div class="scontainer">
-  <div class="row">
-
-    <div class="col-md-4">
-      <div class="card-counter primary">
-        <i class="fa fa-code-fork"></i>
-        <span class="count-numbers"><%= @ekids.where(stat: "NEW").count %></span>
-        <span class="count-name">
-          <a href="/ekidindex?stato=NEW", style="color:#fff">New</a>
-        </span>
+  <div class="col-lg-2 col-md-6 col-12">
+    <div class="box wow fadeInLeft">
+      <div style="text-align: center">
+      <img src="<%= image_path('anisPic/bk-anis-hp.png') %>" width="100" height="80">
       </div>
-    </div>
-
-    <div class="col-md-4">
-      <div class="card-counter danger">
-        <i class="fa fa-exclamation-circle"></i>
-        <span class="count-numbers"><%= @ekids.where(stat: "REJECT").count %></span>
-        <span class="count-name">
-          <a href="/ekidindex?stato=REJECT", style="color:#fff">Rejected</a>
-        </span>
-      </div>
-    </div>
-
-    <div class="col-md-4">
-      <div class="card-counter info">
-        <i class="fa fa-globe"></i>
-        <span class="count-numbers"><%= @ekids.where(stat: "MENTOR").count %></span>
-        <span class="count-name">
-          <a href="/ekidindex?stato=MENTOR", style="color:#fff">Mentor</a>
-        </span>
-      </div>
-    </div>
-
-
-    <div class="col-md-6">
-      <div class="card-counter success">
-        <i class="fa fa-pause"></i>
-        <span class="count-numbers"><%= @ekids.where(stat: "PENDING").count %></span>
-        <span class="count-name">
-          <a href="/ekidindex?stato=PENDING", style="color:#fff">Pending</a>
-        </span>
-      </div>
-    </div>
-
-    
-    <div class="col-md-6">
-      <div class="card-counter primary">
-        <i class="fa fa-check-circle"></i>
-        <span class="count-numbers"><%= @ekids.where(stat: "CONFIRM").count %></span>
-        <span class="count-name">
-          <a href="/ekidindex?stato=CONFIRM", style="color:#fff">Confirm</a>
-        </span>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<hr>
-<div style="background-color:#ffcccc"><h2 align="center">LIST OF SCREENING PROGRAMS</h2></div>
-  <%= link_to "CREATE NEW PROGRAM", new_sce_path, class: "btn btn-sm btn-success" %>
-  <%= link_to "EXTRACT OVERALL DATA & REPORT", scexls_path(id: Sce.all.ids,format: :xlsx), class: "btn btn-sm btn-info" %>
-  <br><br>
-
-
-<div class="table-responsive">
-  <table class="table table-striped table-bordered" width="100%" cellspacing="0">
-
-    <thead>
-      <tr>
-        <th style="background-color:#99cc99">NAME</th>
-        <th style="background-color:#99cc99">DATE</th>
-        <th style="background-color:#99cc99">VENUE</th>
-        <th style="background-color:#99cc99">NO OF KIDS</th>
-        <th style="background-color:#99cc99">ACTION</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% Sce.where(loc: $admloc[@admin.id]).order('date DESC').each do |sc| %>
-        <tr>
-          <td>
-            <%= sc.name %>
-            <%= link_to "ACTIVE", "#", class: "btn btn-sm btn-success active" unless !sc.curr %>
-            <% if @admin.id == 1 %>
-              <% if sc.curr %>
-                <%= link_to "REMOVE", setsce_path(id: sc, curr: false), class: "btn btn-sm btn-danger" %>
-              <% else %>
-                <%= link_to "MAKE ACTIVE", setsce_path(id: sc, curr: true), class: "btn btn-sm btn-info" %>
-              <% end %> 
-            <% end %>   
-
-          </td>
-          <td><%= sc.date.strftime('%d-%^b-%y') %></td>
-          <td><%= sc.venue %></td>
-          <td><%= "#{sc.ekids.where(stat: "CONF").count}/#{sc.ekids.count}" %></td>
-          <td>
-            <%= link_to "SUMMARY", sce_path(sc.id), class: "btn btn-sm btn-primary" %>
-            <%= link_to "STATUS", showstat_path(id: sc.id), class: "btn btn-sm btn-info" %>
-            <%= link_to "EDIT", edit_sce_path(sc.id), class: "btn btn-sm btn-warning" %>
-            <%= link_to "DELETE", sce_path(sc.id),method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-sm btn-danger" %>
-          </td>
-        </tr>
+      <h5 style="color: black; padding-top: 10px; text-align: center; margin-bottom: 0px">Bantuan ANIS</h5>
+      <% if 1==0 %>
+        <p style="font-size: 12px; text-align: center; color: red">
+          <i><b><%= @ddk.where(stat: 1).count %></b> Permohonan Baru</i>
+        </p>
+      <% else %>
+        <p style="font-size: 12px; text-align: center; color: green">
+          <i></i>
+        </p>
       <% end %>
-    </tbody>
-  </table>
-</div>
+      <p style="font-size: 12px; text-align: center; color: red">
+        <i>Jumlah Permohonan Keseluruhan: <b><%= Ddk.first.okucnt %></b></i>
+      </p>
+      
+      <p style="font-size: 20px; text-align: center">
+        <%= link_to "Semak", undercon_path, class: "badge badge-info"%>
+      </p>
+    </div>
+  </div>
+
+  <div class="col-lg-2 col-md-6 col-12">
+    <div class="box wow fadeInLeft">
+      <div style="text-align: center">
+      <img src="<%= image_path('anisPic/didik-anis-hp.png') %>" width="100" height="80">
+      </div>
+      <h5 style="color: black; padding-top: 10px; text-align: center; margin-bottom: 0px">Didik ANIS</h5>
+      <% if @ddk.where(stat: 1).count > 0 %>
+        <p style="font-size: 12px; text-align: center; color: red">
+          <i><!-- <b><%= @ddk.where(stat: 1).count %></b> Permohonan Baru --></i>
+        </p>
+      <% else %>
+        <p style="font-size: 12px; text-align: center; color: green">
+          <i>Tiada Permohonan Baru</i>
+        </p>
+      <% end %>
+      
+      <p style="font-size: 20px; text-align: center">
+        <%= link_to "Semak", lsddk_path, class: "badge badge-info"%>
+      </p>
+    </div>
+  </div>
+
+  <div class="col-lg-2 col-md-6 col-12">
+    <div class="box wow fadeInLeft">
+      <div style="text-align: center">
+      <img src="<%= image_path('anisPic/aka-anis-hp.png') %>" width="100" height="80">
+      </div>
+      <h5 style="color: black; padding-top: 10px; text-align: center; margin-bottom: 0px">Akademi ANIS</h5>
+      <% if 1==0 %>
+        <p style="font-size: 12px; text-align: center; color: red">
+          <i><!-- <b><%= @ddk.where(stat: 1).count %></b> Permohonan Baru --></i>
+        </p>
+      <% else;
+          # nxt_prog = Proge.where("date >= ?", Date.today)
+          nxt_prog = Proge.where(acv: true)
+       %>
+        <p style="font-size: 12px; text-align: center; color: green">
+          <!-- <i><%= nxt_prog.count %> program aktif</i> -->
+        </p>
+      <% end %>
+      
+      <p style="font-size: 20px; text-align: center">
+        <%= link_to "Semak", progeindex_path, class: "badge badge-info"%>
+      </p>
+    </div>
+  </div>
+
+  <div class="col-lg-2 col-md-6 col-12">
+    <div class="box wow fadeInLeft">
+      <div style="text-align: center">
+      <img src="<%= image_path('anislogo1.png') %>" width="100" height="80">
+      </div>
+      <h5 style="color: black; padding-top: 10px; text-align: center; margin-bottom: 0px">Pusat ANIS</h5>
+      <% if 1==0 %>
+        <p style="font-size: 12px; text-align: center; color: red">
+          <i><b><%= @ddk.where(stat: 1).count %></b> Permohonan Baru</i>
+        </p>
+      <% else;
+          a = 5
+       %>
+        <p style="font-size: 12px; text-align: center; color: green">
+          <!-- <i>Akan Datang</i> -->
+        </p>
+      <% end %>
+      
+      <p style="font-size: 20px; text-align: center">
+        <%= link_to "Semak", ekidindex_path, class: "badge badge-info"%>
+      </p>
+    </div>
+  </div>
+
+  <div class="col-lg-2 col-md-6 col-12">
+    <div class="box wow fadeInLeft">
+      <div style="text-align: center">
+      <img src="<%= image_path('anislogo1.png') %>" width="100" height="80">
+      </div>
+      <h5 style="color: black; padding-top: 10px; text-align: center; margin-bottom: 0px">ILSC</h5>
+      <% if 1==0 %>
+        <p style="font-size: 12px; text-align: center; color: red">
+          <i><b><%= @ddk.where(stat: 1).count %></b> Permohonan Baru</i>
+        </p>
+      <% else;
+          a = 5
+       %>
+        <p style="font-size: 12px; text-align: center; color: green">
+          <!-- <i>Akan Datang</i> -->
+        </p>
+      <% end %>
+      
+      <p style="font-size: 20px; text-align: center">
+        <%= link_to "Semak", ilscindex_path, class: "badge badge-info"%>
+      </p>
+    </div>
+  </div>
+
   
 
-<hr>
+  
 
 
 
+  
 
+</div></section>
 
+<% if 1==0 %>
+<div class="bg-white container" style="margin-bottom: 0px">
+  <div class="section-header container bg-white" style="margin-top: 0px">
+    <h3 style="">PENCAPAIAN KESELURUHAN ANIS</h3>
+    <div class="border-prog" style=""></div>
+  </div>
 
+  <div class="row bg-white">
+
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-3" style="padding-bottom: 10px">
+      <div class="card border-left-primary shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Perlu Verifikasi</div>
+              <div class="row no-gutters align-items-center">
+                <div class="col-auto">
+                  <a href="https://www.google.com">
+                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><%= "sd" %></div>
+                  </a>
+                </div>
+                <div class="col">
+                </div>
+              </div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-exclamation-circle fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-3" style="padding-bottom: 10px">
+      <div class="card border-left-primary shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Perlu Verifikasi</div>
+              <div class="row no-gutters align-items-center">
+                <div class="col-auto">
+                  <a href="https://www.google.com">
+                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><%= "sd" %></div>
+                  </a>
+                </div>
+                <div class="col">
+                </div>
+              </div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-exclamation-circle fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
