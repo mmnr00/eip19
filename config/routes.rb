@@ -288,6 +288,7 @@ Rails.application.routes.draw do
   get 'print_payment_course', to: 'pdfs#print_payment_course'
 
   #~ADMINS
+  get 'laporan', to: 'admins#laporan'
   get 'senaraipeserta', to: 'admins#senaraipeserta'
   get 'admin_index', to: 'admins#index'
   get 'lsddk', to: 'admins#lsddk'

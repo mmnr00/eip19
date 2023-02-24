@@ -1,6 +1,16 @@
 class AdminsController < ApplicationController
 	before_action :authenticate_admin!
 
+	def laporan
+		@ddks = Ddk.where(old1: params[:old1])
+		respond_to do |format|
+      #format.html
+      format.xlsx{
+                  response.headers['Content-Disposition'] = "attachment; filename=Senarai Didik ANIS.xlsx"
+      }
+		end
+	end
+
 	def senaraipeserta
 		@index = true
 		@perses = Perse.all
