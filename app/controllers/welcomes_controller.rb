@@ -5,6 +5,10 @@ class WelcomesController < ApplicationController
 	
 	#layout "page"
 
+	def rakananis
+		@index = true
+	end
+
 	def pusatanis
 		@index = true
 	end
