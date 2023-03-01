@@ -99,6 +99,13 @@ class QsasController < ApplicationController
 	end
 
 	def destroy
+		@qsa = Qsa.find(params[:id])
+		if @qsa.destroy
+			flash[:success] = "Soalan berjaya dipadam"
+		else
+			flash[:danger] = "Tidak Berjaya. Sila Cuba Lagi"
+		end
+		redirect_to request.referrer
 	end
 
 	private

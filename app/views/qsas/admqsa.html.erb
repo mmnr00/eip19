@@ -72,7 +72,7 @@
                   <% end %><% end %>
                   <br>
                   <%= link_to "Jawab Soalan", edit_qsa_path(qs.id), class: "badge badge-pill badge-primary" %>
-                  <%= link_to "Padam Soalan", new_artk_path, class: "badge badge-pill badge-danger" %>
+                  <%= link_to "Padam Soalan", qsa_path(qs), method: :delete, data: { confirm: "Anda Pasti? Soalan akan dipadam sepenuhnya dari sistem"}, class: "badge badge-pill badge-danger" %>
                 </td>
               </tr>
               <% end %>
