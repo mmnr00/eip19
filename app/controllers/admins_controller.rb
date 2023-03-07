@@ -2,11 +2,26 @@ class AdminsController < ApplicationController
 	before_action :authenticate_admin!
 
 	def laporan
-		@ddks = Ddk.where(old1: params[:old1])
+		@yr_arr = (2021..Date.today.year)
+		if params[:prg] == "DIDIK ANIS"
+
+			@prg = "Didik ANIS"
+			@all = Ddk.all
+			@table_1 = {}
+			@yr_arr.each do |yr|
+				all_yr = @all.where('extract(year  from created_at) = ?', yr)
+				@table_1[yr] = [all_yr.where(stat: "3").count,
+											all_yr.where(stat: "1").count,
+											all_yr.where(stat: "2").count,
+											all_yr.where(stat: "4").count]
+			end
+
+
+		end
 		respond_to do |format|
       #format.html
       format.xlsx{
-                  response.headers['Content-Disposition'] = "attachment; filename=Senarai Didik ANIS.xlsx"
+                  response.headers['Content-Disposition'] = "attachment; filename=Laporan #{@prg}.xlsx"
       }
 		end
 	end

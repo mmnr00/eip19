@@ -1,55 +1,101 @@
 wb = xlsx_package.workbook
 
 wb.styles do |style|
-  # maklumat peserta
+  
   header_1 = style.add_style(sz: 20)
   highlight_cell = style.add_style(bg_color: "EFC376",
                                   border: Axlsx::STYLE_THIN_BORDER,
                                   sz: 13,
                                    alignment: { horizontal: :center })
   border_cell = style.add_style(border: Axlsx::STYLE_THIN_BORDER)       
-  wb.add_worksheet(name: "Maklumat Peserta") do |sheet|
-
-    sheet.add_row ["","Senarai Permohonan Didik ANIS"]
+  wb.add_worksheet(name: @prg) do |sheet|
+    #table-1
+    sheet.add_row ["","Status Permohonan Berdasarkan Tahun"]
     sheet.add_row [""]
-    sheet.add_row ["NO",
-                  "NO SIRI",
-                  "NAMA PEMOHON",
-                  "NO MYKAD",
-                  "NO TEL PEMOHON",
-                  "EMAIL",
-                  "JENIS INSTITUSI",
-                  "NAMA AGENSI",
-                  "ALAMAT AGENSI",
-                  "NO PENDAFTARAN",
-                  "TAHUN PENDAFTARAN",
-                  "EMAIL AGENSI",
-                  "NO TEL AGENSI"]
+    sheet.add_row ["TAHUN",
+                  "LULUS",
+                  "BELUM DISEMAK",
+                  "DALAM PROSES",
+                  "GAGAL"]
     sheet.rows[0].style = header_1
     sheet.rows[2].style = highlight_cell
     counter = 1
     row =2
 
-    @ddks.each do |ddk|
-      prs = ddk.perse
-      sheet.add_row [counter,
-                    "DDK-#{ddk.id.to_s.rjust(4, '0')}",
-                    prs.name,
-                    prs.ic,
-                    "'#{prs.ph}",
-                    prs.email,
-                    ddk.agtp,
-                    ddk.coname,
-                    "#{ddk.addr},#{ddk.posk},#{ddk.state}",
-                    ddk.conum,
-                    ddk.regyr,
-                    ddk.email,
-                    "'#{ddk.ph}"
-                    ], 
+    @yr_arr.each do |yr|
+      
+      sheet.add_row [yr,
+                    @table_1[yr][0],
+                    @table_1[yr][1],
+                    @table_1[yr][2],
+                    @table_1[yr][3]], 
       style: [nil, border_cell]
       sheet.rows[row+counter].style = border_cell
       counter = counter +1
     end
+
+    sheet.add_row [""]
+    sheet.add_row ["","Penerima Manfaat Berdasarkan Tahun"]
+    sheet.add_row [""]
+    sheet.add_row ["TAHUN",
+                  "JUMLAH PENERIMA"]
+    sheet.rows[counter+3].style = header_1
+    sheet.rows[counter+5].style = highlight_cell
+    counter = counter+6
+
+    @yr_arr.each do |yr|
+      
+      sheet.add_row [yr,
+                    counter], 
+      style: [nil, border_cell]
+      sheet.rows[counter].style = border_cell
+      counter = counter +1
+    end
+
+    sheet.add_row [""]
+    sheet.add_row ["","Jumlah Permohonan Mengikut DUN"]
+    sheet.add_row [""]
+    sheet.add_row ["TAHUN",
+                  "LULUS",
+                  "BELUM DISEMAK",
+                  "DALAM PROSES",
+                  "GAGAL"]
+    sheet.rows[counter+1].style = header_1
+    sheet.rows[counter+3].style = highlight_cell
+    counter = counter+4
+
+    $dun_list.each do |yr|
+      
+      sheet.add_row [yr,
+                    counter], 
+      style: [nil, border_cell]
+      sheet.rows[counter].style = border_cell
+      counter = counter +1
+    end
+
+    sheet.add_row [""]
+    sheet.add_row ["","Laporan Status dan Jumlah Bayaran Mengikut Tahun"]
+    sheet.add_row [""]
+    sheet.add_row ["TAHUN",
+                  "JUMLAH PENERIMA",
+                  "JUMLAH BAYARAN"]
+    sheet.rows[counter+1].style = header_1
+    sheet.rows[counter+3].style = highlight_cell
+    counter = counter+4
+
+    @yr_arr.each do |yr|
+      
+      sheet.add_row [yr,
+                    counter], 
+      style: [nil, border_cell]
+      sheet.rows[counter].style = border_cell
+      counter = counter +1
+    end
+
+    
+
+    
+
 
   end
 
