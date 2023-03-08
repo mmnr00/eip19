@@ -8,13 +8,42 @@ class AdminsController < ApplicationController
 			@prg = "Didik ANIS"
 			@all = Ddk.all
 			@table_1 = {}
+			@table_3 = {}
 			@yr_arr.each do |yr|
 				all_yr = @all.where('extract(year  from created_at) = ?', yr)
 				@table_1[yr] = [all_yr.where(stat: "3").count,
 											all_yr.where(stat: "1").count,
 											all_yr.where(stat: "2").count,
 											all_yr.where(stat: "4").count]
+				@table_3[yr] = all_yr.sum(:amtpmt)
 			end
+			@table_2 = {}
+			$dun_list.each do |dun|
+				@table_2[dun] = [0,0,0,0]
+			end	
+			@all.where(stat: "3").each do |ddk|
+				prs = ddk.perse
+				
+				@table_2[prs.dun][0] = @table_2[prs.dun][0] + 1
+			end	
+
+			@all.where(stat: "1").each do |ddk|
+				prs = ddk.perse
+				
+				@table_2[prs.dun][1] = @table_2[prs.dun][1] + 1
+			end	
+
+			@all.where(stat: "2").each do |ddk|
+				prs = ddk.perse
+				
+				@table_2[prs.dun][2] = @table_2[prs.dun][2] + 1
+			end
+
+			@all.where(stat: "4").each do |ddk|
+				prs = ddk.perse
+				
+				@table_2[prs.dun][3] = @table_2[prs.dun][3] + 1
+			end	
 
 
 		end

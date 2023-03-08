@@ -46,7 +46,7 @@ wb.styles do |style|
     @yr_arr.each do |yr|
       
       sheet.add_row [yr,
-                    counter], 
+                    @table_1[yr][0]], 
       style: [nil, border_cell]
       sheet.rows[counter].style = border_cell
       counter = counter +1
@@ -64,32 +64,40 @@ wb.styles do |style|
     sheet.rows[counter+3].style = highlight_cell
     counter = counter+4
 
-    $dun_list.each do |yr|
+    $dun_list.each do |dun|
       
-      sheet.add_row [yr,
-                    counter], 
+      sheet.add_row [dun,
+                    @table_2[dun][0],
+                    @table_2[dun][1],
+                    @table_2[dun][2],
+                    @table_2[dun][3]], 
       style: [nil, border_cell]
       sheet.rows[counter].style = border_cell
       counter = counter +1
     end
 
-    sheet.add_row [""]
-    sheet.add_row ["","Laporan Status dan Jumlah Bayaran Mengikut Tahun"]
-    sheet.add_row [""]
-    sheet.add_row ["TAHUN",
-                  "JUMLAH PENERIMA",
-                  "JUMLAH BAYARAN"]
-    sheet.rows[counter+1].style = header_1
-    sheet.rows[counter+3].style = highlight_cell
-    counter = counter+4
+    if params[:prg] == "DIDIK ANIS"
 
-    @yr_arr.each do |yr|
-      
-      sheet.add_row [yr,
-                    counter], 
-      style: [nil, border_cell]
-      sheet.rows[counter].style = border_cell
-      counter = counter +1
+      sheet.add_row [""]
+      sheet.add_row ["","Laporan Status dan Jumlah Bayaran Mengikut Tahun"]
+      sheet.add_row [""]
+      sheet.add_row ["TAHUN",
+                    "JUMLAH PENERIMA",
+                    "JUMLAH BAYARAN"]
+      sheet.rows[counter+1].style = header_1
+      sheet.rows[counter+3].style = highlight_cell
+      counter = counter+4
+
+      @yr_arr.each do |yr|
+        
+        sheet.add_row [yr,
+                      @table_1[yr][0],
+                      @table_3[yr]], 
+        style: [nil, border_cell]
+        sheet.rows[counter].style = border_cell
+        counter = counter +1
+      end
+
     end
 
     
