@@ -200,8 +200,10 @@ class PersesController < ApplicationController
 					flash[:danger] = "No MyKad Anda Tiada Dalam Rekod"
 					redirect_to request.referrer
 				elsif params[:prog] == "AKADEMI ANIS"
-					flash[:success] = "Rekod anda tiada dalam pendaftaran program. Sila daftar and sahkan semula kedatangan"
-					redirect_to persesch_path(prog: "AKADEMI ANIS", proge: params[:proge])
+					# flash[:success] = "Rekod anda tiada dalam pendaftaran program. Sila daftar and sahkan semula kedatangan"
+					# redirect_to persesch_path(prog: "AKADEMI ANIS", proge: params[:proge])
+					flash[:notice] = "Sila Lengkapkan Maklumat Anda"
+					redirect_to new_perse_path(ic: params[:icf], prog: params[:prog], proge: params[:proge], regkid: params[:regkid])
 				else
 					flash[:notice] = "Sila Lengkapkan Maklumat Anda"
 					redirect_to new_perse_path(ic: params[:icf], prog: params[:prog], proge: params[:proge], regkid: params[:regkid])
