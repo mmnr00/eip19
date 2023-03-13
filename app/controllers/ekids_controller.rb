@@ -76,6 +76,7 @@ class EkidsController < ApplicationController
 
 	def index
 		@admin = current_admin
+		@phs = ["Permohonan Baru","Permohonan Tidak Lengkap", "Permohonan Dalam Semakan", "Permohonan Ditolak","Permohonan Dalam Senarai Menunggu","Penilaian Dalam Semakan","Panggilan Penilaian Pelajar","Kemasukan Program Intervensi","Kemasukan Program Prasekolah","Tamat Program"]
 		if params[:yr].present?
 			@init_ekid = Ekid.where('extract(year from created_at) = ?', params[:yr])
 		else

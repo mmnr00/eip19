@@ -9,30 +9,13 @@
 
 <!-- DASHBOARD SUMMARY -->
 <div class="row">
-  
-  <div class="col-3">
-    <div class="card border-left-primary shadow h-100 py-2">
+  <div class="col-3" style="margin-bottom: 10px;">
+    <div class="card border-left-primary shadow h-100 py-2" >
       <div class="card-body">
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">JUMLAH PENDAFTARAN</div>
-            <div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ekid_all.count %></div>
-          </div>
-          <div class="col-auto">
-            <i class="fas fa-folder-plus fa-2x text-gray-300"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-3">
-    <div class="card border-left-warning shadow h-100 py-2">
-      <div class="card-body">
-        <div class="row no-gutters align-items-center">
-          <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">PENDAFTARAN BARU</div>
-            <a href="<%= ekidindex_url(sch: true,phs: "Permohonan Baru",yr: params[:yr]) %>"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ekid_all.where(phs: "Permohonan Baru").count %></div></a>
+            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">PENDAFTARAN BARU</div>
+            <a href=""><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ekid_all.where(phs: "Permohonan Baru").count %></div></a>
           </div>
           <div class="col-auto">
             <i class="fa fa-spinner fa-2x text-gray-300"></i>
@@ -41,38 +24,39 @@
       </div>
     </div>
   </div>
-
-  <div class="col-3">
-    <div class="card border-left-success shadow h-100 py-2">
+  
+<%  
+  color = ["warning","success","danger","primary"] 
+  cnt=0 
+  @phs.each do |arr|
+%>
+  <div class="col-3" style="margin-bottom: 10px;">
+    <div class="card border-left-<%= color[cnt] %> shadow h-100 py-2" >
       <div class="card-body">
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">INTERVENSI</div>
-            <a href="<%= ekidindex_url(sch: true,sch_fld: "INTERVENSI ANIS",yr: params[:yr]) %>"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ekid_all.where(tp: "INTERVENSI ANIS").count %></div></a>
+            <div class="text-xs font-weight-bold text-<%= color[cnt] %> text-uppercase mb-1"><%= arr.upcase %></div>
+            <a href=""><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ekid_all.where(phs: arr).count %></div></a>
           </div>
           <div class="col-auto">
-            <i class="fa fa-thumbs-up fa-2x text-gray-300"></i>
+            <i class="fa fa-spinner fa-2x text-gray-300"></i>
           </div>
         </div>
       </div>
     </div>
   </div>
+<% 
+  if cnt < 3
+    cnt = cnt + 1
+  else
+    cnt = 0
+  end
+  end 
+%>
 
-  <div class="col-3">
-    <div class="card border-left-danger shadow h-100 py-2">
-      <div class="card-body">
-        <div class="row no-gutters align-items-center">
-          <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">PRASEKOLAH</div>
-            <a href="<%= ekidindex_url(sch: true,sch_fld: "PRASEKOLAH ANIS",yr: params[:yr]) %>"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ekid_all.where(tp: "PRASEKOLAH ANIS").count %></div></a>
-          </div>
-          <div class="col-auto">
-            <i class="fa fa-exclamation-circle fa-2x text-gray-300"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  
+
+  
 
 
 </div>
@@ -92,7 +76,7 @@
         <%= text_field_tag :sch_str, params[:sch_str], placeholder: "Nama atau MyKid", style: 'text-transform: uppercase' %>
         <%= select_tag :sch_fld, options_for_select(["INTERVENSI ANIS", "PRASEKOLAH ANIS"], params[:sch_fld]),
               include_blank: "Semua Program" %>
-        <%= select_tag :phs, options_for_select(["Permohonan Baru","Permohonan Tidak Lengkap", "Permohonan Dalam Semakan", "Permohonan Ditolak","Permohonan Dalam Senarai Menunggu","Penilaian Dalam Semakan","Panggilan Penilaian Pelajar","Kemasukan Program Intervensi","Kemasukan Program Prasekolah","Tamat Program"], params[:phs]),
+        <%= select_tag :phs, options_for_select(@phs, params[:phs]),
               include_blank: "Semua Status" %>
         <%= select_tag :yr, options_for_select((2021..Date.today.year).to_a, params[:yr]),
               include_blank: "Semua Tahun" %>
@@ -103,7 +87,10 @@
         <%= link_to ekidindex_path, class: "badge badge-danger shadow-sm", style: "font-size: 14px; font-weight: normal" do %>
             <i class="fa fa-sync"></i> Semula
         <% end %>
-        <%= "#{@ekids.count} carian" %>
+        <%= "#{@ekids.count} carian" %><br>
+        <%= link_to ekidindex_path(sch_str: params[:sch_str], sch_fld: params[:sch_fld], phs: params[:phs],yr: params[:yr], showl: true), class: "badge badge-primary shadow-sm", style: "font-size: 14px; font-weight: normal" do %>
+            <i class="fa fa-sync"></i> Lihat Senarai
+        <% end %>
       <% end %>
     <div>
 
@@ -111,7 +98,7 @@
       </div>
     </div>
   </div>
-  <div class="card-body"><% if params[:sch].present? %>
+  <div class="card-body"><% if params[:showl].present? %>
     
     <div class="table table-responsive border" style="font-size:13px">
       <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0" style="color: black">
