@@ -14,8 +14,8 @@
       <div class="card-body">
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">PENDAFTARAN BARU</div>
-            <a href=""><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ekid_all.where(phs: "Permohonan Baru").count %></div></a>
+            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">JUMLAH PENDAFTARAN</div>
+            <a href=""><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ekid_all.count %></div></a>
           </div>
           <div class="col-auto">
             <i class="fa fa-spinner fa-2x text-gray-300"></i>
