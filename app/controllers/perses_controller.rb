@@ -92,6 +92,13 @@ class PersesController < ApplicationController
 	end
 
 	def persesch
+		if params[:proge].present?
+			prg = Proge.find(params[:proge])
+			if !prg.acv
+				flash[:danger] = "Maaf pendaftaran telah ditutup. Sila hubungi Penyelaras Program untuk maklumat lanjut"
+				redirect_to persesch_path and return
+			end
+		end
 		@verf = false
 		if params[:sch].present? #start search
 			perse = Perse.where(ic: params[:icf]).last
