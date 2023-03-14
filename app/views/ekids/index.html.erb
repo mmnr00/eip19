@@ -74,7 +74,7 @@
     <div class="row">
       <%= form_tag ekidindex_path, method: :get, id: "find_kid" do %>
         <%= text_field_tag :sch_str, params[:sch_str], placeholder: "Nama atau MyKid", style: 'text-transform: uppercase' %>
-        <%= select_tag :sch_fld, options_for_select(["INTERVENSI ANIS", "PRASEKOLAH ANIS"], params[:sch_fld]),
+        <%= select_tag :sch_fld, options_for_select(["PLAYSCHOOL ANIS","INTERVENSI ANIS", "PRASEKOLAH ANIS"], params[:sch_fld]),
               include_blank: "Semua Program" %>
         <%= select_tag :phs, options_for_select(@phs, params[:phs]),
               include_blank: "Semua Status" %>
