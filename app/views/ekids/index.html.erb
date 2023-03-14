@@ -88,7 +88,7 @@
             <i class="fa fa-sync"></i> Semula
         <% end %>
         <%= "#{@ekids.count} carian" %><br>
-        <%= link_to ekidindex_path(sch_str: params[:sch_str], sch_fld: params[:sch_fld], phs: params[:phs],yr: params[:yr], showl: true), class: "badge badge-primary shadow-sm", style: "font-size: 14px; font-weight: normal" do %>
+        <%= link_to ekidindex_path(sch_str: params[:sch_str], sch_fld: params[:sch_fld], phs: params[:phs],yr: params[:yr], showl: true, sch: params[:sch]), class: "badge badge-primary shadow-sm", style: "font-size: 14px; font-weight: normal" do %>
             <i class="fa fa-sync"></i> Lihat Senarai
         <% end %>
       <% end %>
