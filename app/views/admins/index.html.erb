@@ -1,7 +1,7 @@
 <meta name="viewport" content="width=1024">
 
 <div style="background-color: #ff944c; text-align: center; margin-bottom: 10px; border-radius: 40px">
-    <h5 style="text-align: center; font-weight: 500; color: white">Rumusan Tahun <%= Date.today.year %></h5>
+    <h5 style="text-align: center; font-weight: 500; color: white">Rumusan Tahun <%= @yr %></h5>
 </div>
 
 <div class="row">
@@ -11,7 +11,23 @@
       <div class="card-body">
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">DALAM PROSES</div>
+            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">JUMLAH PENDAFTARAN</div>
+            <a href="#"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ddk_yr.count + @ilsc_yr.count + @ekid_yr.count %></div></a>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-folder-plus fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-3" style="margin-bottom: 10px;">
+    <div class="card border-left-warning shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">BELUM DISEMAK</div>
             <a href="#"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= 5 %></div></a>
           </div>
           <div class="col-auto">
@@ -23,11 +39,11 @@
   </div>
 
   <div class="col-3" style="margin-bottom: 10px;">
-    <div class="card border-left-primary shadow h-100 py-2">
+    <div class="card border-left-info shadow h-100 py-2">
       <div class="card-body">
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">DALAM PROSES</div>
+            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">TELAH DISEMAK</div>
             <a href="#"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= 5 %></div></a>
           </div>
           <div class="col-auto">
@@ -39,11 +55,11 @@
   </div>
 
   <div class="col-3" style="margin-bottom: 10px;">
-    <div class="card border-left-primary shadow h-100 py-2">
+    <div class="card border-left-warning shadow h-100 py-2">
       <div class="card-body">
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">DALAM PROSES</div>
+            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">DOKUMEN TIDAK LENGKAP</div>
             <a href="#"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= 5 %></div></a>
           </div>
           <div class="col-auto">
@@ -55,11 +71,11 @@
   </div>
 
   <div class="col-3" style="margin-bottom: 10px;">
-    <div class="card border-left-primary shadow h-100 py-2">
+    <div class="card border-left-danger shadow h-100 py-2">
       <div class="card-body">
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">DALAM PROSES</div>
+            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">DITOLAK</div>
             <a href="#"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= 5 %></div></a>
           </div>
           <div class="col-auto">
@@ -71,11 +87,11 @@
   </div>
 
   <div class="col-3" style="margin-bottom: 10px;">
-    <div class="card border-left-primary shadow h-100 py-2">
+    <div class="card border-left-success shadow h-100 py-2">
       <div class="card-body">
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">DALAM PROSES</div>
+            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">LULUS</div>
             <a href="#"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= 5 %></div></a>
           </div>
           <div class="col-auto">
@@ -87,27 +103,11 @@
   </div>
 
   <div class="col-3" style="margin-bottom: 10px;">
-    <div class="card border-left-primary shadow h-100 py-2">
+    <div class="card border-left-danger shadow h-100 py-2" style="margin-bottom: 10px;">
       <div class="card-body">
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">DALAM PROSES</div>
-            <a href="#"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= 5 %></div></a>
-          </div>
-          <div class="col-auto">
-            <i class="fas fa-folder-plus fa-2x text-gray-300"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-3" style="margin-bottom: 10px;">
-    <div class="card border-left-primary shadow h-100 py-2" style="margin-bottom: 10px;">
-      <div class="card-body">
-        <div class="row no-gutters align-items-center">
-          <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">DALAM PROSES</div>
+            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">GAGAL</div>
             <a href="#"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= 5 %></div></a>
           </div>
           <div class="col-auto">
@@ -126,5 +126,125 @@
 
 <div style="background-color: #fbd7e3; text-align: center; margin-top: 15px; border-radius: 40px">
     <h5 style="text-align: center; font-weight: 500; color: #d53368">Rumusan Keseluruhan</h5>
+</div>
+
+<div class="row">
+  
+  <div class="col-3" style="margin-bottom: 10px;">
+    <div class="card border-left-primary shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">JUMLAH PENDAFTARAN</div>
+            <a href="#"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ddk.count + @ilsc.count + @ekid.count %></div></a>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-folder-plus fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-3" style="margin-bottom: 10px;">
+    <div class="card border-left-warning shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">BELUM DISEMAK</div>
+            <a href="#"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= 5 %></div></a>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-folder-plus fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-3" style="margin-bottom: 10px;">
+    <div class="card border-left-info shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">TELAH DISEMAK</div>
+            <a href="#"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= 5 %></div></a>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-folder-plus fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-3" style="margin-bottom: 10px;">
+    <div class="card border-left-warning shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">DOKUMEN TIDAK LENGKAP</div>
+            <a href="#"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= 5 %></div></a>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-folder-plus fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-3" style="margin-bottom: 10px;">
+    <div class="card border-left-danger shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">DITOLAK</div>
+            <a href="#"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= 5 %></div></a>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-folder-plus fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-3" style="margin-bottom: 10px;">
+    <div class="card border-left-success shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">LULUS</div>
+            <a href="#"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= 5 %></div></a>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-folder-plus fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-3" style="margin-bottom: 10px;">
+    <div class="card border-left-danger shadow h-100 py-2" style="margin-bottom: 10px;">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">GAGAL</div>
+            <a href="#"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= 5 %></div></a>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-folder-plus fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
 </div>
 

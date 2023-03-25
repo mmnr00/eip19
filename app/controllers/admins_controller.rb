@@ -81,8 +81,14 @@ class AdminsController < ApplicationController
 	end
 
 	def index
+		@yr = Date.today.year
 		@perses = Perse.all
 		@ddk = Ddk.all
+		@ilsc = Ilsc.all
+		@ekid = Ekid.all
+		@ddk_yr = @ddk.where('extract(year from created_at) = ?', @yr)
+		@ilsc_yr = @ilsc.where('extract(year from created_at) = ?', @yr)
+		@ekid_yr = @ekid.where('extract(year from created_at) = ?', @yr)
 		@admin = current_admin
 		render action: "index", layout: "dsb-admin-overview" 
 	end
