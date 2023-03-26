@@ -81,7 +81,7 @@ class AdminsController < ApplicationController
 	end
 
 	def index
-		@yr = Date.today.year
+		@yr = Date.today.year - 1 
 		@perses = Perse.all
 		@ddk = Ddk.all
 		@ilsc = Ilsc.all
