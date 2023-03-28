@@ -45,8 +45,53 @@ class AdminsController < ApplicationController
 				@table_2[prs.dun][3] = @table_2[prs.dun][3] + 1
 			end	
 
+		elsif params[:prg] == "PUSAT ANIS"
+
+			@prg = "PUSAT ANIS"
+			@all = Ekid.all
+			@table_1 = {}
+			#@table_3 = {}
+			@yr_arr.each do |yr|
+				all_yr = @all.where('extract(year  from created_at) = ?', yr)
+				puts "#{yr} - #{all_yr.count}"
+				@table_1[yr] = [all_yr.where(stat: "Kemasukan Program").count,
+											all_yr.where(phs: "Permohonan Baru").count,
+											all_yr.where(phs: "Penilaian").count,
+											all_yr.where(stat: "Permohonan Ditolak").count]
+				#@table_3[yr] = all_yr.sum(:amtpmt)
+			end
+			puts @table_1
+			@table_2 = {}
+			$dun_list.each do |dun|
+				@table_2[dun] = [0,0,0,0]
+			end	
+			@all.where(phs: "Kemasukan Program").each do |ddk|
+				prs = ddk.perse
+				
+				@table_2[prs.dun][0] = @table_2[prs.dun][0] + 1
+			end	
+
+			@all.where(stat: "Permohonan Baru").each do |ddk|
+				prs = ddk.perse
+				
+				@table_2[prs.dun][1] = @table_2[prs.dun][1] + 1
+			end	
+
+			@all.where(phs: "Penilaian").each do |ddk|
+				prs = ddk.perse
+				
+				@table_2[prs.dun][2] = @table_2[prs.dun][2] + 1
+			end
+
+			@all.where(stat: "Permohonan Ditolak").each do |ddk|
+				prs = ddk.perse
+				
+				@table_2[prs.dun][3] = @table_2[prs.dun][3] + 1
+			end	
+
 
 		end
+
 		respond_to do |format|
       #format.html
       format.xlsx{
