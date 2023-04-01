@@ -48,13 +48,13 @@ class AdminsController < ApplicationController
 		elsif params[:prg] == "PUSAT ANIS"
 
 			@prg = "PUSAT ANIS"
-			@all = Ekid.all
+			@all = Ekid.where(del: nil)
 			@table_1 = {}
 			#@table_3 = {}
 			@yr_arr.each do |yr|
 				all_yr = @all.where('extract(year  from created_at) = ?', yr)
 				puts "#{yr} - #{all_yr.count}"
-				@table_1[yr] = [all_yr.where(stat: "Kemasukan Program").count,
+				@table_1[yr] = [all_yr.where(stat: "Kemasukan Program").count + all_yr.where(stat: "Tamat Program").count,
 											all_yr.where(phs: "Permohonan Baru").count,
 											all_yr.where(phs: "Penilaian").count,
 											all_yr.where(stat: "Permohonan Ditolak").count]
@@ -65,13 +65,13 @@ class AdminsController < ApplicationController
 			$dun_list.each do |dun|
 				@table_2[dun] = [0,0,0,0]
 			end	
-			@all.where(phs: "Kemasukan Program").each do |ddk|
+			@all.where(stat: "Kemasukan Program").each do |ddk|
 				prs = ddk.perse
 				
 				@table_2[prs.dun][0] = @table_2[prs.dun][0] + 1
 			end	
 
-			@all.where(stat: "Permohonan Baru").each do |ddk|
+			@all.where(phs: "Permohonan Baru").each do |ddk|
 				prs = ddk.perse
 				
 				@table_2[prs.dun][1] = @table_2[prs.dun][1] + 1
@@ -88,7 +88,7 @@ class AdminsController < ApplicationController
 				
 				@table_2[prs.dun][3] = @table_2[prs.dun][3] + 1
 			end	
-
+			puts @table_2
 
 		end
 
@@ -126,7 +126,7 @@ class AdminsController < ApplicationController
 	end
 
 	def index
-		@yr = Date.today.year - 1 
+		@yr = Date.today.year
 		@perses = Perse.all
 		@ddk = Ddk.all
 		@ilsc = Ilsc.all
