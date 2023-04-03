@@ -90,6 +90,53 @@ class AdminsController < ApplicationController
 			end	
 			puts @table_2
 
+		elsif params[:prg] == "ILSC"
+
+		
+
+			@prg = "ILSC"
+			@all = Ilsc.all
+			@table_1 = {}
+			#@table_3 = {}
+			@yr_arr.each do |yr|
+				all_yr = @all.where('extract(year  from created_at) = ?', yr)
+				puts "#{yr} - #{all_yr.count}"
+				@table_1[yr] = [all_yr.where(stat: "Permohonan Diluluskan").count,
+											all_yr.where(stat: "Permohonan Diterima").count,
+											all_yr.where(stat: "Permohonan Dalam Semakan").count + all_yr.where(stat: "Permohonan Tidak Lengkap").count,
+											all_yr.where(stat: "Permohonan Ditolak").count]
+				#@table_3[yr] = all_yr.sum(:amtpmt)
+			end
+			puts @table_1
+			@table_2 = {}
+			$dun_list.each do |dun|
+				@table_2[dun] = [0,0,0,0]
+			end	
+			@all.where(stat: "Kemasukan Program").each do |ddk|
+				prs = ddk.perse
+				
+				@table_2[prs.dun][0] = @table_2[prs.dun][0] + 1
+			end	
+
+			@all.where(stat: "Permohonan Baru").each do |ddk|
+				prs = ddk.perse
+				
+				@table_2[prs.dun][1] = @table_2[prs.dun][1] + 1
+			end	
+
+			@all.where(stat: "Penilaian").each do |ddk|
+				prs = ddk.perse
+				
+				@table_2[prs.dun][2] = @table_2[prs.dun][2] + 1
+			end
+
+			@all.where(stat: "Permohonan Ditolak").each do |ddk|
+				prs = ddk.perse
+				
+				@table_2[prs.dun][3] = @table_2[prs.dun][3] + 1
+			end	
+			puts @table_2
+
 		end
 
 		respond_to do |format|
