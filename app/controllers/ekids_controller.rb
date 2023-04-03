@@ -101,7 +101,7 @@ class EkidsController < ApplicationController
 			end
 		end
 		@ddk = Ddk.all
-		#render action: "index", layout: "eipblank"
+		render action: "index", layout: "dsb-admin-pst"
 	end
 
 	def ekid_list

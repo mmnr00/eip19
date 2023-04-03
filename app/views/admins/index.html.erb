@@ -1,202 +1,220 @@
 <meta name="viewport" content="width=1024">
 
 <div style="background-color: #ff944c; text-align: center; margin-bottom: 10px; border-radius: 40px">
-    <h4 style="text-align: center; font-weight: 500; color: white">Pilihan Program Untuk Paparan Admin</h4>
+    <h5 style="text-align: center; font-weight: 500; color: white">Rumusan Tahun <%= @yr %></h5>
 </div>
-<%= link_to "Senarai Artikel", artk_index_path, class: 'badge badge-pill badge-success', style: "padding-top: -200px"%>
-<%= link_to "Senarai Soal Jawab", admqsa_path, class: 'badge badge-pill badge-primary', style: "padding-top: -200px"%>
-<%= link_to "Senarai Peserta", senaraipeserta_path, class: 'badge badge-pill badge-secondary', style: "padding-top: -200px"%>
 
-<section id="services"><div class="row" style="margin-top: -20px">
-
-  <div class="col-lg-2 col-md-6 col-12">
-    <div class="box wow fadeInLeft">
-      <div style="text-align: center">
-      <img src="<%= image_path('anisPic/bk-anis-hp.png') %>" width="100" height="80">
-      </div>
-      <h5 style="color: black; padding-top: 10px; text-align: center; margin-bottom: 0px">Bantuan ANIS</h5>
-      <% if 1==0 %>
-        <p style="font-size: 12px; text-align: center; color: red">
-          <i><b><%= @ddk.where(stat: 1).count %></b> Permohonan Baru</i>
-        </p>
-      <% else %>
-        <p style="font-size: 12px; text-align: center; color: green">
-          <i></i>
-        </p>
-      <% end %>
-      <p style="font-size: 12px; text-align: center; color: red">
-        <i>Jumlah Permohonan Keseluruhan: <b><%= Ddk.first.okucnt %></b></i>
-      </p>
-      
-      <p style="font-size: 20px; text-align: center">
-        <%= link_to "Semak", undercon_path, class: "badge badge-info"%>
-      </p>
-    </div>
-  </div>
-
-  <div class="col-lg-2 col-md-6 col-12">
-    <div class="box wow fadeInLeft">
-      <div style="text-align: center">
-      <img src="<%= image_path('anisPic/didik-anis-hp.png') %>" width="100" height="80">
-      </div>
-      <h5 style="color: black; padding-top: 10px; text-align: center; margin-bottom: 0px">Didik ANIS</h5>
-      <% if @ddk.where(stat: 1).count > 0 %>
-        <p style="font-size: 12px; text-align: center; color: red">
-          <i><!-- <b><%= @ddk.where(stat: 1).count %></b> Permohonan Baru --></i>
-        </p>
-      <% else %>
-        <p style="font-size: 12px; text-align: center; color: green">
-          <i>Tiada Permohonan Baru</i>
-        </p>
-      <% end %>
-      
-      <p style="font-size: 20px; text-align: center">
-        <%= link_to "Semak", lsddk_path, class: "badge badge-info"%>
-      </p>
-    </div>
-  </div>
-
-  <div class="col-lg-2 col-md-6 col-12">
-    <div class="box wow fadeInLeft">
-      <div style="text-align: center">
-      <img src="<%= image_path('anisPic/aka-anis-hp.png') %>" width="100" height="80">
-      </div>
-      <h5 style="color: black; padding-top: 10px; text-align: center; margin-bottom: 0px">Akademi ANIS</h5>
-      <% if 1==0 %>
-        <p style="font-size: 12px; text-align: center; color: red">
-          <i><!-- <b><%= @ddk.where(stat: 1).count %></b> Permohonan Baru --></i>
-        </p>
-      <% else;
-          # nxt_prog = Proge.where("date >= ?", Date.today)
-          nxt_prog = Proge.where(acv: true)
-       %>
-        <p style="font-size: 12px; text-align: center; color: green">
-          <!-- <i><%= nxt_prog.count %> program aktif</i> -->
-        </p>
-      <% end %>
-      
-      <p style="font-size: 20px; text-align: center">
-        <%= link_to "Semak", progeindex_path, class: "badge badge-info"%>
-      </p>
-    </div>
-  </div>
-
-  <div class="col-lg-2 col-md-6 col-12">
-    <div class="box wow fadeInLeft">
-      <div style="text-align: center">
-      <img src="<%= image_path('anislogo1.png') %>" width="100" height="80">
-      </div>
-      <h5 style="color: black; padding-top: 10px; text-align: center; margin-bottom: 0px">Pusat ANIS</h5>
-      <% if 1==0 %>
-        <p style="font-size: 12px; text-align: center; color: red">
-          <i><b><%= @ddk.where(stat: 1).count %></b> Permohonan Baru</i>
-        </p>
-      <% else;
-          a = 5
-       %>
-        <p style="font-size: 12px; text-align: center; color: green">
-          <!-- <i>Akan Datang</i> -->
-        </p>
-      <% end %>
-      
-      <p style="font-size: 20px; text-align: center">
-        <%= link_to "Semak", ekidindex_path, class: "badge badge-info"%>
-      </p>
-    </div>
-  </div>
-
-  <div class="col-lg-2 col-md-6 col-12">
-    <div class="box wow fadeInLeft">
-      <div style="text-align: center">
-      <img src="<%= image_path('anislogo1.png') %>" width="100" height="80">
-      </div>
-      <h5 style="color: black; padding-top: 10px; text-align: center; margin-bottom: 0px">ILSC</h5>
-      <% if 1==0 %>
-        <p style="font-size: 12px; text-align: center; color: red">
-          <i><b><%= @ddk.where(stat: 1).count %></b> Permohonan Baru</i>
-        </p>
-      <% else;
-          a = 5
-       %>
-        <p style="font-size: 12px; text-align: center; color: green">
-          <!-- <i>Akan Datang</i> -->
-        </p>
-      <% end %>
-      
-      <p style="font-size: 20px; text-align: center">
-        <%= link_to "Semak", ilscindex_path, class: "badge badge-info"%>
-      </p>
-    </div>
-  </div>
-
+<div class="row">
   
-
-  
-
-
-
-  
-
-</div></section>
-
-<% if 1==0 %>
-<div class="bg-white container" style="margin-bottom: 0px">
-  <div class="section-header container bg-white" style="margin-top: 0px">
-    <h3 style="">PENCAPAIAN KESELURUHAN ANIS</h3>
-    <div class="border-prog" style=""></div>
-  </div>
-
-  <div class="row bg-white">
-
-    <!-- Earnings (Monthly) Card Example -->
-    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-3" style="padding-bottom: 10px">
-      <div class="card border-left-primary shadow h-100 py-2">
-        <div class="card-body">
-          <div class="row no-gutters align-items-center">
-            <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Perlu Verifikasi</div>
-              <div class="row no-gutters align-items-center">
-                <div class="col-auto">
-                  <a href="https://www.google.com">
-                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><%= "sd" %></div>
-                  </a>
-                </div>
-                <div class="col">
-                </div>
-              </div>
-            </div>
-            <div class="col-auto">
-              <i class="fas fa-exclamation-circle fa-2x text-gray-300"></i>
-            </div>
+  <div class="col-3" style="margin-bottom: 10px;">
+    <div class="card border-left-primary shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">JUMLAH PENDAFTARAN</div>
+            <a href="#"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ddk_yr.count + @ilsc_yr.count + @ekid_yr.count %></div></a>
           </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Earnings (Monthly) Card Example -->
-    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-3" style="padding-bottom: 10px">
-      <div class="card border-left-primary shadow h-100 py-2">
-        <div class="card-body">
-          <div class="row no-gutters align-items-center">
-            <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Perlu Verifikasi</div>
-              <div class="row no-gutters align-items-center">
-                <div class="col-auto">
-                  <a href="https://www.google.com">
-                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><%= "sd" %></div>
-                  </a>
-                </div>
-                <div class="col">
-                </div>
-              </div>
-            </div>
-            <div class="col-auto">
-              <i class="fas fa-exclamation-circle fa-2x text-gray-300"></i>
-            </div>
+          <div class="col-auto">
+            <i class="fas fa-folder-plus fa-2x text-gray-300"></i>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <div class="col-3" style="margin-bottom: 10px;">
+    <div class="card border-left-warning shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">BELUM DISEMAK</div>
+            <a href="#"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ddk_yr.where(stat: "1").count + @ilsc_yr.where(stat: "Permohonan Diterima").count + @ekid_yr.where(phs: "Permohonan Baru").count %></div></a>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-folder-plus fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-3" style="margin-bottom: 10px;">
+    <div class="card border-left-info shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">TELAH DISEMAK</div>
+            <a href="#"><div class="h5 mb-0 font-weight-bold text-gray-800"><%=  @ilsc_yr.where(stat: "Permohonan Dalam Semakan").count + @ekid_yr.where(phs: "Permohonan Dalam Semakan").count %></div></a>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-folder-plus fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-3" style="margin-bottom: 10px;">
+    <div class="card border-left-warning shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">DOKUMEN TIDAK LENGKAP</div>
+            <a href="#"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ddk_yr.where(stat: "2").count + @ilsc_yr.where(stat: "Permohonan Tidak Lengkap").count + @ekid_yr.where(phs: "Permohonan Tidak Lengkap").count %></div></a>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-folder-plus fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-3" style="margin-bottom: 10px;">
+    <div class="card border-left-danger shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">DITOLAK/GAGAL</div>
+            <a href="#"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ddk_yr.where(stat: "4").count + @ilsc_yr.where(stat: "Permohonan Ditolak").count + @ekid_yr.where(phs: "Permohonan Ditolak").count %></div></a>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-folder-plus fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-3" style="margin-bottom: 10px;">
+    <div class="card border-left-success shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">LULUS</div>
+            <a href="#"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ddk_yr.where(stat: "3").count + @ilsc_yr.where(stat: "Permohonan Diluluskan").count + @ekid_yr.where(stat: "Kemasukan Program").count %></div></a>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-folder-plus fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+
+
+
+
 </div>
-<% end %>
+
+<div style="background-color: #fbd7e3; text-align: center; margin-top: 15px; border-radius: 40px">
+    <h5 style="text-align: center; font-weight: 500; color: #d53368">Rumusan Keseluruhan</h5>
+</div>
+
+<div class="row">
+  
+  <div class="col-3" style="margin-bottom: 10px;">
+    <div class="card border-left-primary shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">JUMLAH PENDAFTARAN</div>
+            <a href="#"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ddk.count + @ilsc.count + @ekid.count %></div></a>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-folder-plus fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-3" style="margin-bottom: 10px;">
+    <div class="card border-left-warning shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">BELUM DISEMAK</div>
+            <a href="#"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ddk.where(stat: "1").count + @ilsc.where(stat: "Permohonan Diterima").count + @ekid.where(phs: "Permohonan Baru").count %></div></a>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-folder-plus fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-3" style="margin-bottom: 10px;">
+    <div class="card border-left-info shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">TELAH DISEMAK</div>
+            <a href="#"><div class="h5 mb-0 font-weight-bold text-gray-800"><%=  @ilsc.where(stat: "Permohonan Dalam Semakan").count + @ekid.where(phs: "Permohonan Dalam Semakan").count %></div></a>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-folder-plus fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-3" style="margin-bottom: 10px;">
+    <div class="card border-left-warning shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">DOKUMEN TIDAK LENGKAP</div>
+            <a href="#"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ddk.where(stat: "2").count + @ilsc.where(stat: "Permohonan Tidak Lengkap").count + @ekid.where(phs: "Permohonan Tidak Lengkap").count %></div></a>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-folder-plus fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-3" style="margin-bottom: 10px;">
+    <div class="card border-left-danger shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">DITOLAK/GAGAL</div>
+            <a href="#"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ddk.where(stat: "4").count + @ilsc.where(stat: "Permohonan Ditolak").count + @ekid.where(phs: "Permohonan Ditolak").count %></div></a>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-folder-plus fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-3" style="margin-bottom: 10px;">
+    <div class="card border-left-success shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">LULUS</div>
+            <a href="#"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ddk.where(stat: "3").count + @ilsc.where(stat: "Permohonan Diluluskan").count + @ekid.where(stat: "Kemasukan Program").count %></div></a>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-folder-plus fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+</div>
+

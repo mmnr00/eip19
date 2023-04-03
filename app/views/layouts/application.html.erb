@@ -1,8 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <%= render 'layouts/page_head' %>
-  <body id="page-tops">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title><%= content_for?(:title) ? yield(:title) : "Jabatan ANIS" %></title>
+    <%= favicon_link_tag 'anislogo2.jpg' %>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag "application", :media => "all", "data-turbolinks-track" => true %>
+
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <!-- Bootstrap core CSS 
+    <link href="/assets/vendor/bootstrap/scss/bootstrap.css" rel="stylesheet"> 
+
+    Custom fonts for this template 
+    <link href="/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"> -->
+
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"> -->
+  <!-------    font awesome online plug --------------->
+  
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template 
+    <link href="/assets/css/agency.css" rel="stylesheet"> -->
+
+  </head>
+
+
 
   <!-- ======= Top Bar ======= -->
   <section id="topbar" class="d-none d-lg-block">
@@ -129,6 +162,7 @@
       </nav><!-- #nav-menu-container -->
     </div>
   </header><!-- End Header -->
+
       <% if @index.present? %>
         <div class="bg-white">
           
@@ -145,6 +179,3 @@
 
         
   
-</body>
-      
-  </html>

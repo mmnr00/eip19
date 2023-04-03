@@ -2,7 +2,10 @@
 <ol class="breadcrumb">
   <li class="breadcrumb-item">
     Paparan Admin <b>Pusat ANIS</b></b>
-  </li>
+  </li>&nbsp&nbsp
+  <%= link_to laporan_path(format: :xlsx, prg: "PUSAT ANIS"), class: "badge badge-success shadow-sm", style: "font-size: 14px; font-weight: normal" do %>
+        <i class="fa fa-sync"></i> Muat Turun Laporan
+    <% end %>
 </ol>
 
 
@@ -98,7 +101,10 @@
       </div>
     </div>
   </div>
+
   <div class="card-body"><% if params[:showl].present? || params[:sch_str].present? %>
+
+
     
     <div class="table table-responsive border" style="font-size:13px">
       <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0" style="color: black">

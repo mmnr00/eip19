@@ -1,9 +1,156 @@
 class AdminsController < ApplicationController
 	before_action :authenticate_admin!
 
+	def laporan
+		@yr_arr = (2021..Date.today.year)
+		if params[:prg] == "DIDIK ANIS"
+
+			@prg = "Didik ANIS"
+			@all = Ddk.all
+			@table_1 = {}
+			@table_3 = {}
+			@yr_arr.each do |yr|
+				all_yr = @all.where('extract(year  from created_at) = ?', yr)
+				@table_1[yr] = [all_yr.where(stat: "3").count,
+											all_yr.where(stat: "1").count,
+											all_yr.where(stat: "2").count,
+											all_yr.where(stat: "4").count]
+				@table_3[yr] = all_yr.sum(:amtpmt)
+			end
+			@table_2 = {}
+			$dun_list.each do |dun|
+				@table_2[dun] = [0,0,0,0]
+			end	
+			@all.where(stat: "3").each do |ddk|
+				prs = ddk.perse
+				
+				@table_2[prs.dun][0] = @table_2[prs.dun][0] + 1
+			end	
+
+			@all.where(stat: "1").each do |ddk|
+				prs = ddk.perse
+				
+				@table_2[prs.dun][1] = @table_2[prs.dun][1] + 1
+			end	
+
+			@all.where(stat: "2").each do |ddk|
+				prs = ddk.perse
+				
+				@table_2[prs.dun][2] = @table_2[prs.dun][2] + 1
+			end
+
+			@all.where(stat: "4").each do |ddk|
+				prs = ddk.perse
+				
+				@table_2[prs.dun][3] = @table_2[prs.dun][3] + 1
+			end	
+
+		elsif params[:prg] == "PUSAT ANIS"
+
+			@prg = "PUSAT ANIS"
+			@all = Ekid.where(del: nil)
+			@table_1 = {}
+			#@table_3 = {}
+			@yr_arr.each do |yr|
+				all_yr = @all.where('extract(year  from created_at) = ?', yr)
+				puts "#{yr} - #{all_yr.count}"
+				@table_1[yr] = [all_yr.where(stat: "Kemasukan Program").count + all_yr.where(stat: "Tamat Program").count,
+											all_yr.where(phs: "Permohonan Baru").count,
+											all_yr.where(phs: "Penilaian").count,
+											all_yr.where(stat: "Permohonan Ditolak").count]
+				#@table_3[yr] = all_yr.sum(:amtpmt)
+			end
+			puts @table_1
+			@table_2 = {}
+			$dun_list.each do |dun|
+				@table_2[dun] = [0,0,0,0]
+			end	
+			@all.where(stat: "Kemasukan Program").each do |ddk|
+				prs = ddk.perse
+				
+				@table_2[prs.dun][0] = @table_2[prs.dun][0] + 1
+			end	
+
+			@all.where(phs: "Permohonan Baru").each do |ddk|
+				prs = ddk.perse
+				
+				@table_2[prs.dun][1] = @table_2[prs.dun][1] + 1
+			end	
+
+			@all.where(phs: "Penilaian").each do |ddk|
+				prs = ddk.perse
+				
+				@table_2[prs.dun][2] = @table_2[prs.dun][2] + 1
+			end
+
+			@all.where(stat: "Permohonan Ditolak").each do |ddk|
+				prs = ddk.perse
+				
+				@table_2[prs.dun][3] = @table_2[prs.dun][3] + 1
+			end	
+			puts @table_2
+
+		elsif params[:prg] == "ILSC"
+
+		
+
+			@prg = "ILSC"
+			@all = Ilsc.all
+			@table_1 = {}
+			#@table_3 = {}
+			@yr_arr.each do |yr|
+				all_yr = @all.where('extract(year  from created_at) = ?', yr)
+				puts "#{yr} - #{all_yr.count}"
+				@table_1[yr] = [all_yr.where(stat: "Permohonan Diluluskan").count,
+											all_yr.where(stat: "Permohonan Diterima").count,
+											all_yr.where(stat: "Permohonan Dalam Semakan").count + all_yr.where(stat: "Permohonan Tidak Lengkap").count,
+											all_yr.where(stat: "Permohonan Ditolak").count]
+				#@table_3[yr] = all_yr.sum(:amtpmt)
+			end
+			puts @table_1
+			@table_2 = {}
+			$dun_list.each do |dun|
+				@table_2[dun] = [0,0,0,0]
+			end	
+			@all.where(stat: "Kemasukan Program").each do |ddk|
+				prs = ddk.perse
+				
+				@table_2[prs.dun][0] = @table_2[prs.dun][0] + 1
+			end	
+
+			@all.where(stat: "Permohonan Baru").each do |ddk|
+				prs = ddk.perse
+				
+				@table_2[prs.dun][1] = @table_2[prs.dun][1] + 1
+			end	
+
+			@all.where(stat: "Penilaian").each do |ddk|
+				prs = ddk.perse
+				
+				@table_2[prs.dun][2] = @table_2[prs.dun][2] + 1
+			end
+
+			@all.where(stat: "Permohonan Ditolak").each do |ddk|
+				prs = ddk.perse
+				
+				@table_2[prs.dun][3] = @table_2[prs.dun][3] + 1
+			end	
+			puts @table_2
+
+		end
+
+		respond_to do |format|
+      #format.html
+      format.xlsx{
+                  response.headers['Content-Disposition'] = "attachment; filename=Laporan #{@prg}.xlsx"
+      }
+		end
+	end
+
 	def senaraipeserta
 		@index = true
 		@perses = Perse.all
+		render action: "senaraipeserta", layout: "dsb-admin-pers" 
 	end
 
 	def edtddk
@@ -26,8 +173,16 @@ class AdminsController < ApplicationController
 	end
 
 	def index
+		@yr = Date.today.year
 		@perses = Perse.all
 		@ddk = Ddk.all
+		@ilsc = Ilsc.all
+		@ekid = Ekid.all
+		@ddk_yr = @ddk.where('extract(year from created_at) = ?', @yr)
+		@ilsc_yr = @ilsc.where('extract(year from created_at) = ?', @yr)
+		@ekid_yr = @ekid.where('extract(year from created_at) = ?', @yr)
+		@admin = current_admin
+		render action: "index", layout: "dsb-admin-overview" 
 	end
 
 	def oldlsddk
@@ -52,6 +207,7 @@ class AdminsController < ApplicationController
 			end
 
 		end
+		render action: "lsddk", layout: "dsb-admin-ddk" 
 	end
 
 

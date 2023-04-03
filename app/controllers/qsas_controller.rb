@@ -13,6 +13,7 @@ class QsasController < ApplicationController
 		@qsall.each do |qs|
 			@qscatg << qs.catg unless @qscatg.include? qs.catg
 		end
+		render action: "admqsa", layout: "dsb-admin-qsa" 
 	end
 
 	def new

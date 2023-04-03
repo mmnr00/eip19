@@ -76,6 +76,7 @@ class IlscsController < ApplicationController
 			# end
 		end
 		@ddk = Ddk.all
+		render action: "ilscindex", layout: "dsb-admin-ilsc" 
 	end
 
 	def ilsc_conf
