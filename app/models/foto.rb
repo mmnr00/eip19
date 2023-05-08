@@ -10,5 +10,6 @@ class Foto < ApplicationRecord
 	belongs_to :parpaym, optional: true
 	belongs_to :ekid, optional: true
 	belongs_to :ilsc, optional: true
+	belongs_to :ddk, optional: true
 	mount_uploader :picture, PictureUploader
 end

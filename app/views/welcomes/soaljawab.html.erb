@@ -61,7 +61,7 @@
 
       <div id="allq" style="">
         <div class="badge badge-pill badge-success" style="font-size: 15px; margin-top: 10px;margin-bottom: 5px; display: block">Soalan Terbaru</div>
-        <% @qsas.order('updated_at DESC').last(20).each do |qs| %>
+        <% @qsas.order('updated_at DESC').each do |qs| %>
           <div class="card mb-2">
             <div class="card-body p-2 p-sm-3">
                 <div class="media forum-item">

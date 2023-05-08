@@ -48,6 +48,7 @@ class DdksController < ApplicationController
 			redirect_to ddk_path(id: @ddks.where(old1: nil).last.id) and return
 		end
 		@ddk = Ddk.new
+		@ddk.fotos.build
 	end
 
 	def create
@@ -56,22 +57,22 @@ class DdksController < ApplicationController
 		if @ddk.save
 			flash[:success] = "Permohonan Didik ANIS Diterima. Terima kasih"
 
-			#send email
-			subject = "Permohonan Didik ANIS Diterima"
-			to = @ddk.email
-			link = "https://www.anisselangor.com/persesch?utf8=✓&icf=#{@ddk.perse.ic}&sch=sdhjdsh876671&prog=DIDIK+ANIS&button="
-			body = "
-			Terima kasih kerana memohon untuk program Didik ANIS. Sukacita kami ingin maklumkan permohonan bagi
-			<b>#{@ddk.coname}(#{@ddk.conum})</b> telah diterima.<br>
-			Maklumat Permohonan Anda adalah seperti dibawah: <br>
-			<ul>
-				<li><b>No Siri: </b> DDK-#{@ddk.id.to_s.rjust(4, '0')}</li>
-				<li><b>Nama Agensi: </b> #{@ddk.coname}</li>
-				<li><b>No Pendaftaran: </b>#{@ddk.conum}</li>
-				<li><b>Semakan Status: </b><a href=#{link}>Sila Klik Disini</a></li>
-			</ul>
-			"
-			send_email(subject,to,"jabatananis@yawas.my",body)
+			# #send email
+			# subject = "Permohonan Didik ANIS Diterima"
+			# to = @ddk.email
+			# link = "https://www.anisselangor.com/persesch?utf8=✓&icf=#{@ddk.perse.ic}&sch=sdhjdsh876671&prog=DIDIK+ANIS&button="
+			# body = "
+			# Terima kasih kerana memohon untuk program Didik ANIS. Sukacita kami ingin maklumkan permohonan bagi
+			# <b>#{@ddk.coname}(#{@ddk.conum})</b> telah diterima.<br>
+			# Maklumat Permohonan Anda adalah seperti dibawah: <br>
+			# <ul>
+			# 	<li><b>No Siri: </b> DDK-#{@ddk.id.to_s.rjust(4, '0')}</li>
+			# 	<li><b>Nama Agensi: </b> #{@ddk.coname}</li>
+			# 	<li><b>No Pendaftaran: </b>#{@ddk.conum}</li>
+			# 	<li><b>Semakan Status: </b><a href=#{link}>Sila Klik Disini</a></li>
+			# </ul>
+			# "
+			# send_email(subject,to,"jabatananis@yawas.my",body)
 
 			redirect_to ddk_path(@ddk)
 		else
@@ -132,7 +133,8 @@ class DdksController < ApplicationController
 																:agtp,
 																:accname,
 																:accno,
-																:accbank)
+																:accbank,
+																fotos_attributes: [:foto, :picture, :foto_name])
 	end
 
 end
