@@ -171,6 +171,7 @@ Rails.application.routes.draw do
   get '/showstat', to: 'sces#showstat'
 
   #WELCOME#
+  get '/kadanis', to: 'welcomes#kadanis'
   get '/rakananis', to: 'welcomes#rakananis'
   get '/transisikerja', to: 'welcomes#transisikerja'
   get '/sediakerja', to: 'welcomes#sediakerja'
