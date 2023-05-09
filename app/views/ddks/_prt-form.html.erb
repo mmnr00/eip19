@@ -165,7 +165,41 @@
           <b>Nama Akaun Bank:</b> <%= @ddk.accname %><br>
           <b>No Akaun Bank:</b> <%= @ddk.accno %><br>
           <b>Nama Bank/Institusi Kewangan:</b> <%= @ddk.accbank %><br>
-          <b>Salinan Penyata Bank Akaun</b> <%= @ddk.accbank %><br>
+          
+          <%
+            image = @ddk.fotos.where(foto_name: "BANKDDK").first
+            if image.present? && image.picture.present?
+              url = image.picture.url
+            else
+              url = ""
+            end
+          %>
+          <% if !url.blank? %>
+            <a href="<%= url %>" target="_blank" download><btn class="badge badge-pill badge-secondary">Penyata Bank</btn></a>
+          <% else %>
+            <%= "Tiada Salinan Penyata Bank Dimuatnaik" %>
+          <% end %>
+          <br>
+        </td>
+      </tr>
+
+      <tr>
+        <td style="width: 20%" colspan=1><b>Program yang dilaksanakan:</b></td>
+        <td colspan=3>
+          <b>Jenis Program:</b> <%= @ddk.progt %><br>
+          <%
+            image = @ddk.fotos.where(foto_name: "PROGPAPER").first
+            if image.present? && image.picture.present?
+              url = image.picture.url
+            else
+              url = ""
+            end
+          %>
+          <% if !url.blank? %>
+            <a href="<%= url %>" target="_blank" download><btn class="badge badge-pill badge-secondary">Kertas Kerja Program</btn></a>
+          <% else %>
+            <%= "Tiada Salinan Kertas Kerja Dimuatnaik" %>
+          <% end %>
         </td>
       </tr>
 
