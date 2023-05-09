@@ -359,11 +359,54 @@
         <i>Wajib Disertakan</i>
       </div>
 
+      <div style="background-color: #e4bfbf; text-align: center; margin-bottom: 15px; margin-top: 15px">
+        <h8 style="color: black;">Maklumat Program Yang Akan Dijalankan</h8>
+      </div>
+
+      <a style="font-size: 15px;"><i>PROGRAM YANG DIJALANKAN MESTILAH BERASASKAN PROGRAM KHIDMAT MASYARAKAT</i></a><br><br>
+
+      <a style="font-size: 15px; color: green">CONTOH PROGRAM YANG DIBENARKAN:</a> 
+      <a style="font-size: 13px;"><ul>
+        <li>KURSUS LATIHAN GURU</li>
+        <li>SEMINAR IBU BAPA</li>
+        <li>BENGKEL ATAU FORUM (TOPIK BERKAITAN ANAK ISTIMEWA)</li>
+      </ul></a>
+      
+      <a style="font-size: 15px; color: red">CONTOH PROGRAM YANG TIDAK DIBENARKAN:</a> 
+      <a style="font-size: 13px;"><ul>
+        <li>MAJLIS HI-TEA</li>
+        <li>MAJLIS MAKAN MALAM</li>
+        <li>JAMUAN AKHIR TAHUN</li>
+        <li>MAJLIS GRADUASI</li>
+        <li>TEAM BUILDING</li>
+        <li>HARI KELUARGA</li>
+        <li>SAMBUTAN PERAYAAN PERINGKAT INSTITUSI</li>
+      </ul></a>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="col-lg-8 col-md-10 col-sm-12">
+            <strong>PILIHAN PROGRAM (SILA PILIH SATU PAKEJ SAHAJA)<a style="color: red">*</a></strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-8 col-md-10 col-sm-12">
+            <%= f.select :progt, options_for_select(["Pakej A (Program Skala Kecil - Maksima RM5,000)",
+                                                    "Pakej B (Program Skala Besar - Maksima RM10,000)",
+                                                ], 
+                                                selected: @ddk.progt), 
+          {include_blank: "Pilih Satu"}, {required: true} %>
+          </div>
+        </div>
+      </div>
+
+
+
 
       <div class="form-group"> 
         <div class="row">
           <div class="control-label col-sm-8">
-            <i class="fas fa-cloud-upload-alt"></i><strong>SALINAN KERTAS KERJA PROGRAM<a style="color: red">*</a></strong>
+            <i class="fa fa-cloud-upload-alt"></i><strong>SALINAN KERTAS KERJA PROGRAM<a style="color: red">*</a></strong>
           </div>
         </div>
         <div class="row">

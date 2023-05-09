@@ -134,6 +134,7 @@ class DdksController < ApplicationController
 																:accname,
 																:accno,
 																:accbank,
+																:progt,
 																fotos_attributes: [:foto, :picture, :foto_name])
 	end
 
