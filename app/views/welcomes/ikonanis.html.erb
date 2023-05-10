@@ -1,0 +1,34 @@
+<meta name="viewport" content="width=1440">
+
+<header class="prog-hd" style="background-image: url(<%= image_path('anisPic/bg-prog.jpeg') %>); background-size: cover; background-position: center; padding-bottom: 0px; margin-bottom: 0px; background-repeat: no-repeat; padding-top: 30px; padding-bottom: 30px">
+
+  <div class="intro-text container" style="">
+    <div class="intro-heading" style="text-align: left" >
+      <h3 style="color: white; font-weight: 550">IKON ANIS</h3>
+    </div>
+  </div>
+
+</header>
+
+<div class="section-header container bg-white" style="margin-top: 20px">
+  <p style="text-align: justify; color: black">Berikut ialah senarai tadika dan taska yang mempunyai guru terlatih yang mengikuti program Cikgu ANIS. Pihak ibubapa boleh berhubung dengan pihak berkenaan sekiranya ingin mengetahui lebih lanjut.</p>
+</div>
+
+<div class="container">
+  <div id="article" class="row">
+
+    <% ENV['ikonanis'].split(',').each do |id| %>
+      <div class="col-lg-6 col-md-4 col-sm-6 col-12" style="margin-bottom: 20px">
+        <%
+          video = VideoInfo.new("https://www.youtube.com/watch?v=#{id}")
+        %>
+
+        <img class="img-fluid" src="https://img.youtube.com/vi/<%= id %>/maxresdefault.jpg" width="400" height="400" /><br>
+        <p style="font-weight: 600; font-size:1.2vw; margin-bottom: -0px "><%= video.title %></p>
+        <a href="https://www.youtube.com/watch?v=<%= id %>" class="venobox btn btn-sm btn-primary" data-vbtype="video" data-autoplay="true"> Lihat Video <i class="fa fas fa-play-circle"></i></a>
+      </div>
+    <% end %>
+    
+  </div>
+</div>
+
