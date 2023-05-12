@@ -1,4 +1,17 @@
 <meta name="viewport" content="width=1440">
+<%
+
+hash_vid = {
+  "oDA_DWg0yxY" => ["Wan Jamila Wan Saiful Bahri","OKU Pembelajaran","Seni lukis","Seorang artis yang berbakat dalam bidang seni lukis. Beliau dikenali sebagai artjamila dan memulakan industri seni pada tahun 2017 dengan menghasilkan banyak demonstrasi lukisan secara langsung dan telah memenangi beberapa pertandingan melukis di peringkat nasional dan antarabangsa."],
+  "FsSADJzEvQI" => ["Muhammad Hanif Naufal Mohd Mazni", "OKU Pembelajaran", "Servis makanan & minuman (food & beverages)","Seorang peserta Abilimpik kebangsaan dalam bidang servis makanan & minuman. Beliau juga berperanan sebagai pelatih yang melatih golongan Orang Kurang Upaya (OKU) untuk mengendalikan servis makanan & minuman."],
+  "h8AhuAxFUPM" => ["Nur Iman Izzad Md Nor","OKU Pembelajaran","Komputeran","Seorang pelajar di Infinite Minds Academy yang mengikuti kursus dalam bidang Artificial Intelligence (AI)."],
+  "XTy4RHE3Fgs" => ["Nur Arif Jasmin","OKU Pembelajaran","Pengajian Islam (Al-Qur'an dan Sunnah)","Seorang mahasiswa daripada Universiti Islam Antarabangsa Malaysia (UIAM) yang sedang mengikuti pengajian dalam bidang Al-Quran dan Sunnah pada peringkat PhD"],
+}
+
+
+
+%>
+
 
 <header class="prog-hd" style="background-image: url(<%= image_path('anisPic/bg-prog.jpeg') %>); background-size: cover; background-position: center; padding-bottom: 0px; margin-bottom: 0px; background-repeat: no-repeat; padding-top: 30px; padding-bottom: 30px">
 
@@ -15,20 +28,55 @@
 </div>
 
 <div class="container">
-  <div id="article" class="row">
+  <div id="article" style="color: black">
 
-    <% ENV['ikonanis'].split(',').each do |id| %>
-      <div class="col-lg-6 col-md-4 col-sm-6 col-12" style="margin-bottom: 20px">
-        <%
-          video = VideoInfo.new("https://www.youtube.com/watch?v=#{id}")
-        %>
+    <% ENV['ikonanis'].split(',').each do |id|; video = VideoInfo.new("https://www.youtube.com/watch?v=#{id}") %>
+      <div class="row">
+        <div class="col-lg-5" style="margin-bottom: 20px"> 
 
-        <img class="img-fluid" src="https://img.youtube.com/vi/<%= id %>/maxresdefault.jpg" width="400" height="400" /><br>
-        <p style="font-weight: 600; font-size:1.2vw; margin-bottom: -0px "><%= video.title %></p>
-        <a href="https://www.youtube.com/watch?v=<%= id %>" class="venobox btn btn-sm btn-primary" data-vbtype="video" data-autoplay="true"> Lihat Video <i class="fa fas fa-play-circle"></i></a>
+          <a href="https://www.youtube.com/watch?v=<%= id %>" class="venobox btn btn-sm btn-primary" data-vbtype="video" data-autoplay="true"><img class="img-fluid" src="https://img.youtube.com/vi/<%= id %>/maxresdefault.jpg" width="400" height="400" /></a>
+        </div>
+        <div class="col-lg-7" style="margin-bottom: 20px">
+          <% id %>
+          <div class="row" style="margin-bottom: 5px;">
+            <div class="col-lg-4">
+              <b>Nama:</b>
+            </div>
+            <div class="col-lg-8">
+              <%= hash_vid["#{id}"][0]%>
+            </div>
+          </div>
+          <div class="row" style="margin-bottom: 5px;">
+            <div class="col-lg-4">
+              <b>Kategori OKU:</b>
+            </div>
+            <div class="col-lg-8">
+              <%= hash_vid["#{id}"][1]%>
+            </div>
+          </div>
+          <div class="row" style="margin-bottom: 5px;">
+            <div class="col-lg-4">
+              <b>Bidang Pencapaian:</b>
+            </div>
+            <div class="col-lg-8">
+              <%= hash_vid["#{id}"][2]%>
+            </div>
+          </div>
+          <div class="row" style="margin-bottom: 5px;">
+            <div class="col-lg-4">
+              <b>Latar Belakang:</b>
+            </div>
+            <div class="col-lg-8">
+              <%= hash_vid["#{id}"][3]%>
+            </div>
+          </div>
+        </div>
       </div>
+
     <% end %>
     
   </div>
 </div>
+
+
 
