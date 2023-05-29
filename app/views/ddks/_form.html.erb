@@ -1,5 +1,5 @@
 <div style="background-color: #2894f4; text-align: center; margin-top: 5px">
-  <h5 style="color: white">BORANG PROFIL INSTITUSI/BADAN KEBAJIKAN DIDIK ANIS (AGENSI)</h5>
+  <h5 style="color: white">BORANG PROFIL INSTITUSI/BADAN KEBAJIKAN DIDIK ANIS</h5>
 </div>
 <h6 style="font-weight: 600; color: black">Nama Wakil Agensi: <%= @perse.name %></h6>
 <div style=" margin-bottom: 10px">
@@ -10,6 +10,32 @@
   <div class='col-lg-8 col-12'>
     <%= form_for(@ddk, :html => {multipart: true, class: "form-horizontal", role: "form"}) do |f| %>
 
+      <div class="form-group"> <!-- name -->
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>NAMA PEMOHON (WAKIL INSTITUSI)</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <%= f.text_field :coname, class: "form-control", placeholder: "", autofocus: true, required: true, style: "text-transform: uppercase", readonly: true, value: @perse.name %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> <!-- name -->
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>JAWATAN PEMOHON (WAKIL INSTITUSI)<a style="color: red">*</a></strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <%= f.text_field :jawatanwakil, class: "form-control", placeholder: "", autofocus: true, required: true, style: "text-transform: uppercase", readonly: false %>
+          </div>
+        </div>
+      </div>
+
       <div class="form-group"> <!-- HOUSEHOLD MONTHLY INCOME (RM) -->
         <div class="row">
           <div class="col-lg-8 col-md-10 col-sm-12">
@@ -18,7 +44,8 @@
         </div>
         <div class="row">
           <div class="col-lg-8 col-md-10 col-sm-12">
-            <%= f.select :agtp, options_for_select(["Institusi Pendidikan Anak Istimewa",
+            <%= f.select :agtp, options_for_select(["Pusat Early Intervention Programme (EIP)",
+                                                    "Pusat Pembangunan OKU",
                                                     "Program Pemulihan Dalam Komuniti (PPDK)",
                                                 ], 
                                                 selected: @ddk.agtp), 
@@ -30,7 +57,7 @@
       <div class="form-group"> <!-- name -->
         <div class="row">
           <div class="control-label col-sm-8">
-            <strong>NAMA AGENSI<a style="color: red">*</a></strong>
+            <strong>NAMA INSTITUSI<a style="color: red">*</a></strong>
           </div>
         </div>
         <div class="row">
@@ -43,12 +70,12 @@
       <div class="form-group"> <!-- alamat -->
         <div class="row">
           <div class="control-label col-sm-8">
-            <strong>DIDAFTARKAN OLEH<a style="color: red">*</a></strong>
+            <strong>NO SSM/ROS<a style="color: red">*</a></strong>
           </div>
         </div>
         <div class="row">
           <div class="col-12">
-            <%= f.text_field :regby, class: "form-control", placeholder: "", autofocus: true, required: true, style: "" %>
+            <%= f.text_field :conum, class: "form-control", placeholder: "", autofocus: true, required: true, style: "" %>
           </div>
         </div>
       </div>
@@ -56,7 +83,20 @@
       <div class="form-group"> <!-- alamat -->
         <div class="row">
           <div class="control-label col-sm-8">
-            <strong>ALAMAT AGENSI<a style="color: red">*</a></strong>
+            <strong>TAHUN PENDAFTARAN INSTITUSI<a style="color: red">*</a></strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <%= f.number_field :regyr, class: "form-control", placeholder: "", autofocus: true, required: true, style: "" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> <!-- alamat -->
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>ALAMAT INSTITUSI<a style="color: red">*</a></strong>
           </div>
         </div>
         <div class="row">
@@ -97,38 +137,14 @@
         </div>
       </div>
 
-      <div class="form-group"> <!-- alamat -->
-        <div class="row">
-          <div class="control-label col-sm-8">
-            <strong>NO PENDAFTARAN<a style="color: red">*</a></strong>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12">
-            <%= f.text_field :conum, class: "form-control", placeholder: "Tiada -", autofocus: true, required: true, style: "" %>
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group"> <!-- alamat -->
-        <div class="row">
-          <div class="control-label col-sm-8">
-            <strong>TAHUN PENDAFTARAN<a style="color: red">*</a></strong>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12">
-            <%= f.number_field :regyr, class: "form-control", placeholder: "", autofocus: true, required: true, style: "" %>
-          </div>
-        </div>
-      </div>
+      
 
       <div class="row">
         <div class="col-6">
           <div class="form-group"> <!-- alamat -->
             <div class="row">
               <div class="control-label col-sm-8">
-                <strong>EMEL<a style="color: red">*</a></strong>
+                <strong>EMEL INSTITUSI<a style="color: red">*</a></strong>
               </div>
             </div>
             <div class="row">
@@ -142,7 +158,7 @@
           <div class="form-group"> <!-- alamat -->
             <div class="row">
               <div class="control-label col-sm-8">
-                <strong>NO TELEFON<a style="color: red">*</a></strong>
+                <strong>NO TELEFON INSTITUSI<a style="color: red">*</a></strong>
               </div>
             </div>
             <div class="row">
@@ -153,7 +169,7 @@
           </div>
         </div>
       </div>
-
+<!-- 
       <div style="background-color: #e4bfbf; text-align: center; margin-bottom: 15px">
         <h8 style="color: black;">Kategori Pelajar Oku Yang Didaftar Dibawah Agensi</h8>
         <i style="color:black; size: 5px">(Nyatakan Diagnosis)</i>
@@ -214,21 +230,35 @@
           </tbody>
 
         </table>
-      </div> <!-- DIV TABLE -->
+      </div> 
+       -->
 
       <div style="background-color: #e4bfbf; text-align: center; margin-bottom: 15px; margin-top: 15px">
-        <h8 style="color: black;">Maklumat Premis</h8>
+        <h8 style="color: black;">Maklumat Institusi</h8>
       </div>
 
       <div class="form-group"> <!-- alamat -->
         <div class="row">
           <div class="control-label col-sm-12">
-            <strong>BIL STAF PENTADBIRAN<a style="color: red">*</a></strong>
+            <strong>BIL KAKITANGAN PENTADBIRAN<a style="color: red">*</a></strong>
           </div>
         </div>
         <div class="row">
           <div class="col-6">
             <%= f.number_field :stafct, class: "form-control", placeholder: "", autofocus: true, required: true, style: "" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> <!-- alamat -->
+        <div class="row">
+          <div class="control-label col-sm-12">
+            <strong>BIL JURUTERAPI/PEGAWAI PSIKOLOGI<a style="color: red">*</a></strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <%= f.number_field :bilterapi, class: "form-control", placeholder: "", autofocus: true, required: true, style: "" %>
           </div>
         </div>
       </div>
@@ -259,20 +289,41 @@
         </div>
       </div>
 
-      <div class="form-group"> <!-- alamat -->
+      <div class="form-group"> 
         <div class="row">
-          <div class="control-label col-sm-12">
-            <strong>SAIZ DAN JENIS PREMIS<a style="color: red">*</a></strong>
+          <div class="control-label col-sm-8">
+            <i class="fas fa-cloud-upload-alt"></i><strong>SALINAN SIJIL AKADEMIK KAKITANGAN INSTITUSI<a style="color: red">*</a></strong>
           </div>
         </div>
         <div class="row">
-          <div class="col-12">
-            <%= f.text_area :premdt, class: "form-control", placeholder: "", autofocus: true, required: true, style: "" %>
+          <div class="col-sm-8 col-12">
+            <% image = @ddk.fotos.where(foto_name: "SIJILSTAFF").first %>
+            <%  if image.present? %>
+              <%= image_tag(image.picture.url, size: "200x200") if image.picture? %>
+              <div class="row">
+                <div class="col-sm-8 col-5">
+                  <strong><%= link_to "EDIT", edit_foto_path(image.id), class: "btn btn-sm btn-success active" %></strong>
+                </div>
+              </div>  
+            <% else %>
+              <%= f.fields_for :fotos do |h| %>
+                <div class="row">
+                  <div class="col-sm-8 col-8">
+                    <%= h.hidden_field :foto_name, value: "SIJILSTAFF" %>
+                    <%= h.file_field :picture, accept: 'application/pdf', required: true %>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
           </div>
         </div>
+        <i>*Hanya format PDF sahaja diterima</i><br>
+        <i>**Bilangan salinan sijil akademik yang dimuatnaik mestilah sama dengan jumlah bilangan kakitangan yang dinyatakan diatas</i>
       </div>
 
-      <div class="form-group"> <!-- alamat -->
+      
+
+      <!-- <div class="form-group">
         <div class="row">
           <div class="control-label col-sm-12">
             <strong>MODUL YANG DILAKSANAKAN<a style="color: red">*</a></strong>
@@ -283,7 +334,7 @@
             <%= f.text_area :mdl, class: "form-control", placeholder: "", autofocus: true, required: true, style: "" %>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <div style="background-color: #e4bfbf; text-align: center; margin-bottom: 15px; margin-top: 15px">
         <h8 style="color: black;">Maklumat Akaun Bank</h8>
@@ -431,13 +482,11 @@
             <% end %>
           </div>
         </div>
-        <i>Wajib Disertakan</i>
+        <i>Wajib Disertakan</i><br>
+        <i>**Contoh Salinan Kertas Kerja Boleh Dimuaturun <a href="<%= image_path('template_didik_anis.pdf')%>" download="Template Didik ANIS">disini</a></i>
       </div>
 
-      
-
-      
-
+            
       
       <%= f.hidden_field :stat, value: @ddk.stat %>
       <%= f.hidden_field :statrs, value: @ddk.statrs %>

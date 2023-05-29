@@ -35,6 +35,7 @@
           <b>Nama :</b> <%= perse.name %><br>
           <b>No MyKad :</b> <%= perse.ic %><br>
           <b>No Telefon :</b> <%= perse.ph %><br>
+          <b>Jawatan :</b> <%= @ddk.jawatanwakil %><br>
         </td>
       </tr>
 
@@ -80,7 +81,7 @@
         <td><%= @ddk.ph %></td>
       </tr>
 
-      <tr>
+      <!-- <tr>
         <td style="width: 20%" colspan=1><b>Kategori dan Diagnosis Pelajar Oku Yang Didaftar Dibawah Agensi:</b></td>
         <td colspan=3>
 
@@ -134,30 +135,33 @@
           </div>
 
         </td>
-      </tr>
+      </tr> -->
 
       <tr>
-        <td style="width: 20%" colspan=1><b>Bilangan Staf dan Pelajar:</b></td>
+        <td style="width: 20%" colspan=1><b>Maklumat Institusi:</b></td>
         <td colspan=3>
-          <b>Bilangan Staf Pentadbiran:</b> <%= @ddk.stafct %><br>
+          <b>Bilangan Kakitangan Pentadbiran:</b> <%= @ddk.stafct %><br>
+          <b>Bilangan Juruterapi/Pegawai Psikologi:</b> <%= @ddk.bilterapi %><br>
           <b>Bilangan Guru:</b> <%= @ddk.tchct %><br>
           <b>Bilangan Pelajar OKU:</b> <%= @ddk.okuct %><br>
+          <%
+            image = @ddk.fotos.where(foto_name: "SIJILSTAFF").first
+            if image.present? && image.picture.present?
+              url = image.picture.url
+            else
+              url = ""
+            end
+          %>
+          <% if !url.blank? %>
+            <a href="<%= url %>" target="_blank" download><btn class="badge badge-pill badge-secondary">Sijil Akedemik</btn></a>
+          <% else %>
+            <%= "Tiada Sijil DimuatNaik" %>
+          <% end %>
+          <br>
         </td>
       </tr>
 
-      <tr>
-        <td style="width: 20%" colspan=1><b>Saiz dan Jenis Premis:</b></td>
-        <td colspan=3>
-          <%= @ddk.premdt %>
-        </td>
-      </tr>
-
-      <tr>
-        <td style="width: 20%" colspan=1><b>Modul yang dilaksanakan:</b></td>
-        <td colspan=3>
-          <%= @ddk.mdl %>
-        </td>
-      </tr>
+      
 
       <tr>
         <td style="width: 20%" colspan=1><b>Maklumat Akaun Bank:</b></td>
