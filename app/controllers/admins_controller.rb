@@ -187,6 +187,13 @@ class AdminsController < ApplicationController
 
 	def oldlsddk
 		@ddk = Ddk.where(old1: true)
+		@yr = []
+		@ddk.each do |dk|
+			@yr << dk.created_at.year unless @yr.include? dk.created_at.year 
+		end
+		if params[:sch].present?
+			@ddk = @ddk.where('extract(year  from created_at) = ?', params[:sch_yr])
+		end
 	end
 
 	def lsddk

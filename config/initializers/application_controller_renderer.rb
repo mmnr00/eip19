@@ -67,7 +67,7 @@ $dun_list = ["BUKAN SELANGOR",
               ]
 
 $ddkstat = {
-	"1" => ["primary","Permohonan Dalam Semakan", "Sila Hantar Dokumen yang Lengkap bersama Dokumen Sokongan ke alamat emel", "DALAM PROSES"],
+	"1" => ["primary","Permohonan Dalam Semakan", "", "DALAM PROSES"],
 	"2" => ["warning","Dokumen Tidak Lengkap", "Sila Hantar Dokumen Yang Disenaraikan Dibawah ", "DALAM SEMAKAN"],
 	"3" => ["success","Permohonan Diluluskan", "Tahniah. Permohonan Anda Telah Diluluskan. Bayaran Akan Dibuat Terus ke Akaun Agensi", "LULUS"],
 	"4" => ["danger","Permohonan Ditolak", "Maaf. Permohonan Anda Tidak Diluluskan. Sila Semak Sebab Dibawah.", "GAGAL"]
