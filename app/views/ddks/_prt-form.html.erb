@@ -17,7 +17,7 @@
           <b>Jabatan Anak Istimewa Selangor (ANIS)</b>
         </td>
         <td colspan=3 style="vertical-align: middle"><h5 style="text-align: center; color: blue">
-          BORANG PROFIL INSTITUSI/BADAN KEBAJIKAN DIDIK ANIS (AGENSI)
+          BORANG PROFIL INSTITUSI/BADAN KEBAJIKAN DIDIK ANIS 
         </h5></td>
       </tr>
 
@@ -29,7 +29,7 @@
       </tr>
 
       <tr>
-        <td style="width: 20%" colspan=1><b>Maklumat Wakil Agensi:</b></td>
+        <td style="width: 20%" colspan=1><b>Maklumat Wakil Institusi:</b></td>
         <% perse = @ddk.perse %>
         <td colspan=3>
           <b>Nama :</b> <%= perse.name %><br>
@@ -47,14 +47,14 @@
       </tr>
 
       <tr>
-        <td style="width: 20%" colspan=1><b>Nama Agensi:</b></td>
+        <td style="width: 20%" colspan=1><b>Nama Institusi:</b></td>
         <td colspan=3>
           <%= @ddk.coname %>
         </td>
       </tr>
 
       <tr>
-        <td style="width: 20%" colspan=1><b>Alamat Agensi:</b></td>
+        <td style="width: 20%" colspan=1><b>Alamat Institusi:</b></td>
         <td colspan=3>
           <%= @ddk.addr %>
         </td>
@@ -68,8 +68,22 @@
       </tr>
 
       <tr>
-        <td><b>No Pendaftaran:</b></td>
-        <td><%= @ddk.conum %></td>
+        <td><b>No Pendaftaran Syarikat (SSM/ROS):</b></td>
+        <td><%= @ddk.conum %>&nbsp&nbsp 
+          <%
+            image = @ddk.fotos.where(foto_name: "COSSM").first
+            if image.present? && image.picture.present?
+              url = image.picture.url
+            else
+              url = ""
+            end
+          %>
+          <% if !url.blank? %>
+            <a href="<%= url %>" target="_blank" download><btn class="badge badge-pill badge-secondary">Salinan Pendaftaran</btn></a>
+          <% else %>
+            <%= "Tiada Salinan Kertas Kerja Dimuatnaik" %>
+          <% end %>
+        </td>
         <td style="width: 20%"><b>Tahun Pendaftaran:</b></td>
         <td><%= @ddk.regyr %></td>
       </tr>
@@ -82,7 +96,7 @@
       </tr>
 
       <!-- <tr>
-        <td style="width: 20%" colspan=1><b>Kategori dan Diagnosis Pelajar Oku Yang Didaftar Dibawah Agensi:</b></td>
+        <td style="width: 20%" colspan=1><b>Kategori dan Diagnosis Pelajar Oku Yang Didaftar Dibawah Institusi:</b></td>
         <td colspan=3>
 
           <div class="table-responsive borders" style="font-size: 12px; margin-top: 0px">
