@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   
   #devise_for :college_admins
   resources :taskas
+  resources :kdans, only:[:new,:create,:destroy,:update,:edit,:show]
   resources :expenses, only:[:create,:destroy,:update,:edit]
   resources :ptns_mmbs, only:[:create,:destroy,:update,:edit]
   resources :courses, only:[:create,:destroy,:update,:edit]
@@ -34,6 +35,9 @@ Rails.application.routes.draw do
   devise_for :admins
   devise_for :owners#, :controllers => { :passwords => 'passwords' }
 	root 'welcomes#index2'
+
+  #~~KDAN
+  get '/kdan_list', to: 'kdans#kdan_list'
 
   #~~ILSC
   get '/ilsc_list', to: 'ilscs#ilsc_list'

@@ -1,0 +1,26 @@
+<div class="col-sm-8" style="background-color:#4c4cff; border-radius: 40px">
+  <h5 style="color:white; font-weight: 600; text-align: center">PENDAFTARAN BARU UNTUK KAD ANIS (<%= @kdantp %>)</h5>
+</div>
+
+<% if @cfm.blank? %>
+  <%= form_tag new_kdan_path, method: :get, id: "find_kid" do %>
+      <div class="row">
+        <div class="col-lg-5 col-md-7 col-sm-10">
+          
+          <%= text_field_tag :ic, params[:ic], class: "form-control form-control-sm", placeholder: "Sila Masukkan No MYKAD Pemohon", required: true, minlenght: 2 %>
+          <%= hidden_field_tag :sch, params[:sch], value: "sdhjdsh876671" %>
+          <%= hidden_field_tag :perse, params[:perse], value: params[:perse] %>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2">
+          <%= button_tag(type: :submit, class: "btn btn-sm btn-success", style: "") do %>
+            <i class=""></i> Teruskan
+          <% end %>
+        </div>
+      </div>
+
+    <% end %>
+
+<% else %>
+    <%= render 'kdans/form' %> 
+<% end %>
+

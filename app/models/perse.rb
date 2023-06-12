@@ -4,6 +4,7 @@ class Perse < ApplicationRecord
 	has_one  :ddk
 	has_many :ekids
 	has_many :ilscs
+	has_many :kdans
 	has_many :prgfds
 	serialize :stdoku,Array
 	has_many :fbproges

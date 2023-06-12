@@ -1,0 +1,45 @@
+
+
+
+&nbsp
+<%= link_to new_kdan_path(prog: "KAD ANIS", perse: params[:perse]), class: "btn btn-sm btn-primary", style: "font-size: 15px" do %>
+  <i class="fa far fa-plus"></i>&nbsp Daftar Program Kad ANIS
+<% end %> &nbsp
+<div style="margin-bottom: 10px"></div>
+
+<% if @kdans.count >= 0 %>
+<div class="cards shadow mb-4" style="">
+  <div class="card-header">
+    
+    <btn class="badge badge-pill badge-secondary">
+      Senarai Anak Yang Didaftarkan Oleh <%= @perse.name %> 
+    </btn>
+    
+  </div>
+  <div class="card-body">
+
+    <div class="table table-responsive border" style="font-size:13px">
+
+      <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0" style="color: black">
+        <thead>
+          <tr class="shadow">
+            <th style="background-color:#ffb2b2; width: %">NO</th>
+            <th style="background-color:#ffb2b2; width: %">MAKLUMAT PESERTA</th>
+            <th style="background-color:#ffb2b2; width: %">MAKLUMAT PEMOHON</th>
+            <th style="background-color:#ffb2b2; width: %">PROGRAM</th>
+            <th style="background-color:#ffb2b2; width: %">STATUS</th>
+            <th style="background-color:#ffb2b2; width: %">TARIKH PERMOHONAN</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          
+        </tbody>
+      </table>
+
+    </div>
+
+  </div>
+</div>
+<% end %>
+

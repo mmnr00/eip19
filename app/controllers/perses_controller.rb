@@ -79,6 +79,12 @@ class PersesController < ApplicationController
 					else
 						redirect_to ilsc_list_path(perse: @perse.id)
 					end
+				elsif prog == "KAD ANIS" 
+					if params[:perse][:regkid].present?
+						redirect_to new_ilsc_path(perse: @perse.id, prog: prog)
+					else
+						redirect_to ilsc_list_path(perse: @perse.id)
+					end
 				end
 			
 
@@ -185,6 +191,12 @@ class PersesController < ApplicationController
 									redirect_to new_ilsc_path(perse: perse.id, prog: params[:prog])
 								else
 									redirect_to ilsc_list_path(perse: perse.id)
+								end
+							elsif params[:prog] == "KAD ANIS" 
+								if params[:regkid].present?
+									redirect_to new_kdan_path(perse: perse.id, prog: params[:prog])
+								else
+									redirect_to kdan_list_path(perse: perse.id)
 								end
 							end	
 
