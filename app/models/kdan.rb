@@ -7,7 +7,7 @@ class Kdan < ApplicationRecord
 
 	private
 
-	def save_ilscs
-		#self.name = self.name.upcase
+	def save_kdans
+		self.name = self.name.upcase
 	end
 end

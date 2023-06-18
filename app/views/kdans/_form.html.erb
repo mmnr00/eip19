@@ -1,4 +1,3 @@
-ADULT
 
 <div class='row'>
   <div class='col-lg-12 col-12'>
@@ -8,6 +7,7 @@ ADULT
         <h6 style="color:black; font-weight: 600">Maklumat Pemohon</h6>
       </div>
       <% @kid ? (ictp = "MYKID") : (ictp = "MYKAD") %>
+      <% @kdan.stat.present? ? (statcurr = @kdan.stat) : (statcurr = "Permohonan Dalam Semakan") %>
       <div class="form-group"> 
         <div class="row">
           <div class="control-label col-sm-8">
@@ -31,7 +31,7 @@ ADULT
         </div>
         <div class="row">
           <div class="col-sm-8 col-12">
-            <%= f.text_field :ic, class: "form-control", placeholder: "Nama Penuh Seperti MyKid", autofocus: true, required: true, style: "text-transform: uppercase", value: icnum, disabled: true  %>
+            <%= f.text_field :ic, class: "form-control", placeholder: "Nama Penuh Seperti MyKid", autofocus: true, required: true, style: "text-transform: uppercase", value: icnum, readonly: true  %>
           </div>
         </div>
       </div>
@@ -181,7 +181,256 @@ ADULT
           </div>
         </div>
 
+        <div class="form-group"> 
+          <div class="row">
+            <div class="control-label col-sm-8">
+              <i class="fas fa-cloud-upload-alt"></i><strong>SALINAN SLIP MENGUNDI</strong>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-8 col-12">
+              <% image = @kdan.fotos.where(foto_name: "SPR").first %>
+              <%  if image.present? %>
+                <%= image_tag(image.picture.url, size: "200x200") if image.picture? %>
+                <div class="row">
+                  <div class="col-sm-8 col-5">
+                    <strong><%= link_to "EDIT", edit_foto_path(image.id), class: "btn btn-sm btn-success active" %></strong>
+                  </div>
+                </div>  
+              <% else %>
+                <%= f.fields_for :fotos do |h| %>
+                  <div class="row">
+                    <div class="col-sm-8 col-8">
+                      <%= h.hidden_field :foto_name, value: "SPR" %>
+                      <%= h.file_field :picture, accept: 'application/pdf', required: true %>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+          <i>Wajib Disertakan</i>
+        </div>
+      <% else %>
+
+        <div class="form-group"> 
+          <div class="row">
+            <div class="control-label col-sm-8">
+              <i class="fas fa-cloud-upload-alt"></i><strong>SALINAN MYKID KANAK-KANAK</strong>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-8 col-12">
+              <% image = @kdan.fotos.where(foto_name: "IC").first %>
+              <%  if image.present? %>
+                <%= image_tag(image.picture.url, size: "200x200") if image.picture? %>
+                <div class="row">
+                  <div class="col-sm-8 col-5">
+                    <strong><%= link_to "EDIT", edit_foto_path(image.id), class: "btn btn-sm btn-success active" %></strong>
+                  </div>
+                </div>  
+              <% else %>
+                <%= f.fields_for :fotos do |h| %>
+                  <div class="row">
+                    <div class="col-sm-8 col-8">
+                      <%= h.hidden_field :foto_name, value: "IC" %>
+                      <%= h.file_field :picture, accept: 'application/pdf', required: true %>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+          <i>Wajib Disertakan</i>
+        </div>
+
+
+        
+
       <% end %>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <i class="fas fa-cloud-upload-alt"></i><strong>SURAT DIAGNOSIS/SALINAN KAD OKU</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <% image = @kdan.fotos.where(foto_name: "DIAGNOSIS").first %>
+            <%  if image.present? %>
+              <%= image_tag(image.picture.url, size: "200x200") if image.picture? %>
+              <div class="row">
+                <div class="col-sm-8 col-5">
+                  <strong><%= link_to "EDIT", edit_foto_path(image.id), class: "btn btn-sm btn-success active" %></strong>
+                </div>
+              </div>  
+            <% else %>
+              <%= f.fields_for :fotos do |h| %>
+                <div class="row">
+                  <div class="col-sm-8 col-8">
+                    <%= h.hidden_field :foto_name, value: "DIAGNOSIS" %>
+                    <%= h.file_field :picture, accept: 'application/pdf', required: true %>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <i>Wajib Disertakan</i>
+      </div>
+
+      <div class="col-sm-8" style="background-color:#ffcccc">
+        <h6 style="color:black; font-weight: 600">Maklumat Ibu Bapa/Penjaga</h6>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>NAMA</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.text_field :prtname, class: "form-control", autofocus: true, required: true, style: "" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>HUBUNGAN</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.text_field :prtrel, class: "form-control", placeholder: "", autofocus: true, required: true, style: "" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>NO MYKAD</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.text_field :prtic, class: "form-control", placeholder: "", autofocus: true, required: true, style: "" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>JANTINA</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.select :prtgender, options_for_select([ "Lelaki",
+                                                  "Perempuan"], 
+                                                  selected: @kdan.prtgender), 
+            {include_blank: "SILA PILIH"}, {required: true} %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>BANGSA</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.select :prtrace, options_for_select([ "Melayu",
+                                                  "Cina",
+                                                  "India",
+                                                  "Lain-lain"], 
+                                                  selected: @kdan.prtrace), 
+            {include_blank: "SILA PILIH"}, {required: true} %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>ALAMAT</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.text_field :prtaddr, class: "form-control", placeholder: "", autofocus: true, required: true, style: "" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>NO TELEFON</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.text_field :prtfon, class: "form-control", placeholder: "", autofocus: true, required: true, style: "" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>EMAIL</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.email_field :prtemail, class: "form-control", placeholder: "", autofocus: true, required: true, style: "" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>PEKERJAAN</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.text_field :prtjob, class: "form-control", placeholder: "", autofocus: true, required: true, style: "" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>GAJI BULANAN (RM)</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.text_field :prtpay, class: "form-control", placeholder: "", autofocus: true, required: true, style: "" %>
+          </div>
+        </div>
+      </div>
+
+      
+
+      
+
+      
+
+      <%= f.hidden_field :tp, value: @kdantp %>
+      <%= f.hidden_field :perse_id, value: params[:perse] %>
+      <%= f.hidden_field :stat, value: statcurr %>
 
 
 

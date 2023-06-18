@@ -25,14 +25,32 @@
           <tr class="shadow">
             <th style="background-color:#ffb2b2; width: %">NO</th>
             <th style="background-color:#ffb2b2; width: %">MAKLUMAT PESERTA</th>
-            <th style="background-color:#ffb2b2; width: %">MAKLUMAT PEMOHON</th>
-            <th style="background-color:#ffb2b2; width: %">PROGRAM</th>
+            <th style="background-color:#ffb2b2; width: %">MAKLUMAT IBU BAPA/PENJAGA</th>
+            <th style="background-color:#ffb2b2; width: %">KATEGORI</th>
             <th style="background-color:#ffb2b2; width: %">STATUS</th>
             <th style="background-color:#ffb2b2; width: %">TARIKH PERMOHONAN</th>
 
           </tr>
         </thead>
         <tbody>
+          <% cnt =0 ; @kdans.each do |kd|; cnt = cnt + 1 %>
+            <tr>
+              <td><%= cnt %></td>
+              <td>
+                <a href="<%= ekidconf_url(id: kd, prt: 1)%>" target="_blank"><%= kd.name %></a><br>
+                (<%= kd.ic %>)    
+              </td>
+              <td>
+                <%= kd.prtname %><br>
+                <%= kd.prtrel %><br>
+                <%= kd.prtemail %><br>
+                <%= kd.prtfon %><br>
+              </td>
+              <td><%= kd.tp %></td>
+              <td><%= kd.stat %></td>
+              <td><%= kd.created_at.strftime('%d-%^b-%y') %></td>
+            </tr>
+          <% end %>
           
         </tbody>
       </table>

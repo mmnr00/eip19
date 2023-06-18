@@ -10,7 +10,7 @@ class KdansController < ApplicationController
 			kdan_exs = Kdan.where(ic: params[:ic])
 
 			if kdan_exs.present?
-				flash[:danger] = "No MYKID {ekd_exs.last.name} ini sudah didaftarkan oleh {ekd_exs.last.perse.name}"
+				flash[:danger] = "No MYKID #{kdan_exs.last.name} ini sudah didaftarkan oleh #{kdan_exs.last.perse.name}"
 			else
 				if (dt>=18)
 					@kid = false
@@ -24,6 +24,21 @@ class KdansController < ApplicationController
 			end
 
 		end
+	end
+
+	def create
+		@kdan = Kdan.new(kdan_params)
+		if @kdan.save
+			flash[:success] = "Permohonan Kad ANIS Diterima. Terima kasih"
+			redirect_to kdan_path(@kdan)
+		else
+			flash[:danger] = "Permohonan tidak berjaya. Sila Cuba Semula"
+			redirect_to request.referrer
+		end
+	end
+
+	def show
+		@kdan = Kdan.find(params[:id])
 	end
 
 	def kdan_list
@@ -57,6 +72,7 @@ class KdansController < ApplicationController
 																:tp,
 																:notel,
 																:email,
+																:stat,
 																fotos_attributes: [:foto, :picture, :foto_name])
 	end
 end

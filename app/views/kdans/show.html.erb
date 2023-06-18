@@ -1,0 +1,63 @@
+<%= @kdan.name %>
+
+<meta name="viewport" content="width=1024">
+
+<% link_to "Cetak/Muat Turun", root_path, class: "badge badge-pill badge-info", style: "font-size: 12px; margin-top: 10px", :onclick => 'window.print();return false;' %>
+<% link_to "try", root_path, class: "badge badge-pill badge-info", style: "font-size: 12px; margin-top: 10px", :onclick => 'console.log("MUS");return false' %>
+
+
+<h3 style="color:black;font-weight: 1000;text-align: center">MAKLUMAT PEMOHON (<%= @kdan.tp %>)</h3>
+    
+      <% 
+        
+        img1 = image_path('anislogo1.png') 
+        img1 = "#{root_url}#{img1}"
+      %>
+      <h5 style="color:black;font-weight: 100;text-align: center;margin-top: -10px;">
+      
+      
+      KAD ANIS
+      
+     
+
+    </h5>
+
+<div class="prt-hide" style="margin-bottom: 10px;">
+  <%= link_to "Muat Turun Borang", "#", onclick: 'window.print()', class: 'btn btn-sm btn-success btn-block' %>
+  
+</div>
+
+<div class="table-responsive">
+  <table class="table table-bordered" width="100%" cellspacing="0" style="color: black;borders: 2px solid black">
+
+    <tbody>
+      <tr style="borders: 1.5px solid black">
+        <td style="background-color:#0070C0 !important" colspan="2"><strong><font color="white"><h2 align="center"><%= @kdan.name.upcase %> (ID: <%= @kdan.id %>)</h2></font></strong></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">NO MYKID</font></td>
+        <td style="background-color: !important"><%= "#{@kdan.ic}" %></td>
+      </tr>
+      
+    </tbody>
+    <tbody>
+      <tr>
+        <td style="background-color:#0070C0 !important" colspan="2"><font color="white"><h4>MAKLUMAT IBU BAPA/PENJAGA</h4></font></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important" ><font color="black">NAMA</font></td>
+        <td style="background-color: !important"><%= @kdan.prtname %></td>
+      </tr>
+      
+      </tbody>
+ 
+
+    
+
+  </table>
+</div>
+
+
+
+
+

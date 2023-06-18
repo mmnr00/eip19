@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_12_125959) do
+ActiveRecord::Schema.define(version: 2023_06_18_121330) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -493,6 +493,7 @@ ActiveRecord::Schema.define(version: 2023_06_12_125959) do
     t.string "tp"
     t.string "notel"
     t.string "email"
+    t.string "stat"
   end
 
   create_table "kid_bills", force: :cascade do |t|
