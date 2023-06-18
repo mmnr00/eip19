@@ -1,4 +1,4 @@
-<%= @kdan.name %>
+
 
 <meta name="viewport" content="width=1024">
 
@@ -35,9 +35,52 @@
         <td style="background-color:#0070C0 !important" colspan="2"><strong><font color="white"><h2 align="center"><%= @kdan.name.upcase %> (ID: <%= @kdan.id %>)</h2></font></strong></td>
       </tr>
       <tr>
-        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">NO MYKID</font></td>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">NO KAD PENGENALAN</font></td>
         <td style="background-color: !important"><%= "#{@kdan.ic}" %></td>
       </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">NO KAD OKU</font></td>
+        <td style="background-color: !important"><%= "#{@kdan.okukd}" %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">JANTINA</font></td>
+        <td style="background-color: !important"><%= "#{@kdan.gender}" %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">BANGSA</font></td>
+        <td style="background-color: !important"><%= "#{@kdan.race}" %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">TARIKH LAHIR</font></td>
+        <td style="background-color: !important"><%= "#{@kdan.dob.strftime('%d-%^b-%Y')}" %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">TEMPAT LAHIR</font></td>
+        <td style="background-color: !important"><%= "#{@kdan.brtplc}" %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">ALAMAT</font></td>
+        <td style="background-color: !important"><%= "#{@kdan.addr}" %></td>
+      </tr>
+      <% if @kdan.tp=="DEWASA" %>
+        <tr>
+          <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">NO TELEFON</font></td>
+          <td style="background-color: !important"><%= "#{@kdan.notel}" %></td>
+        </tr>
+        <tr>
+          <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">EMAIL</font></td>
+          <td style="background-color: !important"><%= "#{@kdan.email}" %></td>
+        </tr>
+        <tr>
+          <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">PEKERJAAN</font></td>
+          <td style="background-color: !important"><%= "#{@kdan.job}" %></td>
+        </tr>
+        <tr>
+          <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">GAJI BULANAN (RM)</font></td>
+          <td style="background-color: !important"><%= "#{@kdan.payr}" %></td>
+        </tr>
+      <% end %>
+
       
     </tbody>
     <tbody>
@@ -48,8 +91,44 @@
         <td style="background-color:#e5e5e5 !important" ><font color="black">NAMA</font></td>
         <td style="background-color: !important"><%= @kdan.prtname %></td>
       </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important" ><font color="black">HUBUNGAN</font></td>
+        <td style="background-color: !important"><%= @kdan.prtrel%></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important" ><font color="black">NO KAD PENGENALAN</font></td>
+        <td style="background-color: !important"><%= @kdan.prtic %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important" ><font color="black">JANTINA</font></td>
+        <td style="background-color: !important"><%= @kdan.prtgender %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important" ><font color="black">BANGSA</font></td>
+        <td style="background-color: !important"><%= @kdan.prtrace %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important" ><font color="black">ALAMAT</font></td>
+        <td style="background-color: !important"><%= @kdan.prtaddr %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important" ><font color="black">NO TELEFON</font></td>
+        <td style="background-color: !important"><%= @kdan.prtfon %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important" ><font color="black">EMAIL</font></td>
+        <td style="background-color: !important"><%= @kdan.prtemail %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important" ><font color="black">PEKERJAAN</font></td>
+        <td style="background-color: !important"><%= @kdan.prtjob %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important" ><font color="black">GAJI BULANAN (RM)</font></td>
+        <td style="background-color: !important"><%= @kdan.prtpay %></td>
+      </tr>
       
-      </tbody>
+    </tbody>
  
 
     
