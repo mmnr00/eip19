@@ -23,7 +23,7 @@
     </h5>
 
 <div class="prt-hide" style="margin-bottom: 10px;">
-  <%= link_to "Kemaskini Borang", root_path, class: "badge badge-pill badge-secondary", target: "_blank" %> 
+  <%= link_to "Kemaskini Borang", edit_kdan_path(id: @kdan, perse: @kdan.perse.id), class: "badge badge-pill badge-secondary"%> 
   <%= link_to "Muat Turun Borang", "#", onclick: 'window.print()', class: 'btn btn-sm btn-success btn-block' %>
   
 </div>

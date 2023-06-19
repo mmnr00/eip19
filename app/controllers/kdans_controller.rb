@@ -37,6 +37,28 @@ class KdansController < ApplicationController
 		end
 	end
 
+	def edit
+		@kdan = Kdan.find(params[:id])
+		if @kdan.tp == "KANAK-KANAK"
+			@kid = true 
+			@kdantp = "KANAK-KANAK"
+		else
+			@kid = false
+			@kdantp = "DEWASA"
+		end
+	end
+
+	def update
+		@kdan = Kdan.find(params[:id])
+		if @kdan.update(kdan_params)
+			flash[:success] = "Kemaskini Berjaya"
+			redirect_to kdan_path(id: @kdan.id)
+		else
+			flash[:danger] = "Kemaskini Tidak Berjaya"
+			redirect_to request.referrer
+		end
+	end
+
 	def show
 		@kdan = Kdan.find(params[:id])
 	end
@@ -44,6 +66,13 @@ class KdansController < ApplicationController
 	def kdan_list
 		@perse = Perse.find(params[:perse])
 		@kdans = @perse.kdans
+	end
+
+	def kdan_index
+		@kdans = Kdan.all
+		if params[:sch].present?
+		end
+		render action: "kdan_index", layout: "dsb-admin-kad"
 	end
 
 	private
