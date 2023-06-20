@@ -11,11 +11,12 @@ class ProgesController < ApplicationController
 		@gdr = @perses.group(:gdr).count
 		@dun = @perses.group(:dun).count
 
-		if 1==1 #@proge.tp.include? "SUKARELAWAN" 
+		if @proge.tp.include? "SUKARELAWAN" #1==1 # 
 			arr = [@fbc.average(:rate),@fbc.average(:rate2),@fbc.average(:rate3),@fbc.average(:rate4),@fbc.average(:rate5)]
 			puts arr
 			if arr.any?
 				@rate = arr.sum / arr.size.to_f
+				
 			else
 				@rate = nil
 			end
