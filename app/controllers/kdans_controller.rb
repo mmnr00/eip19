@@ -71,6 +71,7 @@ class KdansController < ApplicationController
 	def kdan_index
 		@kdans = Kdan.all
 		if params[:sch].present?
+			
 		end
 		render action: "kdan_index", layout: "dsb-admin-kad"
 	end

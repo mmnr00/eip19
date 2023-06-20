@@ -17,15 +17,63 @@
       
       
       KAD ANIS
-      
-     
+      <button class="badge badge-pill badge-primary"><%= @kdan.stat %></button>
 
     </h5>
 
 <div class="prt-hide" style="margin-bottom: 10px;">
-  <%= link_to "Kemaskini Borang", edit_kdan_path(id: @kdan, perse: @kdan.perse.id), class: "badge badge-pill badge-secondary"%> 
+  <%= link_to "Kemaskini Borang", edit_kdan_path(id: @kdan, perse: @kdan.perse.id), class: "badge badge-pill badge-secondary" unless current_admin.present? %> 
   <%= link_to "Muat Turun Borang", "#", onclick: 'window.print()', class: 'btn btn-sm btn-success btn-block' %>
-  
+  <% if current_admin.present? %>
+    <div class="col-4">
+    <div style="background-color: #ff944c; text-align: center; margin-bottom: 10px;margin-top: 10px; border-radius: 40px">
+        <h6 style="text-align: center; font-weight: 500; color: white">Kemaskini Status</h6>
+    </div>
+    <%= form_for(:kdan, :url => {:controller=>'admins', :action=>'upddk'}, :html => {multipart: true, class: "form-horizontal", role: "form"}) do |f| %>
+
+      <div class="form-group"> <!-- STATUS-->
+        <div class="row">
+          <div class="control-label col-8">
+            <strong>STATUS PERMOHONAN</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.select :stat, options_for_select(["Permohonan Dalam Semakan","Permohonan Tidak Lengkap", "Permohonan Lulus", "Permohonan Ditolak"], selected: @kdan.stat) ,{include_blank: "Sila Pilih"}, {required: true} %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> <!-- STATUS-->
+        <div class="row">
+          <div class="control-label col-12">
+            <strong>MAKLUMAT ADMIN</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <%= f.text_area :admcmt, class: "form-control", placeholder: "", autofocus: true, required: true, style: "" %>
+          </div>
+        </div>
+      </div>
+
+      
+
+      <%= f.hidden_field :kdan, value: @kdan.id %>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-offset-2 col-sm-10 col-4">
+            <%= f.submit :Hantar,  class: 'btn btn-success btn-sm' %>
+          </div>
+        </div>
+      </div>
+
+    <% end %>
+
+
+  </div>
+  <% end %>
 </div>
 
 <div class="table-responsive">
