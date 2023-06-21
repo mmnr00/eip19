@@ -126,7 +126,7 @@
             <tr>
               <td><%= cnt %></td>
               <td>
-                <a href="<%= kdan_url(id: ek, prt: 1)%>" target="_blank"><%= "#{ek.name}" %></a><br>
+                <a href="<%= kdan_url(id: ek, prt: 1)%>"><%= "#{ek.name}" %></a><br>
                 <%= "(#{ek.ic})" %>
               </td>
               <td>
@@ -135,7 +135,10 @@
                 <%= ek.prtemail %><br>
                 <%= ek.prtfon %>
               </td>
-              <td><%= ek.stat %></td>
+              <td>
+                <%= ek.stat %><br>
+                <b>Catatan Admin: </b><%= ek.admcmt %>
+              </td>
               <td><%= ek.created_at.strftime('%d-%^b-%Y') %></td>
             </tr>
           <% end %>

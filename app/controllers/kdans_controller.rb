@@ -63,6 +63,22 @@ class KdansController < ApplicationController
 		@kdan = Kdan.find(params[:id])
 	end
 
+	def updkdan
+		pars = params[:kdan]
+		@kdan = Kdan.find(pars[:kdan])
+		@kdan.stat = pars[:stat]
+		@kdan.admcmt = pars[:admcmt]
+		if @kdan.save
+			flash[:success] = "Permohonan Berjaya Dikemaskini"
+			redirect_to kdan_index_path
+			
+		else
+			flash[:danger] = "Kemaskini Tidak Berjaya. Sila Cuba Semula"
+			redirect_to request.referrer
+		end
+		
+	end
+
 	def kdan_list
 		@perse = Perse.find(params[:perse])
 		@kdans = @perse.kdans

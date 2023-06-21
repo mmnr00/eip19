@@ -29,7 +29,7 @@
     <div style="background-color: #ff944c; text-align: center; margin-bottom: 10px;margin-top: 10px; border-radius: 40px">
         <h6 style="text-align: center; font-weight: 500; color: white">Kemaskini Status</h6>
     </div>
-    <%= form_for(:kdan, :url => {:controller=>'admins', :action=>'upddk'}, :html => {multipart: true, class: "form-horizontal", role: "form"}) do |f| %>
+    <%= form_for(:kdan, :url => {:controller=>'kdans', :action=>'updkdan'}, :html => {multipart: true, class: "form-horizontal", role: "form"}) do |f| %>
 
       <div class="form-group"> <!-- STATUS-->
         <div class="row">
@@ -69,10 +69,15 @@
         </div>
       </div>
 
+   
+    
+
     <% end %>
 
 
   </div>
+  <% else %>
+    <b>Catatan Admin:</b> <%= @kdan.admcmt %> 
   <% end %>
 </div>
 
