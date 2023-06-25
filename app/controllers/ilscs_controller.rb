@@ -47,6 +47,7 @@ class IlscsController < ApplicationController
 		@admin = current_admin
 		@ilscs = Ilsc.all
 		@ekids = Ekid.all
+		@ilscs = @ilscs.where('extract(year from created_at) = ?', params[:yr]) unless params[:yr].blank?
 		if params[:sch].present?
 			@ilscs  = @ilscs.where(tp: params[:sch_fld]) unless params[:sch_fld].blank?
 			@ilscs  = @ilscs.where('name LIKE ?', "%#{params[:sch_str].upcase}%") unless params[:sch_str].blank?
@@ -218,6 +219,7 @@ class IlscsController < ApplicationController
 														    :amtmedc,
 														    :docnm,
 														    :docph,
+														    :stat,
 														    :crstp => [],
 																fotos_attributes: [:foto, :picture, :foto_name])
 	end

@@ -827,7 +827,15 @@
         else
           tp = params[:prog]
         end
+
+        if @ilsc.stat.present?
+          stat = @ilsc.stat
+        else
+          stat = "Permohonan Dalam Semakan"
+        end
       %>
+
+      <%= f.hidden_field :stat, value: stat %>
 
       <%= f.hidden_field :tp, value: tp %>
       

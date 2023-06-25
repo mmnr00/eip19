@@ -17,65 +17,14 @@
 
 %>
 
-
-<!-- DASHBOARD SUMMARY 
 <div class="row">
-
-  <div class="col-3">
-    <div class="card border-left-success shadow h-100 py-2">
+  <div class="col-3" style="margin-bottom: 10px;">
+    <div class="card border-left-primary shadow h-100 py-2" >
       <div class="card-body">
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">AKTIF</div>
-            <a href="<%= lsddk_url(sch: true, stat: 3) %>"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ekids.where(stat: [nil,""]).count %></div></a>
-          </div>
-          <div class="col-auto">
-            <i class="fa fa-thumbs-up fa-2x text-gray-300"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-3">
-    <div class="card border-left-danger shadow h-100 py-2">
-      <div class="card-body">
-        <div class="row no-gutters align-items-center">
-          <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">TIDAK AKTIF</div>
-            <a href="<%= lsddk_url(sch: true, stat: 4) %>"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ekids.where.not(stat: [nil,""]).count %></div></a>
-          </div>
-          <div class="col-auto">
-            <i class="fa fa-exclamation-circle fa-2x text-gray-300"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <div class="col-3">
-    <div class="card border-left-primary shadow h-100 py-2">
-      <div class="card-body">
-        <div class="row no-gutters align-items-center">
-          <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">SARINGAN</div>
-            <a href="<%= lsddk_url(sch: true, stat: 1) %>"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ekids.where(tp: "SARINGAN ANIS").count %></div></a>
-          </div>
-          <div class="col-auto">
-            <i class="fas fa-folder-plus fa-2x text-gray-300"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-3">
-    <div class="card border-left-warning shadow h-100 py-2">
-      <div class="card-body">
-        <div class="row no-gutters align-items-center">
-          <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">TERAPI</div>
-            <a href="<%= lsddk_url(sch: true, stat: 2) %>"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ekids.where(tp: "TERAPI ANIS").count %></div></a>
+            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">DALAM SEMAKAN</div>
+            <a href=""><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ilscs.where(stat: "Permohonan Dalam Semakan").count %></div></a>
           </div>
           <div class="col-auto">
             <i class="fa fa-spinner fa-2x text-gray-300"></i>
@@ -85,12 +34,56 @@
     </div>
   </div>
 
-  
+  <div class="col-3" style="margin-bottom: 10px;">
+    <div class="card border-left-success shadow h-100 py-2" >
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">TIDAK LENGKAP</div>
+            <a href=""><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ilscs.where(stat: "Permohonan Tidak Lengkap").count %></div></a>
+          </div>
+          <div class="col-auto">
+            <i class="fa fa-spinner fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <div class="col-3" style="margin-bottom: 10px;">
+    <div class="card border-left-warning shadow h-100 py-2" >
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">DILULUSKAN</div>
+            <a href=""><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ilscs.where(stat: "Permohonan Diluluskan").count %></div></a>
+          </div>
+          <div class="col-auto">
+            <i class="fa fa-spinner fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-</div> -->
+  <div class="col-3" style="margin-bottom: 10px;">
+    <div class="card border-left-danger shadow h-100 py-2" >
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">DITOLAK</div>
+            <a href=""><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ilscs.where(stat: "Permohonan Ditolak").count %></div></a>
+          </div>
+          <div class="col-auto">
+            <i class="fa fa-spinner fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<!-- TABLE -->
+</div>
+
 
 <%= link_to ilsclistxls_path(format: :xlsx, sch_fld: params[:sch_fld], sch: params[:sch], sch_str: params[:sch_str]), class: "badge badge-info shadow-sm", style: "font-size: 16px; font-weight: normal" do %>
   <i class="fa fa-file-excel"></i> Muat Turun Senarai
@@ -108,6 +101,8 @@
               include_blank: "Semua Kursus" %>
         <% select_tag :stat, options_for_select(["Permohonan Diterima", "Permohonan Dalam Semakan", "Permohonan Tidak Lengkap","Permohonan Diluluskan", "Permohonan Ditolak"], params[:stat]),
               include_blank: "Semua Status" %>
+        <%= select_tag :yr, options_for_select(2020..Date.today.year, params[:yr]),
+              include_blank: "Semua Tahun" %>
         <%= hidden_field_tag :sch, params[:sch], value: true %>
         <%= button_tag(type: :submit, class: "badge badge-success shadow-none", style: "font-size: 14px; border-style: none; font-weight: normal",  id: "submit_expense") do %>
             <i class="fa fa-search"></i> Cari
@@ -137,7 +132,7 @@
             <th style="background-color:#ffb2b2; width: 20%">PROGRAM & KURSUS</th>
             <th style="background-color:#ffb2b2; width: 15%">DOKUMEN</th>
             <th style="background-color:#ffb2b2; width: 15%">STATUS</th>
-            <th style="background-color:#ffb2b2; width: 5%">TARIKH</th>
+            <th style="background-color:#ffb2b2; width: 5%">TARIKH PERMOHONAN</th>
           </tr>
         </thead>
         <tbody>
@@ -225,15 +220,14 @@
               <%= f.fields_for :"#{ek.id}" do |h| %>
               <% ek.stat %>
 
-                <%= h.select :stat, options_for_select(["Permohonan Diterima","Permohonan Dalam Semakan", "Permohonan Tidak Lengkap","Permohonan Diluluskan", "Permohonan Ditolak"],selected: ek.stat), {include_blank: "Pilih Status"}, required: false %>
+                <%= h.select :stat, options_for_select(["Permohonan Dalam Semakan", "Permohonan Tidak Lengkap","Permohonan Diluluskan", "Permohonan Ditolak"],selected: ek.stat), {include_blank: "Pilih Status"}, required: false %>
                 <%= h.text_area :descr, placeholder: "Makluman Admin", value: ek.descr, style: "margin-top: 5px; width: 100%" %>
               <% end %>
             </td>
             
 
             <td>
-              <b>Kemaskini</b> :<%= ek.updated_at.strftime('%d-%^b-%y') %><br>
-              <b>Permohonan</b> :<%= ek.created_at.strftime('%d-%^b-%y') %>    
+              <%= ek.created_at.strftime('%d-%^b-%y') %>    
             </td>
           </tr>
 
