@@ -1,4 +1,62 @@
 <div class="prt-hide" style="margin-bottom: 10px;">
   <%= link_to "Muat Turun Borang", "#", onclick: 'window.print()', class: 'btn btn-sm btn-success btn-block' %>
+  <% if params[:prt].blank? %>
+    <% ekstat = ["Permohonan","Penilaian","Kemasukan Program","Tamat Program"]
+    ekstat.each do |st| 
+      if @ilsc.stat == st
+        btn = "primary"
+      else
+        btn = "secondary"
+      end
+    %>
+
+      <%= link_to "#{st}", ilsc_stat_path(id: @ilsc.id,stat: st), class: "badge badge-pill badge-#{btn}" %> 
+    <% end %>
+  
+    <%
+      phs = {"Permohonan" => ["Permohonan Baru","Permohonan Tidak Lengkap", "Permohonan Lengkap (Dalam Semakan)", "Permohonan Ditolak"],
+      "Penilaian" => ["Permohonan Dalam Senarai Menunggu","Panggilan Temuduga", "Lulus Temuduga","Gagal Temuduga"],
+      "Kemasukan Program" => ["Rumah Amal Cheshire","Infinite Minds Academy","Institut Kemahiran Belia Negara"],
+      "Tamat Program" => ["Tamat Program"]}
+
+      hari_sesi = 
+      {"INTERVENSI ANIS"=>["Isnin","Selasa","Rabu","Khamis"],
+                  "PRASEKOLAH ANIS"=>["Isnin-Khamis","Transisi (Isnin & Rabu)", "Transisi (Selasa & Khamis"],
+                  "PLAYSCHOOL ANIS"=>["Isnin","Selasa","Rabu","Khamis"]}
+      slot_sesi = {"INTERVENSI ANIS"=>["8:30am - 10:30am","11:00am - 1:00pm","2:30pm - 4:30pm"],
+                  "PRASEKOLAH ANIS"=>["8:30am - 12:30am","1:30pm - 5:30pm"],
+                  "PLAYSCHOOL ANIS"=>["8:30am - 12:30am","1:30pm - 5:30pm"]}
+    %>
+
+    <%= form_for(:ek, :url => {:controller=>'ilscs', :action=>'ilscphs'}, :html => {multipart: true, class: "form-horizontal", method: :post, role: "form"}) do |f| %>
+      <%= f.select :phs, options_for_select(phs[@ilsc.stat],selected: @ilsc.phs), {include_blank: "Pilih Status"}, required: true, style: "margin-top: 5px" %>
+      <%= f.text_field :descr, placeholder: "Makluman Admin", value: @ilsc.descr, style: "margin-top: 5px; width: 100%" %>
+      <% ste = @ilsc.stat ; if ste != "Permohonan" %>
+        <%= f.select :tp, options_for_select(["PLAYSCHOOL ANIS","INTERVENSI ANIS","PRASEKOLAH ANIS"],selected: @ilsc.tp), {include_blank: "Pilih Jenis Program"}, required: true, style: "margin-top: 5px" %><br>
+
+        
+        <% if ste == "Penilaian" %>
+          <b>Tarikh Penilaian:</b><br> <%= f.date_field :dtp, value: @ilsc.dtp, style: "margin-top: 5px" %><br>
+        <% else %>
+          <%= f.hidden_field :dtp, value: @ilsc.dtp, style: "margin-top: 5px" %>
+        <% end %>
+        
+        <% if ste == "Kemasukan Program" #&& @ilsc.tp.present? %>
+          <b>Tarikh Mula Program:</b><br> <%= f.date_field :dts, value: @ilsc.dts, style: "margin-top: 5px" %><br>
+          <b>Tarikh Tamat Program:</b><br> <%= f.date_field :dte, value: @ilsc.dte, style: "margin-top: 5px" %><br>
+        
+        <% end %>
+
+        <% if ste == "Tamat Program" && @ilsc.tp.present? %>
+          <b>Tarikh Tamat Program:</b><br> <%= f.date_field :dte, value: @ilsc.dte, style: "margin-top: 5px" %><br>
+        <% else %>
+          
+        <% end %>
+        
+      <% end %>
+      <%= f.hidden_field :ilsc, value: @ilsc.id%>
+      <%= f.submit :"Kemaskini",  class: 'btn btn-sm btn-info btn-lg', style: "margin-top: 5px" %>
+    <% end %>
+  <% end %>
 </div>
 <%= render 'ilscs/profile_sedia' %>

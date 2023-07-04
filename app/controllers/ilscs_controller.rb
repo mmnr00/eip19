@@ -2,6 +2,25 @@ class IlscsController < ApplicationController
 	before_action :authenticate_admin!, only: [:ilscindex,:ilsclistxls]
 	before_action :set_all
 
+
+	def ilscphs
+		pars = params[:ek]
+		ek = Ilsc.find(pars[:ilsc])
+		ek.update(phs: pars[:phs],descr: pars[:descr], dtp: pars[:dtp], dts: pars[:dts], dte:pars[:dte])
+		#ek.admupd << [Date.today, current_admin.id, ek.stat, pars[:phs], pars[:descr],pars[:dtp],pars[:dts],pars[:dte],pars[:tp],pars[:sesd],pars[:sest]]
+		ek.save  
+		flash[:success] = "Kemaskini Status Berjaya"
+		redirect_to request.referrer
+	end
+
+	def ilsc_stat
+		@ilsc = Ilsc.find(params[:id])
+		@ilsc.stat = params[:stat]
+		@ilsc.save
+		flash[:success] = "Status #{@ilsc.name} berjaya dikemaskini"
+		redirect_to request.referrer
+	end
+
 	def statilsc
 		pars = params[:ek]
 		pars.each do |k,v|
@@ -82,6 +101,7 @@ class IlscsController < ApplicationController
 
 	def ilsc_conf
 		@ilsc = Ilsc.find(params[:id])
+		@ekid = @ilsc
 		@perse = @ilsc.perse
 		@diff = (Date.today.year*12+Date.today.month) - (@ilsc.dobn.year*12+@ilsc.dobn.month)
 		@year = @diff/12

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_29_121643) do
+ActiveRecord::Schema.define(version: 2023_07_02_121940) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -420,6 +420,7 @@ ActiveRecord::Schema.define(version: 2023_05_29_121643) do
     t.integer "ekid_id"
     t.integer "ilsc_id"
     t.integer "ddk_id"
+    t.integer "kdan_id"
   end
 
   create_table "ilscs", force: :cascade do |t|
@@ -463,6 +464,41 @@ ActiveRecord::Schema.define(version: 2023_05_29_121643) do
     t.text "crstp"
     t.string "stat"
     t.string "descr"
+    t.string "phs"
+    t.date "dtp"
+    t.date "dts"
+    t.date "dte"
+  end
+
+  create_table "kdans", force: :cascade do |t|
+    t.string "name"
+    t.string "ic"
+    t.string "okukd"
+    t.string "gender"
+    t.string "race"
+    t.date "dob"
+    t.string "brtplc"
+    t.string "addr"
+    t.string "job"
+    t.string "payr"
+    t.string "prtname"
+    t.string "prtrel"
+    t.string "prtic"
+    t.string "prtgender"
+    t.string "prtrace"
+    t.string "prtaddr"
+    t.string "prtfon"
+    t.string "prtemail"
+    t.string "prtjob"
+    t.string "prtpay"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "perse_id"
+    t.string "tp"
+    t.string "notel"
+    t.string "email"
+    t.string "stat"
+    t.string "admcmt"
   end
 
   create_table "kid_bills", force: :cascade do |t|
