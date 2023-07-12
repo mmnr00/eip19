@@ -212,19 +212,28 @@ class IlscsController < ApplicationController
 		@perse = Perse.find(params[:perse])
 		@ilsc.fotos.build
 		if params[:sch].present?
-			dt = check_bday(params[:ic])
-			puts dt
-			puts ((dt>=17) && (dt<=25))
-			if ((dt>=17) && (dt<=25))
+			if params[:prog] == "PERSEDIAAN ALAM PEKERJAAN"
+				dt = check_bday(params[:ic])
+				puts dt
+				puts ((dt>=17) && (dt<=25))
+				if ((dt>=17) && (dt<=25))
+					ilsc_exs = Ilsc.where(ic: params[:ic], tp: params[:prog])
+					if ilsc_exs.present?
+						flash[:danger] = "No MYKAD #{ilsc_exs.last.name} ini sudah didaftarkan oleh #{ilsc_exs.last.perse.name}"
+					else
+						@cfm = true
+					end
+				else
+					flash[:danger] = "Umur peserta tidak menetapi syarat program (17 hingga 25 tahun)"
+					redirect_to request.referrer	
+				end
+			elsif params[:prog] == "PENCARIAN PEKERJAAN"
 				ilsc_exs = Ilsc.where(ic: params[:ic], tp: params[:prog])
 				if ilsc_exs.present?
 					flash[:danger] = "No MYKAD #{ilsc_exs.last.name} ini sudah didaftarkan oleh #{ilsc_exs.last.perse.name}"
 				else
 					@cfm = true
 				end
-			else
-				flash[:danger] = "Umur peserta tidak menetapi syarat program (17 hingga 25 tahun)"
-				redirect_to request.referrer	
 			end
 		end
 		#render action: "new", layout: "eipblank"
