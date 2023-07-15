@@ -1,0 +1,162 @@
+<div class="table-responsive" style="font-size: 12px">
+  <table class="table table-bordered" width="100%" cellspacing="0" style="color: black;borders: 2px solid black">
+
+    <tbody>
+      <tr style="borders: 1.5px solid black">
+        <td style="background-color:#0070C0 !important" colspan="2"><strong><font color="white"><h3 align="center"><%= @ilsc.name.upcase %> (ID: <%= @ilsc.id %>)</h3></font></strong></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">JENIS PROGRAM</font></td>
+        <td style="background-color: !important"><%= "#{@ilsc.tp}" %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">NO MYKAD</font></td>
+        <td style="background-color: !important"><%= "#{@ilsc.ic}" %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">NO PENDAFTARAN OKU</font></td>
+        <td style="background-color: !important"><%= "#{@ilsc.oku}" %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">JANTINA</font></td>
+        <td style="background-color: !important"><%= "#{@ilsc.gender}" %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">TARIKH LAHIR</font></td>
+        <td style="background-color: !important"><%= "#{@ilsc.dobn.strftime('%d-%^b-%y')}" %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">TEMPAT LAHIR</font></td>
+        <td style="background-color: !important"><%= "#{@ilsc.birthplc}" %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">ALAMAT</font></td>
+        <td style="background-color: !important"><%= "#{@ilsc.addr}" %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">BANGSA</font></td>
+        <td style="background-color: !important"><%= "#{@ilsc.race}" %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">AGAMA</font></td>
+        <td style="background-color: !important"><%= "#{@ilsc.relg}" %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">NO TELEFON</font></td>
+        <td style="background-color: !important"><%= "#{@ilsc.ph}" %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">EMAIL</font></td>
+        <td style="background-color: !important"><%= "#{@ilsc.email}" %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">STATUS PERKAHWINAN</font></td>
+        <td style="background-color: !important"><%= "#{@ilsc.marstat}" %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">DUN</font></td>
+        <td style="background-color: !important"><%= "#{@ilsc.dun}" %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">PARLIMEN</font></td>
+        <td style="background-color: !important"><%= "#{@ilsc.parl}" %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">PENGUNDI SELANGOR</font></td>
+        <td style="background-color: !important"><%= "#{@ilsc.selspr}" %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-bordered" width="100%" cellspacing="0" style="color: black;borders: 2px solid black">
+    <tbody>
+      <tr>
+        <td style="background-color:#d29494 !important" colspan="2"><font color="white"><h5>BAHAGIAN B</h5></font></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<div class="table-responsive border" style="font-size: 12px">
+<table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0">
+  <thead style="text-align: center">
+    <th style="background-color:#ccccff;color:black" colspan="4">MAKLUMAT PERSEKOLAHAN</th>
+  </thead>
+  <thead style="text-align: center">
+    <tr class="shadow">
+      <th style="background-color:#7fbf7f;color:black">NAMA SEKOLAH RENDAH/MENENGAH/INSTITUSI LAIN</th>
+      <th style="background-color:#7fbf7f;color:black">TAHUN MASUK</th>
+      <th style="background-color:#7fbf7f;color:black">TAHUN KELUAR</th>
+      <th style="background-color:#7fbf7f;color:black">PENCAPAIAN</th>
+    </tr>
+  </thead>
+  <tbody style="color: black">
+    <% (1..5).each do |n| %>
+      <tr>
+        <td><%= @ilsc.schi["#{n}"][0] %></td>
+        <td><%= @ilsc.schi["#{n}"][1] %></td>
+        <td><%= @ilsc.schi["#{n}"][2] %></td>
+        <td><%= @ilsc.schi["#{n}"][3] %></td>
+      </tr>
+    <% end %>
+           
+  </tbody>
+</table>
+</div>
+
+<div class="table-responsive border" style="font-size: 12px">
+<table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0">
+  <thead style="text-align: center">
+    <th style="background-color:#ccccff;color:black" colspan="3">MAKLUMAT KURSUS</th>
+  </thead>
+  <thead style="text-align: center">
+    <tr class="shadow">
+      <th style="background-color:#7fbf7f;color:black">NAMA KURSUS</th>
+      <th style="background-color:#7fbf7f;color:black">TEMPAT</th>
+      <th style="background-color:#7fbf7f;color:black">TEMPOH</th>
+    </tr>
+  </thead>
+  <tbody style="color: black">
+    <% (1..5).each do |n| %>
+      <tr>
+        <td><%= @ilsc.crls["#{n}"][0] %></td>
+        <td><%= @ilsc.crls["#{n}"][1] %></td>
+        <td><%= @ilsc.crls["#{n}"][2] %></td>
+      </tr>
+    <% end %>
+           
+  </tbody>
+</table>
+</div>
+
+<div class="table-responsive border" style="font-size: 12px">
+<table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0">
+  <thead style="text-align: center">
+    <th style="background-color:#ccccff;color:black" colspan="3">PENGALAMAN KERJA</th>
+  </thead>
+  <thead style="text-align: center">
+    <tr class="shadow">
+      <th style="background-color:#7fbf7f;color:black">NAMA MAJIKAN</th>
+      <th style="background-color:#7fbf7f;color:black">MAJIKAN</th>
+      <th style="background-color:#7fbf7f;color:black">TEMPOH BEKERJA</th>
+    </tr>
+  </thead>
+  <tbody style="color: black">
+    <% (1..5).each do |n| %>
+      <tr>
+        <td><%= @ilsc.prevmaj["#{n}"][0] %></td>
+        <td><%= @ilsc.prevmaj["#{n}"][1] %></td>
+        <td><%= @ilsc.prevmaj["#{n}"][2] %></td>
+      </tr>
+    <% end %>
+           
+  </tbody>
+</table>
+</div>
+
+ 
+
+  

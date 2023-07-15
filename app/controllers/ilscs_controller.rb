@@ -207,7 +207,8 @@ class IlscsController < ApplicationController
 	def new
 		@ilsc = Ilsc.new
 		@ilsc.schi = {"1"=>["", "", "", ""], "2"=>["", "", "", ""], "3"=>["", "", "", ""], "4"=>["", "", "", ""], "5"=>["", "", "", ""]}
-		@ilsc.crls = {"1"=>["", "", ""], "2"=>["", "", ""], "3"=>["", "", ""], "4"=>["", "", ""], "5"=>["", "", ""]} 
+		@ilsc.crls = {"1"=>["", "", ""], "2"=>["", "", ""], "3"=>["", "", ""], "4"=>["", "", ""], "5"=>["", "", ""]}
+		@ilsc.prevmaj = {"1"=>["", "", ""], "2"=>["", "", ""], "3"=>["", "", ""], "4"=>["", "", ""], "5"=>["", "", ""]} 
 		@ilsc.sbls = {"1"=>["", "", "", "", ""], "2"=>["", "", "", "", ""], "3"=>["", "", "", "", ""], "4"=>["", "", "", "", ""], "5"=>["", "", "", "", ""], "6"=>["", "", "", "", ""], "7"=>["", "", "", "", ""], "8"=>["", "", "", "", ""], "9"=>["", "", "", "", ""], "10"=>["", "", "", "", ""]} 
 		@perse = Perse.find(params[:perse])
 		@ilsc.fotos.build
@@ -270,24 +271,40 @@ class IlscsController < ApplicationController
 	def ilsc_ls(id,params)
 		par = params
 		@ilsc = Ilsc.find(id)
-		par[:schi].each do |k,v|
-			@ilsc.schi[k] = [v["sek"],v["tahun"],v["keluar"],v["pencapaian"]]
+		if par[:schi].present?
+			par[:schi].each do |k,v|
+				@ilsc.schi[k] = [v["sek"],v["tahun"],v["keluar"],v["pencapaian"]]
+			end
 		end
 
-		par[:crls].each do |k,v|
-			@ilsc.crls[k] = [v["nmcr"],v["ven"],v["prd"]]
+		if par[:crls].present?
+			par[:crls].each do |k,v|
+				@ilsc.crls[k] = [v["nmcr"],v["ven"],v["prd"]]
+			end
 		end
 
-		par[:sbls].each do |k,v|
-			@ilsc.sbls[k] = [v["nmsb"],v["age"],v["skjb"],v["sbph"],v["thp"]]
+		if par[:prevmaj].present?
+			par[:prevmaj].each do |k,v|
+				@ilsc.prevmaj[k] = [v["nmj"],v["jwt"],v["tempoh"]]
+			end
 		end
 
-		par[:prtls].each do |k,v|
-			@ilsc.prtls[k] = v
+		if par[:sbls].present?
+			par[:sbls].each do |k,v|
+				@ilsc.sbls[k] = [v["nmsb"],v["age"],v["skjb"],v["sbph"],v["thp"]]
+			end
 		end
 
-		par[:warls].each do |k,v|
-			@ilsc.warls[k] = v
+		if par[:prtls].present?
+			par[:prtls].each do |k,v|
+				@ilsc.prtls[k] = v
+			end
+		end
+
+		if par[:warls].present?
+			par[:warls].each do |k,v|
+				@ilsc.warls[k] = v
+			end
 		end
 		@ilsc.save
 	end
@@ -323,7 +340,12 @@ class IlscsController < ApplicationController
 														    :docnm,
 														    :docph,
 														    :stat,
-														    :crstp => [],
+														    :marstat,
+																:dun,
+																:parl,
+																:prevmaj,
+																:selspr,
+																:crstp => [],
 																fotos_attributes: [:foto, :picture, :foto_name])
 	end
 

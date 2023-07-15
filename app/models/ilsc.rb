@@ -7,6 +7,7 @@ class Ilsc < ApplicationRecord
 	serialize :sbls,Hash
 	serialize :prtls,Hash
 	serialize :warls,Hash
+	serialize :prevmaj,Hash
 	serialize :crstp,Array
 
 	before_save :save_ilscs

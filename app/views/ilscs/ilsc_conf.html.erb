@@ -1,3 +1,5 @@
+<% if @ilsc.tp == "PERSEDIAAN ALAM PEKERJAAN" %>
+
 <div class="prt-hide" style="margin-bottom: 10px;">
   <%= link_to "Muat Turun Borang", "#", onclick: 'window.print()', class: 'btn btn-sm btn-success btn-block' %>
   <% if params[:prt].blank? %>
@@ -60,3 +62,7 @@
   <% end %>
 </div>
 <%= render 'ilscs/profile_sedia' %>
+
+<% elsif @ilsc.tp == "PENCARIAN PEKERJAAN" %>
+  <%= render 'ilscs/profile_cari' %>
+<% end %>

@@ -64,7 +64,7 @@
                 <div class="row">
                   <div class="col-sm-8 col-8">
                     <%= h.hidden_field :foto_name, value: "GAMBAR PROFIL" %>
-                    <%= h.file_field :picture, accept: 'image/jpeg,image/gif,image/png,application/pdf', required: true %>
+                    <%= h.file_field :picture, accept: 'image/jpeg,image/gif,image/png,application/pdf,image/jpeg,image/gif,image/png', required: true %>
                   </div>
                 </div>
               <% end %>
@@ -189,7 +189,7 @@
         </div>
         <div class="row">
           <div class="col-sm-8 col-12">
-            <%= f.text_field :ph, class: "form-control", placeholder: "", autofocus: true, required: true, style: "text-transform: uppercase" %>
+            <%= f.text_field :email, class: "form-control", placeholder: "", autofocus: true, required: true, style: "text-transform: uppercase" %>
           </div>
         </div>
       </div>
@@ -202,11 +202,11 @@
         </div>
         <div class="row">
           <div class="col-sm-8 col-12">
-            <%= f.select :ph, options_for_select(["Bujang",
+            <%= f.select :marstat, options_for_select(["Bujang",
                                                   "Kahwin",
                                                   "Duda",
                                                   "Balu"], 
-                                                  selected: @ilsc.ph), 
+                                                  selected: @ilsc.marstat), 
             {include_blank: "Pilih Satu"}, {required: true} %>
           </div>
         </div>
@@ -220,7 +220,7 @@
         </div>
         <div class="row">
           <div class="col-sm-8 col-12">
-            <%= f.text_field :ph, class: "form-control", placeholder: "", autofocus: true, required: true, style: "text-transform: uppercase" %>
+            <%= f.text_field :dun, class: "form-control", placeholder: "", autofocus: true, required: true, style: "text-transform: uppercase" %>
           </div>
         </div>
       </div>
@@ -233,7 +233,7 @@
         </div>
         <div class="row">
           <div class="col-sm-8 col-12">
-            <%= f.text_field :ph, class: "form-control", placeholder: "", autofocus: true, required: true, style: "text-transform: uppercase" %>
+            <%= f.text_field :parl, class: "form-control", placeholder: "", autofocus: true, required: true, style: "text-transform: uppercase" %>
           </div>
         </div>
       </div>
@@ -318,6 +318,58 @@
         </table>
       </div> <!-- DIV TABLE -->
       <br>
+
+      <b><u>PENGALAMAN KERJA</u></b>
+
+      <div class="table-responsive border" style="font-size: 12px">
+        <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0">
+          <thead style="text-align: center">
+            <tr class="shadow">
+              <th style="background-color:#7fbf7f;color:black">NAMA MAJIKAN</th>
+              <th style="background-color:#7fbf7f;color:black">JAWATAN</th>
+              <th style="background-color:#7fbf7f;color:black">TEMPOH BEKERJA</th>
+            </tr>
+          </thead>
+          <tbody style="color: black">
+            <%= f.fields_for :prevmaj do |h| %>
+            <% (1..5).each do |n| %>
+            <%= h.fields_for :"#{n}" do |g| %>
+              <tr>
+                <td>
+                  <%= g.text_field :nmj, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px", value: @ilsc.prevmaj["#{n}"][0] %>
+                </td>
+                <td>
+                  <%= g.text_field :jwt, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px", value: @ilsc.prevmaj["#{n}"][1] %>
+                </td>
+                <td>
+                  <%= g.text_field :tempoh, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px", value: @ilsc.prevmaj["#{n}"][2] %>
+                </td>
+              </tr>
+            <% end %>
+            <% end %>
+            <% end %>
+                   
+          </tbody>
+
+        </table>
+      </div> <!-- DIV TABLE -->
+      <br>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>PENGUNDI SELANGOR</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.select :selspr, options_for_select(["Ya",
+                                                  "Tidak"], 
+                                                  selected: @ilsc.selspr), 
+            {include_blank: "Pilih Satu"}, {required: true} %>
+          </div>
+        </div>
+      </div>
 
       
       <!-- BAHAGIAN C -->

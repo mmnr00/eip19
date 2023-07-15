@@ -3,5 +3,9 @@
 </div>
 
 <div style="font-size: 12px">
-<%= render 'ilscs/form_sedia', actn: "edit" %>
+<% if @ilsc.tp == "PERSEDIAAN ALAM PEKERJAAN" %>
+  <%= render 'ilscs/form_sedia', actn: "new" %>
+<% elsif @ilsc.tp == "PENCARIAN PEKERJAAN" %>
+  <%= render 'ilscs/form_cari', actn: "new" %>
+<% end %>
 </div>
