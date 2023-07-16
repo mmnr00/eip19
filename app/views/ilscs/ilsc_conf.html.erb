@@ -64,5 +64,14 @@
 <%= render 'ilscs/profile_sedia' %>
 
 <% elsif @ilsc.tp == "PENCARIAN PEKERJAAN" %>
+  <div class="prt-hide" style="margin-bottom: 10px;">
+    <%= link_to "Muat Turun Borang", "#", onclick: 'window.print()', class: 'btn btn-sm btn-success btn-block' %>
+    <%= form_for(:ek, :url => {:controller=>'ilscs', :action=>'ilscphs'}, :html => {multipart: true, class: "form-horizontal", method: :post, role: "form"}) do |f| %>
+      <%= f.select :stat, options_for_select(["Permohonan Dalam Semakan","Permohonan Diluluskan","Permohonan Ditolak"],selected: @ilsc.stat), {include_blank: "Pilih Status"}, required: true, style: "margin-top: 5px" %>
+      <%= f.text_field :descr, placeholder: "Makluman Admin", value: @ilsc.descr, style: "margin-top: 5px; width: 100%" %>
+      <%= f.hidden_field :ilsc, value: @ilsc.id%>
+      <%= f.submit :"Kemaskini",  class: 'btn btn-sm btn-info btn-lg', style: "margin-top: 5px" %>
+    <% end %>
+  </div>
   <%= render 'ilscs/profile_cari' %>
 <% end %>

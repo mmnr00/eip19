@@ -41,7 +41,7 @@ class IlscsController < ApplicationController
 
 	def ilscari
 		@admin = current_admin
-		@ilscs = Ilsc.all
+		@ilscs = Ilsc.where(tp: "PENCARIAN PEKERJAAN")
 		@ekids = Ekid.all
 		@ilscs = @ilscs.where('extract(year from created_at) = ?', params[:yr]) unless params[:yr].blank?
 		if params[:sch].present?
@@ -80,7 +80,7 @@ class IlscsController < ApplicationController
 	def ilscphs
 		pars = params[:ek]
 		ek = Ilsc.find(pars[:ilsc])
-		ek.update(phs: pars[:phs],descr: pars[:descr], dtp: pars[:dtp], dts: pars[:dts], dte:pars[:dte])
+		ek.update(phs: pars[:phs],descr: pars[:descr], dtp: pars[:dtp], dts: pars[:dts], dte:pars[:dte],stat: pars[:stat])
 		#ek.admupd << [Date.today, current_admin.id, ek.stat, pars[:phs], pars[:descr],pars[:dtp],pars[:dts],pars[:dte],pars[:tp],pars[:sesd],pars[:sest]]
 		ek.save  
 		flash[:success] = "Kemaskini Status Berjaya"

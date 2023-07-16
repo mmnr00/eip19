@@ -95,8 +95,6 @@
     <div class="row">
       <%= form_tag ilscindex_path, method: :get, id: "find_kid" do %>
         <%= text_field_tag :sch_str, params[:sch_str], placeholder: "Masukkan Nama", style: 'text-transform: uppercase' %>
-        <%= select_tag :sch_fld, options_for_select(["PERSEDIAAN ALAM PEKERJAAN", "TRANSISI PEKERJAAN"], params[:sch_fld]),
-              include_blank: "Semua Program" %>
         <%= select_tag :sch_crs, options_for_select(["Kursus Jahitan", "Kursus Bakeri","Kursus Pengurusan Pejabat","Kursus Teknologi Digital","Kursus Kecerdasan Buatan"], params[:sch_crs]),
               include_blank: "Semua Kursus" %>
         <% select_tag :stat, options_for_select(["Permohonan Diterima", "Permohonan Dalam Semakan", "Permohonan Tidak Lengkap","Permohonan Diluluskan", "Permohonan Ditolak"], params[:stat]),
