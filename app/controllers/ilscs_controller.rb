@@ -235,6 +235,13 @@ class IlscsController < ApplicationController
 				else
 					@cfm = true
 				end
+			elsif params[:prog] == "DET & JOB COACH"
+				ilsc_exs = Ilsc.where(ic: params[:ic], tp: params[:prog])
+				if ilsc_exs.present?
+					flash[:danger] = "No MYKAD #{ilsc_exs.last.name} ini sudah didaftarkan oleh #{ilsc_exs.last.perse.name}"
+				else
+					@cfm = true
+				end
 			end
 		end
 		#render action: "new", layout: "eipblank"
