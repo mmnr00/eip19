@@ -4,7 +4,7 @@ class IlscsController < ApplicationController
 
 	def ilscdet
 		@admin = current_admin
-		@ilscs = Ilsc.all
+		@ilscs = Ilsc.where(tp: "DET & JOB COACH")
 		@ekids = Ekid.all
 		@ilscs = @ilscs.where('extract(year from created_at) = ?', params[:yr]) unless params[:yr].blank?
 		if params[:sch].present?
@@ -138,7 +138,7 @@ class IlscsController < ApplicationController
 
 	def ilscindex
 		@admin = current_admin
-		@ilscs = Ilsc.all
+		@ilscs = Ilsc.where(tp: "PERSEDIAAN ALAM PEKERJAAN")
 		@ekids = Ekid.all
 		@ilscs = @ilscs.where('extract(year from created_at) = ?', params[:yr]) unless params[:yr].blank?
 		if params[:sch].present?
@@ -351,6 +351,17 @@ class IlscsController < ApplicationController
 																:dun,
 																:parl,
 																:prevmaj,
+																:majnm,
+														    :majjw,
+														    :majjbt,
+														    :majtmp,
+														    :majadd,
+														    :majtel,
+														    :majfaks,
+														    :majeml,
+														    :okufm,
+														    :rdoku,
+														    :othcrs,
 																:selspr,
 																:crstp => [],
 																fotos_attributes: [:foto, :picture, :foto_name])

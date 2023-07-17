@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_07_14_011322) do
+ActiveRecord::Schema.define(version: 2023_07_17_122329) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -473,6 +473,17 @@ ActiveRecord::Schema.define(version: 2023_07_14_011322) do
     t.string "parl"
     t.text "prevmaj"
     t.string "selspr"
+    t.string "majnm"
+    t.string "majjw"
+    t.string "majjbt"
+    t.string "majtmp"
+    t.string "majadd"
+    t.string "majtel"
+    t.string "majfaks"
+    t.string "majeml"
+    t.string "okufm"
+    t.string "rdoku"
+    t.string "othcrs"
   end
 
   create_table "kdans", force: :cascade do |t|

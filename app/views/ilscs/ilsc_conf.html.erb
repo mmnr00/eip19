@@ -76,4 +76,10 @@
     <% end %><% end %>
   </div>
   <%= render 'ilscs/profile_cari' %>
+<% elsif @ilsc.tp == "DET & JOB COACH" %>
+  <div class="prt-hide" style="margin-bottom: 10px;">
+    <%= link_to "Muat Turun Borang", "#", onclick: 'window.print()', class: 'btn btn-sm btn-success btn-block' %>
+    
+  </div>
+  <%= render 'ilscs/profile_det' %>
 <% end %>

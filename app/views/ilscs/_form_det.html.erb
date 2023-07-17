@@ -46,50 +46,6 @@
       <div class="form-group"> 
         <div class="row">
           <div class="control-label col-sm-8">
-            <i class="fas fa-cloud-upload-alt"></i><strong>GAMBAR PROFIL</strong>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-8 col-12">
-            <% image = @ilsc.fotos.where(foto_name: "GAMBAR PROFIL").first %>
-            <%  if image.present? %>
-              <%= image_tag(image.picture.url, size: "200x200") if image.picture? %>
-              <div class="row">
-                <div class="col-sm-8 col-5">
-                  <strong><%= link_to "EDIT", edit_foto_path(image.id), class: "btn btn-sm btn-success active" %></strong>
-                </div>
-              </div>  
-            <% else %>
-              <%= f.fields_for :fotos do |h| %>
-                <div class="row">
-                  <div class="col-sm-8 col-8">
-                    <%= h.hidden_field :foto_name, value: "GAMBAR PROFIL" %>
-                    <%= h.file_field :picture, accept: 'image/jpeg,image/gif,image/png,application/pdf,image/jpeg,image/gif,image/png', required: true %>
-                  </div>
-                </div>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
-        <i>Wajib Disertakan</i>
-      </div>
-
-      <div class="form-group"> 
-        <div class="row">
-          <div class="control-label col-sm-8">
-            <strong>NO PENDAFTARAN OKU</strong>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-8 col-12">
-            <%= f.text_field :oku, class: "form-control", placeholder: "", autofocus: true, required: true, style: "text-transform: uppercase" %>
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group"> 
-        <div class="row">
-          <div class="control-label col-sm-8">
             <strong>JANTINA</strong>
           </div>
         </div>
@@ -241,47 +197,118 @@
       <!-- BAHAGIAN B -->
       <div class="col-sm-12" style="background-color:#ffcccc">
         <h4 style="color:black; font-weight: 600">Bahagian B</h4>
+      </div>
+
+      <b><u>MAKLUMAT MAJIKAN</u></b>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>NAMA MAJIKAN</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.text_field :majnm, class: "form-control", placeholder: "", autofocus: true, style: "text-transform: uppercase" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>JAWATAN</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.text_field :majjw, class: "form-control", placeholder: "", autofocus: true, style: "text-transform: uppercase" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>JABATAN</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.text_field :majjbt, class: "form-control", placeholder: "", autofocus: true, style: "text-transform: uppercase" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>TEMPOH BEKERJA</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.text_field :majtmp, class: "form-control", placeholder: "", autofocus: true, style: "text-transform: uppercase" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>ALAMAT MAJIKAN</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.text_field :majadd, class: "form-control", placeholder: "", autofocus: true, style: "text-transform: uppercase" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>NO TELEFON MAJIKAN</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.text_field :majtel, class: "form-control", placeholder: "", autofocus: true, style: "text-transform: uppercase" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>NO FAKS MAJIKAN</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.text_field :majfaks, class: "form-control", placeholder: "", autofocus: true, style: "text-transform: uppercase" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>EMAIL MAJIKAN</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.text_field :majeml, class: "form-control", placeholder: "", autofocus: true, style: "text-transform: uppercase" %>
+          </div>
+        </div>
+      </div>
+
+      <!-- BAHAGIAN B -->
+      <div class="col-sm-12" style="background-color:#ffcccc">
+        <h4 style="color:black; font-weight: 600">Bahagian C</h4>
       </div>      
-
-      <b><u>MAKLUMAT PERSEKOLAHAN</u></b>
-      
-
-      <div class="table-responsive border" style="font-size: 12px">
-        <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0">
-          <thead style="text-align: center">
-            <tr class="shadow">
-              <th style="background-color:#7fbf7f;color:black">NAMA SEKOLAH RENDAH/MENENGAH/INSTITUSI LAIN</th>
-              <th style="background-color:#7fbf7f;color:black">TAHUN MASUK</th>
-              <th style="background-color:#7fbf7f;color:black">TAHUN KELUAR</th>
-              <th style="background-color:#7fbf7f;color:black">PENCAPAIAN</th>
-            </tr>
-          </thead>
-          <tbody style="color: black">
-            <%= f.fields_for :schi do |h| %>
-            <% (1..5).each do |n| %>
-            <%= h.fields_for :"#{n}" do |g| %>
-              <tr>
-                <td>
-                  <%= g.text_field :"sek", class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px", value: @ilsc.schi["#{n}"][0] %>
-                </td>
-                <td>
-                  <%= g.text_field :"tahun", class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px", value: @ilsc.schi["#{n}"][1] %>
-                </td>
-                <td>
-                  <%= g.text_field :"keluar", class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px", value: @ilsc.schi["#{n}"][2] %>
-                </td>
-                <td>
-                  <%= g.text_field :"pencapaian", class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px", value: @ilsc.schi["#{n}"][3] %>
-                </td>
-              </tr>
-            <% end %>
-            <% end %>
-            <% end %>
-                   
-          </tbody>
-
-        </table>
-      </div> <!-- DIV TABLE -->
 
       <b><u>MAKLUMAT KURSUS YANG PERNAH DIHADIRI</u></b>
 
@@ -355,6 +382,11 @@
       </div> <!-- DIV TABLE -->
       <br>
 
+      <!-- BAHAGIAN C -->
+      <div class="col-sm-12" style="background-color:#ffcccc">
+        <h4 style="color:black; font-weight: 600">Bahagian D</h4>
+      </div>
+
       <div class="form-group"> 
         <div class="row">
           <div class="control-label col-sm-8">
@@ -371,107 +403,57 @@
         </div>
       </div>
 
-      
-      <!-- BAHAGIAN C -->
-      <div class="col-sm-12" style="background-color:#ffcccc">
-        <h4 style="color:black; font-weight: 600">Bahagian C</h4>
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>KALANGAN KELUARGA ADA OKU?</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.select :okufm, options_for_select(["Ya",
+                                                  "Tidak"], 
+                                                  selected: @ilsc.okufm), 
+            {include_blank: "Pilih Satu"}, {required: true} %>
+          </div>
+        </div>
       </div>
 
-      <b><u>MAKLUMAT IBU-BAPA/PENJAGA</u></b>
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>BERSEDIA MENGENDALIKAN OKU</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.select :rdoku, options_for_select(["Ya",
+                                                  "Tidak"], 
+                                                  selected: @ilsc.rdoku), 
+            {include_blank: "Pilih Satu"}, {required: true} %>
+          </div>
+        </div>
+      </div>
 
-      <div class="table-responsive border" style="font-size: 12px">
-        <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0">
-          <thead style="text-align: center">
-            <tr class="shadow">
-              <th style="background-color:#7fbf7f;color:black">MAKLUMAT</th>
-              <th style="background-color:#7fbf7f;color:black">BAPA/PENJAGA</th>
-              <th style="background-color:#7fbf7f;color:black">IBU/PENJAGA</th>
-            </tr>
-          </thead>
-          <tbody style="color: black">
-            <%= f.fields_for :prtls do |h| %>
-            <tr>
-              <td>
-               NAMA
-              </td>
-              <td>
-                <%= h.text_field :namef, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px",value: @ilsc.prtls["namef"] %>
-              </td>
-              <td>
-                <%= h.text_field :namem, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px",value: @ilsc.prtls["namem"] %>
-              </td>
-            </tr>
-            <tr>
-              <td>
-               NO MYKAD
-              </td>
-              <td>
-                <%= h.text_field :icf, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px",value: @ilsc.prtls["icf"] %>
-              </td>
-              <td>
-                <%= h.text_field :icm, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px",value: @ilsc.prtls["icm"] %>
-              </td>
-            </tr>
-            <tr>
-              <td>
-               PEKERJAAN
-              </td>
-              <td>
-                <%= h.text_field :jobf, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px",value: @ilsc.prtls["jobf"] %>
-              </td>
-              <td>
-                <%= h.text_field :jobm, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px",value: @ilsc.prtls["jobm"] %>
-              </td>
-            </tr>
-            <tr>
-              <td>
-               NAMA DAN ALAMAT MAJIKAN
-              </td>
-              <td>
-                <%= h.text_area :addf, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px",value: @ilsc.prtls["addf"] %>
-              </td>
-              <td>
-                <%= h.text_area :addm, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px",value: @ilsc.prtls["addm"] %>
-              </td>
-            </tr>
-            <tr>
-              <td>
-               PENDAPATAN BULANAN (RM)
-              </td>
-              <td>
-                <%= h.text_field :incf, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px",value: @ilsc.prtls["incf"] %>
-              </td>
-              <td>
-                <%= h.text_field :incm, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px",value: @ilsc.prtls["incm"] %>
-              </td>
-            </tr>
-            <tr>
-              <td>
-               NO TELEFON PEJABAT
-              </td>
-              <td>
-                <%= h.text_field :phof, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px",value: @ilsc.prtls["phof"] %>
-              </td>
-              <td>
-                <%= h.text_field :phom, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px",value: @ilsc.prtls["phom"] %>
-              </td>
-            </tr>
-            <tr>
-              <td>
-               NO TELEFON BIMBIT
-              </td>
-              <td>
-                <%= h.text_field :phf, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px",value: @ilsc.prtls["phf"] %>
-              </td>
-              <td>
-                <%= h.text_field :phm, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px",value: @ilsc.prtls["phm"] %>
-              </td>
-            </tr>
-            <% end %>      
-          </tbody>
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>BERMINAT UNTUK SERTAI KURSUS LAIN ANJURAN ANIS</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.select :othcrs, options_for_select(["Ya",
+                                                  "Tidak"], 
+                                                  selected: @ilsc.othcrs), 
+            {include_blank: "Pilih Satu"}, {required: true} %>
+          </div>
+        </div>
+      </div>
 
-        </table>
-      </div> <!-- DIV TABLE -->
+      
+
+      
 
       
 
