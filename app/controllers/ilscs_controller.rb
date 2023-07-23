@@ -138,8 +138,9 @@ class IlscsController < ApplicationController
 
 	def ilscindex
 		@admin = current_admin
+		@phs = ["Permohonan Baru","Permohonan Tidak Lengkap", "Permohonan Lengkap (Dalam Semakan)", "Permohonan Ditolak","Permohonan Dalam Senarai Menunggu","Panggilan Temuduga", "Lulus Temuduga","Gagal Temuduga","Kemasukan Program","Tamat Program"]
 		@ilscs = Ilsc.where(tp: "PERSEDIAAN ALAM PEKERJAAN")
-		@ekids = Ekid.all
+		#@ekids = Ekid.all
 		@ilscs = @ilscs.where('extract(year from created_at) = ?', params[:yr]) unless params[:yr].blank?
 		if params[:sch].present?
 			@ilscs  = @ilscs.where(tp: params[:sch_fld]) unless params[:sch_fld].blank?
@@ -261,9 +262,17 @@ class IlscsController < ApplicationController
 			
 
 			if @ilsc.save 
-				ilsc_ls(@ilsc.id,params[:ilsc])
 				
-
+				ilsc_ls(@ilsc.id,params[:ilsc])
+				puts "before-#{@ilsc.tp}"
+				if @ilsc.tp == "PERSEDIAAN ALAM PEKERJAAN"
+					@ilsc.stat = "Permohonan"
+					@ilsc.phs = "Permohonan Baru"
+				elsif @ilsc.tp == "PENCARIAN PEKERJAAN"
+					@ilsc.phs = "Permohonan Dalam Semakan"
+				end
+				@ilsc.save
+				puts "after-#{@ilsc.tp}"
 				flash[:success] = "Pendaftaran Diterima. Pihak ANIS akan menghubungi anda jika permohonan diluluskan"
 				redirect_to ilsc_list_path(perse: @ilsc.perse.id)
 			else
@@ -347,6 +356,7 @@ class IlscsController < ApplicationController
 														    :docnm,
 														    :docph,
 														    :stat,
+														    :phs,
 														    :marstat,
 																:dun,
 																:parl,

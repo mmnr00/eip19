@@ -60,10 +60,27 @@
                 <%= perse.email %><br>
               </td>
               <td><%= ek.tp %></td>
-              <td>
-                <div class="badge badge-pill badge-info" style="font-size: 13px;"><%= ek.stat %></div><br>
-                <b>Makluman Admin: </b><%= ek.descr %>
-              </td>
+              <td><% if ek.tp != "DET & JOB COACH" %>
+                <div class="badge badge-pill badge-info" style="font-size: 13px;"><%= ek.phs %></div><br>
+                <b>Makluman Admin: </b><%= ek.descr %><br>
+                <% if ek.tp = "PERSEDIAAN ALAM PEKERJAAN" %>
+                  <% if ek.dtp.present? %>
+                    <b>Tarikh Penilaian: </b><%= ek.dtp.strftime('%d-%^b-%Y') %><br>
+                  <% end %>
+                  <% if ek.plcadm.present? %>
+                    <b>Tempat Kursus: </b><%= ek.plcadm %><br>
+                  <% end %>
+                  <% if ek.crsadm.present? %>
+                    <b>Jenis Kursus: </b><%= ek.crsadm %><br>
+                  <% end %>
+                  <% if ek.dts.present? %>
+                    <b>Tarikh Mula: </b><%= ek.dts.strftime('%d-%^b-%Y') %><br>
+                  <% end %>
+                  <% if ek.dte.present? %>
+                    <b>Tarikh Tamat: </b><%= ek.dte.strftime('%d-%^b-%Y') %><br>
+                  <% end %>
+                <% end %>
+              </td><% end %>
               <td><%= ek.created_at.strftime('%d-%^b-%y') %></td>
             </tr>
           <% cnt = cnt +1 ; end %> 
