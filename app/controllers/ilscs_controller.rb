@@ -216,8 +216,6 @@ class IlscsController < ApplicationController
 		if params[:sch].present?
 			if params[:prog] == "PERSEDIAAN ALAM PEKERJAAN"
 				dt = check_bday(params[:ic])
-				puts dt
-				puts ((dt>=17) && (dt<=25))
 				if ((dt>=17) && (dt<=25))
 					ilsc_exs = Ilsc.where(ic: params[:ic], tp: params[:prog])
 					if ilsc_exs.present?
@@ -230,11 +228,17 @@ class IlscsController < ApplicationController
 					redirect_to request.referrer	
 				end
 			elsif params[:prog] == "PENCARIAN PEKERJAAN"
-				ilsc_exs = Ilsc.where(ic: params[:ic], tp: params[:prog])
-				if ilsc_exs.present?
-					flash[:danger] = "No MYKAD #{ilsc_exs.last.name} ini sudah didaftarkan oleh #{ilsc_exs.last.perse.name}"
+				dt = check_bday(params[:ic])
+				if ((dt>=18) && (dt<=35))
+					ilsc_exs = Ilsc.where(ic: params[:ic], tp: params[:prog])
+					if ilsc_exs.present?
+						flash[:danger] = "No MYKAD #{ilsc_exs.last.name} ini sudah didaftarkan oleh #{ilsc_exs.last.perse.name}"
+					else
+						@cfm = true
+					end
 				else
-					@cfm = true
+					flash[:danger] = "Umur peserta tidak menetapi syarat program (18 hingga 35 tahun)"
+					redirect_to request.referrer	
 				end
 			elsif params[:prog] == "DET & JOB COACH"
 				ilsc_exs = Ilsc.where(ic: params[:ic], tp: params[:prog])
