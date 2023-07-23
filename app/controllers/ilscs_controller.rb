@@ -80,7 +80,7 @@ class IlscsController < ApplicationController
 	def ilscphs
 		pars = params[:ek]
 		ek = Ilsc.find(pars[:ilsc])
-		ek.update(phs: pars[:phs],descr: pars[:descr], dtp: pars[:dtp], dts: pars[:dts], dte:pars[:dte],stat: pars[:stat])
+		ek.update(phs: pars[:phs],descr: pars[:descr], dtp: pars[:dtp], dts: pars[:dts], dte:pars[:dte],plcadm:pars[:plcadm],crsadm:pars[:crsadm])
 		#ek.admupd << [Date.today, current_admin.id, ek.stat, pars[:phs], pars[:descr],pars[:dtp],pars[:dts],pars[:dte],pars[:tp],pars[:sesd],pars[:sest]]
 		ek.save  
 		flash[:success] = "Kemaskini Status Berjaya"

@@ -215,12 +215,10 @@
             </td>
 
             <td>
-              <%= f.fields_for :"#{ek.id}" do |h| %>
-              <% ek.stat %>
-
-                <%= h.select :stat, options_for_select(["Permohonan Dalam Semakan", "Permohonan Tidak Lengkap","Permohonan Diluluskan", "Permohonan Ditolak"],selected: ek.stat), {include_blank: "Pilih Status"}, required: false %>
-                <%= h.text_area :descr, placeholder: "Makluman Admin", value: ek.descr, style: "margin-top: 5px; width: 100%" %>
-              <% end %>
+              <%= link_to ek.stat, "#", class: "btn btn-block btn-success", style: "margin-bottom: -20px; font-size: 15px"%><br>
+              <%= link_to ek.phs, "#", class: "badge badge-pill badge-primary" %><br>
+              <b>Maklumat Admin:</b><br>
+              <%= ek.descr %><br>
             </td>
             
 
