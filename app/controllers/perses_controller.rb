@@ -186,6 +186,12 @@ class PersesController < ApplicationController
 								else
 									redirect_to ilsc_list_path(perse: perse.id)
 								end
+							elsif params[:prog] == "CPCU"
+								if params[:regkid].present?
+									redirect_to new_ilsc_path(perse: perse.id, prog: params[:prog])
+								else
+									redirect_to cpcu_list_path(perse: perse.id)
+								end
 							end	
 
 						else

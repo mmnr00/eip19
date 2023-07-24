@@ -2,6 +2,15 @@ class IlscsController < ApplicationController
 	before_action :authenticate_admin!, only: [:ilscindex,:ilsclistxls]
 	before_action :set_all
 
+	def cpcuindex
+		render action: "cpcuindex", layout: "dsb-admin-cpcu"
+	end
+
+	def cpcu_list
+		@perse = Perse.find(params[:perse])
+		@ilscs = @perse.ilscs
+	end
+
 	def ilscdet
 		@admin = current_admin
 		@ilscs = Ilsc.where(tp: "DET & JOB COACH")
@@ -241,6 +250,13 @@ class IlscsController < ApplicationController
 					redirect_to request.referrer	
 				end
 			elsif params[:prog] == "DET & JOB COACH"
+				ilsc_exs = Ilsc.where(ic: params[:ic], tp: params[:prog])
+				if ilsc_exs.present?
+					flash[:danger] = "No MYKAD #{ilsc_exs.last.name} ini sudah didaftarkan oleh #{ilsc_exs.last.perse.name}"
+				else
+					@cfm = true
+				end
+			elsif params[:prog] == "CPCU"
 				ilsc_exs = Ilsc.where(ic: params[:ic], tp: params[:prog])
 				if ilsc_exs.present?
 					flash[:danger] = "No MYKAD #{ilsc_exs.last.name} ini sudah didaftarkan oleh #{ilsc_exs.last.perse.name}"

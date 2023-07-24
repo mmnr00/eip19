@@ -36,6 +36,8 @@ Rails.application.routes.draw do
 	root 'welcomes#index2'
 
   #~~ILSC
+  get '/cpcuindex', to: 'ilscs#cpcuindex'
+  get '/cpcu_list', to: 'ilscs#cpcu_list'
   get '/ilsc_list', to: 'ilscs#ilsc_list'
   get '/ilsc_stat', to: 'ilscs#ilsc_stat'
   get '/ilsc_conf', to: 'ilscs#ilsc_conf'
