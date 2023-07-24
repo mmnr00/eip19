@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_07_23_010046) do
+ActiveRecord::Schema.define(version: 2023_07_24_125649) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -486,6 +486,11 @@ ActiveRecord::Schema.define(version: 2023_07_23_010046) do
     t.string "othcrs"
     t.string "plcadm"
     t.string "crsadm"
+    t.text "hosdoc"
+    t.string "nmwr"
+    t.string "relwr"
+    t.string "telhmwr"
+    t.string "phwr"
   end
 
   create_table "kdans", force: :cascade do |t|

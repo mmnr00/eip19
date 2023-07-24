@@ -358,6 +358,12 @@ class IlscsController < ApplicationController
 			end
 		end
 
+		if par[:hosdoc].present?
+			par[:hosdoc].each do |k,v|
+				@ilsc.hosdoc[k] = [v["hosnm"],v["diag"]]
+			end
+		end
+
 		if par[:sbls].present?
 			par[:sbls].each do |k,v|
 				@ilsc.sbls[k] = [v["nmsb"],v["age"],v["skjb"],v["sbph"],v["thp"]]
