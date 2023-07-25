@@ -41,7 +41,7 @@ class IlscsController < ApplicationController
 
 	def cpcu_list
 		@perse = Perse.find(params[:perse])
-		@ilscs = @perse.ilscs
+		@ilscs = @perse.ilscs.where(tp: "CPCU")
 	end
 
 	def ilscdet
@@ -244,7 +244,7 @@ class IlscsController < ApplicationController
 
 	def ilsc_list
 		@perse = Perse.find(params[:perse])
-		@ilscs = @perse.ilscs
+		@ilscs = @perse.ilscs.where.not(tp: "CPCU")
 	end
 
 	def new
@@ -433,6 +433,10 @@ class IlscsController < ApplicationController
 														    :rdoku,
 														    :othcrs,
 																:selspr,
+																:nmwr,
+																:relwr,
+																:telhmwr,
+																:phwr,
 																:crstp => [],
 																fotos_attributes: [:foto, :picture, :foto_name])
 	end

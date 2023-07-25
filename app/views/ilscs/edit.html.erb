@@ -9,5 +9,7 @@
   <%= render 'ilscs/form_cari', actn: "edit" %>
 <% elsif @ilsc.tp == "DET & JOB COACH" %>
   <%= render 'ilscs/form_det', actn: "edit" %>
+<% elsif @ilsc.tp == "CPCU" %>
+  <%= render 'ilscs/form_cpcu', actn: "edit" %>
 <% end %>
 </div>
