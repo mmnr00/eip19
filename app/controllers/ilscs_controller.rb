@@ -235,7 +235,12 @@ class IlscsController < ApplicationController
 		if @ilsc.update(ilsc_params)
 			ilsc_ls(@ilsc.id,params[:ilsc])
 			@ilsc.save
-			redirect_to ilsc_list_path(perse: @ilsc.perse.id)
+			if @ilsc.tp == "CPCU"
+				redirect_to cpcu_list_path(perse: @ilsc.perse.id)
+			else
+				redirect_to ilsc_list_path(perse: @ilsc.perse.id)
+			end
+			
 		else
 			render @ilsc.errors.full_messages
 			render :edit
@@ -328,7 +333,11 @@ class IlscsController < ApplicationController
 				@ilsc.save
 				puts "after-#{@ilsc.tp}"
 				flash[:success] = "Pendaftaran Diterima. Pihak ANIS akan menghubungi anda jika permohonan diluluskan"
-				redirect_to ilsc_list_path(perse: @ilsc.perse.id)
+				if @ilsc.tp == "CPCU"
+					redirect_to cpcu_list_path(perse: @ilsc.perse.id)
+				else
+					redirect_to ilsc_list_path(perse: @ilsc.perse.id)
+				end
 			else
 				render @ilsc.errors.full_messages
 				render :new

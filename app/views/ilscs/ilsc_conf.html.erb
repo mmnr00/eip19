@@ -90,4 +90,11 @@
     
   </div>
   <%= render 'ilscs/profile_det' %>
+<% elsif @ilsc.tp == "CPCU" %>
+  <div class="prt-hide" style="margin-bottom: 10px;">
+    <%= link_to "Muat Turun Borang", "#", onclick: 'window.print()', class: 'btn btn-sm btn-success btn-block' %>
+    
+  </div>
+  <%= render 'ilscs/profile_cpcu' %>
+
 <% end %>
