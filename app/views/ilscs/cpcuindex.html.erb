@@ -58,6 +58,7 @@
             <th style="background-color:#ffb2b2; width: 20%">MAKLUMAT PESERTA</th>
             <th style="background-color:#ffb2b2; width: 10%">MAKLUMAT PEMOHON</th>
             <th style="background-color:#ffb2b2; width: 20%">PROGRAM & KURSUS</th>
+            <th style="background-color:#ffb2b2; width: 20%">STATUS</th>
             <th style="background-color:#ffb2b2; width: 5%">TARIKH PERMOHONAN</th>
           </tr>
         </thead>
@@ -86,8 +87,10 @@
               <%= ek.tp %><br><br>
                 
             </td>
-            
-            
+            <td>
+              <%= link_to ek.phs, "#", class: "badge badge-pill badge-primary" %><br>
+              <b>Makluman Admin: </b><i><%= ek.descr %></i>
+            </td>
 
             <td>
               <%= ek.created_at.strftime('%d-%^b-%y') %>    

@@ -329,6 +329,8 @@ class IlscsController < ApplicationController
 					@ilsc.phs = "Permohonan Baru"
 				elsif @ilsc.tp == "PENCARIAN PEKERJAAN"
 					@ilsc.phs = "Permohonan Dalam Semakan"
+				elsif @ilsc.tp == "CPCU"
+					@ilsc.phs = "Permohonan Dalam Semakan"
 				end
 				@ilsc.save
 				puts "after-#{@ilsc.tp}"
