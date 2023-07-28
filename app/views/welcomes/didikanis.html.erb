@@ -12,8 +12,12 @@
 <div class="section-header container bg-white" style="margin-top: 20px">
   <h3 style="">MAKLUMAN</h3>
   <div class="border-prog" style=""></div>
-  <p style="text-align: center; color: black; font-weight: 600">Permohonan DIDIK ANIS Telah Dibuka</p>
-  <p style="text-align: center; color: black">Tarikh Pendaftaran Bermula Dari 5 Jun Hingga 4 Julai 2023</p>
+  <% if ENV['DDK_OPEN'] == "TRUE" %>
+    <p style="text-align: center; color: black; font-weight: 600">Permohonan DIDIK ANIS Telah Dibuka</p>
+    <p style="text-align: center; color: black">Tarikh Pendaftaran Bermula Dari 5 Jun Hingga 4 Julai 2023</p>
+  <% else %>
+    <p style="text-align: center; color: black; font-weight: 600">Permohonan DIDIK ANIS Telah Ditutup</p>
+  <% end %>
 </div>
 
 <!-- content -->
