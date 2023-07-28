@@ -36,10 +36,16 @@ Rails.application.routes.draw do
 	root 'welcomes#index2'
 
   #~~ILSC
+  get '/cpcuindex', to: 'ilscs#cpcuindex'
+  get '/cpcu_list', to: 'ilscs#cpcu_list'
   get '/ilsc_list', to: 'ilscs#ilsc_list'
+  get '/ilsc_stat', to: 'ilscs#ilsc_stat'
   get '/ilsc_conf', to: 'ilscs#ilsc_conf'
   get '/ilscindex', to: 'ilscs#ilscindex'
+  get '/ilscari', to: 'ilscs#ilscari'
+  get '/ilscdet', to: 'ilscs#ilscdet'
   get '/ilsclistxls', to: 'ilscs#ilsclistxls'
+  post '/ilscphs', to: 'ilscs#ilscphs'
   post '/statilsc', to: 'ilscs#statilsc'
 
   #~~QSAS
@@ -171,6 +177,10 @@ Rails.application.routes.draw do
   get '/showstat', to: 'sces#showstat'
 
   #WELCOME#
+  get '/cpcuanis', to: 'welcomes#cpcuanis'
+  get '/jcdet', to: 'welcomes#jcdet'
+  get '/carikerja', to: 'welcomes#carikerja'
+  get '/etwranis', to: 'welcomes#etwranis'
   get '/ikonanis', to: 'welcomes#ikonanis'
   get '/rakananis', to: 'welcomes#rakananis'
   get '/transisikerja', to: 'welcomes#transisikerja'

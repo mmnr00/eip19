@@ -4,7 +4,15 @@
 
 <% if @cfm.present? %>
   <div style="font-size: 12px">
-    <%= render 'ilscs/form_sedia', actn: "new" %>
+    <% if params[:prog] == "PERSEDIAAN ALAM PEKERJAAN" %>
+      <%= render 'ilscs/form_sedia', actn: "new" %>
+    <% elsif params[:prog] == "PENCARIAN PEKERJAAN" %>
+      <%= render 'ilscs/form_cari', actn: "new" %>
+    <% elsif params[:prog] == "DET & JOB COACH" %>
+      <%= render 'ilscs/form_det', actn: "new" %>
+    <% elsif params[:prog] == "CPCU" %>
+      <%= render 'ilscs/form_cpcu', actn: "new" %>
+    <% end %>
   </div>
 <% else %>
 

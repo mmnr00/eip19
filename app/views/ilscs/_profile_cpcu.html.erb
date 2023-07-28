@@ -1,3 +1,18 @@
+<div class="col-md-12 col-lg-12" align="center" style="margin-bottom: 5px;"> 
+  <% image = @ilsc.fotos.where(foto_name: "GAMBAR PROFIL CPCU").first %>
+  <% if image.present? && image.present? && image.picture.present? %>
+    <a href="<%="#{image.picture.url}"%>" target="_blank">
+      <% if @pdf %>
+        <%= wicked_pdf_image_tag(image.picture.url, size: "100x100") %>
+      <% else %>
+        <%= image_tag(image.picture.url, size: "150x150") %>
+      <% end %>
+    </a>
+  <% else %>
+    No photo uploaded
+  <% end %>
+ </div>
+
 <div class="table-responsive" style="font-size: 12px">
   <table class="table table-bordered" width="100%" cellspacing="0" style="color: black;borders: 2px solid black">
 
@@ -6,12 +21,8 @@
         <td style="background-color:#0070C0 !important" colspan="2"><strong><font color="white"><h3 align="center"><%= @ilsc.name.upcase %> (ID: <%= @ilsc.id %>)</h3></font></strong></td>
       </tr>
       <tr>
-        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">NAMA SAMARAN</font></td>
-        <td style="background-color: !important"><%= "#{@ilsc.applnm}" %></td>
-      </tr>
-      <tr>
         <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">JENIS PROGRAM</font></td>
-        <td style="background-color: !important"><%= "#{@ilsc.tp} (ILSC)" %></td>
+        <td style="background-color: !important">Celebral Palsy Care Unit (CPCU)</td>
       </tr>
       <tr>
         <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">NO MYKAD</font></td>
@@ -50,24 +61,35 @@
         <td style="background-color: !important"><%= "#{@ilsc.ph}" %></td>
       </tr>
       <tr>
-        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">NO TELEFON PELATIH</font></td>
-        <td style="background-color: !important"><%= "#{@ilsc.phtr}" %></td>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">EMAIL</font></td>
+        <td style="background-color: !important"><%= "#{@ilsc.email}" %></td>
       </tr>
       <tr>
-        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">SUKAN</font></td>
-        <td style="background-color: !important"><%= "#{@ilsc.sport}" %></td>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">STATUS PERKAHWINAN</font></td>
+        <td style="background-color: !important"><%= "#{@ilsc.marstat}" %></td>
       </tr>
       <tr>
-        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">HOBI</font></td>
-        <td style="background-color: !important"><%= "#{@ilsc.hobby}" %></td>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">DUN</font></td>
+        <td style="background-color: !important"><%= "#{@ilsc.dun}" %></td>
       </tr>
       <tr>
-        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">PEKERJAAN YANG DIMINATI</font></td>
-        <td style="background-color: !important"><%= "#{@ilsc.jobint}" %></td>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">PARLIMEN</font></td>
+        <td style="background-color: !important"><%= "#{@ilsc.parl}" %></td>
       </tr>
     </tbody>
   </table>
 </div>
+
+<div class="table-responsive">
+  <table class="table table-bordered" width="100%" cellspacing="0" style="color: black;borders: 2px solid black">
+    <tbody>
+      <tr>
+        <td style="background-color:#d29494 !important" colspan="2"><font color="white"><h5>BAHAGIAN B</h5></font></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
 
 <div class="table-responsive border" style="font-size: 12px">
 <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0">
@@ -94,68 +116,56 @@
            
   </tbody>
 </table>
-</div>
+</div><br>
 
 <div class="table-responsive border" style="font-size: 12px">
 <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0">
   <thead style="text-align: center">
-    <th style="background-color:#ccccff;color:black" colspan="3">MAKLUMAT KURSUS</th>
+    <th style="background-color:#ccccff;color:black" colspan="4">MAKLUMAT DIAGNOSIS DOKTOR</th>
   </thead>
   <thead style="text-align: center">
     <tr class="shadow">
-      <th style="background-color:#7fbf7f;color:black">NAMA KURSUS</th>
-      <th style="background-color:#7fbf7f;color:black">TEMPAT</th>
-      <th style="background-color:#7fbf7f;color:black">TEMPOH</th>
+      <th style="background-color:#7fbf7f;color:black">NAMA KLINIK/HOSPITAL</th>
+      <th style="background-color:#7fbf7f;color:black">DIAGNOSIS</th>
     </tr>
   </thead>
   <tbody style="color: black">
     <% (1..5).each do |n| %>
       <tr>
-        <td><%= @ilsc.crls["#{n}"][0] %></td>
-        <td><%= @ilsc.crls["#{n}"][1] %></td>
-        <td><%= @ilsc.crls["#{n}"][2] %></td>
+        <td><%= @ilsc.hosdoc["#{n}"][0] %></td>
+        <td><%= @ilsc.hosdoc["#{n}"][1] %></td>
       </tr>
     <% end %>
            
   </tbody>
 </table>
+</div><br>
+
+<div class="table-responsive" style="font-size: 12px">
+  <table class="table table-bordered" width="100%" cellspacing="0" style="color: black;borders: 2px solid black">
+    <tbody>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">ALAHAN MAKANAN</font></td>
+        <td style="background-color: !important"><%= "#{@ilsc.allerg}" %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">NAMA DOKTOR PERIBADI (JIKA ADA)</font></td>
+        <td style="background-color: !important"><%= "#{@ilsc.docnm}" %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">NO TELEFON DOKTOR PERIBADI</font></td>
+        <td style="background-color: !important"><%= "#{@ilsc.docph}" %></td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
-<div class="table-responsive border" style="font-size: 12px">
-<table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0">
-  <thead style="text-align: center">
-    <th style="background-color:#ccccff;color:black" colspan="5">MAKLUMAT ADIK BERADIK</th>
-  </thead>
-  <thead style="text-align: center">
-    <tr class="shadow">
-      <th style="background-color:#7fbf7f;color:black; width: 35%">NAMA</th>
-      <th style="background-color:#7fbf7f;color:black">UMUR</th>
-      <th style="background-color:#7fbf7f;color:black">PERSEKOLAHAN/PERKERJAAN</th>
-      <th style="background-color:#7fbf7f;color:black">NO TELEFON</th>
-      <th style="background-color:#7fbf7f;color:black">TAHAP</th>
-    </tr>
-  </thead>
-  <tbody style="color: black">
-    <% (1..10).each do |n| %>
-      <tr>
-        <td><%= @ilsc.sbls["#{n}"][0] %></td>
-        <td><%= @ilsc.sbls["#{n}"][1] %></td>
-        <td><%= @ilsc.sbls["#{n}"][2] %></td>
-        <td><%= @ilsc.sbls["#{n}"][3] %></td>
-        <td><%= @ilsc.sbls["#{n}"][4] %></td>
-      </tr>
-    <% end %>
-           
-  </tbody>
-</table>
-</div>
-      
-    
+
 <div class="table-responsive">
   <table class="table table-bordered" width="100%" cellspacing="0" style="color: black;borders: 2px solid black">
     <tbody>
       <tr>
-        <td style="background-color:#d29494 !important" colspan="2"><font color="white"><h5>BAHAGIAN B</h5></font></td>
+        <td style="background-color:#d29494 !important" colspan="2"><font color="white"><h5>BAHAGIAN C</h5></font></td>
       </tr>
     </tbody>
   </table>
@@ -250,25 +260,27 @@
         <td>
           <%= @ilsc.prtls["phm"] %>
         </td>
+      </tr>
+      <tr>
+        <td>
+         KAWASAN PENDAFTARAN MENGUNDI
+        </td>
+        <td>
+          <%= @ilsc.prtls["sprf"] %>
+        </td>
+        <td>
+          <%= @ilsc.prtls["sprm"] %>
+        </td>
       </tr>    
     </tbody>
 
   </table>
 </div> <!-- DIV TABLE -->
 
-
-
 <div class="table-responsive border" style="font-size: 12px">
   <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0">
     <thead style="text-align: center">
-      <th style="background-color:#ccccff;color:black" colspan="3">MAKLUMAT 2 WARIS</th>
-    </thead>
-    <thead style="text-align: center">
-      <tr class="shadow">
-        <th style="background-color:#7fbf7f;color:black">MAKLUMAT</th>
-        <th style="background-color:#7fbf7f;color:black">WARIS 1</th>
-        <th style="background-color:#7fbf7f;color:black">WARIS 2</th>
-      </tr>
+      <th style="background-color:#ccccff;color:black" colspan="3">MAKLUMAT WARIS UNTUK DIHUBUNGI JIKA KECEMASAN</th>
     </thead>
     <tbody style="color: black">
       <tr>
@@ -276,21 +288,15 @@
          NAMA
         </td>
         <td>
-          <%=  @ilsc.warls["name1"] %>
+          <%= @ilsc.nmwr %>
         </td>
-        <td>
-          <%=  @ilsc.warls["name2"] %>
-        </td>
-      </tr>
+      </tr> 
       <tr>
         <td>
          HUBUNGAN
         </td>
         <td>
-          <%= @ilsc.warls["rel1"] %>
-        </td>
-        <td>
-          <%= @ilsc.warls["rel2"] %>
+          <%= @ilsc.relwr %>
         </td>
       </tr>
       <tr>
@@ -298,115 +304,83 @@
          NO TELEFON RUMAH
         </td>
         <td>
-          <%= @ilsc.warls["ph1"] %>
+          <%= @ilsc.telhmwr %>
         </td>
-        <td>
-          <%= @ilsc.warls["ph2"] %>
-        </td>
-      </tr>
+      </tr> 
       <tr>
         <td>
          NO TELEFON BIMBIT
         </td>
         <td>
-          <%= @ilsc.warls["mob1"] %>
+          <%= @ilsc.phwr %>
         </td>
-        <td>
-          <%= @ilsc.warls["mob2"] %>
-        </td>
-      </tr>
-      <tr>
-        <td>
-         ALAMAT
-        </td>
-        <td>
-          <%=  @ilsc.warls["add1"] %>
-        </td>
-        <td>
-          <%= @ilsc.warls["add2"] %>
-        </td>
-      </tr>
-             
+      </tr>    
     </tbody>
 
   </table>
 </div> <!-- DIV TABLE -->
 
-
-
-<div class="table-responsive" style="font-size: 12px;">
+<div class="table-responsive">
   <table class="table table-bordered" width="100%" cellspacing="0" style="color: black;borders: 2px solid black">
     <tbody>
       <tr>
-        <td style="background-color:#d29494 !important" colspan="2"><font color="white"><h5>BAHAGIAN C</h5></font></td>
-      </tr>
-      <tr>
-        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">DIAGNOSIS PENYAKIT</font></td>
-        <td style="background-color: !important"><%= "#{@ilsc.diag}" %></td>
-      </tr>
-      <tr>
-        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">KEKERAPAN SERANGAN</font></td>
-        <td style="background-color: !important"><%= "#{@ilsc.occdiag}" %></td>
-      </tr>
-      <tr>
-        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">NAMA UBAT</font></td>
-        <td style="background-color: !important"><%= "#{@ilsc.medc}" %></td>
-      </tr>
-      <tr>
-        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">KEKERAPAN UBAT</font></td>
-        <td style="background-color: !important"><%= "#{@ilsc.occmedc}" %></td>
-      </tr>
-      <tr>
-        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">JUMLAH DIAMBIL</font></td>
-        <td style="background-color: !important"><%= "#{@ilsc.amtmedc}" %></td>
-      </tr>
-      <tr>
-        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">ALAHAN MAKANAN</font></td>
-        <td style="background-color: !important"><%= "#{@ilsc.allerg}" %></td>
-      </tr>
-      <tr>
-        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">DOKTOR PERIBADI (JIKA ADA)</font></td>
-        <td style="background-color: !important"><%= "#{@ilsc.docnm}" %></td>
-      </tr>
-      <tr>
-        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">NO TELEFON DOKTOR PERIBADI</font></td>
-        <td style="background-color: !important"><%= "#{@ilsc.docph}" %></td>
+        <td style="background-color:#d29494 !important" colspan="2"><font color="white"><h5>DOKUMEN YANG DIPERLUKAN</h5></font></td>
       </tr>
     </tbody>
   </table>
 </div>
 
-<div class="table-responsive" style="font-size: 12px;">
-  <table class="table table-bordered" width="100%" cellspacing="0" style="color: black;borders: 2px solid black">
-    <tbody>
-      <tr>
-        <td style="background-color:#d29494 !important" colspan="2"><font color="white"><h5>BAHAGIAN D</h5></font></td>
-      </tr>
-      <tr>
-        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">KURSUS YANG DIMINATI</font></td>
-        <%
-          crs = {"1"=>"Kursus Jahitan",
-                "2"=>"Kursus Bakeri",
-                "3"=>"Kursus Pengurusan Pejabat",
-                "4"=>"Kursus Teknologi Maklumat (Kegunaan Pejabat)",
-                "5"=>"Kursus Kecerdasan Buatan (Artificial Intelligence)",
-                "6"=>"Kursus Pembungkusan",
-                "7"=>"Kursus Peruncitan",
-                "8"=>"Kursus Asas Bakeri",
-                "9"=>"Kursus Asas Pengurusan Kafe",
-                "10"=>"Kursus Cenderahati (Berasaskan Sukan)",
-                "11"=>"Kursus Asas Perkhidmatan Dobi"}
+<%
+  image = @ilsc.fotos.where(foto_name: "MYKAD PEMOHON").first
+  if image.present? && image.picture.present?
+    url = image.picture.url
+  else
+    url = ""
+  end
+%>
+<a href="<%= url %>" target="_blank"><btn class="badge badge-pill badge-secondary">MYKAD PEMOHON</btn></a><br>
 
-        %>
-        <td style="background-color: !important">
-          <% @ilsc.crstp.each do |n| %>
-            <%= crs[n] %><br>
-          <% end %>
-            
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<%
+  image = @ilsc.fotos.where(foto_name: "KAD OKU").first
+  if image.present? && image.picture.present?
+    url = image.picture.url
+  else
+    url = ""
+  end
+%>
+<a href="<%= url %>" target="_blank"><btn class="badge badge-pill badge-secondary">KAD OKU</btn></a><br>
+
+<%
+  image = @ilsc.fotos.where(foto_name: "MYKAD IBU/BAPA/PENJAGA").first
+  if image.present? && image.picture.present?
+    url = image.picture.url
+  else
+    url = ""
+  end
+%>
+<a href="<%= url %>" target="_blank"><btn class="badge badge-pill badge-secondary">MYKAD IBU/BAPA/PENJAGA</btn></a><br>
+
+<%
+  image = @ilsc.fotos.where(foto_name: "SURAT SEMAKAN SPR IBU/BAPA/PENJAGA").first
+  if image.present? && image.picture.present?
+    url = image.picture.url
+  else
+    url = ""
+  end
+%>
+<a href="<%= url %>" target="_blank"><btn class="badge badge-pill badge-secondary">SURAT SEMAKAN SPR IBU/BAPA/PENJAGA</btn></a><br>
+
+<%
+  image = @ilsc.fotos.where(foto_name: "SURAT DIAGNOSIS DOKTOR").first
+  if image.present? && image.picture.present?
+    url = image.picture.url
+  else
+    url = ""
+  end
+%>
+<a href="<%= url %>" target="_blank"><btn class="badge badge-pill badge-secondary">SURAT DIAGNOSIS DOKTOR</btn></a><br>
+
+
+ 
 
   

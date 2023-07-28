@@ -5,6 +5,18 @@ class WelcomesController < ApplicationController
 	
 	#layout "page"
 
+	def cpcuanis
+		@index = true
+	end
+
+	def carikerja
+		@index = true
+	end
+
+	def etwranis
+		@index = true
+	end
+
 	def ikonanis
 		@index = true
 	end

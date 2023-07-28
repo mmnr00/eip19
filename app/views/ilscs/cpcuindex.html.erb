@@ -1,0 +1,110 @@
+<meta name="viewport" content="width=1024">
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    Paparan Admin <b>Program Celebral Palsy Care Unit (CPCU)</b></b>
+  </li>&nbsp&nbsp
+  <%= link_to laporan_path(format: :xlsx, prg: "ILSC"), class: "badge badge-success shadow-sm", style: "font-size: 14px; font-weight: normal" do %>
+        <i class="fa fa-sync"></i> Muat Turun Laporan
+    <% end %>
+</ol>
+
+<%
+  crs = {"1"=>"Kursus Jahitan",
+        "2"=>"Kursus Bakeri",
+        "3"=>"Kursus Pengurusan Pejabat",
+        "4"=>"Kursus Teknologi Digital",
+        "5"=>"Kursus Kecerdasan Buatan (Artificial Intelligence)"}
+
+%>
+
+
+
+<%= link_to ilsclistxls_path(format: :xlsx, sch_fld: params[:sch_fld], sch: params[:sch], sch_str: params[:sch_str]), class: "badge badge-info shadow-sm", style: "font-size: 16px; font-weight: normal" do %>
+  <i class="fa fa-file-excel"></i> Muat Turun Senarai
+<% end %>
+
+
+<div class="cards shadow mb-4">
+  <div class="card-header">
+    <div class="row">
+      <%= form_tag ilscdet_path, method: :get, id: "find_kid" do %>
+        <%= text_field_tag :sch_str, params[:sch_str], placeholder: "Masukkan Nama", style: 'text-transform: uppercase' %>
+        <%= select_tag :yr, options_for_select(2020..Date.today.year, params[:yr]),
+              include_blank: "Semua Tahun" %>
+        <%= hidden_field_tag :sch, params[:sch], value: true %>
+        <%= button_tag(type: :submit, class: "badge badge-success shadow-none", style: "font-size: 14px; border-style: none; font-weight: normal",  id: "submit_expense") do %>
+            <i class="fa fa-search"></i> Cari
+        <% end %>
+        <%= link_to ilscdet_path, class: "badge badge-danger shadow-sm", style: "font-size: 14px; font-weight: normal" do %>
+            <i class="fa fa-sync"></i> Semula
+        <% end %>
+        <%= "#{@ilscs.count} carian" %>
+      <% end %>
+    <div>
+
+        
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <div class="table table-responsive border" style="font-size:13px">
+      <%= form_for(:ek, :url => {:controller=>'ilscs', :action=>'statilsc'}, :html => {multipart: true, class: "form-horizontal", method: :post, role: "form"}) do |f| %>
+      <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0" style="color: black">
+        
+        <thead>
+          <tr class="shadow">
+            <th style="background-color:#ffb2b2; width: 1%">NO</th>
+            <th style="background-color:#ffb2b2; width: 20%">MAKLUMAT PESERTA</th>
+            <th style="background-color:#ffb2b2; width: 10%">MAKLUMAT PEMOHON</th>
+            <th style="background-color:#ffb2b2; width: 20%">PROGRAM & KURSUS</th>
+            <th style="background-color:#ffb2b2; width: 20%">STATUS</th>
+            <th style="background-color:#ffb2b2; width: 5%">TARIKH PERMOHONAN</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% cnt =1 ; @ilscs.order('created_at DESC').each do |ek|; perse = ek.perse %>
+          <tr>
+            <td><%= cnt %></td>
+            <td>
+              <%= ek.name %><br>
+              (<%= ek.ic %>)<br>
+              <%
+                age = (Date.today.year*12+Date.today.month) - (ek.dobn.year*12+ek.dobn.month)
+                yr = age/12
+                mth = age - yr*12
+        
+              %>
+              <%= "#{yr} tahun, #{mth} bulan" %><br>
+              <a href="<%= ilsc_conf_url(id: ek) %>" target="_blank"><btn class="badge badge-pill badge-secondary">Profil</btn></a>
+            </td>
+            <td>
+              <%= perse.name %><br>
+              <%= perse.ph %><br>
+              <%= perse.email %><br>
+            </td>
+            <td>
+              <%= ek.tp %><br><br>
+                
+            </td>
+            <td>
+              <%= link_to ek.phs, "#", class: "badge badge-pill badge-primary" %><br>
+              <b>Makluman Admin: </b><i><%= ek.descr %></i>
+            </td>
+
+            <td>
+              <%= ek.created_at.strftime('%d-%^b-%y') %>    
+            </td>
+          </tr>
+
+          <% cnt = cnt + 1;end %> <!-- END LOOP -->
+
+        </tbody>
+        
+      </table>
+      <%= f.submit :"Kemaskini",  class: 'btn btn-sm btn-block btn-success btn-lg', style: "align:center" %>
+      <% end %> <!-- END FORM -->
+    </div>
+  </div>
+</div>
+

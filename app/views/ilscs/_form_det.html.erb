@@ -1,0 +1,509 @@
+<meta name="viewport" content="width=1024">
+
+
+<div class='row'>
+  <div class='col-lg-12 col-12'>
+    <%= form_for(@ilsc,:html => {multipart: true, class: "form-horizontal", role: "form"}) do |f| %>
+
+      <!-- BAHAGIAN A -->
+      <div class="col-sm-12" style="background-color:#ffcccc">
+        <h4 style="color:black; font-weight: 600">Bahagian A</h4>
+      </div>
+      <b><u>MAKLUMAT PEMOHON</u></b>
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>NAMA</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.text_field :name, class: "form-control", placeholder: "", autofocus: true, required: true, style: "text-transform: uppercase" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>NO MYKAD</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+             <% 
+              if @ilsc.ic.present?
+                icval = @ilsc.ic
+              else
+                icval = params[:ic]
+              end 
+            %>
+            <%= f.text_field :ic, class: "form-control", placeholder: "cth: 141201035647 (tiada dash)", autofocus: true, required: true, value: icval, readonly: true %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>JANTINA</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.select :gender, options_for_select(["Lelaki", 
+                                                  "Perempuan"], 
+                                                  selected: @ilsc.gender), 
+            {include_blank: "SILA PILIH"}, {required: true} %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>TARIKH LAHIR</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.date_field :dobn, class: "form-control", placeholder: "", autofocus: true, required: true, style: "text-transform: uppercase" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>TEMPAT LAHIR</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.text_field :birthplc, class: "form-control", placeholder: "", autofocus: true, required: true, style: "text-transform: uppercase" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>ALAMAT</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.text_area :addr, class: "form-control", placeholder: "", autofocus: true, required: true, style: "text-transform: uppercase" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>BANGSA</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.text_field :race, class: "form-control", placeholder: "", autofocus: true, required: true, style: "text-transform: uppercase" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>AGAMA</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.text_field :relg, class: "form-control", placeholder: "", autofocus: true, required: true, style: "text-transform: uppercase" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>NO TELEFON</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.text_field :ph, class: "form-control", placeholder: "", autofocus: true, required: true, style: "text-transform: uppercase" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>EMEL</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.text_field :email, class: "form-control", placeholder: "", autofocus: true, required: true, style: "text-transform: uppercase" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>STATUS</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.select :marstat, options_for_select(["Bujang",
+                                                  "Kahwin",
+                                                  "Duda",
+                                                  "Balu"], 
+                                                  selected: @ilsc.marstat), 
+            {include_blank: "Pilih Satu"}, {required: true} %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>DUN</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.text_field :dun, class: "form-control", placeholder: "", autofocus: true, required: true, style: "text-transform: uppercase" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>PARLIMEN</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.text_field :parl, class: "form-control", placeholder: "", autofocus: true, required: true, style: "text-transform: uppercase" %>
+          </div>
+        </div>
+      </div>
+
+      <!-- BAHAGIAN B -->
+      <div class="col-sm-12" style="background-color:#ffcccc">
+        <h4 style="color:black; font-weight: 600">Bahagian B</h4>
+      </div>
+
+      <b><u>MAKLUMAT MAJIKAN</u></b>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>NAMA MAJIKAN</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.text_field :majnm, class: "form-control", placeholder: "", autofocus: true, style: "text-transform: uppercase" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>JAWATAN</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.text_field :majjw, class: "form-control", placeholder: "", autofocus: true, style: "text-transform: uppercase" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>JABATAN</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.text_field :majjbt, class: "form-control", placeholder: "", autofocus: true, style: "text-transform: uppercase" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>TEMPOH BEKERJA</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.text_field :majtmp, class: "form-control", placeholder: "", autofocus: true, style: "text-transform: uppercase" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>ALAMAT MAJIKAN</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.text_field :majadd, class: "form-control", placeholder: "", autofocus: true, style: "text-transform: uppercase" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>NO TELEFON MAJIKAN</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.text_field :majtel, class: "form-control", placeholder: "", autofocus: true, style: "text-transform: uppercase" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>NO FAKS MAJIKAN</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.text_field :majfaks, class: "form-control", placeholder: "", autofocus: true, style: "text-transform: uppercase" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>EMAIL MAJIKAN</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.text_field :majeml, class: "form-control", placeholder: "", autofocus: true, style: "text-transform: uppercase" %>
+          </div>
+        </div>
+      </div>
+
+      <!-- BAHAGIAN B -->
+      <div class="col-sm-12" style="background-color:#ffcccc">
+        <h4 style="color:black; font-weight: 600">Bahagian C</h4>
+      </div>      
+
+      <b><u>MAKLUMAT KURSUS YANG PERNAH DIHADIRI</u></b>
+
+      <div class="table-responsive border" style="font-size: 12px">
+        <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0">
+          <thead style="text-align: center">
+            <tr class="shadow">
+              <th style="background-color:#7fbf7f;color:black">NAMA KURSUS</th>
+              <th style="background-color:#7fbf7f;color:black">TEMPAT</th>
+              <th style="background-color:#7fbf7f;color:black">TEMPOH</th>
+            </tr>
+          </thead>
+          <tbody style="color: black">
+            <%= f.fields_for :crls do |h| %>
+            <% (1..5).each do |n| %>
+            <%= h.fields_for :"#{n}" do |g| %>
+              <tr>
+                <td>
+                  <%= g.text_field :nmcr, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px", value: @ilsc.crls["#{n}"][0] %>
+                </td>
+                <td>
+                  <%= g.text_field :ven, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px", value: @ilsc.crls["#{n}"][1] %>
+                </td>
+                <td>
+                  <%= g.text_field :prd, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px", value: @ilsc.crls["#{n}"][2] %>
+                </td>
+              </tr>
+            <% end %>
+            <% end %>
+            <% end %>
+                   
+          </tbody>
+
+        </table>
+      </div> <!-- DIV TABLE -->
+      <br>
+
+      <b><u>PENGALAMAN KERJA</u></b>
+
+      <div class="table-responsive border" style="font-size: 12px">
+        <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0">
+          <thead style="text-align: center">
+            <tr class="shadow">
+              <th style="background-color:#7fbf7f;color:black">NAMA MAJIKAN</th>
+              <th style="background-color:#7fbf7f;color:black">JAWATAN</th>
+              <th style="background-color:#7fbf7f;color:black">TEMPOH BEKERJA</th>
+            </tr>
+          </thead>
+          <tbody style="color: black">
+            <%= f.fields_for :prevmaj do |h| %>
+            <% (1..5).each do |n| %>
+            <%= h.fields_for :"#{n}" do |g| %>
+              <tr>
+                <td>
+                  <%= g.text_field :nmj, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px", value: @ilsc.prevmaj["#{n}"][0] %>
+                </td>
+                <td>
+                  <%= g.text_field :jwt, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px", value: @ilsc.prevmaj["#{n}"][1] %>
+                </td>
+                <td>
+                  <%= g.text_field :tempoh, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px", value: @ilsc.prevmaj["#{n}"][2] %>
+                </td>
+              </tr>
+            <% end %>
+            <% end %>
+            <% end %>
+                   
+          </tbody>
+
+        </table>
+      </div> <!-- DIV TABLE -->
+      <br>
+
+      <!-- BAHAGIAN C -->
+      <div class="col-sm-12" style="background-color:#ffcccc">
+        <h4 style="color:black; font-weight: 600">Bahagian D</h4>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>PENGUNDI SELANGOR</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.select :selspr, options_for_select(["Ya",
+                                                  "Tidak"], 
+                                                  selected: @ilsc.selspr), 
+            {include_blank: "Pilih Satu"}, {required: true} %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>KALANGAN KELUARGA ADA OKU?</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.select :okufm, options_for_select(["Ya",
+                                                  "Tidak"], 
+                                                  selected: @ilsc.okufm), 
+            {include_blank: "Pilih Satu"}, {required: true} %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>BERSEDIA MENGENDALIKAN OKU</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.select :rdoku, options_for_select(["Ya",
+                                                  "Tidak"], 
+                                                  selected: @ilsc.rdoku), 
+            {include_blank: "Pilih Satu"}, {required: true} %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>BERMINAT UNTUK SERTAI KURSUS LAIN ANJURAN ANIS</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.select :othcrs, options_for_select(["Ya",
+                                                  "Tidak"], 
+                                                  selected: @ilsc.othcrs), 
+            {include_blank: "Pilih Satu"}, {required: true} %>
+          </div>
+        </div>
+      </div>
+
+      
+
+      
+
+      
+
+      
+
+
+      <!-- OLD VERSION -->
+
+      
+
+      <%
+        if @ilsc.perse.present?
+          perse_id = @ilsc.perse.id
+        else
+          perse_id = params[:perse]
+        end
+
+        if @ilsc.tp.present?
+          tp = @ilsc.tp
+        else
+          tp = params[:prog]
+        end
+
+        if @ilsc.stat.present?
+          stat = @ilsc.stat
+        else
+          stat = "Permohonan Dalam Semakan"
+        end
+      %>
+
+      <%= f.hidden_field :stat, value: stat %>
+
+      <%= f.hidden_field :tp, value: tp %>
+      
+      <%= f.hidden_field :perse_id, value: perse_id %>
+
+      
+      <br>
+<!-- SUBMIT BUTTON -->
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-offset-2 col-sm-10 col-4">
+            <%= f.submit :"TERUSKAN",  class: 'btn btn-primary btn-lg' %>
+          </div>
+        </div>
+      </div>
+      
+    <% end %>
+
+  </div>
+</div>
+
+<br><br><br><br><br>

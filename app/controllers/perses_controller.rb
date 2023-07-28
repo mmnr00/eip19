@@ -73,7 +73,7 @@ class PersesController < ApplicationController
 					end
 			
 
-				elsif prog == "PERSEDIAAN ALAM PEKERJAAN" 
+				elsif prog == "PERSEDIAAN ALAM PEKERJAAN" || prog == "PENCARIAN PEKERJAAN" || prog == "DET & JOB COACH"
 					if params[:perse][:regkid].present?
 						redirect_to new_ilsc_path(perse: @perse.id, prog: prog)
 					else
@@ -180,11 +180,17 @@ class PersesController < ApplicationController
 								else
 									redirect_to ekid_list_path(perse: perse.id)
 								end
-							elsif params[:prog] == "PERSEDIAAN ALAM PEKERJAAN" || params[:prog] == "TRANSISI PEKERJAAN" 
+							elsif params[:prog] == "PERSEDIAAN ALAM PEKERJAAN" || params[:prog] == "PENCARIAN PEKERJAAN" || params[:prog] == "DET & JOB COACH" 
 								if params[:regkid].present?
 									redirect_to new_ilsc_path(perse: perse.id, prog: params[:prog])
 								else
 									redirect_to ilsc_list_path(perse: perse.id)
+								end
+							elsif params[:prog] == "CPCU"
+								if params[:regkid].present?
+									redirect_to new_ilsc_path(perse: perse.id, prog: params[:prog])
+								else
+									redirect_to cpcu_list_path(perse: perse.id)
 								end
 							end	
 

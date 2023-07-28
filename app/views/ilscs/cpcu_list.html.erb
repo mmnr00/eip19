@@ -2,16 +2,9 @@
 
 
 &nbsp
-<%= link_to new_ilsc_path(prog: "PERSEDIAAN ALAM PEKERJAAN", perse: params[:perse]), class: "btn btn-sm btn-primary", style: "font-size: 15px" do %>
-  <i class="fa far fa-plus"></i>&nbsp Daftar Program Persediaan Alam Pekerjaan
+<%= link_to new_ilsc_path(prog: "CPCU", perse: params[:perse]), class: "btn btn-sm btn-primary", style: "font-size: 15px" do %>
+  <i class="fa far fa-plus"></i>&nbsp Daftar Program <i>Celebral Palsy Care Unit</i>
 <% end %> &nbsp
-<%= link_to new_ilsc_path(prog: "PENCARIAN PEKERJAAN", perse: params[:perse]), class: "btn btn-sm btn-primary", style: "font-size: 15px" do %>
-  <i class="fa far fa-plus"></i>&nbsp Daftar Program Pencarian Pekerjaan
-<% end %> &nbsp
-<%= link_to new_ilsc_path(prog: "DET & JOB COACH", perse: params[:perse]), class: "btn btn-sm btn-primary", style: "font-size: 15px" do %>
-  <i class="fa far fa-plus"></i>&nbsp Daftar Program DET & JOB COACH
-<% end %> &nbsp
-
 <div style="margin-bottom: 10px"></div>
 
 <% if @ilscs.count >= 0 %>
