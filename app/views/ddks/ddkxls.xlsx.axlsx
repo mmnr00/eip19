@@ -24,7 +24,8 @@ wb.styles do |style|
                   "NO PENDAFTARAN",
                   "TAHUN PENDAFTARAN",
                   "EMAIL AGENSI",
-                  "NO TEL AGENSI"]
+                  "NO TEL AGENSI",
+                  "TARIKH PERMOHONAN"]
     sheet.rows[0].style = header_1
     sheet.rows[2].style = highlight_cell
     counter = 1
@@ -44,7 +45,8 @@ wb.styles do |style|
                     ddk.conum,
                     ddk.regyr,
                     ddk.email,
-                    "'#{ddk.ph}"
+                    "'#{ddk.ph}",
+                    ddk.created_at.strftime('%d-%^b-%Y')
                     ], 
       style: [nil, border_cell]
       sheet.rows[row+counter].style = border_cell

@@ -19,6 +19,9 @@ class DdksController < ApplicationController
 
 	def ddkxls
 		@ddks = Ddk.where(old1: params[:old1])
+		if params[:sch_yr].present?
+			@ddks = @ddks.where('extract(year  from created_at) = ?', params[:sch_yr])
+		end
 		respond_to do |format|
       #format.html
       format.xlsx{

@@ -191,7 +191,7 @@ class AdminsController < ApplicationController
 		@ddk.each do |dk|
 			@yr << dk.created_at.year unless @yr.include? dk.created_at.year 
 		end
-		if params[:sch].present?
+		if params[:sch_yr].present?
 			@ddk = @ddk.where('extract(year  from created_at) = ?', params[:sch_yr])
 		end
 	end
