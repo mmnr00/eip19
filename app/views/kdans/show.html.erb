@@ -24,7 +24,7 @@
 <div class="prt-hide" style="margin-bottom: 10px;">
   <%= link_to "Kemaskini Borang", edit_kdan_path(id: @kdan, perse: @kdan.perse.id), class: "badge badge-pill badge-secondary" unless current_admin.present? %> 
   <%= link_to "Muat Turun Borang", "#", onclick: 'window.print()', class: 'btn btn-sm btn-success btn-block' %>
-  <% if current_admin.present? %>
+  <% if current_admin.present? && params[:adm].present? %>
     <div class="col-4">
     <div style="background-color: #ff944c; text-align: center; margin-bottom: 10px;margin-top: 10px; border-radius: 40px">
         <h6 style="text-align: center; font-weight: 500; color: white">Kemaskini Status</h6>
@@ -134,6 +134,42 @@
           <td style="background-color: !important"><%= "#{@kdan.payr}" %></td>
         </tr>
       <% end %>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" >DOKUMEN</td>
+        <td>
+          <%
+            image = @kdan.fotos.where(foto_name: "DIAGNOSIS").first
+            if image.present? && image.picture.present?
+              url = image.picture.url
+            else
+              url = ""
+            end
+          %>
+          <a href="<%= url %>" target="_blank" download><btn class="badge badge-pill badge-secondary">Borang Diagnosis</btn></a>
+
+          <% if @kdan.tp == "DEWASA" %>
+            <%
+              image = @kdan.fotos.where(foto_name: "SPR").first
+              if image.present? && image.picture.present?
+                url = image.picture.url
+              else
+                url = ""
+              end
+            %>
+            <a href="<%= url %>" target="_blank" download><btn class="badge badge-pill badge-secondary">Slip Mengundi</btn></a>
+          <% else %>
+            <%
+              image = @kdan.fotos.where(foto_name: "IC").first
+              if image.present? && image.picture.present?
+                url = image.picture.url
+              else
+                url = ""
+              end
+            %>
+            <a href="<%= url %>" target="_blank" download><btn class="badge badge-pill badge-secondary">Salinan Mykid</btn></a>
+          <% end %>
+        </td>
+      </tr>
 
       
     </tbody>
