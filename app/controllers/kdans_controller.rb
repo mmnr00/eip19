@@ -1,5 +1,17 @@
 class KdansController < ApplicationController
 
+	def kdanxls
+		init_kdans = Kdan.all
+		@kdans = init_kdans.where(stat: params[:sch_stat]) unless params[:sch_stat].blank?
+		@kdans = init_kdans.where('extract(year from created_at) = ?', params[:yr]) unless params[:yr].blank?
+		respond_to do |format|
+      #format.html
+      format.xlsx{
+                  response.headers['Content-Disposition'] = "attachment; filename=Senarai Kad ANIS.xlsx"
+      }
+		end
+	end
+
 	def new
 		@perse = Perse.find(params[:perse])
 		@kdan = Kdan.new

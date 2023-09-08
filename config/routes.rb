@@ -40,6 +40,7 @@ Rails.application.routes.draw do
   get '/kdan_list', to: 'kdans#kdan_list'
   get '/kdan_index', to: 'kdans#kdan_index'
   post '/updkdan', to: 'kdans#updkdan'
+  get '/kdanxls', to: 'kdans#kdanxls'
 
   #~~ILSC
   get '/ilsc_list', to: 'ilscs#ilsc_list'
