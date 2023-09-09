@@ -1,0 +1,232 @@
+
+
+<meta name="viewport" content="width=1024">
+
+<% link_to "Cetak/Muat Turun", root_path, class: "badge badge-pill badge-info", style: "font-size: 12px; margin-top: 10px", :onclick => 'window.print();return false;' %>
+<% link_to "try", root_path, class: "badge badge-pill badge-info", style: "font-size: 12px; margin-top: 10px", :onclick => 'console.log("MUS");return false' %>
+
+
+<h3 style="color:black;font-weight: 1000;text-align: center">MAKLUMAT PEMOHON (<%= @kdan.tp %>)</h3>
+    
+      <% 
+        
+        img1 = image_path('anislogo1.png') 
+        img1 = "#{root_url}#{img1}"
+      %>
+      <h5 style="color:black;font-weight: 100;text-align: center;margin-top: -10px;">
+      
+      
+      KAD ANIS
+      <button class="badge badge-pill badge-primary"><%= @kdan.stat %></button>
+
+    </h5>
+
+<div class="prt-hide" style="margin-bottom: 10px;">
+  <%= link_to "Kemaskini Borang", edit_kdan_path(id: @kdan, perse: @kdan.perse.id), class: "badge badge-pill badge-secondary" unless current_admin.present? %> 
+  <%= link_to "Muat Turun Borang", "#", onclick: 'window.print()', class: 'btn btn-sm btn-success btn-block' %>
+  <% if current_admin.present? && params[:adm].present? %>
+    <div class="col-4">
+    <div style="background-color: #ff944c; text-align: center; margin-bottom: 10px;margin-top: 10px; border-radius: 40px">
+        <h6 style="text-align: center; font-weight: 500; color: white">Kemaskini Status</h6>
+    </div>
+    <%= form_for(:kdan, :url => {:controller=>'kdans', :action=>'updkdan'}, :html => {multipart: true, class: "form-horizontal", role: "form"}) do |f| %>
+
+      <div class="form-group"> <!-- STATUS-->
+        <div class="row">
+          <div class="control-label col-8">
+            <strong>STATUS PERMOHONAN</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.select :stat, options_for_select(["Permohonan Dalam Semakan","Permohonan Tidak Lengkap", "Permohonan Lulus", "Permohonan Ditolak"], selected: @kdan.stat) ,{include_blank: "Sila Pilih"}, {required: true} %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> <!-- STATUS-->
+        <div class="row">
+          <div class="control-label col-12">
+            <strong>MAKLUMAT ADMIN</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <%= f.text_area :admcmt, class: "form-control", placeholder: "", autofocus: true, required: true, style: "" %>
+          </div>
+        </div>
+      </div>
+
+      
+
+      <%= f.hidden_field :kdan, value: @kdan.id %>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-offset-2 col-sm-10 col-4">
+            <%= f.submit :Hantar,  class: 'btn btn-success btn-sm' %>
+          </div>
+        </div>
+      </div>
+
+   
+    
+
+    <% end %>
+
+
+  </div>
+  <% else %>
+    <b>Catatan Admin:</b> <%= @kdan.admcmt %> 
+  <% end %>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-bordered" width="100%" cellspacing="0" style="color: black;borders: 2px solid black">
+
+    <tbody>
+      <tr style="borders: 1.5px solid black">
+        <td style="background-color:#0070C0 !important" colspan="2"><strong><font color="white"><h2 align="center"><%= @kdan.name.upcase %> (ID: <%= @kdan.id %>)</h2></font></strong></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">NO KAD PENGENALAN</font></td>
+        <td style="background-color: !important"><%= "#{@kdan.ic}" %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">NO KAD OKU</font></td>
+        <td style="background-color: !important"><%= "#{@kdan.okukd}" %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">JANTINA</font></td>
+        <td style="background-color: !important"><%= "#{@kdan.gender}" %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">BANGSA</font></td>
+        <td style="background-color: !important"><%= "#{@kdan.race}" %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">TARIKH LAHIR</font></td>
+        <td style="background-color: !important"><%= "#{@kdan.dob.strftime('%d-%^b-%Y')}" %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">TEMPAT LAHIR</font></td>
+        <td style="background-color: !important"><%= "#{@kdan.brtplc}" %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">ALAMAT</font></td>
+        <td style="background-color: !important"><%= "#{@kdan.addr}" %></td>
+      </tr>
+      <% if @kdan.tp=="DEWASA" %>
+        <tr>
+          <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">NO TELEFON</font></td>
+          <td style="background-color: !important"><%= "#{@kdan.notel}" %></td>
+        </tr>
+        <tr>
+          <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">EMAIL</font></td>
+          <td style="background-color: !important"><%= "#{@kdan.email}" %></td>
+        </tr>
+        <tr>
+          <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">PEKERJAAN</font></td>
+          <td style="background-color: !important"><%= "#{@kdan.job}" %></td>
+        </tr>
+        <tr>
+          <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">GAJI BULANAN (RM)</font></td>
+          <td style="background-color: !important"><%= "#{@kdan.payr}" %></td>
+        </tr>
+      <% end %>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" >DOKUMEN</td>
+        <td>
+          <%
+            image = @kdan.fotos.where(foto_name: "DIAGNOSIS").first
+            if image.present? && image.picture.present?
+              url = image.picture.url
+            else
+              url = ""
+            end
+          %>
+          <a href="<%= url %>" target="_blank" download><btn class="badge badge-pill badge-secondary">Borang Diagnosis</btn></a>
+
+          <% if @kdan.tp == "DEWASA" %>
+            <%
+              image = @kdan.fotos.where(foto_name: "SPR").first
+              if image.present? && image.picture.present?
+                url = image.picture.url
+              else
+                url = ""
+              end
+            %>
+            <a href="<%= url %>" target="_blank" download><btn class="badge badge-pill badge-secondary">Slip Mengundi</btn></a>
+          <% else %>
+            <%
+              image = @kdan.fotos.where(foto_name: "IC").first
+              if image.present? && image.picture.present?
+                url = image.picture.url
+              else
+                url = ""
+              end
+            %>
+            <a href="<%= url %>" target="_blank" download><btn class="badge badge-pill badge-secondary">Salinan Mykid</btn></a>
+          <% end %>
+        </td>
+      </tr>
+
+      
+    </tbody>
+    <tbody>
+      <tr>
+        <td style="background-color:#0070C0 !important" colspan="2"><font color="white"><h4>MAKLUMAT IBU BAPA/PENJAGA</h4></font></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important" ><font color="black">NAMA</font></td>
+        <td style="background-color: !important"><%= @kdan.prtname %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important" ><font color="black">HUBUNGAN</font></td>
+        <td style="background-color: !important"><%= @kdan.prtrel%></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important" ><font color="black">NO KAD PENGENALAN</font></td>
+        <td style="background-color: !important"><%= @kdan.prtic %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important" ><font color="black">JANTINA</font></td>
+        <td style="background-color: !important"><%= @kdan.prtgender %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important" ><font color="black">BANGSA</font></td>
+        <td style="background-color: !important"><%= @kdan.prtrace %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important" ><font color="black">ALAMAT</font></td>
+        <td style="background-color: !important"><%= @kdan.prtaddr %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important" ><font color="black">NO TELEFON</font></td>
+        <td style="background-color: !important"><%= @kdan.prtfon %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important" ><font color="black">EMAIL</font></td>
+        <td style="background-color: !important"><%= @kdan.prtemail %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important" ><font color="black">PEKERJAAN</font></td>
+        <td style="background-color: !important"><%= @kdan.prtjob %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important" ><font color="black">GAJI BULANAN (RM)</font></td>
+        <td style="background-color: !important"><%= @kdan.prtpay %></td>
+      </tr>
+      
+    </tbody>
+ 
+
+    
+
+  </table>
+</div>
+
+
+
+
+

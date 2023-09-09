@@ -1,0 +1,68 @@
+
+
+
+&nbsp
+<%= link_to new_kdan_path(prog: "KAD ANIS", perse: params[:perse]), class: "btn btn-sm btn-primary", style: "font-size: 15px" do %>
+  <i class="fa far fa-plus"></i>&nbsp Daftar Program Kad ANIS
+<% end %> &nbsp
+<div style="margin-bottom: 10px"></div>
+
+<% if @kdans.count >= 0 %>
+<div class="cards shadow mb-4" style="">
+  <div class="card-header">
+    
+    <btn class="badge badge-pill badge-secondary">
+      Senarai Anak Yang Didaftarkan Oleh <%= @perse.name %> 
+    </btn>
+    
+  </div>
+  <div class="card-body">
+
+    <div class="table table-responsive border" style="font-size:13px">
+
+      <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0" style="color: black">
+        <thead>
+          <tr class="shadow">
+            <th style="background-color:#ffb2b2; width: %">NO</th>
+            <th style="background-color:#ffb2b2; width: %">MAKLUMAT PESERTA</th>
+            <th style="background-color:#ffb2b2; width: %">MAKLUMAT IBU BAPA/PENJAGA</th>
+            <th style="background-color:#ffb2b2; width: %">KATEGORI</th>
+            <th style="background-color:#ffb2b2; width: %">STATUS</th>
+            <th style="background-color:#ffb2b2; width: %">TARIKH PERMOHONAN</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <% cnt =0 ; @kdans.each do |kd|; cnt = cnt + 1 %>
+            <tr>
+              <td><%= cnt %></td>
+              <td>
+                <a href="<%= kdan_url(id: kd, prt: 1)%>" target="_blank"><%= kd.name %></a><br>
+                <%= link_to "Kemaskini Maklumat", edit_kdan_path(id: kd.id, perse: params[:perse]), class: "badge badge-pill badge-warning", style: "font-size: 10px", target: "_blank" %><br>
+                (<%= kd.ic %>)    
+              </td>
+              <td>
+                <%= kd.prtname %><br>
+                <%= kd.prtrel %><br>
+                <%= kd.prtemail %><br>
+                <%= kd.prtfon %><br>
+              </td>
+              <td><%= kd.tp %></td>
+              <td>
+                <%= link_to "#{kd.stat}", "#", class: "badge badge-pill badge-success", style: "font-size: 10px", target: "_blank" %><br>
+                <b>Maklumat Admin:</b><br>
+                <%= kd.admcmt %><br>  
+              </td>
+              <td><%= kd.created_at.strftime('%d-%^b-%y') %></td>
+            </tr>
+          <% end %>
+          
+        </tbody>
+      </table>
+
+    </div>
+
+  </div>
+</div>
+<% end %>
+

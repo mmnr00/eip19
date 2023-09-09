@@ -5,6 +5,7 @@ class WelcomesController < ApplicationController
 	
 	#layout "page"
 
+
 	def cpcuanis
 		@index = true
 	end
@@ -18,6 +19,10 @@ class WelcomesController < ApplicationController
 	end
 
 	def ikonanis
+		@index = true
+	end
+
+	def kadanis
 		@index = true
 	end
 

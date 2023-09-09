@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   
   #devise_for :college_admins
   resources :taskas
+  resources :kdans, only:[:new,:create,:destroy,:update,:edit,:show]
   resources :expenses, only:[:create,:destroy,:update,:edit]
   resources :ptns_mmbs, only:[:create,:destroy,:update,:edit]
   resources :courses, only:[:create,:destroy,:update,:edit]
@@ -34,6 +35,12 @@ Rails.application.routes.draw do
   devise_for :admins
   devise_for :owners#, :controllers => { :passwords => 'passwords' }
 	root 'welcomes#index2'
+
+  #~~KDAN
+  get '/kdan_list', to: 'kdans#kdan_list'
+  get '/kdan_index', to: 'kdans#kdan_index'
+  post '/updkdan', to: 'kdans#updkdan'
+  get '/kdanxls', to: 'kdans#kdanxls'
 
   #~~ILSC
   get '/cpcuindex', to: 'ilscs#cpcuindex'
@@ -177,11 +184,15 @@ Rails.application.routes.draw do
   get '/showstat', to: 'sces#showstat'
 
   #WELCOME#
+
   get '/cpcuanis', to: 'welcomes#cpcuanis'
   get '/jcdet', to: 'welcomes#jcdet'
   get '/carikerja', to: 'welcomes#carikerja'
   get '/etwranis', to: 'welcomes#etwranis'
   get '/ikonanis', to: 'welcomes#ikonanis'
+
+  get '/kadanis', to: 'welcomes#kadanis'
+
   get '/rakananis', to: 'welcomes#rakananis'
   get '/transisikerja', to: 'welcomes#transisikerja'
   get '/sediakerja', to: 'welcomes#sediakerja'
