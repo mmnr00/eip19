@@ -13,7 +13,11 @@ wb.styles do |style|
     sheet.add_row ["","Senarai Permohonan Kad ANIS"]
     sheet.add_row [""]
     sheet.add_row ["NO",
-                  "NAMA PEMOHON"]
+                  "NAMA PEMOHON",
+                  "NO IC/MYKID",
+                  "KATEGORI",
+                  "STATUS",
+                  "TARIKH PERMOHOHANAN"]
     sheet.rows[0].style = header_1
     sheet.rows[2].style = highlight_cell
     counter = 1
@@ -23,7 +27,10 @@ wb.styles do |style|
       prs = kd.perse
       sheet.add_row [counter,
                     kd.name,
-                    kd.ic
+                    kd.ic,
+                    kd.tp,
+                    kd.stat,
+                    "#{kd.created_at.strftime('%d-%^b-%Y')}"
                     ], 
       style: [nil, border_cell]
       sheet.rows[row+counter].style = border_cell

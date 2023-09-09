@@ -2,8 +2,8 @@ class KdansController < ApplicationController
 
 	def kdanxls
 		init_kdans = Kdan.all
-		@kdans = init_kdans.where(stat: params[:sch_stat]) unless params[:sch_stat].blank?
 		@kdans = init_kdans.where('extract(year from created_at) = ?', params[:yr]) unless params[:yr].blank?
+		puts @kdans.count
 		respond_to do |format|
       #format.html
       format.xlsx{
