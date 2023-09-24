@@ -27,6 +27,7 @@ class TaskasController < ApplicationController
 
   # GET /taskas
   # GET /taskas.json
+  
   def index
     @taskas = Taska.all
   end
