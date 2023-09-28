@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
 	 before_action :configure_permitted_parameters, if: :devise_controller?
 	 protect_from_forgery prepend: true
 	 require 'roo'
+	 require 'rqrcode'
 
 	 def check_bday(ic)
 	 	curr_yr = Date.today.year.to_s[2..3].to_i

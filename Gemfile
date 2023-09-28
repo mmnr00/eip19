@@ -14,6 +14,7 @@ gem 'rails', '~> 6.1.7'
 gem "recaptcha", require: "recaptcha/rails"
 
 gem 'video_info'
+gem 'rqrcode'
 
 gem 'sass'
 gem 'roo'
