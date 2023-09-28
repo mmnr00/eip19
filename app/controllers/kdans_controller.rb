@@ -1,5 +1,18 @@
 class KdansController < ApplicationController
 
+	def ecardanis
+		qrcode = RQRCode::QRCode.new("https://www.anisselangor.com")
+		@svg = qrcode.as_svg(
+		  offset: 0,
+		  color: '000',
+		  backgroundcolor: 'white',
+		  shape_rendering: 'crispEdges',
+		  module_size: 5,
+		  standalone: true
+		)
+		render action: "ecardanis", layout: "eipblank" 
+	end
+
 	def kdanxls
 		init_kdans = Kdan.all
 		@kdans = init_kdans.where('extract(year from created_at) = ?', params[:yr]) unless params[:yr].blank?
@@ -83,8 +96,19 @@ class KdansController < ApplicationController
 		@kdan.admcmt = pars[:admcmt]
 		if @kdan.save
 			flash[:success] = "Permohonan Berjaya Dikemaskini"
+			if @kdan.stat == "Permohonan Lulus"
+				link = "https://www.anisselangor.com/kdans/#{@kdan.id}?prt=1"
+				body = "
+				Tahniah! Permohonan Kad ANIS untuk <b>#{@kdan.name}</b> telah diluluskan.<br><br>
+
+				Sila klik <a href=#{link} >disini</a> untuk mendapatkan <i>E-Card</i> anda. Terima kasih. <br><br>
+
+				Jabatan ANIS
+
+				"
+				send_email("Permohonan Kad ANIS diluluskan",@kdan.prtemail,"",body)
+			end
 			redirect_to kdan_index_path
-			
 		else
 			flash[:danger] = "Kemaskini Tidak Berjaya. Sila Cuba Semula"
 			redirect_to request.referrer

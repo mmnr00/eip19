@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
 	 
 	 def send_email(subject,to,cc,body)
 	 	mail = SendGrid::Mail.new
-		mail.from = SendGrid::Email.new(email: "anis@yawas.my", name: "Jabatan ANIS")
+		mail.from = SendGrid::Email.new(email: "contact@anisselangor.com", name: "Admin Anis")
 		mail.subject = "#{subject}"
 		#Personalisation, add cc
 		personalization = SendGrid::Personalization.new
@@ -46,7 +46,7 @@ class ApplicationController < ActionController::Base
 		sg = SendGrid::API.new(api_key: ENV['SENDGRID_PASSWORD'])
 		@response = sg.client.mail._('send').post(request_body: mail.to_json)
 		puts @response.status_code
-		# render json: @response and return
+		#render json: @response and return
 	 end
 
 	 

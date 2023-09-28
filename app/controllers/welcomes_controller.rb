@@ -214,15 +214,7 @@ class WelcomesController < ApplicationController
 
 	def undercon
 		@index = true
-		qrcode = RQRCode::QRCode.new("https://www.anisselangor.com")
-		@svg = qrcode.as_svg(
-		  offset: 0,
-		  color: '000',
-		  backgroundcolor: 'white',
-		  shape_rendering: 'crispEdges',
-		  module_size: 5,
-		  standalone: true
-		)
+		
 	end
 
 	def didikanis
