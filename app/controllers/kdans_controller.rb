@@ -1,7 +1,11 @@
 class KdansController < ApplicationController
 
 	def ecardanis
-		qrcode = RQRCode::QRCode.new("https://www.anisselangor.com")
+		@kdan = Kdan.find(params[:id])
+		if @kdan.stat != "Permohonan Lulus"
+			redirect_to kdan_path(@kdan.id) and return
+		end
+		qrcode = RQRCode::QRCode.new("https://www.anisselangor.com/ecardanis?id=#{@kdan.id}")
 		@svg = qrcode.as_svg(
 		  offset: 0,
 		  color: '000',

@@ -3,7 +3,7 @@
       <div class="header" style="margin-top: -20px; margin-bottom: 20px;">
         <img src="<%= image_path('kadanislogo.png') %>" width="215" height="100" />
       </div>
-      <h3 style="color: black; font-weight: 900">Mohd Mustakhim bin Noor Rehan</h3>
+      <h3 style="color: black; font-weight: 900"><%= @kdan.name %></h3>
       <div class="qr-code" style="margin-bottom: 10px;">
         <%= @svg.html_safe %>
       </div>

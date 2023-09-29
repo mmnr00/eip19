@@ -51,7 +51,10 @@
               <td>
                 <%= link_to "#{kd.stat}", "#", class: "badge badge-pill badge-success", style: "font-size: 10px", target: "_blank" %><br>
                 <b>Maklumat Admin:</b><br>
-                <%= kd.admcmt %><br>  
+                <%= kd.admcmt %><br> 
+                <% if kd.stat == "Permohonan Lulus" %>
+                  <%= link_to "E-Card", ecardanis_path(id: kd.id), class: "badge badge-pill badge-warning", style: "font-size: 10px", target: "_blank" %><br>
+                <% end %> 
               </td>
               <td><%= kd.created_at.strftime('%d-%^b-%y') %></td>
             </tr>
