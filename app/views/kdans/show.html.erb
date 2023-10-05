@@ -86,7 +86,7 @@
 
     <tbody>
       <tr style="borders: 1.5px solid black">
-        <td style="background-color:#0070C0 !important" colspan="2"><strong><font color="white"><h2 align="center"><%= @kdan.name.upcase %> (ID: <%= @kdan.id %>)</h2></font></strong></td>
+        <td style="background-color:#0070C0 !important" colspan="2"><strong><font color="white"><h2 align="center"><%= @kdan.name.upcase %> (<%= "KD-#{@kdan.id.to_s.rjust(5, '0')}-#{$kdan_catg[@kdan.catg]}" %>)</h2></font></strong></td>
       </tr>
       <tr>
         <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">NO KAD PENGENALAN</font></td>
@@ -103,6 +103,10 @@
       <tr>
         <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">BANGSA</font></td>
         <td style="background-color: !important"><%= "#{@kdan.race}" %></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">KATEGORI OKU</font></td>
+        <td style="background-color: !important"><%= "#{@kdan.catg}" %></td>
       </tr>
       <tr>
         <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">TARIKH LAHIR</font></td>

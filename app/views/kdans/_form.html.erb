@@ -86,6 +86,28 @@
       <div class="form-group"> 
         <div class="row">
           <div class="control-label col-sm-8">
+            <strong>KATEGORI OKU</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.select :catg, options_for_select([ "OKU Penglihatan", 
+                                                    "OKU Pendengaran",
+                                                    "OKU Pertuturan",
+                                                    "OKU Fizikal",
+                                                    "OKU Pembelajaran",
+                                                    "OKU Mental",
+                                                    "OKU Pelbagai"
+                                                    ], 
+                                                  selected: @kdan.catg), 
+            {include_blank: "SILA PILIH"}, {required: true} %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
             <strong>TARIKH LAHIR</strong>
           </div>
         </div>
