@@ -151,27 +151,26 @@
           %>
           <a href="<%= url %>" target="_blank" download><btn class="badge badge-pill badge-secondary">Borang Diagnosis</btn></a>
 
-          <% if @kdan.tp == "DEWASA" %>
-            <%
-              image = @kdan.fotos.where(foto_name: "SPR").first
-              if image.present? && image.picture.present?
-                url = image.picture.url
-              else
-                url = ""
-              end
-            %>
-            <a href="<%= url %>" target="_blank" download><btn class="badge badge-pill badge-secondary">Slip Mengundi</btn></a>
-          <% else %>
-            <%
-              image = @kdan.fotos.where(foto_name: "IC").first
-              if image.present? && image.picture.present?
-                url = image.picture.url
-              else
-                url = ""
-              end
-            %>
-            <a href="<%= url %>" target="_blank" download><btn class="badge badge-pill badge-secondary">Salinan Mykid</btn></a>
-          <% end %>
+          <%
+            image = @kdan.fotos.where(foto_name: "SPR").first
+            if image.present? && image.picture.present?
+              url = image.picture.url
+            else
+              url = ""
+            end
+          %>
+          <a href="<%= url %>" target="_blank" download><btn class="badge badge-pill badge-secondary">Slip Mengundi</btn></a>
+
+          <%
+            image = @kdan.fotos.where(foto_name: "IC").first
+            if image.present? && image.picture.present?
+              url = image.picture.url
+            else
+              url = ""
+            end
+          %>
+          <a href="<%= url %>" target="_blank" download><btn class="badge badge-pill badge-secondary">Salinan Mykad</btn></a>
+
         </td>
       </tr>
 
