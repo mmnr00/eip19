@@ -86,6 +86,28 @@
       <div class="form-group"> 
         <div class="row">
           <div class="control-label col-sm-8">
+            <strong>KATEGORI OKU</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.select :catg, options_for_select([ "OKU Penglihatan", 
+                                                    "OKU Pendengaran",
+                                                    "OKU Pertuturan",
+                                                    "OKU Fizikal",
+                                                    "OKU Pembelajaran",
+                                                    "OKU Mental",
+                                                    "OKU Pelbagai"
+                                                    ], 
+                                                  selected: @kdan.catg), 
+            {include_blank: "SILA PILIH"}, {required: true} %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
             <strong>TARIKH LAHIR</strong>
           </div>
         </div>
@@ -128,7 +150,7 @@
         </div>
       </div>
 
-      <% if !@kid %>
+      <% if !@kid; spr_desc="SALINAN SLIP MENGUNDI PEMOHON"; ic_desc="SALINAN MYKAD PEMOHON" %>
         <div class="form-group"> 
           <div class="row">
             <div class="control-label col-sm-8">
@@ -180,11 +202,15 @@
             </div>
           </div>
         </div>
+      <% else; spr_desc="SALINAN SLIP MENGUNDI IBU-BAPA/PENJAGA"; ic_desc="SALINAN MYKID KANAK-KANAK" %>
+
+      <% end %>
+
 
         <div class="form-group"> 
           <div class="row">
             <div class="control-label col-sm-8">
-              <i class="fas fa-cloud-upload-alt"></i><strong>SALINAN SLIP MENGUNDI</strong>
+              <i class="fas fa-cloud-upload-alt"></i><strong><%= spr_desc %></strong>
             </div>
           </div>
           <div class="row">
@@ -211,12 +237,11 @@
           </div>
           <i>Wajib Disertakan</i>
         </div>
-      <% else %>
 
         <div class="form-group"> 
           <div class="row">
             <div class="control-label col-sm-8">
-              <i class="fas fa-cloud-upload-alt"></i><strong>SALINAN MYKID KANAK-KANAK</strong>
+              <i class="fas fa-cloud-upload-alt"></i><strong><%= ic_desc %></strong>
             </div>
           </div>
           <div class="row">
@@ -247,7 +272,7 @@
 
         
 
-      <% end %>
+      
 
       <div class="form-group"> 
         <div class="row">

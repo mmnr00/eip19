@@ -7,6 +7,16 @@
 #   )
 # end
 
+$kdan_catg = {
+	"OKU Penglihatan" => "BL",
+	"OKU Pendengaran" => "DE",
+	"OKU Pertuturan" => "SD",
+	"OKU Fizikal" => "PH",
+	"OKU Pembelajaran" => "LD",
+	"OKU Mental" => "ME",
+	"OKU Pelbagai" => "MD"
+}
+
 $dun_list = ["BUKAN SELANGOR",
             "Balakong",
             "Bandar Baru Klang",

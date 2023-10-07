@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2023_07_24_125649) do
-
+ActiveRecord::Schema.define(version: 2023_10_05_000046) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -524,37 +522,7 @@ ActiveRecord::Schema.define(version: 2023_07_24_125649) do
     t.string "email"
     t.string "stat"
     t.string "admcmt"
-  end
-
-  create_table "kdans", force: :cascade do |t|
-    t.string "name"
-    t.string "ic"
-    t.string "okukd"
-    t.string "gender"
-    t.string "race"
-    t.date "dob"
-    t.string "brtplc"
-    t.string "addr"
-    t.string "job"
-    t.string "payr"
-    t.string "prtname"
-    t.string "prtrel"
-    t.string "prtic"
-    t.string "prtgender"
-    t.string "prtrace"
-    t.string "prtaddr"
-    t.string "prtfon"
-    t.string "prtemail"
-    t.string "prtjob"
-    t.string "prtpay"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "perse_id"
-    t.string "tp"
-    t.string "notel"
-    t.string "email"
-    t.string "stat"
-    t.string "admcmt"
+    t.string "catg"
   end
 
   create_table "kid_bills", force: :cascade do |t|

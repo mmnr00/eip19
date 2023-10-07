@@ -1,14 +1,17 @@
+<meta name="viewport" content="width=1024">
+
 <div class="id-card-holder">
     <div class="id-card">
       <div class="header" style="margin-top: -20px; margin-bottom: 20px;">
         <img src="<%= image_path('kadanislogo.png') %>" width="215" height="100" />
       </div>
       <h3 style="color: black; font-weight: 900"><%= @kdan.name %></h3>
+      <i><b><h4 style="color: black; font-weight: 500"><%= "#{@kdan.ic[0..5]}-#{@kdan.ic[6..7]}-#{@kdan.ic[8..12]} " %></h4></b></i>
       <div class="qr-code" style="margin-bottom: 10px;">
         <%= @svg.html_safe %>
       </div>
-      <h6 style="color: black">www.anisselangor.com</h6>
-      <hr>
+      <h4 style="color: black"><%= "KD-#{@kdan.id.to_s.rjust(5, '0')}-#{$kdan_catg[@kdan.catg]}" %></h4><br>
+      <!-- <hr>
       <p style="color: #b20000; font-size: 15px">
         <b><i>Pusat Sokongan ANIS</i></b><br>
       </p>
@@ -18,7 +21,7 @@
         Seksyen 15, 40200 Shah Alam,<br>
         SELANGOR<br>
         03-5543170 &nbsp jabatananis@yawas.my
-      </p>
+      </p> -->
 
     </div>
   </div>

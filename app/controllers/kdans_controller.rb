@@ -165,6 +165,7 @@ class KdansController < ApplicationController
 																:notel,
 																:email,
 																:stat,
+																:catg,
 																fotos_attributes: [:foto, :picture, :foto_name])
 	end
 end
