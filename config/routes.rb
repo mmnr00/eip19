@@ -192,7 +192,7 @@ Rails.application.routes.draw do
   get '/etwranis', to: 'welcomes#etwranis'
   get '/ikonanis', to: 'welcomes#ikonanis'
 
-  get '/kadanis8987897897897687666', to: 'welcomes#kadanis'
+  get '/kadanis53423', to: 'welcomes#kadanis'
 
   get '/rakananis', to: 'welcomes#rakananis'
   get '/transisikerja', to: 'welcomes#transisikerja'
