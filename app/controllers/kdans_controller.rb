@@ -101,7 +101,7 @@ class KdansController < ApplicationController
 		if @kdan.save
 			flash[:success] = "Permohonan Berjaya Dikemaskini"
 			if @kdan.stat == "Permohonan Lulus"
-				link = "https://www.anisselangor.com/kdans/#{@kdan.id}?prt=1"
+				link = "https://www.anisselangor.com/ecardanis?id=#{@kdan.id}"
 				body = "
 				Tahniah! Permohonan Kad ANIS untuk <b>#{@kdan.name}</b> telah diluluskan.<br><br>
 
