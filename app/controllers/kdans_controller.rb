@@ -110,7 +110,12 @@ class KdansController < ApplicationController
 				Jabatan ANIS
 
 				"
-				send_email("Permohonan Kad ANIS diluluskan",@kdan.prtemail,"",body)
+				if @kdan.email.present?
+					emel = @kdan.email
+				else
+					emel = @kdan.prtemail
+				end
+				send_email("Permohonan Kad ANIS diluluskan",emel,"",body)
 			end
 			redirect_to kdan_index_path
 		else
