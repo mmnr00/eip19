@@ -2,9 +2,15 @@
 
 
 &nbsp
-<%= link_to new_kdan_path(prog: "KAD ANIS", perse: params[:perse]), class: "btn btn-sm btn-primary", style: "font-size: 15px" do %>
-  <i class="fa far fa-plus"></i>&nbsp Daftar Program Kad ANIS
+<%= link_to new_kdan_path(prog: "KAD ANIS", perse: params[:perse], tp: "DEWASA"), class: "btn btn-sm btn-primary", style: "font-size: 15px" do %>
+  <i class="fa far fa-plus"></i>&nbsp Daftar Kad ANIS OKU Dewasa
 <% end %> &nbsp
+
+<%= link_to new_kdan_path(prog: "KAD ANIS", perse: params[:perse], tp: "KANAK-KANAK"), class: "btn btn-sm btn-primary", style: "font-size: 15px" do %>
+  <i class="fa far fa-plus"></i>&nbsp Daftar Kad ANIS OKU Kanak-Kanak
+<% end %> &nbsp
+
+
 <div style="margin-bottom: 10px"></div>
 
 <% if @kdans.count >= 0 %>

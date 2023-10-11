@@ -41,6 +41,19 @@ class KdansController < ApplicationController
 			if kdan_exs.present?
 				flash[:danger] = "No MYKID #{kdan_exs.last.name} ini sudah didaftarkan oleh #{kdan_exs.last.perse.name}"
 			else
+				# if (dt>=18)
+				# 	@kid = false
+				# 	@cfm = true
+				# 	@kdantp = "DEWASA"
+				# else
+				# 	@kid = true
+				# 	@cfm = true
+				# 	@kdantp = "KANAK-KANAK"
+				# end
+				if (params[:tp] == "KANAK-KANAK" && (dt>=18)) || (params[:tp] == "DEWASA" && (dt<18))
+					flash[:danger] = "Umur Pemohon Tidak Memenuhi Kriteria"
+					redirect_to request.referrer and return
+				end
 				if (dt>=18)
 					@kid = false
 					@cfm = true

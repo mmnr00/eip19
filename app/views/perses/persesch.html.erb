@@ -18,7 +18,10 @@
       <%= link_to "#{prg.name}", "#", class: "badge badge-pill badge-success", style: "font-size: 12px" %>
     <% end %>
   </h5>
+  
+
   <form>
+
     <div class="row justify-content-center">
 
 
@@ -35,6 +38,7 @@
           <%= hidden_field_tag :regkid, params[:regkid], value: params[:regkid] %>
           <%= hidden_field_tag :att, params[:att], value: params[:att] %>
           <%= hidden_field_tag :dt, params[:dt], value: params[:dt] %>
+          <%= hidden_field_tag :tp, params[:tp], value: params[:tp] %>
         </div>
         <div class="col-lg-2 col-md-2 col-sm-2">
           <%= button_tag(type: :submit, class: "btn btn-block btn-sm btn-primary", style: "") do %>
@@ -46,5 +50,13 @@
       
 
     </div>
+    <% if params[:prog] == "KAD ANIS" %>
+      <% if params[:tp] == "KANAK-KANAK" %>
+        <i>Kad ANIS Kanak-Kanak adalah untuk OKU yang berumur <b>18 tahun ke bawah</b></i>
+      <% elsif params[:tp] == "DEWASA" %>
+        <i>Kad ANIS Dewasa adalah untuk OKU yang berumur <b>18 tahun dan ke atas</b></i>
+      <% end %>
+    <% end %>
   </form>
 </div>
+

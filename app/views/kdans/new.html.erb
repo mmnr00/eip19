@@ -10,6 +10,7 @@
           <%= text_field_tag :ic, params[:ic], class: "form-control form-control-sm", placeholder: "Sila Masukkan No MYKAD Pemohon", required: true, minlenght: 2 %>
           <%= hidden_field_tag :sch, params[:sch], value: "sdhjdsh876671" %>
           <%= hidden_field_tag :perse, params[:perse], value: params[:perse] %>
+          <%= hidden_field_tag :tp, params[:tp], value: params[:tp] %>
         </div>
         <div class="col-lg-2 col-md-2 col-sm-2">
           <%= button_tag(type: :submit, class: "btn btn-sm btn-success", style: "") do %>
@@ -18,6 +19,11 @@
         </div>
       </div>
 
+    <% end %>
+    <% if params[:tp] == "KANAK-KANAK" %>
+      <i>Kad ANIS Kanak-Kanak adalah untuk OKU yang berumur <b>18 tahun ke bawah</b></i>
+    <% elsif params[:tp] == "DEWASA" %>
+      <i>Kad ANIS Dewasa adalah untuk OKU yang berumur <b>18 tahun dan ke atas</b></i>
     <% end %>
 
 <% else %>

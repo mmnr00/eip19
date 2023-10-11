@@ -81,7 +81,7 @@ class PersesController < ApplicationController
 					end
 				elsif prog == "KAD ANIS" 
 					if params[:perse][:regkid].present?
-						redirect_to new_kdan_path(perse: @perse.id, prog: params[:prog])
+						redirect_to new_kdan_path(perse: @perse.id, prog: params[:prog], tp: params[:perse][:tp])
 					else
 						redirect_to kdan_list_path(perse: @perse.id)
 					end
@@ -201,7 +201,7 @@ class PersesController < ApplicationController
 								end
 							elsif params[:prog] == "KAD ANIS" 
 								if params[:regkid].present?
-									redirect_to new_kdan_path(perse: perse.id, prog: params[:prog])
+									redirect_to new_kdan_path(perse: perse.id, prog: params[:prog], tp: params[:tp])
 								else
 									redirect_to kdan_list_path(perse: perse.id)
 								end
@@ -232,7 +232,7 @@ class PersesController < ApplicationController
 					redirect_to new_perse_path(ic: params[:icf], prog: params[:prog], proge: params[:proge], regkid: params[:regkid])
 				else
 					flash[:notice] = "Sila Lengkapkan Maklumat Anda"
-					redirect_to new_perse_path(ic: params[:icf], prog: params[:prog], proge: params[:proge], regkid: params[:regkid])
+					redirect_to new_perse_path(ic: params[:icf], prog: params[:prog], proge: params[:proge], regkid: params[:regkid], tp: params[:tp])
 				end
 			end
 	
