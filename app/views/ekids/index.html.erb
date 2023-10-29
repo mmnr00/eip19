@@ -18,7 +18,7 @@
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">JUMLAH PENDAFTARAN</div>
-            <a href=""><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ekid_all.count %></div></a>
+            <a href="<%= ekidindex_url(sch_str: params[:sch_str],sch_fld: params[:sch_fld],phs: params[:phs],yr: params[:yr], showl: true) %>"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ekid_all.count %></div></a>
           </div>
           <div class="col-auto">
             <i class="fa fa-spinner fa-2x text-gray-300"></i>
@@ -39,7 +39,7 @@
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
             <div class="text-xs font-weight-bold text-<%= color[cnt] %> text-uppercase mb-1"><%= arr.upcase %></div>
-            <a href=""><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ekid_all.where(phs: arr).count %></div></a>
+            <a href="<%= ekidindex_url(phs: arr,yr: params[:yr], showl: true, sch: true) %>"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ekid_all.where(phs: arr).count %></div></a>
           </div>
           <div class="col-auto">
             <i class="fa fa-spinner fa-2x text-gray-300"></i>
