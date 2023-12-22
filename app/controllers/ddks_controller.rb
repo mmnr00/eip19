@@ -92,11 +92,17 @@ class DdksController < ApplicationController
 	def update
 		if @ddk.update(ddk_params)
 			flash[:success] = "Kemaskini Permohonan Berjaya"
-			redirect_to ddk_path(@ddk)
+			if current_admin.present?
+				adm = true 
+			else
+				adm = nil
+			end
+			redirect_to ddk_path(@ddk, adm: adm)
 		else
 			flash[:danger] = "Kemaskini tidak berjaya. Sila Cuba Semula"
 			redirect_to request.referrer
 		end
+		
 	end
 
 	def destroy
