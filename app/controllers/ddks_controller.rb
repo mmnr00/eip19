@@ -2,6 +2,15 @@ class DdksController < ApplicationController
 
 	before_action :set_ddk, except: [:new,:create,:ddkxls,:btnoku]
 
+	def destroy
+		if @ddk.fotos.delete_all && @ddk.destroy
+			flash[:success] = "Padam Rekod Berjaya"
+		else
+			flash[:danger] = "Padam Rekod Tidak Berjaya"
+		end
+		redirect_to request.referrer
+	end
+
 	def btnoku
 		@ddk = Ddk.first
 		@ddk.okucnt = @ddk.okucnt + 1
@@ -105,8 +114,7 @@ class DdksController < ApplicationController
 		
 	end
 
-	def destroy
-	end
+	
 
 	private
 

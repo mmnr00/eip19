@@ -127,7 +127,8 @@
           <% @ddk.order('created_at DESC').each do |ddk| %>
           <tr>
             <td>
-              <a href="<%= ddk_url(ddk, adm: true)%>" target="_blank">DDK-<%= ddk.id.to_s.rjust(4, '0') %></a>
+              <a href="<%= ddk_url(ddk, adm: true)%>" target="_blank">DDK-<%= ddk.id.to_s.rjust(4, '0') %></a><br>
+              <%= link_to "Padam", ddk_path(id: ddk.id), class: "badge badge-pill badge-danger", method: :delete, :data => {:confirm => 'Anda pasti? Setelah dipadam, rekod tidak dapat diakses selamanya.'}, style: "font-size: 10px" %> 
             </td>
             <td>
               
