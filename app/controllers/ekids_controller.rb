@@ -1,5 +1,5 @@
 class EkidsController < ApplicationController
-	before_action :authenticate_admin!, only: [:index,:ekidlistxls, :admhist]
+	before_action :authenticate_admin!, only: [:index,:ekidlistxls, :admhist, :vwadmin]
 	before_action :set_all
 
 	def destroy

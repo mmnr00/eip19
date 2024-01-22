@@ -44,6 +44,7 @@ Rails.application.routes.draw do
   get '/ecardanis', to: 'kdans#ecardanis'
 
   #~~ILSC
+  get '/vmadmin_ilsc', to: 'ilscs#vmadmin_ilsc'
   get '/cpcuindex', to: 'ilscs#cpcuindex'
   get '/cpcu_list', to: 'ilscs#cpcu_list'
   get '/ilsc_list', to: 'ilscs#ilsc_list'

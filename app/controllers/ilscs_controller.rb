@@ -1,6 +1,10 @@
 class IlscsController < ApplicationController
-	before_action :authenticate_admin!, only: [:ilscindex,:ilsclistxls]
+	before_action :authenticate_admin!, only: [:ilscindex,:ilsclistxls,:vmadmin_ilsc]
 	before_action :set_all
+
+	def vmadmin_ilsc
+		@ilscs = Ilsc.where(tp: params[:tp])
+	end
 
 	def cpcuindex
 		@admin = current_admin
