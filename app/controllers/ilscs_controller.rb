@@ -2,8 +2,31 @@ class IlscsController < ApplicationController
 	before_action :authenticate_admin!, only: [:ilscindex,:ilsclistxls,:vmadmin_ilsc]
 	before_action :set_all
 
+	def undodelilsc
+		@ilsc = Ilsc.find(params[:id])
+		@ilsc.del = false
+		if @ilsc.save 
+			flash[:success] = "Permohonan #{@ilsc.name} Berjaya Diubah"
+		else
+			flash[:danger] = "Permohonan #{@ilsc.name} Tidak Berjaya Diubah"
+		end
+		redirect_to request.referrer
+	end
+
+
+	def delilsc
+		@ilsc = Ilsc.find(params[:id])
+		@ilsc.del = true 
+		if @ilsc.save 
+			flash[:success] = "Permohonan #{@ilsc.name} Berjaya Dipadam"
+		else
+			flash[:danger] = "Permohonan #{@ilsc.name} Tidak Berjaya Dipadam"
+		end
+		redirect_to request.referrer
+	end
+
 	def vmadmin_ilsc
-		@ilscs = Ilsc.where(tp: params[:tp])
+		@ilscs = Ilsc.where(tp: params[:tp], del: true)
 	end
 
 	def cpcuindex
@@ -185,7 +208,7 @@ class IlscsController < ApplicationController
 	def ilscindex
 		@admin = current_admin
 		@phs = ["Permohonan Baru","Permohonan Tidak Lengkap", "Permohonan Lengkap (Dalam Semakan)", "Permohonan Ditolak","Permohonan Dalam Senarai Menunggu","Panggilan Temuduga", "Lulus Temuduga","Gagal Temuduga","Kemasukan Program","Tamat Program"]
-		@ilscs = Ilsc.where(tp: "PERSEDIAAN ALAM PEKERJAAN")
+		@ilscs = Ilsc.where(tp: "PERSEDIAAN ALAM PEKERJAAN").where.not(del: true)
 		#@ekids = Ekid.all
 		@ilscs = @ilscs.where('extract(year from created_at) = ?', params[:yr]) unless params[:yr].blank?
 		if params[:sch].present?

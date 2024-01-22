@@ -5,7 +5,7 @@
   </li>
 </ol>
 
-<%= link_to "Kembali Ke Paparan Admin Pusat ANIS", ekidindex_path, class: "badge badge badge-primary", style: "font-size: 16px; font-weight: normal; margin-top: 5px" %><br>
+<%= link_to "Kembali Ke Paparan Admin #{params[:tp]}", ilscindex_path, class: "badge badge badge-primary", style: "font-size: 16px; font-weight: normal; margin-top: 5px" %><br>
 
 <div class="table table-responsive border" style="font-size:13px">
       <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0" style="color: black">
@@ -20,7 +20,9 @@
           <% @ilscs.order('created_at DESC').each do |ek|; perse = ek.perse %>
           <tr>
             <td>
-              <%= ek.name %>
+              <%= ek.name %><br>
+              <a href="<%= undodelilsc_url(id: ek) %>"><btn class="badge badge-pill badge-success" style="margin-top: 5px">Undo</btn></a><br>
+              <a href="<%= delilsc_url(id: ek) %>"><btn class="badge badge-pill badge-danger" style="margin-top: 5px">Padam Selamanya</btn><br></a>
             </td>
             
             
