@@ -38,7 +38,7 @@
               <a href="<%= ilsc_conf_url(id: ek) %>" target="_blank"><%= ek.name %></a><br>
               
               <a href="<%= undodelilsc_url(id: ek) %>"><btn class="badge badge-pill badge-success" style="margin-top: 5px">Undo</btn></a><br>
-              <a href="<%= delilsc_url(id: ek) %>"><btn class="badge badge-pill badge-danger" style="margin-top: 5px">Padam Selamanya</btn><br></a>
+              <%= link_to "Padam Selamanya", ilsc_path(ek), method: :delete, data: { confirm: "Anda Pasti? Data permohonanan akan dipadam sepenuhnya dari sistem"}, class: "badge badge-pill badge-danger" %>
             </td>
             <td>
               <%= perse.name %><br>

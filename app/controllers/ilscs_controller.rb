@@ -2,6 +2,17 @@ class IlscsController < ApplicationController
 	before_action :authenticate_admin!, only: [:ilscindex,:ilsclistxls,:vmadmin_ilsc]
 	before_action :set_all
 
+	def destroy
+		@ilsc = Ilsc.find(params[:id])
+		@ilsc.fotos.delete_all
+		if @ilsc.destroy
+			flash[:success] = "Permohonan Berjaya Dipandamkan Dari Sistem"
+		else
+			flash[:danger] = "Tidak Berjaya. Sila Cuba Lagi"
+		end
+		redirect_to request.referrer
+	end
+
 	def undodelilsc
 		@ilsc = Ilsc.find(params[:id])
 		@ilsc.del = false
@@ -361,6 +372,7 @@ class IlscsController < ApplicationController
 				elsif @ilsc.tp == "CPCU"
 					@ilsc.phs = "Permohonan Dalam Semakan"
 				end
+				@ilsc.del = false
 				@ilsc.save
 				puts "after-#{@ilsc.tp}"
 				flash[:success] = "Pendaftaran Diterima. Pihak ANIS akan menghubungi anda jika permohonan diluluskan"
