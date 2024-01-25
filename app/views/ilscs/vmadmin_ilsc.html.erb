@@ -12,17 +12,26 @@
         
         <thead>
           <tr class="shadow">
-            <th style="background-color:#ffb2b2; width: 12%">NO SIRI (JENIS PROGRAM)</th>
-            <th style="background-color:#ffb2b2">MAKLUMAT ANAK</th>
+            <th style="background-color:#ffb2b2; width: ">MAKLUMAT PESERTA</th>
             <th style="background-color:#ffb2b2">MAKLUMAT PEMOHON</th>
+            <th style="background-color:#ffb2b2">PROGRAM</th>
         </thead>
         <tbody>
           <% @ilscs.order('created_at DESC').each do |ek|; perse = ek.perse %>
           <tr>
             <td>
-              <%= ek.name %><br>
+              <a href="<%= ilsc_conf_url(id: ek) %>" target="_blank"><%= ek.name %></a><br>
+              
               <a href="<%= undodelilsc_url(id: ek) %>"><btn class="badge badge-pill badge-success" style="margin-top: 5px">Undo</btn></a><br>
               <a href="<%= delilsc_url(id: ek) %>"><btn class="badge badge-pill badge-danger" style="margin-top: 5px">Padam Selamanya</btn><br></a>
+            </td>
+            <td>
+              <%= perse.name %><br>
+              <%= perse.ph %><br>
+              <%= perse.email %><br>
+            </td>
+            <td>
+              <%= ek.tp %>
             </td>
             
             

@@ -1,7 +1,7 @@
 <% if @ilsc.tp == "PERSEDIAAN ALAM PEKERJAAN" %>
 
 <div class="prt-hide" style="margin-bottom: 10px;">
-  <%= link_to "Muat Turun Borang", "#", onclick: 'window.print()', class: 'btn btn-sm btn-success btn-block' %>
+  <% if !@ilsc.del %><%= link_to "Muat Turun Borang", "#", onclick: 'window.print()', class: 'btn btn-sm btn-success btn-block' %>
   <% if current_admin.present? %><% if params[:prt].blank? %>
     <% ekstat = ["Permohonan","Penilaian","Kemasukan Program","Tamat Program"]
     ekstat.each do |st| 
@@ -66,13 +66,13 @@
       <%= f.submit :"Kemaskini",  class: 'btn btn-sm btn-info btn-lg', style: "margin-top: 5px" %>
     <% end %>
   <% end %><% end %>
-</div>
+</div><% end %>
 <%= render 'ilscs/profile_sedia' %>
 
 <!-- START PENCARIAN PEKERJAAN -->
 
 <% elsif @ilsc.tp == "PENCARIAN PEKERJAAN" %>
-  <div class="prt-hide" style="margin-bottom: 10px;">
+  <% if !@ilsc.del %><div class="prt-hide" style="margin-bottom: 10px;">
     <%= link_to "Muat Turun Borang", "#", onclick: 'window.print()', class: 'btn btn-sm btn-success btn-block' %>
     <% if current_admin.present? %><% if params[:prt].blank? %>
       <%= form_for(:ek, :url => {:controller=>'ilscs', :action=>'ilscphs'}, :html => {multipart: true, class: "form-horizontal", method: :post, role: "form"}) do |f| %>
@@ -89,10 +89,10 @@
   <div class="prt-hide" style="margin-bottom: 10px;">
     <%= link_to "Muat Turun Borang", "#", onclick: 'window.print()', class: 'btn btn-sm btn-success btn-block' %>
     
-  </div>
+  </div><% end %>
   <%= render 'ilscs/profile_det' %>
 <% elsif @ilsc.tp == "CPCU" %>
-  <div class="prt-hide" style="margin-bottom: 10px;">
+  <% if !@ilsc.del %><div class="prt-hide" style="margin-bottom: 10px;">
     <%= link_to "Muat Turun Borang", "#", onclick: 'window.print()', class: 'btn btn-sm btn-success btn-block' %>
     <% if current_admin.present? %><% if params[:prt].blank? %>
       <%= form_for(:ek, :url => {:controller=>'ilscs', :action=>'ilscphs'}, :html => {multipart: true, class: "form-horizontal", method: :post, role: "form"}) do |f| %>
@@ -103,7 +103,7 @@
       <% end %>
     <% end %><% end %>
     
-  </div>
+  </div><% end %>
   <%= render 'ilscs/profile_cpcu' %>
 
 <% end %>
