@@ -73,7 +73,8 @@ class IlscsController < ApplicationController
 
 	def ilscdet
 		@admin = current_admin
-		@ilscs = Ilsc.where(tp: "DET & JOB COACH")
+		@tp = "DET & JOB COACH"
+		@ilscs = Ilsc.where(tp: @tp).where.not(del: true)
 		@ekids = Ekid.all
 		@ilscs = @ilscs.where('extract(year from created_at) = ?', params[:yr]) unless params[:yr].blank?
 		if params[:sch].present?
@@ -110,7 +111,8 @@ class IlscsController < ApplicationController
 
 	def ilscari
 		@admin = current_admin
-		@ilscs = Ilsc.where(tp: "PENCARIAN PEKERJAAN")
+		@tp = "PENCARIAN PEKERJAAN"
+		@ilscs = Ilsc.where(tp: @tp).where.not(del: true)
 		@ekids = Ekid.all
 		@ilscs = @ilscs.where('extract(year from created_at) = ?', params[:yr]) unless params[:yr].blank?
 		if params[:sch].present?

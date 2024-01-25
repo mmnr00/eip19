@@ -73,6 +73,10 @@
   <i class="fa fa-file-excel"></i> Muat Turun Senarai
 <% end %>
 
+<%= link_to vmadmin_ilsc_path(tp: @tp), class: "badge badge-danger shadow-sm", style: "font-size: 16px; font-weight: normal" do %>
+  <i class="fa fa-file-excel"></i> Pendaftaran Dipadam
+<% end %>
+
 
 <div class="cards shadow mb-4">
   <div class="card-header">
@@ -129,6 +133,7 @@
               %>
               <%= "#{yr} tahun, #{mth} bulan" %><br>
               <a href="<%= ilsc_conf_url(id: ek) %>" target="_blank"><btn class="badge badge-pill badge-secondary">Profil</btn></a>
+              <a href="<%= delilsc_url(id: ek) %>"><btn class="badge badge-pill badge-danger">Padam</btn></a><br>
             </td>
             <td>
               <%= perse.name %><br>

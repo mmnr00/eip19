@@ -5,7 +5,22 @@
   </li>
 </ol>
 
-<%= link_to "Kembali Ke Paparan Admin #{params[:tp]}", ilscindex_path, class: "badge badge badge-primary", style: "font-size: 16px; font-weight: normal; margin-top: 5px" %><br>
+<% 
+  if params[:tp] == "PERSEDIAAN ALAM PEKERJAAN"
+    rt = ilscindex_path
+  elsif params[:tp] == "PENCARIAN PEKERJAAN"
+    rt = ilscari_path
+  elsif params[:tp] == "DET & JOB COACH"
+    rt = ilscdet_path
+  
+  end
+    
+    
+
+
+%>
+
+<%= link_to "Kembali Ke Paparan Admin #{params[:tp]}", rt, class: "badge badge badge-primary", style: "font-size: 16px; font-weight: normal; margin-top: 5px" %><br>
 
 <div class="table table-responsive border" style="font-size:13px">
       <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0" style="color: black">
