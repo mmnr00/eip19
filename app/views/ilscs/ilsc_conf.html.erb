@@ -1,96 +1,103 @@
 <% if @ilsc.tp == "PERSEDIAAN ALAM PEKERJAAN" %>
 
-<div class="prt-hide" style="margin-bottom: 10px;">
-  <% if !@ilsc.del %><%= link_to "Muat Turun Borang", "#", onclick: 'window.print()', class: 'btn btn-sm btn-success btn-block' %>
-  <% if current_admin.present? %><% if params[:prt].blank? %>
-    <% ekstat = ["Permohonan","Penilaian","Kemasukan Program","Tamat Program"]
-    ekstat.each do |st| 
-      if @ilsc.stat == st
-        btn = "primary"
-      else
-        btn = "secondary"
-      end
-    %>
+  <div class="prt-hide" style="margin-bottom: 10px;">
+    <% if !@ilsc.del %><%= link_to "Muat Turun Borang", "#", onclick: 'window.print()', class: 'btn btn-sm btn-success btn-block' %>
+    <% if current_admin.present? %><% if params[:prt].blank? %>
+      <% ekstat = ["Permohonan","Penilaian","Kemasukan Program","Tamat Program"]
+      ekstat.each do |st| 
+        if @ilsc.stat == st
+          btn = "primary"
+        else
+          btn = "secondary"
+        end
+      %>
 
-      <%= link_to "#{st}", ilsc_stat_path(id: @ilsc.id,stat: st), class: "badge badge-pill badge-#{btn}" %> 
-    <% end %>
-  
-    <%
-      phs = {"Permohonan" => ["Permohonan Baru","Permohonan Tidak Lengkap", "Permohonan Lengkap (Dalam Semakan)", "Permohonan Ditolak"],
-      "Penilaian" => ["Permohonan Dalam Senarai Menunggu","Panggilan Temuduga", "Lulus Temuduga","Gagal Temuduga"],
-      "Kemasukan Program" => ["Kemasukan Program"],
-      "Tamat Program" => ["Tamat Program"]}
+        <%= link_to "#{st}", ilsc_stat_path(id: @ilsc.id,stat: st), class: "badge badge-pill badge-#{btn}" %> 
+      <% end %>
+    
+      <%
+        phs = {"Permohonan" => ["Permohonan Baru","Permohonan Tidak Lengkap", "Permohonan Lengkap (Dalam Semakan)", "Permohonan Ditolak"],
+        "Penilaian" => ["Permohonan Dalam Senarai Menunggu","Panggilan Temuduga", "Lulus Temuduga","Gagal Temuduga"],
+        "Kemasukan Program" => ["Kemasukan Program"],
+        "Tamat Program" => ["Tamat Program"]}
 
-      pusat_latihan = ["Rumah Amal Cheshire","Infinite Minds Academy","PERKOBP","IKTBN Sepang","IKTBN Dusun Tua","Menara KBS","IKBN Kuala Langat","IKBN Peretak"]
+        pusat_latihan = ["Rumah Amal Cheshire","Infinite Minds Academy","PERKOBP","IKTBN Sepang","IKTBN Dusun Tua","Menara KBS","IKBN Kuala Langat","IKBN Peretak"]
 
-      kursus = ["Bakeri","Pengurusan Pejabat","Pembungkusan","Peruncitan","Asas Bakeri","Asas Teknologi Maklumat (Kegunaan Pejabat)","Asas Pengurusan Kafe","Cenderahati (Berasaskan Sukan)","Asas Perkhidmatan Dobi"]
-    %>
+        kursus = ["Bakeri","Pengurusan Pejabat","Pembungkusan","Peruncitan","Asas Bakeri","Asas Teknologi Maklumat (Kegunaan Pejabat)","Asas Pengurusan Kafe","Cenderahati (Berasaskan Sukan)","Asas Perkhidmatan Dobi"]
+      %>
 
-    <%= form_for(:ek, :url => {:controller=>'ilscs', :action=>'ilscphs'}, :html => {multipart: true, class: "form-horizontal", method: :post, role: "form"}) do |f| %>
-      <%= f.select :phs, options_for_select(phs[@ilsc.stat],selected: @ilsc.phs), {include_blank: "Pilih Status"}, required: true, style: "margin-top: 5px" %>
-      <%= f.text_field :descr, placeholder: "Makluman Admin", value: @ilsc.descr, style: "margin-top: 5px; width: 100%" %>
-      <% ste = @ilsc.stat ; if ste == "Penilaian" %>
-        <b>Tarikh Penilaian:</b><br> <%= f.date_field :dtp, value: @ilsc.dtp, style: "margin-top: 5px" %><br>
-        <%= f.hidden_field :plcadm, value: @ilsc.plcadm, style: "margin-top: 5px" %>
-        <%= f.hidden_field :crsadm, value: @ilsc.crsadm, style: "margin-top: 5px" %>
-        <%= f.hidden_field :dts, value: @ilsc.dts, style: "margin-top: 5px" %>
-        <%= f.hidden_field :dte, value: @ilsc.dte, style: "margin-top: 5px" %>
+      <%= form_for(:ek, :url => {:controller=>'ilscs', :action=>'ilscphs'}, :html => {multipart: true, class: "form-horizontal", method: :post, role: "form"}) do |f| %>
+        <%= f.select :phs, options_for_select(phs[@ilsc.stat],selected: @ilsc.phs), {include_blank: "Pilih Status"}, required: true, style: "margin-top: 5px" %>
+        <%= f.text_field :descr, placeholder: "Makluman Admin", value: @ilsc.descr, style: "margin-top: 5px; width: 100%" %>
+        <% ste = @ilsc.stat ; if ste == "Penilaian" %>
+          <b>Tarikh Penilaian:</b><br> <%= f.date_field :dtp, value: @ilsc.dtp, style: "margin-top: 5px" %><br>
+          <%= f.hidden_field :plcadm, value: @ilsc.plcadm, style: "margin-top: 5px" %>
+          <%= f.hidden_field :crsadm, value: @ilsc.crsadm, style: "margin-top: 5px" %>
+          <%= f.hidden_field :dts, value: @ilsc.dts, style: "margin-top: 5px" %>
+          <%= f.hidden_field :dte, value: @ilsc.dte, style: "margin-top: 5px" %>
 
-      <% elsif ste == "Kemasukan Program" %> 
+        <% elsif ste == "Kemasukan Program" %> 
 
-      <%= f.select :plcadm, options_for_select(pusat_latihan,selected: @ilsc.plcadm), {include_blank: "Pilih Pusat Latihan"}, required: true, style: "margin-top: 5px" %><br>
-      <%= f.select :crsadm, options_for_select(kursus,selected: @ilsc.crsadm), {include_blank: "Pilih Kursus"}, required: true, style: "margin-top: 5px" %><br>
-      <b>Tarikh Mula Program:</b><br> <%= f.date_field :dts, value: @ilsc.dts, style: "margin-top: 5px" %><br>
-      <b>Tarikh Tamat Program:</b><br> <%= f.date_field :dte, value: @ilsc.dte, style: "margin-top: 5px" %><br>
+        <%= f.select :plcadm, options_for_select(pusat_latihan,selected: @ilsc.plcadm), {include_blank: "Pilih Pusat Latihan"}, required: true, style: "margin-top: 5px" %><br>
+        <%= f.select :crsadm, options_for_select(kursus,selected: @ilsc.crsadm), {include_blank: "Pilih Kursus"}, required: true, style: "margin-top: 5px" %><br>
+        <b>Tarikh Mula Program:</b><br> <%= f.date_field :dts, value: @ilsc.dts, style: "margin-top: 5px" %><br>
+        <b>Tarikh Tamat Program:</b><br> <%= f.date_field :dte, value: @ilsc.dte, style: "margin-top: 5px" %><br>
 
-      <%= f.hidden_field :dtp, value: @ilsc.dtp, style: "margin-top: 5px" %>
+        <%= f.hidden_field :dtp, value: @ilsc.dtp, style: "margin-top: 5px" %>
 
-      <% elsif ste == "Tamat Program" %>
-
-      <%= f.hidden_field :dtp, value: @ilsc.dtp, style: "margin-top: 5px" %>
-      <%= f.hidden_field :plcadm, value: @ilsc.plcadm, style: "margin-top: 5px" %>
-      <%= f.hidden_field :crsadm, value: @ilsc.crsadm, style: "margin-top: 5px" %>
-      <b>Tarikh Tamat Program:</b><br> <%= f.date_field :dte, value: @ilsc.dte, style: "margin-top: 5px" %><br>
-      <%= f.hidden_field :dts, value: @ilsc.dts, style: "margin-top: 5px" %>
-
-      <% elsif ste == "Permohonan" %>
+        <% elsif ste == "Tamat Program" %>
 
         <%= f.hidden_field :dtp, value: @ilsc.dtp, style: "margin-top: 5px" %>
         <%= f.hidden_field :plcadm, value: @ilsc.plcadm, style: "margin-top: 5px" %>
         <%= f.hidden_field :crsadm, value: @ilsc.crsadm, style: "margin-top: 5px" %>
+        <b>Tarikh Tamat Program:</b><br> <%= f.date_field :dte, value: @ilsc.dte, style: "margin-top: 5px" %><br>
         <%= f.hidden_field :dts, value: @ilsc.dts, style: "margin-top: 5px" %>
-        <%= f.hidden_field :dte, value: @ilsc.dte, style: "margin-top: 5px" %>
-        
-      <% end %>
-      <%= f.hidden_field :ilsc, value: @ilsc.id%>
-      <%= f.submit :"Kemaskini",  class: 'btn btn-sm btn-info btn-lg', style: "margin-top: 5px" %>
-    <% end %>
-  <% end %><% end %>
-</div><% end %>
-<%= render 'ilscs/profile_sedia' %>
 
-<!-- START PENCARIAN PEKERJAAN -->
+        <% elsif ste == "Permohonan" %>
 
-<% elsif @ilsc.tp == "PENCARIAN PEKERJAAN" %>
-  <% if !@ilsc.del %><div class="prt-hide" style="margin-bottom: 10px;">
-    <%= link_to "Muat Turun Borang", "#", onclick: 'window.print()', class: 'btn btn-sm btn-success btn-block' %>
-    <% if current_admin.present? %><% if params[:prt].blank? %>
-      <%= form_for(:ek, :url => {:controller=>'ilscs', :action=>'ilscphs'}, :html => {multipart: true, class: "form-horizontal", method: :post, role: "form"}) do |f| %>
-        <%= f.select :phs, options_for_select(["Permohonan Dalam Semakan","Permohonan Diluluskan","Permohonan Ditolak"],selected: @ilsc.phs), {include_blank: "Pilih Status"}, required: true, style: "margin-top: 5px" %>
-        <%= f.text_field :descr, placeholder: "Makluman Admin", value: @ilsc.descr, style: "margin-top: 5px; width: 100%" %>
+          <%= f.hidden_field :dtp, value: @ilsc.dtp, style: "margin-top: 5px" %>
+          <%= f.hidden_field :plcadm, value: @ilsc.plcadm, style: "margin-top: 5px" %>
+          <%= f.hidden_field :crsadm, value: @ilsc.crsadm, style: "margin-top: 5px" %>
+          <%= f.hidden_field :dts, value: @ilsc.dts, style: "margin-top: 5px" %>
+          <%= f.hidden_field :dte, value: @ilsc.dte, style: "margin-top: 5px" %>
+          
+        <% end %>
         <%= f.hidden_field :ilsc, value: @ilsc.id%>
         <%= f.submit :"Kemaskini",  class: 'btn btn-sm btn-info btn-lg', style: "margin-top: 5px" %>
       <% end %>
     <% end %><% end %>
+  </div><% end %>
+  <%= render 'ilscs/profile_sedia' %>
+
+<!-- START PENCARIAN PEKERJAAN -->
+
+<% elsif @ilsc.tp == "PENCARIAN PEKERJAAN" %>
+  <% if !@ilsc.del %>
+    <div class="prt-hide" style="margin-bottom: 10px;">
+      <%= link_to "Muat Turun Borang", "#", onclick: 'window.print()', class: 'btn btn-sm btn-success btn-block' %>
+      <% if current_admin.present? %><% if params[:prt].blank? %>
+        <%= form_for(:ek, :url => {:controller=>'ilscs', :action=>'ilscphs'}, :html => {multipart: true, class: "form-horizontal", method: :post, role: "form"}) do |f| %>
+          <%= f.select :phs, options_for_select(["Permohonan Dalam Semakan","Permohonan Diluluskan","Permohonan Ditolak"],selected: @ilsc.phs), {include_blank: "Pilih Status"}, required: true, style: "margin-top: 5px" %>
+          <%= f.text_field :descr, placeholder: "Makluman Admin", value: @ilsc.descr, style: "margin-top: 5px; width: 100%" %>
+          <%= f.hidden_field :ilsc, value: @ilsc.id%>
+          <%= f.submit :"Kemaskini",  class: 'btn btn-sm btn-info btn-lg', style: "margin-top: 5px" %>
+        <% end %>
+      <% end %><% end %>
+
   </div>
+  <% end %>
   Sila hantar permohonan anda ke <a href="https://myfuturejobs.gov.my/ms/utama/">https://myfuturejobs.gov.my/ms/utama/</a>
   <%= render 'ilscs/profile_cari' %>
+
 <% elsif @ilsc.tp == "DET & JOB COACH" %>
+
+  
   <div class="prt-hide" style="margin-bottom: 10px;">
     <%= link_to "Muat Turun Borang", "#", onclick: 'window.print()', class: 'btn btn-sm btn-success btn-block' %>
-    
-  </div><% end %>
+   
+  </div>
   <%= render 'ilscs/profile_det' %>
+
 <% elsif @ilsc.tp == "CPCU" %>
   <% if !@ilsc.del %><div class="prt-hide" style="margin-bottom: 10px;">
     <%= link_to "Muat Turun Borang", "#", onclick: 'window.print()', class: 'btn btn-sm btn-success btn-block' %>

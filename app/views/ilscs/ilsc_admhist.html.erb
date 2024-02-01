@@ -1,0 +1,53 @@
+
+<meta name="viewport" content="width=1440">
+
+<header class="prog-hd" style="background-image: url(<%= image_path('anisPic/bg-prog.jpeg') %>); background-size: cover; background-position: center; padding-bottom: 0px; margin-bottom: 0px; background-repeat: no-repeat; padding-top: 30px; padding-bottom: 30px">
+
+  <div class="intro-text container" style="">
+    <div class="intro-heading" style="text-align: left" >
+      <h3 style="color: white; font-weight: 550">Sejarah Kemaskini Admin</h3>
+    </div>
+  </div>
+
+</header>
+
+<div class="container">
+      
+  <div class="table table-responsive border" style="font-size:13px; margin-top:20px">
+    <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0" style="color: black">
+      <thead>
+        <th style="background-color:#b2b2ff; text-align: center" colspan=5><%= @ilsc.name %></th>
+        <tr class="shadow">
+
+          <th style="background-color:#ffb2b2; width: ">TARIKH</th>
+          <th style="background-color:#ffb2b2; width: ">USERNAME</th>
+          <th style="background-color:#ffb2b2; width: ">PROGRAM</th>
+          <th style="background-color:#ffb2b2; width: ">STATUS</th>
+          <th style="background-color:#ffb2b2; width: ">KOMEN</th>
+        </tr>
+      </thead>
+      <% @ilsc.admupd.last %>
+      <tbody>
+        <% @ilsc.admupd.reverse_each do |arr| %>
+          <tr>
+            <td><%= arr[0].to_date.strftime('%d-%^b-%y') %></td>
+            <td><%= Admin.find(arr[1]).username %></td>
+            <td><%= @ilsc.tp %></td>
+            <td>
+
+              <% if @ilsc.tp == "PERSEDIAAN ALAM PEKERJAAN" %><b>Fasa: </b><%= arr[2] %><br><% end %>
+              <b>Status: </b><%= arr[3] %><br><!-- 
+              <b>Penilaian: </b><%= arr[5].to_date.strftime('%d-%^b-%y') unless arr[5].blank? %><br>
+              <b>Masuk: </b><%= arr[6].to_date.strftime('%d-%^b-%y') unless arr[6].blank? %><br>
+              <b>Tamat: </b><%= arr[7].to_date.strftime('%d-%^b-%y') unless arr[7].blank? %><br>
+              <b>Hari Sesi: </b><%= arr[9] %><br>
+              <b>Masa Sesi: </b><%= arr[10] %><br> -->
+            </td>
+            <td><%= arr[4] %></td>
+          </tr>
+        <% end %>
+        
+      </tbody>
+    </table>
+  </div>
+</div>

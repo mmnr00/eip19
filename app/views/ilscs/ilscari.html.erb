@@ -152,6 +152,11 @@
             <td>
               <%= link_to ek.phs, "#", class: "badge badge-pill badge-primary" %><br>
               <b>Makluman Admin: </b><i><%= ek.descr %></i>
+              <% upd = ek.admupd.last %>
+              <% if upd.present? %>
+                <b><%= Admin.find(upd[1]).username %></b> (<%= upd[0].strftime('%d-%^b-%y') %>)<br>
+                <%= link_to "Sejarah Kemaskini Admin", ilsc_admhist_path(id: ek.id), target: "_blank" %><br>
+              <% end %>
             </td>
             
 

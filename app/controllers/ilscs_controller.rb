@@ -2,6 +2,11 @@ class IlscsController < ApplicationController
 	before_action :authenticate_admin!, only: [:ilscindex,:ilsclistxls,:vmadmin_ilsc]
 	before_action :set_all
 
+	def ilsc_admhist
+		@index = true
+		@ilsc = Ilsc.find(params[:id])
+	end
+
 	def destroy
 		@ilsc = Ilsc.find(params[:id])
 		@ilsc.fotos.delete_all
@@ -163,7 +168,7 @@ class IlscsController < ApplicationController
 		pars = params[:ek]
 		ek = Ilsc.find(pars[:ilsc])
 		ek.update(phs: pars[:phs],descr: pars[:descr], dtp: pars[:dtp], dts: pars[:dts], dte:pars[:dte],plcadm:pars[:plcadm],crsadm:pars[:crsadm])
-		#ek.admupd << [Date.today, current_admin.id, ek.stat, pars[:phs], pars[:descr],pars[:dtp],pars[:dts],pars[:dte],pars[:tp],pars[:sesd],pars[:sest]]
+		ek.admupd << [Date.today, current_admin.id, ek.stat, pars[:phs], pars[:descr]]
 		ek.save  
 		flash[:success] = "Kemaskini Status Berjaya"
 		redirect_to request.referrer

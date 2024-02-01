@@ -10,6 +10,7 @@ class Ilsc < ApplicationRecord
 	serialize :prevmaj,Hash
 	serialize :hosdoc,Hash
 	serialize :crstp,Array
+	serialize :admupd,Array
 
 	before_save :save_ilscs
 
