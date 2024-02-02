@@ -24,7 +24,7 @@
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">DALAM SEMAKAN</div>
-            <a href=""><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ilscs.where(stat: "Permohonan Dalam Semakan").count %></div></a>
+            <a href="<%= ilscari_path(yr: params[:yr], sch: true, phs: "Permohonan Dalam Semakan")%>"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ilscs.where(phs: "Permohonan Dalam Semakan").count %></div></a>
           </div>
           <div class="col-auto">
             <i class="fa fa-spinner fa-2x text-gray-300"></i>
@@ -40,7 +40,7 @@
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">DILULUSKAN</div>
-            <a href=""><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ilscs.where(stat: "Permohonan Diluluskan").count %></div></a>
+            <a href="<%= ilscari_path(yr: params[:yr], sch: true, phs: "Permohonan Diluluskan")%>"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ilscs.where(phs: "Permohonan Diluluskan").count %></div></a>
           </div>
           <div class="col-auto">
             <i class="fa fa-spinner fa-2x text-gray-300"></i>
@@ -56,7 +56,7 @@
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">DITOLAK</div>
-            <a href=""><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ilscs.where(stat: "Permohonan Ditolak").count %></div></a>
+            <a href="<%= ilscari_path(yr: params[:yr], sch: true, phs: "Permohonan Ditolak")%>"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ilscs.where(phs: "Permohonan Ditolak").count %></div></a>
           </div>
           <div class="col-auto">
             <i class="fa fa-spinner fa-2x text-gray-300"></i>
@@ -83,7 +83,7 @@
     <div class="row">
       <%= form_tag ilscari_path, method: :get, id: "find_kid" do %>
         <%= text_field_tag :sch_str, params[:sch_str], placeholder: "Masukkan Nama", style: 'text-transform: uppercase' %>
-        <%= select_tag :stat, options_for_select(["Permohonan Dalam Semakan","Permohonan Diluluskan", "Permohonan Ditolak"], params[:stat]),
+        <%= select_tag :phs, options_for_select(["Permohonan Dalam Semakan","Permohonan Diluluskan", "Permohonan Ditolak"], params[:phs]),
               include_blank: "Semua Status" %>
         <%= select_tag :yr, options_for_select(2020..Date.today.year, params[:yr]),
               include_blank: "Semua Tahun" %>

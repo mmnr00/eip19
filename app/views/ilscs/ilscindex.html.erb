@@ -35,7 +35,7 @@
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">JUMLAH PENDAFTARAN</div>
-            <a href=""><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ilscs.count %></div></a>
+            <a href="<%= ilscindex_path(yr: params[:yr]) %>"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ilscs.count %></div></a>
           </div>
           <div class="col-auto">
             <i class="fa fa-spinner fa-2x text-gray-300"></i>
@@ -56,7 +56,7 @@
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
               <div class="text-xs font-weight-bold text-<%= color[cnt] %> text-uppercase mb-1"><%= arr.upcase %></div>
-              <a href=""><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ilscs.where(phs: arr).count %></div></a>
+              <a href="<%= ilscindex_path(yr: params[:yr], sch: true, phs: arr) %>"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @ilscs.where(phs: arr).count %></div></a>
             </div>
             <div class="col-auto">
               <i class="fa fa-spinner fa-2x text-gray-300"></i>
@@ -93,10 +93,11 @@
     <div class="row">
       <%= form_tag ilscindex_path, method: :get, id: "find_kid" do %>
         <%= text_field_tag :sch_str, params[:sch_str], placeholder: "Masukkan Nama", style: 'text-transform: uppercase' %>
-        <% select_tag :stat, options_for_select(["Permohonan Diterima", "Permohonan Dalam Semakan", "Permohonan Tidak Lengkap","Permohonan Diluluskan", "Permohonan Ditolak"], params[:stat]),
-              include_blank: "Semua Status" %>
+        
         <%= select_tag :yr, options_for_select(2020..Date.today.year, params[:yr]),
               include_blank: "Semua Tahun" %>
+        <%= select_tag :phs, options_for_select(@phs, params[:phs]),
+              include_blank: "Semua Status" %>
         <%= hidden_field_tag :sch, params[:sch], value: true %>
         <%= button_tag(type: :submit, class: "badge badge-success shadow-none", style: "font-size: 14px; border-style: none; font-weight: normal",  id: "submit_expense") do %>
             <i class="fa fa-search"></i> Cari
