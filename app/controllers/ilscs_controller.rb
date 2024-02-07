@@ -178,6 +178,7 @@ class IlscsController < ApplicationController
 	def ilsc_stat
 		@ilsc = Ilsc.find(params[:id])
 		@ilsc.stat = params[:stat]
+		@ilsc.admupd << [Date.today, current_admin.id, @ilsc.stat]
 		@ilsc.save
 		flash[:success] = "Status #{@ilsc.name} berjaya dikemaskini"
 		redirect_to request.referrer

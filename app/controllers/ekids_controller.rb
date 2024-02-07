@@ -61,6 +61,7 @@ class EkidsController < ApplicationController
 	def ekstat_new
 		@ekid = Ekid.find(params[:id])
 		@ekid.stat = params[:stat]
+		@ekid.admupd << [Date.today, current_admin.id, @ekid.stat]
 		@ekid.save
 		flash[:success] = "Status #{@ekid.name} berjaya dikemaskini"
 		redirect_to request.referrer
