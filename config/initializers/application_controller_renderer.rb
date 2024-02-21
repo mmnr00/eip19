@@ -17,8 +17,7 @@ $kdan_catg = {
 	"OKU Pelbagai" => "MD"
 }
 
-$dun_list = ["BUKAN SELANGOR",
-            "Balakong",
+$dun_list = ["Balakong",
             "Bandar Baru Klang",
             "Bandar Utama",
             "Banting",
@@ -73,7 +72,8 @@ $dun_list = ["BUKAN SELANGOR",
             "Taman Medan",
             "Taman Templer",
             "Tanjong Sepat",
-            "Teratai "
+            "Teratai ",
+            "BUKAN SELANGOR"
               ]
 
 $ddkstat = {

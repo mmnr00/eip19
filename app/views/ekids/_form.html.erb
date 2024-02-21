@@ -392,6 +392,20 @@
       <div class="form-group"> 
         <div class="row">
           <div class="control-label col-sm-8">
+            <strong>DUN YANG DIDIAMI SEKARANG</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.select :dunw, options_for_select($dun_list,selected: @ekid.dunw), 
+            {include_blank: "SILA PILIH"}, {required: true} %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
             <strong>ALAMAT KEDIAMAN</strong>
           </div>
         </div>

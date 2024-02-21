@@ -719,6 +719,7 @@ class EkidsController < ApplicationController
 														    :tmeip,
 														    :dtwlk,
 														    :kdhealth,
+														    :dunw,
 																fotos_attributes: [:foto, :picture, :foto_name])
 	end
 

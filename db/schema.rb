@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_01_30_024747) do
+ActiveRecord::Schema.define(version: 2024_02_21_122919) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -274,6 +274,7 @@ ActiveRecord::Schema.define(version: 2024_01_30_024747) do
     t.string "kdhealth"
     t.string "sesd"
     t.string "sest"
+    t.string "dunw"
   end
 
   create_table "ekrps", force: :cascade do |t|
