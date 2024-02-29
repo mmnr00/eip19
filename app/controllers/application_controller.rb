@@ -13,9 +13,10 @@ class ApplicationController < ActionController::Base
 	 		yr_bday = "19#{ic[0..1]}"
 	 	end
 	 	bday_dt = Date.new(yr_bday.to_i, ic[2..3].to_i, ic[4..5].to_i)
-	 	diff = (Date.today.year*12+Date.today.month) - (bday_dt.year*12+bday_dt.month)
+	 	#diff = (Date.today.year*12+Date.today.month) - (bday_dt.year*12+bday_dt.month)
+	 	diff = (Date.today.year - bday_dt.year)*12
 
-	 	
+	 	puts diff/12
 	 	return diff/12
 	 end
 

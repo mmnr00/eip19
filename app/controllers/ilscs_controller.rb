@@ -312,6 +312,7 @@ class IlscsController < ApplicationController
 		if params[:sch].present?
 			if params[:prog] == "PERSEDIAAN ALAM PEKERJAAN"
 				dt = check_bday(params[:ic])
+				puts "masuk"
 				if ((dt>=17) && (dt<=25))
 					ilsc_exs = Ilsc.where(ic: params[:ic], tp: params[:prog])
 					if ilsc_exs.present?
