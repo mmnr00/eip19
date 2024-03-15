@@ -44,11 +44,11 @@
 
       hari_sesi = 
       {"INTERVENSI ANIS"=>["Isnin","Selasa","Rabu","Khamis"],
-                  "PRASEKOLAH ANIS"=>["Isnin-Khamis"],
-                  "TRANSISI ANIS"=>["Isnin & Rabu","Selasa & Khamis"]}
+                  "PRASEKOLAH ANIS"=>["Isnin-Khamis","Transisi (Isnin & Rabu)", "Transisi (Selasa & Khamis"],
+                  "PLAYSCHOOL ANIS"=>["Isnin","Selasa","Rabu","Khamis"]}
       slot_sesi = {"INTERVENSI ANIS"=>["9:00am - 11:00am","11:30am - 1:30pm","2:30pm - 4:30pm"],
-                  "PRASEKOLAH ANIS"=>["8:30am - 12:30pm"],
-                  "TRANSISI ANIS"=>["9:00am - 11:00am","11:30am - 1:30pm","2:30pm - 4:30pm"]}
+                  "PRASEKOLAH ANIS"=>["8:30am - 12:30pm","1:30pm - 5:30pm" ],
+                  "PLAYSCHOOL ANIS"=>["8:30am - 12:30pm","1:30pm - 5:30pm" ]}
     %>
 
     <%= form_for(:ek, :url => {:controller=>'ekids', :action=>'statekid_new'}, :html => {multipart: true, class: "form-horizontal", method: :post, role: "form"}) do |f| %>
