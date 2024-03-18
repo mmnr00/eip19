@@ -21,52 +21,41 @@
 
     </h5>
 
-<% 
-
-if params[:stat].present? 
-  stat_temp = params[:stat]
-else 
-  stat_temp = @ekid.stat
-end
-
-%>
-
-
 <div class="prt-hide" style="margin-bottom: 10px;">
   <%= link_to "Muat Turun Borang", "#", onclick: 'window.print()', class: 'btn btn-sm btn-success btn-block' %>
   <% if params[:prt].blank? %>
     <% ekstat = ["Permohonan","Penilaian","Kemasukan Program","Tamat Program"]
     ekstat.each do |st| 
-      if stat_temp == st
+      if @ekid.stat == st
         btn = "primary"
       else
         btn = "secondary"
       end
     %>
 
-      <%= link_to "#{st}", ekidconf_path(id: @ekid.id,stat: st), class: "badge badge-pill badge-#{btn}" %> 
+      <%= link_to "#{st}", ekstat_new_path(id: @ekid.id,stat: st), class: "badge badge-pill badge-#{btn}" %> 
     <% end %>
   
     <%
       phs = {"Permohonan" => ["Permohonan Baru","Permohonan Tidak Lengkap", "Permohonan Lengkap (Dalam Semakan)", "Permohonan Ditolak"],
       "Penilaian" => ["Permohonan Dalam Senarai Menunggu","Lulus Penilaian","Gagal Penilaian"],
-      "Kemasukan Program" => ["Kemasukan Program Intervensi","Kemasukan Program Transisi","Kemasukan Program Prasekolah"],
+      "Kemasukan Program" => ["Kemasukan Program Playschool","Kemasukan Program Intervensi","Kemasukan Program Prasekolah"],
       "Tamat Program" => ["Tamat Program"]}
 
       hari_sesi = 
-      {"INTERVENSI"=>["Isnin","Selasa","Rabu","Khamis"],
-                  "PRASEKOLAH"=>["Isnin-Khamis"],
-                  "TRANSISI"=>["Isnin & Rabu","Selasa & Khamis"]}
-      slot_sesi = {"INTERVENSI"=>["9:00am - 11:00am","11:30am - 1:30pm","2:30pm - 4:30pm"],
-                  "PRASEKOLAH"=>["8:30am - 12:30pm"],
-                  "TRANSISI"=>["9:00am - 11:00am","11:30am - 1:30pm","2:30pm - 4:30pm"]}
+      {"INTERVENSI ANIS"=>["Isnin","Selasa","Rabu","Khamis"],
+                  "PRASEKOLAH ANIS"=>["Isnin-Khamis"],
+                  "TRANSISI ANIS"=>["Isnin & Rabu","Selasa & Khamis"]}
+      slot_sesi = {"INTERVENSI ANIS"=>["9:00am - 11:00am","11:30am - 1:30pm","2:30pm - 4:30pm"],
+                  "PRASEKOLAH ANIS"=>["8:30am - 12:30pm"],
+                  "TRANSISI ANIS"=>["9:00am - 11:00am","11:30am - 1:30pm","2:30pm - 4:30pm"]}
     %>
 
     <%= form_for(:ek, :url => {:controller=>'ekids', :action=>'statekid_new'}, :html => {multipart: true, class: "form-horizontal", method: :post, role: "form"}) do |f| %>
-      <%= f.select :phs, options_for_select(phs[stat_temp],selected: @ekid.phs), {include_blank: "Pilih Status"}, required: true, style: "margin-top: 5px" %>
+      <%= f.select :phs, options_for_select(phs[@ekid.stat],selected: @ekid.phs), {include_blank: "Pilih Status"}, required: true, style: "margin-top: 5px" %>
       <%= f.text_field :descr, placeholder: "Makluman Admin", value: @ekid.descr, style: "margin-top: 5px; width: 100%" %>
-      <% ste = stat_temp ; if ste != "Permohonan" %>
-        <%= f.select :tp, options_for_select(["INTERVENSI","TRANSISI","PRASEKOLAH"],selected: @ekid.tp), {include_blank: "Pilih Jenis Program"}, required: true, style: "margin-top: 5px" %><br>
+      <% ste = @ekid.stat ; if ste != "Permohonan" %>
+        <%= f.select :tp, options_for_select(["TRANSISI ANIS","INTERVENSI ANIS","PRASEKOLAH ANIS"],selected: @ekid.tp), {include_blank: "Pilih Jenis Program"}, required: true, style: "margin-top: 5px" %><br>
 
         <% if ste == "Penilaian" %>
           <b>Tarikh Penilaian:</b><br> <%= f.date_field :dtp, value: @ekid.dtp, style: "margin-top: 5px" %><br>
@@ -92,7 +81,6 @@ end
 
       <% end %>
       <%= f.hidden_field :ekid, value: @ekid.id%>
-      <%= f.hidden_field :stat, value: stat_temp %>
       <%= f.submit :"Kemaskini",  class: 'btn btn-sm btn-info btn-lg', style: "margin-top: 5px" %>
     <% end %>
   <% end %>
