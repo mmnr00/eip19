@@ -16,7 +16,7 @@
   <h3 style="">MAKLUMAN</h3>
   <div class="border-prog" style=""></div>
   <p style="text-align: center; color: black; font-weight: 600">
-    Permohonan Program CPCU telah dibuka!
+    Permohonan Program CPCU telah ditutup
   </p>
   <p style="text-align: center; color: black"></p>
   <% if 1==0 %>
@@ -185,7 +185,8 @@
         </div>
       </div>
 
-      <%= link_to "Klik Disini Untuk Memohon", persesch_url(prog: "CPCU", regkid: 1), class: "btn btn-sm btn-success btn-block"%>
+      <% link_to "Klik Disini Untuk Memohon", persesch_url(prog: "CPCU", regkid: 1), class: "btn btn-sm btn-success btn-block"%>
+      <%= link_to "Permohonan Ditutup", "#", class: "btn btn-sm btn-danger btn-block"%>
       <%= link_to "Semak Permohonan", persesch_url(prog: "CPCU"), class: "btn btn-sm btn-info btn-block"%>
 
       
