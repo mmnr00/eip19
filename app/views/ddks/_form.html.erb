@@ -473,8 +473,7 @@
         </div>
         <div class="row">
           <div class="col-lg-8 col-md-10 col-sm-12">
-            <%= f.select :progt, options_for_select(["Pakej A (Program Skala Kecil - Maksima RM5,000)",
-                                                    "Pakej B (Program Skala Besar - Maksima RM10,000)",
+            <%= f.select :progt, options_for_select(["Pakej A (Program Skala Kecil - Maksima RM5,000)"
                                                 ], 
                                                 selected: @ddk.progt), 
           {include_blank: "Pilih Satu"}, {required: true} %>
