@@ -93,7 +93,7 @@ class AdminsController < ApplicationController
 		elsif params[:prg] == "ILSC"
 
 		
-
+			@phs = ["Permohonan Baru","Permohonan Tidak Lengkap", "Permohonan Lengkap (Dalam Semakan)", "Permohonan Ditolak","Permohonan Dalam Senarai Menunggu","Panggilan Temuduga", "Lulus Temuduga","Gagal Temuduga","Kemasukan Program","Tamat Program"]
 			@prg = "ILSC"
 			@all = Ilsc.all
 			@table_1 = {}

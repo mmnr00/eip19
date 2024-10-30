@@ -44,6 +44,7 @@ Rails.application.routes.draw do
   get '/ecardanis', to: 'kdans#ecardanis'
 
   #~~ILSC
+  get '/report_ilsc', to: 'ilscs#report_ilsc'
   get '/ilsc_admhist', to: 'ilscs#ilsc_admhist'
   get '/undodelilsc', to: 'ilscs#undodelilsc'
   get '/delilsc', to: 'ilscs#delilsc'

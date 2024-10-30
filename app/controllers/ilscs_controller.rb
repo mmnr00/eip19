@@ -2,6 +2,37 @@ class IlscsController < ApplicationController
 	before_action :authenticate_admin!, only: [:ilscindex,:ilsclistxls,:vmadmin_ilsc]
 	before_action :set_all
 
+	def report_ilsc
+
+		@yr_arr = []
+
+		@hash_item = {}
+		@phs = ["Permohonan Baru","Permohonan Tidak Lengkap", "Permohonan Lengkap (Dalam Semakan)", "Permohonan Ditolak","Permohonan Dalam Senarai Menunggu","Panggilan Temuduga", "Lulus Temuduga","Gagal Temuduga","Kemasukan Program","Tamat Program"]
+
+		(2020..Date.today.year).each do |yr|
+			#@yr_arr << yr
+			arr_phs = []
+			ilsc_curr_yr = Ilsc.where('extract(year  from created_at) = ?', yr).where.not(del: true)
+			ilsc_curr_yr = ilsc_curr_yr.where(tp: "PERSEDIAAN ALAM PEKERJAAN")
+			arr_phs = [ilsc_curr_yr.count]
+			@phs.each do |ph|
+				arr_phs << ilsc_curr_yr.where(phs: ph).count
+			end
+			@hash_item[yr] = arr_phs
+		end
+		
+		puts @hash_item
+		
+		@arr = ["Mus","Rehan","2024"]
+
+		respond_to do |format|
+      #format.html
+      format.xlsx{
+                  response.headers['Content-Disposition'] = "attachment; filename=Laporan ILSC.xlsx"
+      }
+		end
+	end
+
 	def ilsc_admhist
 		@index = true
 		@ilsc = Ilsc.find(params[:id])
