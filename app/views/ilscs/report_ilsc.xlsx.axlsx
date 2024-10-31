@@ -12,16 +12,34 @@ wb.styles do |style|
     #table-1
     sheet.add_row ["","Status Permohonan Berdasarkan Tahun"]
     sheet.add_row [""]
-    sheet.add_row ["Tahun","Permohonan Baru","Permohonan Tidak Lengkap", "Permohonan Lengkap (Dalam Semakan)", "Permohonan Ditolak","Permohonan Dalam Senarai Menunggu","Panggilan Temuduga", "Lulus Temuduga","Gagal Temuduga","Kemasukan Program","Tamat Program"]
+    sheet.add_row ["Tahun","Jumlah Pendaftaran","Permohonan Baru","Permohonan Tidak Lengkap", "Permohonan Lengkap (Dalam Semakan)", "Permohonan Ditolak","Permohonan Dalam Senarai Menunggu","Panggilan Temuduga", "Lulus Temuduga","Gagal Temuduga","Kemasukan Program","Tamat Program"]
     sheet.rows[0].style = header_1
     sheet.rows[2].style = highlight_cell
     counter = 1
     row =2
 
-    sheet.add_row @yr_arr, 
+    @final_arr.each do |itm|
+      sheet.add_row itm, 
       style: [nil, border_cell]
       sheet.rows[row+counter].style = border_cell
       counter = counter +1
+    end
+
+    sheet.add_row [""]
+    sheet.add_row ["","Jumlah Permohonan Mengikut DUN"]
+    sheet.add_row [""]
+    sheet.add_row ["Dun","Jumlah Pendaftaran","Permohonan Baru","Permohonan Tidak Lengkap", "Permohonan Lengkap (Dalam Semakan)", "Permohonan Ditolak","Permohonan Dalam Senarai Menunggu","Panggilan Temuduga", "Lulus Temuduga","Gagal Temuduga","Kemasukan Program","Tamat Program"]
+    sheet.rows[9].style = header_1
+    sheet.rows[11].style = highlight_cell
+    counter = counter+6
+
+    @arr_dun.each do |dunitm|
+      
+      sheet.add_row dunitm, 
+      style: [nil, border_cell]
+      sheet.rows[counter].style = border_cell
+      counter = counter +1
+    end
 
   end
 end

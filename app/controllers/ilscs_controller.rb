@@ -4,26 +4,43 @@ class IlscsController < ApplicationController
 
 	def report_ilsc
 
-		@yr_arr = []
+		ilsc_init = Ilsc.where.not(del: true).where(tp: "PERSEDIAAN ALAM PEKERJAAN")
 
-		@hash_item = {}
 		@phs = ["Permohonan Baru","Permohonan Tidak Lengkap", "Permohonan Lengkap (Dalam Semakan)", "Permohonan Ditolak","Permohonan Dalam Senarai Menunggu","Panggilan Temuduga", "Lulus Temuduga","Gagal Temuduga","Kemasukan Program","Tamat Program"]
-
+		@final_arr = []
 		(2020..Date.today.year).each do |yr|
-			#@yr_arr << yr
+			
 			arr_phs = []
-			ilsc_curr_yr = Ilsc.where('extract(year  from created_at) = ?', yr).where.not(del: true)
-			ilsc_curr_yr = ilsc_curr_yr.where(tp: "PERSEDIAAN ALAM PEKERJAAN")
-			arr_phs = [ilsc_curr_yr.count]
+			arr_phs << yr
+			ilsc_curr_yr = ilsc_init.where('extract(year  from created_at) = ?', yr)
+			arr_phs << ilsc_curr_yr.count
 			@phs.each do |ph|
 				arr_phs << ilsc_curr_yr.where(phs: ph).count
 			end
-			@hash_item[yr] = arr_phs
+			@final_arr << arr_phs
 		end
-		
-		puts @hash_item
-		
-		@arr = ["Mus","Rehan","2024"]
+
+		@arr_dun = []
+
+		$dun_list.each do |dun|
+			cnt_overall = 0
+			temp_arr_dun = []
+			arr_ilsc_id = []
+			temp_arr_dun << dun
+			ilsc_init.each do |ils|
+				prs = ils.perse
+				if prs.dun == dun
+					cnt_overall = cnt_overall + 1 unless prs.dun != dun
+					arr_ilsc_id << ils.id
+				end
+			end
+			temp_arr_dun << cnt_overall
+			@phs.each do |ph|
+				temp_arr_dun << Ilsc.where(id: arr_ilsc_id,phs: ph).count
+			end
+
+			@arr_dun << temp_arr_dun
+		end
 
 		respond_to do |format|
       #format.html
