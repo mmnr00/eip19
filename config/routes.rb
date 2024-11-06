@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   resources :ekrps, only:[:show,:new,:create, :destroy, :update, :edit]
   resources :qsas, only:[:show,:new,:create, :destroy, :update, :edit]
   resources :ilscs, only:[:show,:new,:create, :destroy, :update, :edit]
+  resources :btans, only:[:show,:new,:create, :destroy, :update, :edit]
   #resources :teachers, only:[:show]
   #resources :taska_teachers, only:[:create,:destroy]
   devise_for :parents
@@ -36,6 +37,8 @@ Rails.application.routes.draw do
   devise_for :owners#, :controllers => { :passwords => 'passwords' }
 	root 'welcomes#index2'
 
+  #~~BTANS
+  
   #~~KDAN
   get '/kdan_list', to: 'kdans#kdan_list'
   get '/kdan_index', to: 'kdans#kdan_index'

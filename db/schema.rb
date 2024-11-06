@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_02_21_122919) do
+ActiveRecord::Schema.define(version: 2024_11_06_124113) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,6 +103,55 @@ ActiveRecord::Schema.define(version: 2024_02_21_122919) do
     t.integer "ekid_id"
     t.boolean "stat"
     t.integer "teacher_id"
+  end
+
+  create_table "btans", force: :cascade do |t|
+    t.string "name"
+    t.string "ic"
+    t.string "dun"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "purp"
+    t.integer "amnt"
+    t.string "marr"
+    t.string "addr"
+    t.string "perd"
+    t.string "undi"
+    t.string "race"
+    t.string "relg"
+    t.string "phhm"
+    t.string "phmb"
+    t.string "empl"
+    t.string "phemp"
+    t.string "sect"
+    t.integer "gaji"
+    t.string "rel"
+    t.string "namesp"
+    t.string "icsp"
+    t.string "addrsp"
+    t.string "perdsp"
+    t.string "undisp"
+    t.string "phhmsp"
+    t.string "phmbsp"
+    t.string "emplsp"
+    t.string "phempsp"
+    t.string "sectsp"
+    t.integer "gajisp"
+    t.string "relsp"
+    t.text "household"
+    t.text "histbtn"
+    t.string "namakd"
+    t.string "ickd"
+    t.string "gdrkd"
+    t.string "racekd"
+    t.string "relkd"
+    t.string "addrkd"
+    t.string "okuno"
+    t.string "okutp"
+    t.string "statekd"
+    t.string "perdkd"
+    t.string "sekkd"
+    t.string "nmkd"
   end
 
   create_table "chkls", force: :cascade do |t|
