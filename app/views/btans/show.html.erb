@@ -1,1 +1,16 @@
-<%= @btan.name %>
+
+
+<div class="table-responsive">
+  <table class="table table-bordered" width="100%" cellspacing="0" style="color: black;borders: 2px solid black">
+
+    <tbody>
+      <tr style="borders: 1.5px solid black">
+        <td style="background-color:#0070C0 !important" colspan="2"><strong><font color="white"><h2 align="center"><%= @btan.name %> (BTAN-<%= @btan.id.to_s.rjust(5, '0')%>)</h2></font></strong></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">NO MYKAD</font></td>
+        <td style="background-color: !important"><%= "#{@btan.ic}" %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
