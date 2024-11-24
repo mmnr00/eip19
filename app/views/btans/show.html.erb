@@ -2,15 +2,278 @@
 
 <div class="table-responsive">
   <table class="table table-bordered" width="100%" cellspacing="0" style="color: black;borders: 2px solid black">
-
     <tbody>
-      <tr style="borders: 1.5px solid black">
-        <td style="background-color:#0070C0 !important" colspan="2"><strong><font color="white"><h2 align="center"><%= @btan.name %> (BTAN-<%= @btan.id.to_s.rjust(5, '0')%>)</h2></font></strong></td>
+      <tr>
+        <td style="background-color:#0070C0 !important" colspan="4"><font color="white"><h8>TUJUAN PERMOHONAN</h8></font></td>
       </tr>
       <tr>
-        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">NO MYKAD</font></td>
-        <td style="background-color: !important"><%= "#{@btan.ic}" %></td>
+        <td style="background-color: !important;" colspan="4" ><font color="black"><%= @btan.purp %></font></td>
       </tr>
     </tbody>
+    <tbody>
+      <tr>
+        <td style="background-color:#0070C0 !important" colspan="4"><font color="white"><h8>MAKLUMAT PENDAFTARAN</h8></font></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; " ><font color="black">Jumlah Bantuan(RM)</font></td>
+        <td style="background-color: !important; " ><font color="black"><%= @btan.amnt %></font></td>
+        <td style="background-color:#e5e5e5 !important; " ><font color="black">Dun</font></td>
+        <td style="background-color: !important; " ><font color="black"><%= @btan.dun %></font></td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr>
+        <td style="background-color:#0070C0 !important" colspan="4"><font color="white"><h8>MAKLUMAT PEMOHON(PENJAGA)</h8></font></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; " ><font color="black">Nama</font></td>
+        <td style="background-color: !important; " colspan="3" ><font color="black"><%= @btan.name %></font></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; " ><font color="black">No KP</font></td>
+        <td style="background-color: !important; " ><font color="black"><%= @btan.ic %></font></td>
+        <td style="background-color:#e5e5e5 !important; " ><font color="black">Status Perkhahwinan</font></td>
+        <td style="background-color: !important; " ><font color="black"><%= @btan.marr %></font></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; " ><font color="black">Alamat Kediaman</font></td>
+        <td style="background-color: !important; " colspan="3" ><font color="black"><%= @btan.addr %></font></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; " ><font color="black">Tempoh Menetap Di <br> Selangor (Tahun)</font></td>
+        <td style="background-color: !important; " ><font color="black"><%= @btan.perd %></font></td>
+        <td style="background-color:#e5e5e5 !important; " ><font color="black">Pengundi Di Selangor</font></td>
+        <td style="background-color: !important; " ><font color="black"><%= @btan.undi %></font></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; " ><font color="black">Bangsa</font></td>
+        <td style="background-color: !important; " ><font color="black"><%= @btan.race %></font></td>
+        <td style="background-color:#e5e5e5 !important; " ><font color="black">Agama</font></td>
+        <td style="background-color: !important; " ><font color="black"><%= @btan.relg %></font></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; " ><font color="black">No Telefon Rumah</font></td>
+        <td style="background-color: !important; " ><font color="black"><%= @btan.phhm %></font></td>
+        <td style="background-color:#e5e5e5 !important; " ><font color="black">No Telefon Bimbit</font></td>
+        <td style="background-color: !important; " ><font color="black"><%= @btan.phmb %></font></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; " ><font color="black">Nama Majikan</font></td>
+        <td style="background-color: !important; " colspan="3" ><font color="black"><%= @btan.empl %></font></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; " ><font color="black">No Telefon Majikan</font></td>
+        <td style="background-color: !important; " ><font color="black"><%= @btan.phemp %></font></td>
+        <td style="background-color:#e5e5e5 !important; " ><font color="black">Sektor Pekerjaan</font></td>
+        <td style="background-color: !important; " ><font color="black"><%= @btan.sect %></font></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; " ><font color="black">Jumlah Pendapatan Sebulan</font></td>
+        <td style="background-color: !important; " ><font color="black"><%= @btan.gaji %></font></td>
+        <td style="background-color:#e5e5e5 !important; " ><font color="black">Hubungan</font></td>
+        <td style="background-color: !important; " ><font color="black"><%= @btan.rel %></font></td>
+      </tr>
+    </tbody>
+
+    <tbody>
+      <tr>
+        <td style="background-color:#0070C0 !important" colspan="4"><font color="white"><h8>MAKLUMAT PASANGAN</h8></font></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; " ><font color="black">Nama</font></td>
+        <td style="background-color: !important; " colspan="3" ><font color="black"><%= @btan.namesp %></font></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; " ><font color="black">No KP</font></td>
+        <td style="background-color: !important; " colspan="3" ><font color="black"><%= @btan.icsp %></font></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; " ><font color="black">Alamat Kediaman</font></td>
+        <td style="background-color: !important; " colspan="3" ><font color="black"><%= @btan.addrsp %></font></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; " ><font color="black">Tempoh Menetap Di <br> Selangor (Tahun)</font></td>
+        <td style="background-color: !important; " ><font color="black"><%= @btan.perdsp %></font></td>
+        <td style="background-color:#e5e5e5 !important; " ><font color="black">Pengundi Di Selangor</font></td>
+        <td style="background-color: !important; " ><font color="black"><%= @btan.undisp %></font></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; " ><font color="black">No Telefon Rumah</font></td>
+        <td style="background-color: !important; " ><font color="black"><%= @btan.phhmsp %></font></td>
+        <td style="background-color:#e5e5e5 !important; " ><font color="black">No Telefon Bimbit</font></td>
+        <td style="background-color: !important; " ><font color="black"><%= @btan.phmbsp %></font></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; " ><font color="black">Nama Majikan</font></td>
+        <td style="background-color: !important; " colspan="3" ><font color="black"><%= @btan.emplsp %></font></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; " ><font color="black">No Telefon Majikan</font></td>
+        <td style="background-color: !important; " ><font color="black"><%= @btan.phempsp %></font></td>
+        <td style="background-color:#e5e5e5 !important; " ><font color="black">Sektor Pekerjaan</font></td>
+        <td style="background-color: !important; " ><font color="black"><%= @btan.sectsp %></font></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; " ><font color="black">Jumlah Pendapatan Sebulan</font></td>
+        <td style="background-color: !important; " ><font color="black"><%= @btan.gajisp %></font></td>
+        <td style="background-color:#e5e5e5 !important; " ><font color="black">Hubungan</font></td>
+        <td style="background-color: !important; " ><font color="black"><%= @btan.relsp %></font></td>
+      </tr>
+    </tbody>
+
+    <tbody>
+      <tr>
+        <td style="background-color:#0070C0 !important" colspan="4"><font color="white"><h8>MAKLUMAT ANAK ISTIMEWA</h8></font></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; " ><font color="black">Nama</font></td>
+        <td style="background-color: !important; " colspan="3" ><font color="black"><%= @btan.nmkd %></font></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; " ><font color="black">No KP</font></td>
+        <td style="background-color: !important; " ><font color="black"><%= @btan.ickd %></font></td>
+        <td style="background-color:#e5e5e5 !important; " ><font color="black">Jantina</font></td>
+        <td style="background-color: !important; " ><font color="black"><%= @btan.gdrkd %></font></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; " ><font color="black">Bangsa</font></td>
+        <td style="background-color: !important; " ><font color="black"><%= @btan.racekd %></font></td>
+        <td style="background-color:#e5e5e5 !important; " ><font color="black">Agama</font></td>
+        <td style="background-color: !important; " ><font color="black"><%= @btan.relkd %></font></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; " ><font color="black">Alamat Kediaman</font></td>
+        <td style="background-color: !important; " colspan="3" ><font color="black"><%= @btan.addrkd %></font></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; " ><font color="black">No Pendaftaran Kad <br> OKU JKM</font></td>
+        <td style="background-color: !important; " ><font color="black"><%= @btan.okuno %></font></td>
+        <td style="background-color:#e5e5e5 !important; " ><font color="black">Kategori Ketidakupayaan</font></td>
+        <td style="background-color: !important; " ><font color="black"><%= @btan.okutp %></font></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; " ><font color="black">Negeri Kelahiran</font></td>
+        <td style="background-color: !important; " ><font color="black"><%= @btan.statekd %></font></td>
+        <td style="background-color:#e5e5e5 !important; " ><font color="black">Tempoh Menetap di <br> Selangor (Tahun)</font></td>
+        <td style="background-color: !important; " ><font color="black"><%= @btan.perdkd %></font></td>
+      </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; " ><font color="black">Sekolah/Institusi Pendidikan</font></td>
+        <td style="background-color: !important; " colspan="3" ><font color="black"><%= @btan.sekkd %></font></td>
+      </tr>
+    </tbody>
+
+    <tbody>
+      <tr>
+        <td style="background-color:#0070C0 !important" colspan="4"><font color="white"><h8>MAKLUMAT TANGGUNGAN KETUA ISI RUMAH</h8></font></td>
+      </tr>
+      <tr>
+        <div class="table-responsive border" style="font-size: 12px">
+          <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0">
+            <thead style="text-align: center">
+              <tr class="shadow">
+                <th style="background-color:#7fbf7f;color:black">NAMA PENUH</th>
+                <th style="background-color:#7fbf7f;color:black">NO KP/<br>SIJIL KELAHIRAN</th>
+                <th style="background-color:#7fbf7f;color:black">HUBUNGAN</th>
+                <th style="background-color:#7fbf7f;color:black">UMUR</th>
+                <th style="background-color:#7fbf7f;color:black">PENDAPATAN BULANAN <br>(RM)</th>
+              </tr>
+            </thead>
+            <tbody style="color: black">
+              <% @btan.household.each do |k,v| %>
+                <tr>
+                  <td><%= v[0] %></td>
+                  <td><%= v[1] %></td>
+                  <td><%= v[2] %></td>
+                  <td><%= v[3] %></td>
+                  <td><%= v[4] %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </tr>
+    </tbody>
+
+    <div class="table-responsive">
+      <table class="table table-bordered" width="100%" cellspacing="0" style="color: black;borders: 2px solid black">
+        <tbody>
+          <tr>
+            <td style="background-color:#0070C0 !important" colspan="4"><font color="white"><h8>SUMBANGAN BANTUAN YANG TELAH DITERIMA (JUMLAH TAHUNAN)</h8></font></td>
+          </tr>
+          <tr>
+            <td style="background-color: !important;" colspan="4" ><font color="black"><br><br></font></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
   </table>
+
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <tr>
+        <td style="background-color:#0070C0 !important; color: white" colspan=4>DOKUMENTASI ANIS</td>
+      </tr>
+      <tr style="color: black; font-size: 12px;">
+        <td style="background-color:#e5e5e5 !important; "colspan=4>
+          <p style="margin-bottom: -5px;">SAYA MENGAKU BAHAWA BORANG INI TELAH DITERIMA OLEH PUSAT ANIS</p>
+        </td>
+      </tr>
+
+      <tr style="color: black; font-size: 13px; padding-left: 20px; height: -5px;">
+        <td style="background-color:#e5e5e5 !important; width: 35%;" rowspan=5>
+          <p style="background-color:white!important; padding-bottom: 170px;" align="center">TANDATANGAN PUSAT ANIS</p>
+        </td>
+        <td style="background-color:#e5e5e5 !important; width: %">
+          NAMA STAF :
+        </td>
+        <td style="background-color:white !important; width: 40%">
+        </td>
+        <td style="background-color:#e5e5e5 !important; width: 2%"></td>
+      </tr>
+
+      <tr style="color: black; font-size: 13px;">
+        <td style="background-color:#e5e5e5 !important; width: %">
+          NO KP BARU :
+        </td>
+        <td style="background-color:white !important; width: %">
+        <td style="background-color:#e5e5e5 !important; width: 2%"></td>
+      </tr>
+
+      <tr style="color: black; font-size: 13px;">
+        <td style="background-color:#e5e5e5 !important; width: %">
+          TARIKH BORANG DITERIMA :
+        </td>
+        <td style="background-color:white !important; width: %">
+        <td style="background-color:#e5e5e5 !important; width: 2%"></td>
+      </tr>
+
+      <tr style="color: black; font-size: 13px;">
+        <td style="background-color:#e5e5e5 !important; width: %">
+          TARIKH PERMOHONAN :
+        </td>
+        <td style="background-color:white !important; width: %;"></td>
+        <td style="background-color:#e5e5e5 !important; width: 2%"></td>
+      </tr>
+
+      <tr style="color: black; font-size: 13px;">
+        <td style="background-color:#e5e5e5 !important; width: %">
+          NO RUJUKAN :
+        </td>
+        <td style="background-color:white !important; width: %;"></td>
+        <td style="background-color:#e5e5e5 !important; width: 2%"></td>
+      </tr>
+
+      <tr>
+        <td style="background-color:#e5e5e5 !important;" colspan="4"></td>
+      </tr>
+      
+    </table>
+  </div>
+
+
+
+
+
 </div>

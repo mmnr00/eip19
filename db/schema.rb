@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_11_06_124113) do
+ActiveRecord::Schema.define(version: 2024_11_24_124227) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -152,6 +152,7 @@ ActiveRecord::Schema.define(version: 2024_11_06_124113) do
     t.string "perdkd"
     t.string "sekkd"
     t.string "nmkd"
+    t.boolean "tnc"
   end
 
   create_table "chkls", force: :cascade do |t|

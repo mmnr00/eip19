@@ -587,10 +587,11 @@
         <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0">
           <thead style="text-align: center">
             <tr class="shadow">
-              <th style="background-color:#7fbf7f;color:black">NAMA SEKOLAH RENDAH/MENENGAH/INSTITUSI LAIN</th>
-              <th style="background-color:#7fbf7f;color:black">TAHUN MASUK</th>
-              <th style="background-color:#7fbf7f;color:black">TAHUN KELUAR</th>
-              <th style="background-color:#7fbf7f;color:black">PENCAPAIAN</th>
+              <th style="background-color:#7fbf7f;color:black">NAMA PENUH</th>
+              <th style="background-color:#7fbf7f;color:black">NO KP/<br>SIJIL KELAHIRAN</th>
+              <th style="background-color:#7fbf7f;color:black">HUBUNGAN</th>
+              <th style="background-color:#7fbf7f;color:black">UMUR</th>
+              <th style="background-color:#7fbf7f;color:black">PENDAPATAN BULANAN <br>(RM)</th>
             </tr>
           </thead>
           <tbody style="color: black">
@@ -599,16 +600,19 @@
             <%= h.fields_for :"#{n}" do |g| %>
               <tr>
                 <td>
-                  <%= g.text_field :"sek", class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px", value: @btan.household["#{n}"][0] %>
+                  <%= g.text_field :"nama", class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px", value: @btan.household["#{n}"][0] %>
                 </td>
                 <td>
-                  <%= g.text_field :"tahun", class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px", value: @btan.household["#{n}"][1] %>
+                  <%= g.text_field :"kp", class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px", value: @btan.household["#{n}"][1] %>
                 </td>
                 <td>
-                  <%= g.text_field :"keluar", class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px", value: @btan.household["#{n}"][2] %>
+                  <%= g.text_field :"hubg", class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px", value: @btan.household["#{n}"][2] %>
                 </td>
                 <td>
-                  <%= g.text_field :"pencapaian", class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px", value: @btan.household["#{n}"][3] %>
+                  <%= g.text_field :"umur", class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px", value: @btan.household["#{n}"][3] %>
+                </td>
+                <td>
+                  <%= g.text_field :"pend", class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px", value: @btan.household["#{n}"][4] %>
                 </td>
               </tr>
             <% end %>
@@ -618,13 +622,26 @@
           </tbody>
 
         </table>
-      </div> <!-- DIV TABLE -->
-      
+
+      </div> <!-- DIV TABLE --><br>
+
+      <div class="col-sm-8" style="background-color:#ffcccc">
+        <h6 style="color:black; font-weight: 600">Sumbangan Bantuan Yang Telah Diterima (Jumlah Tahunan)</h6>
+      </div>
+      <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.text_area :sekkd, class: "form-control", autofocus: true, style: "text-transform: uppercase" %>
+          </div>
+        </div>
 
       
 
       
       <%= f.hidden_field :perse_id, value: params[:perse] %>
+
+      <div style="margin-top: 5px; margin-bottom: 5px;">
+        <%= f.check_box :tnc, value: 1, required: true %>  Saya mengesahkan segala maklumat adalah benar sekiranya tidak permohonan ini akan terbatal dengan serta merta
+      </div>
 
 
       <br>

@@ -4,11 +4,15 @@ class BtansController < ApplicationController
 
 	def new
 		@btan = Btan.new
+		@btan.household = {"1"=>["", "", "", "",""], "2"=>["", "", "", "",""], "3"=>["", "", "", "",""], "4"=>["", "", "", "",""], "5"=>["", "", "", "",""]}
 	end
 
 	def create
 		@btan = Btan.new(btan_params)
 		@btan.save
+		btan_ls(@btan.id,params[:btan])
+		@btan.save
+		redirect_to btan_path(@btan)
 	end
 
 	def show
@@ -17,7 +21,7 @@ class BtansController < ApplicationController
 
 	def edit
 		if @btan.household.blank?
-		@btan.household = {"1"=>["", "", "", ""], "2"=>["", "", "", ""], "3"=>["", "", "", ""], "4"=>["", "", "", ""], "5"=>["", "", "", ""]}
+		@btan.household = {"1"=>["", "", "", "",""], "2"=>["", "", "", "",""], "3"=>["", "", "", "",""], "4"=>["", "", "", "",""], "5"=>["", "", "", "",""]}
 		end
 	end
 
@@ -40,7 +44,7 @@ class BtansController < ApplicationController
 		@btan = Btan.find(id)
 		if par[:household].present?
 			par[:household].each do |k,v|
-				@btan.household[k] = [v["sek"],v["tahun"],v["keluar"],v["pencapaian"]]
+				@btan.household[k] = [v["nama"],v["kp"],v["hubg"],v["umur"],v["pend"]]
 			end
 		end
 		@btan.save
@@ -90,6 +94,7 @@ class BtansController < ApplicationController
 														    :statekd,
 														    :perdkd,
 														    :sekkd,
+														    :tnc,
 														    :nmkd)
 	end
 
