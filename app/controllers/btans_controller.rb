@@ -4,7 +4,12 @@ class BtansController < ApplicationController
 
 	def new
 		@btan = Btan.new
-		@btan.household = {"1"=>["", "", "", "",""], "2"=>["", "", "", "",""], "3"=>["", "", "", "",""], "4"=>["", "", "", "",""], "5"=>["", "", "", "",""]}
+		hash_temp = {}
+		(1..10).each do |n|
+			hash_temp[n.to_s] = ["", "", "", "",""]
+		end
+		puts hash_temp
+		@btan.household = hash_temp #{"1"=>["", "", "", "",""], "2"=>["", "", "", "",""], "3"=>["", "", "", "",""], "4"=>["", "", "", "",""], "5"=>["", "", "", "",""]}
 	end
 
 	def create

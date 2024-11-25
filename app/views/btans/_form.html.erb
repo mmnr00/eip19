@@ -596,7 +596,7 @@
           </thead>
           <tbody style="color: black">
             <%= f.fields_for :household do |h| %>
-            <% (1..5).each do |n| %>
+            <% (1..10).each do |n| %>
             <%= h.fields_for :"#{n}" do |g| %>
               <tr>
                 <td>
