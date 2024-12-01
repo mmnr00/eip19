@@ -38,6 +38,7 @@ Rails.application.routes.draw do
 	root 'welcomes#index2'
 
   #~~BTANS
+  get '/lsbtan', to: 'btans#lsbtan'
   
   #~~KDAN
   get '/kdan_list', to: 'kdans#kdan_list'

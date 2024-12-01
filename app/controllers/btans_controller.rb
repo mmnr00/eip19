@@ -2,6 +2,11 @@ class BtansController < ApplicationController
 
 	before_action :set_btan, only: [:show,:edit,:update]
 
+	def lsbtan
+		@btans = Btan.all
+		render action: "lsbtan", layout: "dsb-admin-btan"
+	end
+
 	def new
 		@btan = Btan.new
 		hash_temp = {}
