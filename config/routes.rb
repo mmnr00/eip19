@@ -39,6 +39,7 @@ Rails.application.routes.draw do
 
   #~~BTANS
   get '/lsbtan', to: 'btans#lsbtan'
+  post '/updstatbtan', to: 'btans#updstatbtan'
   
   #~~KDAN
   get '/kdan_list', to: 'kdans#kdan_list'

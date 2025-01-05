@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_12_01_070120) do
+ActiveRecord::Schema.define(version: 2025_01_05_124549) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -154,6 +154,8 @@ ActiveRecord::Schema.define(version: 2024_12_01_070120) do
     t.string "nmkd"
     t.boolean "tnc"
     t.string "stat"
+    t.string "descr"
+    t.text "descrls"
   end
 
   create_table "chkls", force: :cascade do |t|
@@ -473,6 +475,7 @@ ActiveRecord::Schema.define(version: 2024_12_01_070120) do
     t.integer "ilsc_id"
     t.integer "ddk_id"
     t.integer "kdan_id"
+    t.integer "btan_id"
   end
 
   create_table "ilscs", force: :cascade do |t|

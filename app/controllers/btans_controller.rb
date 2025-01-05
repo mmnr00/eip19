@@ -1,6 +1,21 @@
 class BtansController < ApplicationController
 
 	before_action :set_btan, only: [:show,:edit,:update]
+	before_action :authenticate_admin!, only: [:lsbtan]
+
+	def updstatbtan
+		pars = params[:btan]
+		@btan = Btan.find(pars[:id])
+		@btan.stat = pars[:stat]
+		@btan.descr = pars[:descr]
+		@btan.descrls << [Admin.find(pars[:admid]).username,Time.new, pars[:stat], pars[:descr]]
+		if @btan.save
+			flash[:success] = "Kemaskini Berjaya"
+		else 
+			flash[:danger] = "Kemaskini Tidak Berjaya"
+		end
+		redirect_to request.referrer
+	end
 
 	def lsbtan
 		@btans = Btan.all
@@ -21,6 +36,7 @@ class BtansController < ApplicationController
 		@btan = Btan.new(btan_params)
 		@btan.save
 		btan_ls(@btan.id,params[:btan])
+		@btan.stat = "BELUM DISEMAK"
 		@btan.save
 		redirect_to btan_path(@btan)
 	end
@@ -105,7 +121,8 @@ class BtansController < ApplicationController
 														    :perdkd,
 														    :sekkd,
 														    :tnc,
-														    :nmkd)
+														    :nmkd,
+														    fotos_attributes: [:foto, :picture, :foto_name])
 	end
 
 end

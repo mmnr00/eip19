@@ -157,19 +157,34 @@
       <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0" style="color: black">
         <thead>
           <tr class="shadow">
-            <th style="background-color:#ffb2b2; width: 12%">NO SIRI</th>
-            <th style="background-color:#ffb2b2">MAKLUMAT AGENSI</th>
+            <th style="background-color:#ffb2b2; width: ">NO</th>
             <th style="background-color:#ffb2b2">MAKLUMAT PEMOHON</th>
-            <th style="background-color:#ffb2b2; width: 18%">STATUS</th>
-            <th style="background-color:#ffb2b2">TARIKH PERMOHONAN</th>
+            <th style="background-color:#ffb2b2">MAKLUMAT ANAK ISTIMEWA</th>
+            <th style="background-color:#ffb2b2; width: ">DUN</th>
+            <th style="background-color:#ffb2b2">JUMLAH BANTUAN</th>
+            <th style="background-color:#ffb2b2">TARIKH MOHON</th>
+            <th style="background-color:#ffb2b2">TUJUAN PERMOHONAN</th>
+            <th style="background-color:#ffb2b2">STATUS</th>
           </tr>
         </thead>
         <tbody>
-          <% @btans.each do |bt| %>
+          <% cnt = 1; @btans.each do |bt| %>
           <tr>
-            <td><%= bt.name %></td>
+            <td><%= cnt %></td>
+            <td><a href="<%= btan_url(id: bt.id) %>" target="_blank"><%= bt.name %></a><br>
+                <%= bt.ic %>
+            </td>
+            <td>
+              <%= bt.nmkd %><br>
+              <%= bt.ickd %>
+            </td>
+            <td><%= bt.dun %></td>
+            <td><%= bt.amnt %></td>
+            <td><%= bt.created_at.strftime('%d-%^b-%Y') %></td>
+            <td><%= bt.purp %></td>
+            <td><%= bt.stat %></td>
           </tr>
-          <% end %>
+          <% cnt = cnt+1 ;end %>
         </tbody>
       </table>
     </div>

@@ -1,4 +1,21 @@
 
+<div class="prt-hide" style="margin-bottom: 10px;">
+  <%= link_to "Muat Turun Borang", "#", onclick: 'window.print()', class: 'btn btn-sm btn-success btn-block' %>
+
+  <% if current_admin.present?
+    statfm = ["BELUM DISEMAK", "TELAH DISEMAK", "DOKUMEN TIDAK LENGKAP", "DITOLAK", "LULUS", "GAGAL"]
+  %>
+  <%= form_for(:btan, :url => {:controller=>'btans', :action=>'updstatbtan'}, :html => {multipart: true, class: "form-horizontal", method: :post, role: "form"}) do |f| %>
+
+      <%= f.select :stat, options_for_select(statfm,selected: @btan.stat), {include_blank: "Pilih Status"}, required: true, style: "margin-top: 5px" %>
+      <%= f.text_field :descr, placeholder: "Makluman Admin", value: @btan.descr, style: "margin-top: 5px; width: 100%" %>
+      <%= f.hidden_field :id, value: @btan.id, style: "margin-top: 5px" %>
+      <%= f.hidden_field :admid, value: current_admin.id, style: "margin-top: 5px" %>
+      <%= f.submit :"Kemaskini",  class: 'btn btn-sm btn-info btn-lg', style: "margin-top: 5px" %>
+
+  <% end %>
+  <% end %>
+</div>
 
 <div class="table-responsive">
   <table class="table table-bordered" width="100%" cellspacing="0" style="color: black;borders: 2px solid black">

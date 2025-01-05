@@ -12,5 +12,6 @@ class Foto < ApplicationRecord
 	belongs_to :ilsc, optional: true
 	belongs_to :ddk, optional: true
 	belongs_to :kdan, optional: true
+	belongs_to :btan, optional: true
 	mount_uploader :picture, PictureUploader
 end
