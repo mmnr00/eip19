@@ -24,6 +24,7 @@ class BtansController < ApplicationController
 
 	def new
 		@btan = Btan.new
+		@btan.fotos.build
 		hash_temp = {}
 		(1..10).each do |n|
 			hash_temp[n.to_s] = ["", "", "", "",""]

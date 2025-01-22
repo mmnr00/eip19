@@ -3,6 +3,7 @@ class Btan < ApplicationRecord
 	serialize :histbtn,Hash
 	serialize :descrls,Array
 	has_many	:fotos
+	accepts_nested_attributes_for :fotos
 end
 
 

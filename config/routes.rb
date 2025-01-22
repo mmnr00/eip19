@@ -215,7 +215,7 @@ Rails.application.routes.draw do
   get '/jkmdaerah', to: 'welcomes#jkmdaerah'
   get '/jkmnegeri', to: 'welcomes#jkmnegeri'
   get '/pengumuman', to: 'welcomes#pengumuman'
-  get '/tanyaanis', to: 'welcomes#soaljawab'
+  #get '/tanyaanis', to: 'welcomes#soaljawab'
   get '/qatemp', to: 'welcomes#qatemp'
   get '/soaljawab', to: 'welcomes#soaljawab'
   get '/mpachart', to: 'welcomes#mpachart'
