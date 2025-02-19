@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2025_01_05_124549) do
+ActiveRecord::Schema.define(version: 2025_02_19_130051) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -548,6 +548,8 @@ ActiveRecord::Schema.define(version: 2025_01_05_124549) do
     t.string "phwr"
     t.boolean "del"
     t.text "admupd"
+    t.string "catgcp"
+    t.string "cpculs"
   end
 
   create_table "kdans", force: :cascade do |t|
