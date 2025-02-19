@@ -7,6 +7,12 @@
 #   )
 # end
 
+$cpcu_tp = {
+	"CPCUCST" => "Caregiver Skills Training",
+	"CPCUPPF" => "Pemberian Peralatan Fisioterapi",
+	"CPCUPR" => "Perkhidmatan Rawatan"
+}
+
 $kdan_catg = {
 	"OKU Penglihatan" => "BL",
 	"OKU Pendengaran" => "DE",

@@ -70,12 +70,14 @@
               <%= ek.name %><br>
               (<%= ek.ic %>)<br>
               <%
-                age = (Date.today.year*12+Date.today.month) - (ek.dobn.year*12+ek.dobn.month)
-                yr = age/12
-                mth = age - yr*12
+                "age = (Date.today.year*12+Date.today.month) - (ek.dobn.year*12+ek.dobn.month)"
+                "yr = age/12"
+                "mth = age - yr*12"
+                yr = 2020
+                mth = "JAN"
         
               %>
-              <%= "#{yr} tahun, #{mth} bulan" %><br>
+              <% "#{yr} tahun, #{mth} bulan" %><br>
               <a href="<%= ilsc_conf_url(id: ek) %>" target="_blank"><btn class="badge badge-pill badge-secondary">Profil</btn></a>
             </td>
             <td>
@@ -84,7 +86,12 @@
               <%= perse.email %><br>
             </td>
             <td>
-              <%= ek.tp %><br><br>
+              <% if (tp = $cpcu_tp[ek.tp]).present? %>
+               <%= tp %>
+              <% else %>
+                <%= ek.tp %>
+              <% end %>
+              <br><br>
                 
             </td>
             <td>

@@ -5,6 +5,17 @@ class WelcomesController < ApplicationController
 	
 	#layout "page"
 
+	def cpcupr
+		@index = true
+	end
+
+	def cpcuppf
+		@index = true
+	end
+
+	def cpcucst
+		@index = true
+	end
 
 	def cpcuanis
 		@index = true

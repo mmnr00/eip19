@@ -2,8 +2,14 @@
 
 
 &nbsp
-<%= link_to new_ilsc_path(prog: "CPCU", perse: params[:perse]), class: "btn btn-sm btn-primary", style: "font-size: 15px" do %>
-  <i class="fa far fa-plus"></i>&nbsp Daftar Program <i>Celebral Palsy Care Unit</i>
+<%= link_to new_ilsc_path(prog: "CPCUCST", perse: params[:perse]), class: "btn btn-sm btn-primary", style: "font-size: 15px" do %>
+  <i class="fa far fa-plus"></i>&nbsp Daftar CPCU Caregiver Skills Training</i>
+<% end %> &nbsp
+<%= link_to new_ilsc_path(prog: "CPCUPPF", perse: params[:perse]), class: "btn btn-sm btn-primary", style: "font-size: 15px" do %>
+  <i class="fa far fa-plus"></i>&nbsp Daftar CPCU Pemberian Peralatan Fisioterapi</i>
+<% end %> &nbsp
+<%= link_to new_ilsc_path(prog: "CPCUPR", perse: params[:perse]), class: "btn btn-sm btn-primary", style: "font-size: 15px" do %>
+  <i class="fa far fa-plus"></i>&nbsp Daftar CPCU Perkhidmatan Rawatan</i>
 <% end %> &nbsp
 <div style="margin-bottom: 10px"></div>
 
@@ -35,16 +41,18 @@
         <tbody>
           <% cnt = 1; @ilscs.order('created_at DESC').each do |ek|; perse = ek.perse %>
           <%
-            diff = (Date.today.year*12+Date.today.month) - (ek.dobn.year*12+ek.dobn.month)
-            year = diff/12
-            month = diff - year*12 
+            # diff = (Date.today.year*12+Date.today.month) - (ek.dobn.year*12+ek.dobn.month)
+            # year = diff/12
+            # month = diff - year*12 
+            year = 20
+            month = 15
           %>
             <tr>
               <td><%= cnt %></td>
               <td>
                 <a href="<%= ilsc_conf_url(id: ek)%>" target="_blank"><%= ek.name %></a><br>
                 <%= ek.ic %><br>
-                <%= "#{year} Tahun, #{month} Bulan" %><br>
+                <% "#{year} Tahun, #{month} Bulan" %><br>
                 <%= link_to "Kemaskini Profil", edit_ilsc_path(id: ek.id, perse: ek.perse.id, prog: ek.tp), class: "badge badge-pill badge-secondary", target: "" %> 
               </td>
               <td>
@@ -52,7 +60,7 @@
                 <%= perse.ph %><br>
                 <%= perse.email %><br>
               </td>
-              <td><%= ek.tp %></td>
+              <td><%= $cpcu_tp[ek.tp] %></td>
               <td><% if ek.tp != "DET & JOB COACH" %>
                 <div class="badge badge-pill badge-info" style="font-size: 13px;"><%= ek.phs %></div><br>
                 <b>Makluman Admin: </b><%= ek.descr %><br>

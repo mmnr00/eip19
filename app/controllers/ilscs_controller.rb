@@ -95,7 +95,7 @@ class IlscsController < ApplicationController
 
 	def cpcuindex
 		@admin = current_admin
-		@ilscs = Ilsc.where(tp: "CPCU")
+		@ilscs = Ilsc.where("tp like?", "%CPCU%" )
 		@ekids = Ekid.all
 		@ilscs = @ilscs.where('extract(year from created_at) = ?', params[:yr]) unless params[:yr].blank?
 		if params[:sch].present?
@@ -132,7 +132,7 @@ class IlscsController < ApplicationController
 
 	def cpcu_list
 		@perse = Perse.find(params[:perse])
-		@ilscs = @perse.ilscs.where(tp: "CPCU")
+		@ilscs = @perse.ilscs.where("tp like?", "%CPCU%" )
 	end
 
 	def ilscdet
@@ -345,7 +345,7 @@ class IlscsController < ApplicationController
 
 	def ilsc_list
 		@perse = Perse.find(params[:perse])
-		@ilscs = @perse.ilscs.where.not(tp: "CPCU")
+		@ilscs = @perse.ilscs.where.not("tp like?", "%CPCU%" )
 	end
 
 	def new
@@ -392,7 +392,7 @@ class IlscsController < ApplicationController
 				else
 					@cfm = true
 				end
-			elsif params[:prog] == "CPCU"
+			elsif params[:prog].include? "CPCU"
 				ilsc_exs = Ilsc.where(ic: params[:ic], tp: params[:prog])
 				if ilsc_exs.present?
 					flash[:danger] = "No MYKAD #{ilsc_exs.last.name} ini sudah didaftarkan oleh #{ilsc_exs.last.perse.name}"
@@ -433,7 +433,7 @@ class IlscsController < ApplicationController
 				@ilsc.save
 				puts "after-#{@ilsc.tp}"
 				flash[:success] = "Pendaftaran Diterima. Pihak ANIS akan menghubungi anda jika permohonan diluluskan"
-				if @ilsc.tp == "CPCU"
+				if @ilsc.tp.include? "CPCU"
 					redirect_to cpcu_list_path(perse: @ilsc.perse.id)
 				else
 					redirect_to ilsc_list_path(perse: @ilsc.perse.id)

@@ -1,6 +1,15 @@
+<% if params[:prog].include? "CPCU" %>
+ <% nmprg = {"CPCUCST" => "CPCU Caregiver Skills Training","CPCUPR" => "CPCU Perkhidmatan Rawatan", "CPCUPPF" => "CPCU Pemberian Peralatan Fisioterapi"}
+   prog = nmprg[params[:prog]]
+
+  %>
+<% else %>
+ <% prog = params[:prog] %>
+<% end %>
 <div class="col-sm-8" style="background-color:#4c4cff; border-radius: 40px">
-  <h5 style="color:white; font-weight: 600; text-align: center">PENDAFTARAN BARU UNTUK <%= params[:prog]%></h5>
+  <h5 style="color:white; font-weight: 600; text-align: center">PENDAFTARAN BARU UNTUK <%= prog %></h5>
 </div>
+
 
 <% if @cfm.present? %>
   <div style="font-size: 12px">
@@ -10,8 +19,12 @@
       <%= render 'ilscs/form_cari', actn: "new" %>
     <% elsif params[:prog] == "DET & JOB COACH" %>
       <%= render 'ilscs/form_det', actn: "new" %>
-    <% elsif params[:prog] == "CPCU" %>
+    <% elsif params[:prog] == "CPCUPR" %>
       <%= render 'ilscs/form_cpcu', actn: "new" %>
+    <% elsif params[:prog] == "CPCUPPF" %>
+      <%= render 'ilscs/form_cpcu', actn: "new" %>
+    <% elsif params[:prog] == "CPCUCST" %>
+      <%= render 'ilscs/form_cpcucst', actn: "new" %>
     <% end %>
   </div>
 <% else %>

@@ -195,7 +195,9 @@ Rails.application.routes.draw do
   get '/showstat', to: 'sces#showstat'
 
   #WELCOME#
-
+  get '/cpcupr', to: 'welcomes#cpcupr'
+  get '/cpcuppf', to: 'welcomes#cpcuppf'
+  get '/cpcucst', to: 'welcomes#cpcucst'
   get '/cpcuanis', to: 'welcomes#cpcuanis'
   get '/jcdet', to: 'welcomes#jcdet'
   get '/carikerja', to: 'welcomes#carikerja'

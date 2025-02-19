@@ -1,0 +1,125 @@
+<header class="prog-hd" style="background-image: url(<%= image_path('anisPic/bg-prog.jpeg') %>); background-size: cover; background-position: center; padding-bottom: 0px; margin-bottom: 0px; background-repeat: no-repeat; padding-top: 30px; padding-bottom: 30px">
+
+  <div class="intro-text container" style="">
+    <div class="intro-heading" style="text-align: left" >
+      <h1 style="color: white; font-weight: 550">Caregiver Skills Training</h1>
+    </div>
+  </div>
+
+</header>
+
+
+
+
+<!-- MESSAGE -->
+<div class="section-header container bg-white" style="margin-top: 20px">
+  <h3 style="">MAKLUMAN</h3>
+  <div class="border-prog" style=""></div>
+  <p style="text-align: center; color: black; font-weight: 600">
+    Permohonan Program CPCU Caregiver Skills Training telah dibuka
+  </p>
+  <p style="text-align: center; color: black"></p>
+  <% if 1==0 %>
+    <div style="background-color: #6666ff; text-align: center; color: white; margin-bottom: -20px">
+      Pendaftaran Untuk Didik ANIS Telah Ditutup. Terima Kasih.
+    </div>
+  <% end %>
+</div>
+
+<!-- content -->
+<div class="container bg-light" style="margin-top: 20px">
+
+
+  <div class="row" style="margin-bottom: 20px">
+
+    <div class="col-lg-6 col-md-12">
+      <img src="<% image_path('https://kidcare.my/anisdocs/sedia-kerja-1.jpeg')%>" style="width: 100%"></img><br><!-- <br>
+      <img src="" style="width: 100%"></img><br><br>
+      <img src="" style="width: 100%"></img> -->
+    </div> <!-- COL -->
+
+    <div class="col-lg-6 col-md-12" style="margin-top: 12px">
+
+      <div class="card shadow" style="margin-bottom: 10px">
+        <!-- Card Header - Accordion -->
+        <a href="#coll1b" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+          <h6 class="m-0 font-weight-bold text-title">Pengenalan</h6>
+        </a>
+        <!-- Card Content - Collapse -->
+        <div class="collapse" id="coll1b">
+          <div class="card-body" style="text-align: justify">
+            <p>Program Caregiver Skill Training, Jabatan ANIS menyediakan peluang untuk ibu bapa dan penjaga golongan Palsi Serebrum mendapatkan latihan yang diperlukan bagi mengenali lebih mendalam mengenai Palsi Serebrum, serta mempelajari teknik penjagaan yang berkesan dan cara memberikan sokongan emosi yang diperlukan oleh anak mereka. </p>
+
+            <p>Program ini bertujuan untuk memperkasakan ibu bapa dan penjaga dengan ilmu kemahiran serta sokongan yang diperlukan untuk memberikan penjagaan yang terbaik.Menjaga anak Palsi Serebrum memerlukan pengetahuan, kesabaran, dan kemahiran khusus untuk memastikan kesejahteraan fizikal dan emosi mereka. Ibu bapa atau penjaga adalah pihak utama yang memberi sokongan dalam proses pemulihan dan pengurusan Palsi Serebrum. Oleh itu, adalah amat penting bagi mereka untuk memperoleh kemahiran dan pengetahuan yang betul dalam penjagaan harian, serta sokongan moral untuk menghadapi cabaran ini.</p>
+
+
+
+          </div>
+        </div>
+      </div>
+
+      <div class="card shadow" style="margin-bottom: 10px">
+        <!-- Card Header - Accordion -->
+        <a href="#coll1" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+          <h6 class="m-0 font-weight-bold text-title">Objektif Program</h6>
+        </a>
+        <!-- Card Content - Collapse -->
+        <div class="collapse" id="coll1">
+          <div class="card-body" style="text-align: justify">
+            <p>Objektif Utama adalah:
+              <ol>
+                <li>Meningkatkan pemahaman ibu bapa dan penjaga mengenai Palsi Serebrum, termasuk tanda-tanda, simptom, dan rawatan yang berkaitan dengan Palsi Serebrum.</li>
+                <li>Melatih ibu bapa dan penjaga dalam teknik penjagaan yang betul seperti fisioterapi rumah, penjagaan mobiliti, dan pengurusan ketegangan otot.</li>
+                <li>Menyediakan sokongan emosi dan mental kepada ibu bapa dan penjaga, dengan memberi mereka ruang untuk berkongsi pengalaman dan mendapatkan bantuan dalam mengatasi cabaran yang mereka hadapi.</li>
+                <li>Membantu ibu bapa dan penjaga meningkatkan kualiti hidup anak-anak mereka dengan memberikan kemahiran yang lebih baik dalam pengurusan harian serta membantu mereka merasa lebih yakin dalam memberikan penjagaan.</li>
+                <li>Mewujudkan rangkaian sokongan di kalangan ibu bapa dan penjaga untuk berkongsi pengetahuan, pengalaman, dan kekuatan dalam menjaga anak-anak dengan Palsi Serebrum.</li>
+
+
+              </ol>
+            </p>
+
+          </div>
+        </div>
+      </div>
+
+
+      
+
+      <div class="card shadow" style="margin-bottom: 10px">
+        <!-- Card Header - Accordion -->
+        <a href="#coll3" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+          <h6 class="m-0 font-weight-bold text-title">Syarat Kelayakan</h6>
+        </a>
+        <!-- Card Content - Collapse -->
+        <div class="collapse" id="coll3">
+          <div class="card-body" style="text-align: justify">
+            <ol>
+              <li>Warganegara Malaysia.</li>
+              <li>Terbuka kepada ibu /bapa atau penjaga anak-anak istimewa di negeri Selangor bagi kategori Palsi Serebrum.</li>
+              <li>Ibu/ Bapa atau Penjaga mestilah salah seorangnya adalah pengundi Selangor.</li>
+
+            </ol>
+
+          </div>
+        </div>
+      </div>
+
+
+      <%= link_to "Klik Disini Untuk Memohon", persesch_url(prog: "CPCUCST", regkid: 1), class: "btn btn-sm btn-success btn-block"%>
+      <% link_to "Permohonan Ditutup", "#", class: "btn btn-sm btn-danger btn-block"%>
+      <%= link_to "Semak Permohonan", persesch_url(prog: "CPCUCST"), class: "btn btn-sm btn-info btn-block"%>
+
+      
+
+    </div> <!-- COL -->
+
+    
+
+  </div> <!-- ROW -->
+
+</div>
+
+
+
+
+

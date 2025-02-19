@@ -1,0 +1,652 @@
+<meta name="viewport" content="width=1024">
+
+
+<div class='row'>
+  <div class='col-lg-12 col-12'>
+    <%= form_for(@ilsc,:html => {multipart: true, class: "form-horizontal", role: "form"}) do |f| %>
+
+      <!-- BAHAGIAN A -->
+      <div class="col-sm-12" style="background-color:#ffcccc">
+        <h4 style="color:black; font-weight: 600">Bahagian A</h4>
+      </div>
+      <%= f.fields_for :prtls do |h| %>
+        <b><u>MAKLUMAT IBU/BAPA/PENJAGA</u></b>
+
+        <div class="form-group"> 
+          <div class="row">
+            <div class="control-label col-sm-8">
+              <strong>NAMA</strong>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-8 col-12">
+              <%= h.text_field :name, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px",value: @ilsc.prtls["name"] %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group"> 
+          <div class="row">
+            <div class="control-label col-sm-8">
+              <strong>NO KAD PENGENALAN</strong>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-8 col-12">
+              <%= h.number_field :ic, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px",value: @ilsc.prtls["ic"] %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group"> 
+          <div class="row">
+            <div class="control-label col-sm-8">
+              <strong>UMUR</strong>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-8 col-12">
+              <%= h.number_field :umur, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px",value: @ilsc.prtls["umur"] %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>JANTINA</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= f.select :gender, options_for_select(["Lelaki", 
+                                                  "Perempuan"], 
+                                                  selected: @ilsc.prtls["umur"]), 
+            {include_blank: "SILA PILIH"}, {required: true} %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>TARIKH LAHIR</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= h.date_field :dob, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px",value: @ilsc.prtls["dob"] %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>TEMPAT LAHIR</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= h.text_field :plcbrth, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px",value: @ilsc.prtls["plcbrth"] %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>ALAMAT</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= h.text_field :alamat, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px",value: @ilsc.prtls["alamat"] %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>BANGSA</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= h.text_field :bangsa, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px",value: @ilsc.prtls["bangsa"] %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>AGAMA</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= h.text_field :agama, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px",value: @ilsc.prtls["agama"] %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>NO TELEFON</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= h.number_field :notel, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px",value: @ilsc.prtls["notel"] %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>EMAIL</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= h.email_field :email, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px",value: @ilsc.prtls["email"] %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>STATUS</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= h.select :marstat, options_for_select(["Bujang",
+                                                  "Kahwin",
+                                                  "Duda",
+                                                  "Balu"], 
+                                                  selected: @ilsc.prtls["marstat"]), {include_blank: "SILA PILIH"}, {required: true} %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>DUN MENGUNDI</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= h.select :dun, options_for_select($dun_list, 
+                                                  selected: @ilsc.prtls["dun"]),{include_blank: "SILA PILIH"}, {required: true} %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>PARLIMEN MENGUNDI</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= h.text_field :parl, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px",value: @ilsc.prtls["parl"] %>
+          </div>
+        </div>
+      </div>
+
+      <b><u>MAKLUMAT PASANGAN/PASANGAN PENJAGA</u></b>
+
+        <div class="form-group"> 
+          <div class="row">
+            <div class="control-label col-sm-8">
+              <strong>NAMA</strong>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-8 col-12">
+              <%= h.text_field :namef, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px",value: @ilsc.prtls["namef"] %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group"> 
+          <div class="row">
+            <div class="control-label col-sm-8">
+              <strong>NO KAD PENGENALAN</strong>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-8 col-12">
+              <%= h.number_field :icf, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px",value: @ilsc.prtls["icf"] %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group"> 
+          <div class="row">
+            <div class="control-label col-sm-8">
+              <strong>NO TELEFON BIMBIT</strong>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-8 col-12">
+              <%= h.number_field :notelf, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px",value: @ilsc.prtls["notelf"] %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group"> 
+          <div class="row">
+            <div class="control-label col-sm-8">
+              <strong>PEKERJAAN</strong>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-8 col-12">
+              <%= h.text_field :jobf, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px",value: @ilsc.prtls["jobf"] %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group"> 
+          <div class="row">
+            <div class="control-label col-sm-8">
+              <strong>NAMA & ALAMAT MAJIKAN</strong>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-8 col-12">
+              <%= h.text_field :workaddf, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px",value: @ilsc.prtls["workaddf"] %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group"> 
+          <div class="row">
+            <div class="control-label col-sm-8">
+              <strong>PENDAPATAN BULANAN (RM)</strong>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-8 col-12">
+              <%= h.number_field :incomef, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px",value: @ilsc.prtls["incomef"] %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group"> 
+          <div class="row">
+            <div class="control-label col-sm-8">
+              <strong>NO TELEFON PEJABAT</strong>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-8 col-12">
+              <%= h.number_field :noteloff, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px",value: @ilsc.prtls["noteloff"] %>
+            </div>
+          </div>
+        </div>
+
+        
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>DUN MENGUNDI</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <%= h.select :dunf, options_for_select($dun_list, 
+                                                  selected: @ilsc.prtls["dunf"]),{include_blank: "SILA PILIH"}, {required: true}  %>
+          </div>
+        </div>
+      </div>
+
+    <% end %>
+
+    <b><u>MAKLUMAT PERIBADI ANAK</u></b>
+
+    <div class="form-group"> 
+      <div class="row">
+        <div class="control-label col-sm-8">
+          <strong>NAMA</strong>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-8 col-12">
+          <%= f.text_field :name, class: "form-control", placeholder: "", autofocus: true, required: true, style: "text-transform: uppercase" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group"> 
+      <div class="row">
+        <div class="control-label col-sm-8">
+          <strong>NO KAD PENGENALAN</strong>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-8 col-12">
+           <% 
+            if @ilsc.ic.present?
+              icval = @ilsc.ic
+            else
+              icval = params[:ic]
+            end 
+          %>
+          <%= f.number_field :ic, class: "form-control", placeholder: "cth: 141201035647 (tiada dash)", autofocus: true, required: true, value: icval, readonly: true %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group"> 
+      <div class="row">
+        <div class="control-label col-sm-8">
+          <strong>NO PENDAFTARAN OKU</strong>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-8 col-12">
+          <%= f.text_field :oku, class: "form-control", placeholder: "", autofocus: true, required: true, style: "text-transform: uppercase" %>
+        </div>
+      </div>
+    </div>
+
+    <b><u>MAKLUMAT PERUBATAN ANAK</u></b>
+
+    <div class="table-responsive border" style="font-size: 12px">
+      <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0">
+        <thead style="text-align: center">
+          <tr class="shadow">
+            <th style="background-color:#7fbf7f;color:black">NAMA KLINIK/HOSPITAL</th>
+            <th style="background-color:#7fbf7f;color:black">DIAGNOSIS</th>
+          </tr>
+        </thead>
+        <tbody style="color: black">
+          <%= f.fields_for :hosdoc do |h| %>
+          <% (1..5).each do |n| %>
+          <%= h.fields_for :"#{n}" do |g| %>
+            <tr>
+              <td>
+                <%= g.text_field :hosnm, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px", value: @ilsc.hosdoc["#{n}"][0] %>
+              </td>
+              <td>
+                <%= g.text_field :diag, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px", value: @ilsc.hosdoc["#{n}"][1] %>
+              </td>
+            </tr>
+          <% end %>
+          <% end %>
+          <% end %>
+                 
+        </tbody>
+
+      </table>
+    </div> <!-- DIV TABLE -->
+    <br>
+    
+    <div class="form-group"> 
+      <div class="row">
+        <div class="control-label col-sm-8">
+          <strong>ALAHAN MAKANAN</strong>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-8 col-12">
+          <%= f.text_field :allerg, class: "form-control", placeholder: "", autofocus: true, required: true, style: "text-transform: uppercase" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group"> 
+      <div class="row">
+        <div class="control-label col-sm-8">
+          <strong>NAMA DOKTOR PERIBADI (JIKA ADA)</strong>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-8 col-12">
+          <%= f.text_field :docnm, class: "form-control", placeholder: "", autofocus: true, style: "text-transform: uppercase" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group"> 
+      <div class="row">
+        <div class="control-label col-sm-8">
+          <strong>NO TELEFON DOKTOR PERIBADI</strong>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-8 col-12">
+          <%= f.number_field :docph, class: "form-control", placeholder: "", autofocus: true, style: "text-transform: uppercase" %>
+        </div>
+      </div>
+    </div>
+
+    <b><u>DOKUMEN YANG DIPERLUKAN</u></b><br>
+
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <i class="fas fa-cloud-upload-alt"></i><strong>MYKAD PEMOHON</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <% image = @ilsc.fotos.where(foto_name: "MYKAD PEMOHON").first %>
+            <%  if image.present? %>
+              <%= image_tag(image.picture.url, size: "200x200") if image.picture? %>
+              <div class="row">
+                <div class="col-sm-8 col-5">
+                  <strong><%= link_to "EDIT", edit_foto_path(image.id), class: "btn btn-sm btn-success active" %></strong>
+                </div>
+              </div>  
+            <% else %>
+              <%= f.fields_for :fotos do |h| %>
+                <div class="row">
+                  <div class="col-sm-8 col-8">
+                    <%= h.hidden_field :foto_name, value: "MYKAD PEMOHON" %>
+                    <%= h.file_field :picture, accept: 'image/jpeg,image/gif,image/png,application/pdf', required: true %>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <i>Wajib Disertakan</i>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <i class="fas fa-cloud-upload-alt"></i><strong>KAD OKU</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <% image = @ilsc.fotos.where(foto_name: "KAD OKU").first %>
+            <%  if image.present? %>
+              <%= image_tag(image.picture.url, size: "200x200") if image.picture? %>
+              <div class="row">
+                <div class="col-sm-8 col-5">
+                  <strong><%= link_to "EDIT", edit_foto_path(image.id), class: "btn btn-sm btn-success active" %></strong>
+                </div>
+              </div>  
+            <% else %>
+              <%= f.fields_for :fotos do |h| %>
+                <div class="row">
+                  <div class="col-sm-8 col-8">
+                    <%= h.hidden_field :foto_name, value: "KAD OKU" %>
+                    <%= h.file_field :picture, accept: 'image/jpeg,image/gif,image/png,application/pdf', required: true %>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <i>Wajib Disertakan</i>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <i class="fas fa-cloud-upload-alt"></i><strong>MYKAD IBU/BAPA/PENJAGA</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <% image = @ilsc.fotos.where(foto_name: "MYKAD IBU/BAPA/PENJAGA").first %>
+            <%  if image.present? %>
+              <%= image_tag(image.picture.url, size: "200x200") if image.picture? %>
+              <div class="row">
+                <div class="col-sm-8 col-5">
+                  <strong><%= link_to "EDIT", edit_foto_path(image.id), class: "btn btn-sm btn-success active" %></strong>
+                </div>
+              </div>  
+            <% else %>
+              <%= f.fields_for :fotos do |h| %>
+                <div class="row">
+                  <div class="col-sm-8 col-8">
+                    <%= h.hidden_field :foto_name, value: "MYKAD IBU/BAPA/PENJAGA" %>
+                    <%= h.file_field :picture, accept: 'image/jpeg,image/gif,image/png,application/pdf', required: true %>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <i>Wajib Disertakan</i>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <i class="fas fa-cloud-upload-alt"></i><strong>SURAT SEMAKAN SPR IBU/BAPA/PENJAGA</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <% image = @ilsc.fotos.where(foto_name: "SURAT SEMAKAN SPR IBU/BAPA/PENJAGA").first %>
+            <%  if image.present? %>
+              <%= image_tag(image.picture.url, size: "200x200") if image.picture? %>
+              <div class="row">
+                <div class="col-sm-8 col-5">
+                  <strong><%= link_to "EDIT", edit_foto_path(image.id), class: "btn btn-sm btn-success active" %></strong>
+                </div>
+              </div>  
+            <% else %>
+              <%= f.fields_for :fotos do |h| %>
+                <div class="row">
+                  <div class="col-sm-8 col-8">
+                    <%= h.hidden_field :foto_name, value: "SURAT SEMAKAN SPR IBU/BAPA/PENJAGA" %>
+                    <%= h.file_field :picture, accept: 'image/jpeg,image/gif,image/png,application/pdf', required: true %>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <i>Wajib Disertakan</i>
+      </div>
+
+      <div class="form-group"> 
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <i class="fas fa-cloud-upload-alt"></i><strong>SURAT DIAGNOSIS DOKTOR</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-12">
+            <% image = @ilsc.fotos.where(foto_name: "SURAT DIAGNOSIS DOKTOR").first %>
+            <%  if image.present? %>
+              <%= image_tag(image.picture.url, size: "200x200") if image.picture? %>
+              <div class="row">
+                <div class="col-sm-8 col-5">
+                  <strong><%= link_to "EDIT", edit_foto_path(image.id), class: "btn btn-sm btn-success active" %></strong>
+                </div>
+              </div>  
+            <% else %>
+              <%= f.fields_for :fotos do |h| %>
+                <div class="row">
+                  <div class="col-sm-8 col-8">
+                    <%= h.hidden_field :foto_name, value: "SURAT DIAGNOSIS DOKTOR" %>
+                    <%= h.file_field :picture, accept: 'image/jpeg,image/gif,image/png,application/pdf', required: true %>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <i>Wajib Disertakan</i>
+      </div>
+
+
+
+      
+
+
+      
+
+      
+
+      
+
+      
+
+
+      <!-- OLD VERSION -->
+
+      
+
+      <%
+        if @ilsc.perse.present?
+          perse_id = @ilsc.perse.id
+        else
+          perse_id = params[:perse]
+        end
+
+        if @ilsc.tp.present?
+          tp = @ilsc.tp
+        else
+          tp = params[:prog]
+        end
+
+        if @ilsc.stat.present?
+          stat = @ilsc.stat
+        else
+          stat = "Permohonan Dalam Semakan"
+        end
+      %>
+
+      <%= f.hidden_field :stat, value: stat %>
+
+      <%= f.hidden_field :tp, value: tp %>
+      
+      <%= f.hidden_field :perse_id, value: perse_id %>
+
+      <br>
+<!-- SUBMIT BUTTON -->
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-offset-2 col-sm-10 col-4">
+            <%= f.submit :"TERUSKAN",  class: 'btn btn-primary btn-lg' %>
+          </div>
+        </div>
+      </div>
+      
+    <% end %>
+
+  </div>
+</div>
+
+<br><br><br><br><br>

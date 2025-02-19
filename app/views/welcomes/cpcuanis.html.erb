@@ -8,23 +8,78 @@
 
 </header>
 
-
-
-
 <!-- MESSAGE -->
 <div class="section-header container bg-white" style="margin-top: 20px">
-  <h3 style="">MAKLUMAN</h3>
+
+  <h3 style="">Senarai Program</h3>
+
+
   <div class="border-prog" style=""></div>
-  <p style="text-align: center; color: black; font-weight: 600">
-    Permohonan Program CPCU telah dibuka
-  </p>
-  <p style="text-align: center; color: black"></p>
-  <% if 1==0 %>
-    <div style="background-color: #6666ff; text-align: center; color: white; margin-bottom: -20px">
-      Pendaftaran Untuk Didik ANIS Telah Ditutup. Terima Kasih.
-    </div>
-  <% end %>
+  <p style="text-align: justify; color: black; font-weight: 600">Satu program yang dilaksanakan di bawah Jabatan ANIS bermula Oktober 2023. Program ini dicetuskan sebagai satu inisiatif dalam memenuhi keperluan spesifik individu dengan kekurangupayaan fizikal, terutamanya golongan Palsi Serebrum. Di bawah program CPCU, terdapat 2 subprogram yang dikendalikan bersesuaian dengan keperluan semasa individu Palsi Serebrum.
+
+</p>
+  <!-- <p style="text-align: center; color: black">Tarikh Akhir Penghantaran Dokumen Sehingga 20 April 2021</p> -->
 </div>
+
+<section id="featured-services" class="featured-services bg-light">
+  <div class="container" data-aos="fade-up">
+
+    <div class="row">
+
+      <div class="col-md-4 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0" style="padding-bottom: 10px">
+        <div class="icon-box" data-aos="fade-up" data-aos-delay="100"><!-- 
+          <div class="icon"><img src="<%= image_path('anisPic/bk-anis-hp.png') %>" width="100" height="80"></div> -->
+          <div class="icon" style="margin-bottom: 95px"></div>
+          <h4 class="title"><a href="#">Caregiver Skills Training</a></h4>
+          <p class="description" style="text-align: justify">Latihan untuk ibu bapa dan penjaga bagi meningkatkan kemahiran dalam aspek penjagaan golongan Palsi Serebrum
+
+</p>
+          <!-- <a href="<%= persesch_url(prog: "SARINGAN ANIS") %>" class="btn btn-info btn-sm btn-block" style="margin-top: 10px">Permohonan dan Semakan</a> -->
+          <a href="<%= cpcucst_url %>" class="btn btn-info btn-sm btn-block" style="margin-top: 10px">Ketahui Lebih Lanjut</a>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0" style="padding-bottom: 10px">
+        <div class="icon-box" data-aos="fade-up" data-aos-delay="100"><!-- 
+          <div class="icon"><img src="<%= image_path('anisPic/bk-anis-hp.png') %>" width="100" height="80"></div> -->
+          <div class="icon" style="margin-bottom: 95px"></div>
+          <h4 class="title"><a href="#">Pemberian Peralatan Fisioterapi</a></h4>
+          <p class="description" style="text-align: justify">Pemberian peralatan kepada individu Palsi Serebrum untuk membantu meningkatkan kualiti hidup mereka</p>
+          <a href="<%= cpcuppf_url %>" class="btn btn-warning btn-sm btn-block" style="margin-top: 10px">Ketahui Lebih Lanjut</a>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0" style="padding-bottom: 10px">
+        <div class="icon-box" data-aos="fade-up" data-aos-delay="100"><!-- 
+          <div class="icon"><img src="<%= image_path('anisPic/bk-anis-hp.png') %>" width="100" height="80"></div> -->
+          <div class="icon" style="margin-bottom: 95px"></div>
+          <h4 class="title"><a href="#">Perkhidmatan Rawatan</a></h4>
+          <p class="description" style="text-align: justify">Perkhidmatan rawatan yang dijalankan secara bersepadu dan dibentuk khusus untuk memenuhi keperluan individu Palsi Serebrum</p>
+          <a href="<%= cpcupr_url %>" class="btn btn-success btn-sm btn-block" style="margin-top: 10px">Ketahui Lebih Lanjut</a>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+    
+
+      <% (0..3).each do |n| %>
+
+      <% end %>
+
+
+
+
+
+
+<% if 1==0 %>
 
 <!-- content -->
 <div class="container bg-light" style="margin-top: 20px">
@@ -32,63 +87,30 @@
 
   <div class="row" style="margin-bottom: 20px">
 
-    <div class="col-lg-6 col-md-12">
-      <img src="<%= image_path('https://kidcare.my/anisdocs/sedia-kerja-1.jpeg')%>" style="width: 100%"></img><br><!-- <br>
-      <img src="" style="width: 100%"></img><br><br>
-      <img src="" style="width: 100%"></img> -->
-    </div> <!-- COL -->
-
     <div class="col-lg-6 col-md-12" style="margin-top: 12px">
 
       <div class="card shadow" style="margin-bottom: 10px">
         <!-- Card Header - Accordion -->
-        <a href="#coll1b" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-          <h6 class="m-0 font-weight-bold text-title">Pengenalan</h6>
-        </a>
-        <!-- Card Content - Collapse -->
-        <div class="collapse" id="coll1b">
-          <div class="card-body" style="text-align: justify">
-            <p>Melalui Iltizam ANIS, Selangor mengambil langkah penting untuk menyokong dan membantu individu yang berdiagnosis Cerebral Palsy (CP) dengan memperkenalkan Program  Cerebral Palsy Care Unit (CP Care Unit). Program ini berfungsi sebagai inisiatif khusus yang bertujuan untuk menangani keperluan spesifik individu dengan kecacatan fizikal, terutamanya mereka yang hidup dengan CP dan memerlukan rawatan khusus untuk tempoh tertentu.</p>
-
-            <p>Program CP Care Unit di Selangor menawarkan perkhidmatan penjagaan dan pemulihan yang komprehensif yang disesuaikan dengan cabaran unik yang dihadapi oleh individu dengan CP. Ia memberi tumpuan kepada peningkatan kesejahteraan mereka secara keseluruhan, meningkatkan keupayaan fizikal mereka, dan mempromosikan integrasi sosial. Berikut adalah gambaran keseluruhan tentang bagaimana Selangor, melalui ANIS, dapat membantu komuniti CP. Di bawah program CP Care Unit, terdapat 3 program utama yang akan dikendalikan bersesuaian dengan keperluan golongan CP seperti berikut:</p>
-
-            <ol>
-              <li><b>Perkhidmatan Rawatan</b></li><br>
-              <p><b>Rawatan Terperinci:</b> Program CP Care Unit menyediakan pelan rawatan yang dijalankan secara bersepadu dan dibentuk khusus untuk menangani keperluan individu dengan CP. Pelan ini merangkumi pelbagai profession seperti Fisioterapi,Pemulihan Cara Kerja,  Terapi Pertuturan  bagi meningkatkan keupayaan fizikal dan kemandirian fungsi individu.</p>
-              <p><b>Perkhidmatan Pemulihan:</b> ANIS menawarkan perkhidmatan pemulihan yang menyeluruh kepada individu dengan CP untuk membantu mereka meningkatkan kemahiran motor, koordinasi, dan keseluruhan fungsi fizikal. Ini termasuk senaman, aktiviti, dan terapi yang memberi tumpuan kepada peningkatan kekuatan otot, fleksibiliti, keseimbangan, dan mobiliti, membolehkan mereka menjalankan tugas harian dengan lebih berkesan.</p>
-
-              <li><b>Program Caregiver Skills Training</b></li><br>
-              <p><b>Pendidikan dan Latihan:</b> ANIS menganjurkan program pendidikan dan sesi latihan bagi individu dengan CP dan keluarga mereka. Inisiatif ini bertujuan untuk meningkatkan kesedaran tentang CP, memberikan panduan dalam mengendalikan keadaan tersebut, dan melengkapkan individu dengan kemahiran dan pengetahuan yang diperlukan untuk perkembangan dan kemandirian jangka panjang. Program ini  memfokuskan pemerkasaan ibu bapa dan penjaga golongan CP. Latihan ini dilakukan dalam kumpulan bersama barisan pakar bagi meningkatkan kemahiran penjagaan golongan CP seperti cara mandikan anak, strategi menangani tingkah laku yang mencabar, dan pengendalian alatan terapi.</p>
-              <p><b>Sokongan Sosial dan Integrasi:</b> ANIS berusaha untuk mempromosikan inklusi sosial bagi individu dengan CP. Mereka menyediakan sokongan sosial yang diperlukan dan usaha untuk mengintegrasikan individu dengan CP ke dalam masyarakat dengan menyediakan program-program dan aktiviti-aktiviti yang sesuai.</p>
-
-              <li><b>Pinjaman Peralatan </b></li><br>
-
-              <p><b>Peranti dan Peralatan Bantu:</b> ANIS memudahkan penyediaan peranti dan peralatan bantu kepada individu dengan CP, seperti kerusi roda, peranti ortotik, dan alat komunikasi. Teknologi bantu ini bertujuan untuk meningkatkan mobiliti, keupayaan berkomunikasi, dan keseluruhan kualiti hidup mereka.</p>
-
-
-            </ol>
-
-
-          </div>
-        </div>
-      </div>
-
-      <div class="card shadow" style="margin-bottom: 10px">
-        <!-- Card Header - Accordion -->
         <a href="#coll1" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-          <h6 class="m-0 font-weight-bold text-title">Objektif Program</h6>
+          <h6 class="m-0 font-weight-bold text-title">Pengenalan dan Objektif Akademi ANIS</h6>
         </a>
         <!-- Card Content - Collapse -->
         <div class="collapse" id="coll1">
           <div class="card-body" style="text-align: justify">
-            <p>Objektif Utama adalah:
-              <ol>
-                <li>Menyediakan perkhidmatan rawatan yang bersesuaian oleh barisan pakar di rumah mengikut syarat-syarat yang ditentukan.</li>
-                <li>Memperkasa ibu bapa dan penjaga golongan OKU CP.</li>
-                <li>Meningkatkan kemahiran penjagaan golongan OKU CP dalam kalangan ibu bapa dan penjaga.</li>
-                <li>Meminjamkan alatan terapi kepada golongan OKU CP dalam tempoh masa tertentu mengikut jadual penggunaan.</li>
-                <li>Memberi kesedaran kepada masyarakat.</li>
 
+            <p>Seminar Keibubapaan Anak Istimewa Selangor (ANIS) merupakan salah satu inisiatif yang dianjurkan dibawah Pengerusi Jawatankuasa Tetap Kesihatan Awam, Perpaduan dan Pembangunan Wanita & Keluarga. Inisiatif ini mula dianjurkan pada tahun 2019 dan 2020 dan telah disertai oleh 2584 peserta. Pada tahun ini, Jabatan ANIS mengambil pendekatan baru dengan menganjurkan seminar khas bersiri kepada kumpulan ibubapa dan penjaga ANIS, pendidik ANIS sukarelawan ANIS dan orang awam di Selangor.</p>
+
+            <p>Jabatan ANIS berharap lebih ramai rakyat di Selangor dapat menerima manfaat daripada program ini dan justeru itu dapat mengurus anak istimewa dengan lebih efisien. Melalui program ini, peserta/pelatih akan didedahkan mengenai intervensi, terapi, strategi pengajaran dan perbincangan berkaitan anak istimewa yang akan disampaikan oleh panel pakar yang berkaitan.</p>
+
+            <p>Lantaran itu, pihak Jabatan ANIS akan merancang dan melaksanakan program yang berkenaan secara berterusan untuk memperkasakan ibubapa dan penjaga ANIS, sukarelawan ANIS dan orang awam di Selangor seterusnya dapat memberdayakan anak-anak istimewa, ibubapa dan penjaga, dan lain-lain untuk lebih mampan dalam mendepani dunia bercabaran ini dengan lebih cakna.</p>
+
+
+            <p>Objektif Akademi ANIS adalah:
+              <ol>
+                <li>Meningkatkan dan memperluas pengetahuan ibubapa dan penjaga mengenai initiatif yang disediakan oleh Jabatan Anak Istimewa Selangor (ANIS)</li>
+                <li>Mendedahkan kepada ibu bapa, penjaga, dan pendidik mengenai isu-isu yang berkaitan dengan kanak-kanak berkeperluan khas terutamanya untuk memahami elemen penting untuk pengurusan tingkah laku yang berjaya.</li>
+                <li>Meningkatkan keberdayaan ibubapa dan penjaga dalam penjagaan anak istimewa</li>
+                <li>Memberi sokongan moral berterusan terhadap anak ibubapa, penjaga dan anak istimewa melalui perkongsian ilmiah oleh pakar berkaitan</li>
 
               </ol>
             </p>
@@ -97,109 +119,101 @@
         </div>
       </div>
 
-
-      
-
-      <div class="card shadow" style="margin-bottom: 10px">
-        <!-- Card Header - Accordion -->
-        <a href="#coll3" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-          <h6 class="m-0 font-weight-bold text-title">Syarat Kelayakan</h6>
-        </a>
-        <!-- Card Content - Collapse -->
-        <div class="collapse" id="coll3">
-          <div class="card-body" style="text-align: justify">
-            <ol>
-              <li>Warganegara Malaysia.</li>
-              <li>Terbuka kepada anak-anak istimewa di negeri Selangor bagi kategori <i>Cerebral Palsy</i></li>
-              <li>Penerima CPCU hendaklah berumur dibawah 18 tahun (mengikut tahun semasa)</li>
-              <li>Ibu/ Bapa atau Penjaga mestilah salah seorangnya adalah pengundi Selangor.</li>
-              <li>Anak OKU mempunyai kad OKU atau Surat Pengesahan Doktor (jika tidak mempunyai kad OKU)</li>
-              <li>Permohonan mestilah diisi dengan lengkap beserta dokumen sokongan yang diperlukan.</li>
-              <br>
-
-              <i>Nota: Sekiranya penjaga merupakan ibu bapa angkat, maka proses pengangkatan mestilah sah dan berdaftar di bawah Akta Pendaftaran Pengangkatan (JPN dan Akta Pengangkatan 1973)</i>
-
-            </ol>
-
-          </div>
-        </div>
-      </div>
-
       <div class="card shadow" style="margin-bottom: 10px">
         <!-- Card Header - Accordion -->
         <a href="#coll2" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-          <h6 class="m-0 font-weight-bold text-title">Perlaksanaan Program</h6>
+          <h6 class="m-0 font-weight-bold text-title">Syarat & Kelayakan</h6>
         </a>
         <!-- Card Content - Collapse -->
         <div class="collapse" id="coll2">
           <div class="card-body" style="text-align: justify">
             <ol>
-              <li>Ibubapa perlu mendaftar dengan mengisi borang di laman web <a href="https://www.anisselangor.com/cpcuanis">https://www.anisselangor.com/cpcuanis</a> dan melengkapkan dokumen yang diperlukan</li>
-              <li>Permohonan Program CP Care Unit ini akan dijalankan sepanjang tahun.</li>
-              <li>Para peserta yang layak akan menerima panggilan daripada Pegawai dan hadir temujanji pada hari Program Saringan yang ditetapkan oleh Jabatan ANIS</li>
- 
-
-                
-            </ol>
+              <li>Terbuka kepada semua ibubapa dan penjaga ANIS, pendidik ANIS, sukarelawan ANIS dan orang awam di Selangor.</li>
           </div>
         </div>
       </div>
-
+      
       <div class="card shadow" style="margin-bottom: 10px">
         <!-- Card Header - Accordion -->
-        <a href="#coll6" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-          <h6 class="m-0 font-weight-bold text-title">Dokumen Yang Diperlukan</h6>
-        </a>
-        <!-- Card Content - Collapse -->
-        <div class="collapse" id="coll6">
-          <div class="card-body"  style="text-align: justify">
-            <ol>
-              <li>Salinan Kad Pengenalan Pemohon (Ibu / Bapa)</li>
-              <li>Salinan Kad Pengenalan Pasangan</li>
-              <li>Salinan Sijil Kelahiran Anak</li>
-              <li>Salinan Kad OKU atau Salinan Diagnosis dari doktor yang bertauliah</li>
-              <li>Salinan slip Semakan Daftar Pemilih SPR didapatkan di www.pengundi.spr.gov.my untuk Ibu / Bapa
-              Anda boleh memohon pekerjaan!</li>
-              </ul>
-            </ol>
-          </div>
-        </div>
-      </div>
-
-      <div class="card shadow" style="margin-bottom: 10px">
-        <!-- Card Header - Accordion -->
-        <a href="#coll5i" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+        <a href="#coll4" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
           <h6 class="m-0 font-weight-bold text-title">Cara Permohonan</h6>
         </a>
         <!-- Card Content - Collapse -->
-        <div class="collapse" id="coll5i">
+        <div class="collapse" id="coll4">
           <div class="card-body"  style="text-align: justify">
             <ol>
-              <li>Permohonan hendaklah dibuat secara atas talian di laman sesawang https://www.anisselangor.com/cpcuanis</li>
-              <li>Pemohon hendaklah dimuatnaik dokumen di atas talian.</li>
-              <li>Penghantaran dokumen yang tidak lengkap akan menyebabkan permohonan tidak akan diproses.</li>
-              <li>Pihak ANIS akan menghubungi pemohon yang lengkap untuk saringan dan rawatan.</li>
-
+              <li>Permohonan hendaklah dibuat secara <b>atas talian</b> pada link yang dinyatakan pada poster, FB ‘Anak Istimewa Selangor- ANIS’ atau laman sesawang www.anisselangor.com</li>
+              <li>Pemohon boleh merujuk pada FB ‘Anak Istimewa Selangor- ANIS’ atau laman sesawang anis.yawas.my untuk mengetahui maklumat lebih lanjut mengenai <b>setiap siri program</b> yang dianjurkan.</li>
             </ol>
+
           </div>
         </div>
       </div>
 
-      <%= link_to "Klik Disini Untuk Memohon", persesch_url(prog: "CPCU", regkid: 1), class: "btn btn-sm btn-success btn-block"%>
-      <% link_to "Permohonan Ditutup", "#", class: "btn btn-sm btn-danger btn-block"%>
-      <%= link_to "Semak Permohonan", persesch_url(prog: "CPCU"), class: "btn btn-sm btn-info btn-block"%>
+      <div class="card shadow" style="margin-bottom: 10px">
+        <!-- Card Header - Accordion -->
+        <a href="#coll5" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+          <h6 class="m-0 font-weight-bold text-title">Caj Atau Kos Penyertaan</h6>
+        </a>
+        <!-- Card Content - Collapse -->
+        <div class="collapse" id="coll5">
+          <div class="card-body"  style="text-align: justify">
+            <ol>
+              <li>PERCUMA. Tiada caj penyertaan dikenakan kepada peserta program AKADEMI PENIDIDIK ANIS.</li>
+            </ol>
+
+          </div>
+        </div>
+      </div>
+
+      <%= link_to "Daftar", progeregls_path, class: "btn btn-sm btn-success btn-block"%>
 
       
 
     </div> <!-- COL -->
 
-    
+    <div class="col-lg-6 col-md-12">
+      <img src="<%= image_path('anislogo1.png')%>" style="width: 100%"></img>
+    </div> <!-- COL -->
 
   </div> <!-- ROW -->
 
 </div>
 
+<!-- PENCAPAIN ANIS -->
 
+<% if 1==0 %><div class="bg-white container" style="margin-bottom: 20px">
+  <div class="section-header container bg-white" style="margin-top: 30px">
+    <h3 style="">PENCAPAIAN BANTUAN KHAS ANIS</h3>
+    <div class="border-prog" style=""></div>
+    <p style="text-align: center; color: black">Jumlah Permohonan</p>
+  </div>
+
+  <div id="perf" class="row">
+
+    <div class="col-lg-4 col-md-6 col-sm-12">
+      <img src="<%= image_path('anisPic/jph-hp.png') %>" width="100" height="100">
+      <p>Jumlah Permohonan</p>
+      <p style="font-size: 30px; margin-top: -20px"><%= number_with_delimiter(6205, :delimiter => ',') %></p>
+    </div>
+
+    <div class="col-lg-4 col-md-6 col-sm-12">
+      <img src="<%= image_path('anisPic/jpn-hp.png') %>" width="100" height="100">
+      <p>Jumlah Penerima</p>
+      <p style="font-size: 30px; margin-top: -20px"><%= number_with_delimiter(368, :delimiter => ',') %></p>
+    </div>
+
+    <div class="col-lg-4 col-md-6 col-sm-12">
+      <img src="<%= image_path('anisPic/peruntukan-hp.png') %>" width="100" height="100">
+      <p>Peruntukan Digunakan</p>
+      <p style="font-size: 30px; margin-top: -20px">RM<%= number_with_delimiter(953351, :delimiter => ',') %></p>
+    </div>
+    
+
+  </div> <!-- row -->
+</div><% end %> <!-- container -->
+
+<% end %>
 
 
 
