@@ -60,7 +60,13 @@
                 <%= perse.ph %><br>
                 <%= perse.email %><br>
               </td>
-              <td><%= $cpcu_tp[ek.tp] %></td>
+              <td>
+                <% if (tp = $cpcu_tp[ek.tp]).present? %>
+                 <%= tp %>
+                <% else %>
+                  <%= ek.tp %>
+                <% end %>
+              </td>
               <td><% if ek.tp != "DET & JOB COACH" %>
                 <div class="badge badge-pill badge-info" style="font-size: 13px;"><%= ek.phs %></div><br>
                 <b>Makluman Admin: </b><%= ek.descr %><br>

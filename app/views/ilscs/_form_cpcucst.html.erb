@@ -10,7 +10,7 @@
         <h4 style="color:black; font-weight: 600">Bahagian A</h4>
       </div>
       <%= f.fields_for :prtls do |h| %>
-        <b><u>MAKLUMAT IBU/BAPA/PENJAGA</u></b>
+        <h6><b><u>MAKLUMAT IBU/BAPA/PENJAGA</u></b></h6>
 
         <div class="form-group"> 
           <div class="row">
@@ -59,9 +59,9 @@
         </div>
         <div class="row">
           <div class="col-sm-8 col-12">
-            <%= f.select :gender, options_for_select(["Lelaki", 
+            <%= h.select :gender, options_for_select(["Lelaki", 
                                                   "Perempuan"], 
-                                                  selected: @ilsc.prtls["umur"]), 
+                                                  selected: @ilsc.prtls["gender"]), 
             {include_blank: "SILA PILIH"}, {required: true} %>
           </div>
         </div>
@@ -202,7 +202,7 @@
         </div>
       </div>
 
-      <b><u>MAKLUMAT PASANGAN/PASANGAN PENJAGA</u></b>
+      <h6><b><u>MAKLUMAT PASANGAN/PASANGAN PENJAGA</u></b></h6>
 
         <div class="form-group"> 
           <div class="row">
@@ -313,7 +313,7 @@
 
     <% end %>
 
-    <b><u>MAKLUMAT PERIBADI ANAK</u></b>
+    <h6><b><u>MAKLUMAT PERIBADI ANAK</u></b></h6>
 
     <div class="form-group"> 
       <div class="row">
@@ -374,7 +374,7 @@
         </div>
       </div>
 
-    <b><u>MAKLUMAT PERUBATAN ANAK</u></b>
+    <h6><b><u>MAKLUMAT PERUBATAN ANAK</u></b></h6>
 
     <div class="table-responsive border" style="font-size: 12px">
       <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0">
@@ -445,7 +445,7 @@
       </div>
     </div>
 
-    <b><u>DOKUMEN YANG DIPERLUKAN</u></b><br>
+    <h6><b><u>DOKUMEN YANG DIPERLUKAN</u></b></h6>
 
 
       <div class="form-group"> 

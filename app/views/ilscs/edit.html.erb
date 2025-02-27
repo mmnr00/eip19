@@ -11,5 +11,11 @@
   <%= render 'ilscs/form_det', actn: "edit" %>
 <% elsif @ilsc.tp == "CPCU" %>
   <%= render 'ilscs/form_cpcu', actn: "edit" %>
+<% elsif @ilsc.tp == "CPCUPR" %>
+  <%= render 'ilscs/form_cpcupr', actn: "edit" %>
+<% elsif @ilsc.tp == "CPCUPPF" %>
+  <%= render 'ilscs/form_cpcuppf', actn: "edit" %>
+<% elsif @ilsc.tp == "CPCUCST" %>
+  <%= render 'ilscs/form_cpcucst', actn: "edit" %>
 <% end %>
 </div>

@@ -331,7 +331,7 @@ class IlscsController < ApplicationController
 		if @ilsc.update(ilsc_params)
 			ilsc_ls(@ilsc.id,params[:ilsc])
 			@ilsc.save
-			if @ilsc.tp == "CPCU"
+			if @ilsc.tp.include? "CPCU"
 				redirect_to cpcu_list_path(perse: @ilsc.perse.id)
 			else
 				redirect_to ilsc_list_path(perse: @ilsc.perse.id)
@@ -426,7 +426,7 @@ class IlscsController < ApplicationController
 					@ilsc.phs = "Permohonan Baru"
 				elsif @ilsc.tp == "PENCARIAN PEKERJAAN"
 					@ilsc.phs = "Permohonan Dalam Semakan"
-				elsif @ilsc.tp == "CPCU"
+				elsif @ilsc.tp.include? "CPCU"
 					@ilsc.phs = "Permohonan Dalam Semakan"
 				end
 				@ilsc.del = false
@@ -483,6 +483,12 @@ class IlscsController < ApplicationController
 		if par[:prtls].present?
 			par[:prtls].each do |k,v|
 				@ilsc.prtls[k] = v
+			end
+		end
+
+		if par[:hosdocnw].present?
+			par[:hosdocnw].each do |k,v|
+				@ilsc.hosdocnw[k] = v
 			end
 		end
 
@@ -546,6 +552,9 @@ class IlscsController < ApplicationController
 																:relwr,
 																:telhmwr,
 																:phwr,
+																:catgcp,
+																:toolcp,
+																:hosdoc => {},
 																:crstp => [],
 																fotos_attributes: [:foto, :picture, :foto_name])
 	end

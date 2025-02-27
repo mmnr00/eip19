@@ -98,7 +98,7 @@
   </div>
   <%= render 'ilscs/profile_det' %>
 
-<% elsif @ilsc.tp == "CPCU" %>
+<% elsif @ilsc.tp.include? "CPCU" %>
   <% if !@ilsc.del %><div class="prt-hide" style="margin-bottom: 10px;">
     <%= link_to "Muat Turun Borang", "#", onclick: 'window.print()', class: 'btn btn-sm btn-success btn-block' %>
     <% if current_admin.present? %><% if params[:prt].blank? %>
@@ -111,6 +111,14 @@
     <% end %><% end %>
     
   </div><% end %>
-  <%= render 'ilscs/profile_cpcu' %>
+  <% if @ilsc.tp == "CPCU" %>
+    <%= render 'ilscs/profile_cpcu' %>
+  <% elsif @ilsc.tp == "CPCUPR" %>
+    <%= render 'ilscs/profile_cpcupr' %>
+  <% elsif @ilsc.tp == "CPCUPPF" %>
+    <%= render 'ilscs/profile_cpcuppf' %>
+  <% elsif @ilsc.tp == "CPCUCST" %>
+    <%= render 'ilscs/profile_cpcucst' %>
+  <% end %>
 
 <% end %>

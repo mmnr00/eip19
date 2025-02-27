@@ -9,7 +9,7 @@
       <div class="col-sm-12" style="background-color:#ffcccc">
         <h4 style="color:black; font-weight: 600">Bahagian A</h4>
       </div>
-      <b><u>MAKLUMAT PERIBADI ANAK</u></b>
+      <h6><b><u>MAKLUMAT PERIBADI ANAK</u></b></h6>
       <div class="form-group"> 
         <div class="row">
           <div class="control-label col-sm-8">
@@ -177,6 +177,88 @@
         </div>
       </div>
 
+      <h6><b><u>MAKLUMAT PERUBATAN ANAK</u></b></h6>
+
+      <u>Sejarah Perubatan Anak</u><br><br>
+
+      <%= f.fields_for :hosdocnw do |h| %>
+
+        <div class="form-group"> 
+          <div class="row">
+            <div class="control-label col-sm-8">
+              <strong>TARIKH DIAGNOSIS</strong>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-8 col-12">
+              <%= h.date_field :dtdiag, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px",value: @ilsc.hosdocnw["dtdiag"], required: true %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group"> 
+          <div class="row">
+            <div class="control-label col-sm-8">
+              <strong>Tahap Cerebral Palsy</strong>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-8 col-12">
+              <%= h.select :tpcp, options_for_select(["Spastik","Ataxic","Dyskinetic","Campuran"], 
+                                                  selected: @ilsc.hosdocnw["tpcp"]),{include_blank: "SILA PILIH"}, {required: true} %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group"> 
+          <div class="row">
+            <div class="control-label col-sm-8">
+              <strong>MASALAH KESIHATAN LAIN (JIKA ADA, SILA NYATAKAN)</strong>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-8 col-12">
+              <%= h.text_field :othhl, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px",value: @ilsc.hosdocnw["othhl"] %>
+            </div>
+          </div>
+        </div>
+
+        <u>Maklumat Mengenai Rawatan yang diperlukan</u><br><br>
+
+        <div class="form-group"> 
+          <div class="row">
+            <div class="control-label col-sm-8">
+              <strong>Adakah anak anda sudah menjalani rawatan fisioterapi atau terapi lain sebelum ini?</strong>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-8 col-12">
+              <%= h.select :hsfs, options_for_select(["Ya","Tidak"], 
+                                                  selected: @ilsc.hosdocnw["hsfs"]),{include_blank: "SILA PILIH"}, {required: true} %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group"> 
+          <div class="row">
+            <div class="control-label col-sm-8">
+              <strong>Jika ya, sila beri butiran mengenai rawatan terdahulu (jenis rawatan, tempoh, keberkesanan, dll.)</strong>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-8 col-12">
+              <%= h.text_field :yshsfs, class: "form-control", placeholder: "", autofocus: true, style: "font-size: 12px",value: @ilsc.hosdocnw["yshsfs"] %>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        
+
+      <% end %>
+
 
       
       
@@ -186,7 +268,7 @@
         <h4 style="color:black; font-weight: 600">Bahagian B</h4>
       </div>
 
-      <b><u>MAKLUMAT IBU-BAPA/PENJAGA</u></b>
+      <h6><b><u>MAKLUMAT IBU-BAPA/PENJAGA</u></b></h6>
 
       <div class="table-responsive border" style="font-size: 12px">
         <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0">
@@ -296,28 +378,11 @@
       </div> <!-- DIV TABLE -->
       <br>
 
-      <!-- BAHAGIAN C -->
-      <div class="col-sm-12" style="background-color:#ffcccc">
-        <h4 style="color:black; font-weight: 600">Bahagian C</h4>
-      </div>
-
-      <b><u>MAKLUMAT KEPERLUAN PERALATAN</u></b>
-
-      <div class="form-group"> 
-        <div class="row">
-          <div class="control-label col-sm-8">
-            <strong>PERALATAN FISIOTERAPI YANG DIPERLUKAN</strong>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-8 col-12">
-            <%= f.text_area :name, class: "form-control", placeholder: "", autofocus: true, required: true, style: "text-transform: uppercase" %>
-          </div>
-        </div>
-      </div>
+      
+      
       
 
-     <b><u>DOKUMEN YANG DIPERLUKAN</u></b><br>
+     <h6><b><u>DOKUMEN YANG DIPERLUKAN</u></b></h6>
 
 
       <div class="form-group"> 

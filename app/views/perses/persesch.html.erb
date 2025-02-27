@@ -11,7 +11,11 @@
       Sila Masukkan No MYKAD anda
     <% end %>
     <% if params[:prog].present? %>
-      <%= link_to "#{params[:prog]}", "#", class: "badge badge-pill badge-info" %>
+      <% if params[:prog].include? "CPCU" %>
+       <%= link_to $cpcu_tp[params[:prog]], "#", class: "badge badge-pill badge-info" %>
+      <% else %>
+        <%= link_to "#{params[:prog]}", "#", class: "badge badge-pill badge-info" %>
+      <% end %>
     <% end %><br>
     <% if params[:proge].present?; prg = Proge.find(params[:proge]) %>
 

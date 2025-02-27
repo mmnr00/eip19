@@ -9,6 +9,7 @@ class Ilsc < ApplicationRecord
 	serialize :warls,Hash
 	serialize :prevmaj,Hash
 	serialize :hosdoc,Hash
+	serialize :hosdocnw,Hash
 	serialize :crstp,Array
 	serialize :admupd,Array
 
