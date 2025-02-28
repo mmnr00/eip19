@@ -27,7 +27,7 @@
 <div class="cards shadow mb-4">
   <div class="card-header">
     <div class="row">
-      <%= form_tag ilscdet_path, method: :get, id: "find_kid" do %>
+      <%= form_tag cpcuindex_path, method: :get, id: "find_kid" do %>
         <%= text_field_tag :sch_str, params[:sch_str], placeholder: "Masukkan Nama", style: 'text-transform: uppercase' %>
         <%= select_tag :yr, options_for_select(2020..Date.today.year, params[:yr]),
               include_blank: "Semua Tahun" %>
@@ -35,7 +35,7 @@
         <%= button_tag(type: :submit, class: "badge badge-success shadow-none", style: "font-size: 14px; border-style: none; font-weight: normal",  id: "submit_expense") do %>
             <i class="fa fa-search"></i> Cari
         <% end %>
-        <%= link_to ilscdet_path, class: "badge badge-danger shadow-sm", style: "font-size: 14px; font-weight: normal" do %>
+        <%= link_to cpcuindex_path, class: "badge badge-danger shadow-sm", style: "font-size: 14px; font-weight: normal" do %>
             <i class="fa fa-sync"></i> Semula
         <% end %>
         <%= "#{@ilscs.count} carian" %>
