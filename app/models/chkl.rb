@@ -1,11 +1,11 @@
 class Chkl < ApplicationRecord
 	belongs_to :ekid
-	serialize :gmtr,Hash
-	serialize :fmtr,Hash
-	serialize :adbh,Hash
-	serialize :splg,Hash
-	serialize :cogn,Hash
-	serialize :audl,Hash
-	serialize :prvb,Hash
-	serialize :rcel,Hash
+	serialize :gmtr,type: Hash
+	serialize :fmtr,type: Hash
+	serialize :adbh,type: Hash
+	serialize :splg,type: Hash
+	serialize :cogn,type: Hash
+	serialize :audl,type: Hash
+	serialize :prvb,type: Hash
+	serialize :rcel,type: Hash
 end

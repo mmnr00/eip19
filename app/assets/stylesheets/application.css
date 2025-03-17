@@ -17,7 +17,7 @@
  * require aos
  *= require boxicons
  *= require owl.carousel
- *= require owl.theme.default
+ * require owl.theme.default
  *= require owl.theme.green
  *= require venobox
  *= require bizland

@@ -207,9 +207,9 @@ class AdminsController < ApplicationController
 				if fld == "No Siri (4 no belakang)"
 					@ddk = @ddk.where(id: str)
 				elsif fld == "Nama Agensi"
-					@ddk = @ddk.where('coname LIKE ?', "%#{str}%")
+					@ddk = @ddk.where('coname LIKE (?)', "%#{str}%")
 				elsif fld == "No Pendaftaran Agensi"
-					@ddk = @ddk.where('conum LIKE ?', "%#{str}%")
+					@ddk = @ddk.where('conum LIKE (?)', "%#{str}%")
 				end
 			end
 

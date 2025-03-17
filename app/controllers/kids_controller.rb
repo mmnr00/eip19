@@ -242,9 +242,9 @@ class KidsController < ApplicationController
 		if params[:name].blank? 
 			flash.now[:danger] = "You have entered an empty request"
 		else
-			#parent = Parent.find_by("email like?", "%#{params[:email]}%")
+			#parent = Parent.find_by("email like (?)", "%#{params[:email]}%")
 			#@parent_id = parent.id
-			@kid_search = Kid.where("name like?", "%#{params[:name].upcase}%" )
+			@kid_search = Kid.where("name like (?)", "%#{params[:name].upcase}%" )
 			#@kid_search.each do |kid|
 				#if (kid.parent.email == params[:email])
 					#@kid_exist = kid

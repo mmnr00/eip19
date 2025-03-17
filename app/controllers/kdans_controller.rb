@@ -146,9 +146,9 @@ class KdansController < ApplicationController
 	def kdan_index
 		@kdans = Kdan.all
 		if params[:sch].present?
-			@kdans = @kdans.where('name LIKE ?', "%#{params[:sch_str].upcase}%") unless params[:sch_str].blank?
+			@kdans = @kdans.where('name LIKE (?)', "%#{params[:sch_str].upcase}%") unless params[:sch_str].blank?
 			if @kdans.blank?
-				@kdans = Kdan.where('ic LIKE ?', "%#{params[:sch_str]}%") unless params[:sch_str].blank?
+				@kdans = Kdan.where('ic LIKE (?)', "%#{params[:sch_str]}%") unless params[:sch_str].blank?
 			end
 			@kdans = @kdans.where(stat: params[:sch_stat]) unless params[:sch_stat].blank?
 			@kdans = @kdans.where('extract(year from created_at) = ?', params[:yr]) unless params[:yr].blank?

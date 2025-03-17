@@ -13,8 +13,8 @@ class TeachersController < ApplicationController
 				flash[:danger] = "Sila Masukkan Salah Satu Carian"
 				redirect_to teacher_index_path and return
 			end
-			@ekids = @ekids.where('name LIKE ?', "%#{params[:sch_nm].upcase}%") unless params[:sch_nm].blank?
-			@ekids = @ekids.where('ic LIKE ?', "%#{params[:sch_ic].upcase}%") unless params[:sch_ic].blank?
+			@ekids = @ekids.where('name LIKE (?)', "%#{params[:sch_nm].upcase}%") unless params[:sch_nm].blank?
+			@ekids = @ekids.where('ic LIKE (?)', "%#{params[:sch_ic].upcase}%") unless params[:sch_ic].blank?
 		end
 	end
 

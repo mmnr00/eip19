@@ -95,12 +95,12 @@ class IlscsController < ApplicationController
 
 	def cpcuindex
 		@admin = current_admin
-		@ilscs = Ilsc.where("tp like?", "%CPCU%" )
+		@ilscs = Ilsc.where("tp like (?)", "%CPCU%" )
 		@ekids = Ekid.all
 		@ilscs = @ilscs.where('extract(year from created_at) = ?', params[:yr]) unless params[:yr].blank?
 		if params[:sch].present?
 			@ilscs  = @ilscs.where(tp: params[:sch_fld]) unless params[:sch_fld].blank?
-			@ilscs  = @ilscs.where('name LIKE ?', "%#{params[:sch_str].upcase}%") unless params[:sch_str].blank?
+			@ilscs  = @ilscs.where('name LIKE (?)', "%#{params[:sch_str].upcase}%") unless params[:sch_str].blank?
 			if params[:sch_crs].present?
 				crs = {"Kursus Jahitan"=>"1",
         "Kursus Bakeri"=>"2",
@@ -132,7 +132,7 @@ class IlscsController < ApplicationController
 
 	def cpcu_list
 		@perse = Perse.find(params[:perse])
-		@ilscs = @perse.ilscs.where("tp like?", "%CPCU%" )
+		@ilscs = @perse.ilscs.where("tp like (?)", "%CPCU%" )
 	end
 
 	def ilscdet
@@ -143,7 +143,7 @@ class IlscsController < ApplicationController
 		@ilscs = @ilscs.where('extract(year from created_at) = ?', params[:yr]) unless params[:yr].blank?
 		if params[:sch].present?
 			@ilscs  = @ilscs.where(tp: params[:sch_fld]) unless params[:sch_fld].blank?
-			@ilscs  = @ilscs.where('name LIKE ?', "%#{params[:sch_str].upcase}%") unless params[:sch_str].blank?
+			@ilscs  = @ilscs.where('name LIKE (?)', "%#{params[:sch_str].upcase}%") unless params[:sch_str].blank?
 			if params[:sch_crs].present?
 				crs = {"Kursus Jahitan"=>"1",
         "Kursus Bakeri"=>"2",
@@ -181,7 +181,7 @@ class IlscsController < ApplicationController
 		@ilscs = @ilscs.where('extract(year from created_at) = ?', params[:yr]) unless params[:yr].blank?
 		if params[:sch].present?
 			@ilscs  = @ilscs.where(tp: params[:sch_fld]) unless params[:sch_fld].blank?
-			@ilscs  = @ilscs.where('name LIKE ?', "%#{params[:sch_str].upcase}%") unless params[:sch_str].blank?
+			@ilscs  = @ilscs.where('name LIKE (?)', "%#{params[:sch_str].upcase}%") unless params[:sch_str].blank?
 			@ilscs = @ilscs.where(phs: params[:phs]) unless params[:phs].blank?
 			if params[:sch_crs].present?
 				crs = {"Kursus Jahitan"=>"1",
@@ -254,7 +254,7 @@ class IlscsController < ApplicationController
 		@ilscs = Ilsc.all
 		if params[:sch].present?
 			@ilscs = @ilscs.where(tp: params[:sch_fld]) unless params[:sch_fld].blank?
-			@ilscs= @ilscs.where('name LIKE ?', "%#{params[:sch_str].upcase}%") unless params[:sch_str].blank?
+			@ilscs= @ilscs.where('name LIKE (?)', "%#{params[:sch_str].upcase}%") unless params[:sch_str].blank?
 			# if params[:stat].present?
 			# 	if params[:stat] == "AKTIF"
 			# 		@ekids = @ekids.where(stat: [nil,""])
@@ -281,7 +281,7 @@ class IlscsController < ApplicationController
 		@ilscs = @ilscs.where('extract(year from created_at) = ?', params[:yr]) unless params[:yr].blank?
 		if params[:sch].present?
 			@ilscs  = @ilscs.where(tp: params[:sch_fld]) unless params[:sch_fld].blank?
-			@ilscs  = @ilscs.where('name LIKE ?', "%#{params[:sch_str].upcase}%") unless params[:sch_str].blank?
+			@ilscs  = @ilscs.where('name LIKE (?)', "%#{params[:sch_str].upcase}%") unless params[:sch_str].blank?
 			@ilscs = @ilscs.where(phs: params[:phs]) unless params[:phs].blank?
 			if params[:sch_crs].present?
 				crs = {"Kursus Jahitan"=>"1",
@@ -345,7 +345,7 @@ class IlscsController < ApplicationController
 
 	def ilsc_list
 		@perse = Perse.find(params[:perse])
-		@ilscs = @perse.ilscs.where.not("tp like?", "%CPCU%" )
+		@ilscs = @perse.ilscs.where.not("tp like (?)", "%CPCU%" )
 	end
 
 	def new

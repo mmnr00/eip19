@@ -1,3 +1,3 @@
 class Artk < ApplicationRecord
-	serialize :book,Array
+	serialize :book,type: Array
 end

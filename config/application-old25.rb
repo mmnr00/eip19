@@ -6,16 +6,15 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module KidcareTaskaV3
+module Eip19
   class Application < Rails::Application
-    config.load_defaults 7.2
+    config.load_defaults 6.1
     config.assets.paths << Rails.root.join("vendor","assets", "fonts")
+    config.action_dispatch.default_headers = {
+    'X-Frame-Options' => 'ALLOWALL'
+    }
     config.active_record.use_yaml_unsafe_load = true
-    config.active_record.default_column_serializer = YAML
     config.autoloader = :classic
-    config.autoload_paths += %W(#{config.root}/app/services/)
-    config.autoload_paths << "#{config.root}/lib"
-    config.eager_load_paths << "#{config.root}/lib"
     #config.assets.paths << File.join(Rails.root, '/vendor/webarch_core')
     #config.assets.paths << File.join(Rails.root, '/vendor/agency')
     #config.assets.enabled = true

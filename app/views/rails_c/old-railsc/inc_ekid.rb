@@ -30,7 +30,7 @@ ekid.save
 end
 
 tp=[]
-Ekid.where('pinc LIKE ?', "%10,000%").each do |ek|
+Ekid.where('pinc LIKE (?)', "%10,000%").each do |ek|
 #Ekid.all.each do |ek|
 inc = ek.pinc
 if inc != "Lebih dari 10,000" && inc != "5,000 hingga 10,000"
@@ -40,7 +40,7 @@ end
 
 
 tp1=[]
-Ekid.where('pinc LIKE ?', "%5,000%").each do |ek|
+Ekid.where('pinc LIKE (?)', "%5,000%").each do |ek|
 #Ekid.all.each do |ek|
 inc = ek.pinc
 if inc != "Kurang dari 5,000" && inc != "5,000 hingga 10,000"

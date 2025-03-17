@@ -131,7 +131,7 @@ class TaskasController < ApplicationController
     if params[:name].blank? 
       flash.now[:danger] = "You have entered an empty request"
     else
-      @kid_search = @taska.kids.where("name like?", "%#{params[:name].upcase}%" ).where.not(classroom_id: nil)
+      @kid_search = @taska.kids.where("name like (?)", "%#{params[:name].upcase}%" ).where.not(classroom_id: nil)
       flash.now[:danger] = "Cannot find child" unless @kid_search.present?
     end
     respond_to do |format|

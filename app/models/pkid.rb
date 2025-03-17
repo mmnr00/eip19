@@ -1,10 +1,10 @@
 class Pkid < ApplicationRecord
 	belongs_to :ekid
-	serialize :devkid,Hash
-	serialize :addfo,Hash
-	serialize :health,Hash
-	serialize :birth,Hash
-	serialize :grow,Hash
-	serialize :physpch,Hash
-	serialize :agr,Hash
+	serialize :devkid,type: Hash
+	serialize :addfo,type: Hash
+	serialize :health,type: Hash
+	serialize :birth,type: Hash
+	serialize :grow,type: Hash
+	serialize :physpch,type: Hash
+	serialize :agr,type: Hash
 end

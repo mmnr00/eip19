@@ -276,7 +276,7 @@ class ProgesController < ApplicationController
 					flash.now[:danger] = "NO RECORD. PLEASE CLICK BELOW TO REGISTER"
 				end
 			else
-		    #@perse = Perse.where("ic like?", "%#{params[:ic]}%")
+		    #@perse = Perse.where("ic like (?)", "%#{params[:ic]}%")
 		    @perse = Perse.where(ic: params[:ic])
 		    flash.now[:danger] = "NO RECORD. PLEASE CLICK BELOW TO REGISTER" unless @perse.present?
 		  end
