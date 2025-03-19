@@ -95,7 +95,7 @@ class IlscsController < ApplicationController
 
 	def cpcuindex
 		@admin = current_admin
-		@ilscs = Ilsc.where("tp like (?)", "%CPCU%" )
+		@ilscs = Ilsc.where(tp: params[:tp] )
 		@ekids = Ekid.all
 		@ilscs = @ilscs.where('extract(year from created_at) = ?', params[:yr]) unless params[:yr].blank?
 		if params[:sch].present?
@@ -127,7 +127,16 @@ class IlscsController < ApplicationController
 			# end
 		end
 		@ddk = Ddk.all 
-		render action: "cpcuindex", layout: "dsb-admin-cpcu"
+		tp = params[:tp]
+		if tp == "CPCUCST"
+			render action: "cpcuindex", layout: "dsb-admin-cpcucst"
+		elsif tp == "CPCUPPF"
+			render action: "cpcuindex", layout: "dsb-admin-cpcuppf"
+		elsif tp == "CPCUPR"
+			render action: "cpcuindex", layout: "dsb-admin-cpcupr"
+		else
+			render action: "cpcuindex", layout: "dsb-admin-cpcu"
+		end
 	end
 
 	def cpcu_list
