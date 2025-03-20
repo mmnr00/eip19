@@ -39,6 +39,10 @@ class FotosController < ApplicationController
         elsif @foto.ptns_mmb.present?
           @ptns_mmb = @foto.ptns_mmb
           redirect_to edit_ptns_mmb_path(@ptns_mmb)
+        elsif @foto.btan.present?
+          @btan = @foto.btan 
+          flash[:success] = "Kemaskini Berjaya"
+          redirect_to edit_btan_path(@btan)
         end
       end
     else

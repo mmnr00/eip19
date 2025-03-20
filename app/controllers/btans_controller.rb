@@ -24,6 +24,7 @@ class BtansController < ApplicationController
 
 	def new
 		@btan = Btan.new
+		@perse = Perse.find(params[:perse])
 		@btan.fotos.build
 		hash_temp = {}
 		(1..10).each do |n|

@@ -63,7 +63,14 @@
         </div>
         <div class="row">
           <div class="col-sm-8 col-12">
-            <%= f.text_field :name, class: "form-control", placeholder: "Nama Penuh Seperti MyKad", autofocus: true, required: true, style: "text-transform: uppercase" %>
+            <% 
+              if @btan.name.present?
+                nameval = @btan.name
+              else
+                nameval = @perse.name 
+              end
+            %>
+            <%= f.text_field :name, class: "form-control", placeholder: "Nama Penuh Seperti MyKad", autofocus: true, required: true, style: "text-transform: uppercase", value: nameval %>
           </div>
         </div>
       </div>
@@ -76,7 +83,14 @@
         </div>
         <div class="row">
           <div class="col-sm-8 col-12">
-            <%= f.number_field :ic, class: "form-control", autofocus: true, required: true, style: "text-transform: uppercase" %>
+            <% 
+              if @btan.ic.present?
+                icval = @btan.ic
+              else
+                icval = @perse.ic 
+              end
+            %>
+            <%= f.number_field :ic, class: "form-control", autofocus: true, required: true, style: "text-transform: uppercase", value: icval, readonly: true %>
           </div>
         </div>
       </div>
@@ -646,7 +660,7 @@
                   <div class="row">
                     <div class="col-sm-8 col-8">
                       <%= h.hidden_field :foto_name, value: "DIAGNOSIS" %>
-                      <%= h.file_field :picture, accept: 'application/pdf', required: true %>
+                      <%= h.file_field :picture, accept: 'image/jpeg,image/gif,image/png,application/pdf', required: true %>
                     </div>
                   </div>
                 <% end %>
@@ -664,7 +678,7 @@
           </div>
           <div class="row">
             <div class="col-sm-8 col-12">
-              <% image = @btan.fotos.where(foto_name: "DIAGNOSIS").first %>
+              <% image = @btan.fotos.where(foto_name: "DIAGNOSIS2").first %>
               <%  if image.present? %>
                 <%= image_tag(image.picture.url, size: "200x200") if image.picture? %>
                 <div class="row">
@@ -677,7 +691,7 @@
                   <div class="row">
                     <div class="col-sm-8 col-8">
                       <%= h.hidden_field :foto_name, value: "DIAGNOSIS2" %>
-                      <%= h.file_field :picture, accept: 'application/pdf', required: true %>
+                      <%= h.file_field :picture, accept: 'image/jpeg,image/gif,image/png,application/pdf' %>
                     </div>
                   </div>
                 <% end %>

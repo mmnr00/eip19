@@ -199,6 +199,14 @@ class PersesController < ApplicationController
 								else
 									redirect_to cpcu_list_path(perse: perse.id)
 								end
+
+							elsif params[:prog] == "BANTUAN ANIS"
+								if params[:regkid].present?
+									redirect_to new_btan_path(perse: perse.id, prog: params[:prog])
+								else
+									redirect_to btan_list_path(perse: perse.id)
+								end
+
 							elsif params[:prog] == "KAD ANIS" 
 								if params[:regkid].present?
 									redirect_to new_kdan_path(perse: perse.id, prog: params[:prog], tp: params[:tp])
