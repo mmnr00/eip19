@@ -165,7 +165,7 @@
       <tr>
         <td style="background-color:#e5e5e5 !important; " ><font color="black">No Pendaftaran Kad <br> OKU JKM</font></td>
         <td style="background-color: !important; " ><font color="black"><%= @btan.okuno %></font></td>
-        <td style="background-color:#e5e5e5 !important; " ><font color="black">Kategori Ketidakupayaan</font></td>
+        <td style="background-color:#e5e5e5 !important; " ><font color="black">Kategori <br> Ketidakupayaan</font></td>
         <td style="background-color: !important; " ><font color="black"><%= @btan.okutp %></font></td>
       </tr>
       <tr>
@@ -182,9 +182,70 @@
 
     <tbody>
       <tr>
-        <td style="background-color:#0070C0 !important" colspan="4"><font color="white"><h8>MAKLUMAT TANGGUNGAN KETUA ISI RUMAH</h8></font></td>
+        <td style="background-color:#0070C0 !important" colspan="4"><font color="white"><h8>SENARAI SEMAK DOKUMEN</h8></font></td>
       </tr>
       <tr>
+        <td style="background-color:#bf7fbf !important" colspan="2"><font color="white"><h8>DOKUMEN</h8></font></td>
+        <td style="background-color:#bf7fbf !important"><font color="white"><h8>STATUS</h8></font></td>
+        <td style="background-color:#bf7fbf !important"><font color="white"><h8>SEMAKAN</h8></font></td>
+      </tr>
+      <tr>
+        <td style="background-color: !important; " colspan="2" ><font color="black">Salinan Kad Pengenalan Pemohon <br> (Ibu/Bapa/Penjaga)</font></td>
+        <td style="background-color: !important; " ><font color="black"></font></td>
+        <td style="background-color: !important; " ><font color="black"></font></td>
+      </tr>
+      <tr>
+        <td style="background-color: !important; " colspan="2" ><font color="black">Salinan Kad Pengenalan Anak</font></td>
+        <td style="background-color: !important; " ><font color="black"></font></td>
+        <td style="background-color: !important; " ><font color="black"></font></td>
+      </tr>
+      <tr>
+        <td style="background-color: !important; " colspan="2" ><font color="black">Sijil Kelahiran Anak</font></td>
+        <td style="background-color: !important; " ><font color="black"></font></td>
+        <td style="background-color: !important; " ><font color="black"></font></td>
+      </tr>
+      <tr>
+        <td style="background-color: !important; " colspan="2" ><font color="black">Salinan Surat Perakuan <br> Anak Angkat (Jika Berkenaan)</font></td>
+        <td style="background-color: !important; " ><font color="black"></font></td>
+        <td style="background-color: !important; " ><font color="black"></font></td>
+      </tr>
+      <tr>
+        <td style="background-color: !important; " colspan="2" ><font color="black">Salinan Kad OKU Dari Jabatan Kebajikan Masyarakat,<br><br> Atau <br><br> Surat Pengesahan Doktor Berkaitan Dengan Masalah Anak.<br> (Jika Tiada Kad OKU)</font></td>
+        <td style="background-color: !important; " ><font color="black"></font></td>
+        <td style="background-color: !important; " ><font color="black"></font></td>
+      </tr>
+      <tr>
+        <td style="background-color: !important; " colspan="2" ><font color="black">DOKUMEN SOKONGAN BAGI KATEGORI MAKANAN / KEPERLUAN KHUSUS / PEMBELIAN PERALATAN / MESINDAN UBAT-UBATAN YANG DISARAKAN OLEH DOKTOR MEMERLUKAN DOKUMEN BERIKUT :-
+i.
+SALINAN PRESKRIPSI DOKTOR DENGAN SPESIFIKASI KHUSUS (KETERANGAN UNTUK MAKANAN,KEPERLUAN KHUSUS, PEMBELIAN PERALATAN/MESIN DAN UBAT-UBATAN YANG DISARANKAN OLEHDOKTOR)</font></td>
+        <td style="background-color: !important; " ><font color="black"></font></td>
+        <td style="background-color: !important; " ><font color="black"></font></td>
+      </tr>
+      <tr>
+        <td style="background-color: !important; " colspan="2" ><font color="black">DOKUMEN SOKONGAN BAGI KATEGORI PENDIDIKAN (TERAPI / KELAS KHAS) MEMERLUKAN DOKUMENBERIKUT :-
+i.
+SALINAN SURAT PENGESAHAN TAWARAN PUSAT TERAPI.
+ii.
+SEBUT HARGA YURAN BULANAN
+iii.
+PENYATA BANK PUSAT TERAPI.
+HANYA
+**PUSAT TERAPI (EIP) SAHAJA
+YANG DIBENARKAN UNTUK PERMOHONAN, PEMOHON YANGMENGHANTAR ANAK KE PUSAT TERAPI YANG TIDAK MEMENUHI SYARAT PUSAT EIP, PERMOHONAN AKANDITOLAK.</font></td>
+        <td style="background-color: !important; " ><font color="black"></font></td>
+        <td style="background-color: !important; " ><font color="black"></font></td>
+      </tr>
+      <tr>
+        <td style="background-color: !important; " colspan="2" ><font color="black">SALINAN SEMAKAN DAFTAR PEMILIH SPR HTTPS://PENGUNDI.SPR.GOV.MY</font></td>
+        <td style="background-color: !important; " ><font color="black"></font></td>
+        <td style="background-color: !important; " ><font color="black"></font></td>
+      </tr>
+    </tbody>
+
+    <tbody>
+      <tr>
+        <td style="background-color:#0070C0 !important" colspan="4"><font color="white"><h8>MAKLUMAT TANGGUNGAN KETUA ISI RUMAH</h8></font></td>
+      </tr>
         <div class="table-responsive border" style="font-size: 12px">
           <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0">
             <thead style="text-align: center">
@@ -209,21 +270,26 @@
             </tbody>
           </table>
         </div>
-      </tr>
     </tbody>
 
-    <div class="table-responsive">
-      <table class="table table-bordered" width="100%" cellspacing="0" style="color: black;borders: 2px solid black">
-        <tbody>
-          <tr>
-            <td style="background-color:#0070C0 !important" colspan="4"><font color="white"><h8>SUMBANGAN BANTUAN YANG TELAH DITERIMA (JUMLAH TAHUNAN)</h8></font></td>
-          </tr>
-          <tr>
-            <td style="background-color: !important;" colspan="4" ><font color="black"><br><br></font></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <tbody>
+      <div class="table-responsive">
+        <table class="table table-bordered" width="100%" cellspacing="0" style="color: black;borders: 2px solid black">
+          
+            <tr>
+              <td style="background-color:#0070C0 !important" colspan="4"><font color="white"><h8>SUMBANGAN BANTUAN YANG TELAH DITERIMA (JUMLAH TAHUNAN)</h8></font></td>
+            </tr>
+            <tr>
+              <td style="background-color: !important;" colspan="4" ><font color="black"><br><br></font><%= @btan.sekkd %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </tbody>
+
+
+
+
 
   </table>
 
