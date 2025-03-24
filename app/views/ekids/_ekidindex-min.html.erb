@@ -1,0 +1,77 @@
+<div class="table table-responsive border" style="font-size:13px">
+  <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0" style="color: black">
+    
+    <thead>
+      <tr class="shadow">
+        <th style="background-color:#ffb2b2; width: 12%">NO SIRI (JENIS PROGRAM)</th>
+        <th style="background-color:#ffb2b2">MAKLUMAT ANAK</th>
+        <th style="background-color:#ffb2b2">MAKLUMAT PEMOHON</th>
+        <th style="background-color:#ffb2b2; width: 18%">STATUS</th>
+        <th style="background-color:#ffb2b2; width: 20%">TARIKH</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @ekids.order('created_at DESC').each do |ek|; perse = ek.perse %>
+      <tr>
+        <td>
+          <a href="<%= ekidconf_url(id: ek.id)%>" target="_blank">PPN-<%= ek.id.to_s.rjust(5, '0') %></a><br>
+          (<%= ek.tp %>)<br>
+          <%= link_to "Kemaskini Profil", edit_ekid_path(id: ek.id, perse: ek.perse.id), class: "badge badge-pill badge-warning", target: "_blank" %><br>
+          <%= link_to "Padam", admbin_path(id: ek.id, del: 1), class: "badge badge-pill badge-danger" %><br>
+
+          <% if ek.ekrps.count > 0 %>
+            <br>
+            <%= link_to "Lihat Senarai Laporan", ekrpls_path(ekid: ek.id), class: "badge badge-pill badge-success", target: "_blank"%>
+          <% end %>
+        </td>
+        <td>
+          <%= ek.name %><br>
+          (<%= ek.ic %>)<br>
+          
+        </td>
+        <td>
+          <%= perse.name %><br>
+          <%= perse.ph %><br>
+          <%= perse.email %><br>
+        </td>
+        
+        
+        <!-- <td>
+          <%
+            if ek.stat.present?
+              stat_sr = "Tidak Aktif"
+              clr = "danger"
+              staturl = ""
+            else
+              stat_sr = "Aktif"
+              clr = "success"
+              staturl = "TIDAK AKTIF"
+            end 
+          %>
+          <btn class="btn btn-sm btn-block btn-<%= clr %>"><%= stat_sr %></btn>
+          <a href="<%= ekstat_url(id: ek.id, stat: staturl) %>"><btn class="badge badge-pill badge-secondary">Ubah Status</btn></a>
+        </td> -->
+        <td>
+          <%= link_to ek.stat, "#", class: "btn btn-block btn-success", style: "margin-bottom: -20px; font-size: 15px"%><br>
+          <%= link_to ek.phs, "#", class: "badge badge-pill badge-primary" %><br>
+          <b>Maklumat Admin:</b><br>
+          <%= ek.descr %><br>
+          <% upd = ek.admupd.last %>
+          <% if upd.present? %>
+            <b><%= Admin.find(upd[1]).username %></b> (<%= upd[0].strftime('%d-%^b-%y') %>)<br>
+            <%= link_to "Sejarah Kemaskini Admin", admhist_path(id: ek.id), target: "_blank" %><br>
+          <% end %>
+        </td>
+
+        <td>
+          <b>Kemaskini</b> :<%= ek.updated_at.strftime('%d-%^b-%y') %><br>
+          <b>Permohonan</b> :<%= ek.created_at.strftime('%d-%^b-%y') %><br>
+        </td>
+      </tr>
+
+      <% end %> <!-- END LOOP -->
+
+    </tbody>
+    
+  </table>
+</div>

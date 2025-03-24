@@ -104,6 +104,7 @@
         <%= select_tag :yr, options_for_select((2021..Date.today.year).to_a, params[:yr]),
               include_blank: "Semua Tahun" %>
         <%= hidden_field_tag :sch, params[:sch], value: true %>
+        <%= hidden_field_tag :showl, params[:showl], value: true %>
         <%= button_tag(type: :submit, class: "badge badge-success shadow-none", style: "font-size: 14px; border-style: none; font-weight: normal",  id: "submit_expense") do %>
             <i class="fa fa-search"></i> Cari
         <% end %>
@@ -122,40 +123,15 @@
     </div>
   </div>
 
-  <div class="card-body"><% if params[:showl].present? || params[:sch_str].present? %>
+  <div class="card-body"><% if params[:showl].present?  %>
 
-
+    <% if params[:sch_str].present? %>
+      <%= render 'ekids/ekidindex-all' %>
+    <% else %>
+      <%= render 'ekids/ekidindex-min' %>
+    <% end %>
     
-    <div class="table table-responsive border" style="font-size:13px">
-      <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0" style="color: black">
-        
-        <thead>
-          <tr class="shadow">
-            <th style="background-color:#ffb2b2; width: 12%">NO SIRI (JENIS PROGRAM)</th>
-            <th style="background-color:#ffb2b2">MAKLUMAT ANAK</th>
-            <th style="background-color:#ffb2b2">MAKLUMAT PEMOHON</th>
-            <!-- <th style="background-color:#ffb2b2">PROGRAM</th> -->
-            <th style="background-color:#ffb2b2; width: 30%">MAKLUMAT TAMBAHAN</th>
-            <th style="background-color:#ffb2b2; width: 18%">STATUS</th>
-            <th style="background-color:#ffb2b2; width: 20%">TARIKH</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @ekids.order('created_at DESC').each do |ek|; perse = ek.perse %>
-          <tr>
-            <td>
-              <%= ek.name %><br>
-              (<%= ek.ic %>)<br>
-            </td>
-          </tr>
-
-          <% end %> <!-- END LOOP -->
-
-        </tbody>
-        
-      </table>
-    </div>
-  </div><% end %>
+  <% end %></div>
 </div>
 
 
