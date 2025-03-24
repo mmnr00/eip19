@@ -191,7 +191,13 @@
       </tr>
       <tr>
         <td style="background-color: !important; " colspan="2" ><font color="black">Salinan Kad Pengenalan Pemohon <br> (Ibu/Bapa/Penjaga)</font></td>
-        <td style="background-color: !important; " ><font color="black"></font></td>
+        <td style="background-color: !important; " ><font color="black">
+          <% if @btan.fotos.where(foto_name: "PRTIC").first.picture.present? %>
+            Ada
+          <% else %>
+            Takdak
+          <% end %>
+        </font></td>
         <td style="background-color: !important; " ><font color="black"></font></td>
       </tr>
       <tr>
@@ -215,28 +221,29 @@
         <td style="background-color: !important; " ><font color="black"></font></td>
       </tr>
       <tr>
-        <td style="background-color: !important; " colspan="2" ><font color="black">DOKUMEN SOKONGAN BAGI KATEGORI MAKANAN / KEPERLUAN KHUSUS / PEMBELIAN PERALATAN / MESINDAN UBAT-UBATAN YANG DISARAKAN OLEH DOKTOR MEMERLUKAN DOKUMEN BERIKUT :-
-i.
-SALINAN PRESKRIPSI DOKTOR DENGAN SPESIFIKASI KHUSUS (KETERANGAN UNTUK MAKANAN,KEPERLUAN KHUSUS, PEMBELIAN PERALATAN/MESIN DAN UBAT-UBATAN YANG DISARANKAN OLEHDOKTOR)</font></td>
+        <td style="background-color: !important; " colspan="2" ><font color="black">Dokumen Sokongan Bagi Kategori Makanan / Keperluan Khusus / Pembelian Peralatan / Mesindan Ubat-ubatan Yang Disarakan Oleh Doktor Memerlukan Dokumen Berikut :-
+          <ol type="i">
+            <li>Salinan Preskripsi Doktor Dengan Spesifikasi Khusus (Keterangan Untuk Makanan,keperluan Khusus, Pembelian Peralatan/mesin Dan Ubat-ubatan Yang Disarankan Oleh Doktor)</li>
+          </ol>
+        </font></td>
         <td style="background-color: !important; " ><font color="black"></font></td>
         <td style="background-color: !important; " ><font color="black"></font></td>
       </tr>
       <tr>
-        <td style="background-color: !important; " colspan="2" ><font color="black">DOKUMEN SOKONGAN BAGI KATEGORI PENDIDIKAN (TERAPI / KELAS KHAS) MEMERLUKAN DOKUMENBERIKUT :-
-i.
-SALINAN SURAT PENGESAHAN TAWARAN PUSAT TERAPI.
-ii.
-SEBUT HARGA YURAN BULANAN
-iii.
-PENYATA BANK PUSAT TERAPI.
-HANYA
-**PUSAT TERAPI (EIP) SAHAJA
-YANG DIBENARKAN UNTUK PERMOHONAN, PEMOHON YANGMENGHANTAR ANAK KE PUSAT TERAPI YANG TIDAK MEMENUHI SYARAT PUSAT EIP, PERMOHONAN AKANDITOLAK.</font></td>
+        <td style="background-color: !important; " colspan="2" ><font color="black">Dokumen Sokongan Bagi Kategori Pendidikan (Terapi / Kelas Khas) Memerlukan Dokumen Berikut :-
+        <ol type="i">
+          <li>Salinan Surat Pengesahan Tawaran Pusat Terapi</li>
+          <li>Sebut Harga Yuran Bulanan</li>
+          <li>Penyata Bank Pusat Terapi.</li>
+        </ol>
+
+        Hanya <b>PUSAT TERAPI (EIP) SAHAJA</b> Yang Dibenarkan Untuk Permohonan, Pemohon Yang Menghantar Anak Ke Pusat Terapi Yang Tidak Memenuhi Syarat Pusat EIP, Permohonan Akan Ditolak.
+      </font></td>
         <td style="background-color: !important; " ><font color="black"></font></td>
         <td style="background-color: !important; " ><font color="black"></font></td>
       </tr>
       <tr>
-        <td style="background-color: !important; " colspan="2" ><font color="black">SALINAN SEMAKAN DAFTAR PEMILIH SPR HTTPS://PENGUNDI.SPR.GOV.MY</font></td>
+        <td style="background-color: !important; " colspan="2" ><font color="black">Salinan Semakan Daftar Pemilih SPR https://pengundi.spr.gov.my</font></td>
         <td style="background-color: !important; " ><font color="black"></font></td>
         <td style="background-color: !important; " ><font color="black"></font></td>
       </tr>
