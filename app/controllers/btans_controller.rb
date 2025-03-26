@@ -124,6 +124,7 @@ class BtansController < ApplicationController
 														    :sekkd,
 														    :tnc,
 														    :nmkd,
+														    :perse_id,
 														    fotos_attributes: [:foto, :picture, :foto_name])
 	end
 

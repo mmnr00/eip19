@@ -158,8 +158,8 @@
         <thead>
           <tr class="shadow">
             <th style="background-color:#ffb2b2; width: ">NO</th>
-            <th style="background-color:#ffb2b2">MAKLUMAT PEMOHON</th>
             <th style="background-color:#ffb2b2">MAKLUMAT ANAK ISTIMEWA</th>
+            <th style="background-color:#ffb2b2">MAKLUMAT PEMOHON</th>
             <th style="background-color:#ffb2b2; width: ">DUN</th>
             <th style="background-color:#ffb2b2">JUMLAH BANTUAN</th>
             <th style="background-color:#ffb2b2">TARIKH MOHON</th>
@@ -168,16 +168,20 @@
           </tr>
         </thead>
         <tbody>
-          <% cnt = 1; @btans.each do |bt| %>
+          <% cnt = 1; @btans.order('created_at DESC').each do |bt| %>
           <tr>
             <td><%= cnt %></td>
-            <td><a href="<%= btan_url(id: bt.id) %>" target="_blank"><%= bt.name %></a><br>
-                <%= bt.ic %>
-            </td>
             <td>
-              <%= bt.nmkd %><br>
-              <%= bt.ickd %>
+              <a href="<%= btan_url(id: bt.id) %>" target="_blank"><%= bt.nmkd %></a><br>
+              <%= bt.ickd %><br>
+              <%= link_to "Kemaskini Profil", edit_btan_path(id: bt.id, perse: bt.perse.id), class: "badge badge-pill badge-warning", target: "_blank" %><br>
+              <%= link_to "Padam", root_path(id: bt.id, del: 1), class: "badge badge-pill badge-danger" %><br>
             </td>
+            <td><%= bt.name %><br>
+                <%= bt.ic %><br>
+                <%= bt.phmb %>
+            </td>
+            
             <td><%= bt.dun %></td>
             <td><%= bt.amnt %></td>
             <td><%= bt.created_at.strftime('%d-%^b-%Y') %></td>

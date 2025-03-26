@@ -202,7 +202,14 @@
         </div>
         <div class="row">
           <div class="col-sm-8 col-12">
-            <%= f.text_field :phmb, class: "form-control", autofocus: true,required: true, style: "text-transform: uppercase" %>
+            <% 
+              if @btan.phmb.present?
+                phmbval = @btan.phmb
+              else
+                phmbval = @perse.ph
+              end
+            %>
+            <%= f.text_field :phmb, class: "form-control", autofocus: true,required: true, style: "text-transform: uppercase", value: phmbval %>
           </div>
         </div>
       </div>

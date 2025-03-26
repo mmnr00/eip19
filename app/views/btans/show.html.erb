@@ -192,32 +192,56 @@
       <tr>
         <td style="background-color: !important; " colspan="2" ><font color="black">Salinan Kad Pengenalan Pemohon <br> (Ibu/Bapa/Penjaga)</font></td>
         <td style="background-color: !important; " ><font color="black">
-          <% if @btan.fotos.where(foto_name: "PRTIC").first.picture.present? %>
-            Ada
+          <% if (pic = @btan.fotos.where(foto_name: "PRTIC").first.picture).present? %>
+            <a href="<%= pic.url %>" target="_blank" download>Muaturun Dokumen</a>  
           <% else %>
-            Takdak
+            Tiada
           <% end %>
         </font></td>
         <td style="background-color: !important; " ><font color="black"></font></td>
       </tr>
       <tr>
         <td style="background-color: !important; " colspan="2" ><font color="black">Salinan Kad Pengenalan Anak</font></td>
-        <td style="background-color: !important; " ><font color="black"></font></td>
+        <td style="background-color: !important; " ><font color="black">
+          <% if (pic = @btan.fotos.where(foto_name: "KIDIC").first.picture).present? %>
+            <a href="<%= pic.url %>" target="_blank" download>Muaturun Dokumen</a>  
+          <% else %>
+            Tiada
+          <% end %>
+        </font></td>
         <td style="background-color: !important; " ><font color="black"></font></td>
       </tr>
       <tr>
         <td style="background-color: !important; " colspan="2" ><font color="black">Sijil Kelahiran Anak</font></td>
-        <td style="background-color: !important; " ><font color="black"></font></td>
+        <td style="background-color: !important; " ><font color="black">
+          <% if (pic = @btan.fotos.where(foto_name: "KIDCERT").first.picture).present? %>
+            <a href="<%= pic.url %>" target="_blank" download>Muaturun Dokumen</a>  
+          <% else %>
+            Tiada
+          <% end %>
+        </font></td>
         <td style="background-color: !important; " ><font color="black"></font></td>
       </tr>
       <tr>
         <td style="background-color: !important; " colspan="2" ><font color="black">Salinan Surat Perakuan <br> Anak Angkat (Jika Berkenaan)</font></td>
-        <td style="background-color: !important; " ><font color="black"></font></td>
+        <td style="background-color: !important; " ><font color="black">
+          <% if (pic = @btan.fotos.where(foto_name: "KIDADOPT").first.picture).present? %>
+            <a href="<%= pic.url %>" target="_blank" download>Muaturun Dokumen</a>  
+          <% else %>
+            Tiada
+          <% end %>
+        </font></td>
         <td style="background-color: !important; " ><font color="black"></font></td>
       </tr>
       <tr>
         <td style="background-color: !important; " colspan="2" ><font color="black">Salinan Kad OKU Dari Jabatan Kebajikan Masyarakat,<br><br> Atau <br><br> Surat Pengesahan Doktor Berkaitan Dengan Masalah Anak.<br> (Jika Tiada Kad OKU)</font></td>
-        <td style="background-color: !important; " ><font color="black"></font></td>
+        <td style="background-color: !important; " ><font color="black">
+          <% if (pic = @btan.fotos.where(foto_name: "KIDOKU").first.picture).present? %>
+            <a href="<%= pic.url %>" target="_blank" download>Muaturun Dokumen</a>  
+          <% else %>
+            Tiada
+          <% end %>
+        </font></td>
         <td style="background-color: !important; " ><font color="black"></font></td>
       </tr>
       <tr>
@@ -226,7 +250,13 @@
             <li>Salinan Preskripsi Doktor Dengan Spesifikasi Khusus (Keterangan Untuk Makanan,keperluan Khusus, Pembelian Peralatan/mesin Dan Ubat-ubatan Yang Disarankan Oleh Doktor)</li>
           </ol>
         </font></td>
-        <td style="background-color: !important; " ><font color="black"></font></td>
+        <td style="background-color: !important; " >
+          <% if (pic = @btan.fotos.where(foto_name: "KIDSPCLND").first.picture).present? %>
+            <a href="<%= pic.url %>" target="_blank" download>Muaturun Dokumen</a>  
+          <% else %>
+            Tiada
+          <% end %>
+        <font color="black"></font></td>
         <td style="background-color: !important; " ><font color="black"></font></td>
       </tr>
       <tr>
@@ -239,12 +269,24 @@
 
         Hanya <b>PUSAT TERAPI (EIP) SAHAJA</b> Yang Dibenarkan Untuk Permohonan, Pemohon Yang Menghantar Anak Ke Pusat Terapi Yang Tidak Memenuhi Syarat Pusat EIP, Permohonan Akan Ditolak.
       </font></td>
-        <td style="background-color: !important; " ><font color="black"></font></td>
+        <td style="background-color: !important; " ><font color="black">
+          <% if (pic = @btan.fotos.where(foto_name: "KIDEDU").first.picture).present? %>
+            <a href="<%= pic.url %>" target="_blank" download>Muaturun Dokumen</a>  
+          <% else %>
+            Tiada
+          <% end %>
+        </font></td>
         <td style="background-color: !important; " ><font color="black"></font></td>
       </tr>
       <tr>
         <td style="background-color: !important; " colspan="2" ><font color="black">Salinan Semakan Daftar Pemilih SPR https://pengundi.spr.gov.my</font></td>
-        <td style="background-color: !important; " ><font color="black"></font></td>
+        <td style="background-color: !important; " ><font color="black">
+          <% if (pic = @btan.fotos.where(foto_name: "SPRKID").first.picture).present? %>
+            <a href="<%= pic.url %>" target="_blank" download>Muaturun Dokumen</a>  
+          <% else %>
+            Tiada
+          <% end %>
+        </font></td>
         <td style="background-color: !important; " ><font color="black"></font></td>
       </tr>
     </tbody>

@@ -6,6 +6,7 @@ class Perse < ApplicationRecord
 	has_many :ilscs
 	has_many :kdans
 	has_many :prgfds
+	has_many :btans
 	serialize :stdoku,type: Array
 	has_many :fbproges
 	before_save :save_perses
