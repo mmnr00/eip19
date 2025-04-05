@@ -14,7 +14,7 @@
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">JUMLAH PEMOHON</div>
-            <a href="#"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @btans.count %></div></a>
+            <a href="<%= lsbtan_url %>"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @btans.count %></div></a>
           </div>
           <div class="col-auto">
             <i class="fas fa-folder-plus fa-2x text-gray-300"></i>
@@ -30,7 +30,7 @@
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">BELUM DISEMAK</div>
-            <a href="#"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @btans.where(stat: "BELUM DISEMAK").count %></div></a>
+            <a href="<%= lsbtan_url(sch: true, stat: "BELUM DISEMAK") %>"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @btans.where(stat: "BELUM DISEMAK").count %></div></a>
           </div>
           <div class="col-auto">
             <i class="fas fa-folder-plus fa-2x text-gray-300"></i>
@@ -46,7 +46,7 @@
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">TELAH DISEMAK</div>
-            <a href="#"><div class="h5 mb-0 font-weight-bold text-gray-800"><%=  @btans.where(stat: "TELAH DISEMAK").count %></div></a>
+            <a href="<%= lsbtan_url(sch: true, stat: "TELAH DISEMAK") %>"><div class="h5 mb-0 font-weight-bold text-gray-800"><%=  @btans.where(stat: "TELAH DISEMAK").count %></div></a>
           </div>
           <div class="col-auto">
             <i class="fas fa-folder-plus fa-2x text-gray-300"></i>
@@ -62,7 +62,7 @@
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">DOKUMEN TIDAK LENGKAP</div>
-            <a href="#"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @btans.where(stat: "DOKUMEN TIDAK LENGKAP").count %></div></a>
+            <a href="<%= lsbtan_url(sch: true, stat: "DOKUMEN TIDAK LENGKAP") %>"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @btans.where(stat: "DOKUMEN TIDAK LENGKAP").count %></div></a>
           </div>
           <div class="col-auto">
             <i class="fas fa-folder-plus fa-2x text-gray-300"></i>
@@ -78,7 +78,7 @@
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">DITOLAK</div>
-            <a href="#"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @btans.where(stat: "DITOLAK").count %></div></a>
+            <a href="<%= lsbtan_url(sch: true, stat: "DITOLAK") %>"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @btans.where(stat: "DITOLAK").count %></div></a>
           </div>
           <div class="col-auto">
             <i class="fas fa-folder-plus fa-2x text-gray-300"></i>
@@ -94,7 +94,7 @@
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">LULUS</div>
-            <a href="#"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @btans.where(stat: "LULUS").count %></div></a>
+            <a href="<%= lsbtan_url(sch: true, stat: "LULUS") %>"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @btans.where(stat: "LULUS").count %></div></a>
           </div>
           <div class="col-auto">
             <i class="fas fa-folder-plus fa-2x text-gray-300"></i>
@@ -110,7 +110,7 @@
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">GAGAL</div>
-            <a href="#"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @btans.where(stat: "GAGAL").count %></div></a>
+            <a href="<%= lsbtan_url(sch: true, stat: "GAGAL") %>"><div class="h5 mb-0 font-weight-bold text-gray-800"><%= @btans.where(stat: "GAGAL").count %></div></a>
           </div>
           <div class="col-auto">
             <i class="fas fa-folder-plus fa-2x text-gray-300"></i>
@@ -125,23 +125,24 @@
 
 <!-- TABLE -->
 <br>
-<div class="cards shadow mb-4">
+<div class="cards shadow mb-12">
   <div class="card-header">
     <div class="row">
-      <%= form_tag lsddk_path, method: :get, id: "find_kid" do %>
-        <%= text_field_tag :sch_str, params[:sch_str], placeholder: "Masukkan Carian", style: 'text-transform: uppercase', required: true %>
-        <%= select_tag :sch_fld, options_for_select(["No Siri (4 no belakang)", "Nama Agensi","No Pendaftaran Agensi"], params[:sch_fld]),
-              include_blank: "Pilih Carian", required: true %>
+      <%= form_tag lsbtan_path, method: :get, id: "find_kid" do %>
+        <%= text_field_tag :sch_str, params[:sch_str], placeholder: "Nama / MYKAD", style: 'text-transform: uppercase' %>
+        <%= select_tag :sch_tp, options_for_select(["Saringan Awal","Makanan / Keperluan Tambahan", 
+                                                  "Pendidikan (Terapi/Kelas Khas)", "Pembelian/Pembaikan Peralatan/Mesin", "Ubat-ubatan", "Lain-lain"], params[:sch_tp]),
+              include_blank: "Tujuan Permohonan" %>
         <%= hidden_field_tag :stat, params[:stat], value: params[:stat] %>
         <%= hidden_field_tag :sch, params[:sch], value: true %>
         <%= button_tag(type: :submit, class: "badge badge-success shadow-none", style: "font-size: 14px; border-style: none; font-weight: normal",  id: "submit_expense") do %>
             <i class="fa fa-search"></i> Cari
         <% end %>
-        <%= link_to lsddk_path, class: "badge badge-danger shadow-sm", style: "font-size: 14px; font-weight: normal" do %>
+        <%= link_to lsbtan_path, class: "badge badge-danger shadow-sm", style: "font-size: 14px; font-weight: normal" do %>
             <i class="fa fa-sync"></i> Semula
         <% end %>
-        <%= "#{@ddk.count} carian" unless params[:sch].blank? %>
-        <%= link_to oldlsddk_path, class: "badge badge-secondary shadow-sm", target: "_blank", style: "font-size: 18px; font-weight: normal" do %>
+        <%= "#{@btans.count} carian" unless params[:sch].blank? %>
+        <% link_to oldlsddk_path, class: "badge badge-secondary shadow-sm", target: "_blank", style: "font-size: 18px; font-weight: normal" do %>
             <i class="fa fa-sync"></i> Rekod Terdahulu
         <% end %>
       <% end %>
@@ -175,7 +176,7 @@
               <a href="<%= btan_url(id: bt.id) %>" target="_blank"><%= bt.nmkd %></a><br>
               <%= bt.ickd %><br>
               <%= link_to "Kemaskini Profil", edit_btan_path(id: bt.id, perse: bt.perse.id), class: "badge badge-pill badge-warning", target: "_blank" %><br>
-              <%= link_to "Padam", root_path(id: bt.id, del: 1), class: "badge badge-pill badge-danger" %><br>
+              <% link_to "Padam", root_path(id: bt.id, del: 1), class: "badge badge-pill badge-danger" %><br>
             </td>
             <td><%= bt.name %><br>
                 <%= bt.ic %><br>

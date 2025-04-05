@@ -1,0 +1,74 @@
+
+
+
+&nbsp
+<%= link_to new_btan_path(prog: "BANTUAN ANIS", perse: params[:perse]), class: "btn btn-sm btn-primary", style: "font-size: 15px" do %>
+  <i class="fa far fa-plus"></i>&nbsp Daftar Bantuan ANIS</i>
+<% end %> &nbsp
+
+<div style="margin-bottom: 10px"></div>
+
+<% if @btans.count >= 0 %>
+<div class="cards shadow mb-4" style="">
+  <div class="card-header">
+    
+    <btn class="badge badge-pill badge-secondary">
+      Senarai Anak Yang Didaftarkan Oleh <%= @perse.name %> 
+    </btn>
+    
+  </div>
+  <div class="card-body">
+
+    <div class="table table-responsive border" style="font-size:13px">
+
+      <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0" style="color: black">
+        <thead>
+          <tr class="shadow">
+            <th style="background-color:#ffb2b2; width: %">NO</th>
+            <th style="background-color:#ffb2b2; width: %">MAKLUMAT PESERTA</th>
+            <th style="background-color:#ffb2b2; width: %">MAKLUMAT PEMOHON</th>
+            <th style="background-color:#ffb2b2; width: %">JUMLAH BANTUAN</th>
+            <th style="background-color:#ffb2b2; width: %">TARIKH PERMOHONAN</th>
+            <th style="background-color:#ffb2b2; width: %">JENIS</th>
+            <th style="background-color:#ffb2b2; width: %">STATUS</th>
+            
+
+          </tr>
+        </thead>
+        <tbody>
+          <% cnt = 1; @btans.order('created_at DESC').each do |bt|; perse = bt.perse %>
+          <%
+            # diff = (Date.today.year*12+Date.today.month) - (ek.dobn.year*12+ek.dobn.month)
+            # year = diff/12
+            # month = diff - year*12 
+            year = 20
+            month = 15
+          %>
+            <tr>
+              <td><%= cnt %></td>
+              <td>
+                <a href="<%= btan_url(id: bt.id) %>" target="_blank"><%= bt.nmkd %></a><br>
+                <%= bt.ickd %><br>
+                <%= link_to "Kemaskini Profil", edit_btan_path(id: bt.id, perse: bt.perse.id), class: "badge badge-pill badge-warning", target: "_blank" %><br>
+                <% link_to "Padam", root_path(id: bt.id, del: 1), class: "badge badge-pill badge-danger" %><br>
+              </td>
+              <td><%= bt.name %><br>
+                  <%= bt.ic %><br>
+                  <%= bt.phmb %>
+              </td>
+              <td><%= bt.amnt %></td>
+              <td><%= bt.created_at.strftime('%d-%^b-%Y') %></td>
+              <td><%= bt.purp %></td>
+              <td><%= bt.stat %></td>
+              
+            </tr>
+          <% cnt = cnt +1 ; end %> 
+        </tbody>
+      </table>
+
+    </div>
+
+  </div>
+</div>
+<% end %>
+

@@ -3,6 +3,11 @@ class BtansController < ApplicationController
 	before_action :set_btan, only: [:show,:edit,:update]
 	before_action :authenticate_admin!, only: [:lsbtan]
 
+	def btan_list
+		@perse = Perse.find(params[:perse])
+		@btans = @perse.btans
+	end
+
 	def updstatbtan
 		pars = params[:btan]
 		@btan = Btan.find(pars[:id])
@@ -19,6 +24,12 @@ class BtansController < ApplicationController
 
 	def lsbtan
 		@btans = Btan.all
+		if params[:sch].present?
+			@btans = @btans.where(stat: params[:stat]) unless params[:stat].blank?
+			sch_str = params[:sch_str].upcase unless params[:sch_str].blank?
+			@btans = @btans.where("nmkd like (?)", "%#{sch_str}%") unless params[:sch_str].blank?
+			@btans = @btans.where(purp: params[:sch_tp]) unless params[:sch_tp].blank?
+		end
 		render action: "lsbtan", layout: "dsb-admin-btan"
 	end
 
