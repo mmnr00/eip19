@@ -65,6 +65,61 @@
         <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">PEKERJAAN YANG DIMINATI</font></td>
         <td style="background-color: !important"><%= "#{@ilsc.jobint}" %></td>
       </tr>
+      <tr>
+        <td style="background-color:#e5e5e5 !important; width: 40%" ><font color="black">DOKUMEN</font></td>
+        <td style="background-color: !important">
+          <%
+                image = @ilsc.fotos.where(foto_name: "MYKAD BAPA").first
+                if image.present? && image.picture.present?
+                  url = image.picture.url
+                else
+                  url = ""
+                end
+              %>
+              <a href="<%= url %>" target="_blank"><btn class="badge badge-pill badge-secondary">MYKAD BAPA</btn></a><br>
+
+              <%
+                image = @ilsc.fotos.where(foto_name: "MYKAD IBU").first
+                if image.present? && image.picture.present?
+                  url = image.picture.url
+                else
+                  url = ""
+                end
+              %>
+              <a href="<%= url %>" target="_blank"><btn class="badge badge-pill badge-secondary">MYKAD IBU</btn></a><br>
+
+              <%
+                image = @ilsc.fotos.where(foto_name: "MYKAD ANAK").first
+                if image.present? && image.picture.present?
+                  url = image.picture.url
+                else
+                  url = ""
+                end
+              %>
+              <a href="<%= url %>" target="_blank"><btn class="badge badge-pill badge-secondary">MYKAD ANAK</btn></a><br>
+
+              <%
+                image = @ilsc.fotos.where(foto_name: "SLIP UNDI").first
+                if image.present? && image.picture.present?
+                  url = image.picture.url
+                else
+                  url = ""
+                end
+              %>
+              <a href="<%= url %>" target="_blank"><btn class="badge badge-pill badge-secondary">SLIP MENGUNDI PELAJAR</btn></a><br>
+
+              <%
+                image = @ilsc.fotos.where(foto_name: "KAD OKU").first
+                if image.present? && image.picture.present?
+                  url = image.picture.url
+                else
+                  url = ""
+                end
+              %>
+              <a href="<%= url %>" target="_blank"><btn class="badge badge-pill badge-secondary">KAD OKU ANAK/DIAGNOSIS</btn></a><br>
+          
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>
