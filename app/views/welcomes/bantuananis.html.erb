@@ -12,7 +12,11 @@
 <div class="section-header container bg-white" style="margin-top: 20px">
   <h3 style="">MAKLUMAN</h3>
   <div class="border-prog" style=""></div>
-  <p style="text-align: center; color: black; font-weight: 600">Permohonan Bantuan ANIS Telah Dibuka</p>
+  <% if ENV['BTN_OPEN'] == "TRUE" %>
+    <p style="text-align: center; color: black; font-weight: 600">Permohonan Bantuan ANIS Telah Dibuka</p>
+  <% else %>
+    <p style="text-align: center; color: black; font-weight: 600">Permohonan Bantuan ANIS Telah Ditutup</p>
+  <% end %>
   <!-- <p style="text-align: center; color: black; font-weight: 600">Permohonan Bantuan ANIS Telah Dibuka</p>
   <p style="text-align: center; color: black">Tarikh Pendaftaran Bermula Dari 17 Mei 2024 Hingga 31 Mei 2024</p> -->
 </div>
@@ -137,7 +141,7 @@
             <ol>
             <li>Pemohon hendaklah membuat permohonan diatas talian di laman sesawang <br><b>https://www.anisselangor.com/bantuananis</b></li>
             <li>Pemohon mengisi borang permohonan secara dalam talian dan lampirkan bersama Dokumen Sokongan yang lengkap mengikut kategori permohonan seperti yang dinyatakan bagi tujuan semakan</li> 
-            <li>Borang permohonan dan Dokumen Sokongan yang lengkap hendaklah dihantar bermula 7 April 2025 (8.30 pagi) sehingga 18 April 2025 (5.00 petang)</li>
+            <li>Borang permohonan dan Dokumen Sokongan yang lengkap hendaklah dihantar bermula 7 April 2025 (8.30 pagi) sehingga 2 Mei 2025 (5.00 petang)</li>
             <li>Penghantaran dokumen yang tidak lengkap akan menyebabkan permohonan tidak akan diproses.<br>
             Borang permohonan dan dokumen boleh di hantar di alamat seperti berikut: <br><br>
             <b>Pusat Sokongan Pendidikan Awal ANIS</b> <br>
