@@ -4,7 +4,21 @@
   <li class="breadcrumb-item">
     Permohonan untuk Program <b>Bantuan ANIS</b>
   </li>
+  &nbsp &nbsp <%= link_to lsbtan_path, class: "badge badge-primary shadow-sm", style: "font-size: 14px; font-weight: normal" do %>
+        <i class="fa fa-sync"></i> Paparan Utama
+    <% end %>
+    &nbsp &nbsp <%= link_to lsbtan_path(dsb: "memo"), class: "badge badge-primary shadow-sm", style: "font-size: 14px; font-weight: normal" do %>
+        <i class="fa fa-sync"></i> Memo
+    <% end %>
+    &nbsp &nbsp <%= link_to lsbtan_path(dsb: "pmt"), class: "badge badge-primary shadow-sm", style: "font-size: 14px; font-weight: normal" do %>
+        <i class="fa fa-sync"></i> Maklumat Bayaran
+    <% end %>
+    &nbsp &nbsp <%= link_to lsbtan_path(dsb: "panel"), class: "badge badge-primary shadow-sm", style: "font-size: 14px; font-weight: normal" do %>
+        <i class="fa fa-sync"></i> Senarai Panel
+    <% end %>
 </ol>
+
+
 
 <% if params[:dsb].present? %>
 <% else %>
