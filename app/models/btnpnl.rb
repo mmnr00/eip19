@@ -1,0 +1,2 @@
+class Btnpnl < ApplicationRecord
+end

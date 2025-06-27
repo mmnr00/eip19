@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_03_26_123208) do
+ActiveRecord::Schema[7.2].define(version: 2025_06_27_010437) do
   create_schema "heroku_ext"
 
   # These are extensions that must be enabled in order to support this database
@@ -159,6 +159,19 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_26_123208) do
     t.text "descrls"
     t.integer "perse_id"
     t.boolean "del"
+  end
+
+  create_table "btnpnls", force: :cascade do |t|
+    t.string "name"
+    t.string "acctnm"
+    t.string "acctno"
+    t.string "ph"
+    t.string "email"
+    t.string "stat"
+    t.string "addr"
+    t.string "tp"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "chkls", force: :cascade do |t|

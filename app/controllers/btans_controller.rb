@@ -24,11 +24,20 @@ class BtansController < ApplicationController
 
 	def lsbtan
 		@btans = Btan.all
-		if params[:sch].present?
-			@btans = @btans.where(stat: params[:stat]) unless params[:stat].blank?
-			sch_str = params[:sch_str].upcase unless params[:sch_str].blank?
-			@btans = @btans.where("nmkd like (?)", "%#{sch_str}%") unless params[:sch_str].blank?
-			@btans = @btans.where(purp: params[:sch_tp]) unless params[:sch_tp].blank?
+		if params[:dsb] == "memo"
+			@par = "memo"
+		elsif params[:dsb] == "pmt"
+			@par = "pmt"
+		elsif params[:dsb] == "panel"
+			@par = "panel"
+			@btnpnls = Btnpnl.all
+		else
+			if params[:sch].present?
+				@btans = @btans.where(stat: params[:stat]) unless params[:stat].blank?
+				sch_str = params[:sch_str].upcase unless params[:sch_str].blank?
+				@btans = @btans.where("nmkd like (?)", "%#{sch_str}%") unless params[:sch_str].blank?
+				@btans = @btans.where(purp: params[:sch_tp]) unless params[:sch_tp].blank?
+			end
 		end
 		render action: "lsbtan", layout: "dsb-admin-btan"
 	end

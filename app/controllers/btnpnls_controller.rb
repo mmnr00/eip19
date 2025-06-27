@@ -1,0 +1,2 @@
+class BtnpnlsController < ApplicationController
+end
