@@ -7,15 +7,18 @@
     Permohonan untuk Program <b>Bantuan ANIS</b>
   </li>
   &nbsp &nbsp <%= link_to lsbtan_path, class: "badge badge-#{$btn_hash[params[:dsb]][0]} shadow-sm", style: "font-size: 14px; font-weight: normal" do %>
-        <i class="fa fa-sync"></i> Paparan Utama
+        <i class="fa fa-sync"></i> Senarai Pemohon
     <% end %>
-    &nbsp &nbsp <%= link_to lsbtan_path(dsb: "memo"), class: "badge badge-#{$btn_hash[params[:dsb]][1]} shadow-sm", style: "font-size: 14px; font-weight: normal" do %>
+    &nbsp &nbsp <%= link_to lsbtan_path(dsb: "lulus"), class: "badge badge-#{$btn_hash[params[:dsb]][1]} shadow-sm", style: "font-size: 14px; font-weight: normal" do %>
+        <i class="fa fa-sync"></i> Senarai Lulus
+    <% end %>
+    &nbsp &nbsp <%= link_to lsbtan_path(dsb: "memo"), class: "badge badge-#{$btn_hash[params[:dsb]][2]} shadow-sm", style: "font-size: 14px; font-weight: normal" do %>
         <i class="fa fa-sync"></i> Memo
     <% end %>
-    &nbsp &nbsp <%= link_to lsbtan_path(dsb: "pmt"), class: "badge badge-#{$btn_hash[params[:dsb]][2]} shadow-sm", style: "font-size: 14px; font-weight: normal" do %>
+    &nbsp &nbsp <%= link_to lsbtan_path(dsb: "pmt"), class: "badge badge-#{$btn_hash[params[:dsb]][3]} shadow-sm", style: "font-size: 14px; font-weight: normal" do %>
         <i class="fa fa-sync"></i> Maklumat Bayaran
     <% end %>
-    &nbsp &nbsp <%= link_to lsbtan_path(dsb: "panel"), class: "badge badge-#{$btn_hash[params[:dsb]][3]} shadow-sm", style: "font-size: 14px; font-weight: normal" do %>
+    &nbsp &nbsp <%= link_to lsbtan_path(dsb: "panel"), class: "badge badge-#{$btn_hash[params[:dsb]][4]} shadow-sm", style: "font-size: 14px; font-weight: normal" do %>
         <i class="fa fa-sync"></i> Senarai Panel
     <% end %>
 </ol>
@@ -28,6 +31,8 @@
   <%= render 'btans/pmtdsb' %>
 <% elsif params[:dsb] == "panel" %>
   <%= render 'btans/paneldsb' %>
+<% elsif params[:dsb] == "lulus" %>
+  <%= render 'btans/lulusdsb' %>
 <% else %>
   <%= render 'btans/maindsb' %>
 <% end %>

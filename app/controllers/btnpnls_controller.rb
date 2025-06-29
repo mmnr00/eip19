@@ -15,6 +15,7 @@ class BtnpnlsController < ApplicationController
 	end
 
 	def edit
+		render action: "edit", layout: "dsb-admin-btan"
 	end
 
 	def update

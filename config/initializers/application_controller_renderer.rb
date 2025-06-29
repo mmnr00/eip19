@@ -9,10 +9,11 @@
 
 
 $btn_hash = {
-    nil=>["primary","secondary","secondary","secondary"],
-    "memo"=>["secondary","primary","secondary","secondary"],
-    "pmt"=>["secondary","secondary","primary","secondary"],
-    "panel"=>["secondary","secondary","secondary","primary"]
+    nil=>["primary","secondary","secondary","secondary","secondary"],
+    "lulus"=>["secondary","primary","secondary","secondary","secondary"],
+    "memo"=>["secondary","secondary","primary","secondary","secondary"],
+    "pmt"=>["secondary","secondary","secondary","primary","secondary"],
+    "panel"=>["secondary","secondary","secondary","secondary","primary"]
   }
 
 

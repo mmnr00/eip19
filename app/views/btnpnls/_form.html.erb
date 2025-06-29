@@ -1,7 +1,4 @@
-<br>
-<%= link_to lsbtan_path(dsb: "panel"), class: "btn btn-sm btn-warning", style: "font-size: 15px" do %>
-  <i class="fa far fa-arrow-left"></i>&nbsp Kembali
-<% end %>
+
 
 <div class='row container'>
   <div class='col-lg-8 col-12'>
@@ -141,6 +138,9 @@
       <div class="form-group">
         <div class="row">
           <div class="col-sm-offset-2 col-sm-10 col-4">
+            <%= link_to lsbtan_path(dsb: "panel"), class: "badge badge-warning shadow-sm", style: "font-size: 15px" do %>
+              <i class="fa far fa-arrow-left"></i>&nbsp Kembali
+            <% end %>
             <%= f.submit :Hantar,  class: 'btn btn-success btn-sm' %>
           </div>
         </div>
