@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   resources :qsas, only:[:show,:new,:create, :destroy, :update, :edit]
   resources :ilscs, only:[:show,:new,:create, :destroy, :update, :edit]
   resources :btans, only:[:show,:new,:create, :destroy, :update, :edit]
-  resources :btnpnl, only:[:show,:new,:create, :destroy, :update, :edit]
+  resources :btnpnls, only:[:show,:new,:create, :destroy, :update, :edit]
   #resources :teachers, only:[:show]
   #resources :taska_teachers, only:[:create,:destroy]
   devise_for :parents

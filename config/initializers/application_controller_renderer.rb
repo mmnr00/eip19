@@ -7,6 +7,15 @@
 #   )
 # end
 
+
+$btn_hash = {
+    nil=>["primary","secondary","secondary","secondary"],
+    "memo"=>["secondary","primary","secondary","secondary"],
+    "pmt"=>["secondary","secondary","primary","secondary"],
+    "panel"=>["secondary","secondary","secondary","primary"]
+  }
+
+
 $cpcu_tp = {
 	"CPCUCST" => "Caregiver Skills Training",
 	"CPCUPPF" => "Pemberian Peralatan Fisioterapi",
@@ -243,6 +252,60 @@ $month_name = { 1=>"JAN",
 								11=>"NOV",
 								12=>"DEC",
 							}
+
+$malaysianBanks = [
+  "Affin Bank Berhad",
+  "Alliance Bank Malaysia Berhad",
+  "AmBank (M) Berhad",
+  "CIMB Bank Berhad",
+  "Hong Leong Bank Berhad",
+  "Malayan Banking Berhad (Maybank)",
+  "Public Bank Berhad",
+  "RHB Bank Berhad",
+  "BNP Paribas Malaysia Berhad",
+  "Bangkok Bank Berhad",
+  "Bank of America Malaysia Berhad",
+  "Bank of China (Malaysia) Berhad",
+  "Bank of Tokyo-Mitsubishi UFJ (Malaysia) Berhad",
+  "China Construction Bank (Malaysia) Berhad",
+  "Citibank Berhad",
+  "Deutsche Bank (Malaysia) Berhad",
+  "HSBC Bank Malaysia Berhad",
+  "India International Bank (Malaysia) Berhad",
+  "Industrial and Commercial Bank of China (Malaysia) Berhad",
+  "J.P. Morgan Chase Bank Berhad",
+  "MUFG Bank (Malaysia) Berhad",
+  "Mizuho Bank (Malaysia) Berhad",
+  "National Bank of Abu Dhabi Malaysia Berhad",
+  "OCBC Bank (Malaysia) Berhad",
+  "Standard Chartered Bank Malaysia Berhad",
+  "Sumitomo Mitsui Banking Corporation Malaysia Berhad",
+  "The Bank of Nova Scotia Berhad",
+  "United Overseas Bank (Malaysia) Bhd",
+  "Affin Islamic Bank Berhad",
+  "Al Rajhi Banking & Investment Corporation (Malaysia) Berhad",
+  "Alliance Islamic Bank Berhad",
+  "AmBank Islamic Berhad",
+  "Bank Islam Malaysia Berhad",
+  "Bank Muamalat Malaysia Berhad",
+  "CIMB Islamic Bank Berhad",
+  "HSBC Amanah Malaysia Berhad",
+  "Hong Leong Islamic Bank Berhad",
+  "Kuwait Finance House (Malaysia) Berhad",
+  "MBSB Bank Berhad",
+  "Maybank Islamic Berhad",
+  "OCBC Al-Amin Bank Berhad",
+  "Public Islamic Bank Berhad",
+  "RHB Islamic Bank Berhad",
+  "Standard Chartered Saadiq Berhad",
+  "Bank Kerjasama Rakyat Malaysia Berhad (Bank Rakyat)",
+  "Bank Simpanan Nasional (BSN)",
+  "Bank Pertanian Malaysia Berhad (Agrobank)",
+  "Bank Pembangunan Malaysia Berhad",
+  "Bank Perusahaan Kecil & Sederhana Malaysia Berhad (SME Bank)",
+  "Export-Import Bank of Malaysia Berhad (EXIM Bank)"
+]
+
 $bank_code =	{ "AFFIN BANK BERHAD"=>"PHBMMYKL",
 								"AGROBANK / BANK PERTANIAN MALAYSIA BERHAD"=>"BPMBMYKL",
 								"ALLIANCE BANK MALAYSIA BERHAD"=>"MFBBMYKL",

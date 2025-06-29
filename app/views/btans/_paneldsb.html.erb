@@ -1,1 +1,79 @@
-<%= @btnpnls.count %>
+
+<%= link_to new_btnpnl_path, class: "btn btn-sm btn-success", style: "font-size: 15px" do %>
+  <i class="fa far fa-plus"></i>&nbsp Panel Baru
+<% end %>
+
+<!-- TABLE -->
+<br>
+<div class="cards shadow mb-12">
+  <div class="card-header">
+    <div class="row">
+      <%= form_tag lsbtan_path, method: :get, id: "find_kid" do %>
+        <%= text_field_tag :sch_str, params[:sch_str], placeholder: "CARI NAMA DISINI", style: 'text-transform: uppercase' %>
+        <%= select_tag :sch_tp, options_for_select(["Pusat Pendidikan/Institusi","Panel"], params[:sch_tp]),
+              include_blank: "Semua" %>
+        <%= hidden_field_tag :stat, params[:stat], value: params[:stat] %>
+        <%= hidden_field_tag :sch, params[:sch], value: true %>
+        <%= button_tag(type: :submit, class: "badge badge-success shadow-none", style: "font-size: 14px; border-style: none; font-weight: normal",  id: "submit_expense") do %>
+            <i class="fa fa-search"></i> Cari
+        <% end %>
+        <%= link_to lsbtan_path, class: "badge badge-danger shadow-sm", style: "font-size: 14px; font-weight: normal" do %>
+            <i class="fa fa-sync"></i> Semula
+        <% end %>
+        <%= "#{@btans.count} carian" unless params[:sch].blank? %>
+        <% link_to oldlsddk_path, class: "badge badge-secondary shadow-sm", target: "_blank", style: "font-size: 18px; font-weight: normal" do %>
+            <i class="fa fa-sync"></i> Rekod Terdahulu
+        <% end %>
+      <% end %>
+
+      <div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <div class="table table-responsive border" style="font-size:13px">
+      <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0" style="color: black">
+        <thead>
+          <tr class="shadow">
+            <th style="background-color:#ffb2b2; width: ">NO</th>
+            <th style="background-color:#ffb2b2">NAMA</th>
+            <th style="background-color:#ffb2b2">MAKLUMAT AKAUN</th>
+            <th style="background-color:#ffb2b2; width: ">NO TELEFON</th>
+            <th style="background-color:#ffb2b2">EMAIL</th>
+            <th style="background-color:#ffb2b2">STATUS</th>
+            <th style="background-color:#ffb2b2">TINDAKAN</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% cnt = 1; @btnpnls.order('created_at DESC').each do |bt| %>
+          <tr>
+            <td><%= cnt %></td>
+            <td>
+              <%= bt.name %><br>
+              (<%= bt.tp %>)
+            </td>
+            <td>
+              <b>Nama Akaun:</b><%= bt.acctnm %><br>
+              <b>No Akaun:</b><%= bt.acctno %><br>
+              <b>Bank:</b><%= bt.banknm %><br>
+            </td>
+            <td><%= bt.ph %></td>
+            <td><%= bt.email %></td>
+            <td><%= bt.stat %></td>
+            <td>
+              <%= link_to edit_btnpnl_path(bt), class: "btn btn-sm btn-warning", style: "font-size: 15px" do %>
+                <i class="fa far fa-edit"></i>
+              <% end %>
+              <% link_to edit_btnpnl_path(bt), class: "btn btn-sm btn-danger", style: "font-size: 15px" do %>
+                <i class="fa far fa-trash"></i>
+              <% end %>
+            </td>
+          </tr>
+          <% cnt = cnt+1 ;end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

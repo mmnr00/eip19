@@ -1,0 +1,151 @@
+<br>
+<%= link_to lsbtan_path(dsb: "panel"), class: "btn btn-sm btn-warning", style: "font-size: 15px" do %>
+  <i class="fa far fa-arrow-left"></i>&nbsp Kembali
+<% end %>
+
+<div class='row container'>
+  <div class='col-lg-8 col-12'>
+    <%= form_for(@btnpnl, :html => {multipart: true, class: "form-horizontal", role: "form"}) do |f| %>
+
+      <div class="form-group"> <!-- name -->
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>NAMA</strong><a style="color: red">*</a></strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <%= f.text_field :name, class: "form-control", placeholder: "", autofocus: true, required: true, style: "text-transform: uppercase" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> <!-- name -->
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>JENIS PENDAFTARAN<a style="color: red">*</a></strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <%= f.select :tp, options_for_select(["Pusat Pendidikan/Institusi","Panel"], selected: @btnpnl.tp),{include_blank: "Pilih Satu"}, {required: true} %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> <!-- name -->
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>STATUS<a style="color: red">*</a></strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <%= f.select :stat, options_for_select(["Aktif","Tidak Aktif"], selected: @btnpnl.stat),{include_blank: "Pilih Satu"}, {required: true} %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> <!-- name -->
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>NAMA AKAUN<a style="color: red">*</a></strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <%= f.text_field :acctnm, class: "form-control", placeholder: "", autofocus: true, required: true %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> <!-- name -->
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>NO AKAUN<a style="color: red">*</a></strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <%= f.number_field :acctno, class: "form-control", placeholder: "", autofocus: true, required: true %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> <!-- name -->
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>BANK<a style="color: red">*</a></strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <%= f.select :banknm, options_for_select($malaysianBanks, selected: @btnpnl.banknm),{include_blank: "Pilih Satu"}, {required: true} %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> <!-- name -->
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>NO TELEFON<a style="color: red">*</a></strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <%= f.number_field :ph, class: "form-control", placeholder: "", autofocus: true, required: true %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> <!-- name -->
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>NO FAX</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <%= f.text_field :fax, class: "form-control", placeholder: "", autofocus: true %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> <!-- name -->
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>EMAIL<a style="color: red">*</a></strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <%= f.email_field :email, class: "form-control", placeholder: "", autofocus: true, required: true %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group"> <!-- name -->
+        <div class="row">
+          <div class="control-label col-sm-8">
+            <strong>ALAMAT<a style="color: red">*</a></strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <%= f.text_area :addr, class: "form-control", placeholder: "", autofocus: true, required: true %>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-offset-2 col-sm-10 col-4">
+            <%= f.submit :Hantar,  class: 'btn btn-success btn-sm' %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    
+  </div>
+</div>
