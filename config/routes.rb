@@ -29,13 +29,14 @@ Rails.application.routes.draw do
   resources :qsas, only:[:show,:new,:create, :destroy, :update, :edit]
   resources :ilscs, only:[:show,:new,:create, :destroy, :update, :edit]
   resources :btans, only:[:show,:new,:create, :destroy, :update, :edit]
+  resources :btnpnls, only:[:show,:new,:create, :destroy, :update, :edit]
   #resources :teachers, only:[:show]
   #resources :taska_teachers, only:[:create,:destroy]
   devise_for :parents
   devise_for :teachers #, :controllers=> {:registrations=>"registrations"}
   devise_for :admins
   devise_for :owners#, :controllers => { :passwords => 'passwords' }
-	root 'welcomes#index2'
+  root 'welcomes#index2'
 
   #~~BTANS
   get '/lsbtan', to: 'btans#lsbtan'
@@ -196,6 +197,7 @@ Rails.application.routes.draw do
   get '/showstat', to: 'sces#showstat'
 
   #WELCOME#
+  get '/semakbantuananis', to: 'welcomes#semakbantuananis'
   get '/cpcupr', to: 'welcomes#cpcupr'
   get '/cpcuppf', to: 'welcomes#cpcuppf'
   get '/cpcucst', to: 'welcomes#cpcucst'

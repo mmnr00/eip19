@@ -5,6 +5,10 @@ class WelcomesController < ApplicationController
 	
 	#layout "page"
 
+	def semakbantuananis
+		@index = true
+	end
+
 	def cpcupr
 		@index = true
 	end
