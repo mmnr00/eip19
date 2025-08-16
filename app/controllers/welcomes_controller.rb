@@ -9,6 +9,10 @@ class WelcomesController < ApplicationController
 		@index = true
 	end
 
+	def jcdet
+		@index = true
+	end
+
 	def cpcupr
 		@index = true
 	end
