@@ -10,7 +10,250 @@
 
 </header>
 
-<div class="col-12" style="display: flex; justify-content: center; margin-top: -0px;">
+<div class="container bg-white" style="margin-top: 20px; text-align: center">
+  <div class="row">
+
+    <div class="col-lg-12 col-12">
+      <div class="section-title" style="margin-top: 10px">
+        <h2>Hubungi Kami Di</h2> 
+        <p style="font-size: 18px; color: black">
+          <b>Yayasan Insan Istimewa Selangor (YANIS)</b>
+        </p>
+        <p style="font-size: 15px; color: black">
+          East Entrance G26-28  Bangunan IDCC,<br>
+          Jalan Pahat L  15/ L, Seksyen 15,<br>
+          40200 Shah Alam, SELANGOR<br>
+          <a href="">03-55453170</a><br>
+          <a href="">admin@yanis.org.my</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- content -->
+<div class="container bg-light" style="margin-top: -20px; margin-bottom: 10px">
+
+  <div class="col-lg-12 col-md-12" style="margin-top: px">
+
+    <div class="card shadow" style="margin-bottom: 10px"> <!-- Collapase Bar Start -->
+      <!-- Card Header - Accordion -->
+      <a href="#coll01" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+        <h6 class="m-0 font-weight-bold text-title">Pengurusan Atasan</h6>
+      </a>
+      <!-- Card Content - Collapse -->
+      <div class="collapse" id="coll01">
+        <div class="card-body">
+          <% 
+          list_table = [
+            ["Ar. Kamarul Hisham bin Hj. Yeop Hashim","Ketua Pegawai Eksekutif","ceo"],
+            ["Abdul Qayyum bin M Suhaimi","Pengurus Besar","qayyum"]
+            ] 
+          %>
+
+          <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0" style="color: black" style="font-size:200px">
+            <thead>
+              <tr class="shadow">
+                <th style="background-color:#ffb2b2; width: ">NAMA</th>
+                <th style="background-color:#ffb2b2">JAWATAN</th>
+                <th style="background-color:#ffb2b2">EMEL(@yanis.org.my)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% list_table.each do |lst| %>
+                <tr>
+                  <td><%= lst[0] %></td>
+                  <td><%= lst[1] %></td>
+                  <td><%= lst[2] %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div> <!-- Collapase Bar End -->
+
+    <div class="card shadow" style="margin-bottom: 10px"> <!-- Collapase Bar Start -->
+      <!-- Card Header - Accordion -->
+      <a href="#coll02" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+        <h6 class="m-0 font-weight-bold text-title">Bahagian Pentadbiran</h6>
+      </a>
+      <!-- Card Content - Collapse -->
+      <div class="collapse" id="coll02">
+        <div class="card-body">
+          <% 
+          list_table = [
+              ["Deeneshavathy Thasarathen","Eksekutif Operasi","nesha"],
+              ["Muhammad Syahmi bin Zahari","Eksekutif Operasi","syahmi"],
+              ["Muhammad Talha bin Takril","Eksekutif Operasi","talha"],
+              ["Nurul Syarmiera binti Yusof","Eksekutif Operasi","syarmiera"],
+              ["Masihta binti Parman","Eksekutif Operasi","masihta"],
+              ["Najihah binti Ali","Eksekutif Operasi","najihah"],
+              ["Nor Farhaini binti Md Yusoff","Kerani Kanan","farhainimdyusoff"],
+              ["Chanther Ramasamy","Kerani Kanan","chanther"],
+              ["Muhammad Annuar Aiman bin Mohd Abdullah","Pembantu Tadbir","annuar"],
+              ["Nurul Salwani binti Samsudin","Pembantu Tadbir","nurulsalwani"],
+              ["Azlin Nuratiqah binti Haidi","Pembantu Tadbir","azlin"],
+              ["Nurul Hayanti binti Taib","Pembantu Tadbir","nurulhayanti"]
+            ] 
+          %>
+
+          <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0" style="color: black" style="font-size:200px">
+            <thead>
+              <tr class="shadow">
+                <th style="background-color:#ffb2b2; width: ">NAMA</th>
+                <th style="background-color:#ffb2b2">JAWATAN</th>
+                <th style="background-color:#ffb2b2">EMEL(@yanis.org.my)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% list_table.each do |lst| %>
+                <tr>
+                  <td><%= lst[0] %></td>
+                  <td><%= lst[1] %></td>
+                  <td><%= lst[2] %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div> <!-- Collapase Bar End -->
+
+    <div class="card shadow" style="margin-bottom: 10px"> <!-- Collapase Bar Start -->
+      <!-- Card Header - Accordion -->
+      <a href="#coll03" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+        <h6 class="m-0 font-weight-bold text-title">Bahagian Pusat Sehenti ANIS (Intervensi)</h6>
+      </a>
+      <!-- Card Content - Collapse -->
+      <div class="collapse" id="coll03">
+        <div class="card-body">
+          <% 
+          list_table = [
+              ["Siti Nur Azalia binti Mohamad Salleh","Pegawai Intervensi","azalia"],
+              ["Punitha A/P Santhirapiragasam","Pegawai Intervensi","punitha"],
+              ["Julia Madihah binti Adri Wafik","Pegawai Intervensi","julia"],
+              ["Nur Izzat binti Mohd Nasir","Pegawai Intervensi","nurizzat"],
+              ["Nurshafizah binti Abdullah","Pembantu Pegawai Intervensi","shafizah"]
+            ] 
+          %>
+
+          <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0" style="color: black" style="font-size:200px">
+            <thead>
+              <tr class="shadow">
+                <th style="background-color:#ffb2b2; width: ">NAMA</th>
+                <th style="background-color:#ffb2b2">JAWATAN</th>
+                <th style="background-color:#ffb2b2">EMEL(@yanis.org.my)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% list_table.each do |lst| %>
+                <tr>
+                  <td><%= lst[0] %></td>
+                  <td><%= lst[1] %></td>
+                  <td><%= lst[2] %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div> <!-- Collapase Bar End -->
+
+    <div class="card shadow" style="margin-bottom: 10px"> <!-- Collapase Bar Start -->
+      <!-- Card Header - Accordion -->
+      <a href="#coll04" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+        <h6 class="m-0 font-weight-bold text-title">Bahagian Pusat Sehenti ANIS (Transisi)</h6>
+      </a>
+      <!-- Card Content - Collapse -->
+      <div class="collapse" id="coll04">
+        <div class="card-body">
+          <% 
+          list_table = [
+              ["Shafinaz binti Mazlan","Pegawai Intervensi (Terapi Cara Kerja)","shafinaz"],
+              ["Farah Hanis binti Zakaria","Pegawai Intervensi","farahhanis"],
+              ["Samila binti Md Nor","Pegawai Intervensi","samila"],
+              ["Syafiqah binti Rosli","Pegawai Intervensi","syafiqahrosli"],
+              ["Nur Mahirah binti Mazlan","Pembantu Pegawai Intervensi","mahirah"],
+              ["Nor Fareha binti Ramli","Pembantu Pegawai Intervensi","nfareha"]
+            ] 
+          %>
+
+          <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0" style="color: black" style="font-size:200px">
+            <thead>
+              <tr class="shadow">
+                <th style="background-color:#ffb2b2; width: ">NAMA</th>
+                <th style="background-color:#ffb2b2">JAWATAN</th>
+                <th style="background-color:#ffb2b2">EMEL(@yanis.org.my)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% list_table.each do |lst| %>
+                <tr>
+                  <td><%= lst[0] %></td>
+                  <td><%= lst[1] %></td>
+                  <td><%= lst[2] %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div> <!-- Collapase Bar End -->
+
+    <div class="card shadow" style="margin-bottom: 10px"> <!-- Collapase Bar Start -->
+      <!-- Card Header - Accordion -->
+      <a href="#coll05" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+        <h6 class="m-0 font-weight-bold text-title">Bahagian Pusat Sehenti ANIS (PraSekolah)</h6>
+      </a>
+      <!-- Card Content - Collapse -->
+      <div class="collapse" id="coll05">
+        <div class="card-body">
+          <% 
+          list_table = [
+              ["Nurul Husna binti Shuib","Pegawai Intervensi (Terapi Cara Kerja)","husnashuib"],
+              ["Intan Maznida binti Mahussin","Pegawai Intervensi","intan"],
+              ["Amallina Binti Mat Buang","Pembantu Pegawai Intervensi","amallina"]
+            ] 
+          %>
+
+          <table class="table table-bordered table-striped shadow" id="dataTable" width="100%" cellspacing="0" style="color: black" style="font-size:200px">
+            <thead>
+              <tr class="shadow">
+                <th style="background-color:#ffb2b2; width: ">NAMA</th>
+                <th style="background-color:#ffb2b2">JAWATAN</th>
+                <th style="background-color:#ffb2b2">EMEL(@yanis.org.my)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% list_table.each do |lst| %>
+                <tr>
+                  <td><%= lst[0] %></td>
+                  <td><%= lst[1] %></td>
+                  <td><%= lst[2] %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div> <!-- Collapase Bar End -->
+
+
+
+  </div> <!-- COL -->
+
+    
+</div>
+
+
+<!-- <div class="col-12" style="display: flex; justify-content: center; margin-top: -0px;">
   <img src="<%= image_path('org-chart-24-1.jpg')%>" style="height: 100% ; width: %"></img>
 </div>
 <div class="col-12" style="display: flex; justify-content: center; margin-top: -50px;">
@@ -21,29 +264,7 @@
 </div>
 <div class="col-12" style="display: flex; justify-content: center; margin-top: -80px;">
   <img src="<%= image_path('org-chart-24-4.jpg')%>" style="height: 100% ; width: %"></img>
-</div>
+</div> -->
 
 
-<div class="container bg-white" style="margin-top: 20px; text-align: center">
-  <div class="row">
-    <div class="col-lg-12 col-12">
-      <!-- <img src="<%= image_path('anisPic/orgchart.jpeg') %>" width="100%" height="100%"> -->
-    </div>
 
-    <div class="col-lg-12 col-12">
-      <div class="section-title" style="margin-top: 10px">
-        <h2>Hubungi Kami Di</h2> 
-        <p style="font-size: 18px; color: black">
-          <b>Pusat Sokongan Pendidikan Awal Anak Istimewa <br>(PUSAT ANIS)</b>
-        </p>
-        <p style="font-size: 15px; color: black">
-          East Entrance G26-28  Bangunan IDCC,<br>
-          Jalan Pahat L  15/ L, Seksyen 15,<br>
-          40200 Shah Alam, SELANGOR<br>
-          <a href="">03-55453170</a><br>
-          <a href="">jabatananis@yawas.my</a>
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
