@@ -215,7 +215,7 @@ class WelcomesController < ApplicationController
 			flash[:success] = "Pertanyaan anda telah direkodkan. Pihak kami akan menjawab secepat mungkin. Terima kasih"
 			pars = params[:ans]
 			subject = pars[:subject]
-			to = "korporat@yanis.org.my"
+			to = "info@yanis.org.my"
 			cc = pars[:email]
 			body = "
 				<b>Nama: </b> #{pars[:name]}<br>
