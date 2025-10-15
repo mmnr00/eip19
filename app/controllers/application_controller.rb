@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
 	 
 	 def send_email(subject,to,cc,body)
 	 	mail = SendGrid::Mail.new
-		mail.from = SendGrid::Email.new(email: "contact@anisselangor.com", name: "Admin Anis")
+		mail.from = SendGrid::Email.new(email: "info@yanis.org.my", name: "Admin Anis")
 		mail.subject = "#{subject}"
 		#Personalisation, add cc
 		personalization = SendGrid::Personalization.new
