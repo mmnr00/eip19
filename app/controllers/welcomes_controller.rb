@@ -5,12 +5,19 @@ class WelcomesController < ApplicationController
 	
 	#layout "page"
 
+	def ilsciframe
+		redirect_to ilscanis_path(nwiframe: true)
+	end
+
 	def semakbantuananis
 		@index = true
 	end
 
 	def jcdet
 		@index = true
+		if params[:nwiframe].present?
+			render action: "jcdet", layout: "iframe-tmp"
+		end
 	end
 
 	def cpcupr
@@ -31,10 +38,16 @@ class WelcomesController < ApplicationController
 
 	def carikerja
 		@index = true
+		if params[:nwiframe].present?
+			render action: "carikerja", layout: "iframe-tmp"
+		end
 	end
 
 	def etwranis
 		@index = true
+		if params[:nwiframe].present?
+			render action: "etwranis", layout: "iframe-tmp"
+		end
 	end
 
 	def ikonanis
@@ -59,10 +72,16 @@ class WelcomesController < ApplicationController
 
 	def sediakerja
 		@index = true
+		if params[:nwiframe].present?
+			render action: "sediakerja", layout: "iframe-tmp"
+		end
 	end
 
 	def ilscanis
 		@index = true
+		if params[:nwiframe].present?
+			render action: "ilscanis", layout: "iframe-tmp"
+		end
 	end
 
 	def bukuanis

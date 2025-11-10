@@ -141,8 +141,8 @@
         </div>
       </div>
 
-      <%= link_to "Klik Disini Untuk Memohon", persesch_url(prog: "PENCARIAN PEKERJAAN", regkid: 1), class: "btn btn-sm btn-success btn-block"%>
-      <%= link_to "Semak Permohonan", persesch_url(prog: "PENCARIAN PEKERJAAN"), class: "btn btn-sm btn-info btn-block"%>
+      <%= link_to "Klik Disini Untuk Memohon", persesch_url(prog: "PENCARIAN PEKERJAAN", regkid: 1, nwiframe: params[:nwiframe]), class: "btn btn-sm btn-success btn-block"%>
+      <%= link_to "Semak Permohonan", persesch_url(prog: "PENCARIAN PEKERJAAN", nwiframe: params[:nwiframe]), class: "btn btn-sm btn-info btn-block"%>
 
       
 

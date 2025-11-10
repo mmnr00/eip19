@@ -411,6 +411,9 @@ class IlscsController < ApplicationController
 			end
 		end
 		#render action: "new", layout: "eipblank"
+		if params[:nwiframe].present?
+			render action: "new", layout: "iframe-tmp"
+		end
 	
 	end
 

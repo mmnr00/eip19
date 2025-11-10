@@ -31,7 +31,7 @@
           <h4 class="title"><a href="#">Program Persediaan Alam Pekerjaan</a></h4>
           <p class="description" style="text-align: justify">Persediaan Kearah Kerjaya Program Persediaan Kearah Kerjaya adalah untuk Murid-Murid Berkeperluan Pendidikan Khas (MBPK). Program ini akan mengajar kepada MBPK tentang literasi kerjaya secara praktikal serta membina aspirasi kerjaya.</p>
           <!-- <a href="<%= persesch_url(prog: "SARINGAN ANIS") %>" class="btn btn-info btn-sm btn-block" style="margin-top: 10px">Permohonan dan Semakan</a> -->
-          <a href="<%= sediakerja_url %>" class="btn btn-info btn-sm btn-block" style="margin-top: 10px">Ketahui Lebih Lanjut</a>
+          <a href="<%= sediakerja_url(nwiframe: params[:nwiframe]) %>" class="btn btn-info btn-sm btn-block" style="margin-top: 10px">Ketahui Lebih Lanjut</a>
         </div>
       </div>
 
@@ -42,7 +42,7 @@
           <h4 class="title"><a href="#">Program Pencarian Pekerjaan</a></h4>
           <p class="description" style="text-align: justify">Persediaan Kearah Kerjaya Program Persediaan Kearah Kerjaya adalah untuk Murid-Murid Berkeperluan Pendidikan Khas (MBPK). Program ini akan mengajar kepada MBPK tentang literasi kerjaya secara praktikal serta membina aspirasi kerjaya.</p>
           <!-- <a href="<%= persesch_url(prog: "SARINGAN ANIS") %>" class="btn btn-info btn-sm btn-block" style="margin-top: 10px">Permohonan dan Semakan</a> -->
-          <a href="<%= carikerja_url %>" class="btn btn-warning btn-sm btn-block" style="margin-top: 10px">Ketahui Lebih Lanjut</a>
+          <a href="<%= carikerja_url(nwiframe: params[:nwiframe]) %>" class="btn btn-warning btn-sm btn-block" style="margin-top: 10px">Ketahui Lebih Lanjut</a>
         </div>
       </div>
 
@@ -55,7 +55,7 @@
           <h4 class="title"><a href="#">Program Transisi Alam Pekerjaan</a></h4>
           <p class="description" style="text-align: justify">PENDING NISHA</p>
           <!-- <a href="<%= persesch_url(prog: "TERAPI ANIS") %>" class="btn btn-info btn-sm btn-block" style="margin-top: 10px">Pemohonan dan Semakan</a> -->
-          <a href="<%= transisikerja_url %>" class="btn btn-success btn-sm btn-block" style="margin-top: 10px">Ketahui Lebih Lanjut</a>
+          <a href="<%= transisikerja_url(nwiframe: params[:nwiframe]) %>" class="btn btn-success btn-sm btn-block" style="margin-top: 10px">Ketahui Lebih Lanjut</a>
         </div>
       </div>
       <% end %>
