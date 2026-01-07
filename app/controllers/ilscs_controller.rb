@@ -2,6 +2,12 @@ class IlscsController < ApplicationController
 	before_action :authenticate_admin!, only: [:ilscindex,:ilsclistxls,:vmadmin_ilsc]
 	before_action :set_all
 
+	def ilscindexapi
+		@ilscs = Ilsc.where(ic: params[:ic])
+		render json: Ilsc.all.last
+
+	end
+
 	def report_ilsc
 
 		ilsc_init = Ilsc.where.not(del: true).where(tp: "PERSEDIAAN ALAM PEKERJAAN")

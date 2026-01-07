@@ -9,6 +9,8 @@ gem 'rails'#, '~> 7.2'
 
 gem "recaptcha", require: "recaptcha/rails"
 
+gem 'jsonapi-serializer'
+
 # neww
 
 gem 'fog-aws'
