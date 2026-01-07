@@ -211,7 +211,7 @@ Rails.application.routes.draw do
 
   get '/kadanis53423', to: 'welcomes#kadanis'
 
-  get '/rakananis', to: 'welcomes#rakananis'
+  #get '/rakananis443322', to: 'welcomes#rakananis44323'
   get '/transisikerja', to: 'welcomes#transisikerja'
   get '/sediakerja', to: 'welcomes#sediakerja'
   get '/ilscanis', to: 'welcomes#ilscanis'
