@@ -5,6 +5,10 @@ class WelcomesController < ApplicationController
 	
 	#layout "page"
 
+	def penyediaperkhidmatan
+		@index = true
+	end
+
 	def ilsciframe
 		redirect_to ilscanis_path(nwiframe: true)
 	end

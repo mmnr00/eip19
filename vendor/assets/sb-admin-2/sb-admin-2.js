@@ -1,7 +1,7 @@
 $(document).on('turbolinks:load', function() {
   // "use strict";
   console.log('mus 3')
-  console.log('video-intro')
+  console.log('video-introsss')
   const btnd = document.querySelector('#try-click');
   if (btnd != null) {
     btnd.click()
