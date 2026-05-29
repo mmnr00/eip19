@@ -186,6 +186,19 @@
 
       <div class="card shadow" style="margin-bottom: 10px">
         <!-- Card Header - Accordion -->
+        <a href="#coll8" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+          <h6 class="m-0 font-weight-bold text-title">Senarai Penyedia Perkhidmatan Berkaitan OKU</h6>
+        </a>
+        <!-- Card Content - Collapse -->
+        <div class="collapse" id="coll8">
+          <div class="card-body"  style="text-align: justify">
+            Untuk rujukan pemohon, senarai penyedia perkhidmatan berkaitan OKU boleh disemak melalui pautan berikut:<br><a href="<%= penyediaperkhidmatan_url %>"><%= penyediaperkhidmatan_url %></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card shadow" style="margin-bottom: 10px">
+        <!-- Card Header - Accordion -->
         <a href="#coll5" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
           <h6 class="m-0 font-weight-bold text-title">Cara Penyaluran Bantuan</h6>
         </a>
@@ -276,11 +289,17 @@
       <% if ENV['BTN_OPEN'] == "TRUE" %>
         <% link_to "Klik Disini Untuk Memohon", persesch_url(prog: "BANTUAN ANIS", regkid: 1), class: "btn btn-sm btn-success btn-block"%>
         
-        <%= link_to "Permohonan Baru", "https://anis.yawas.my/k_anis/anis/online.php", class: "btn btn-sm btn-info btn-block"%> 
+        <%= link_to "Permohonan Baru", "https://brais.eyanis.my/k_anis/anis/permohonan.php", class: "btn btn-sm btn-info btn-block", target: "_blank"%> 
       <% end %>
+      <%= link_to "Semak Status Permohonan 2025", semakbantuananis_url, class: "btn btn-sm btn-success btn-block"%> 
+      <!-- OPEN IN JULY26 -->
+      <% link_to "Semak Status Permohonan 2026", "https://brais.eyanis.my/k_anis/anis/semakan.php", class: "btn btn-sm btn-warning btn-block"%> 
+
+
+
       <% link_to "Semak Status Permohonan", "https://anis.yawas.my/k_anis/anis/semakan.php", class: "btn btn-sm btn-success btn-block"%> 
-      <%= link_to "Semak Status Permohonan", semakbantuananis_url, class: "btn btn-sm btn-success btn-block"%> 
-      <%= link_to "Log Masuk Admin", "https://anis.yawas.my/k_anis/login.php", class: "btn btn-sm btn-primary btn-block"%>
+      
+      <% link_to "Log Masuk Admin", "https://anis.yawas.my/k_anis/login.php", class: "btn btn-sm btn-primary btn-block"%>
       <% link_to "Semak Permohonan", persesch_url(prog: "BANTUAN ANIS"), class: "btn btn-sm btn-info btn-block"%>
       
 
