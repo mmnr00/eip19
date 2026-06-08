@@ -233,7 +233,7 @@ Rails.application.routes.draw do
   get '/cikguanisppki', to: 'welcomes#cikguanisppki'
   get '/bantuanoku65765432', to: 'welcomes#bantuanoku2'
   get '/bantuanOKU65765432', to: 'welcomes#bantuanoku'
-  get '/intervensianis', to: 'welcomes#intervensianis'
+  #get '/intervensianis', to: 'welcomes#intervensianis'
   get '/daftarsaringan', to: 'welcomes#daftarsaringan'
   get '/saringan', to: 'welcomes#saringananis'
   get '/introanis', to: 'welcomes#introanis'
