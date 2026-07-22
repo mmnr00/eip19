@@ -194,7 +194,9 @@
         <!-- Card Content - Collapse -->
         <div class="collapse" id="coll8">
           <div class="card-body"  style="text-align: justify">
-            Untuk rujukan pemohon, senarai penyedia perkhidmatan berkaitan OKU boleh disemak melalui pautan berikut:<br><a href="<%= penyediaperkhidmatan_url %>"><%= penyediaperkhidmatan_url %></a>
+            Untuk rujukan pemohon, senarai penyedia perkhidmatan berkaitan OKU boleh disemak melalui pautan berikut:<br><a href="<%= penyediaperkhidmatan_url %>"><%= penyediaperkhidmatan_url %></a><br><br>
+
+            Untuk mengemukakan permohonan pendaftaran penyedia perkhidmatan YANIS, rujuk hebahan di media sosial rasmi YANIS <a href="https://www.instagram.com/p/DYMGLqMk2b1/?igsh=MTUxaDRuNXM3bHMxeQ=="> DISINI </a>
           </div>
         </div>
       </div>
@@ -293,7 +295,7 @@
         
         <%= link_to "Permohonan Baru", "https://brais.eyanis.my/k_anis/anis/permohonan.php", class: "btn btn-sm btn-info btn-block", target: "_blank"%> 
       <% end %>
-      <% link_to "Semak Status Permohonan 2026", "https://brais.eyanis.my/k_anis/anis/semakan.php", class: "btn btn-sm btn-warning btn-block"%> 
+      <%= link_to "Semak Status Permohonan 2026", "https://brais.eyanis.my/k_anis/anis/semakan.php", class: "btn btn-sm btn-warning btn-block"%> 
 
 
       <%= link_to "Semak Status Permohonan 2025", semakbantuananis_url, class: "btn btn-sm btn-success btn-block"%> 
