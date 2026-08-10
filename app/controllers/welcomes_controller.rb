@@ -5,6 +5,11 @@ class WelcomesController < ApplicationController
 	
 	#layout "page"
 
+	def penyelengaraan
+		@index =true
+		render action: "penyelengaraan", layout: "eipblank" 
+	end
+
 	def penyediaperkhidmatan
 		@index = true
 	end
