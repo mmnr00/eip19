@@ -274,6 +274,7 @@ class WelcomesController < ApplicationController
 	end
 
 	def index2
+		redirect_to penyelengaraan_path
 		@teacher = current_teacher
 		@admin = current_admin
 		@owner = current_owner
